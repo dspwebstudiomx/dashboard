@@ -1,0 +1,123 @@
+[
+  {
+    "id": "fullName",
+    "label": "Nombre(s)",
+    "type": "text",
+    "icon": "FaUser",
+    "required": true,
+    "errorMessage": "El nombre es obligatorio."
+  },
+  {
+    "id": "lastName",
+    "label": "Apellido Paterno",
+    "type": "text",
+    "icon": "FaUser",
+    "required": true,
+    "errorMessage": "El Apellido Paterno es obligatorio."
+  },
+  {
+    "id": "lastName2",
+    "label": "Apellido Materno",
+    "type": "text",
+    "icon": "FaUser",
+    "required": true,
+    "errorMessage": "El Apellido Materno es obligatorio."
+  },
+  {
+    "id": "email",
+    "label": "Correo Electrónico",
+    "type": "email",
+    "icon": "FaEnvelope",
+    "required": true,
+    "errorMessage": "El correo electrónico es obligatorio."
+  },
+  {
+    "id": "phoneNumber",
+    "label": "Teléfono",
+    "type": "text",
+    "icon": "FaPhone",
+    "required": true,
+    "errorMessage": "El teléfono es obligatorio."
+  },
+  {
+    "id": "address",
+    "label": "Dirección",
+    "type": "text",
+    "icon": "FaMapMarkerAlt",
+    "required": true,
+    "errorMessage": "La dirección es obligatoria."
+  },
+  {
+    "id": "company",
+    "label": "Empresa",
+    "type": "text",
+    "icon": "FaBuilding",
+    "required": true,
+    "errorMessage": "El nombre de la empresa es obligatorio."
+  },
+  {
+    "id": "project",
+    "label": "Proyecto",
+    "type": "text",
+    "icon": "FaProjectDiagram",
+    "required": true,
+    "errorMessage": "El nombre del proyecto es obligatorio."
+  },
+  {
+    "id": "rfc",
+    "label": "RFC",
+    "type": "text",
+    "icon": "FaFileAlt",
+    "required": true,
+    "errorMessage": "El RFC es obligatorio."
+  },
+  {
+    "id": "curp",
+    "label": "CURP",
+    "type": "text",
+    "icon": "FaIdCard",
+    "required": true,
+    "errorMessage": "El CURP es obligatorio."
+  },
+  {
+    "id": "website",
+    "label": "Sitio Web",
+    "type": "text",
+    "icon": "BsGlobe",
+    "required": false,
+    "errorMessage": ""
+  },
+  {
+    "id": "facebook",
+    "label": "Facebook",
+    "type": "text",
+    "icon": "FaFacebook",
+    "required": false,
+    "errorMessage": ""
+  },
+  {
+    "id": "instagram",
+    "label": "Instagram",
+    "type": "text",
+    "icon": "FaInstagram",
+    "required": false,
+    "errorMessage": ""
+  },
+  {
+    "id": "linkedin",
+    "label": "LinkedIn",
+    "type": "text",
+    "icon": "FaLinkedin",
+    "required": false,
+    "errorMessage": ""
+  },
+  {
+    "id": "twitter",
+    "label": "Twitter",
+    "type": "text",
+    "icon": "FaXTwitter",
+    "required": false,
+    "errorMessage": ""
+  }
+]
+
