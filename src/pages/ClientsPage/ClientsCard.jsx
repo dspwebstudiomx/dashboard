@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaEdit,
   FaTrash,
@@ -10,12 +10,41 @@ import {
   FaHome,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { fetchClients } from "@api/clientsApi";
 
-const ClientsCard = ({ client, handleEditClient, handleDeleteClient }) => {
+const ClientsCard = ({ client, onClientUpdate }) => {
+  const [clients, setClients] = useState([]);
+
+  useEffect(() => {
+    // Fetch initial clients data
+    fetchClients()
+      .then((data) => setClients(data))
+      .catch((error) => console.error("Error fetching clients:", error));
+  }, []);
+
+  const handleDeleteClient = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/clients/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error(`Error al eliminar cliente: ${response.statusText}`);
+      }
+      const updatedClients = await fetchClients();
+      setClients(updatedClients);
+      if (onClientUpdate) onClientUpdate(updatedClients);
+    } catch (error) {
+      console.error("Error deleting client:", error);
+    }
+  };
+
+  const handleEdit = () => {
+    console.log("Edit client:", client.id);
+    // Add edit functionality here
+  };
+
   return (
-    <div
-      key={client.id}
-      className="flex shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold">
+    <ul className="flex shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold">
       <div className="flex flex-col items-center justify-between h-[80%] w-1/2 gap-8 my-auto">
         <div className="flex flex-col items-center justify-center w-full gap-6">
           <img
@@ -139,20 +168,20 @@ const ClientsCard = ({ client, handleEditClient, handleDeleteClient }) => {
         </li>
         <div className="flex justify-end gap-4 mt-4 w-full items-center">
           <button
-            onClick={() => handleEditClient(client)}
+            onClick={handleEdit}
             className="text-blue-500 hover:text-blue-700"
-            aria-label="Editar cliente">
+            aria-label={`Editar cliente ${client.fullName}`}>
             <FaEdit size={25} />
           </button>
           <button
             onClick={() => handleDeleteClient(client.id)}
             className="text-red-500 hover:text-red-700"
-            aria-label="Eliminar cliente">
+            aria-label={`Eliminar cliente ${client.fullName}`}>
             <FaTrash size={25} />
           </button>
         </div>
       </ul>
-    </div>
+    </ul>
   );
 };
 

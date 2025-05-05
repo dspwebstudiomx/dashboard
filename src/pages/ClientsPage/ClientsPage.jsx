@@ -1,7 +1,12 @@
 import DashboardTemplate from "@templates/DashboardTemplate";
+import ClientsList from "./ClientsList";
 
 const ClientsPage = () => {
-  return <DashboardTemplate>ClientsPage</DashboardTemplate>;
+  return (
+    <DashboardTemplate>
+      <ClientsList />
+    </DashboardTemplate>
+  );
 };
 
 export default ClientsPage;

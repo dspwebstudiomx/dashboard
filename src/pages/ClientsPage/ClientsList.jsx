@@ -1,20 +1,86 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ClientsCard from "./ClientsCard";
+import ClientsModal from "./ClientsModal";
 
-const ClientsList = ({ clients, handleEditClient, handleDeleteClient }) => {
+const ClientsList = () => {
+  const [clients, setClients] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedClient, setSelectedClient] = useState(null);
+
+  // Cargar clientes desde el archivo JSON
+  useEffect(() => {
+    axios
+      .get("/server/clients.json")
+      .then((response) => setClients(response.data))
+      .catch((error) => console.error("Error al cargar clientes:", error));
+  }, []);
+
+  // Abrir modal para agregar o editar cliente
+  const handleOpenModal = (client = null) => {
+    setSelectedClient(client);
+    setIsModalOpen(true);
+  };
+
+  // Cerrar modal
+  const handleCloseModal = () => {
+    setSelectedClient(null);
+    setIsModalOpen(false);
+  };
+
+  // Guardar cliente (agregar o editar)
+  const handleSaveClient = (client) => {
+    if (client.id) {
+      // Editar cliente existente
+      setClients((prevClients) =>
+        prevClients.map((c) => (c.id === client.id ? client : c))
+      );
+    } else {
+      // Agregar nuevo cliente
+      setClients((prevClients) => [
+        ...prevClients,
+        { ...client, id: Date.now() },
+      ]);
+    }
+    handleCloseModal();
+  };
+
+  // Eliminar cliente
+  const handleDeleteClient = (id) => {
+    setClients((prevClients) => prevClients.filter((c) => c.id !== id));
+  };
+
   return (
-    <article
-      id="contenedor-cliente-derecho"
-      className="grid grid-cols-1 gap-12 w-2/3 mx-auto mt-30">
-      {clients.map((client) => (
-        <ClientsCard
-          key={client.id}
-          client={client}
-          handleEditClient={() => handleEditClient(client)}
-          handleDeleteClient={handleDeleteClient}
+    <section className="clients-list-container">
+      <div className="header flex justify-between items-center mb-24">
+        <h1 className="text-2xl font-semibold">Lista de Clientes</h1>
+        <button
+          onClick={() => handleOpenModal()}
+          className="bg-blue-800 text-white px-4 py-2 rounded-md mt-4">
+          Agregar Cliente
+        </button>
+      </div>
+      <ul className="flex flex-col gap-12 mx-auto max-w-2/3">
+        {clients.map((client) => (
+          <ClientsCard
+            key={client.id}
+            client={client}
+            handleEditClient={() => handleOpenModal(client)}
+            handleDeleteClient={() => handleDeleteClient(client.id)}
+            handleOpenModal={handleOpenModal}
+            handleCloseModal={handleCloseModal}
+            handleSaveClient={handleSaveClient}
+          />
+        ))}
+      </ul>
+      {isModalOpen && (
+        <ClientsModal
+          client={selectedClient}
+          onSave={handleSaveClient}
+          onClose={handleCloseModal}
         />
-      ))}
-    </article>
+      )}
+    </section>
   );
 };
 
