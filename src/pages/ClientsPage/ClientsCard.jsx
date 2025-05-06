@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import ClientsModal from "./ClientsModal";
+import { fetchClients } from "@api/clientsApi";
 
 const ClientsCard = ({ client, onClientUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +35,13 @@ const ClientsCard = ({ client, onClientUpdate }) => {
       if (!response.ok) {
         throw new Error(`Error al eliminar cliente: ${response.statusText}`);
       }
-      if (onClientUpdate) onClientUpdate(); // Actualiza la lista de clientes
+
+      // Actualiza la lista de clientes en el componente padre
+      if (onClientUpdate) {
+        onClientUpdate((prevClients) =>
+          prevClients.filter((client) => client.id !== id)
+        );
+      }
     } catch (error) {
       console.error("Error eliminando cliente:", error);
     }
@@ -196,8 +203,8 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             isOpen={isModalOpen}
             onClose={closeModal}
             client={selectedClient} // Pasa el cliente seleccionado al modal
-            onClientUpdate={onClientUpdate}
-            isEditing={!!selectedClient} // Indica si se está editando un cliente
+            onClientUpdate={fetchClients}
+            isEditing={!!selectedClient}
           />
         </>
       )}

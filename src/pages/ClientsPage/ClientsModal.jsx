@@ -85,7 +85,7 @@ const ClientsModal = ({
         await axios.post("http://localhost:5000/api/clients", formData);
       }
       onClientUpdate(); // Refrescar la lista de clientes
-      onClose();
+      onClose(); // Cerrar el modal después de guardar
     } catch (error) {
       console.error("Error al guardar el cliente:", error);
     }

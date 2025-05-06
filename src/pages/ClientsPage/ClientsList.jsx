@@ -51,8 +51,9 @@ const ClientsList = () => {
     setClients((prevClients) => prevClients.filter((c) => c.id !== id));
   };
 
-  const handleEdit = () => {
-    handleOpenModal(null); // Abre el modal con los datos del cliente actual
+  // Actualizar lista de clientes (sincronización)
+  const onClientUpdate = (updatedClients) => {
+    setClients(updatedClients);
   };
 
   return (
@@ -61,7 +62,7 @@ const ClientsList = () => {
         <h1 className="text-2xl font-semibold">Lista de Clientes</h1>
         <button
           id="agregar-cliente"
-          onClick={handleEdit}
+          onClick={() => handleOpenModal()}
           className="text-white px-6 py-4 flex items-center gap-2 p-2 rounded-lg bg-blue-600 hover:bg-blue-800 transition duration-300"
           aria-label="Agregar cliente">
           <FaEdit size={25} />
@@ -73,11 +74,9 @@ const ClientsList = () => {
           <ClientsCard
             key={client.id}
             client={client}
+            onClientUpdate={onClientUpdate} // Pasa la función al componente hijo
             handleEditClient={() => handleOpenModal(client)}
             handleDeleteClient={() => handleDeleteClient(client.id)}
-            handleOpenModal={handleOpenModal}
-            handleCloseModal={handleCloseModal}
-            handleSaveClient={handleSaveClient}
           />
         ))}
       </ul>
