@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ClientsCard from "./ClientsCard";
 import ClientsModal from "./ClientsModal";
+import { FaEdit } from "react-icons/fa";
 
 const ClientsList = () => {
   const [clients, setClients] = useState([]);
@@ -50,13 +51,20 @@ const ClientsList = () => {
     setClients((prevClients) => prevClients.filter((c) => c.id !== id));
   };
 
+  const handleEdit = () => {
+    handleOpenModal(null); // Abre el modal con los datos del cliente actual
+  };
+
   return (
     <section className="clients-list-container">
       <div className="header flex justify-between items-center mb-24">
         <h1 className="text-2xl font-semibold">Lista de Clientes</h1>
         <button
-          onClick={() => handleOpenModal()}
-          className="bg-blue-800 text-white px-4 py-2 rounded-md mt-4">
+          id="agregar-cliente"
+          onClick={handleEdit}
+          className="text-white px-6 py-4 flex items-center gap-2 p-2 rounded-lg bg-blue-600 hover:bg-blue-800 transition duration-300"
+          aria-label="Agregar cliente">
+          <FaEdit size={25} />
           Agregar Cliente
         </button>
       </div>
@@ -78,6 +86,7 @@ const ClientsList = () => {
           client={selectedClient}
           onSave={handleSaveClient}
           onClose={handleCloseModal}
+          isOpen={isModalOpen}
         />
       )}
     </section>
