@@ -71,7 +71,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 text-center w-full mb-3">
                 {client.fullName} {client.lastName} {client.lastName2}
               </h2>
-              <p>{client.id}</p>
+              <p className="bg-blue-400 px-4 py-2 rounded-4xl text-blue-800">
+                {client.id}
+              </p>
             </div>
           </div>
           <div className="flex gap-4 items-center justify-center w-full">
