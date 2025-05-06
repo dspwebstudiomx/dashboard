@@ -13,8 +13,29 @@ export const fetchClients = async () => {
   }
 };
 
+// Guardar un cliente
+export const saveClient = async (client) => {
+  try {
+    const response = await axios.post(API_URL, client, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error al guardar el cliente:", error);
+    throw error;
+  }
+};
+
 // Eliminar un cliente por ID
-export const deleteClient = (id) => axios.delete(`${API_URL}/${id}`);
+export const deleteClient = async (id) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error al eliminar el cliente:", error);
+    throw error;
+  }
+};
 
 // Crear un nuevo cliente
 export const createClient = (data) =>
