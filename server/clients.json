@@ -7,7 +7,7 @@
     "address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
     "company": "dspwebstudio",
     "rfc": "PEBD81011C21",
-    "curp": "PEBD81011C21",
+    "curp": "PEBD81011C21a",
     "website": "https://dspwebstudio.com",
     "facebook": "https://www.facebook.com/dspwebstudio",
     "twitter": "https://www.twitter.com/dspwebstudio",
@@ -16,7 +16,8 @@
     "project": "Dashboard",
     "image": "/uploads/dsp_fondo_blanco.png",
     "lastName2": "Bernal",
-    "lastName": "Pérez"
+    "lastName": "Pérez",
+    "tasks": []
   },
   {
     "id": 1745953383970,
@@ -50,7 +51,7 @@
     "rfc": "",
     "website": "",
     "curp": "",
-    "facebook": "",
+    "facebook": "https://www.facebook.com/dspwebstudio",
     "instagram": "",
     "linkedin": "",
     "twitter": "",

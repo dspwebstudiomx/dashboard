@@ -33,22 +33,40 @@ const TasksPage = () => {
   };
 
   const saveTasksToServer = async (clientId, updatedTasks) => {
-    if (!clientId) {
+    if (!clientId || clientId.trim() === "") {
       alert("El cliente seleccionado no es válido.");
       return;
     }
 
+    console.log("Intentando guardar tareas para el cliente:", clientId);
+
     try {
-      const response = await axios.post(`/api/clients/${clientId}/tasks`, {
-        tasks: updatedTasks,
-      });
+      const response = await axios.post(
+        `http://localhost:5000/api/clients/${clientId}/tasks`,
+        { tasks: updatedTasks }
+      );
+
       alert("Tareas guardadas exitosamente.");
       console.log("Respuesta del servidor:", response.data);
+      console.log("Datos enviados al servidor:", updatedTasks);
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message || "Hubo un error al guardar las tareas.";
       console.error("Error al guardar las tareas:", error);
-      alert(`Error del servidor: ${errorMessage}`);
+
+      if (error.response) {
+        console.error("Datos del error:", error.response.data);
+        console.error("Estado del error:", error.response.status);
+        console.error("Encabezados del error:", error.response.headers);
+      } else if (error.request) {
+        console.error("No se recibió respuesta del servidor:", error.request);
+      } else {
+        console.error("Error al configurar la solicitud:", error.message);
+      }
+
+      alert(
+        `Error del servidor: ${
+          error.response?.data?.message || error.message
+        }. Verifica el ID del cliente y la URL.`
+      );
     }
   };
 
@@ -73,6 +91,7 @@ const TasksPage = () => {
     );
 
     setTaskForm({
+      clientId: selectedClient,
       title: "",
       description: "",
       startDate: "",
@@ -125,8 +144,11 @@ const TasksPage = () => {
         {/* Task List */}
         <TaskList
           tasks={tasks}
-          handleEditTask={handleEditTask}
           handleDeleteTask={handleDeleteTask}
+          handleEditTask={(index) => {
+            setTaskForm(tasks[index]);
+            setIsModalOpen(true); // Abre el modal para editar la tarea
+          }}
         />
       </div>
 

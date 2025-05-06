@@ -175,6 +175,65 @@ app.delete("/api/clients/:id", (req, res) => {
   });
 });
 
+// Ruta para agregar tareas a un cliente
+app.post("/api/clients/:clientId/tasks", (req, res) => {
+  const clientId = parseInt(req.params.id, 10);
+
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ error: "Error al leer el archivo de clientes" });
+    }
+
+    const clientIndex = clients.findIndex((client) => client.id === clientId);
+
+    if (clientIndex === -1) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+
+    // Validar que req.body.tasks sea un array
+    const { tasks } = req.body;
+    if (!Array.isArray(tasks)) {
+      return res
+        .status(400)
+        .json({ error: "El campo 'tasks' debe ser un array" });
+    }
+
+    // Agregar las tareas al cliente
+    clients[clientIndex].tasks = tasks;
+
+    writeClientsFile(clients, res, {
+      message: "Tareas guardadas correctamente",
+      tasks: clients[clientIndex].tasks,
+    });
+  });
+});
+
+// Ruta para guardar proyectos
+app.post("/server/projects", (req, res) => {
+  const newProject = req.body;
+
+  // Leer el archivo clients.json
+  fs.readFile(clientsFilePath, "utf8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "Error reading file" });
+    }
+
+    const clients = JSON.parse(data);
+    clients.push(newProject);
+
+    // Guardar el nuevo proyecto en clients.json
+    fs.writeFile(clientsFilePath, JSON.stringify(clients, null, 2), (err) => {
+      if (err) {
+        return res.status(500).json({ error: "Error writing file" });
+      }
+
+      res.status(201).json(newProject);
+    });
+  });
+});
+
 // Iniciar el servidor
 const PORT = 5000;
 app.listen(PORT, () => {
