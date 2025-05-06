@@ -6,12 +6,12 @@ const DashboardTemplate = ({ children }) => {
   return (
     <div className="w-full h-screen flex flex-col dark:bg-gray-900">
       <Header />
-      <div className="dashboard-content flex flex-grow gap-12">
+      <main className="dashboard-content flex flex-grow gap-12">
         <Sidebar />
-        <main className="p-12 absolute top-[10vh] left-76 w-[78vw] h-[88vh]">
+        <div className="p-12 absolute top-[10vh] left-76 w-[78vw] h-[88vh]">
           {children}
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 };
