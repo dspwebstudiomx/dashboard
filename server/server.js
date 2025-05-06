@@ -9,39 +9,36 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Ruta para el archivo JSON
-const clientsFilePath = path.join(__dirname, "clients.json");
+// Constantes
+const PORT = 5000;
+const UPLOADS_DIR = path.join(__dirname, "uploads");
+const CLIENTS_FILE = path.join(__dirname, "clients.json");
 
-// Configuración de multer para guardar archivos con su nombre original
+// Configuración de multer para guardar archivos
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "uploads")); // Carpeta donde se guardarán las imágenes
-  },
+  destination: (req, file, cb) => cb(null, UPLOADS_DIR),
   filename: (req, file, cb) => {
-    const originalName = file.originalname.replace(/\s+/g, "_"); // Reemplazar espacios por guiones bajos
-    cb(null, originalName); // Guardar con el nombre original
+    const sanitizedFilename = file.originalname.replace(/\s+/g, "_");
+    cb(null, `${Date.now()}-${sanitizedFilename}`);
   },
 });
-
 const upload = multer({ storage });
 
 const app = express(); // Inicializar la aplicación de Express
 
-// Habilitar CORS
+// Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173", // Permitir solicitudes desde este origen
-    methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
-    allowedHeaders: ["Content-Type"], // Encabezados permitidos
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
 app.use(express.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Servir archivos estáticos
+app.use("/uploads", express.static(UPLOADS_DIR)); // Servir archivos estáticos
 
 // Función para leer el archivo JSON
 const readClientsFile = (callback) => {
-  fs.readFile(clientsFilePath, "utf8", (err, data) => {
+  fs.readFile(CLIENTS_FILE, "utf8", (err, data) => {
     if (err) {
       console.error("Error al leer el archivo de clientes:", err);
       callback(err, null);
@@ -53,7 +50,7 @@ const readClientsFile = (callback) => {
 
 // Función para escribir en el archivo JSON
 const writeClientsFile = (clients, res, successMessage) => {
-  fs.writeFile(clientsFilePath, JSON.stringify(clients, null, 2), (err) => {
+  fs.writeFile(CLIENTS_FILE, JSON.stringify(clients, null, 2), (err) => {
     if (err) {
       console.error("Error al guardar el archivo de clientes:", err);
       return res
@@ -64,48 +61,31 @@ const writeClientsFile = (clients, res, successMessage) => {
   });
 };
 
-// Ruta para obtener todos los clientes
+// Rutas
+// Obtener todos los clientes
 app.get("/api/clients", (req, res) => {
   readClientsFile((err, clients) => {
-    if (err) {
+    if (err)
       return res
         .status(500)
         .json({ error: "Error al leer el archivo de clientes" });
-    }
     res.status(200).json(clients);
   });
 });
 
-// Ruta para agregar un nuevo cliente
+// Agregar un nuevo cliente
 app.post("/api/clients", upload.single("image"), (req, res) => {
   readClientsFile((err, clients) => {
-    if (err) {
+    if (err)
       return res
         .status(500)
         .json({ error: "Error al leer el archivo de clientes" });
-    }
 
     const newClient = {
       id: Date.now(),
-      fullName: req.body.fullName,
-      lastName: req.body.lastName,
-      lastName2: req.body.lastName2,
-      email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      company: req.body.company,
-      project: req.body.project,
-      rfc: req.body.rfc,
-      website: req.body.website,
-      curp: req.body.curp,
-      facebook: req.body.facebook,
-      instagram: req.body.instagram,
-      linkedin: req.body.linkedin,
-      twitter: req.body.twitter,
-      image: req.file
-        ? `/uploads/${req.file.originalname.replace(/\s+/g, "_")}`
-        : null, // Guardar la ruta completa del archivo
-      tasks: [], // Inicializar tareas vacías
+      ...req.body,
+      image: req.file ? `/uploads/${req.file.filename}` : null, // Guardar la ruta del archivo
+      tasks: [],
     };
 
     clients.push(newClient);
@@ -113,43 +93,26 @@ app.post("/api/clients", upload.single("image"), (req, res) => {
   });
 });
 
-// Ruta para editar un cliente
+// Editar un cliente existente
 app.put("/api/clients/:id", upload.single("image"), (req, res) => {
   const clientId = parseInt(req.params.id, 10);
 
   readClientsFile((err, clients) => {
-    if (err) {
+    if (err)
       return res
         .status(500)
         .json({ error: "Error al leer el archivo de clientes" });
-    }
 
     const clientIndex = clients.findIndex((client) => client.id === clientId);
-
-    if (clientIndex === -1) {
+    if (clientIndex === -1)
       return res.status(404).json({ error: "Cliente no encontrado" });
-    }
 
     const updatedClient = {
       ...clients[clientIndex],
-      fullName: req.body.fullName,
-      lastName: req.body.lastName,
-      lastName2: req.body.lastName2,
-      email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      company: req.body.company,
-      project: req.body.project,
-      rfc: req.body.rfc,
-      website: req.body.website,
-      curp: req.body.curp,
-      facebook: req.body.facebook,
-      instagram: req.body.instagram,
-      linkedin: req.body.linkedin,
-      twitter: req.body.twitter,
+      ...req.body,
       image: req.file
-        ? `/uploads/${req.file.originalname.replace(/\s+/g, "_")}`
-        : clients[clientIndex].image, // Mantener la imagen existente si no se sube una nueva
+        ? `/uploads/${req.file.filename}`
+        : clients[clientIndex].image,
     };
 
     clients[clientIndex] = updatedClient;
@@ -157,16 +120,15 @@ app.put("/api/clients/:id", upload.single("image"), (req, res) => {
   });
 });
 
-// Ruta para eliminar un cliente
+// Eliminar un cliente
 app.delete("/api/clients/:id", (req, res) => {
   const clientId = parseInt(req.params.id, 10);
 
   readClientsFile((err, clients) => {
-    if (err) {
+    if (err)
       return res
         .status(500)
         .json({ error: "Error al leer el archivo de clientes" });
-    }
 
     const updatedClients = clients.filter((client) => client.id !== clientId);
     writeClientsFile(updatedClients, res, {
@@ -175,67 +137,14 @@ app.delete("/api/clients/:id", (req, res) => {
   });
 });
 
-// Ruta para agregar tareas a un cliente
-app.post("/api/clients/:clientId/tasks", (req, res) => {
-  const clientId = parseInt(req.params.id, 10);
-
-  readClientsFile((err, clients) => {
-    if (err) {
-      return res
-        .status(500)
-        .json({ error: "Error al leer el archivo de clientes" });
-    }
-
-    const clientIndex = clients.findIndex((client) => client.id === clientId);
-
-    if (clientIndex === -1) {
-      return res.status(404).json({ error: "Cliente no encontrado" });
-    }
-
-    // Validar que req.body.tasks sea un array
-    const { tasks } = req.body;
-    if (!Array.isArray(tasks)) {
-      return res
-        .status(400)
-        .json({ error: "El campo 'tasks' debe ser un array" });
-    }
-
-    // Agregar las tareas al cliente
-    clients[clientIndex].tasks = tasks;
-
-    writeClientsFile(clients, res, {
-      message: "Tareas guardadas correctamente",
-      tasks: clients[clientIndex].tasks,
-    });
-  });
-});
-
-// Ruta para guardar proyectos
-app.post("/server/projects", (req, res) => {
-  const newProject = req.body;
-
-  // Leer el archivo clients.json
-  fs.readFile(clientsFilePath, "utf8", (err, data) => {
-    if (err) {
-      return res.status(500).json({ error: "Error reading file" });
-    }
-
-    const clients = JSON.parse(data);
-    clients.push(newProject);
-
-    // Guardar el nuevo proyecto en clients.json
-    fs.writeFile(clientsFilePath, JSON.stringify(clients, null, 2), (err) => {
-      if (err) {
-        return res.status(500).json({ error: "Error writing file" });
-      }
-
-      res.status(201).json(newProject);
-    });
-  });
+// Subir una imagen (ruta independiente)
+app.post("/api/uploads", upload.single("image"), (req, res) => {
+  if (!req.file)
+    return res.status(400).json({ error: "No se subió ningún archivo" });
+  res.status(200).json({ filePath: `/uploads/${req.file.filename}` });
 });
 
 // Iniciar el servidor
-const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
