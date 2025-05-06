@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DashboardTemplate from "../../templates/DashboardTemplate";
-import ProjectsList from "../../components/ProjectsList";
-import ProjectForm from "../../components/ProjectForm";
+import ProjectsList from "./ProjectsList";
+import ProjectForm from "./ProjectForm";
 
 const ProjectsPage = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -29,7 +29,7 @@ const ProjectsPage = () => {
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
           onClick={handleCreateProject}>
-          Create New Project
+          Crear nuevo proyecto
         </button>
         {isFormVisible ? (
           <ProjectForm project={selectedProject} onClose={handleCloseForm} />

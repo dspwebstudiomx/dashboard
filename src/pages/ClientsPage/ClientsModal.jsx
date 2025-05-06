@@ -14,6 +14,8 @@ import {
   FaFileAlt,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { IoMdPersonAdd } from "react-icons/io";
+import { BsFillPersonLinesFill } from "react-icons/bs";
 
 const ClientsModal = ({
   isOpen,
@@ -104,7 +106,17 @@ const ClientsModal = ({
     <div className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-2/3 p-12 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-12">
-          {isEditing ? "Editar Cliente" : "Agregar Cliente"}
+          {isEditing ? (
+            <div className="flex items-center gap-4 justify-center">
+              <BsFillPersonLinesFill className="text-blue-900 text-4xl" />
+              Editar Cliente
+            </div>
+          ) : (
+            <div className="flex items-center gap-4 justify-center">
+              <IoMdPersonAdd className="text-blue-900 text-4xl" />
+              Agregar Cliente
+            </div>
+          )}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4 ">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 ">
@@ -277,16 +289,16 @@ const ClientsModal = ({
               />
             </div>
           </div>
-          <div className="form-actions flex justify-end ">
+          <div className="form-actions flex justify-end  space-x-4 pt-8">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">
+              className="px-4 py-2 bg-blue-500 hover:bg-gray-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">
               Cancelar
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">
+              className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md">
               {isEditing ? "Guardar Cambios" : "Agregar Cliente"}
             </button>
           </div>

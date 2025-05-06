@@ -1,11 +1,11 @@
 import React from "react";
-import DashboardTemplate from "../../templates/DashboardTemplate";
-import ProjectSummary from "../../components/ProjectSummary";
-import RevenueChart from "../../components/RevenueChart";
-import TaskList from "../../components/TaskList";
+import DashboardTemplate from "@templates/DashboardTemplate";
+import ProjectSummary from "./ProjectSummary";
+import RevenueChart from "@components/RevenueChart";
+import TaskList from "@components/TaskList";
 import ClientsTable from "./ClientsTable";
-import Notifications from "../../components/Notifications";
-import Calendar from "../../components/Calendar";
+import Notifications from "@components/Notifications";
+import Calendar from "@components/Calendar";
 
 const DashboardPage = () => {
   return (
