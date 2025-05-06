@@ -54,7 +54,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <ul className="flex shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold">
+      <li className="flex shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold last:mb-24">
         <div className="flex flex-col items-center justify-between h-[80%] w-1/2 gap-8 my-auto">
           <div className="flex flex-col items-center justify-center w-full gap-6">
             <img
@@ -194,7 +194,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             </button>
           </div>
         </ul>
-      </ul>
+      </li>
 
       {isModalOpen && (
         <>
