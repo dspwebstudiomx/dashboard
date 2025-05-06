@@ -51,9 +51,13 @@ const ClientsList = () => {
     setClients((prevClients) => prevClients.filter((c) => c.id !== id));
   };
 
-  // Actualizar lista de clientes (sincronización)
-  const onClientUpdate = (updatedClients) => {
-    setClients(updatedClients);
+  // Actualizar cliente (para el componente hijo)
+  const handleClientUpdate = (updatedClient) => {
+    setClients((prevClients) =>
+      prevClients.map((client) =>
+        client.id === updatedClient.id ? updatedClient : client
+      )
+    );
   };
 
   return (
@@ -74,9 +78,10 @@ const ClientsList = () => {
           <ClientsCard
             key={client.id}
             client={client}
-            onClientUpdate={onClientUpdate} // Pasa la función al componente hijo
             handleEditClient={() => handleOpenModal(client)}
             handleDeleteClient={() => handleDeleteClient(client.id)}
+            onClose={handleCloseModal}
+            // Pasa la función al componente hijo
           />
         ))}
       </ul>
@@ -86,6 +91,8 @@ const ClientsList = () => {
           onSave={handleSaveClient}
           onClose={handleCloseModal}
           isOpen={isModalOpen}
+          isEditing={!!selectedClient}
+          onClientUpdate={handleClientUpdate} // Pasa la función al componente hijo
         />
       )}
     </section>

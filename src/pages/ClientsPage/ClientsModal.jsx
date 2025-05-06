@@ -74,21 +74,27 @@ const ClientsModal = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      let updatedClient;
       if (isEditing) {
         // Editar cliente existente
-        await axios.put(
+        const response = await axios.put(
           `http://localhost:5000/api/clients/${client.id}`,
           formData
         );
+        updatedClient = response.data;
       } else {
         // Agregar nuevo cliente
-        await axios.post("http://localhost:5000/api/clients", formData);
+        const response = await axios.post(
+          "http://localhost:5000/api/clients",
+          formData
+        );
+        updatedClient = response.data;
       }
+      onClientUpdate(updatedClient); // Llama a la función pasada desde el padre
     } catch (error) {
       console.error("Error al guardar el cliente:", error);
     } finally {
-      onClose(); // Cerrar el modal después de intentar guardar
-      onClientUpdate(); // Refrescar la lista de clientes
+      onClose(); // Cierra el modal
     }
   };
 
