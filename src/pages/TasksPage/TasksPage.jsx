@@ -4,13 +4,16 @@ import { fetchClients } from "@api/clientsApi";
 import DashboardTemplate from "@templates/DashboardTemplate";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
-import { IoMdExit } from "react-icons/io";
+import { IoMdClose, IoMdExit } from "react-icons/io";
 
 const TasksPage = () => {
   const [clients, setClients] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [selectedClient, setSelectedClient] = useState("");
   const [taskForm, setTaskForm] = useState({
+    id: "",
+    clientId: "",
+    name: "",
     title: "",
     description: "",
     startDate: "",
@@ -143,6 +146,9 @@ const TasksPage = () => {
 
         {/* Task List */}
         <TaskList
+          client={
+            clients?.find((client) => client.id === selectedClient) || null
+          } // Verifica si clients está definido
           tasks={tasks}
           handleDeleteTask={handleDeleteTask}
           handleEditTask={(index) => {
@@ -154,13 +160,13 @@ const TasksPage = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg py-8 w-1/3">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-8 md:py-8 w-auto max-h-screen overflow-y-auto">
             <div className="flex justify-end items-center px-4 w-full">
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="cursor-pointer">
-                <IoMdExit className="text-red-500 font-bold mb-10 text-4xl mr-6" />
+                <IoMdClose className="text-red-500 font-bold mb-4 text-4xl mr-0" />
               </button>
             </div>
             <TaskForm

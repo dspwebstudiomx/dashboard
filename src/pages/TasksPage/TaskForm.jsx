@@ -32,17 +32,11 @@ const TaskForm = ({
   }, []);
 
   return (
-    <form id="task-form" className="mb-6 p-12 py-0">
-      <div className="flex items-center justify-between mb-12">
-        <h2 className="text-xl font-semibold mb-2">Agregar/Editar Tarea</h2>
-        <button
-          type="button"
-          onClick={handleAddTask}
-          className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
-          Agregar Tarea
-        </button>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 bg-white">
+    <form id="task-form" className="mb-6 xl:p-12 py-0">
+      <h2 className="text-xl font-semibold mb-2 text-center py-6">
+        Agregar/Editar Tarea
+      </h2>
+      <div className="grid grid-cols-1 :grid-cols-2 gap-8 p-4 bg-white">
         <div className="flex flex-col gap-5">
           <label htmlFor="selectedClient" className="flex items-center">
             <FaUser className="inline mr-2 text-blue-900 text-2xl" />{" "}
@@ -139,6 +133,12 @@ const TaskForm = ({
           {console.log("taskForm.priority:", taskForm.priority)}
         </div>
       </div>
+      <button
+        type="button"
+        onClick={handleAddTask}
+        className="bg-blue-500 text-white px-4 py-4 rounded-xl border-4 border-blue-300 w-full text-xl mt-12">
+        Agregar Tarea
+      </button>
     </form>
   );
 };

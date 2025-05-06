@@ -1,6 +1,6 @@
 import React from "react";
 
-const TaskList = ({ tasks, handleDeleteTask, handleEditTask }) => {
+const TaskList = ({ tasks, handleDeleteTask, handleEditTask, client }) => {
   return (
     <section>
       <h2 className="text-xl font-semibold mb-2">Lista de Tareas</h2>
@@ -10,6 +10,9 @@ const TaskList = ({ tasks, handleDeleteTask, handleEditTask }) => {
             key={index}
             className="border rounded p-4 mb-4 flex justify-between items-center">
             <div>
+              <h2 className="font-semibold">
+                {client.name} {client.lastName}
+              </h2>
               <h3 className="font-bold">{task.title}</h3>
               <p>{task.description}</p>
               <p>

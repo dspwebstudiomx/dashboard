@@ -144,6 +144,31 @@ app.post("/api/uploads", upload.single("image"), (req, res) => {
   res.status(200).json({ filePath: `/uploads/${req.file.filename}` });
 });
 
+// Ruta para agregar tareas a un cliente
+app.post("/api/clients/:clientId/tasks", (req, res) => {
+  const { clientId } = req.params;
+  const { tasks } = req.body;
+
+  readClientsFile((err, clients) => {
+    if (err)
+      return res
+        .status(500)
+        .json({ error: "Error al leer el archivo de clientes" });
+
+    // Verifica si el cliente existe
+    const client = clients.find((c) => c.id === clientId);
+    if (!client) {
+      return res.status(404).json({ message: "Cliente no encontrado" });
+    }
+
+    // Actualiza las tareas del cliente
+    client.tasks = tasks;
+    writeClientsFile(clients, res, {
+      message: "Tareas actualizadas correctamente",
+    });
+  });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

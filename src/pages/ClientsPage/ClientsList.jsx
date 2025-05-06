@@ -69,13 +69,17 @@ const ClientsList = () => {
   };
 
   return (
-    <section className="clients-list-container">
-      <aside className="header  items-center mb-24">
+    <section
+      id="clients-list-container"
+      className="flex flex-row-reverse gap-12">
+      <aside
+        id="clients-aside-buttons"
+        className="header h-auto fixed flex flex-col items-end gap-8">
         {/* <h1 className="text-2xl font-semibold">Lista de Clientes</h1> */}
         <button
           id="agregar-cliente"
           onClick={() => handleOpenModal()}
-          className="fixed right-20 text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 min-w-[210px] shadow-2xl"
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 min-w-[210px] shadow-2xl"
           aria-label="Agregar cliente">
           <IoPersonAddSharp size={25} />
           Agregar Cliente
@@ -83,7 +87,7 @@ const ClientsList = () => {
         <button
           id="refrescar-clientes"
           onClick={handleRefreshClients({ setClients })}
-          className="fixed mt-20 right-20 text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-700 hover:bg-blue-600 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
+          className=" text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-700 hover:bg-blue-600 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
           aria-label="Refrescar lista de clientes">
           <FaArrowRotateLeft size={25} />
           Refrescar Clientes
@@ -91,7 +95,7 @@ const ClientsList = () => {
         <button
           id="ir-a-inicio"
           onClick={handleScrollToTop}
-          className="fixed mt-40 right-20 text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
           aria-label="Ir a inicio">
           <FaArrowUp size={25} />
           Ir a Inicio
@@ -99,13 +103,13 @@ const ClientsList = () => {
         <button
           id="ir-al-final"
           onClick={handleScrollToBottom}
-          className="fixed mt-60 right-20 text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
           aria-label="Ir al final">
           <FaArrowDown size={25} />
           Ir al Final
         </button>
       </aside>
-      <ul className="flex flex-col gap-12 mx-auto max-w-2/3">
+      <ul id="clients-list" className="flex flex-col gap-12 mx-auto max-w-2/3">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}

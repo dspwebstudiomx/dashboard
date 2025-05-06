@@ -67,9 +67,12 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               alt={client.fullName}
               className="w-24 h-24 rounded-full mx-auto border-2 border-gray-300 object-cover"
             />
-            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 text-center w-full mb-3">
-              {client.fullName} {client.lastName} {client.lastName2}
-            </h2>
+            <div className="text-center flex flex-col items-center justify-center gap-0">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 text-center w-full mb-3">
+                {client.fullName} {client.lastName} {client.lastName2}
+              </h2>
+              <p>{client.id}</p>
+            </div>
           </div>
           <div className="flex gap-4 items-center justify-center w-full">
             {client.website && (
