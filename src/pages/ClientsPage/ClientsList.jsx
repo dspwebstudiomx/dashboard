@@ -67,7 +67,7 @@ const ClientsList = () => {
         <button
           id="agregar-cliente"
           onClick={() => handleOpenModal()}
-          className="text-white px-6 py-4 flex items-center gap-2 p-2 rounded-lg bg-blue-600 hover:bg-blue-800 transition duration-300"
+          className="fixed mr-auto right-24 text-white px-6 py-4 flex items-center gap-2 p-2 rounded-lg bg-blue-600 hover:bg-blue-800 transition duration-300"
           aria-label="Agregar cliente">
           <FaEdit size={25} />
           Agregar Cliente
