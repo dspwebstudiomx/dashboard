@@ -130,7 +130,7 @@ const ClientsModal = ({
 
   return (
     <div className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-2/3 p-12 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700">
+      <div className="relative  bg-white rounded-lg shadow-lg w-full max-w-2/3 p-12 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-12">
           {isEditing ? (
             <div className="flex items-center gap-4 justify-center">
@@ -361,11 +361,11 @@ const ClientsModal = ({
             </div>
             <div
               id="buttons-action-group"
-              className="form-actions flex justify-end items-end space-x-4 bg-amber-200 w-auto">
+              className="absolute bottom-5 right-5 space-x-4 w-auto">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 bg-blue-500 hover:bg-gray-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 max-h-10">
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 max-h-10">
                 Cancelar
               </button>
               <button
