@@ -72,7 +72,7 @@ const ClientsList = () => {
     <section
       id="clients-list-container"
       className="flex flex-row-reverse gap-12">
-      // Botones de la barra lateral
+      {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"
         className="header h-auto fixed flex flex-col items-end gap-8">
@@ -110,7 +110,7 @@ const ClientsList = () => {
           Ir al Final
         </button>
       </aside>
-      // Lista de clientes
+      {/* // Lista de clientes */}
       <ul id="clients-list" className="flex flex-col gap-12 mx-auto max-w-2/3">
         {clients.map((client) => (
           <ClientsCard
@@ -123,7 +123,7 @@ const ClientsList = () => {
           />
         ))}
       </ul>
-      // Modal para agregar o editar cliente
+      {/* // Modal para agregar o editar cliente */}
       {isModalOpen && (
         <ClientsModal
           client={selectedClient}
