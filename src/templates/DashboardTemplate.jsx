@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Menus/Header";
 import Sidebar from "../components/Menus/Sidebar";
+import Footer from "@components/Footer";
 
 /**
  * Componente principal de la plantilla del dashboard.
@@ -49,9 +50,7 @@ const DashboardTemplate = ({ children }) => {
       </div>
 
       {/* Pie de página */}
-      <footer className="bg-blue-800 text-white py-4 text-center mt-auto md:fixed bottom-0 w-full">
-        <p>&copy; 2025 DSPWEBSTUDIO - Todos los derechos reservados.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
