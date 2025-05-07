@@ -111,7 +111,9 @@ const ClientsList = () => {
         </button>
       </aside>
       {/* // Lista de clientes */}
-      <ul id="clients-list" className="flex flex-col gap-12 mx-auto max-w-2/3">
+      <ul
+        id="clients-list"
+        className="flex flex-col gap-12 mx-auto w-3/4 ml-20 my-20">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}
