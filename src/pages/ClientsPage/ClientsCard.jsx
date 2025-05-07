@@ -68,7 +68,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               className="w-24 h-24 rounded-full mx-auto border-2 border-gray-300 object-cover"
             />
             <div className="text-center flex flex-col items-center justify-center gap-0">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 text-center w-full mb-3">
+              <h2 className="text-lg font-bold text-gray-700 dark:text-gray-150 text-center w-full mb-3">
                 {client.fullName} {client.lastName} {client.lastName2}
               </h2>
               <p className="bg-blue-400 px-4 py-2 rounded-4xl text-blue-800">
@@ -82,9 +82,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 href={client.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-900 hover:text-blue-700"
+                className="text-blue-700 hover:text-blue-500"
                 title="Visitar sitio web">
-                <FaHome size={25} />
+                <FaHome size={28} />
               </a>
             )}
             {client.email && (
@@ -92,9 +92,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 href={`mailto:${client.email}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-900 hover:text-blue-700"
+                className="text-blue-700 hover:text-blue-500"
                 title="Enviar correo electrónico">
-                <FaEnvelope size={25} />
+                <FaEnvelope size={28} />
               </a>
             )}
             {client.phoneNumber && (
@@ -102,9 +102,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 href={`tel:${client.phoneNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-900 hover:text-blue-700"
+                className="text-blue-700 hover:text-blue-500"
                 title="Llamar">
-                <FaPhone size={25} />
+                <FaPhone size={28} />
               </a>
             )}
             {client.facebook?.trim() && (
@@ -112,9 +112,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 href={client.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-900 hover:text-blue-700"
+                className="text-blue-700 hover:text-blue-500"
                 title="Visitar Facebook">
-                <FaFacebook size={25} />
+                <FaFacebook size={28} />
               </a>
             )}
             {client.twitter?.trim() && (
@@ -122,9 +122,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 href={client.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-900 hover:text-blue-700"
+                className="text-blue-700 hover:text-blue-500"
                 title="Visitar Twitter">
-                <FaXTwitter size={25} />
+                <FaXTwitter size={28} />
               </a>
             )}
             {client.instagram?.trim() && (
@@ -132,9 +132,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 href={client.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-900 hover:text-blue-700"
+                className="text-blue-700 hover:text-blue-500"
                 title="Visitar Instagram">
-                <FaInstagram size={25} />
+                <FaInstagram size={28} />
               </a>
             )}
             {client.linkedin?.trim() && (
@@ -142,9 +142,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 href={client.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-900 hover:text-blue-700"
+                className="text-blue-700 hover:text-blue-500"
                 title="Visitar LinkedIn">
-                <FaLinkedin size={25} />
+                <FaLinkedin size={28} />
               </a>
             )}
           </div>
@@ -188,14 +188,14 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               onClick={handleEdit}
               className="text-blue-500 hover:text-blue-700"
               aria-label={`Editar cliente ${client.fullName}`}>
-              <FaEdit size={25} />
+              <FaEdit size={28} />
             </button>
             <button
               id="eliminar-cliente"
               onClick={() => handleDeleteClient(client.id)}
               className="text-red-500 hover:text-red-700"
               aria-label={`Eliminar cliente ${client.fullName}`}>
-              <FaTrash size={25} />
+              <FaTrash size={28} />
             </button>
           </div>
         </ul>
