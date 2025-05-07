@@ -12,7 +12,7 @@ import { FaFileInvoiceDollar } from "react-icons/fa6";
 const Sidebar = ({ className }) => {
   return (
     <div
-      className={`fixed bg-gray-200 text-blue-0 md:bg-white top-20 md:top-[16vh] h-screen md:left-20 w-[100vw] md:w-[12vw] md:text-gray-800 md:h-[70vh] p-4 py-8 md:rounded-4xl md:border-4 md:border-gray-100 md:shadow-lg ${className}`}>
+      className={`fixed bg-white text-blue-0 md:bg-white top-20 md:top-[16vh] h-screen md:left-20 w-[100vw] md:w-[12vw] md:text-gray-800 md:h-[70vh] p-4 py-8 md:rounded-4xl md:border-4 md:border-gray-100 md:shadow-lg ${className}`}>
       <div id="sidebar-header" className="sidebar-header">
         <h2 className="text-center uppercase font-semibold tracking-wide text-xl mt-20">
           Menú
@@ -20,7 +20,7 @@ const Sidebar = ({ className }) => {
       </div>
       <ul
         id="sidebar-menu"
-        className="sidebar-menu flex flex-col items-start gap-8 ml-18 md:ml-0  mt-16 md:mt-8 p-4 font-semibold text-lg">
+        className="sidebar-menu flex flex-col items-start gap-12 md:gap-8 ml-18 md:ml-0  mt-16 md:mt-8 p-4 font-semibold text-xl md:text-lg">
         <li>
           <a href="/" className="flex flex-row gap-4 items-center">
             <FaTachometerAlt className=" text-blue-900" />

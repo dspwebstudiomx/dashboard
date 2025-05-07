@@ -37,7 +37,7 @@ const DashboardTemplate = ({ children }) => {
         <main
           id="contenido"
           className="flex flex-col transition-all duration-300">
-          <div className="absolute w-[100vw] xl:w-[70vw] md:ml-90 top-40 pb-40">
+          <div className="absolute w-[100vw] xl:w-[70vw] md:ml-90 top-20 md:top-40 pb-40">
             {children}
           </div>
           {/* Sidebar: Siempre visible en pantallas medianas y grandes */}
