@@ -6,6 +6,8 @@ import {
   FaRegCalendarAlt,
   FaExclamationCircle,
 } from "react-icons/fa";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { IoMdPersonAdd } from "react-icons/io";
 
 const TaskForm = ({
   selectedClient,
@@ -34,7 +36,17 @@ const TaskForm = ({
     <form id="task-form" className="mb-6 xl:p-12 py-0">
       {/* Título dinámico */}
       <h2 className="text-xl font-semibold mb-2 text-center py-6">
-        {taskForm.id ? "Editar Tarea" : "Agregar Tarea"}
+        {taskForm.id ? (
+          <div className="flex items-center gap-4 justify-center">
+            <BsFillPersonLinesFill className="text-blue-900 text-4xl" />
+            Editar Tarea
+          </div>
+        ) : (
+          <div className="flex items-center gap-4 justify-center">
+            <IoMdPersonAdd className="text-blue-900 text-4xl" />
+            Agregar Tarea
+          </div>
+        )}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 bg-white">
         <div className="flex flex-col gap-5">
