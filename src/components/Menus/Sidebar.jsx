@@ -9,9 +9,10 @@ import {
 } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
 
-const Sidebar = () => {
+const Sidebar = ({ className }) => {
   return (
-    <div className="fixed bg-blue-400 text-blue-0 md:bg-white top-18 md:top-[16vh]  md:h-[70vh] md:left-20 w-[100vw] md:w-[12vw] md:text-gray-800 h-[80vh] p-4 py-8 md:rounded-4xl md:border-4 md:border-gray-100 md:shadow-lg z-50">
+    <div
+      className={`fixed bg-gray-200 text-blue-0 md:bg-white top-20 md:top-[16vh] h-screen md:left-20 w-[100vw] md:w-[12vw] md:text-gray-800 md:h-[70vh] p-4 py-8 md:rounded-4xl md:border-4 md:border-gray-100 md:shadow-lg ${className}`}>
       <div id="sidebar-header" className="sidebar-header">
         <h2 className="text-center uppercase font-semibold tracking-wide text-xl mt-20">
           Menú

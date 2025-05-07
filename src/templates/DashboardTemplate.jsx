@@ -29,26 +29,27 @@ const DashboardTemplate = ({ children }) => {
         <div
           className={`${
             isSidebarOpen ? "block" : "hidden"
-          } fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden`}
+          } fixed inset-0 z-40 md:hidden`}
           onClick={toggleSidebar}></div>
-
-        {/* Sidebar: Siempre visible en pantallas medianas y grandes */}
-        <Sidebar
-          className={`${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } fixed md:relative z-50 md:translate-x-0 transition-transform duration-300 md:w-64 w-64`}
-        />
 
         {/* Contenido principal: Se adapta al ancho restante */}
         <main
           id="contenido"
-          className="p-4 transition-all duration-300 absolute top-30 left-80 w-[80vw]">
-          {children}
+          className="flex flex-col transition-all duration-300">
+          <div className="absolute w-[100vw] xl:w-[70vw] md:ml-90 top-40 pb-40">
+            {children}
+          </div>
+          {/* Sidebar: Siempre visible en pantallas medianas y grandes */}
+          <Sidebar
+            className={`${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            } z-50 md:translate-x-0 transition-transform duration-300 md:w-64 w-64`}
+          />
         </main>
       </div>
 
       {/* Pie de página */}
-      <footer className="bg-blue-800 text-white py-4 text-center mt-auto fixed bottom-0 w-full">
+      <footer className="bg-blue-800 text-white py-4 text-center mt-auto md:fixed bottom-0 w-full">
         <p>&copy; 2025 DSPWEBSTUDIO - Todos los derechos reservados.</p>
       </footer>
     </div>

@@ -36,10 +36,10 @@ const ProjectsList = ({ onEdit }) => {
   };
 
   return (
-    <div>
+    <div className=" bg-white shadow-xl rounded-lg p-12 mt-12">
       <h2 className="text-xl font-bold mb-4">Project List</h2>
       {projects.length > 0 ? (
-        <ul className="space-y-4">
+        <ul className="space-y-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
           {projects.map((project) => (
             <li
               key={project.id}
