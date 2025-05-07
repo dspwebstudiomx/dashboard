@@ -34,7 +34,7 @@ const TaskList = ({ tasks, handleDeleteTask, handleEditTask, client }) => {
               </button>
               <button
                 onClick={() => handleDeleteTask(index)}
-                className="bg-red-500 text-white px-4 py-2 rounded">
+                className="bg-blue-900 text-white px-4 py-2 rounded">
                 Eliminar
               </button>
             </div>
