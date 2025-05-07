@@ -6,7 +6,7 @@ const Footer = () => {
       <p className="text-sm mb-3">
         © 2025 dspwebstudio - Todos los derechos reservados.
       </p>
-      <div className="flex flex-col md:items-start">
+      <div className="flex flex-col md:items-start hidden md:flex-row md:gap-4">
         <p className="text-sm">Desarrollado por DSP Web Studio</p>
         <p className="text-sm">Versión 1.0.0</p>
       </div>
