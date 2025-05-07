@@ -55,8 +55,8 @@ const ClientsCard = ({ client, onClientUpdate }) => {
   return (
     <>
       <li className="flex shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold last:mb-24">
+        {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className="flex flex-col items-center justify-between h-[80%] w-1/2 gap-8 my-auto">
-          {/* // Lado con imagen, nombre completo y redes sociales */}
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center w-full gap-6">
@@ -213,7 +213,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           </div>
         </ul>
       </li>
-
+      {/* Modal para editar cliente */}
       {isModalOpen && (
         <>
           {console.log("Cliente pasado al modal:", selectedClient)}

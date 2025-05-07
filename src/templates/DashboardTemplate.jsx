@@ -44,7 +44,7 @@ const DashboardTemplate = ({ children }) => {
           <Sidebar
             className={`${
               isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-            } z-50 md:translate-x-0 transition-transform duration-300 md:w-64 w-64`}
+            } z-40 md:translate-x-0 transition-transform duration-300 md:w-64 w-64`}
           />
         </main>
       </div>
