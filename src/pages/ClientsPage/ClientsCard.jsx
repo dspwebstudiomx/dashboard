@@ -56,7 +56,11 @@ const ClientsCard = ({ client, onClientUpdate }) => {
     <>
       <li className="flex shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold last:mb-24">
         <div className="flex flex-col items-center justify-between h-[80%] w-1/2 gap-8 my-auto">
-          <div className="flex flex-col items-center justify-center w-full gap-6">
+          {/* // Lado con imagen, nombre completo y redes sociales */}
+          <div
+            id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
+            className="flex flex-col items-center justify-center w-full gap-6">
+            {/* Imagen */}
             <img
               id="imagen-cliente"
               src={
@@ -67,7 +71,10 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               alt={client.fullName}
               className="w-24 h-24 rounded-full mx-auto border-2 border-gray-300 object-cover"
             />
-            <div className="text-center flex flex-col items-center justify-center gap-0">
+            {/* Nombre completo y ID del cliente */}
+            <div
+              id="cliente-nombre-completo"
+              className="text-center flex flex-col items-center justify-center gap-0">
               <h2 className="text-lg font-bold text-gray-700 dark:text-gray-150 text-center w-full mb-3">
                 {client.fullName} {client.lastName} {client.lastName2}
               </h2>
@@ -75,81 +82,87 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 {client.id}
               </p>
             </div>
-          </div>
-          <div className="flex gap-4 items-center justify-center w-full">
-            {client.website && (
-              <a
-                href={client.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Visitar sitio web">
-                <FaHome size={28} />
-              </a>
-            )}
-            {client.email && (
-              <a
-                href={`mailto:${client.email}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Enviar correo electrónico">
-                <FaEnvelope size={28} />
-              </a>
-            )}
-            {client.phoneNumber && (
-              <a
-                href={`tel:${client.phoneNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Llamar">
-                <FaPhone size={28} />
-              </a>
-            )}
-            {client.facebook?.trim() && (
-              <a
-                href={client.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Visitar Facebook">
-                <FaFacebook size={28} />
-              </a>
-            )}
-            {client.twitter?.trim() && (
-              <a
-                href={client.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Visitar Twitter">
-                <FaXTwitter size={28} />
-              </a>
-            )}
-            {client.instagram?.trim() && (
-              <a
-                href={client.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Visitar Instagram">
-                <FaInstagram size={28} />
-              </a>
-            )}
-            {client.linkedin?.trim() && (
-              <a
-                href={client.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Visitar LinkedIn">
-                <FaLinkedin size={28} />
-              </a>
-            )}
+            {/* Redes sociales */}
+            <div
+              id="tarjeta-redes-sociales"
+              className="flex gap-4 items-center justify-center w-full">
+              {client.website && (
+                <a
+                  href={client.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Visitar sitio web">
+                  <FaHome size={28} />
+                </a>
+              )}
+              {client.email && (
+                <a
+                  href={`mailto:${client.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Enviar correo electrónico">
+                  <FaEnvelope size={28} />
+                </a>
+              )}
+              {client.phoneNumber && (
+                <a
+                  href={`tel:${client.phoneNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Llamar">
+                  <FaPhone size={28} />
+                </a>
+              )}
+              {client.facebook?.trim() && (
+                <a
+                  href={client.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Visitar Facebook">
+                  <FaFacebook size={28} />
+                </a>
+              )}
+              {client.twitter?.trim() && (
+                <a
+                  href={client.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Visitar Twitter">
+                  <FaXTwitter size={28} />
+                </a>
+              )}
+              {client.instagram?.trim() && (
+                <a
+                  href={client.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Visitar Instagram">
+                  <FaInstagram size={28} />
+                </a>
+              )}
+              {client.linkedin?.trim() && (
+                <a
+                  href={client.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Visitar LinkedIn">
+                  <FaLinkedin size={28} />
+                </a>
+              )}
+            </div>
           </div>
         </div>
-        <ul className="flex flex-col gap-2 w-full items-start justify-between h-full">
+        {/* // Lado con datos del cliente */}
+        <ul
+          id="datos-cliente"
+          className="flex flex-col gap-2 w-full items-start justify-between h-full">
           <li className="text-gray-700 dark:text-gray-300 flex gap-2">
             <span className="font-semibold">Correo Electrónico:</span>
             {client.email}
