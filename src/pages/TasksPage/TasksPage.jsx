@@ -166,7 +166,7 @@ const TasksPage = () => {
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="cursor-pointer">
-                <IoMdClose className="text-red-500 font-bold mb-4 text-4xl mr-0" />
+                <IoMdClose className="text-blue-900 font-bold mb-4 text-4xl mr-0" />
               </button>
             </div>
             <TaskForm
