@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Importa axios
+import axios from "axios";
 import {
   FaUser,
   FaTasks,
@@ -20,9 +20,8 @@ const TaskForm = ({
     // Carga los clientes desde el archivo JSON usando axios
     const fetchClients = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/clients"); // Ruta relativa al archivo JSON
+        const response = await axios.get("http://localhost:5000/api/clients");
         setClients(response.data);
-        console;
       } catch (error) {
         console.error("Error al cargar los clientes:", error);
       }
@@ -33,10 +32,11 @@ const TaskForm = ({
 
   return (
     <form id="task-form" className="mb-6 xl:p-12 py-0">
+      {/* Título dinámico */}
       <h2 className="text-xl font-semibold mb-2 text-center py-6">
-        Agregar/Editar Tarea
+        {taskForm.id ? "Editar Tarea" : "Agregar Tarea"}
       </h2>
-      <div className="grid grid-cols-1 :grid-cols-2 gap-8 p-4 bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 bg-white">
         <div className="flex flex-col gap-5">
           <label htmlFor="selectedClient" className="flex items-center">
             <FaUser className="inline mr-2 text-blue-900 text-2xl" />{" "}
@@ -46,7 +46,6 @@ const TaskForm = ({
             className="border rounded p-2 w-full"
             value={selectedClient}
             onChange={(e) => {
-              console.log("Cliente seleccionado:", e.target.value);
               setSelectedClient(e.target.value);
             }}>
             <option value="">Selecciona un cliente</option>
@@ -71,7 +70,6 @@ const TaskForm = ({
             onChange={handleInputChange}
             className="border rounded p-2 w-full"
           />
-          {console.log("taskForm.title:", taskForm.title)}
         </div>
         <div className="flex flex-col gap-5">
           <label htmlFor="description" className="flex items-center">
@@ -86,7 +84,6 @@ const TaskForm = ({
             onChange={handleInputChange}
             className="border rounded p-2 w-full"
           />
-          {console.log("taskForm.description:", taskForm.description)}
         </div>
         <div className="flex flex-col gap-5">
           <label htmlFor="startDate" className="flex items-center">
@@ -100,7 +97,6 @@ const TaskForm = ({
             onChange={handleInputChange}
             className="border rounded p-2 w-full"
           />
-          {console.log("taskForm.startDate:", taskForm.startDate)}
         </div>
         <div className="flex flex-col gap-5">
           <label htmlFor="dueDate" className="flex items-center">
@@ -114,7 +110,6 @@ const TaskForm = ({
             onChange={handleInputChange}
             className="border rounded p-2 w-full"
           />
-          {console.log("taskForm.dueDate:", taskForm.dueDate)}
         </div>
         <div className="flex flex-col gap-5">
           <label htmlFor="priority" className="flex items-center">
@@ -130,15 +125,16 @@ const TaskForm = ({
             <option value="Medium">Media</option>
             <option value="High">Alta</option>
           </select>
-          {console.log("taskForm.priority:", taskForm.priority)}
         </div>
       </div>
-      <button
-        type="button"
-        onClick={handleAddTask}
-        className="bg-blue-500 text-white px-4 py-4 rounded-xl border-4 border-blue-300 w-full text-xl mt-12">
-        Agregar Tarea
-      </button>
+      <div className="flex justify-center mt-6">
+        <button
+          type="button"
+          onClick={handleAddTask}
+          className="bg-blue-500 text-white px-4 py-4 rounded-xl border-4 border-blue-300 w-[320px] text-xl mt-12 text-center">
+          {taskForm.id ? "Guardar Cambios" : "Agregar Tarea"}
+        </button>
+      </div>
     </form>
   );
 };
