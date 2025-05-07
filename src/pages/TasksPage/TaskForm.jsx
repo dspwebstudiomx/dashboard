@@ -1,3 +1,13 @@
+/*
+  TaskForm.jsx - Componente para el formulario de tareas.
+  Este componente permite agregar o editar tareas, y muestra un formulario con los campos necesarios.
+  Utiliza el estado local para manejar los datos del formulario y la selección de clientes.
+  También carga la lista de clientes desde un archivo JSON utilizando axios.
+  Creador : Daniel Pérez
+  Fecha de creación : 2025-05-07
+*/
+
+// Importaciones necesarias
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -9,6 +19,7 @@ import {
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { IoMdPersonAdd } from "react-icons/io";
 
+// Estructura del componente
 const TaskForm = ({
   selectedClient,
   setSelectedClient,
@@ -16,7 +27,7 @@ const TaskForm = ({
   handleInputChange,
   handleAddTask,
 }) => {
-  const [clients, setClients] = useState([]);
+  const [clients, setClients] = useState([]); // Estado para almacenar la lista de clientes
 
   useEffect(() => {
     // Carga los clientes desde el archivo JSON usando axios
@@ -29,11 +40,12 @@ const TaskForm = ({
       }
     };
 
+    // Llama a la función para cargar los clientes
     fetchClients();
   }, []);
 
   return (
-    <form id="task-form" className="mb-6 xl:p-12 py-0">
+    <form id="formulario-tareas" className="mb-6 xl:p-12 py-0">
       {/* Título dinámico */}
       <h2 className="text-xl font-semibold mb-2 text-center py-6">
         {taskForm.id ? (
@@ -48,8 +60,12 @@ const TaskForm = ({
           </div>
         )}
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 bg-white">
-        <div className="flex flex-col gap-5">
+      {/* Contenedor de campos de formulario */}
+      <div
+        id="campos-tareas"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 bg-white">
+        {/* Seleccionar de cliente */}
+        <div id="seleccionar-cliente" className="flex flex-col gap-5">
           <label htmlFor="selectedClient" className="flex items-center">
             <FaUser className="inline mr-2 text-blue-900 text-2xl" />{" "}
             Seleccionar cliente:
@@ -69,7 +85,9 @@ const TaskForm = ({
             ))}
           </select>
         </div>
-        <div className="flex flex-col gap-5">
+
+        {/* Título de la tarea */}
+        <div id="titulo-tarea" className="flex flex-col gap-5">
           <label htmlFor="title" className="flex items-center">
             <FaTasks className="inline mr-2 text-blue-900 text-2xl" /> Título de
             la tarea:
@@ -83,7 +101,9 @@ const TaskForm = ({
             className="border rounded p-2 w-full"
           />
         </div>
-        <div className="flex flex-col gap-5">
+
+        {/* Descripción de la tarea */}
+        <div id="descripcion-tarea" className="flex flex-col gap-5">
           <label htmlFor="description" className="flex items-center">
             <FaTasks className="inline mr-2 text-blue-900 text-2xl" />{" "}
             Descripción:
@@ -97,7 +117,9 @@ const TaskForm = ({
             className="border rounded p-2 w-full"
           />
         </div>
-        <div className="flex flex-col gap-5">
+
+        {/* Fecha de inicio de la tarea */}
+        <div id="fecha-inicio-tarea" className="flex flex-col gap-5">
           <label htmlFor="startDate" className="flex items-center">
             <FaRegCalendarAlt className="inline mr-2 text-blue-900 text-2xl" />{" "}
             Fecha de Inicio:
@@ -110,7 +132,9 @@ const TaskForm = ({
             className="border rounded p-2 w-full"
           />
         </div>
-        <div className="flex flex-col gap-5">
+
+        {/* Fecha de la terminación de la tarea */}
+        <div id="fecha-terminacion-tarea" className="flex flex-col gap-5">
           <label htmlFor="dueDate" className="flex items-center">
             <FaRegCalendarAlt className="inline mr-2 text-blue-900 text-2xl" />{" "}
             Fecha de Término:
@@ -123,7 +147,9 @@ const TaskForm = ({
             className="border rounded p-2 w-full"
           />
         </div>
-        <div className="flex flex-col gap-5">
+
+        {/* Prioridad */}
+        <div id="prioridad-tarea" className="flex flex-col gap-5">
           <label htmlFor="priority" className="flex items-center">
             <FaExclamationCircle className="inline mr-2 text-blue-900 text-2xl" />{" "}
             Prioridad:
@@ -139,7 +165,9 @@ const TaskForm = ({
           </select>
         </div>
       </div>
-      <div className="flex justify-center mt-6">
+
+      {/* Botón para agregar o guardar la tarea */}
+      <div id="contenedor-botones-tarea" className="flex justify-center mt-6">
         <button
           type="button"
           onClick={handleAddTask}
