@@ -70,7 +70,7 @@ const ClientsList = () => {
       {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"
-        className="header fixed bottom-0 md:top-40 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-[90px] h-auto md:h-[250px] xl:right-50 2xl:right-60">
+        className="header fixed bottom-0 md:top-50 lg:top-36 lg:right-26 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-[90px] md:right-10 h-auto md:h-[250px] xl:right-50 2xl:right-60">
         {/* Botón agregar clientes */}
         <button
           id="agregar-cliente"
