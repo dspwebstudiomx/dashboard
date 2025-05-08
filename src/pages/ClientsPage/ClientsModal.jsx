@@ -130,7 +130,7 @@ const ClientsModal = ({
 
   return (
     <div className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50">
-      <div className="relative  bg-white rounded-lg shadow-lg w-full max-w-2/3 p-12 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700">
+      <div className="bg-white rounded-lg shadow-lg w-[90%] md:max-w-2/3 p-6 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 max-h-screen overflow-y-auto">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-12">
           {isEditing ? (
             <div className="flex items-center gap-4 justify-center">
@@ -361,16 +361,16 @@ const ClientsModal = ({
             </div>
             <div
               id="buttons-action-group"
-              className="absolute bottom-5 right-5 space-x-4 w-auto">
+              className="space-x-4 mx-auto grid items-end md:grid-cols-2 gap-4 w-full">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 max-h-10">
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 w-full">
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md max-h-10">
+                className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12 w-full h-16">
                 {isEditing ? "Guardar Cambios" : "Agregar Cliente"}
               </button>
             </div>

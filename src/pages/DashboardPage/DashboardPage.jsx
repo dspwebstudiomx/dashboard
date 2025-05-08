@@ -24,15 +24,15 @@ const DashboardPage = () => {
       <h1 className="text-3xl font-bold mb-6 hidden">Dashboard</h1>
 
       {/* Resumen de Proyectos y Gráfico de Ingresos */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 p-6">
+      <div className="grid grid-cols-1  sm:grid-cols-4 gap-12 p-6">
         {/* Resumen de Proyectos */}
-        <div className="bg-white p-6 rounded-lg shadow-md md:col-span-2">
+        <div className="bg-white p-6 rounded-lg shadow-md sm:col-span-4 lg:col-span-2 xl:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Resumen de Proyectos</h2>
           <ProjectSummary />
         </div>
 
         {/* Gráfico de Ingresos */}
-        <div className="bg-white p-6 rounded-lg shadow-md md:col-span-1">
+        <div className="bg-white p-6 rounded-lg shadow-md sm:col-span-4 lg:col-span-2 xl:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Ingresos</h2>
           <RevenueChart />
         </div>
@@ -40,25 +40,25 @@ const DashboardPage = () => {
         {/* Lista de Tareas y Tabla de Clientes */}
 
         {/* Lista de Tareas */}
-        <div className="bg-white p-6 rounded-lg shadow-md md:col-span-1">
+        <div className="bg-white p-6 rounded-lg shadow-md sm:col-span-4 lg:col-span-2 xl:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Lista de Tareas</h2>
           <TaskList />
         </div>
 
         {/* Tabla de Clientes */}
-        <div className="bg-white p-6 rounded-lg shadow-md md:col-span-2">
+        <div className="bg-white p-6 rounded-lg shadow-md sm:col-span-4 lg:col-span-2 xl:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Clientes</h2>
           <ClientsTable />
         </div>
 
         {/* Notificaciones */}
-        <div className="bg-white p-6 rounded-lg shadow-md md:col-span-2">
+        <div className="bg-white p-6 rounded-lg shadow-md sm:col-span-4 lg:col-span-2 xl:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Notificaciones</h2>
           <Notifications />
         </div>
 
         {/* Calendario */}
-        <div className="bg-white p-6 rounded-lg shadow-md md:col-span-1">
+        <div className="bg-white p-6 rounded-lg shadow-md sm:col-span-4 lg:col-span-2 xl:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Calendario</h2>
           <Calendar />
         </div>

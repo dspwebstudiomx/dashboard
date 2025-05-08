@@ -54,9 +54,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <li className="flex shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold last:mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold last:mb-24">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className="flex flex-col items-center justify-between h-[80%] w-1/2 gap-8 my-auto">
+        <div className="flex flex-col items-center justify-between h-[80%] gap-8 my-auto">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center w-full gap-6">
@@ -85,7 +85,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             {/* Redes sociales */}
             <div
               id="tarjeta-redes-sociales"
-              className="flex gap-4 items-center justify-center w-full">
+              className="grid grid-cols-3 md:grid-cols-6 gap-4 items-center justify-center w-full">
               {client.website && (
                 <a
                   href={client.website}
@@ -162,12 +162,12 @@ const ClientsCard = ({ client, onClientUpdate }) => {
         {/* // Lado con datos del cliente */}
         <ul
           id="datos-cliente"
-          className="flex flex-col gap-2 w-full items-start justify-between h-full">
-          <li className="text-gray-700 dark:text-gray-300 flex gap-2">
+          className="flex flex-col gap-6 w-full items-start justify-between h-full text-sm">
+          <li className="flex flex-col md:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Correo Electrónico:</span>
             {client.email}
           </li>
-          <li className="text-gray-700 dark:text-gray-300 flex gap-2">
+          <li className="flex flex-col md:md-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Teléfono:</span>
             <a
               href={`tel:${client.phoneNumber}`}
@@ -212,7 +212,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             </button>
           </div>
         </ul>
-      </li>
+      </div>
       {/* Modal para editar cliente */}
       {isModalOpen && (
         <>

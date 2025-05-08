@@ -6,11 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { FaArrowRotateLeft } from "react-icons/fa6";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import {
-  handleRefreshClients,
-  handleScrollToTop,
-  handleScrollToBottom,
-} from "@api/GeneralApi";
+import { handleScrollToTop, handleScrollToBottom } from "@api/GeneralApi";
 
 const ClientsList = () => {
   const [clients, setClients] = useState([]);
@@ -75,45 +71,39 @@ const ClientsList = () => {
       {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"
-        className="header h-auto fixed flex flex-col items-end gap-8">
-        {/* <h1 className="text-2xl font-semibold">Lista de Clientes</h1> */}
+        className="header fixed bottom-0 md:top-40 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-auto h-auto md:h-[250px] ">
+        {/* Botón agregar clientes */}
         <button
           id="agregar-cliente"
           onClick={() => handleOpenModal()}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 min-w-[210px] shadow-2xl"
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2  md:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 md:min-w-[210px] shadow-2xl w-full"
           aria-label="Agregar cliente">
           <IoPersonAddSharp size={25} />
-          Agregar Cliente
+          <span className="hidden md:block"> Agregar Cliente</span>
         </button>
-        <button
-          id="refrescar-clientes"
-          onClick={handleRefreshClients({ setClients })}
-          className=" text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-700 hover:bg-blue-600 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
-          aria-label="Refrescar lista de clientes">
-          <FaArrowRotateLeft size={25} />
-          Refrescar Clientes
-        </button>
+        {/* Botón ir arriba */}
         <button
           id="ir-a-inicio"
           onClick={handleScrollToTop}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 mx-auto md:min-w-[210px] shadow-2xl w-full"
           aria-label="Ir a inicio">
           <FaArrowUp size={25} />
-          Ir a Inicio
+          <span className="hidden md:block">Ir a Inicio</span>
         </button>
+        {/* Botón ir abajo */}
         <button
           id="ir-al-final"
           onClick={handleScrollToBottom}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 mx-auto min-w-[210px] shadow-2xl"
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 mx-auto md:min-w-[210px] shadow-2xl w-full"
           aria-label="Ir al final">
           <FaArrowDown size={25} />
-          Ir al Final
+          <span className="hidden md:block">Ir al Final</span>
         </button>
       </aside>
       {/* // Lista de clientes */}
       <ul
         id="clients-list"
-        className="flex flex-col gap-12 mx-auto w-3/4 ml-20 mb-20">
+        className="flex flex-col gap-12 mx-auto w-3/4 md:ml-20 md:mb-20">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}

@@ -71,7 +71,7 @@ const Header = ({ toggleSidebar }) => {
       {/* Encabezado principal */}
       <header
         id="encabezado principal"
-        className="header md:h-30 md:py-4 top-0 left-0 fixed w-[100vw] md:px-20 mx-auto z-10 bg-white dark:bg-gray-800">
+        className="header md:h-30 md:py-4 top-0 left-0 fixed w-[100vw] md:px-20 mx-auto z-10 bg-gray-50 dark:bg-gray-800">
         <div
           id="contenedor interno"
           className="header-container flex justify-between items-center h-full px-6 sm:rounded-full bg-white dark:bg-gray-900 shadow-lg border-2 border-gray-100 dark:border-gray-700 py-4">

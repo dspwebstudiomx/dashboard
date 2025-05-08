@@ -21,11 +21,11 @@ const DashboardTemplate = ({ children }) => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col dark:bg-gray-900">
+    <div className="w-full min-h-screen flex flex-col dark:bg-gray-900 bg-gray-50">
       {/* Encabezado con botón para alternar el Sidebar */}
       <Header toggleSidebar={toggleSidebar} />
 
-      <div className="flex flex-row w-full h-full relative">
+      <div className="flex flex-row w-full h-full">
         {/* Fondo oscuro para pantallas pequeñas cuando el Sidebar está abierto */}
         <div
           className={`${
@@ -37,7 +37,7 @@ const DashboardTemplate = ({ children }) => {
         <main
           id="contenido"
           className="flex flex-col transition-all duration-300">
-          <div className="absolute w-[100vw] xl:w-[70vw] md:ml-90 top-20 md:top-40 pb-40 px-8 md:px-0">
+          <div className="absolute w-[100vw] md:w-[55vw] lg:w-[68vw] xl:w-[66vw] 2xl:w-[70vw] md:ml-80 lg:ml-80 2xl:ml-120 2xl:top-40 lg:top-25 top-20 md:top-40  px-0 md:pb-20 pt-20">
             {children}
           </div>
           {/* Sidebar: Siempre visible en pantallas medianas y grandes */}
@@ -50,7 +50,7 @@ const DashboardTemplate = ({ children }) => {
       </div>
 
       {/* Pie de página */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
