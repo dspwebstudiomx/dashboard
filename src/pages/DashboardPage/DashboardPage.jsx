@@ -21,7 +21,9 @@ import DashboardTemplate from "@templates/DashboardTemplate";
 const DashboardPage = () => {
   return (
     <DashboardTemplate>
-      <h1 className="text-3xl font-bold mb-6 hidden">Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center sm:hidden text-blue-950">
+        Estadísticas
+      </h1>
 
       {/* Resumen de Proyectos y Gráfico de Ingresos */}
       <div className="grid grid-cols-1  sm:grid-cols-4 gap-12 p-6">
