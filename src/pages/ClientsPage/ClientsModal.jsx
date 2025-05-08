@@ -132,8 +132,8 @@ const ClientsModal = ({
 
   return (
     <section className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50">
-      <article className="bg-white rounded-lg shadow-lg w-[90%] h-[90vh] md:max-w-2/3 p-6 xl:p-20 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 max-h-screen overflow-y-auto">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-12">
+      <article className="bg-white rounded-lg shadow-lg w-[90%] h-[90vh] xl:h-[90vh] 2xl:h-[75vh] md:max-w-2/3 p-6 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 max-h-screen overflow-y-auto flex flex-col gap-12 justify-center">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
           {isEditing ? (
             <div className="flex items-center gap-4 justify-center">
               <BsFillPersonLinesFill className="text-blue-900 text-4xl" />
