@@ -21,7 +21,7 @@ const DashboardTemplate = ({ children }) => {
   };
 
   return (
-    <div className="w-full flex flex-col dark:bg-gray-900 bg-gray-50">
+    <div className="w-full flex flex-col dark:bg-gray-900 bg-gray-100">
       {/* Encabezado con botón para alternar el Sidebar */}
       <Header toggleSidebar={toggleSidebar} />
 
