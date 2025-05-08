@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Header from "../components/Menus/Header";
-import Sidebar from "../components/Menus/Sidebar";
-import Footer from "@components/Footer";
+import Header from "@components/Menus/Header";
+import Sidebar from "@components/Menus/Sidebar";
 
 /**
  * Componente principal de la plantilla del dashboard.
@@ -21,36 +20,18 @@ const DashboardTemplate = ({ children }) => {
   };
 
   return (
-    <div className="w-full flex flex-col dark:bg-gray-900 bg-gray-100">
+    <div className="w-full flex flex-col dark:bg-gray-900">
       {/* Encabezado con botón para alternar el Sidebar */}
       <Header toggleSidebar={toggleSidebar} />
 
-      <div className="flex flex-row w-full h-full">
-        {/* Fondo oscuro para pantallas pequeñas cuando el Sidebar está abierto */}
-        <div
-          className={`${
-            isSidebarOpen ? "block" : "hidden"
-          } fixed inset-0 z-40 md:hidden`}
-          onClick={toggleSidebar}></div>
-
-        {/* Contenido principal: Se adapta al ancho restante */}
-        <main
-          id="contenido"
-          className="flex flex-col transition-all duration-300">
-          <div className="absolute w-[100vw] md:w-[55vw] lg:w-[68vw] xl:w-[66vw] 2xl:w-[70vw] md:ml-70 lg:ml-80 xl:top-30 2xl:ml-120 2xl:top-40 lg:top-10 top-20 md:top-25  px-0 md:pb-20 pt-20 xl:pt-3">
-            {children}
-          </div>
-          {/* Sidebar: Siempre visible en pantallas medianas y grandes */}
-          <Sidebar
-            className={`${
-              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-            } z-40 md:translate-x-0 transition-transform duration-300 md:w-64 w-64`}
-          />
-        </main>
-      </div>
-
-      {/* Pie de página */}
-      {/* <Footer /> */}
+      {/* Contenido principal */}
+      <main className=" grid grid-cols-12 mx-auto mt-30 p-8 gap-12 min-w-screen-2xl">
+        {/* Sidebar para pantallas grandes */}
+        <aside className="col-span-12 sm:col-span-2">
+          <Sidebar className="md:fixed h-[70vh] p-4 py-8 rounded-4xl border-4 border-gray-100 shadow-lg" />
+        </aside>
+        <section className="col-span-10 w-[70vw]">{children}</section>
+      </main>
     </div>
   );
 };

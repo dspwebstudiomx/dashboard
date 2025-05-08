@@ -110,7 +110,7 @@ const ClientsModal = ({
 
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/uploads",
+          `http://localhost:5000/api/uploads/${client.id}`, // Incluye el ID del cliente
           uploadData,
           {
             headers: {
@@ -118,10 +118,13 @@ const ClientsModal = ({
             },
           }
         );
+
+        // Actualiza el estado del formulario con la nueva ruta de la imagen
         setFormData((prevFormData) => ({
           ...prevFormData,
-          image: response.data.filePath, // Actualiza la ruta de la imagen
+          image: response.data.client.image, // Ruta de la imagen actualizada
         }));
+        console.log("Imagen subida con éxito:", response.data.client.image);
       } catch (error) {
         console.error("Error al subir la imagen:", error);
       }
@@ -132,7 +135,7 @@ const ClientsModal = ({
 
   return (
     <section className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50">
-      <article className="bg-white rounded-lg shadow-lg w-[90vw] h-[90vh] xl:h-[90vh] 2xl:w-[70vw] 2xl:h-[75vh] md:max-w-full p-6 md:p-12 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 overflow-y-auto flex flex-col gap-12 justify-center items-center">
+      <article className="bg-white rounded-lg shadow-lg w-[90vw] h-[90vh] xl:h-[95vh] 2xl:w-[70vw] 2xl:h-[90vh] md:max-w-full p-6 md:p-12 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-12 justify-center items-center">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
           {isEditing ? (
             <div className="flex items-center gap-4 justify-center">
@@ -146,8 +149,10 @@ const ClientsModal = ({
             </div>
           )}
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-4  overflow-y-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4  overflow-y-auto 2xl:overflow-y-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 ">
             <div
               id="fullName-group"
               className="form-group flex items-center gap-4">
@@ -343,46 +348,53 @@ const ClientsModal = ({
               />
             </div>
             <div id="image-group" className="form-group flex flex-col gap-4">
-              <label className="text-gray-700 dark:text-gray-300">
-                Imagen del cliente
-              </label>
-              {formData.image && (
-                <img
-                  src={`http://localhost:5000${formData.image}`}
-                  alt="Imagen del cliente"
-                  className="w-32 h-32 object-cover border-2 border-gray-200 shadow-2xl"
-                />
-              )}
-              <input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={handleFileChange}
-                className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none"
-              />
+              <div className="flex items-center gap-4">
+                {formData.image && (
+                  <img
+                    src={`http://localhost:5000${formData.image}`}
+                    alt="Imagen del cliente"
+                    className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
+                  />
+                )}
+                <div className="flex flex-col gap-4">
+                  <label className="text-gray-700 dark:text-gray-300">
+                    Imagen del cliente:
+                  </label>
+                  <input
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none"
+                  />
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end justify-end xl:-mt-10">
+            <div></div>
             <div
               id="buttons-action-group"
               className="space-x-4 mx-auto grid items-end md:grid-cols-2 gap-4 w-full">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 w-full">
-                <span className="flex items-center justify-center gap-2">
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 mx-auto w-full xl:w-[210px]">
+                <span className="flex items-center justify-center gap-2 text-lg">
                   <MdOutlineCancel className="text-xl" />
                   Cancelar
                 </span>
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12 w-full h-16">
+                className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
                 {isEditing ? (
-                  <span className="flex items-center justify-center gap-2">
+                  <span className="flex items-center justify-center gap-2 text-lg">
                     <FaRegSave className="text-xl" />
                     Guardar Cambios
                   </span>
                 ) : (
-                  <span className="flex items-center justify-center gap-2">
+                  <span className="flex items-center justify-center gap-2 text-lg">
                     <FaPlus className="text-xl" />
                     Agregar Cliente
                   </span>

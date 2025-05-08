@@ -12,9 +12,11 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import ClientsModal from "./ClientsModal";
 import { fetchClients } from "@api/clientsApi";
+import { IoWarningOutline } from "react-icons/io5";
 
 const ClientsCard = ({ client, onClientUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false); // Estado para el modal de confirmación
   const [selectedClient, setSelectedClient] = useState(null); // Cliente seleccionado para editar
 
   const openModal = (client) => {
@@ -25,6 +27,14 @@ const ClientsCard = ({ client, onClientUpdate }) => {
   const closeModal = () => {
     setSelectedClient(null); // Limpia el cliente seleccionado
     setIsModalOpen(false);
+  };
+
+  const openConfirmModal = () => {
+    setIsConfirmModalOpen(true);
+  };
+
+  const closeConfirmModal = () => {
+    setIsConfirmModalOpen(false);
   };
 
   const handleDeleteClient = async (id) => {
@@ -44,6 +54,8 @@ const ClientsCard = ({ client, onClientUpdate }) => {
       }
     } catch (error) {
       console.error("Error eliminando cliente:", error);
+    } finally {
+      closeConfirmModal(); // Cierra el modal de confirmación
     }
   };
 
@@ -54,7 +66,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold md:w-full last:mb-30 last:md:mb-0">
+      <div className="grid grid-cols-1 md:grid-cols-2  shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold lg-w-[40vw] xl:w-[45vw] 2xl:w-[55vw] last:mb-30 last:md:mb-0 ">
         {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className="flex flex-col items-center justify-between h-[80%] gap-12 my-auto ">
           <div
@@ -85,7 +97,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             {/* Redes sociales */}
             <div
               id="tarjeta-redes-sociales"
-              className="grid grid-cols-3 2xl:grid-cols-7 gap-4 items-stretch justify-between mt-10 xl:mt-0 w-full mx-auto text-center border-2 border-gray-100 rounded-lg p-4 bg-white dark:bg-gray-800">
+              className="grid grid-cols-3 2xl:grid-cols-7 gap-4 items-stretch justify-between mt-10 xl:mt-0 w-full mx-auto text-center border-2 border-gray-100 rounded-lg p-4 bg-white dark:bg-gray-800 2xl:w-3/4">
               {client.website && (
                 <a
                   href={client.website}
@@ -201,7 +213,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             </button>
             <button
               id="eliminar-cliente"
-              onClick={() => handleDeleteClient(client.id)}
+              onClick={openConfirmModal}
               className="text-red-500 hover:text-red-700"
               aria-label={`Eliminar cliente ${client.fullName}`}>
               <FaTrash size={28} />
@@ -211,16 +223,43 @@ const ClientsCard = ({ client, onClientUpdate }) => {
       </div>
       {/* Modal para editar cliente */}
       {isModalOpen && (
-        <>
-          {console.log("Cliente pasado al modal:", selectedClient)}
-          <ClientsModal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            client={selectedClient} // Pasa el cliente seleccionado al modal
-            onClientUpdate={fetchClients}
-            isEditing={!!selectedClient}
-          />
-        </>
+        <ClientsModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          client={selectedClient} // Pasa el cliente seleccionado al modal
+          onClientUpdate={fetchClients}
+          isEditing={!!selectedClient}
+        />
+      )}
+      {/* Modal de confirmación para eliminar cliente */}
+      {isConfirmModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-blue-800 opacity-100 z-50">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg opacity-100">
+            <h2 className="text-lg font-bold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
+              <IoWarningOutline className="inline-block mr-2 text-amber-300 text-3xl" />
+              Confirmar eliminación
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
+              ¿Estás seguro de que deseas eliminar al cliente{" "}
+              <span className="font-semibold">
+                {client.fullName} {client.lastName} {client.lastName2}
+              </span>
+              ?
+            </p>
+            <div className="flex justify-end gap-4">
+              <button
+                onClick={closeConfirmModal}
+                className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-400 dark:hover:bg-gray-500">
+                Cancelar
+              </button>
+              <button
+                onClick={() => handleDeleteClient(client.id)}
+                className="px-4 py-2 bg-blue-900 hover:bg-blue-500 text-white rounded shadow-md">
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

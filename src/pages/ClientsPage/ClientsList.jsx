@@ -70,7 +70,7 @@ const ClientsList = () => {
       {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"
-        className="header fixed bottom-0 md:top-50 lg:top-36 lg:right-26 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-[90px] md:right-10 h-auto md:h-[250px] xl:right-50 2xl:right-60">
+        className="header fixed bottom-0 md:top-50 lg:top-36 lg:right-24 xl:top-42 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-[90px] md:right-10 h-auto md:h-[250px] xl:right-50 2xl:right-60">
         {/* Botón agregar clientes */}
         <button
           id="agregar-cliente"
@@ -102,7 +102,7 @@ const ClientsList = () => {
       {/* // Lista de clientes */}
       <ul
         id="clients-list"
-        className="flex flex-col gap-12 mx-auto w-3/4 md:ml-10 md:mb-20 md:mt-0 xl:w-2/3">
+        className="flex flex-col gap-12 mx-auto w-3/4 md:ml-10 md:mb-20 md:mt-0 xl:w-2/3 xl:mt-10">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}
