@@ -54,7 +54,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold xl:w-[85%]">
+      <div className="grid grid-cols-1 xl:grid-cols-2 shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold md:w-full last:mb-30 last:md:mb-0">
         {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className="flex flex-col items-center justify-between h-[80%] gap-12 my-auto ">
           <div
