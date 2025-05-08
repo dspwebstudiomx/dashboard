@@ -85,7 +85,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             {/* Redes sociales */}
             <div
               id="tarjeta-redes-sociales"
-              className="grid grid-cols-3 2xl:grid-cols-6 gap-1 items-stretch justify-between mt-10 xl:mt-0 w-[80%] mx-auto text-center">
+              className="grid grid-cols-3 2xl:grid-cols-7 gap-4 items-stretch justify-between mt-10 xl:mt-0 w-full mx-auto text-center border-2 border-gray-100 rounded-lg p-4 bg-white dark:bg-gray-800">
               {client.website && (
                 <a
                   href={client.website}
@@ -116,6 +116,16 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   <FaPhone size={28} />
                 </a>
               )}
+              {client.linkedin?.trim() && (
+                <a
+                  href={client.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500"
+                  title="Visitar LinkedIn">
+                  <FaLinkedin size={28} />
+                </a>
+              )}
               {client.facebook?.trim() && (
                 <a
                   href={client.facebook}
@@ -124,16 +134,6 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   className="text-blue-700 hover:text-blue-500 mx-auto"
                   title="Visitar Facebook">
                   <FaFacebook size={28} />
-                </a>
-              )}
-              {client.twitter?.trim() && (
-                <a
-                  href={client.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
-                  title="Visitar Twitter">
-                  <FaXTwitter size={28} />
                 </a>
               )}
               {client.instagram?.trim() && (
@@ -146,14 +146,14 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   <FaInstagram size={28} />
                 </a>
               )}
-              {client.linkedin?.trim() && (
+              {client.twitter?.trim() && (
                 <a
-                  href={client.linkedin}
+                  href={client.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
-                  title="Visitar LinkedIn">
-                  <FaLinkedin size={28} />
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
+                  title="Visitar Twitter">
+                  <FaXTwitter size={28} />
                 </a>
               )}
             </div>
