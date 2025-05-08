@@ -54,9 +54,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold last:mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold xl:w-[85%]">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className="flex flex-col items-center justify-between h-[80%] gap-8 my-auto">
+        <div className="flex flex-col items-center justify-between h-[80%] gap-12 my-auto ">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center w-full gap-6">
@@ -85,13 +85,13 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             {/* Redes sociales */}
             <div
               id="tarjeta-redes-sociales"
-              className="grid grid-cols-3 md:grid-cols-6 gap-4 items-center justify-center w-full">
+              className="grid grid-cols-3 xl:grid-cols-6 gap-1 items-stretch justify-between mt-10 xl:mt-0 w-[80%] mx-auto text-center">
               {client.website && (
                 <a
                   href={client.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
                   title="Visitar sitio web">
                   <FaHome size={28} />
                 </a>
@@ -101,7 +101,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   href={`mailto:${client.email}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
                   title="Enviar correo electrónico">
                   <FaEnvelope size={28} />
                 </a>
@@ -111,7 +111,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   href={`tel:${client.phoneNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
                   title="Llamar">
                   <FaPhone size={28} />
                 </a>
@@ -121,7 +121,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   href={client.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
                   title="Visitar Facebook">
                   <FaFacebook size={28} />
                 </a>
@@ -131,7 +131,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   href={client.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
                   title="Visitar Twitter">
                   <FaXTwitter size={28} />
                 </a>
@@ -141,7 +141,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   href={client.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
                   title="Visitar Instagram">
                   <FaInstagram size={28} />
                 </a>
@@ -162,36 +162,32 @@ const ClientsCard = ({ client, onClientUpdate }) => {
         {/* // Lado con datos del cliente */}
         <ul
           id="datos-cliente"
-          className="flex flex-col gap-6 w-full items-start justify-between h-full text-sm">
-          <li className="flex flex-col md:flex-row text-gray-700 dark:text-gray-300 gap-2">
+          className="flex flex-col gap-3 w-full items-start justify-between h-full text-sm xl:text-base">
+          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Correo Electrónico:</span>
-            {client.email}
+            <div>{client.email}</div>
           </li>
-          <li className="flex flex-col md:md-row text-gray-700 dark:text-gray-300 gap-2">
+          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Teléfono:</span>
-            <a
-              href={`tel:${client.phoneNumber}`}
-              className="hover:text-blue-500">
-              {client.phoneNumber}
-            </a>
+            {client.phoneNumber}
           </li>
-          <li className="text-gray-700 dark:text-gray-300 flex gap-2">
+          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Dirección:</span>
             {client.address}
           </li>
-          <li className="text-gray-700 dark:text-gray-300 flex gap-2">
+          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Empresa:</span>
             {client.company}
           </li>
-          <li className="text-gray-700 dark:text-gray-300 flex gap-2">
+          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Proyecto:</span>
             {client.project}
           </li>
-          <li className="text-gray-700 dark:text-gray-300 flex gap-2">
+          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">RFC:</span>
             {client.rfc?.trim() || "Sin Información"}
           </li>
-          <li className="text-gray-700 dark:text-gray-300 flex gap-2">
+          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">CURP:</span>
             {client.curp?.trim() || "Sin Información"}
           </li>

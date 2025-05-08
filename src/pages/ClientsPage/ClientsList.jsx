@@ -4,7 +4,6 @@ import ClientsCard from "./ClientsCard";
 import ClientsModal from "./ClientsModal";
 import { FaEdit } from "react-icons/fa";
 import { IoPersonAddSharp } from "react-icons/io5";
-import { FaArrowRotateLeft } from "react-icons/fa6";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { handleScrollToTop, handleScrollToBottom } from "@api/GeneralApi";
 
@@ -71,7 +70,7 @@ const ClientsList = () => {
       {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"
-        className="header fixed bottom-0 md:top-40 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-auto h-auto md:h-[250px] ">
+        className="header fixed bottom-0 md:top-40 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-auto h-auto md:h-[250px]">
         {/* Botón agregar clientes */}
         <button
           id="agregar-cliente"
@@ -103,7 +102,7 @@ const ClientsList = () => {
       {/* // Lista de clientes */}
       <ul
         id="clients-list"
-        className="flex flex-col gap-12 mx-auto w-3/4 md:ml-20 md:mb-20">
+        className="flex flex-col gap-12 mx-auto w-3/4 md:ml-10 md:mb-20">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}

@@ -12,10 +12,12 @@ import {
   FaInstagram,
   FaLinkedin,
   FaFileAlt,
+  FaRegSave,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaPlus, FaXTwitter } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
 import { BsFillPersonLinesFill } from "react-icons/bs";
+import { MdOutlineCancel } from "react-icons/md";
 
 const ClientsModal = ({
   isOpen,
@@ -130,7 +132,7 @@ const ClientsModal = ({
 
   return (
     <div className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-[90%] md:max-w-2/3 p-6 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 max-h-screen overflow-y-auto">
+      <div className="bg-white rounded-lg shadow-lg w-[90%] h-[90vh] md:max-w-2/3 p-6 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 max-h-screen overflow-y-auto">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-12">
           {isEditing ? (
             <div className="flex items-center gap-4 justify-center">
@@ -366,12 +368,25 @@ const ClientsModal = ({
                 type="button"
                 onClick={onClose}
                 className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 w-full">
-                Cancelar
+                <span className="flex items-center justify-center gap-2">
+                  <MdOutlineCancel className="text-xl" />
+                  Cancelar
+                </span>
               </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12 w-full h-16">
-                {isEditing ? "Guardar Cambios" : "Agregar Cliente"}
+                {isEditing ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <FaRegSave className="text-xl" />
+                    Guardar Cambios
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2">
+                    <FaPlus className="text-xl" />
+                    Agregar Cliente
+                  </span>
+                )}
               </button>
             </div>
           </div>
