@@ -86,7 +86,7 @@ const ClientsList = () => {
 
       <aside
         id="clients-aside-buttons"
-        className=" bg-red-200 flex-col gap-4 hidden sm:flex w-auto fixed top-40 right-20  ">
+        className="flex-col gap-4 hidden sm:flex w-auto fixed top-40 right-20  ">
         {/* Botón agregar clientes */}
         <button
           id="agregar-cliente"
