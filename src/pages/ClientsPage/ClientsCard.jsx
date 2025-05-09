@@ -77,8 +77,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
   const SocialStyles = {
     link: "text-blue-700 hover:text-blue-500 mx-auto",
     color: "",
-    iconSize: "28",
-    margin: "0 10px",
+    iconSize: "21",
   };
 
   return (
@@ -202,37 +201,37 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             {[
               {
                 href: client.website,
-                icon: <FaHome size={28} />,
+                icon: <FaHome size={SocialStyles.iconSize} />,
                 title: "Visitar sitio web",
               },
               {
                 href: `mailto:${client.email}`,
-                icon: <FaEnvelope size={28} />,
+                icon: <FaEnvelope size={SocialStyles.iconSize} />,
                 title: "Enviar correo electrónico",
               },
               {
                 href: `tel:${client.phoneNumber}`,
-                icon: <FaPhone size={28} />,
+                icon: <FaPhone size={SocialStyles.iconSize} />,
                 title: "Llamar",
               },
               {
                 href: client.linkedin?.trim(),
-                icon: <FaLinkedin size={28} />,
+                icon: <FaLinkedin size={SocialStyles.iconSize} />,
                 title: "Visitar LinkedIn",
               },
               {
                 href: client.facebook?.trim(),
-                icon: <FaFacebook size={28} />,
+                icon: <FaFacebook size={SocialStyles.iconSize} />,
                 title: "Visitar Facebook",
               },
               {
                 href: client.instagram?.trim(),
-                icon: <FaInstagram size={28} />,
+                icon: <FaInstagram size={SocialStyles.iconSize} />,
                 title: "Visitar Instagram",
               },
               {
                 href: client.twitter?.trim(),
-                icon: <FaXTwitter size={28} />,
+                icon: <FaXTwitter size={SocialStyles.iconSize} />,
                 title: "Visitar Twitter",
               },
             ]
@@ -243,7 +242,8 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
+                  className={SocialStyles.link}
+                  aria-label={social.title}
                   title={social.title}>
                   {social.icon}
                 </a>
