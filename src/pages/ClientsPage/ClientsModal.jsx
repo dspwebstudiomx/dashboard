@@ -14,7 +14,7 @@ import {
   FaFileAlt,
   FaRegSave,
 } from "react-icons/fa";
-import { FaPlus, FaXTwitter } from "react-icons/fa6";
+import { FaPlus, FaRegImage, FaXTwitter } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
@@ -128,6 +128,23 @@ const ClientsModal = ({
       } catch (error) {
         console.error("Error al subir la imagen:", error);
       }
+    }
+  };
+
+  const handleRemoveImage = async () => {
+    try {
+      // Elimina la imagen del servidor si es necesario
+      await axios.delete(`http://localhost:5000/api/uploads/${client.id}`);
+
+      // Actualiza el estado del formulario para eliminar la imagen
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        image: "",
+      }));
+
+      console.log("Imagen eliminada con éxito.");
+    } catch (error) {
+      console.error("Error al eliminar la imagen:", error);
     }
   };
 
@@ -350,14 +367,23 @@ const ClientsModal = ({
             <div id="image-group" className="form-group flex flex-col gap-4">
               <div className="flex items-center gap-4">
                 {formData.image && (
-                  <img
-                    src={`http://localhost:5000${formData.image}`}
-                    alt="Imagen del cliente"
-                    className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
-                  />
+                  <div className="flex flex-col items-center gap-2">
+                    <img
+                      src={`http://localhost:5000${formData.image}`}
+                      alt="Imagen del cliente"
+                      className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleRemoveImage}
+                      className="px-4 py-2 bg-red-500 hover:bg-red-400 text-white rounded-md text-sm">
+                      Eliminar Imagen
+                    </button>
+                  </div>
                 )}
                 <div className="flex flex-col gap-4">
-                  <label className="text-gray-700 dark:text-gray-300">
+                  <label className="text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                    <FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
                     Imagen del cliente:
                   </label>
                   <input

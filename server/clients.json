@@ -17,7 +17,58 @@
     "image": "/uploads/dsp_fondo_blanco.png",
     "lastName2": "Bernal",
     "lastName": "Pérez",
-    "tasks": []
+    "tasks": [
+      {
+        "id": "",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "Prerender service",
+        "startDate": "2025-05-21",
+        "dueDate": "2025-05-22",
+        "priority": "Low"
+      },
+      {
+        "id": "",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "aa",
+        "startDate": "2025-04-27",
+        "dueDate": "2025-05-21",
+        "priority": "Medium"
+      },
+      {
+        "id": "",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "b",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-05-16",
+        "priority": "Low"
+      },
+      {
+        "id": "",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "a",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-05-30",
+        "priority": "Low"
+      },
+      {
+        "id": "",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "c",
+        "description": "x",
+        "startDate": "2025-05-02",
+        "dueDate": "2025-05-23",
+        "priority": "Low"
+      }
+    ]
   },
   {
     "id": 1745953383970,
@@ -36,7 +87,29 @@
     "twitter": "",
     "website": "https://easylav.mx",
     "rfc": "a",
-    "curp": ""
+    "curp": "",
+    "tasks": [
+      {
+        "id": "",
+        "clientId": "1745953383970",
+        "name": "",
+        "title": "test",
+        "description": "test",
+        "startDate": "2025-05-08",
+        "dueDate": "2025-05-08",
+        "priority": "Low"
+      },
+      {
+        "id": "",
+        "clientId": "1745953383970",
+        "name": "",
+        "title": "z",
+        "description": "z",
+        "startDate": "2025-05-14",
+        "dueDate": "2025-05-28",
+        "priority": "Medium"
+      }
+    ]
   },
   {
     "id": 1746509316001,
@@ -55,27 +128,18 @@
     "instagram": "",
     "linkedin": "",
     "twitter": "",
-    "image": null,
-    "tasks": []
-  },
-  {
-    "id": 1746679095490,
-    "fullName": "a",
-    "lastName": "p",
-    "lastName2": "",
-    "email": "dd@w",
-    "phoneNumber": "",
-    "address": "",
-    "company": "",
-    "rfc": "PEBD81011C21",
-    "curp": "",
-    "website": "",
-    "facebook": "",
-    "twitter": "",
-    "instagram": "",
-    "linkedin": "",
-    "project": "",
-    "image": null,
-    "tasks": []
+    "image": "/uploads/1746770090111-Blog2.jpg",
+    "tasks": [
+      {
+        "id": "",
+        "clientId": "1746509316001",
+        "name": "",
+        "title": "a",
+        "description": "a",
+        "startDate": "2025-05-08",
+        "dueDate": "2025-05-08",
+        "priority": "Low"
+      }
+    ]
   }
 ]

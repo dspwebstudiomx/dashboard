@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import "./App.css";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import ClientsPage from "./pages/ClientsPage/ClientsPage";
 import TasksPage from "./pages/TasksPage/TasksPage";
 import QuotesPage from "./pages/QuotesPage/QuotesPage";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
@@ -18,6 +18,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

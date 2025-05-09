@@ -3,8 +3,7 @@ import axios from "axios";
 import { fetchClients } from "@api/clientsApi";
 import DashboardTemplate from "@templates/DashboardTemplate";
 import TaskForm from "./TaskForm";
-import TaskList from "./TaskList";
-import { IoMdClose, IoMdExit } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
 const TasksPage = () => {
   const [clients, setClients] = useState([]);
@@ -25,10 +24,27 @@ const TasksPage = () => {
   useEffect(() => {
     fetchClients()
       .then((response) => {
-        setClients(response.data); // Assuming response.data contains the clients array
+        console.log("Clientes recibidos:", response.data); // Agrega este log
+        setClients(response.data); // Asegúrate de que response.data sea un array
       })
       .catch((error) => console.error("Error fetching clients:", error));
   }, []);
+
+  useEffect(() => {
+    if (selectedClient) {
+      console.log("Cliente seleccionado:", selectedClient);
+      axios
+        .get(`http://localhost:5000/api/clients/${selectedClient}`)
+        .then((response) => {
+          console.log("Tareas recibidas:", response.data.tasks);
+          setTasks(response.data.tasks || []);
+        })
+        .catch((error) => {
+          console.error("Error al cargar las tareas del cliente:", error);
+          alert("No se pudieron cargar las tareas. Intenta nuevamente.");
+        });
+    }
+  }, [selectedClient]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,40 +52,26 @@ const TasksPage = () => {
   };
 
   const saveTasksToServer = async (clientId, updatedTasks) => {
-    if (!clientId || clientId.trim() === "") {
-      alert("El cliente seleccionado no es válido.");
-      return;
-    }
-
-    console.log("Intentando guardar tareas para el cliente:", clientId);
-
     try {
-      const response = await axios.post(
-        `http://localhost:5000/api/clients/${clientId}/tasks`,
+      const response = await axios.put(
+        `http://localhost:5000/api/clients/${clientId}`,
         { tasks: updatedTasks }
       );
 
-      alert("Tareas guardadas exitosamente.");
-      console.log("Respuesta del servidor:", response.data);
-      console.log("Datos enviados al servidor:", updatedTasks);
-    } catch (error) {
-      console.error("Error al guardar las tareas:", error);
-
-      if (error.response) {
-        console.error("Datos del error:", error.response.data);
-        console.error("Estado del error:", error.response.status);
-        console.error("Encabezados del error:", error.response.headers);
-      } else if (error.request) {
-        console.error("No se recibió respuesta del servidor:", error.request);
+      if (response.status === 200) {
+        console.log("Tareas guardadas en el servidor correctamente.");
+        // Recarga las tareas desde el servidor
+        const updatedClient = await axios.get(
+          `http://localhost:5000/api/clients/${clientId}`
+        );
+        setTasks(updatedClient.data.tasks || []);
       } else {
-        console.error("Error al configurar la solicitud:", error.message);
+        console.error("Error al guardar las tareas en el servidor:", response);
+        alert("No se pudieron guardar las tareas. Intenta nuevamente.");
       }
-
-      alert(
-        `Error del servidor: ${
-          error.response?.data?.message || error.message
-        }. Verifica el ID del cliente y la URL.`
-      );
+    } catch (error) {
+      console.error("Error al guardar las tareas en el servidor:", error);
+      alert("No se pudieron guardar las tareas. Intenta nuevamente.");
     }
   };
 
@@ -84,15 +86,14 @@ const TasksPage = () => {
   const handleAddTask = () => {
     if (!validateClientSelected()) return;
 
-    const newTask = { ...taskForm, clientId: selectedClient };
+    const newTask = { id: Date.now(), ...taskForm, clientId: selectedClient };
     const updatedTasks = [...tasks, newTask];
-    setTasks(updatedTasks);
+    setTasks(updatedTasks); // Actualiza el estado local
 
-    saveTasksToServer(
-      selectedClient,
-      updatedTasks.filter((task) => task.clientId === selectedClient)
-    );
+    // Guarda las tareas en el servidor
+    saveTasksToServer(selectedClient, updatedTasks);
 
+    // Reinicia el formulario
     setTaskForm({
       clientId: selectedClient,
       title: "",
@@ -102,7 +103,7 @@ const TasksPage = () => {
       priority: "Low",
     });
 
-    setIsModalOpen(false); // Cierra el modal después de agregar la tarea
+    setIsModalOpen(false); // Cierra el modal
   };
 
   const handleEditTask = (index) => {
@@ -144,18 +145,72 @@ const TasksPage = () => {
           Agregar Tarea
         </button>
 
-        {/* Task List */}
-        <TaskList
-          client={
-            clients?.find((client) => client.id === selectedClient) || null
-          } // Verifica si clients está definido
-          tasks={tasks}
-          handleDeleteTask={handleDeleteTask}
-          handleEditTask={(index) => {
-            setTaskForm(tasks[index]);
-            setIsModalOpen(true); // Abre el modal para editar la tarea
-          }}
-        />
+        {/* Listado de tareas */}
+
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 px-4 py-2">Título</th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Descripción
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Fecha de Inicio
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Fecha de Vencimiento
+                </th>
+                <th className="border border-gray-300 px-4 py-2">Prioridad</th>
+                <th className="border border-gray-300 px-4 py-2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.length > 0 ? (
+                tasks.map((task, index) => (
+                  <tr key={task.id}>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {task.title}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {task.description}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {task.startDate}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {task.dueDate}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {task.priority}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <button
+                        onClick={() => {
+                          setTaskForm(task);
+                          setIsModalOpen(true);
+                        }}
+                        className="bg-yellow-500 text-white px-2 py-1 rounded mr-2">
+                        Editar
+                      </button>
+                      <button
+                        onClick={() => handleDeleteTask(index)}
+                        className="bg-red-500 text-white px-2 py-1 rounded">
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6" className="text-center py-4">
+                    No hay tareas disponibles.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Modal */}
@@ -181,6 +236,8 @@ const TasksPage = () => {
           </div>
         </div>
       )}
+      {console.log("Tareas actuales:", tasks)}
+      {console.log("Formulario de tarea:", taskForm)}
     </DashboardTemplate>
   );
 };

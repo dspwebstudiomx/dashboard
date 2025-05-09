@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "@components/Menus/Header";
 import Sidebar from "@components/Menus/Sidebar";
+import Section from "@components/Section";
 
 /**
  * Componente principal de la plantilla del dashboard.
@@ -23,14 +24,14 @@ const DashboardTemplate = ({ children }) => {
     <div className="w-full flex flex-col dark:bg-gray-900">
       {/* Encabezado con botón para alternar el Sidebar */}
       <Header toggleSidebar={toggleSidebar} />
+      <Sidebar isOpen={isSidebarOpen} />
+
+      {/* Fondo oscuro para el Sidebar en pantallas pequeñas */}
 
       {/* Contenido principal */}
-      <main className=" grid grid-cols-12 mx-auto mt-30 p-8 gap-12 min-w-screen-2xl">
+      <main className="grid grid-cols-12 p-8 xl:p-8 gap-12 place-items-center w-[100vw] min-h-[80vh] mt-[15vh]">
         {/* Sidebar para pantallas grandes */}
-        <aside className="col-span-12 sm:col-span-2">
-          <Sidebar className="md:fixed h-[70vh] p-4 py-8 rounded-4xl border-4 border-gray-100 shadow-lg" />
-        </aside>
-        <section className="col-span-10 w-[70vw]">{children}</section>
+        <Section columns="col-span-11">{children}</Section>
       </main>
     </div>
   );

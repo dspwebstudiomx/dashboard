@@ -66,9 +66,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2  shadow-2xl rounded-lg p-12 items-start gap-20 bg-white dark:bg-gray-800 font-semibold lg-w-[40vw] xl:w-[45vw] 2xl:w-[55vw] last:mb-30 last:md:mb-0 ">
+      <div className="grid grid-cols-12 shadow-2xl rounded-lg p-12 pb-8 items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:w-[650px]">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className="flex flex-col items-center justify-between h-[80%] gap-12 my-auto ">
+        <div className=" col-span-3 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center w-full gap-6">
@@ -94,87 +94,12 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 {client.id}
               </p>
             </div>
-            {/* Redes sociales */}
-            <div
-              id="tarjeta-redes-sociales"
-              className="grid grid-cols-3 2xl:grid-cols-7 gap-4 items-stretch justify-between mt-10 xl:mt-0 w-full mx-auto text-center border-2 border-gray-100 rounded-lg p-4 bg-white dark:bg-gray-800 2xl:w-3/4">
-              {client.website && (
-                <a
-                  href={client.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
-                  title="Visitar sitio web">
-                  <FaHome size={28} />
-                </a>
-              )}
-              {client.email && (
-                <a
-                  href={`mailto:${client.email}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
-                  title="Enviar correo electrónico">
-                  <FaEnvelope size={28} />
-                </a>
-              )}
-              {client.phoneNumber && (
-                <a
-                  href={`tel:${client.phoneNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
-                  title="Llamar">
-                  <FaPhone size={28} />
-                </a>
-              )}
-              {client.linkedin?.trim() && (
-                <a
-                  href={client.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500"
-                  title="Visitar LinkedIn">
-                  <FaLinkedin size={28} />
-                </a>
-              )}
-              {client.facebook?.trim() && (
-                <a
-                  href={client.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
-                  title="Visitar Facebook">
-                  <FaFacebook size={28} />
-                </a>
-              )}
-              {client.instagram?.trim() && (
-                <a
-                  href={client.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
-                  title="Visitar Instagram">
-                  <FaInstagram size={28} />
-                </a>
-              )}
-              {client.twitter?.trim() && (
-                <a
-                  href={client.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:text-blue-500 mx-auto"
-                  title="Visitar Twitter">
-                  <FaXTwitter size={28} />
-                </a>
-              )}
-            </div>
           </div>
         </div>
         {/* // Lado con datos del cliente */}
         <ul
           id="datos-cliente"
-          className="flex flex-col gap-3 w-full items-start justify-between h-full text-sm xl:text-base">
+          className="col-span-9 gap-3 w-[50%] items-start justify-between h-full text-sm xl:text-base">
           <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
             <span className="font-semibold">Correo Electrónico:</span>
             <div>{client.email}</div>
@@ -203,7 +128,81 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             <span className="font-semibold">CURP:</span>
             {client.curp?.trim() || "Sin Información"}
           </li>
-          <div className="flex justify-end gap-4 mt-4 w-full items-center">
+          <div
+            id="tarjeta-redes-sociales"
+            className="grid grid-cols-7 w-[100%] justify-center items-center gap-4 mt-6">
+            {client.website && (
+              <a
+                href={client.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-500 mx-auto"
+                title="Visitar sitio web">
+                <FaHome size={28} />
+              </a>
+            )}
+            {client.email && (
+              <a
+                href={`mailto:${client.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-500 mx-auto"
+                title="Enviar correo electrónico">
+                <FaEnvelope size={28} />
+              </a>
+            )}
+            {client.phoneNumber && (
+              <a
+                href={`tel:${client.phoneNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-500 mx-auto"
+                title="Llamar">
+                <FaPhone size={28} />
+              </a>
+            )}
+            {client.linkedin?.trim() && (
+              <a
+                href={client.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-500"
+                title="Visitar LinkedIn">
+                <FaLinkedin size={28} />
+              </a>
+            )}
+            {client.facebook?.trim() && (
+              <a
+                href={client.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-500 mx-auto"
+                title="Visitar Facebook">
+                <FaFacebook size={28} />
+              </a>
+            )}
+            {client.instagram?.trim() && (
+              <a
+                href={client.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-500 mx-auto"
+                title="Visitar Instagram">
+                <FaInstagram size={28} />
+              </a>
+            )}
+            {client.twitter?.trim() && (
+              <a
+                href={client.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-500 mx-auto"
+                title="Visitar Twitter">
+                <FaXTwitter size={28} />
+              </a>
+            )}
+          </div>
+          <div className="flex justify-end gap-4 w-full items-center mt-4">
             <button
               id="editar-cliente"
               onClick={handleEdit}
@@ -219,8 +218,10 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               <FaTrash size={28} />
             </button>
           </div>
+          {/* Redes sociales */}
         </ul>
       </div>
+
       {/* Modal para editar cliente */}
       {isModalOpen && (
         <ClientsModal

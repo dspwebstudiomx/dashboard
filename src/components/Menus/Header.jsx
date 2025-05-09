@@ -71,7 +71,7 @@ const Header = ({ toggleSidebar }) => {
       {/* Encabezado principal */}
       <header
         id="encabezado principal"
-        className="header md:h-30 md:py-4 top-0 left-0 fixed w-[100vw] md:px-20 mx-auto z-10 bg-gray-100 dark:bg-gray-800">
+        className="header md:h-30 md:py-4 top-0 left-0 fixed w-[100vw] md:px-20 mx-auto z-10 dark:bg-gray-800 bg-gray-100 -mt-1">
         <div
           id="contenedor interno"
           className="header-container flex justify-between items-center h-full px-6 sm:rounded-full bg-white dark:bg-gray-900 shadow-sm border-2 border-gray-100 dark:border-gray-700 py-4">
@@ -118,7 +118,7 @@ const Header = ({ toggleSidebar }) => {
             <button
               id="sidebar-toggle"
               onClick={toggleSidebar}
-              className="md:hidden text-2xl focus:outline-none">
+              className="text-2xl focus:outline-none">
               <FaBars />
             </button>
           </nav>

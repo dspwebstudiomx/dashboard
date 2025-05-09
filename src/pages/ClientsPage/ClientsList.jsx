@@ -66,43 +66,11 @@ const ClientsList = () => {
   return (
     <section
       id="clients-list-container"
-      className="flex flex-row-reverse gap-12">
-      {/* // Botones de la barra lateral */}
-      <aside
-        id="clients-aside-buttons"
-        className="header fixed bottom-0 md:top-50 lg:top-36 lg:right-24 xl:top-42 grid grid-cols-3 md:grid-cols-1 items-start md:gap-0 w-full md:w-[90px] md:right-10 h-auto md:h-[250px] xl:right-50 2xl:right-60">
-        {/* Botón agregar clientes */}
-        <button
-          id="agregar-cliente"
-          onClick={() => handleOpenModal()}
-          className="text-white p-4 flex items-center justify-center gap-2 lg:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 md:w-[80px] shadow-2xl w-full md:rounded-full xl:w-[210px]"
-          aria-label="Agregar cliente">
-          <IoPersonAddSharp size={25} />
-          <span className="hidden xl:block"> Agregar Cliente</span>
-        </button>
-        {/* Botón ir arriba */}
-        <button
-          id="ir-a-inicio"
-          onClick={handleScrollToTop}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 mx-auto md:w-[80px] shadow-2xl w-full xl:w-[210px]"
-          aria-label="Ir a inicio">
-          <FaArrowUp size={25} />
-          <span className="hidden xl:block">Ir a Inicio</span>
-        </button>
-        {/* Botón ir abajo */}
-        <button
-          id="ir-al-final"
-          onClick={handleScrollToBottom}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 mx-auto md:w-[80px] shadow-2xl w-full xl:w-[210px]"
-          aria-label="Ir al final">
-          <FaArrowDown size={25} />
-          <span className="hidden xl:block">Ir al Final</span>
-        </button>
-      </aside>
+      className="grid grid-cols-12 gap-12 mx-auto ">
       {/* // Lista de clientes */}
       <ul
         id="clients-list"
-        className="flex flex-col gap-12 mx-auto w-3/4 md:ml-10 md:mb-20 md:mt-0 xl:w-2/3 xl:mt-10">
+        className="col-span-12 md:col-span-12 grid gap-12 grid-cols-2">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}
@@ -114,6 +82,40 @@ const ClientsList = () => {
           />
         ))}
       </ul>
+      {/* // Botones de la barra lateral */}
+
+      <aside
+        id="clients-aside-buttons"
+        className=" bg-red-200 flex-col gap-4 hidden sm:flex w-auto fixed top-40 right-20  ">
+        {/* Botón agregar clientes */}
+        <button
+          id="agregar-cliente"
+          onClick={() => handleOpenModal()}
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 mx-auto shadow-2xl w-full  md:w-[210px]"
+          aria-label="Agregar cliente">
+          <IoPersonAddSharp size={25} />
+          <span className="hidden md:block"> Agregar Cliente</span>
+        </button>
+        {/* Botón ir arriba */}
+        <button
+          id="ir-a-inicio"
+          onClick={handleScrollToTop}
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 mx-auto shadow-2xl w-full md:w-[210px]"
+          aria-label="Ir a inicio">
+          <FaArrowUp size={25} />
+          <span className="hidden md:block">Ir a Inicio</span>
+        </button>
+
+        {/* Botón ir abajo */}
+        <button
+          id="ir-al-final"
+          onClick={handleScrollToBottom}
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 mx-auto shadow-2xl w-full md:w-[210px]"
+          aria-label="Ir al final">
+          <FaArrowDown size={25} />
+          <span className="hidden md:block">Ir al Final</span>
+        </button>
+      </aside>
       {/* // Modal para agregar o editar cliente */}
       {isModalOpen && (
         <ClientsModal

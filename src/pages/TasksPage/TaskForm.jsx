@@ -42,13 +42,13 @@ const TaskForm = ({
 
     // Llama a la función para cargar los clientes
     fetchClients();
-  }, []);
+  }, [selectedClient]);
 
   return (
-    <form id="formulario-tareas" className="mb-6 xl:p-12 py-0">
+    <form id="formulario-tareas" className="mb-6 xl:p-12 py-0 col-span-12">
       {/* Título dinámico */}
       <h2 className="text-xl font-semibold mb-2 text-center py-6">
-        {taskForm.id ? (
+        {taskForm?.id ? ( // Usa el operador opcional `?.` para evitar errores
           <div className="flex items-center gap-4 justify-center">
             <BsFillPersonLinesFill className="text-blue-900 text-4xl" />
             Editar Tarea
@@ -73,16 +73,15 @@ const TaskForm = ({
           <select
             className="border rounded p-2 w-full"
             value={selectedClient}
-            onChange={(e) => {
-              setSelectedClient(e.target.value);
-            }}>
+            onChange={(e) => setSelectedClient(e.target.value)}>
             <option value="">Selecciona un cliente</option>
-            {clients.map((client) => (
-              <option key={client.id} value={client.id}>
-                {client.fullName} {client.lastName} - {client.project} -{" "}
-                {client.id}
-              </option>
-            ))}
+            {Array.isArray(clients) &&
+              clients.map((client) => (
+                <option key={client.id} value={client.id}>
+                  {client.fullName} {client.lastName} - {client.project} -{" "}
+                  {client.id}
+                </option>
+              ))}
           </select>
         </div>
 

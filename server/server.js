@@ -73,6 +73,16 @@ app.get("/api/clients", (req, res) => {
   });
 });
 
+// Obtener un cliente por ID
+app.get("/api/clients/:id", (req, res) => {
+  const clients = JSON.parse(fs.readFileSync(CLIENTS_FILE, "utf8"));
+  const client = clients.find((c) => c.id === req.params.id);
+  if (!client) {
+    return res.status(404).send({ error: "Cliente no encontrado" });
+  }
+  res.send(client);
+});
+
 // Agregar un nuevo cliente
 app.post("/api/clients", upload.single("image"), (req, res) => {
   readClientsFile((err, clients) => {
@@ -95,28 +105,35 @@ app.post("/api/clients", upload.single("image"), (req, res) => {
 
 // Editar un cliente existente
 app.put("/api/clients/:id", upload.single("image"), (req, res) => {
-  const clientId = parseInt(req.params.id, 10);
+  const clients = JSON.parse(fs.readFileSync(CLIENTS_FILE, "utf8"));
+  const clientIndex = clients.findIndex((c) => c.id === req.params.id);
 
+  if (clientIndex === -1) {
+    return res.status(404).send({ error: "Cliente no encontrado" });
+  }
+
+  // Actualiza solo las tareas del cliente
+  clients[clientIndex] = { ...clients[clientIndex], ...req.body };
+
+  // Escribe los cambios en el archivo
+  fs.writeFileSync(CLIENTS_FILE, JSON.stringify(clients, null, 2));
+  res.send(clients[clientIndex]);
+});
+
+// Actualizar un cliente (solo tareas)
+app.put("/api/clients/:id/tasks", (req, res) => {
   readClientsFile((err, clients) => {
-    if (err)
+    if (err) {
       return res
         .status(500)
         .json({ error: "Error al leer el archivo de clientes" });
-
-    const clientIndex = clients.findIndex((client) => client.id === clientId);
-    if (clientIndex === -1)
-      return res.status(404).json({ error: "Cliente no encontrado" });
-
-    const updatedClient = {
-      ...clients[clientIndex],
-      ...req.body,
-      image: req.file
-        ? `/uploads/${req.file.filename}`
-        : clients[clientIndex].image,
-    };
-
-    clients[clientIndex] = updatedClient;
-    writeClientsFile(clients, res, updatedClient);
+    }
+    const clientIndex = clients.findIndex((c) => c.id === parseInt(req.params.id, 10));
+    if (clientIndex === -1) {
+      return res.status(404).send({ error: "Cliente no encontrado" });
+    }
+    clients[clientIndex] = { ...clients[clientIndex], ...req.body };
+    writeClientsFile(clients, res, clients[clientIndex]);
   });
 });
 
@@ -138,22 +155,43 @@ app.delete("/api/clients/:id", (req, res) => {
 });
 
 // Subir una imagen (ruta independiente)
-app.post("/api/uploads", upload.single("image"), (req, res) => {
-  if (!req.file)
-    return res.status(400).json({ error: "No se subió ningún archivo" });
-  res.status(200).json({ filePath: `/uploads/${req.file.filename}` });
+app.post("/api/uploads/:id", upload.single("image"), (req, res) => {
+  const clientId = parseInt(req.params.id, 10);
+
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ error: "Error al leer el archivo de clientes" });
+    }
+
+    const clientIndex = clients.findIndex((client) => client.id === clientId);
+    if (clientIndex === -1) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+
+    // Actualiza el campo "image" del cliente con la ruta del archivo
+    clients[clientIndex].image = `/uploads/${req.file.filename}`;
+
+    // Guarda los cambios en el archivo JSON
+    writeClientsFile(clients, res, {
+      message: "Imagen subida y cliente actualizado correctamente",
+      client: clients[clientIndex],
+    });
+  });
 });
 
 // Ruta para agregar tareas a un cliente
 app.post("/api/clients/:clientId/tasks", (req, res) => {
-  const { clientId } = req.params;
-  const { tasks } = req.body;
+  const clientId = parseInt(req.params.clientId, 10); // Convertir clientId a número
+  const newTask = req.body; // Recibir la nueva tarea desde el cuerpo de la solicitud
 
   readClientsFile((err, clients) => {
-    if (err)
+    if (err) {
       return res
         .status(500)
         .json({ error: "Error al leer el archivo de clientes" });
+    }
 
     // Verifica si el cliente existe
     const client = clients.find((c) => c.id === clientId);
@@ -161,10 +199,13 @@ app.post("/api/clients/:clientId/tasks", (req, res) => {
       return res.status(404).json({ message: "Cliente no encontrado" });
     }
 
-    // Actualiza las tareas del cliente
-    client.tasks = tasks;
+    // Agregar la nueva tarea al cliente
+    client.tasks.push(newTask);
+
+    // Guardar los cambios en el archivo JSON
     writeClientsFile(clients, res, {
-      message: "Tareas actualizadas correctamente",
+      message: "Tarea agregada correctamente",
+      task: newTask,
     });
   });
 });
