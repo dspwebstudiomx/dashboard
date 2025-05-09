@@ -66,7 +66,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <div className="grid grid-cols-12 shadow-2xl rounded-lg p-12 pb-8 items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:w-[650px]">
+      <div className="grid grid-cols-12 shadow-2xl rounded-lg p-12 pb-8 items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:w-[650px] xl:h-[500px]">
         {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className=" col-span-3 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
