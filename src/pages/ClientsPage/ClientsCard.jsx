@@ -77,12 +77,12 @@ const ClientsCard = ({ client, onClientUpdate }) => {
   const SocialStyles = {
     link: "text-blue-700 hover:text-blue-500 mx-auto",
     color: "",
-    iconSize: "21",
+    iconSize: "32",
   };
 
   return (
     <>
-      <div className="grid grid-cols-12 shadow-2xl rounded-lg p-12 pb-8 items-start gap-20 bg-red-100 dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:w-[650px] xl:h-[450px]">
+      <article className="grid grid-cols-12 shadow-2xl rounded-lg p-12 pb-8 items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:w-[650px] xl:h-auto">
         {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className=" col-span-3 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
@@ -97,7 +97,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   : "../../../server/uploads/avatar_placeholder_large.png"
               }
               alt={client.fullName}
-              className="w-24 h-24 rounded-full mx-auto border-2 border-gray-300 object-cover"
+              className="w-24 h-24 rounded-full mx-auto border-2 border-gray-300 object-cover bg-white"
             />
             {/* Nombre completo y ID del cliente */}
             <div
@@ -117,7 +117,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           {/* Tabla con datos del cliente */}
           <table
             id="datos-cliente"
-            className="col-span-9 w-[50%] text-sm xl:text-base border-collapse bg-red-300">
+            className="col-span-9 w-[50%] text-sm xl:text-base border-collapse">
             <tbody>
               <tr>
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
@@ -177,27 +177,10 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               </tr>
             </tbody>
           </table>
-          {/* Botones de editar y eliminar cliente */}
-          <div className="flex justify-end gap-4 w-full items-center mt-4">
-            <button
-              id="editar-cliente"
-              onClick={handleEdit}
-              className="text-blue-500 hover:text-blue-700"
-              aria-label={`Editar cliente ${client.fullName}`}>
-              <FaEdit size={28} />
-            </button>
-            <button
-              id="eliminar-cliente"
-              onClick={openConfirmModal}
-              className="text-red-500 hover:text-red-700"
-              aria-label={`Eliminar cliente ${client.fullName}`}>
-              <FaTrash size={28} />
-            </button>
-          </div>
           {/* Redes sociales */}
           <div
             id="tarjeta-redes-sociales"
-            className="grid grid-cols-3 w-[400px] justify-center items-center gap-4 mt-6 bg-amber-400">
+            className="flex justify-center items-center gap-4 mt-6 bg-amber-400">
             {[
               {
                 href: client.website,
@@ -249,8 +232,25 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 </a>
               ))}
           </div>
+          {/* Botones de editar y eliminar cliente */}
+          <div className="flex justify-end gap-4 items-end mt-4 w-[300px]">
+            <button
+              id="editar-cliente"
+              onClick={handleEdit}
+              className="text-blue-500 hover:text-blue-700"
+              aria-label={`Editar cliente ${client.fullName}`}>
+              <FaEdit size={28} />
+            </button>
+            <button
+              id="eliminar-cliente"
+              onClick={openConfirmModal}
+              className="text-red-500 hover:text-red-700"
+              aria-label={`Eliminar cliente ${client.fullName}`}>
+              <FaTrash size={28} />
+            </button>
+          </div>
         </div>
-      </div>
+      </article>
 
       {/* Modal para editar cliente */}
       {isModalOpen && (
