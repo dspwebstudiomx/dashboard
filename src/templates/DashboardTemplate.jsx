@@ -29,7 +29,7 @@ const DashboardTemplate = ({ children }) => {
       {/* Fondo oscuro para el Sidebar en pantallas pequeñas */}
 
       {/* Contenido principal */}
-      <main className="grid grid-cols-12 p-8 xl:p-8 gap-12 place-items-center w-[100vw] min-h-[80vh] mt-[15vh]">
+      <main className="grid grid-cols-12 p-8 xl:p-0 gap-12 place-items-center w-[100vw] min-h-[80vh] mt-[15vh] xl:mb-24 overflow-x-hidden">
         {/* Sidebar para pantallas grandes */}
         <Section columns="col-span-11">{children}</Section>
       </main>
