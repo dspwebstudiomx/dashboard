@@ -68,7 +68,7 @@ const DashboardPage = () => {
       <h1 className={DashboardStyles.title}>Estadísticas</h1>
 
       {/* Sección de tarjetas del Dashboard */}
-      <section className="grid grid-cols-1 md:grid-cols-12 gap-12 p-0 xl:mr-20">
+      <section className="grid grid-cols-1 md:grid-cols-12 gap-12 p-0">
         {cards.map((card, index) => (
           <div
             key={index}
