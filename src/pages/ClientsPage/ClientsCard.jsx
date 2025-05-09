@@ -230,6 +230,8 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           client={selectedClient} // Pasa el cliente seleccionado al modal
           onClientUpdate={fetchClients}
           isEditing={!!selectedClient}
+          setIsEditing={setIsModalOpen} // Cambia el estado de edición
+          setClient={setSelectedClient} // Cambia el cliente seleccionado
         />
       )}
       {/* Modal de confirmación para eliminar cliente */}

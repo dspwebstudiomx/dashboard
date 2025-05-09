@@ -1,7 +1,7 @@
 [
   {
     "id": 1745897285167,
-    "fullName": "Daniel S",
+    "fullName": "Daniel Salvador",
     "email": "danielperezber@outlook.com",
     "phoneNumber": "+524439188025",
     "address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
@@ -141,25 +141,5 @@
         "priority": "Low"
       }
     ]
-  },
-  {
-    "id": 1746817343893,
-    "fullName": "Alfonsoa",
-    "lastName": "Daniel",
-    "lastName2": "Pérez",
-    "email": "dsperez.tablet@gmail.com",
-    "phoneNumber": "4439188025",
-    "address": "Molibdeno 214",
-    "company": "",
-    "rfc": "",
-    "curp": "",
-    "website": "",
-    "facebook": "",
-    "twitter": "",
-    "instagram": "",
-    "linkedin": "",
-    "project": "",
-    "image": "/uploads/1746817351690-camisas-B_aWI5Mo.webp",
-    "tasks": []
   }
 ]

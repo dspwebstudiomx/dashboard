@@ -105,19 +105,40 @@ app.post("/api/clients", upload.single("image"), (req, res) => {
 
 // Editar un cliente existente
 app.put("/api/clients/:id", upload.single("image"), (req, res) => {
-  const clients = JSON.parse(fs.readFileSync(CLIENTS_FILE, "utf8"));
-  const clientIndex = clients.findIndex((c) => c.id === req.params.id);
+  const clientId = parseInt(req.params.id, 10); // Asegúrate de que el ID sea un número
 
-  if (clientIndex === -1) {
-    return res.status(404).send({ error: "Cliente no encontrado" });
-  }
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ error: "Error al leer el archivo de clientes" });
+    }
 
-  // Actualiza solo las tareas del cliente
-  clients[clientIndex] = { ...clients[clientIndex], ...req.body };
+    const clientIndex = clients.findIndex((c) => c.id === clientId);
+    if (clientIndex === -1) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
 
-  // Escribe los cambios en el archivo
-  fs.writeFileSync(CLIENTS_FILE, JSON.stringify(clients, null, 2));
-  res.send(clients[clientIndex]);
+    // Procesa los datos del cuerpo correctamente
+    const updatedFields = req.body;
+
+    // Si se envió una imagen, actualiza el campo "image"
+    if (req.file) {
+      updatedFields.image = `/uploads/${req.file.filename}`;
+    }
+
+    // Actualiza los datos del cliente
+    clients[clientIndex] = {
+      ...clients[clientIndex],
+      ...updatedFields, // Sobrescribe los campos existentes con los nuevos
+    };
+
+    // Guarda los cambios en el archivo JSON
+    writeClientsFile(clients, res, {
+      message: "Cliente actualizado correctamente",
+      client: clients[clientIndex],
+    });
+  });
 });
 
 // Actualizar un cliente (solo tareas)
@@ -128,7 +149,9 @@ app.put("/api/clients/:id/tasks", (req, res) => {
         .status(500)
         .json({ error: "Error al leer el archivo de clientes" });
     }
-    const clientIndex = clients.findIndex((c) => c.id === parseInt(req.params.id, 10));
+    const clientIndex = clients.findIndex(
+      (c) => c.id === parseInt(req.params.id, 10)
+    );
     if (clientIndex === -1) {
       return res.status(404).send({ error: "Cliente no encontrado" });
     }

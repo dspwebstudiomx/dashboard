@@ -47,7 +47,10 @@ const ClientsModal = ({
 
   useEffect(() => {
     if (isEditing && client) {
-      setFormData(client); // Rellena el formulario con los datos del cliente seleccionado
+      setFormData((prevFormData) => ({
+        ...prevFormData, // Mantén los valores predeterminados
+        ...client, // Sobrescribe con los valores del cliente
+      }));
     } else {
       setFormData({
         fullName: "",
@@ -65,7 +68,7 @@ const ClientsModal = ({
         instagram: "",
         linkedin: "",
         project: "",
-        image: "", // Asegúrate de que este campo esté vacío al agregar un cliente
+        image: "",
       });
     }
   }, [isEditing, client]);
