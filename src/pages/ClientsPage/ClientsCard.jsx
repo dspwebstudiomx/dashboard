@@ -1,3 +1,13 @@
+/*
+  ClientesCard.jsx - Componente para mostrar la tarjeta de un cliente.
+  Este componente muestra la información del cliente, incluyendo su imagen,
+  nombre completo, correo electrónico, teléfono, dirección, empresa, proyecto,
+  RFC, CURP y redes sociales. También permite editar y eliminar al cliente.
+de gestión de clientes
+  Creado por: Daniel Pérez
+  Fecha de creación: 2025-8-25
+*/
+
 import React, { useState } from "react";
 import {
   FaEdit,
@@ -64,9 +74,16 @@ const ClientsCard = ({ client, onClientUpdate }) => {
     openModal(client); // Abre el modal con los datos del cliente actual
   };
 
+  const SocialStyles = {
+    link: "text-blue-700 hover:text-blue-500 mx-auto",
+    color: "",
+    iconSize: "28",
+    margin: "0 10px",
+  };
+
   return (
     <>
-      <div className="grid grid-cols-12 shadow-2xl rounded-lg p-12 pb-8 items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:w-[650px] xl:h-[500px]">
+      <div className="grid grid-cols-12 shadow-2xl rounded-lg p-12 pb-8 items-start gap-20 bg-red-100 dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:w-[650px] xl:h-[450px]">
         {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className=" col-span-3 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
@@ -97,111 +114,71 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           </div>
         </div>
         {/* // Lado con datos del cliente */}
-        <ul
-          id="datos-cliente"
-          className="col-span-9 gap-3 w-[50%] items-start justify-between h-full text-sm xl:text-base">
-          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
-            <span className="font-semibold">Correo Electrónico:</span>
-            <div>{client.email}</div>
-          </li>
-          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
-            <span className="font-semibold">Teléfono:</span>
-            {client.phoneNumber}
-          </li>
-          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
-            <span className="font-semibold">Dirección:</span>
-            {client.address}
-          </li>
-          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
-            <span className="font-semibold">Empresa:</span>
-            {client.company}
-          </li>
-          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
-            <span className="font-semibold">Proyecto:</span>
-            {client.project}
-          </li>
-          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
-            <span className="font-semibold">RFC:</span>
-            {client.rfc?.trim() || "Sin Información"}
-          </li>
-          <li className="flex flex-col 2xl:flex-row text-gray-700 dark:text-gray-300 gap-2">
-            <span className="font-semibold">CURP:</span>
-            {client.curp?.trim() || "Sin Información"}
-          </li>
-          <div
-            id="tarjeta-redes-sociales"
-            className="grid grid-cols-7 w-[100%] justify-center items-center gap-4 mt-6">
-            {client.website && (
-              <a
-                href={client.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500 mx-auto"
-                title="Visitar sitio web">
-                <FaHome size={28} />
-              </a>
-            )}
-            {client.email && (
-              <a
-                href={`mailto:${client.email}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500 mx-auto"
-                title="Enviar correo electrónico">
-                <FaEnvelope size={28} />
-              </a>
-            )}
-            {client.phoneNumber && (
-              <a
-                href={`tel:${client.phoneNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500 mx-auto"
-                title="Llamar">
-                <FaPhone size={28} />
-              </a>
-            )}
-            {client.linkedin?.trim() && (
-              <a
-                href={client.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500"
-                title="Visitar LinkedIn">
-                <FaLinkedin size={28} />
-              </a>
-            )}
-            {client.facebook?.trim() && (
-              <a
-                href={client.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500 mx-auto"
-                title="Visitar Facebook">
-                <FaFacebook size={28} />
-              </a>
-            )}
-            {client.instagram?.trim() && (
-              <a
-                href={client.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500 mx-auto"
-                title="Visitar Instagram">
-                <FaInstagram size={28} />
-              </a>
-            )}
-            {client.twitter?.trim() && (
-              <a
-                href={client.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-500 mx-auto"
-                title="Visitar Twitter">
-                <FaXTwitter size={28} />
-              </a>
-            )}
-          </div>
+        <div>
+          {/* Tabla con datos del cliente */}
+          <table
+            id="datos-cliente"
+            className="col-span-9 w-[50%] text-sm xl:text-base border-collapse bg-red-300">
+            <tbody>
+              <tr>
+                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                  Correo Electrónico:
+                </td>
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                  {client.email}
+                </td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                  Teléfono:
+                </td>
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                  {client.phoneNumber}
+                </td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                  Dirección:
+                </td>
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                  {client.address}
+                </td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                  Empresa:
+                </td>
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                  {client.company}
+                </td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                  Proyecto:
+                </td>
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                  {client.project}
+                </td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                  RFC:
+                </td>
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                  {client.rfc?.trim() || "Sin Información"}
+                </td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                  CURP:
+                </td>
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                  {client.curp?.trim() || "Sin Información"}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {/* Botones de editar y eliminar cliente */}
           <div className="flex justify-end gap-4 w-full items-center mt-4">
             <button
               id="editar-cliente"
@@ -219,7 +196,60 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             </button>
           </div>
           {/* Redes sociales */}
-        </ul>
+          <div
+            id="tarjeta-redes-sociales"
+            className="grid grid-cols-3 w-[400px] justify-center items-center gap-4 mt-6 bg-amber-400">
+            {[
+              {
+                href: client.website,
+                icon: <FaHome size={28} />,
+                title: "Visitar sitio web",
+              },
+              {
+                href: `mailto:${client.email}`,
+                icon: <FaEnvelope size={28} />,
+                title: "Enviar correo electrónico",
+              },
+              {
+                href: `tel:${client.phoneNumber}`,
+                icon: <FaPhone size={28} />,
+                title: "Llamar",
+              },
+              {
+                href: client.linkedin?.trim(),
+                icon: <FaLinkedin size={28} />,
+                title: "Visitar LinkedIn",
+              },
+              {
+                href: client.facebook?.trim(),
+                icon: <FaFacebook size={28} />,
+                title: "Visitar Facebook",
+              },
+              {
+                href: client.instagram?.trim(),
+                icon: <FaInstagram size={28} />,
+                title: "Visitar Instagram",
+              },
+              {
+                href: client.twitter?.trim(),
+                icon: <FaXTwitter size={28} />,
+                title: "Visitar Twitter",
+              },
+            ]
+              .filter((social) => social.href) // Filtra las redes sociales que no tienen URL
+              .map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:text-blue-500 mx-auto"
+                  title={social.title}>
+                  {social.icon}
+                </a>
+              ))}
+          </div>
+        </div>
       </div>
 
       {/* Modal para editar cliente */}
