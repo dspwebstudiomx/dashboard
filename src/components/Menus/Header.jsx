@@ -119,7 +119,7 @@ const Header = ({ toggleSidebar }) => {
               id="sidebar-toggle"
               onClick={toggleSidebar}
               className="text-2xl focus:outline-none">
-              <FaBars />
+              <FaBars className="text-blue-800" />
             </button>
           </nav>
         </div>
