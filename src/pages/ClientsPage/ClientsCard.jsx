@@ -84,7 +84,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
     <>
       <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 pb-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 w-[90vw] xl:w-[650px] xl:h-auto">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className=" md:col-span-6 items-center justify-between h-[80%] gap-12 my-auto ">
+        <div className=" md:col-span-5 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center gap-6">
@@ -113,14 +113,66 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                 {client.id}
               </p>
             </div>
+            {/* Redes sociales */}
+            <div
+              id="tarjeta-redes-sociales"
+              className="grid grid-cols-4 items-center gap-8 md:gap-6 mt-6 pt-0 pb-12 px-4">
+              {[
+                {
+                  href: client.website,
+                  icon: <FaHome size={SocialStyles.iconSize} />,
+                  title: "Visitar sitio web",
+                },
+                {
+                  href: `mailto:${client.email}`,
+                  icon: <FaEnvelope size={SocialStyles.iconSize} />,
+                  title: "Enviar correo electrónico",
+                },
+                {
+                  href: `tel:${client.phoneNumber}`,
+                  icon: <FaPhone size={SocialStyles.iconSize} />,
+                  title: "Llamar",
+                },
+                {
+                  href: client.linkedin?.trim(),
+                  icon: <FaLinkedin size={SocialStyles.iconSize} />,
+                  title: "Visitar LinkedIn",
+                },
+                {
+                  href: client.facebook?.trim(),
+                  icon: <FaFacebook size={SocialStyles.iconSize} />,
+                  title: "Visitar Facebook",
+                },
+                {
+                  href: client.instagram?.trim(),
+                  icon: <FaInstagram size={SocialStyles.iconSize} />,
+                  title: "Visitar Instagram",
+                },
+                {
+                  href: client.twitter?.trim(),
+                  icon: <FaXTwitter size={SocialStyles.iconSize} />,
+                  title: "Visitar Twitter",
+                },
+              ]
+                .filter((social) => social.href) // Filtra las redes sociales que no tienen URL
+                .map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={SocialStyles.link}
+                    aria-label={social.title}
+                    title={social.title}>
+                    {social.icon}
+                  </a>
+                ))}
+            </div>
           </div>
         </div>
         {/* // Lado con datos del cliente */}
-        <div>
-          {/* Tabla con datos del cliente */}
-          <table
-            id="datos-cliente"
-            className="col-span-9 text-sm xl:text-base border-collapse p-10">
+        <div className="col-span-7 text-sm xl:text-base border-collapse bg-red-300 p-0 h-full flex flex-col justify-between">
+          <table id="datos-cliente">
             <tbody>
               <tr>
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
@@ -180,63 +232,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               </tr>
             </tbody>
           </table>
-          {/* Redes sociales */}
-          <div
-            id="tarjeta-redes-sociales"
-            className="grid grid-cols-4 items-center gap-8 mt-6 pb-8 p-4 px-12">
-            {[
-              {
-                href: client.website,
-                icon: <FaHome size={SocialStyles.iconSize} />,
-                title: "Visitar sitio web",
-              },
-              {
-                href: `mailto:${client.email}`,
-                icon: <FaEnvelope size={SocialStyles.iconSize} />,
-                title: "Enviar correo electrónico",
-              },
-              {
-                href: `tel:${client.phoneNumber}`,
-                icon: <FaPhone size={SocialStyles.iconSize} />,
-                title: "Llamar",
-              },
-              {
-                href: client.linkedin?.trim(),
-                icon: <FaLinkedin size={SocialStyles.iconSize} />,
-                title: "Visitar LinkedIn",
-              },
-              {
-                href: client.facebook?.trim(),
-                icon: <FaFacebook size={SocialStyles.iconSize} />,
-                title: "Visitar Facebook",
-              },
-              {
-                href: client.instagram?.trim(),
-                icon: <FaInstagram size={SocialStyles.iconSize} />,
-                title: "Visitar Instagram",
-              },
-              {
-                href: client.twitter?.trim(),
-                icon: <FaXTwitter size={SocialStyles.iconSize} />,
-                title: "Visitar Twitter",
-              },
-            ]
-              .filter((social) => social.href) // Filtra las redes sociales que no tienen URL
-              .map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={SocialStyles.link}
-                  aria-label={social.title}
-                  title={social.title}>
-                  {social.icon}
-                </a>
-              ))}
-          </div>
+
           {/* Botones de editar y eliminar cliente */}
-          <div className="flex justify-end gap-4 items-end mt-4 w-[300px]">
+          <div className="flex justify-end w-full items-end gap-4 mt-4 w-[300px]">
             <button
               id="editar-cliente"
               onClick={handleEdit}
