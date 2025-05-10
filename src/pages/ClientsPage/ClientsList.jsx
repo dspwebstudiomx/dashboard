@@ -70,7 +70,7 @@ const ClientsList = () => {
       {/* // Lista de clientes */}
       <ul
         id="clients-list"
-        className="col-span-12 md:col-span-12 grid gap-12 md:grid-cols-2 p-0">
+        className="col-span-12 md:col-span-12 grid gap-12 md:grid-cols-2 p-2">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}
