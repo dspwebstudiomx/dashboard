@@ -82,7 +82,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 md:p-12 pb-8 items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 w-[100vw] xl:w-[650px] xl:h-auto">
+      <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 md:p-12 pb-8 justify-center items-center md:items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 w-[90vw] xl:w-[650px] xl:h-auto">
         {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className=" md:col-span-3 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
