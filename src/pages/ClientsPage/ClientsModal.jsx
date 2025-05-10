@@ -18,6 +18,7 @@ import { FaPlus, FaRegImage, FaXTwitter } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const ClientsModal = ({
   isOpen,
@@ -154,7 +155,7 @@ const ClientsModal = ({
   if (!isOpen) return null;
 
   return (
-    <section className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50">
+    <section className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50 ">
       <article className="bg-white rounded-lg shadow-lg w-[90vw] h-[90vh] xl:h-[95vh] 2xl:w-[70vw] 2xl:h-[90vh] md:max-w-full p-6 md:p-12 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-12 justify-center items-center">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
           {isEditing ? (
@@ -367,28 +368,24 @@ const ClientsModal = ({
                 className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
               />
             </div>
-            <div id="image-group" className="form-group flex flex-col gap-4">
-              <div className="flex items-center gap-4">
-                {formData.image && (
-                  <div className="flex flex-col items-center gap-2">
-                    <img
-                      src={`http://localhost:5000${formData.image}`}
-                      alt="Imagen del cliente"
-                      className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
-                    />
-                    <button
-                      type="button"
-                      onClick={handleRemoveImage}
-                      className="px-4 py-2 bg-red-500 hover:bg-red-400 text-white rounded-md text-sm">
-                      Eliminar Imagen
-                    </button>
-                  </div>
-                )}
-                <div className="flex flex-col gap-4">
-                  <label className="text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                    <FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
-                    Imagen del cliente:
-                  </label>
+          </div>
+          <div id="image-group" className="form-group flex flex-col gap-4">
+            <div className="flex items-center gap-4">
+              {formData.image && (
+                <div className="flex items-center gap-2">
+                  <img
+                    src={`http://localhost:5000${formData.image}`}
+                    alt="Imagen del cliente"
+                    className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
+                  />
+                </div>
+              )}
+              <div className="flex flex-col gap-4 mt-10">
+                <label className="text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                  <FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
+                  Imagen del cliente:
+                </label>
+                <div className="flex items-center gap-4">
                   <input
                     type="file"
                     name="image"
@@ -396,40 +393,44 @@ const ClientsModal = ({
                     onChange={handleFileChange}
                     className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none"
                   />
+                  <button
+                    type="button"
+                    onClick={handleRemoveImage}
+                    className=" bg-red-500 hover:bg-red-400 text-white text-sm w-10 h-10 rounded-md place-items-center">
+                    <RiDeleteBin6Line className="text-white text-xl" />
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end justify-end xl:-mt-10">
-            <div></div>
-            <div
-              id="buttons-action-group"
-              className="space-x-4 mx-auto grid items-end md:grid-cols-2 gap-4 w-full">
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 mx-auto w-full xl:w-[210px]">
+
+          <div
+            id="buttons-action-group"
+            className="space-x-4 mx-auto flex flex-col gap-4 w-full">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 mx-auto w-full xl:w-[210px]">
+              <span className="flex items-center justify-center gap-2 text-lg">
+                <MdOutlineCancel className="text-xl" />
+                Cancelar
+              </span>
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
+              {isEditing ? (
                 <span className="flex items-center justify-center gap-2 text-lg">
-                  <MdOutlineCancel className="text-xl" />
-                  Cancelar
+                  <FaRegSave className="text-xl" />
+                  Guardar Cambios
                 </span>
-              </button>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
-                {isEditing ? (
-                  <span className="flex items-center justify-center gap-2 text-lg">
-                    <FaRegSave className="text-xl" />
-                    Guardar Cambios
-                  </span>
-                ) : (
-                  <span className="flex items-center justify-center gap-2 text-lg">
-                    <FaPlus className="text-xl" />
-                    Agregar Cliente
-                  </span>
-                )}
-              </button>
-            </div>
+              ) : (
+                <span className="flex items-center justify-center gap-2 text-lg">
+                  <FaPlus className="text-xl" />
+                  Agregar Cliente
+                </span>
+              )}
+            </button>
           </div>
         </form>
       </article>

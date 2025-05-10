@@ -32,7 +32,7 @@ const DashboardPage = () => {
     {
       title: "Resumen de Proyectos",
       component: <ProjectSummary />,
-      colSpan: "md:col-span-8 col-span-5",
+      colSpan: "md:col-span-8 col-span-8",
     },
     {
       title: "Ingresos",
@@ -42,12 +42,12 @@ const DashboardPage = () => {
     {
       title: "Lista de Tareas",
       component: <TaskList />,
-      colSpan: "md:col-span-4 col-span-8",
+      colSpan: "md:col-span-5 col-span-8",
     },
     {
       title: "Clientes",
       component: <ClientsTable />,
-      colSpan: "md:col-span-8 col-span-8",
+      colSpan: "md:col-span-7 col-span-8",
     },
     {
       title: "Notificaciones",
@@ -68,7 +68,7 @@ const DashboardPage = () => {
       <h1 className={DashboardStyles.title}>Estadísticas</h1>
 
       {/* Sección de tarjetas del Dashboard */}
-      <section className="grid grid-cols-1 md:grid-cols-12 gap-12 p-0">
+      <section className="grid grid-cols-12 gap-12 p-0">
         {cards.map((card, index) => (
           <div
             key={index}
