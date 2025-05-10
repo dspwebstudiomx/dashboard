@@ -172,7 +172,7 @@ const ClientsModal = ({
         </h2>
         <form
           onSubmit={handleSubmit}
-          className="space-y-4  overflow-y-auto 2xl:overflow-y-hidden">
+          className="space-y-4  overflow-y-auto 2xl:overflow-y-hidden w-[70vw]">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 ">
             <div
               id="fullName-group"
