@@ -180,7 +180,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           {/* Redes sociales */}
           <div
             id="tarjeta-redes-sociales"
-            className="grid grid-cols-4 items-center gap-8 mt-6 pb-8 p-4 px-8">
+            className="grid grid-cols-4 items-center gap-8 mt-6 pb-8 p-4 px-12">
             {[
               {
                 href: client.website,
