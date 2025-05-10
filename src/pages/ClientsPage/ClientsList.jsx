@@ -64,13 +64,9 @@ const ClientsList = () => {
   };
 
   return (
-    <section
-      id="clients-list-container"
-      className="grid grid-cols-12 gap-12 mx-auto ">
+    <section id="clients-list-container" className="">
       {/* // Lista de clientes */}
-      <ul
-        id="clients-list"
-        className="col-span-12 md:col-span-12 grid gap-12 md:grid-cols-2 p-2">
+      <ul id="clients-list" className=" md:grid grid-cols-2 gap-8">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}

@@ -21,8 +21,8 @@ import DashboardTemplate from "@templates/DashboardTemplate";
 const DashboardPage = () => {
   // Estilos para el Dashboard
   const DashboardStyles = {
-    title: `text-3xl font-bold mb-6 text-center sm:hidden text-blue-950`,
-    grid: `grid grid-cols-1 md:grid-cols-12 gap-12 p-0`,
+    title: `text-3xl font-bold mb-6 sm:hidden text-blue-950 text-center`,
+    grid: `grid md:grid-cols-12 gap-12 p-0`,
     card: `bg-white p-6 rounded-lg shadow-md`,
     cardTitle: `text-2xl font-semibold mb-4`,
   };
@@ -68,7 +68,7 @@ const DashboardPage = () => {
       <h1 className={DashboardStyles.title}>Estadísticas</h1>
 
       {/* Sección de tarjetas del Dashboard */}
-      <section className="grid grid-cols-12 gap-12 p-0">
+      <section className="grid grid-cols-12 gap-8 mx-auto justify-center">
         {cards.map((card, index) => (
           <div
             key={index}

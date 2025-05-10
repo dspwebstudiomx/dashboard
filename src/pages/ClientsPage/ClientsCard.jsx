@@ -82,9 +82,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 pb-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 w-[90vw] xl:w-[650px] xl:h-auto">
+      <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 pb-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:h-auto">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className=" md:col-span-5 items-center justify-between h-[80%] gap-12 my-auto ">
+        <div className=" md:col-span-5 items-center justify-between h-auto gap-12 my-auto ">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center gap-6">
@@ -171,7 +171,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           </div>
         </div>
         {/* // Lado con datos del cliente */}
-        <div className="col-span-7 text-sm xl:text-base border-collapse bg-red-300 p-0 h-full flex flex-col justify-between">
+        <div className="col-span-7 text-sm xl:text-base border-collapse h-full flex flex-col justify-between">
           <table id="datos-cliente">
             <tbody>
               <tr>
@@ -234,7 +234,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           </table>
 
           {/* Botones de editar y eliminar cliente */}
-          <div className="flex justify-end w-full items-end gap-4 mt-4 w-[300px]">
+          <div className="flex justify-end w-full items-end gap-4 mt-4">
             <button
               id="editar-cliente"
               onClick={handleEdit}
