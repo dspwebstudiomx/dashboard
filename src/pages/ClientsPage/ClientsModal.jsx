@@ -156,7 +156,7 @@ const ClientsModal = ({
 
   return (
     <section className="fixed inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center z-50 ">
-      <article className="bg-white rounded-lg shadow-lg w-[90vw] h-[90vh] xl:h-[95vh] 2xl:w-[70vw] 2xl:h-[90vh] md:max-w-full p-6 md:p-12 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-12 justify-center items-center">
+      <article className="bg-white rounded-lg shadow-lg w-[90vw] h-[90vh] xl:h-[95vh] 2xl:w-[70vw] 2xl:h-[90vh] md:max-w-full p-6 md:p-12 md:pb-0 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-12 justify-center items-center">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
           {isEditing ? (
             <div className="flex items-center gap-4 justify-center">
@@ -172,7 +172,7 @@ const ClientsModal = ({
         </h2>
         <form
           onSubmit={handleSubmit}
-          className="space-y-4  overflow-y-auto 2xl:overflow-y-hidden w-[70vw]">
+          className="space-y-4  overflow-y-auto  w-[70vw]">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:px-20 ">
             <div
               id="fullName-group"
@@ -369,12 +369,16 @@ const ClientsModal = ({
               />
             </div>
           </div>
+        </form>
+        {/* Imagen y Botones de Acción */}
+        <div className="flex items-center justify-between gap-8 w-full">
+          {/* Imagen */}
           <div
             id="image-group"
-            className="form-group flex flex-col gap-4 mt-12 p-2">
+            className="form-group flex  gap-4 mt-12 xl:mt-6 p-2">
             <div className="flex items-center gap-4">
               {formData.image && (
-                <div className="flex flex-col items-center gap-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
                   <img
                     src={`http://localhost:5000${formData.image}`}
                     alt="Imagen del cliente"
@@ -393,7 +397,7 @@ const ClientsModal = ({
                         name="image"
                         accept="image/*"
                         onChange={handleFileChange}
-                        className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none w-[52vw]"
+                        className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none w-[52vw] md:w-[210px]"
                       />
                       <button
                         type="button"
@@ -409,42 +413,33 @@ const ClientsModal = ({
           </div>
 
           {/* Botones de Acción */}
-          <div className="flex flex-col items-center justify-center gap-8 mt-12">
-            <span className="text-gray-700 dark:text-gray-300 text-lg font-semibold">
-              {isEditing
-                ? "¿Quieres guardar los cambios?"
-                : "¿Quieres agregar este cliente?"}
-            </span>
-            <div
-              id="buttons-action-group"
-              className="space-x-4 mx-auto flex flex-col gap-4 w-full">
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 mx-auto w-full xl:w-[210px]">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 h-full">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 mx-auto w-full xl:w-[210px]">
+              <span className="flex items-center justify-center gap-2 text-lg">
+                <MdOutlineCancel className="text-xl" />
+                Cancelar
+              </span>
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
+              {isEditing ? (
                 <span className="flex items-center justify-center gap-2 text-lg">
-                  <MdOutlineCancel className="text-xl" />
-                  Cancelar
+                  <FaRegSave className="text-xl" />
+                  Guardar Cambios
                 </span>
-              </button>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
-                {isEditing ? (
-                  <span className="flex items-center justify-center gap-2 text-lg">
-                    <FaRegSave className="text-xl" />
-                    Guardar Cambios
-                  </span>
-                ) : (
-                  <span className="flex items-center justify-center gap-2 text-lg">
-                    <FaPlus className="text-xl" />
-                    Agregar Cliente
-                  </span>
-                )}
-              </button>
-            </div>
+              ) : (
+                <span className="flex items-center justify-center gap-2 text-lg">
+                  <FaPlus className="text-xl" />
+                  Agregar Cliente
+                </span>
+              )}
+            </button>
           </div>
-        </form>
+        </div>
       </article>
     </section>
   );

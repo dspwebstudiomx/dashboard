@@ -82,7 +82,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 md:p-12 pb-8 justify-center items-center md:items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 w-[90vw] xl:w-[650px] xl:h-auto">
+      <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 pb-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 w-[90vw] xl:w-[650px] xl:h-auto">
         {/* // Lado con imagen, nombre completo y redes sociales */}
         <div className=" md:col-span-6 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
@@ -103,8 +103,11 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             <div
               id="cliente-nombre-completo"
               className="text-center flex flex-col items-center justify-center gap-0">
-              <h2 className="text-lg font-bold text-gray-700 dark:text-gray-150 text-center w-full mb-3">
-                {client.fullName} {client.lastName} {client.lastName2}
+              <h2 className="text-lg font-bold text-gray-700 dark:text-gray-150 text-center w-full mb-3 flex flex-col gap-1">
+                <span>{client.fullName}</span>
+                <span>
+                  {client.lastName} {client.lastName2}
+                </span>
               </h2>
               <p className="bg-blue-400 px-4 py-2 rounded-4xl text-blue-800">
                 {client.id}
@@ -117,7 +120,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           {/* Tabla con datos del cliente */}
           <table
             id="datos-cliente"
-            className="col-span-9 text-sm xl:text-base border-collapse">
+            className="col-span-9 text-sm xl:text-base border-collapse p-10">
             <tbody>
               <tr>
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
