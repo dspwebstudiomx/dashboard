@@ -84,10 +84,10 @@ const ClientsCard = ({ client, onClientUpdate }) => {
     <>
       <article className="grid md:grid-cols-12 shadow-2xl rounded-lg p-4 md:p-12 pb-8 justify-center items-center md:items-start gap-20 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 w-[90vw] xl:w-[650px] xl:h-auto">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className=" md:col-span-3 items-center justify-between h-[80%] gap-12 my-auto ">
+        <div className=" md:col-span-6 items-center justify-between h-[80%] gap-12 my-auto ">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
-            className="flex flex-col items-center justify-center w-full gap-6">
+            className="flex flex-col items-center justify-center gap-6">
             {/* Imagen */}
             <img
               id="imagen-cliente"
@@ -117,7 +117,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           {/* Tabla con datos del cliente */}
           <table
             id="datos-cliente"
-            className="col-span-9 w-[50%] text-sm xl:text-base border-collapse">
+            className="col-span-9 text-sm xl:text-base border-collapse">
             <tbody>
               <tr>
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
