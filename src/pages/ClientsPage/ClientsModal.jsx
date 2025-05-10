@@ -173,7 +173,7 @@ const ClientsModal = ({
         <form
           onSubmit={handleSubmit}
           className="space-y-4  overflow-y-auto 2xl:overflow-y-hidden w-[70vw]">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:px-20 ">
             <div
               id="fullName-group"
               className="form-group flex items-center gap-4">
@@ -369,68 +369,80 @@ const ClientsModal = ({
               />
             </div>
           </div>
-          <div id="image-group" className="form-group flex flex-col gap-4">
+          <div
+            id="image-group"
+            className="form-group flex flex-col gap-4 mt-12 p-2">
             <div className="flex items-center gap-4">
               {formData.image && (
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col items-center gap-8">
                   <img
                     src={`http://localhost:5000${formData.image}`}
                     alt="Imagen del cliente"
                     className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
                   />
+                  <div className="flex flex-col gap-4 justify-center items-start">
+                    <label className="text-gray-700 dark:text-gray-300 flex items-start gap-4">
+                      <FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
+                      <span>
+                        {formData.image ? "Cambiar imagen" : "Agregar imagen"}
+                      </span>
+                    </label>
+                    <div className="flex items-center gap-4 justify-center">
+                      <input
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none w-[52vw]"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleRemoveImage}
+                        className=" bg-red-500 border-2 border-red-700 hover:bg-red-400 text-white text-sm w-10 h-11 rounded-md place-items-center">
+                        <RiDeleteBin6Line className="text-white text-xl" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
-              <div className="flex flex-col gap-4 mt-10">
-                <label className="text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                  <FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
-                  Imagen del cliente:
-                </label>
-                <div className="flex items-center gap-4">
-                  <input
-                    type="file"
-                    name="image"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none"
-                  />
-                  <button
-                    type="button"
-                    onClick={handleRemoveImage}
-                    className=" bg-red-500 hover:bg-red-400 text-white text-sm w-10 h-10 rounded-md place-items-center">
-                    <RiDeleteBin6Line className="text-white text-xl" />
-                  </button>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div
-            id="buttons-action-group"
-            className="space-x-4 mx-auto flex flex-col gap-4 w-full">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 mx-auto w-full xl:w-[210px]">
-              <span className="flex items-center justify-center gap-2 text-lg">
-                <MdOutlineCancel className="text-xl" />
-                Cancelar
-              </span>
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
-              {isEditing ? (
+          {/* Botones de Acción */}
+          <div className="flex flex-col items-center justify-center gap-8 mt-12">
+            <span className="text-gray-700 dark:text-gray-300 text-lg font-semibold">
+              {isEditing
+                ? "¿Quieres guardar los cambios?"
+                : "¿Quieres agregar este cliente?"}
+            </span>
+            <div
+              id="buttons-action-group"
+              className="space-x-4 mx-auto flex flex-col gap-4 w-full">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 md:h-12 h-16 mx-auto w-full xl:w-[210px]">
                 <span className="flex items-center justify-center gap-2 text-lg">
-                  <FaRegSave className="text-xl" />
-                  Guardar Cambios
+                  <MdOutlineCancel className="text-xl" />
+                  Cancelar
                 </span>
-              ) : (
-                <span className="flex items-center justify-center gap-2 text-lg">
-                  <FaPlus className="text-xl" />
-                  Agregar Cliente
-                </span>
-              )}
-            </button>
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
+                {isEditing ? (
+                  <span className="flex items-center justify-center gap-2 text-lg">
+                    <FaRegSave className="text-xl" />
+                    Guardar Cambios
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2 text-lg">
+                    <FaPlus className="text-xl" />
+                    Agregar Cliente
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
         </form>
       </article>
