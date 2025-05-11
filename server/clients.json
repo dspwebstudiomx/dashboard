@@ -131,25 +131,5 @@
         "priority": "Low"
       }
     ]
-  },
-  {
-    "id": 1746932832760,
-    "fullName": "",
-    "lastName": "",
-    "lastName2": "",
-    "email": "",
-    "phoneNumber": "",
-    "address": "",
-    "company": "",
-    "rfc": "",
-    "curp": "",
-    "website": "",
-    "facebook": "",
-    "twitter": "",
-    "instagram": "",
-    "linkedin": "",
-    "project": "",
-    "image": null,
-    "tasks": []
   }
 ]
