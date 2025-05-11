@@ -21,7 +21,7 @@ const Sidebar = ({ columns, isOpen }) => {
   const SidebarStyles = {
     sidebarAside: {
       columns: columns,
-      general: `text-blue-20 p-4 py-8 z-50 bg-white dark:bg-gray-900`,
+      general: `text-blue-20 p-4 py-8 z-30 bg-white dark:bg-gray-900`,
       mobile: `fixed top-18 right-0 w-full h-full dark:bg-gray-900 z-50 border-0 rounded-0`,
       visible: `translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
