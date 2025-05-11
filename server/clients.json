@@ -106,8 +106,8 @@
     "fullName": "Alexis",
     "lastName": "Vallarta",
     "lastName2": "Pérez",
-    "email": "alevallarta@outlook.com",
-    "phoneNumber": "+52 4439188025",
+    "email": "vallartaalexis1711@gmail.com",
+    "phoneNumber": "+52 443195268",
     "address": "Molibdeno 214",
     "company": "Hogares Deesa",
     "project": "Deesa",
@@ -131,5 +131,25 @@
         "priority": "Low"
       }
     ]
+  },
+  {
+    "id": 1747000149687,
+    "fullName": "dabni",
+    "lastName": "a",
+    "lastName2": "",
+    "email": "d@gmail.com",
+    "phoneNumber": "",
+    "address": "",
+    "company": "",
+    "rfc": "",
+    "curp": "",
+    "website": "",
+    "facebook": "",
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "project": "",
+    "image": null,
+    "tasks": []
   }
 ]

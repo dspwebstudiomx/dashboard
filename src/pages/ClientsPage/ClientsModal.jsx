@@ -7,6 +7,7 @@ import {
   FaAddressCard,
   FaBuilding,
   FaEnvelope,
+  FaFacebook,
   FaGlobe,
   FaInstagram,
   FaUser,

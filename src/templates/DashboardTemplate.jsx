@@ -34,9 +34,9 @@ const DashboardTemplate = ({ children }) => {
       )}
 
       {/* Contenido principal */}
-      <main className="grid grid-cols-12 p-4 mt-[15vh] md:mt-18 xl:mb-24 items-center justify-center 2xl:p-24">
+      <main className="grid grid-cols-12 p-4 mt-[15vh] md:mt-18 items-center justify-center 2xl:p-24">
         {/* Sidebar para pantallas grandes */}
-        <Section columns="col-span-10">{children}</Section>
+        <Section columns="col-span-12 md:col-span-10">{children}</Section>
         <Section columns="col-span-2"></Section>
       </main>
     </div>

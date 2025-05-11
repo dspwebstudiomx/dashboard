@@ -103,7 +103,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
             <div
               id="cliente-nombre-completo"
               className="text-center flex flex-col items-center justify-center gap-0">
-              <h2 className="text-lg font-bold text-gray-700 dark:text-gray-150 text-center w-full mb-3 flex flex-col gap-1">
+              <h2 className="text-lg font-bold text-gray-700 dark:text-gray-100 dark:text-gray-150 text-center w-full mb-3 flex flex-col gap-1">
                 <span>{client.fullName}</span>
                 <span>
                   {client.lastName} {client.lastName2}
