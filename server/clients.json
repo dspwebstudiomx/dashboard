@@ -1,7 +1,7 @@
 [
   {
     "id": 1745897285167,
-    "fullName": "Daniel",
+    "fullName": "Daniel Salvador",
     "email": "danielperezber@outlook.com",
     "phoneNumber": "+52 443 918 8025",
     "address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
@@ -114,7 +114,7 @@
     "rfc": "",
     "website": "https://www.hogaresdeesa.com/",
     "curp": "",
-    "facebook": "",
+    "facebook": "https://www.facebook.com/alexis.ferguson.587",
     "instagram": "",
     "linkedin": "",
     "twitter": "",
@@ -131,5 +131,25 @@
         "priority": "Low"
       }
     ]
+  },
+  {
+    "id": 1746932832760,
+    "fullName": "",
+    "lastName": "",
+    "lastName2": "",
+    "email": "",
+    "phoneNumber": "",
+    "address": "",
+    "company": "",
+    "rfc": "",
+    "curp": "",
+    "website": "",
+    "facebook": "",
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "project": "",
+    "image": null,
+    "tasks": []
   }
 ]
