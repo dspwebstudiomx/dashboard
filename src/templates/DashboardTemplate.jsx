@@ -24,12 +24,14 @@ const DashboardTemplate = ({ children }) => {
     <div className="w-full flex flex-col dark:bg-gray-900">
       {/* Encabezado con botón para alternar el Sidebar */}
       <Header toggleSidebar={toggleSidebar} />
-      <div
-        className={`fixed top-0 right-0 h-full bg-gray-800 transform ${
-          isSidebarOpen ? "-translate-x-0" : "translate-x-full"
-        } transition-transform ease-in-out duration-300`}>
-        <Sidebar isOpen={isSidebarOpen} />
-      </div>
+
+      {/* Sidebar con transición desde la derecha */}
+      {isSidebarOpen && (
+        <div
+          className={`fixed top-0 right-0 h-full bg-gray-800 transform translate-x-0 transition-transform ease-in-out duration-300`}>
+          <Sidebar isOpen={isSidebarOpen} />
+        </div>
+      )}
 
       {/* Contenido principal */}
       <main className="grid grid-cols-12 p-4 mt-[15vh] md:mt-18 xl:mb-24 items-center justify-center 2xl:p-24">

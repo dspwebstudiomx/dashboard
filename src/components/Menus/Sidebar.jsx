@@ -21,16 +21,16 @@ const Sidebar = ({ columns, isOpen }) => {
   const SidebarStyles = {
     sidebarAside: {
       columns: columns,
-      general: `text-blue-20 p-4 py-8 z-30 flex flex-col items-start justify-between gap-8 dark:bg-gray-800 dark:text-gray-100 rounded-4xl shadow-lg border-4 border-gray-100 dark:border-blue-900`,
+      general: `text-blue-20 p-4 py-8 z-30 flex flex-col items-start justify-between gap-8 dark:bg-gray-800 dark:text-gray-100 rounded-xl shadow-lg border-4 border-gray-200 dark:border-gray-700`,
       mobile: `fixed top-18 right-0 w-full h-full z-40 border-0 rounded-0`,
       visible: `translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
-      tablet: `md:rounded-4xl md:border-4 md:border-gray-100 dark:border-blue-900 shadow-lg md:w-[15vw] md:top-38 right-0`,
+      tablet: `md:rounded-4xl md:border-4 md:border-gray-100 shadow-lg md:w-[15vw] md:top-38 right-0`,
       desktop: `xl:w-[16vw] xl:h-[60vh] right-10 xl:top-40`,
     },
     sidebarHeader: `mx-auto`,
     sidebarMenu: `flex flex-col items-start justify-center gap-12 md:gap-8 ml-18 md:ml-4  p-4 font-semibold text-xl md:text-lg`,
-    sidebarMenuItem: `flex flex-row gap-4 items-center hover:bg-blue-200 dark:hover:bg-blue-900 rounded-lg p-2 transition-colors duration-300 ease-in-out`,
+    sidebarMenuItem: `flex flex-row gap-4 items-center p-2 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300 ease-in-out w-[180px]`,
     sidebarMenuItemIcon: `text-blue-900 dark:text-blue-500 text-2xl`,
   };
 
