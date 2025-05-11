@@ -136,14 +136,16 @@ const TasksPage = () => {
   return (
     <DashboardTemplate>
       <div className="p-6">
-        <h1 className="text-2xl font-bold mb-4">Administración de Tareas</h1>
+        <div className="flex mb-4 w-full bg-red-200 items-start justify-between">
+          <h1 className="text-2xl font-bold mb-4">Administración de Tareas</h1>
 
-        {/* Botón para abrir el modal */}
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="bg-blue-500 text-white px-4 py-2 rounded mb-4 cursor-pointer">
-          Agregar Tarea
-        </button>
+          {/* Botón para abrir el modal */}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-blue-500 text-white px-4 py-2 rounded mb-4 cursor-pointer">
+            Agregar Tarea
+          </button>
+        </div>
 
         {/* Listado de tareas */}
 

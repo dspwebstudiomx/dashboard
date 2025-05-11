@@ -81,28 +81,27 @@ const ClientsModal = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Datos enviados:", formData); // Verifica los datos enviados
     try {
       let updatedClient;
       if (isEditing) {
-        // Editar cliente existente
         const response = await axios.put(
           `http://localhost:5000/api/clients/${client.id}`,
           formData
         );
         updatedClient = response.data;
       } else {
-        // Agregar nuevo cliente
         const response = await axios.post(
           "http://localhost:5000/api/clients",
           formData
         );
         updatedClient = response.data;
       }
+      console.log("Cliente actualizado o creado:", updatedClient); // Verifica la respuesta del servidor
       onClientUpdate(updatedClient); // Llama a la función pasada desde el padre
+      onClose(); // Cierra el modal
     } catch (error) {
       console.error("Error al guardar el cliente:", error);
-    } finally {
-      onClose(); // Cierra el modal
     }
   };
 
@@ -425,6 +424,8 @@ const ClientsModal = ({
             </button>
             <button
               type="submit"
+              onClick={handleSubmit}
+              form="client-form"
               className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md md:h-12  h-16 w-full  xl:w-[210px]">
               {isEditing ? (
                 <span className="flex items-center justify-center gap-2 text-lg">

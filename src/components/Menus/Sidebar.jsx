@@ -25,8 +25,8 @@ const Sidebar = ({ columns, isOpen }) => {
       mobile: `fixed top-18 right-0 w-full h-full dark:bg-gray-900 z-50 border-0 rounded-0`,
       visible: `translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
-      tablet: `md:rounded-4xl md:border-4 md:border-gray-100 shadow-lg md:w-[15vw] md:top-32 right-0`,
-      desktop: `xl:w-[15vw] xl:h-[60vh]`,
+      tablet: `md:rounded-4xl md:border-4 md:border-gray-100 shadow-lg md:w-[15vw] md:top-38 right-0`,
+      desktop: `xl:w-[18vw] xl:h-[60vh]`,
     },
     sidebarHeader: `sidebar-header`,
     sidebarMenu: `flex flex-col items-start gap-12 md:gap-8 ml-18 md:ml-4 mt-16 md:mt-8 p-4 font-semibold text-xl md:text-lg`,
