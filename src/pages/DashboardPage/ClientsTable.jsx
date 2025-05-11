@@ -38,16 +38,16 @@ const ClientsTable = () => {
         <table className="min-w-full border border-gray-300 bg-white shadow-md rounded-lg">
           <thead className="bg-blue-800 text-white border-blue-800">
             <tr>
-              <th className="px-4 py-2 text-left text-base font-medium border-b">
+              <th className="px-4 py-2 text-left text-sm font-medium border-b">
                 Nombre Completo
               </th>
-              <th className="px-4 py-2 text-left text-base font-medium border-b">
+              <th className="px-4 py-2 text-left text-sm font-medium border-b">
                 Proyecto
               </th>
-              <th className="px-4 py-2 text-left text-base font-medium border-b">
+              <th className="px-4 py-2 text-left text-sm font-medium border-b">
                 Correo Electrónico
               </th>
-              <th className="px-4 py-2 text-left text-base font-medium border-b">
+              <th className="px-4 py-2 text-left text-sm font-medium border-b">
                 Número Telefónico
               </th>
             </tr>
@@ -57,7 +57,7 @@ const ClientsTable = () => {
               <tr
                 key={client.id}
                 className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                <td className="px-4 py-2 text-sm text-gray-700 border-b">
+                <td className="px-4 py-4 text-sm text-gray-700 border-b">
                   {client.fullName} {client.lastName} {client.lastName2}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-700 border-b">

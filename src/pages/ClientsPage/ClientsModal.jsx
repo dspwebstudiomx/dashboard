@@ -2,25 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import Modal from "@components/Modal";
+import { FaFileAlt, FaLinkedinIn, FaPhone, FaUserAlt } from "react-icons/fa";
 import {
-  FaUser,
-  FaEnvelope,
-  FaPhone,
-  FaBuilding,
   FaAddressCard,
+  FaBuilding,
+  FaEnvelope,
   FaGlobe,
-  FaFacebook,
   FaInstagram,
-  FaLinkedin,
-  FaRegSave,
-  FaUserAlt,
-  FaUserAltSlash,
-} from "react-icons/fa";
-import { FaLinkedinIn, FaPlus, FaRegImage, FaXTwitter } from "react-icons/fa6";
-import { IoMdPersonAdd } from "react-icons/io";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { MdOutlineCancel } from "react-icons/md";
-import { RiDeleteBin6Line } from "react-icons/ri";
+  FaUser,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 const ClientsModal = ({
   isOpen,
@@ -127,7 +118,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaUserAltSlash className="text-blue-900 text-2xl dark:text-gray-300" />
+            <FaUserAlt className="text-blue-900 text-2xl dark:text-gray-300" />
             <input
               type="text"
               name="lastName"

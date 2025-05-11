@@ -42,12 +42,12 @@ const DashboardPage = () => {
     {
       title: "Lista de Tareas",
       component: <TaskList />,
-      colSpan: "md:col-span-5 col-span-8",
+      colSpan: "md:col-span-4 col-span-8",
     },
     {
       title: "Clientes",
       component: <ClientsTable />,
-      colSpan: "md:col-span-7 col-span-8",
+      colSpan: "md:col-span-8 col-span-8",
     },
     {
       title: "Notificaciones",

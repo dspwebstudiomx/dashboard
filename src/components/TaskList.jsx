@@ -15,7 +15,7 @@ const TaskList = () => {
             {task.name}
           </span>
           <span
-            className={`mt-2 sm:mt-0 py-1 px-3 text-center text-xs sm:text-sm rounded-full text-white ${
+            className={`mt-2 sm:mt-0 py-1 w-[120px] text-center text-xs sm:text-sm rounded-full text-white ${
               task.priority === "Alta"
                 ? "bg-red-500"
                 : task.priority === "Media"
