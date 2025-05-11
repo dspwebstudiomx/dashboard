@@ -21,12 +21,12 @@ const Sidebar = ({ columns, isOpen }) => {
   const SidebarStyles = {
     sidebarAside: {
       columns: columns,
-      general: `text-blue-20 p-4 py-8 z-50 bg-white`,
+      general: `text-blue-20 p-4 py-8 z-50 bg-white dark:bg-gray-900`,
       mobile: `fixed top-18 right-0 w-full h-full dark:bg-gray-900 z-50 border-0 rounded-0`,
       visible: `translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
       tablet: `md:rounded-4xl md:border-4 md:border-gray-100 shadow-lg md:w-[15vw] md:top-38 right-0`,
-      desktop: `xl:w-[18vw] xl:h-[60vh]`,
+      desktop: `xl:w-[16vw] xl:h-[60vh] right-10`,
     },
     sidebarHeader: `sidebar-header`,
     sidebarMenu: `flex flex-col items-start gap-12 md:gap-8 ml-18 md:ml-4 mt-16 md:mt-8 p-4 font-semibold text-xl md:text-lg`,
