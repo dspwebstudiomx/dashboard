@@ -21,15 +21,15 @@ const Sidebar = ({ columns, isOpen }) => {
   const SidebarStyles = {
     sidebarAside: {
       columns: columns,
-      general: `text-blue-20 p-4 py-8 z-30 flex flex-col items-start justify-between gap-8 dark:bg-gray-800 dark:text-gray-100 rounded-xl shadow-lg border-4 border-gray-200 dark:border-gray-700`,
-      mobile: `fixed top-18 right-0 w-full h-full z-40 border-0 rounded-0`,
+      general: `bg-white text-blue-20 z-40 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100`,
+      mobile: `fixed top-18 -right-30 p-24 w-[100vw] h-[91vh] z-40`,
       visible: `translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
-      tablet: `md:rounded-4xl md:border-4 md:border-gray-100 shadow-lg md:w-[15vw] md:top-38 right-0`,
+      tablet: `md:p-5 md:rounded-xl shadow-lg md:w-[15vw] md:top-38 md:right-10 z-40`,
       desktop: `xl:w-[16vw] xl:h-[60vh] right-10 xl:top-40`,
     },
     sidebarHeader: `mx-auto`,
-    sidebarMenu: `flex flex-col items-start justify-center gap-12 md:gap-8 ml-18 md:ml-4  p-4 font-semibold text-xl md:text-lg`,
+    sidebarMenu: `flex flex-col items-center justify-center gap-8   md:gap-8 ml-0 md:ml-4  p-4 font-semibold text-xl md:text-lg`,
     sidebarMenuItem: `flex flex-row gap-4 items-center p-2 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300 ease-in-out w-[180px]`,
     sidebarMenuItemIcon: `text-blue-900 dark:text-blue-500 text-2xl`,
   };
@@ -50,6 +50,7 @@ const Sidebar = ({ columns, isOpen }) => {
   // Renderiza el Sidebar
   return (
     <aside
+      id="sidebar"
       className={`${SidebarStyles.sidebarAside.general} ${
         columns ? SidebarStyles.sidebarAside.columns : ""
       } ${
