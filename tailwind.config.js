@@ -1,8 +1,6 @@
 export default {
-  darkMode: "class", // Habilitar el modo oscuro basado en clases
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Asegúrate de incluir todos los archivos relevantes
-  ],
+  darkMode: "class", // Habilita el modo oscuro basado en clases
+  content: ["./src/**/*.{js,jsx,ts,tsx}"], // Ajusta las rutas según tu proyecto
   theme: {
     extend: {},
   },

@@ -82,10 +82,10 @@ const Header = ({ toggleSidebar }) => {
       {/* Encabezado principal */}
       <header
         id="encabezado principal"
-        className="header md:h-30 md:py-4 top-0 left-0 fixed w-[100vw] md:px-20 mx-auto z-10 dark:bg-gray-800 bg-gray-100 -mt-1">
+        className="header md:py-12 top-0 left-0 fixed w-[100vw] md:px-12 mx-auto z-10 dark:bg-gray-900 bg-gray-200 ">
         <div
           id="contenedor interno"
-          className="header-container flex justify-between items-center h-full px-6 sm:rounded-full bg-white dark:bg-gray-900 shadow-sm border-2 border-gray-100 dark:border-gray-700 py-4">
+          className="header-container flex justify-between items-center h-full px-6 sm:rounded-full bg-white dark:bg-gray-800 shadow-sm border-2 border-gray-100 dark:border-gray-700 py-6 md:px-12">
           {/* Logo y título */}
           <div className="header-logo-container flex items-center gap-4 justify-center">
             <a id="link-logo" href="/">
@@ -122,7 +122,11 @@ const Header = ({ toggleSidebar }) => {
               id="dark-mode-toggle"
               onClick={toggleDarkMode}
               className="dark-mode-toggle flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md">
-              {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon />}
+              {darkMode ? (
+                <FaSun className="text-yellow-400" />
+              ) : (
+                <FaMoon className="text-yellow-500" />
+              )}
             </button>
 
             {/* Botón de barras */}
