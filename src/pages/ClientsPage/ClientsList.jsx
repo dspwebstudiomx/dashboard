@@ -64,9 +64,50 @@ const ClientsList = () => {
   };
 
   return (
-    <section id="clients-list-container" className="-z-10">
+    <section
+      id="clients-list-container"
+      className="grid grid-cols-12 top-0 w-full relative gap-6"
+      gap-12>
+      {/* // Botones de la barra lateral */}
+      <aside
+        id="clients-aside-buttons"
+        className="fixed  col-span-2 flex flex-col gap-6 items-center">
+        {/* Botón editar clientes */}
+        {/* Botón agregar clientes */}
+        <button
+          id="agregar-cliente"
+          onClick={() => handleOpenModal()}
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 shadow-2xl w-full md:w-[210px]"
+          aria-label="Agregar cliente">
+          <IoPersonAddSharp size={25} />
+          <span className="hidden md:block"> Agregar Cliente</span>
+        </button>
+
+        {/* Botón ir arriba */}
+        <button
+          id="ir-a-inicio"
+          onClick={handleScrollToTop}
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 shadow-2xl w-full md:w-[210px]"
+          aria-label="Ir a inicio">
+          <FaArrowUp size={25} />
+          <span className="hidden md:block">Ir a Inicio</span>
+        </button>
+
+        {/* Botón ir abajo */}
+        <button
+          id="ir-al-final"
+          onClick={handleScrollToBottom}
+          className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 shadow-2xl w-full md:w-[210px]"
+          aria-label="Ir al final">
+          <FaArrowDown size={25} />
+          <span className="hidden md:block">Ir al Final</span>
+        </button>
+      </aside>
+
       {/* // Lista de clientes */}
-      <ul id="clients-list" className="md:grid grid-cols-2 gap-12">
+      <ul
+        id="clients-list"
+        className="absolute left-60 md:grid grid-cols-2 gap-6 col-span-12 w-[82%]">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}
@@ -78,40 +119,7 @@ const ClientsList = () => {
           />
         ))}
       </ul>
-      {/* // Botones de la barra lateral */}
 
-      <aside
-        id="clients-aside-buttons"
-        className="flex-col gap-4 hidden sm:flex w-auto fixed top-40 right-26 z-10  ">
-        {/* Botón agregar clientes */}
-        <button
-          id="agregar-cliente"
-          onClick={() => handleOpenModal()}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 mx-auto shadow-2xl w-full  md:w-[210px]"
-          aria-label="Agregar cliente">
-          <IoPersonAddSharp size={25} />
-          <span className="hidden md:block"> Agregar Cliente</span>
-        </button>
-        {/* Botón ir arriba */}
-        <button
-          id="ir-a-inicio"
-          onClick={handleScrollToTop}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 mx-auto shadow-2xl w-full md:w-[210px]"
-          aria-label="Ir a inicio">
-          <FaArrowUp size={25} />
-          <span className="hidden md:block">Ir a Inicio</span>
-        </button>
-
-        {/* Botón ir abajo */}
-        <button
-          id="ir-al-final"
-          onClick={handleScrollToBottom}
-          className="text-white px-6 py-4 flex items-center justify-center gap-2 p-2 md:rounded-full lg:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 mx-auto shadow-2xl w-full md:w-[210px]"
-          aria-label="Ir al final">
-          <FaArrowDown size={25} />
-          <span className="hidden md:block">Ir al Final</span>
-        </button>
-      </aside>
       {/* // Modal para agregar o editar cliente */}
       {isModalOpen && (
         <ClientsModal

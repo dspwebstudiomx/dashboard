@@ -117,7 +117,7 @@ const ClientsModal = ({
         .then((response) => {
           setFormData((prevFormData) => ({
             ...prevFormData,
-            image: response.data.imagePath, // Asegúrate de que el backend devuelva la ruta correcta
+            image: response.data.imagePath, // Ruta devuelta por el backend
           }));
         })
         .catch((error) => {
@@ -141,7 +141,7 @@ const ClientsModal = ({
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {/* Campos del formulario */}
           <div className="form-group flex items-center gap-4">
-            <FaUserAlt className="text-blue-900 text-2xl dark:text-gray-300" />
+            <FaUserAlt className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="fullName"
@@ -153,7 +153,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaUserAlt className="text-blue-900 text-2xl dark:text-gray-300" />
+            <FaUserAlt className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="lastName"
@@ -165,7 +165,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaUser className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaUser className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="lastName2"
@@ -176,7 +176,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaEnvelope className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaEnvelope className="text-blue-900 text-2xl  dark:text-blue-500" />
             <input
               type="email"
               name="email"
@@ -188,7 +188,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaPhone className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaPhone className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="tel"
               name="phoneNumber"
@@ -199,7 +199,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaAddressCard className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaAddressCard className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="address"
@@ -210,7 +210,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaBuilding className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaBuilding className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="company"
@@ -221,7 +221,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaFileAlt className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaFileAlt className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="project"
@@ -232,7 +232,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaFileAlt className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaFileAlt className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="rfc"
@@ -243,7 +243,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaFileAlt className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaFileAlt className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="text"
               name="curp"
@@ -254,7 +254,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaGlobe className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaGlobe className="text-blue-900 text-2xl  dark:text-blue-500" />
             <input
               type="url"
               name="website"
@@ -265,7 +265,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaFacebook className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaFacebook className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="url"
               name="facebook"
@@ -276,18 +276,18 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaXTwitter className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaXTwitter className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="url"
               name="twitter"
               value={formData.twitter}
               onChange={handleChange}
               placeholder="Twitter"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
+              className="flex-1 p-2 border bg-gray-100 text-gray-800 rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaInstagram className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaInstagram className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="url"
               name="instagram"
@@ -298,7 +298,7 @@ const ClientsModal = ({
             />
           </div>
           <div className="form-group flex items-center gap-4">
-            <FaLinkedinIn className="text-blue-900 text-2xl  dark:text-gray-300" />
+            <FaLinkedinIn className="text-blue-900 text-2xl dark:text-blue-500" />
             <input
               type="url"
               name="linkedin"
@@ -359,7 +359,15 @@ const ClientsModal = ({
           <button
             type="submit"
             className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md">
-            {isEditing ? "Guardar Cambios" : "Agregar Cliente"}
+            {isEditing ? (
+              <div>
+                <span>Actualizar Cliente</span>
+              </div>
+            ) : (
+              <div>
+                <span>Agregar Cliente</span>
+              </div>
+            )}
           </button>
         </div>
       </form>

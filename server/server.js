@@ -124,7 +124,8 @@ app.put("/api/clients/:id", upload.single("image"), (req, res) => {
 
     // Si se envió una imagen, actualiza el campo "image"
     if (req.file) {
-      updatedFields.image = `/uploads/${req.file.filename}`;
+      // updatedFields.image = `/uploads/${req.file.filename}`;
+      updatedFields.image = `/api/clients/:id/image`;
     }
 
     // Actualiza los datos del cliente

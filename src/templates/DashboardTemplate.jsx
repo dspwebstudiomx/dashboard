@@ -21,24 +21,30 @@ const DashboardTemplate = ({ children }) => {
   };
 
   return (
-    <div className="w-full flex flex-col dark:bg-gray-900">
+    <div className="w-full flex flex-col bg-gray-100 dark:bg-gray-900">
       {/* Encabezado con botón para alternar el Sidebar */}
       <Header toggleSidebar={toggleSidebar} />
 
       {/* Sidebar con transición desde la derecha */}
       {isSidebarOpen && (
         <div
-          className={`fixed top-0 right-0 h-full bg-gray-800 transform translate-x-0 transition-transform ease-in-out duration-300`}>
+          className={`fixed top-0 right-0 h-full transform translate-x-0 transition-transform ease-in-out duration-300`}>
           <Sidebar isOpen={isSidebarOpen} />
         </div>
       )}
 
       {/* Contenido principal */}
-      <main className="grid grid-cols-12 p-4 pt-[15vh] md:mt-32 items-start justify-center 2xl:p-24 min-h-screen bg-gray-200 dark:bg-gray-900">
-        {/* Sidebar para pantallas grandes */}
-
-        <Section columns="col-span-12 md:col-span-10">{children}</Section>
-        <Section columns="col-span-2"></Section>
+      <main
+        className={`grid grid-cols-12 p-4 pt-[15vh] md:mt-26 items-start justify-center 2xl:p-24 min-h-[100vw] bg-gray-200 dark:bg-gray-900 ${
+          isSidebarOpen ? "" : "md:grid-cols-12"
+        }`}>
+        {/* Contenido principal */}
+        <Section
+          columns={
+            isSidebarOpen ? "col-span-12 md:col-span-10" : "col-span-12"
+          }>
+          {children}
+        </Section>
       </main>
     </div>
   );

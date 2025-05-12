@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const Modal = ({ isOpen, children, title }) => {
+  useEffect(() => {
+    if (isOpen) {
+      // Desactiva el scroll del body
+      document.body.style.overflow = "hidden";
+    } else {
+      // Reactiva el scroll del body
+      document.body.style.overflow = "";
+    }
+
+    // Limpieza al desmontar el componente
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <section className="fixed inset-0 bg-blue-900 dark:bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+    <section className="fixed inset-0 bg-opacity-black-100 flex items-center justify-center z-50">
       <article className=" bg-white rounded-lg shadow-lg w-[90vw] h-[90vh] xl:h-[95vh] 2xl:w-[70vw] 2xl:h-auto md:max-w-full p-6 md:p-12 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-6 justify-between">
         {/* Título del modal */}
         {title && (

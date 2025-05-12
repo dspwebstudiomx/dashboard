@@ -135,9 +135,11 @@ const TasksPage = () => {
 
   return (
     <DashboardTemplate>
-      <div className="p-6">
-        <div className="flex mb-4 w-full bg-red-200 items-start justify-between">
-          <h1 className="text-2xl font-bold mb-4">Administración de Tareas</h1>
+      <div className="p-6 bg-white dark:bg-gray-800 rounded-xl min-h-[70vh]">
+        <div className="flex mb-4 w-full items-start justify-between">
+          <h1 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+            Administración de Tareas
+          </h1>
 
           {/* Botón para abrir el modal */}
           <button
@@ -152,7 +154,7 @@ const TasksPage = () => {
         <div className="overflow-x-auto">
           <table className="table-auto w-full border-collapse border border-gray-300">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="bg-blue-800 dark:bg-gray-700 text-gray-100">
                 <th className="border border-gray-300 px-4 py-2">Título</th>
                 <th className="border border-gray-300 px-4 py-2">
                   Descripción

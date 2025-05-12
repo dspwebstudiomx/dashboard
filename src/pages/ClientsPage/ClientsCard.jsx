@@ -84,7 +84,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
     <>
       <article className="grid md:grid-cols-12 shadow-2xl rounded-2xl p-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold  mb-0 xl:h-auto last:md:mb-0">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className="col-span-12 md:col-span-5 items-center justify-between h-auto gap-12 my-auto ">
+        <div
+          id="client-logo"
+          className="col-span-12 md:col-span-6 items-center justify-between h-auto gap-12 my-auto ">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center gap-6">
@@ -116,10 +118,12 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           </div>
         </div>
         {/* // Lado con datos del cliente */}
-        <div className="col-span-12 md:col-span-7 text-sm xl:text-base border-collapse h-full flex flex-col justify-between">
+        <div
+          id="client-data"
+          className="col-span-12 md:col-span-6 text-sm xl:text-base border-collapse h-full flex flex-col justify-between">
           <table id="datos-cliente">
             <tbody>
-              <tr>
+              <tr className="flex flex-col">
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
                   Correo Electrónico:
                 </td>
@@ -127,7 +131,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client.email}
                 </td>
               </tr>
-              <tr>
+              <tr className="flex flex-col">
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
                   Teléfono:
                 </td>
@@ -135,7 +139,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client.phoneNumber}
                 </td>
               </tr>
-              <tr>
+              <tr className="flex flex-col">
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
                   Dirección:
                 </td>
@@ -143,7 +147,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client.address}
                 </td>
               </tr>
-              <tr>
+              <tr className="flex flex-col">
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
                   Empresa:
                 </td>
@@ -151,7 +155,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client.company}
                 </td>
               </tr>
-              <tr>
+              <tr className="flex flex-col">
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
                   Proyecto:
                 </td>
@@ -159,7 +163,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client.project}
                 </td>
               </tr>
-              <tr>
+              <tr className="flex flex-col">
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
                   RFC:
                 </td>
@@ -167,7 +171,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client.rfc?.trim() || "Sin Información"}
                 </td>
               </tr>
-              <tr>
+              <tr className="flex flex-col">
                 <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
                   CURP:
                 </td>

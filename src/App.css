@@ -3,6 +3,29 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1f2937; /* Color de fondo */
+    --text-color: #e5e7eb; /* Color del texto */
+    --primary-color: #3b82f6; /* Color primario */
+    --secondary-color: #2563eb; /* Color secundario */
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #f3f4f6; /* Color de fondo */
+    --text-color: #111827; /* Color del texto */
+    --primary-color: #3b82f6; /* Color primario */
+    --secondary-color: #2563eb; /* Color secundario */
+  }
+}
+
+html.dark {
+  scroll-behavior: smooth; /* Desplazamiento suave */
+  background-color: var(--bg-color);
+}
+
 /* Scroll personalizado */
 ::-webkit-scrollbar {
   width: 8px; /* Ancho del scroll */
@@ -31,5 +54,3 @@
 .dark ::-webkit-scrollbar-track {
   background-color: #1f2937; /* Color de la pista en modo oscuro */
 }
-
-

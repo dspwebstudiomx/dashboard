@@ -131,5 +131,25 @@
         "priority": "Low"
       }
     ]
+  },
+  {
+    "id": 1747077779585,
+    "fullName": "Alexis Daniel",
+    "lastName": "Daniel",
+    "lastName2": "Pérez",
+    "email": "dsperez.tablet@gmail.com",
+    "phoneNumber": "4439188025",
+    "address": "Molibdeno 214",
+    "company": "",
+    "rfc": "",
+    "curp": "",
+    "website": "",
+    "facebook": "",
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "project": "",
+    "image": null,
+    "tasks": []
   }
 ]
