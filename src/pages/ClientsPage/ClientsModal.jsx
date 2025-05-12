@@ -10,9 +10,11 @@ import {
   FaFacebook,
   FaGlobe,
   FaInstagram,
+  FaRegImage,
   FaUser,
   FaXTwitter,
 } from "react-icons/fa6";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const ClientsModal = ({
   isOpen,
@@ -76,6 +78,7 @@ const ClientsModal = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Datos enviados:", formData);
+
     try {
       let updatedClient;
       if (isEditing) {
@@ -91,11 +94,42 @@ const ClientsModal = ({
         );
         updatedClient = response.data;
       }
+
       onClientUpdate(updatedClient);
       onClose();
     } catch (error) {
       console.error("Error al guardar el cliente:", error);
     }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const uploadData = new FormData();
+      uploadData.append("image", file);
+
+      axios
+        .post("http://localhost:5000/api/upload", uploadData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            image: response.data.imagePath, // Asegúrate de que el backend devuelva la ruta correcta
+          }));
+        })
+        .catch((error) => {
+          console.error("Error al subir la imagen:", error);
+        });
+    }
+  };
+  const handleRemoveImage = () => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      image: "",
+    }));
   };
 
   return (
@@ -273,6 +307,44 @@ const ClientsModal = ({
               placeholder="LinkedIn"
               className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
             />
+          </div>
+        </div>
+
+        {/* Imagen */}
+        <div
+          id="image-group"
+          className="form-group flex gap-4 mt-12 xl:mt-6 p-2">
+          <div className="flex items-center gap-4">
+            {formData.image && (
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <img
+                  src={`http://localhost:5000${formData.image}`}
+                  alt="Imagen del cliente"
+                  className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
+                />
+                <button
+                  type="button"
+                  onClick={handleRemoveImage}
+                  className="bg-red-500 border-2 border-red-700 hover:bg-red-400 text-white text-sm w-10 h-11 rounded-md place-items-center">
+                  <RiDeleteBin6Line className="text-white text-xl" />
+                </button>
+              </div>
+            )}
+            <div className="flex flex-col gap-4 justify-center items-start">
+              <label className="text-gray-700 dark:text-gray-300 flex items-start gap-4">
+                <FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
+                <span>
+                  {formData.image ? "Cambiar imagen" : "Agregar imagen"}
+                </span>
+              </label>
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none w-[52vw] md:w-[210px]"
+              />
+            </div>
           </div>
         </div>
 

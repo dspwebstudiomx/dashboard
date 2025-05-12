@@ -49,13 +49,24 @@ const Header = ({ toggleSidebar }) => {
     return () => clearInterval(interval);
   }, []);
 
+  // Efecto para cargar el modo oscuro guardado en localStorage
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedDarkMode);
+    if (savedDarkMode) {
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
   // Alternar entre Dark Mode y Light Mode
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (!darkMode) {
-      document.documentElement.classList.add("dark");
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem("darkMode", newDarkMode);
+    if (newDarkMode) {
+      document.documentElement.classList.add("dark"); // Agrega la clase 'dark' al <html>
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark"); // Elimina la clase 'dark' del <html>
     }
   };
 

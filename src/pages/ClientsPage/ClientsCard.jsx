@@ -82,9 +82,9 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   return (
     <>
-      <article className="grid md:grid-cols-12 shadow-2xl rounded-2xl p-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold  last:mb-30 last:md:mb-0 xl:h-auto">
+      <article className="grid md:grid-cols-12 shadow-2xl rounded-2xl p-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold  mb-0 xl:h-auto last:md:mb-0">
         {/* // Lado con imagen, nombre completo y redes sociales */}
-        <div className=" md:col-span-5 items-center justify-between h-auto gap-12 my-auto ">
+        <div className="col-span-12 md:col-span-5 items-center justify-between h-auto gap-12 my-auto ">
           <div
             id="tarjeta-clients-imagen-nombreCompleto-redesSociales"
             className="flex flex-col items-center justify-center gap-6">
@@ -109,14 +109,14 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client.lastName} {client.lastName2}
                 </span>
               </h2>
-              <p className="bg-blue-400 px-4 py-2 rounded-4xl text-blue-800">
+              <p className="bg-blue-400 px-4 py-2 rounded-4xl text-blue-8002q">
                 {client.id}
               </p>
             </div>
           </div>
         </div>
         {/* // Lado con datos del cliente */}
-        <div className="col-span-7 text-sm xl:text-base border-collapse h-full flex flex-col justify-between">
+        <div className="col-span-12 md:col-span-7 text-sm xl:text-base border-collapse h-full flex flex-col justify-between">
           <table id="datos-cliente">
             <tbody>
               <tr>
