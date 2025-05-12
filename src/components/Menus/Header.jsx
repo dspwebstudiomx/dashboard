@@ -107,6 +107,17 @@ const Header = ({ toggleSidebar }) => {
           <nav
             id="header-funciones"
             className="header-nav flex justify-end items-center gap-6">
+            {/* Saludo al usuario */}
+            <div
+              id="saludo"
+              className="greeting text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex">
+              <span className="text-gray-800 dark:text-blue-400 font-semibold text-xl">
+                ¡Hola,{" "}
+                <span className="text-blue-900 dark:text-blue-400">
+                  {localStorage.getItem("nombreUsuario") || "Daniel Salvador"}!
+                </span>
+              </span>
+            </div>
             {/* Reloj */}
             <div
               id="reloj"
