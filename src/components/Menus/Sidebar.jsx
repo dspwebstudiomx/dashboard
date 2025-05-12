@@ -21,7 +21,7 @@ const Sidebar = ({ columns, isOpen }) => {
   const SidebarStyles = {
     sidebarAside: {
       columns: columns,
-      general: `bg-white text-blue-20 z-40 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100`,
+      general: `bg-white text-blue-20 z-40 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 rounded-lg mt-10`,
       mobile: `fixed top-18 -right-30 p-24 w-[100vw] h-[91vh] z-40`,
       visible: `translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
@@ -30,16 +30,16 @@ const Sidebar = ({ columns, isOpen }) => {
     },
     sidebarHeader: `mx-auto`,
     sidebarMenu: `flex flex-col items-center justify-center gap-8   md:gap-8 ml-0 md:ml-4  p-4 font-semibold text-xl md:text-lg`,
-    sidebarMenuItem: `flex flex-row gap-4 items-center p-2 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300 ease-in-out w-[180px]`,
+    sidebarMenuItem: `flex flex-row gap-4 items-center p-2 text-gray-900 dark:text-gray-100 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300 ease-in-out w-[180px]`,
     sidebarMenuItemIcon: `text-blue-900 dark:text-blue-500 text-2xl`,
   };
 
   // Definición de las rutas y sus íconos
   const menuItems = [
     { path: "/", label: "Dashboard", icon: <FaTachometerAlt /> },
-    { path: "/proyectos", label: "Proyectos", icon: <FaProjectDiagram /> },
-    { path: "/tareas", label: "Tareas", icon: <FaTasks /> },
     { path: "/clientes", label: "Clientes", icon: <FaUsers /> },
+    { path: "/tareas", label: "Tareas", icon: <FaTasks /> },
+    { path: "/proyectos", label: "Proyectos", icon: <FaProjectDiagram /> },
     {
       path: "/cotizaciones",
       label: "Cotizaciones",
