@@ -32,32 +32,32 @@ const DashboardPage = () => {
     {
       title: "Resumen de Proyectos",
       component: <ProjectSummary />,
-      colSpan: "md:col-span-8 col-span-8",
+      colSpan: "md:col-span-8 col-span-12",
     },
     {
       title: "Ingresos",
       component: <RevenueChart />,
-      colSpan: "md:col-span-4 col-span-8",
+      colSpan: "md:col-span-4 col-span-12",
     },
     {
       title: "Lista de Tareas",
       component: <TaskList />,
-      colSpan: "md:col-span-5 col-span-8",
+      colSpan: "md:col-span-5 col-span-12",
     },
     {
       title: "Clientes",
       component: <ClientsTable />,
-      colSpan: "md:col-span-7 col-span-8",
+      colSpan: "md:col-span-7 col-span-12",
     },
     {
       title: "Notificaciones",
       component: <Notifications />,
-      colSpan: "md:col-span-6 col-span-8",
+      colSpan: "md:col-span-6 col-span-12",
     },
     {
       title: "Calendario",
       component: <Calendar />,
-      colSpan: "md:col-span-6 col-span-8",
+      colSpan: "md:col-span-6 col-span-12",
     },
   ];
 
@@ -72,7 +72,7 @@ const DashboardPage = () => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-6 rounded-lg shadow-md ${card.colSpan}`}>
+            className={`mx-auto bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-6 rounded-lg shadow-md ${card.colSpan}`}>
             <h2 className={DashboardStyles.cardTitle}>{card.title}</h2>
             {card.component}
           </div>
