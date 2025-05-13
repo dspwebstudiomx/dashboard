@@ -20,7 +20,7 @@ const Modal = ({ isOpen, children, title }) => {
   if (!isOpen) return null;
 
   return (
-    <section className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+    <section className="fixed inset-0 bg-black/30 dark:bg-black/80 flex items-center justify-center z-50">
       <article className=" bg-white rounded-lg shadow-lg w-[90vw] h-[90vh] xl:h-[95vh] 2xl:w-[70vw] 2xl:h-auto md:max-w-full p-6 md:p-12 xl:p-16 border-4 border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-6 justify-between">
         {/* Título del modal */}
         {title && (
