@@ -124,58 +124,58 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           <table id="datos-cliente">
             <tbody>
               <tr className="flex flex-col">
-                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-1">
                   Correo Electrónico:
                 </td>
-                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1 pl-6 font-bold">
                   {client.email}
                 </td>
               </tr>
               <tr className="flex flex-col">
-                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-1">
                   Teléfono:
                 </td>
-                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1 pl-6 font-bold">
                   {client.phoneNumber}
                 </td>
               </tr>
               <tr className="flex flex-col">
-                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-1">
                   Dirección:
                 </td>
-                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1 pl-6 font-bold">
                   {client.address}
                 </td>
               </tr>
               <tr className="flex flex-col">
-                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-1">
                   Empresa:
                 </td>
-                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1 pl-6 font-bold">
                   {client.company}
                 </td>
               </tr>
               <tr className="flex flex-col">
-                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-1">
                   Proyecto:
                 </td>
-                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1 pl-6 font-bold">
                   {client.project}
                 </td>
               </tr>
               <tr className="flex flex-col">
-                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-1">
                   RFC:
                 </td>
-                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1 pl-6 font-bold">
                   {client.rfc?.trim() || "Sin Información"}
                 </td>
               </tr>
               <tr className="flex flex-col">
-                <td className="font-semibold text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-1">
                   CURP:
                 </td>
-                <td className="text-gray-700 dark:text-gray-300 px-2 py-1">
+                <td className="text-gray-700 dark:text-gray-300 px-2 py-1 pl-6 font-bold">
                   {client.curp?.trim() || "Sin Información"}
                 </td>
               </tr>
