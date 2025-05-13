@@ -154,7 +154,7 @@ const Header = ({ toggleSidebar }) => {
             <div
               id="saludo"
               className="greeting text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex">
-              <span className="text-gray-800 dark:text-blue-400 font-semibold text-xl">
+              <span className="text-gray-800 dark:text-gray-100 font-semibold text-xl">
                 {getGreeting()},{" "}
                 <span className="text-blue-900 dark:text-blue-400">
                   {localStorage.getItem("nombreUsuario") || "Daniel Salvador"}!
