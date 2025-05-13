@@ -22,8 +22,8 @@ const Sidebar = ({ columns, isOpen }) => {
     sidebarAside: {
       columns: columns,
       general: `bg-white text-blue-20 z-40 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 rounded-lg mt-10`,
-      mobile: `fixed top-18 -right-30 p-24 w-[100vw] h-[91vh] z-40`,
-      visible: `translate-x-0`, // Clase para mostrar el Sidebar
+      mobile: `fixed top-20 p-24 w-[100vw] h-[91vh] z-40`,
+      visible: `translate-x-10 md:translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
       tablet: `md:p-5 md:rounded-xl shadow-lg md:w-[15vw] md:top-38 md:right-10 z-40`,
       desktop: `xl:w-[16vw] xl:h-[60vh] right-10 xl:top-40`,
