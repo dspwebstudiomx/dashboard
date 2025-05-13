@@ -12,7 +12,7 @@ const Notifications = () => {
       {notifications.map((notification, index) => (
         <li
           key={index}
-          className="bg-blue-100 text-blue-800 p-4 rounded-lg shadow-md">
+          className="bg-blue-100 text-blue-800 p-4 rounded-lg shadow-md font-base">
           {notification}
         </li>
       ))}

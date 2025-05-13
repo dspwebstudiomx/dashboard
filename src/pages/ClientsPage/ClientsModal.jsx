@@ -105,6 +105,17 @@ const ClientsModal = ({
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          imagePreview: reader.result, // Vista previa de la imagen
+          imageFile: file, // Archivo de la imagen
+        }));
+      };
+      reader.readAsDataURL(file);
+
+      // Subir la imagen al servidor
       const uploadData = new FormData();
       uploadData.append("image", file);
 

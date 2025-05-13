@@ -6,12 +6,12 @@ import multer from "multer";
 import { fileURLToPath } from "url";
 
 // Definir __dirname manualmente
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url); // Obtener el nombre del archivo actual
+const __dirname = path.dirname(__filename); // Obtener el directorio del archivo actual
 
 // Constantes
-const PORT = 5000;
-const UPLOADS_DIR = path.join(__dirname, "uploads");
+const PORT = 5000; // Puerto del servidor
+const UPLOADS_DIR = path.join(__dirname, "uploads");  // Directorio para subir archivos
 const CLIENTS_FILE = path.join(__dirname, "clients.json");
 
 // Configuración de multer para guardar archivos
@@ -21,8 +21,12 @@ const storage = multer.diskStorage({
     const sanitizedFilename = file.originalname.replace(/\s+/g, "_");
     cb(null, `${Date.now()}-${sanitizedFilename}`);
   },
-});
-const upload = multer({ storage });
+}); // Configuración de almacenamiento
+// Crear el directorio de uploads si no existe
+const upload = multer({
+  storage,
+  limits: { fileSize: 100 * 1024 * 1024 }, // Límite de 100 MB para archivos
+}); // Configuración de multer
 
 const app = express(); // Inicializar la aplicación de Express
 
@@ -33,7 +37,8 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-app.use(express.json());
+app.use(express.json({ limit: "100mb" })); // Aumenta el límite a 10 MB
+app.use(express.urlencoded({ extended: true, limit: "10mb" })); // Para datos codificados en URL
 app.use("/uploads", express.static(UPLOADS_DIR)); // Servir archivos estáticos
 
 // Función para leer el archivo JSON
@@ -122,10 +127,9 @@ app.put("/api/clients/:id", upload.single("image"), (req, res) => {
     // Procesa los datos del cuerpo correctamente
     const updatedFields = req.body;
 
-    // Si se envió una imagen, actualiza el campo "image"
+    // Si se envió una imagen, actualiza el campo "image" con la ruta real del archivo
     if (req.file) {
-      // updatedFields.image = `/uploads/${req.file.filename}`;
-      updatedFields.image = `/api/clients/:id/image`;
+      updatedFields.image = `/uploads/${req.file.filename}`;
     }
 
     // Actualiza los datos del cliente
@@ -231,6 +235,18 @@ app.post("/api/clients/:clientId/tasks", (req, res) => {
       message: "Tarea agregada correctamente",
       task: newTask,
     });
+  });
+});
+
+// Subir una imagen (ruta independiente)
+app.post("/api/uploads", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No se subió ninguna imagen" });
+  }
+
+  res.status(200).json({
+    message: "Imagen subida correctamente",
+    imagePath: `/uploads/${req.file.filename}`, // Ruta de la imagen
   });
 });
 

@@ -48,6 +48,7 @@ const RevenueChart = () => {
       title: {
         display: true,
         text: "Ingresos Mensuales",
+        color: "rgba(59, 130, 246, 1)", // Azul
       },
     },
   };

@@ -24,7 +24,7 @@ const DashboardPage = () => {
     title: `text-3xl font-bold mb-6 sm:hidden text-blue-950 text-center`,
     grid: `grid md:grid-cols-12 gap-12 p-0`,
     card: `bg-white p-6 rounded-lg shadow-md`,
-    cardTitle: `text-2xl font-semibold mb-4`,
+    cardTitle: `text-2xl font-semibold mb-12`,
   };
 
   // Definición de tarjetas para el Dashboard
@@ -72,7 +72,7 @@ const DashboardPage = () => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`bg-white p-6 rounded-lg shadow-md ${card.colSpan}`}>
+            className={`bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-6 rounded-lg shadow-md ${card.colSpan}`}>
             <h2 className={DashboardStyles.cardTitle}>{card.title}</h2>
             {card.component}
           </div>

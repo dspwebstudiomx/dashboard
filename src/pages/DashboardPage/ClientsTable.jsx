@@ -4,6 +4,8 @@ const ClientsTable = () => {
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const clientsPerPage = 3; // Límite de clientes por página
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -32,11 +34,37 @@ const ClientsTable = () => {
     return <div className="text-center text-red-500">Error: {error}</div>;
   }
 
+  // Calcular los índices de los clientes para la página actual
+  const indexOfLastClient = currentPage * clientsPerPage;
+  const indexOfFirstClient = indexOfLastClient - clientsPerPage;
+  const currentClients = clients.slice(indexOfFirstClient, indexOfLastClient);
+
+  // Calcular el número total de páginas
+  const totalPages = Math.ceil(clients.length / clientsPerPage);
+
+  // Cambiar de página
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Agregar filas vacías si hay menos de 3 clientes en la página actual
+  const rowsToFill = clientsPerPage - currentClients.length;
+  const emptyRows = Array.from({ length: rowsToFill }, (_, index) => (
+    <tr
+      key={`empty-${index}`}
+      className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+      <td className="px-4 py-4 text-sm text-gray-700 border-b">&nbsp;</td>
+      <td className="px-4 py-2 text-sm text-gray-700 border-b">&nbsp;</td>
+      <td className="px-4 py-2 text-sm text-gray-700 border-b">&nbsp;</td>
+      <td className="px-4 py-2 text-sm text-gray-700 border-b">&nbsp;</td>
+    </tr>
+  ));
+
   return (
-    <div className="p-4">
+    <div className="p-0">
       <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-300 bg-white shadow-md rounded-lg">
-          <thead className="bg-blue-800 text-white border-blue-800">
+        <table className="min-w-full border border-gray-300 bg-white">
+          <thead className="bg-blue-700 text-white border-blue-800">
             <tr>
               <th className="px-4 py-2 text-left text-sm font-medium border-b">
                 Nombre Completo
@@ -53,7 +81,7 @@ const ClientsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {clients.map((client, index) => (
+            {currentClients.map((client, index) => (
               <tr
                 key={client.id}
                 className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
@@ -71,9 +99,28 @@ const ClientsTable = () => {
                 </td>
               </tr>
             ))}
+            {emptyRows}
           </tbody>
         </table>
       </div>
+
+      {/* Mostrar controles de paginación solo si hay más de 3 clientes */}
+      {clients.length > clientsPerPage && (
+        <div className="flex justify-center mt-4">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`px-4 py-2 mx-1 border rounded-full ${
+                currentPage === index + 1
+                  ? "bg-blue-700 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}>
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
