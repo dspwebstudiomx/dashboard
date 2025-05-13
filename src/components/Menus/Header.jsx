@@ -76,6 +76,16 @@ const Header = ({ toggleSidebar }) => {
       <Helmet>
         <title>{`${currentPage} - dspwebstudio`}</title>
         <meta name="description" content={`Página de ${currentPage}`} />
+        <meta
+          name="keywords"
+          content="dspwebstudio, proyectos, clientes, tareas, cotizaciones"
+        />
+        <meta name="author" content="Daniel Salvador" />
+        <meta name="robots" content="index, follow" />
+        <link
+          rel="canonical"
+          href={`https://dspwebstudio.com${location.pathname}`}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
 
