@@ -21,7 +21,7 @@ const Header = ({ toggleSidebar }) => {
 
   // Mapeo de rutas a nombres de páginas
   const pageNames = {
-    "/": "Dashboard",
+    "/": "Inicio",
     "/proyectos": "Proyectos",
     "/clientes": "Clientes",
     "/tareas": "Tareas",
@@ -70,6 +70,7 @@ const Header = ({ toggleSidebar }) => {
     }
   };
 
+  // Alternar el Sidebar
   return (
     <>
       {/* Meta etiquetas para SEO */}
@@ -92,13 +93,18 @@ const Header = ({ toggleSidebar }) => {
       {/* Encabezado principal */}
       <header
         id="encabezado principal"
-        className="header md:py-12 top-0 left-0 fixed w-[100vw] md:px-12 mx-auto z-10 dark:bg-gray-900 bg-gray-200 ">
+        className="header md:py-12 2xl:py-6 top-0 left-0 fixed w-full md:px-12 mx-auto z-10 dark:bg-gray-900 bg-gray-200">
+        {/* Contenedor interno del encabezado */}
         <div
           id="contenedor interno"
-          className="header-container flex justify-between items-center h-full px-6 sm:rounded-full bg-white dark:bg-gray-800 shadow-sm border-2 border-gray-100 dark:border-gray-700 py-6 md:px-12">
+          className="header-container flex justify-between items-center h-full px-8 sm:rounded-full bg-white dark:bg-gray-800 border-b-blue-900 shadow-sm border-2 md:border-gray-100 md:dark:border-gray-700 py-6">
           {/* Logo y título */}
           <div className="header-logo-container flex items-center gap-4 justify-center">
-            <a id="link-logo" href="/">
+            <div></div>
+            <a
+              id="link-logo"
+              href="/"
+              className="rounded-full dark:bg-gray-50 w-18 h-18 flex items-center justify-center">
               <img
                 id="logo dspwebstudio"
                 src={logo}
@@ -108,7 +114,7 @@ const Header = ({ toggleSidebar }) => {
             </a>
             <h1
               id="Título Página actual"
-              className="header-logo text-xl font-semibold text-gray-900 dark:text-gray-100">
+              className="header-logo text-2xl font-semibold text-gray-900 dark:text-gray-100 tracking-wider">
               {currentPage}
             </h1>
           </div>
@@ -131,11 +137,13 @@ const Header = ({ toggleSidebar }) => {
             {/* Reloj */}
             <div
               id="reloj"
-              className="clock text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex">
+              className="clock text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex 2xl:w-[200px]">
               <FaRegClock className="inline-block mr-2 text-blue-900 dark:text-blue-400" />
-              {time.includes("AM")
-                ? time.replace("AM", "a.m.")
-                : time.replace("PM", "p.m.")}
+              <span className="w-[114Opx]">
+                {time.includes("AM")
+                  ? time.replace("AM", "a.m.")
+                  : time.replace("PM", "p.m.")}
+              </span>
             </div>
 
             {/* Botón de modo oscuro */}
