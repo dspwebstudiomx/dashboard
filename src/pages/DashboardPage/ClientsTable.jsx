@@ -114,7 +114,7 @@ const ClientsTable = () => {
               className={`px-4 py-2 mx-1 border rounded-full ${
                 currentPage === index + 1
                   ? "bg-blue-700 text-white"
-                  : "bg-gray-200 text-gray-700"
+                  : "bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200"
               }`}>
               {index + 1}
             </button>
