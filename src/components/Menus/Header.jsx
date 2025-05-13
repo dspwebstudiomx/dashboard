@@ -70,6 +70,33 @@ const Header = ({ toggleSidebar }) => {
     }
   };
 
+  // Función para determinar el saludo según la hora
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) {
+      return (
+        <>
+          Buenos días
+          <FaSun className="inline-block mr-2 text-yellow-400 ml-2" />
+        </>
+      );
+    } else if (hour < 18) {
+      return (
+        <>
+          Buenas tardes
+          <FaRegClock className="inline-block mr-2 text-blue-700 ml-2" />
+        </>
+      );
+    } else {
+      return (
+        <>
+          Buenas noches
+          <FaMoon className="inline-block mr-2 text-yellow-500 ml-2" />
+        </>
+      );
+    }
+  };
+
   // Alternar el Sidebar
   return (
     <>
@@ -128,7 +155,7 @@ const Header = ({ toggleSidebar }) => {
               id="saludo"
               className="greeting text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex">
               <span className="text-gray-800 dark:text-blue-400 font-semibold text-xl">
-                ¡Hola,{" "}
+                {getGreeting()},{" "}
                 <span className="text-blue-900 dark:text-blue-400">
                   {localStorage.getItem("nombreUsuario") || "Daniel Salvador"}!
                 </span>
