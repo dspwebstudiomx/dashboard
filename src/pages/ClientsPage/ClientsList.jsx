@@ -70,7 +70,7 @@ const ClientsList = () => {
       {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"
-        className="fixed  col-span-2 flex flex-col gap-6 items-center">
+        className="fixed bottom-0 left-0 md:right-0  md:top-50 flex md:flex-col md:gap-6 items-center z-20 w-[100vw] md:w-[20vw]">
         {/* Botón editar clientes */}
         {/* Botón agregar clientes */}
         <button
