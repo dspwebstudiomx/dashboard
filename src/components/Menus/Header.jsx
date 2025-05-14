@@ -12,6 +12,7 @@ import { FaMoon, FaRegClock, FaSun, FaBars } from "react-icons/fa6";
 import { useLocation } from "react-router-dom"; // Importa useLocation
 import logo from "../../assets/dsp-mixed.png"; // Asegúrate de que la ruta sea correcta
 import { Helmet } from "react-helmet";
+import { IoBulbOutline } from "react-icons/io5";
 
 // Componente Header
 const Header = ({ toggleSidebar }) => {
@@ -180,9 +181,9 @@ const Header = ({ toggleSidebar }) => {
               onClick={toggleDarkMode}
               className="dark-mode-toggle flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md">
               {darkMode ? (
-                <FaSun className="text-yellow-400" />
+                <IoBulbOutline className="text-yellow-300 text-2xl" />
               ) : (
-                <FaMoon className="text-yellow-500" />
+                <FaMoon className="text-yellow-500 text-2xl" />
               )}
             </button>
 
