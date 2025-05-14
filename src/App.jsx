@@ -5,7 +5,7 @@ import ClientsPage from "./pages/ClientsPage/ClientsPage";
 import TasksPage from "./pages/TasksPage/TasksPage";
 import QuotesPage from "./pages/QuotesPage/QuotesPage";
 import "./App.css";
-import Cliente from "@pages/Cliente";
+import Cliente from "@pages/Cliente/Cliente";
 
 const App = () => {
   return (

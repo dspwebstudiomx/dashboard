@@ -23,10 +23,10 @@ const ClientDetailsTable = ({ client, isTableModalOpen, closeTableModal }) => {
           onClose={closeTableModal}
           description="Aquí puedes ver los detalles del cliente.">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-4xl mx-auto">
-            <h1 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-4 text-center">
+            <h1 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-12 text-center">
               Detalles del Cliente
             </h1>
-            <h2 className="flex flex-row items-start justify-start w-full mb-12">
+            <h2 className="flex flex-row items-start justify-start w-full mb-8">
               <img
                 id="imagen-cliente"
                 src={
@@ -45,7 +45,7 @@ const ClientDetailsTable = ({ client, isTableModalOpen, closeTableModal }) => {
                 </span>
               </span>
             </h2>
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse my-12">
               <tbody>
                 {[
                   {
@@ -119,11 +119,12 @@ const ClientDetailsTable = ({ client, isTableModalOpen, closeTableModal }) => {
                     ),
                   },
                 ].map((item, index) => (
-                  <tr key={index} className="border-b">
-                    <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-2 w-1/2 flex items-center gap-2">
-                      {item.icon} {item.label}
+                  <tr key={index} className="border-b border-gray-300">
+                    <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-2 w-full flex items-center gap-2">
+                      <span className="w-6 h-6">{item.icon}</span>
+                      {item.label}
                     </td>
-                    <td className="text-gray-700 dark:text-gray-300 px-2 py-2 w-1/2 font-base">
+                    <td className="text-gray-700 dark:text-gray-300 px-2 py-2 w-1/3 font-base">
                       {item.value}
                     </td>
                   </tr>

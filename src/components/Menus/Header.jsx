@@ -15,7 +15,7 @@ import { Helmet } from "react-helmet";
 import { IoBulbOutline } from "react-icons/io5";
 
 // Componente Header
-const Header = ({ toggleSidebar }) => {
+const Header = ({ toggleSidebar, title }) => {
   const [time, setTime] = useState("");
   const [darkMode, setDarkMode] = useState(false); // Estado para el modo oscuro
   const location = useLocation(); // Obtén la ubicación actual
@@ -27,6 +27,7 @@ const Header = ({ toggleSidebar }) => {
     "/clientes": "Clientes",
     "/tareas": "Tareas",
     "/cotizaciones": "Cotizaciones",
+    "/clientes/:id": "Detalles del Cliente",
   };
 
   const currentPage = pageNames[location.pathname] || "Página desconocida";
@@ -143,7 +144,7 @@ const Header = ({ toggleSidebar }) => {
             <h1
               id="Título Página actual"
               className="header-logo text-2xl font-semibold text-gray-900 dark:text-gray-100 tracking-wider">
-              {currentPage}
+              {currentPage || title}
             </h1>
           </div>
 

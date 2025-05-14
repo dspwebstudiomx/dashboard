@@ -66,7 +66,7 @@ const ClientsList = () => {
   return (
     <section
       id="clients-list-container"
-      className="grid grid-cols-12 top-0 w-full relative gap-6">
+      className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none">
       {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"

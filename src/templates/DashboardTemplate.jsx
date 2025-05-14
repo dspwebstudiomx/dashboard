@@ -9,7 +9,7 @@ import Section from "@components/Section";
  *
  * @param {React.ReactNode} children - Contenido principal que se renderiza en el dashboard.
  */
-const DashboardTemplate = ({ children }) => {
+const DashboardTemplate = ({ children, title }) => {
   // Estado para controlar la visibilidad del Sidebar en pantallas pequeñas
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -23,7 +23,7 @@ const DashboardTemplate = ({ children }) => {
   return (
     <div className="w-full flex flex-col bg-gray-100 dark:bg-gray-900">
       {/* Encabezado con botón para alternar el Sidebar */}
-      <Header toggleSidebar={toggleSidebar} />
+      <Header toggleSidebar={toggleSidebar} title={title} />
 
       {/* Sidebar con transición desde la derecha */}
       {isSidebarOpen && (
@@ -35,18 +35,26 @@ const DashboardTemplate = ({ children }) => {
 
       {/* Contenido principal */}
       <main
-        className={`grid grid-cols-12 p-12 pt-[24vh] md:mt-26 items-start justify-center 2xl:p-24 min-h-[42.5vw] bg-gray-200 dark:bg-gray-900 ${
+        className={`grid grid-cols-12 p-12 pt-[24vh] md:mt-26 items-start justify-center 2xl:px-24 2xl:py-10 min-h-[81vh] bg-gray-200 dark:bg-gray-900 ${
           isSidebarOpen ? "" : "md:grid-cols-12"
         }`}>
         {/* Contenido principal */}
         <Section
-          className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-12"
+          className="p-12"
           columns={
             isSidebarOpen ? "col-span-12 md:col-span-10" : "col-span-12"
           }>
           {children}
         </Section>
       </main>
+      <footer>
+        <div className="flex justify-center items-center py-8 bg-gray-200 dark:bg-gray-900">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            &copy; {new Date().getFullYear()} dspwebstudio. Todos los derechos
+            reservados.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
