@@ -66,6 +66,15 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
     }
   }, [isEditing, client]);
 
+  useEffect(() => {
+    if (isOpen) {
+      const modalElement = document.querySelector(".modal-class"); // Ajusta el selector según tu implementación
+      if (modalElement) {
+        modalElement.scrollTop = 0;
+      }
+    }
+  }, [isOpen]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -148,8 +157,11 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={isEditing ? "Editar Cliente" : "Agregar Cliente"}>
-      <form onSubmit={handleSubmit} className="space-y-4 overflow-y-auto">
+      title={isEditing ? "Editar Cliente" : "Agregar Cliente"}
+      className="flex items-center justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 overflow-y-auto max-h-[70vh]">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {/* Campos del formulario */}
           <div className="form-group flex items-center gap-4">
