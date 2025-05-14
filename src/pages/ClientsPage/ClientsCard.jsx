@@ -25,13 +25,15 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import ClientsModal from "./ClientsModal";
 import { IoWarningOutline } from "react-icons/io5";
+import Modal from "@components/Modal";
+import ClientDetailsTable from "./ClientDetailsTable";
 
 const ClientsCard = ({ client, onClientUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isTableModalOpen, setIsTableModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
+  // Removed unused function to fix the error
   const closeModal = () => setIsModalOpen(false);
 
   const openConfirmModal = () => {
@@ -73,17 +75,12 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 
   const handleEdit = () => {
     console.log("Cliente seleccionado para editar:", client);
-    openModal();
+    setIsModalOpen(true); // Asegúrate de que el modal se abra correctamente
   };
 
   const SocialStyles = {
     link: "text-blue-700 hover:text-blue-500 mx-auto",
     iconSize: "32",
-  };
-
-  const tableStyles = {
-    iconStyle: "text-blue-600",
-    iconSize: "18",
   };
 
   return (
@@ -213,9 +210,8 @@ const ClientsCard = ({ client, onClientUpdate }) => {
         <ClientsModal
           isOpen={isModalOpen}
           onClose={closeModal}
-          client={client}
+          client={client} // Aquí se pasa el cliente
           onClientUpdate={onClientUpdate}
-          isEditing={true}
         />
       )}
       {isConfirmModalOpen && (
@@ -247,107 +243,11 @@ const ClientsCard = ({ client, onClientUpdate }) => {
           </div>
         </div>
       )}
-      {isTableModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-3/4 max-w-4xl">
-            <h2 className="text-lg font-bold text-gray-700 dark:text-gray-300 mb-4">
-              Detalles del Cliente
-            </h2>
-            <table className="w-full border-collapse">
-              <tbody>
-                {[
-                  {
-                    label: "Correo Electrónico:",
-                    value: client?.email,
-                    icon: (
-                      <FaEnvelope
-                        className={tableStyles.iconStyle}
-                        size={tableStyles.iconSize}
-                      />
-                    ),
-                  },
-                  {
-                    label: "Teléfono:",
-                    value: client?.phoneNumber,
-                    icon: (
-                      <FaPhone
-                        className={tableStyles.iconStyle}
-                        size={tableStyles.iconSize}
-                      />
-                    ),
-                  },
-                  {
-                    label: "Dirección:",
-                    value: client?.address,
-                    icon: (
-                      <FaHome
-                        className={tableStyles.iconStyle}
-                        size={tableStyles.iconSize}
-                      />
-                    ),
-                  },
-                  {
-                    label: "Empresa:",
-                    value: client?.company,
-                    icon: (
-                      <FaBuilding
-                        className={tableStyles.iconStyle}
-                        size={tableStyles.iconSize}
-                      />
-                    ),
-                  },
-                  {
-                    label: "Proyecto:",
-                    value: client?.project,
-                    icon: (
-                      <FaTasks
-                        className={tableStyles.iconStyle}
-                        size={tableStyles.iconSize}
-                      />
-                    ),
-                  },
-                  {
-                    label: "RFC:",
-                    value: client?.rfc?.trim() || "Sin Información",
-                    icon: (
-                      <FaIdCard
-                        className={tableStyles.iconStyle}
-                        size={tableStyles.iconSize}
-                      />
-                    ),
-                  },
-                  {
-                    label: "CURP:",
-                    value: client?.curp?.trim() || "Sin Información",
-                    icon: (
-                      <FaIdBadge
-                        className={tableStyles.iconStyle}
-                        size={tableStyles.iconSize}
-                      />
-                    ),
-                  },
-                ].map((item, index) => (
-                  <tr key={index} className="border-b">
-                    <td className="font-base text-gray-700 dark:text-gray-300 px-2 py-2 w-1/2 flex items-center gap-2">
-                      {item.icon} {item.label}
-                    </td>
-                    <td className="text-gray-700 dark:text-gray-300 px-2 py-2 w-1/2 font-base">
-                      {item.value}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="flex justify-end mt-4">
-              <button
-                onClick={closeTableModal}
-                className="bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded hover:bg-gray-400 dark:hover:bg-gray-500">
-                Cerrar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ClientDetailsTable
+        client={client}
+        isTableModalOpen={isTableModalOpen}
+        closeTableModal={closeTableModal}
+      />
     </>
   );
 };

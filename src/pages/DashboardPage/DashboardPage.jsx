@@ -68,11 +68,11 @@ const DashboardPage = () => {
       <h1 className={DashboardStyles.title}>Estadísticas</h1>
 
       {/* Sección de tarjetas del Dashboard */}
-      <section className="grid grid-cols-12 gap-8 mx-auto justify-center items-center mt-20">
+      <section className="grid grid-cols-12 gap-8 mx-auto justify-center items-center">
         {cards.map((card, index) => (
           <div
             key={index}
-            className={` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-6 rounded-lg shadow-md ${card.colSpan}`}>
+            className={` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-6 rounded-lg shadow-md ${card.colSpan} h-full`}>
             <h2 className={DashboardStyles.cardTitle}>{card.title}</h2>
             {card.component}
           </div>

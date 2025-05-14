@@ -16,13 +16,9 @@ import {
 } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const ClientsModal = ({
-  isOpen,
-  onClose,
-  client,
-  onClientUpdate,
-  isEditing,
-}) => {
+const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
+  const isEditing = !!client; // Si hay un cliente, estamos editando
+
   const [formData, setFormData] = useState({
     fullName: "",
     lastName: "",
