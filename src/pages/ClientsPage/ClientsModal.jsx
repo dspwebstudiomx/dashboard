@@ -102,45 +102,50 @@ const ClientsModal = ({
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          imagePreview: reader.result, // Vista previa de la imagen
-          imageFile: file, // Archivo de la imagen
-        }));
-      };
-      reader.readAsDataURL(file);
-
-      // Subir la imagen al servidor
-      const uploadData = new FormData();
-      uploadData.append("image", file);
-
-      axios
-        .post("http://localhost:5000/api/upload", uploadData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            image: response.data.imagePath, // Ruta devuelta por el backend
-          }));
-        })
-        .catch((error) => {
-          console.error("Error al subir la imagen:", error);
-        });
-    }
-  };
   const handleRemoveImage = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       image: "",
     }));
+  };
+
+  // Necesito subir una imagen de un cliente y que se vea en la tarjeta
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      console.error("No se seleccionó ningún archivo.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/clients/${client.id}/image`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error al subir imagen: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log("Imagen subida correctamente:", data);
+
+      if (onClientUpdate) {
+        onClientUpdate((prevClients) =>
+          prevClients.map((c) =>
+            c.id === client.id ? { ...c, image: data.image } : c
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Error subiendo imagen:", error.message);
+    }
   };
 
   return (
@@ -352,7 +357,7 @@ const ClientsModal = ({
                 type="file"
                 name="image"
                 accept="image/*"
-                onChange={handleFileChange}
+                onChange={handleImageUpload}
                 className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none w-[52vw] md:w-[210px]"
               />
             </div>

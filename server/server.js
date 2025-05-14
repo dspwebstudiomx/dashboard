@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import fs from "fs";
 import path from "path";
-import multer from "multer";
 import { fileURLToPath } from "url";
+import multer from "multer";
 
 // Definir __dirname manualmente
 const __filename = fileURLToPath(import.meta.url); // Obtener el nombre del archivo actual
@@ -11,22 +11,7 @@ const __dirname = path.dirname(__filename); // Obtener el directorio del archivo
 
 // Constantes
 const PORT = 5000; // Puerto del servidor
-const UPLOADS_DIR = path.join(__dirname, "uploads");  // Directorio para subir archivos
 const CLIENTS_FILE = path.join(__dirname, "clients.json");
-
-// Configuración de multer para guardar archivos
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, UPLOADS_DIR),
-  filename: (req, file, cb) => {
-    const sanitizedFilename = file.originalname.replace(/\s+/g, "_");
-    cb(null, `${Date.now()}-${sanitizedFilename}`);
-  },
-}); // Configuración de almacenamiento
-// Crear el directorio de uploads si no existe
-const upload = multer({
-  storage,
-  limits: { fileSize: 100 * 1024 * 1024 }, // Límite de 100 MB para archivos
-}); // Configuración de multer
 
 const app = express(); // Inicializar la aplicación de Express
 
@@ -39,7 +24,7 @@ app.use(
 );
 app.use(express.json({ limit: "100mb" })); // Aumenta el límite a 10 MB
 app.use(express.urlencoded({ extended: true, limit: "10mb" })); // Para datos codificados en URL
-app.use("/uploads", express.static(UPLOADS_DIR)); // Servir archivos estáticos
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Función para leer el archivo JSON
 const readClientsFile = (callback) => {
@@ -66,6 +51,23 @@ const writeClientsFile = (clients, res, successMessage) => {
   });
 };
 
+// Configuración de multer para guardar las imágenes en una carpeta específica
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadPath = path.join(__dirname, "uploads");
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath);
+    }
+    cb(null, uploadPath);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname)); // Nombre único para evitar colisiones
+  },
+});
+
+const upload = multer({ storage });
+
 // Rutas
 // Obtener todos los clientes
 app.get("/api/clients", (req, res) => {
@@ -89,7 +91,7 @@ app.get("/api/clients/:id", (req, res) => {
 });
 
 // Agregar un nuevo cliente
-app.post("/api/clients", upload.single("image"), (req, res) => {
+app.post("/api/clients", (req, res) => {
   readClientsFile((err, clients) => {
     if (err)
       return res
@@ -99,7 +101,6 @@ app.post("/api/clients", upload.single("image"), (req, res) => {
     const newClient = {
       id: Date.now(),
       ...req.body,
-      image: req.file ? `/uploads/${req.file.filename}` : null, // Guardar la ruta del archivo
       tasks: [],
     };
 
@@ -109,8 +110,8 @@ app.post("/api/clients", upload.single("image"), (req, res) => {
 });
 
 // Editar un cliente existente
-app.put("/api/clients/:id", upload.single("image"), (req, res) => {
-  const clientId = parseInt(req.params.id, 10); // Asegúrate de que el ID sea un número
+app.put("/api/clients/:id", (req, res) => {
+  const clientId = parseInt(req.params.id, 10);
 
   readClientsFile((err, clients) => {
     if (err) {
@@ -124,21 +125,14 @@ app.put("/api/clients/:id", upload.single("image"), (req, res) => {
       return res.status(404).json({ error: "Cliente no encontrado" });
     }
 
-    // Procesa los datos del cuerpo correctamente
     const updatedFields = req.body;
-
-    // Si se envió una imagen, actualiza el campo "image" con la ruta real del archivo
-    if (req.file) {
-      updatedFields.image = `/uploads/${req.file.filename}`;
-    }
 
     // Actualiza los datos del cliente
     clients[clientIndex] = {
       ...clients[clientIndex],
-      ...updatedFields, // Sobrescribe los campos existentes con los nuevos
+      ...updatedFields,
     };
 
-    // Guarda los cambios en el archivo JSON
     writeClientsFile(clients, res, {
       message: "Cliente actualizado correctamente",
       client: clients[clientIndex],
@@ -182,33 +176,6 @@ app.delete("/api/clients/:id", (req, res) => {
   });
 });
 
-// Subir una imagen (ruta independiente)
-app.post("/api/uploads/:id", upload.single("image"), (req, res) => {
-  const clientId = parseInt(req.params.id, 10);
-
-  readClientsFile((err, clients) => {
-    if (err) {
-      return res
-        .status(500)
-        .json({ error: "Error al leer el archivo de clientes" });
-    }
-
-    const clientIndex = clients.findIndex((client) => client.id === clientId);
-    if (clientIndex === -1) {
-      return res.status(404).json({ error: "Cliente no encontrado" });
-    }
-
-    // Actualiza el campo "image" del cliente con la ruta del archivo
-    clients[clientIndex].image = `/uploads/${req.file.filename}`;
-
-    // Guarda los cambios en el archivo JSON
-    writeClientsFile(clients, res, {
-      message: "Imagen subida y cliente actualizado correctamente",
-      client: clients[clientIndex],
-    });
-  });
-});
-
 // Ruta para agregar tareas a un cliente
 app.post("/api/clients/:clientId/tasks", (req, res) => {
   const clientId = parseInt(req.params.clientId, 10); // Convertir clientId a número
@@ -238,15 +205,32 @@ app.post("/api/clients/:clientId/tasks", (req, res) => {
   });
 });
 
-// Subir una imagen (ruta independiente)
-app.post("/api/uploads", upload.single("image"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No se subió ninguna imagen" });
-  }
+// Endpoint para agregar imágenes a un cliente
+app.post("/api/clients/:clientId/image", upload.single("image"), (req, res) => {
+  const clientId = parseInt(req.params.clientId, 10); // Convertir clientId a número
+  const newImagePath = `/uploads/${req.file.filename}`; // Ruta relativa de la imagen
 
-  res.status(200).json({
-    message: "Imagen subida correctamente",
-    imagePath: `/uploads/${req.file.filename}`, // Ruta de la imagen
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ error: "Error al leer el archivo de clientes" });
+    }
+
+    // Verifica si el cliente existe
+    const client = clients.find((c) => c.id === clientId);
+    if (!client) {
+      return res.status(404).json({ message: "Cliente no encontrado" });
+    }
+
+    // Actualizar el campo 'image' del cliente
+    client.image = newImagePath;
+
+    // Guardar los cambios en el archivo JSON
+    writeClientsFile(clients, res, {
+      message: "Imagen agregada correctamente",
+      image: newImagePath,
+    });
   });
 });
 
