@@ -85,7 +85,17 @@ const ClientsTable = () => {
               <tr
                 key={client.id}
                 className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                <td className="px-4 py-4 text-sm text-gray-700 border-b">
+                <td className="px-4 py-4 text-sm text-gray-700 border-b flex items-center gap-2">
+                  <img
+                    id="imagen-cliente"
+                    src={
+                      client.image
+                        ? `http://localhost:5000${client.image}`
+                        : "../../../server/uploads/avatar_placeholder_large.png"
+                    }
+                    alt={client.fullName}
+                    className="w-8 h-8 rounded-full border-2 border-gray-300 object-cover bg-white"
+                  />
                   {client.fullName} {client.lastName} {client.lastName2}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-700 border-b">
