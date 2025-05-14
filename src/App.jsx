@@ -5,6 +5,7 @@ import ClientsPage from "./pages/ClientsPage/ClientsPage";
 import TasksPage from "./pages/TasksPage/TasksPage";
 import QuotesPage from "./pages/QuotesPage/QuotesPage";
 import "./App.css";
+import Cliente from "@pages/Cliente";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/clientes" element={<ClientsPage />} />
         <Route path="/tareas" element={<TasksPage />} />
         <Route path="/cotizaciones" element={<QuotesPage />} />
+        <Route path="/clientes/:id" element={<Cliente />} />
       </Routes>
     </Router>
   );
