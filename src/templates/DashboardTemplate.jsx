@@ -35,7 +35,7 @@ const DashboardTemplate = ({ children }) => {
 
       {/* Contenido principal */}
       <main
-        className={`grid grid-cols-12 p-12 pt-[24vh] md:mt-26 items-start justify-center 2xl:p-24 min-h-[100vw] bg-gray-200 dark:bg-gray-900 ${
+        className={`grid grid-cols-12 p-12 pt-[24vh] md:mt-26 items-start justify-center 2xl:p-24 min-h-[42.5vw] bg-gray-200 dark:bg-gray-900 ${
           isSidebarOpen ? "" : "md:grid-cols-12"
         }`}>
         {/* Contenido principal */}
