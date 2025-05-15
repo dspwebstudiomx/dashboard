@@ -79,7 +79,7 @@ const Cliente = () => {
         <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
           <article className="">
             <div className="flex w-full justify-end items-center">
-              <a href="/clientes/" title="Ir a clientes">
+              <a href="/clientes" title="Ir a clientes">
                 <MdClose className="text-4xl text-blue-900 dark:text-blue-500" />
               </a>
             </div>
