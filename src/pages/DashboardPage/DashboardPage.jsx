@@ -32,12 +32,12 @@ const DashboardPage = () => {
     {
       title: "Resumen de Proyectos",
       component: <ProjectSummary />,
-      colSpan: "md:col-span-8 col-span-12",
+      colSpan: "md:col-span-7 col-span-12",
     },
     {
       title: "Ingresos",
       component: <RevenueChart />,
-      colSpan: "md:col-span-4 col-span-12",
+      colSpan: "md:col-span-5 col-span-12",
     },
     {
       title: "Lista de Tareas",
@@ -72,7 +72,7 @@ const DashboardPage = () => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className={` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-6 rounded-lg shadow-md ${card.colSpan} h-full`}>
+            className={` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 p-6 rounded-xl shadow-md ${card.colSpan} h-full`}>
             <h2 className={DashboardStyles.cardTitle}>{card.title}</h2>
             {card.component}
           </div>

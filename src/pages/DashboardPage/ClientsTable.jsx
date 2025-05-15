@@ -69,21 +69,19 @@ const ClientsTable = () => {
           className="min-w-full border border-gray-300 bg-white">
           <thead className="bg-blue-700 text-white border-blue-800">
             <tr>
-              <th className="px-4 py-2 text-left text-sm font-medium border-b">
-                Nombre Completo
+              <th className="px-4 py-2 text-left  font-medium border-b">
+                Cliente
               </th>
-              <th className="px-4 py-2 text-left text-sm font-medium border-b">
+              <th className="px-4 py-2 text-left  font-medium border-b">
                 Proyecto
               </th>
-              <th className="px-4 py-2 text-left text-sm font-medium border-b">
+              <th className="px-4 py-2 text-left  font-medium border-b">
                 Correo Electrónico
               </th>
-              <th className="px-4 py-2 text-left text-sm font-medium border-b">
+              <th className="px-4 py-2 text-left  font-medium border-b">
                 Número Telefónico
               </th>
-              <th className="px-8 py-2 text-left text-sm font-medium border-b">
-                Ver
-              </th>
+              <th className="px-8 py-2 text-left  font-medium border-b"></th>
             </tr>
           </thead>
           <tbody>
@@ -91,7 +89,7 @@ const ClientsTable = () => {
               <tr
                 key={client.id}
                 className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                <td className="px-4 py-4 text-sm text-gray-700 border-b flex items-center gap-2">
+                <td className="px-4 py-4 text-sm text-gray-700 border-b flex items-center gap-4">
                   <img
                     id="imagen-cliente"
                     src={
@@ -100,7 +98,7 @@ const ClientsTable = () => {
                         : "../../../server/uploads/avatar_placeholder_large.png"
                     }
                     alt={client.fullName}
-                    className="w-8 h-8 rounded-full border-2 border-gray-300 object-cover bg-white"
+                    className="w-12 h-12 rounded-full border-2 border-gray-300 object-cover bg-white"
                   />
                   {client.fullName} {client.lastName} {client.lastName2}
                 </td>
