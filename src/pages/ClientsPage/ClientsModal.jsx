@@ -339,15 +339,17 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
           id="image-group"
           className="form-group flex gap-4 mt-12 xl:mt-6 p-2">
           <div className="flex items-end gap-4">
-            {formData.image && (
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <img
-                  src={`http://localhost:5000${formData.image}`}
-                  alt="Imagen del cliente"
-                  className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
-                />
-              </div>
-            )}
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <img
+                src={
+                  formData.image
+                    ? `http://localhost:5000${formData.image}`
+                    : "http://localhost:5000/uploads/avatar_placeholder_large.png"
+                }
+                alt="Imagen del cliente"
+                className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
+              />
+            </div>
             <div className="flex flex-col gap-4 justify-center items-start">
               <label className="text-gray-700 dark:text-gray-300 flex items-start gap-4">
                 <FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
