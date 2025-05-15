@@ -14,10 +14,12 @@ import {
 } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { Helmet } from "react-helmet";
+import EditarCliente from "./EditarCliente";
 
 const Cliente = () => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [isProyectExist, setIsProyectExist] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Nuevo estado para el modal
 
   const SocialStyles = {
     link: "text-blue-700 hover:text-blue-500 mx-auto",
@@ -114,6 +116,21 @@ const Cliente = () => {
                   {selectedClient?.fullName} {selectedClient?.lastName}{" "}
                   {selectedClient?.lastName2}
                 </span>
+                {/* Botón para abrir el modal de editar */}
+                <button
+                  className="ml-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-base"
+                  onClick={() => setIsModalOpen(true)}>
+                  Editar cliente
+                </button>
+                {/* Modal de edición */}
+                <EditarCliente
+                  selectedClient={selectedClient}
+                  setSelectedClient={setSelectedClient}
+                  isModalOpen={isModalOpen}
+                  handleSaveClient={() => setIsModalOpen(false)}
+                  handleCloseModal={() => setIsModalOpen(false)}
+                  handleClientUpdate={() => setIsModalOpen(false)}
+                />
               </h1>
               {/* // Muestra todos los datos del cliente */}
               <div className="flex flex-col gap-6">

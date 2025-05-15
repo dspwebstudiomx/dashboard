@@ -161,7 +161,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
       className="flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 overflow-y-auto max-h-[70vh]">
+        className="space-y-4 overflow-y-auto max-h-[70vh] text-base">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {/* Campos del formulario */}
           <div className="form-group flex items-center gap-4">
