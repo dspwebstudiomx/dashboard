@@ -116,10 +116,10 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client?.id}
                 </p>
               </a>
-              <div className="col-span-12 flex flex-col md:flex-row items-center md:justify-between justify-center gap-6 xl:px-6 py-12">
+              <div className="col-span-12 flex flex-col md:flex-row items-center md:justify-between justify-center gap-6 xl:px-2 py-12">
                 <div
                   id="tarjeta-redes-sociales"
-                  className="grid grid-cols-4 md:grid-cols-7 items-center gap-8 md:gap-4">
+                  className="flex flex-wrap items-center gap-8 md:gap-4">
                   {[
                     {
                       href: client?.website,
