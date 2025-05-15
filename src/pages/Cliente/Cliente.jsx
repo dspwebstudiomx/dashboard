@@ -2,10 +2,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DashboardTemplate from "@templates/DashboardTemplate";
 import ProyectosCliente from "./ProyectosCliente";
+import { FaHome } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaPhone,
+  FaXTwitter,
+} from "react-icons/fa6";
+import { MdClose } from "react-icons/md";
 
 const Cliente = () => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [isProyectExist, setIsProyectExist] = useState(false);
+
+  const SocialStyles = {
+    link: "text-blue-700 hover:text-blue-500 mx-auto",
+    iconSize: "32",
+  };
 
   // Cargar cliente desde el archivo JSON
   useEffect(() => {
@@ -23,7 +38,34 @@ const Cliente = () => {
         console.log("Cliente encontrado:", client); // Verifica si se encuentra el cliente
 
         if (client) {
+          // Si no existe la propiedad projects, créala como un arreglo vacío
+          if (!client.projects) {
+            client.projects = [];
+          }
           setSelectedClient(client);
+          setIsProyectExist(client.projects.length > 0);
+        } else {
+          console.error("Cliente no encontrado con ID:", clientId);
+        }
+      })
+      .catch((error) => console.error("Error al cargar clientes:", error));
+
+    axios
+      .get("localhost:5000/api/clients/:id/projects")
+      .then((response) => {
+        console.log("Proyectos cargados:", response.data); // Verifica los datos cargados
+
+        // Buscar el cliente por ID
+        const client = response.data.find((client) => client.id === clientId);
+        console.log("Cliente encontrado:", client); // Verifica si se encuentra el cliente
+
+        if (client) {
+          // Si no existe la propiedad projects, créala como un arreglo vacío
+          if (!client.projects) {
+            client.projects = [];
+          }
+          setSelectedClient(client);
+          setIsProyectExist(client.projects.length > 0);
         } else {
           console.error("Cliente no encontrado con ID:", clientId);
         }
@@ -34,8 +76,13 @@ const Cliente = () => {
   return (
     <DashboardTemplate title="Detalles del Cliente">
       {selectedClient ? (
-        <section className="flex flex-col gap-20 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 xl:p-20">
+        <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
           <article className="">
+            <div className="flex w-full justify-end items-center">
+              <a href="/clientes/" title="Ir a clientes">
+                <MdClose className="text-4xl text-blue-900 dark:text-blue-500" />
+              </a>
+            </div>
             <h1 className="text-3xl mb-12 flex items-center gap-4">
               <img
                 id="imagen-cliente"
@@ -57,7 +104,7 @@ const Cliente = () => {
               <h2 className="text-2xl font-semibold mb-4">
                 Información del Cliente
               </h2>
-              <div>
+              <div className="text-lg">
                 <p>
                   <strong>Correo Electrónico:</strong> {selectedClient.email}
                 </p>
@@ -71,6 +118,62 @@ const Cliente = () => {
                 <p>
                   <strong>Proyecto:</strong> {selectedClient.project}
                 </p>
+              </div>
+            </div>
+            <div className="col-span-12 flex flex-col md:flex-row items-center md:justify-between justify-center gap-6 xl:px-0 py-8">
+              <div
+                id="tarjeta-redes-sociales"
+                className="grid grid-cols-4 md:grid-cols-7 items-center gap-8 md:gap-4">
+                {[
+                  {
+                    href: selectedClient?.website,
+                    icon: <FaHome size={SocialStyles.iconSize} />,
+                    title: "Visitar sitio web",
+                  },
+                  {
+                    href: `mailto:${selectedClient?.email}`,
+                    icon: <FaEnvelope size={SocialStyles.iconSize} />,
+                    title: "Enviar correo electrónico",
+                  },
+                  {
+                    href: `tel:${selectedClient?.phoneNumber}`,
+                    icon: <FaPhone size={SocialStyles.iconSize} />,
+                    title: "Llamar",
+                  },
+                  {
+                    href: selectedClient?.linkedin?.trim(),
+                    icon: <FaLinkedin size={SocialStyles.iconSize} />,
+                    title: "Visitar LinkedIn",
+                  },
+                  {
+                    href: selectedClient?.facebook?.trim(),
+                    icon: <FaFacebook size={SocialStyles.iconSize} />,
+                    title: "Visitar Facebook",
+                  },
+                  {
+                    href: selectedClient?.instagram?.trim(),
+                    icon: <FaInstagram size={SocialStyles.iconSize} />,
+                    title: "Visitar Instagram",
+                  },
+                  {
+                    href: selectedClient?.twitter?.trim(),
+                    icon: <FaXTwitter size={SocialStyles.iconSize} />,
+                    title: "Visitar Twitter",
+                  },
+                ]
+                  .filter((social) => social.href)
+                  .map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={SocialStyles.link}
+                      aria-label={social.title}
+                      title={social.title}>
+                      {social.icon}
+                    </a>
+                  ))}
               </div>
             </div>
           </article>

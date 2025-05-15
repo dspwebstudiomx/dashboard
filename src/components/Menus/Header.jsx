@@ -27,7 +27,7 @@ const Header = ({ toggleSidebar, title }) => {
     "/clientes": "Clientes",
     "/tareas": "Tareas",
     "/cotizaciones": "Cotizaciones",
-    "/clientes/:id": "Detalles del Cliente",
+    "/clientes/:id/": { title: "Clientes", id: "id" },
   };
 
   const currentPage = pageNames[location.pathname] || "Página desconocida";
@@ -82,7 +82,7 @@ const Header = ({ toggleSidebar, title }) => {
           <FaSun className="inline-block mr-2 text-yellow-400 ml-2" />
         </>
       );
-    } else if (hour < 18) {
+    } else if (hour <= 19) {
       return (
         <>
           Buenas tardes
@@ -129,7 +129,6 @@ const Header = ({ toggleSidebar, title }) => {
           className="header-container flex justify-between items-center h-full px-8 sm:rounded-full bg-white dark:bg-gray-800 border-b-blue-900 shadow-sm border-2 md:border-gray-100 md:dark:border-gray-700 py-6">
           {/* Logo y título */}
           <div className="header-logo-container flex items-center gap-4 justify-center">
-            <div></div>
             <a
               id="link-logo"
               href="/"
@@ -143,8 +142,8 @@ const Header = ({ toggleSidebar, title }) => {
             </a>
             <h1
               id="Título Página actual"
-              className="header-logo text-2xl font-semibold text-gray-900 dark:text-gray-100 tracking-wider">
-              {currentPage || title}
+              className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              {title ? title : currentPage}
             </h1>
           </div>
 
