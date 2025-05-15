@@ -6,6 +6,7 @@ const ClientsTable = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortBy, setSortBy] = useState("fullName"); // Nuevo estado para el criterio de orden
   const clientsPerPage = 3; // Límite de clientes por página
 
   useEffect(() => {
@@ -38,7 +39,25 @@ const ClientsTable = () => {
   // Calcular los índices de los clientes para la página actual
   const indexOfLastClient = currentPage * clientsPerPage;
   const indexOfFirstClient = indexOfLastClient - clientsPerPage;
-  const currentClients = clients.slice(indexOfFirstClient, indexOfLastClient);
+
+  // Ordenar según el criterio seleccionado
+  const sortedClients = [...clients].sort((a, b) => {
+    if (sortBy === "fullName") {
+      const nameA = `${a.fullName} ${a.lastName} ${a.lastName2}`.toLowerCase();
+      const nameB = `${b.fullName} ${b.lastName} ${b.lastName2}`.toLowerCase();
+      return nameA.localeCompare(nameB);
+    } else if (sortBy === "lastName") {
+      const lastA = (a.lastName || "").toLowerCase();
+      const lastB = (b.lastName || "").toLowerCase();
+      return lastA.localeCompare(lastB);
+    }
+    return 0;
+  });
+
+  const currentClients = sortedClients.slice(
+    indexOfFirstClient,
+    indexOfLastClient
+  );
 
   // Calcular el número total de páginas
   const totalPages = Math.ceil(clients.length / clientsPerPage);
@@ -49,10 +68,35 @@ const ClientsTable = () => {
   };
 
   return (
-    <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[380px]">
+    <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[420px]">
+      {/* Botones de ordenamiento */}
+      <div className="flex gap-2 mb-2">
+        <button
+          className={`px-3 py-1 rounded ${
+            sortBy === "fullName"
+              ? "bg-blue-700 text-white"
+              : "bg-gray-200 text-gray-700"
+          }`}
+          onClick={() => setSortBy("fullName")}
+          type="button">
+          Ordenar por Nombre
+        </button>
+        <button
+          className={`px-3 py-1 rounded ${
+            sortBy === "lastName"
+              ? "bg-blue-700 text-white"
+              : "bg-gray-200 text-gray-700"
+          }`}
+          onClick={() => setSortBy("lastName")}
+          type="button">
+          Ordenar por Apellido Paterno
+        </button>
+
+        {/* Agregar filtro de búsqueda */}
+      </div>
       <table
         id="clients-table"
-        className="min-w-full border border-gray-300 bg-white border-collapse ">
+        className="min-w-full border border-gray-300 bg-white border-collapse">
         <thead className="bg-blue-700 text-white border-blue-800">
           <tr>
             <th className="px-4 py-2 text-left font-medium border border-gray-300">
