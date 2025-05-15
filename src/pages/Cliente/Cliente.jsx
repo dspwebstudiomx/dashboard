@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DashboardTemplate from "@templates/DashboardTemplate";
 import ProyectosCliente from "./ProyectosCliente";
@@ -73,15 +74,21 @@ const Cliente = () => {
       .catch((error) => console.error("Error al cargar clientes:", error));
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <DashboardTemplate title="Detalles del Cliente">
       {selectedClient ? (
         <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
           <article className="">
             <div className="flex w-full justify-end items-center">
-              <a href="/clientes" title="Ir a clientes">
+              <button
+                id="boton-cerrar"
+                onClick={() => navigate(-1)}
+                title="Volver a la página anterior"
+                className="bg-transparent border-none cursor-pointer">
                 <MdClose className="text-4xl text-blue-900 dark:text-blue-500" />
-              </a>
+              </button>
             </div>
             <h1 className="text-3xl mb-12 flex items-center gap-4">
               <img
