@@ -148,20 +148,20 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": "",
+    "project": "Hogar",
     "image": "/uploads/1747254968072-600664448.png",
     "tasks": [],
-    "projects":[
+    "projects": [
       {
-      "id": "1",
-      "clientId": "1747254921859",
-      "name": "",
-      "title": "Dar de alta al cliente en el sistema",
-      "description": "Dar de alta al cliente en el sistema, para que pueda tener acceso a su cuenta y pueda ver sus proyectos.",
-      "startDate": "2025-05-15",
-      "dueDate": "2025-06-15",
-      "priority": "Alta"
-    }
-  ]
+        "id": "1",
+        "clientId": "1747254921859",
+        "name": "",
+        "title": "Dar de alta al cliente en el sistema",
+        "description": "Dar de alta al cliente en el sistema, para que pueda tener acceso a su cuenta y pueda ver sus proyectos.",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-06-15",
+        "priority": "Baja"
+      }
+    ]
   }
 ]

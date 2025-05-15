@@ -66,7 +66,7 @@ const ClientsList = () => {
   return (
     <section
       id="clients-list-container"
-      className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none">
+      className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none justify-center items-center">
       {/* // Botones de la barra lateral */}
       <aside
         id="clients-aside-buttons"
@@ -106,7 +106,7 @@ const ClientsList = () => {
       {/* // Lista de clientes */}
       <ul
         id="clients-list"
-        className="grid md:grid-cols-3 gap-12 md:gap-6 col-span-12 md:w-[82%] md:ml-56">
+        className="grid md:grid-cols-3 gap-12 md:gap-6 col-span-12 w-full md:w-[82%] md:ml-56">
         {clients.map((client) => (
           <ClientsCard
             key={client.id}

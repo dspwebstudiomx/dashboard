@@ -100,27 +100,38 @@ const Cliente = () => {
               </span>
             </h1>
             {/* // Muestra todos los datos del cliente */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-6">
               <h2 className="text-2xl font-semibold mb-4">
                 Información del Cliente
               </h2>
-              <div className="text-lg">
+              <div className="text-lg flex flex-col gap-4">
                 <p>
-                  <strong>Correo Electrónico:</strong> {selectedClient.email}
+                  <strong>Número de Cliente:</strong>{" "}
+                  <br className="md:hidden" />
+                  {selectedClient.id}
+                </p>
+                <p>
+                  <strong>Correo Electrónico:</strong>{" "}
+                  <br className="md:hidden" />
+                  {selectedClient.email}
                 </p>
                 <p>
                   <strong>Número Telefónico:</strong>{" "}
+                  <br className="md:hidden" />
                   {selectedClient.phoneNumber}
                 </p>
                 <p>
-                  <strong>Dirección:</strong> {selectedClient.address}
+                  <strong>Dirección:</strong> <br className="md:hidden" />
+                  {selectedClient.address}
                 </p>
                 <p>
-                  <strong>Proyecto:</strong> {selectedClient.project}
+                  <strong>Proyecto:</strong> <br className="md:hidden" />
+                  {selectedClient.project}
                 </p>
               </div>
             </div>
             <div className="col-span-12 flex flex-col md:flex-row items-center md:justify-between justify-center gap-6 xl:px-0 py-8">
+              <h2 className="text-2xl font-semibold">Visita</h2>
               <div
                 id="tarjeta-redes-sociales"
                 className="grid grid-cols-4 md:grid-cols-7 items-center gap-8 md:gap-4">
@@ -177,7 +188,7 @@ const Cliente = () => {
               </div>
             </div>
           </article>
-          <div className="grid grid-cols-2">
+          <div className="grid md:grid-cols-2">
             {/* //Proyectos del cliente */}
             <ProyectosCliente
               isProyectExist={isProyectExist}

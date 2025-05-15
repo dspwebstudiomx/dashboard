@@ -25,13 +25,46 @@ const ProyectosCliente = ({ isProyectExist, selectedClient }) => {
                   Fecha de término:{" "}
                   {new Date(project.dueDate).toLocaleDateString()}
                 </p>
-                <p className="text-base text-gray-100">
-                  Días restantes:{" "}
-                  {Math.ceil(
-                    (new Date(project.dueDate) - new Date()) /
-                      (1000 * 60 * 60 * 24)
-                  )}
+                <p className="text-base text-gray-700 dark:text-gray-100">
+                  Días restantes al día de hoy:{" "}
+                  <span className="text-blue-900 dark:text-blue-400 font-semibold">
+                    {Math.ceil(
+                      (new Date(project.dueDate) - new Date()) /
+                        (1000 * 60 * 60 * 24)
+                    )}
+                  </span>
                 </p>
+                {/* <p className="text-sm dark:text-gray-100">
+                  Estado:{" "}
+                  <span
+                    className={`font-semibold ${
+                      project.status === "En Progreso"
+                        ? "text-yellow-600"
+                        : project.status === "Completado"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}>
+                    {project.status}
+                  </span>
+                </p>
+                <p className="text-sm dark:text-gray-100">
+                  Presupuesto:{" "}
+                  <span className="font-semibold text-blue-900 dark:text-blue-400">
+                    ${project.budget.toLocaleString("es-CL")}
+                  </span>
+                </p>
+                <p className="text-sm dark:text-gray-100">
+                  Avance:{" "}
+                  <span className="font-semibold text-blue-900 dark:text-blue-400">
+                    {project.progress}%
+                  </span>
+                </p>
+                <p className="text-sm dark:text-gray-100">
+                  Asignado a:{" "}
+                  <span className="font-semibold text-blue-900 dark:text-blue-400">
+                    {project.assignedTo}
+                  </span>
+                </p> */}
               </div>
               <div className="flex justify-between mt-4">
                 {/* Prioridades */}
