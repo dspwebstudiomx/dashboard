@@ -21,7 +21,7 @@ const DashboardTemplate = ({ children, title }) => {
   };
 
   return (
-    <div className="w-full flex flex-col bg-gray-100 dark:bg-gray-900">
+    <div className="w-full flex flex-col bg-gray-200 dark:bg-gray-900">
       {/* Encabezado con botón para alternar el Sidebar */}
       <Header toggleSidebar={toggleSidebar} title={title} />
 
@@ -35,7 +35,7 @@ const DashboardTemplate = ({ children, title }) => {
 
       {/* Contenido principal */}
       <main
-        className={`grid grid-cols-12 p-0 pt-32 md:mt-26 items-start justify-center 2xl:px-0 2xl:py-10 min-h-[81vh] bg-gray-200 dark:bg-gray-900 ${
+        className={`grid grid-cols-12 p-0 pt-32 md:mt-26 items-start justify-center 2xl:px-0c 2xl:py-10 min-h-[81vh] bg-gray-200 dark:bg-gray-900 ${
           isSidebarOpen ? "" : "md:grid-cols-12"
         }`}>
         {/* Contenido principal */}
@@ -48,7 +48,7 @@ const DashboardTemplate = ({ children, title }) => {
         </Section>
       </main>
       <footer>
-        <div className="flex justify-center items-center py-8 bg-gray-200 dark:bg-gray-900">
+        <div className="flex justify-center items-center py-8">
           <p className="text-gray-600 dark:text-gray-400 text-sm">
             &copy; {new Date().getFullYear()} dspwebstudio. Todos los derechos
             reservados.

@@ -27,7 +27,7 @@ import ClientsModal from "./ClientsModal";
 import { IoWarningOutline } from "react-icons/io5";
 import Modal from "@components/Modal";
 import ClientDetailsTable from "./ClientDetailsTable";
-
+import { Link } from "react-router-dom";
 const ClientsCard = ({ client, onClientUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -97,7 +97,7 @@ const ClientsCard = ({ client, onClientUpdate }) => {
               src={
                 client.image
                   ? `http://localhost:5000${client.image}`
-                  : "../../../server/uploads/avactar_placeholder_large.png"
+                  : "../../../server/uploads/avatar_placeholder_large.png"
               }
               alt={client.fullName}
               className="w-24 h-24 rounded-full mx-auto border-2 border-gray-300 object-cover bg-white"
@@ -111,11 +111,11 @@ const ClientsCard = ({ client, onClientUpdate }) => {
                   {client?.lastName} {client?.lastName2}
                 </span>
               </h2>
-              <a href={`/clientes/${client?.id}`}>
-                <p className="bg-blue-400 px-4 py-2 rounded-4xl text-blue-800">
-                  {client?.id}
-                </p>
-              </a>
+              <Link
+                className="bg-blue-400 px-4 py-2 rounded-4xl text-blue-800"
+                to={`/clientes/${client?.id}`}>
+                {client?.id}
+              </Link>
               <div className="col-span-12 flex flex-col md:flex-row items-center md:justify-between justify-center gap-6 xl:px-2 py-12">
                 <div
                   id="tarjeta-redes-sociales"

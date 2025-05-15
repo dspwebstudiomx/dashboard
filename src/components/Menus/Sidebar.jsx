@@ -14,6 +14,7 @@ import {
   FaTasks,
 } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 // Componente Sidebar
 const Sidebar = ({ columns, isOpen }) => {
@@ -69,12 +70,12 @@ const Sidebar = ({ columns, isOpen }) => {
       <ul id="sidebar-menu" className={SidebarStyles.sidebarMenu}>
         {menuItems.map((item, index) => (
           <li key={index}>
-            <a href={item.path} className={SidebarStyles.sidebarMenuItem}>
+            <NavLink to={item.path} className={SidebarStyles.sidebarMenuItem}>
               <span className={SidebarStyles.sidebarMenuItemIcon}>
                 {item.icon}
               </span>
               <span>{item.label}</span>
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>

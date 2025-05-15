@@ -94,7 +94,8 @@ const ProyectosCliente = ({ isProyectExist, selectedClient }) => {
                 size={24}
                 className="inline-block text-2xl text-red-700"
               />
-              No hay proyectos disponibles para este cliente.
+              No hay proyectos disponibles para {selectedClient.fullName}{" "}
+              {selectedClient.lastName} {selectedClient.lastName2}.
             </p>
             {/* //Boton para agregar un nuevo proyecto */}
             <button

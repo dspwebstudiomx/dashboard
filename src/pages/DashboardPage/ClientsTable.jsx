@@ -97,7 +97,7 @@ const ClientsTable = () => {
                             : "../../../server/uploads/avatar_placeholder_large.png"
                         }
                         alt={client.fullName}
-                        className="w-12 h-12 rounded-full border-2 border-gray-300 object-cover bg-white"
+                        className="w-12 h-12 md:hidden xl:block rounded-full border-2 border-gray-300 object-cover bg-white"
                       />
                     </a>
                     {client.fullName} {client.lastName} {client.lastName2}
