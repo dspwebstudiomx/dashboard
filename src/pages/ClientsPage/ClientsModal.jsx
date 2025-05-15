@@ -122,15 +122,15 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("image", file);
+    const formDataImage = new FormData();
+    formDataImage.append("image", file);
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/clients/${client.id}/image`,
+        `http://localhost:5000/api/clients/${client?.id || "new"}/image`,
         {
           method: "POST",
-          body: formData,
+          body: formDataImage,
         }
       );
 
@@ -141,7 +141,13 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
       const data = await response.json();
       console.log("Imagen subida correctamente:", data);
 
-      if (onClientUpdate) {
+      // Actualiza el estado local para mostrar la imagen inmediatamente
+      setFormData((prev) => ({
+        ...prev,
+        image: data.image,
+      }));
+
+      if (onClientUpdate && client) {
         onClientUpdate((prevClients) =>
           prevClients.map((c) =>
             c.id === client.id ? { ...c, image: data.image } : c
@@ -347,7 +353,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
                     : "http://localhost:5000/uploads/avatar_placeholder_large.png"
                 }
                 alt="Imagen del cliente"
-                className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
+                className="w-24 h-24 object-cover border-2 border-gray-200 dark:border-gray-700 rounded-full"
               />
             </div>
             <div className="flex flex-col gap-4 justify-center items-start">
