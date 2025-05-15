@@ -70,12 +70,12 @@ const DashboardPage = () => {
       {/* Sección de tarjetas del Dashboard */}
       <section className="grid grid-cols-12 gap-8 mx-auto justify-center items-center">
         {cards.map((card, index) => (
-          <div
+          <article
             key={index}
-            className={` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 p-6 rounded-xl shadow-md ${card.colSpan} h-full`}>
+            className={` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 p-6 rounded-xl shadow-md ${card.colSpan} h-full 2xl:p-12`}>
             <h2 className={DashboardStyles.cardTitle}>{card.title}</h2>
             {card.component}
-          </div>
+          </article>
         ))}
       </section>
     </DashboardTemplate>

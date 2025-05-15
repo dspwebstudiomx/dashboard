@@ -48,83 +48,82 @@ const ClientsTable = () => {
     setCurrentPage(pageNumber);
   };
 
-  // Agregar filas vacías si hay menos de 3 clientes en la página actual
-  const rowsToFill = clientsPerPage - currentClients.length;
-  const emptyRows = Array.from({ length: rowsToFill }, (_, index) => (
-    <tr
-      key={`empty-${index}`}
-      className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-      <td className="px-4 py-4 text-sm text-gray-700 border-b">&nbsp;</td>
-      <td className="px-4 py-2 text-sm text-gray-700 border-b">&nbsp;</td>
-      <td className="px-4 py-2 text-sm text-gray-700 border-b">&nbsp;</td>
-      <td className="px-4 py-2 text-sm text-gray-700 border-b">&nbsp;</td>
-    </tr>
-  ));
-
   return (
-    <div className="p-0">
-      <div className="overflow-x-auto">
-        <table
-          id="clients-table"
-          className="min-w-full border border-gray-300 bg-white">
-          <thead className="bg-blue-700 text-white border-blue-800">
+    <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[380px]">
+      <table
+        id="clients-table"
+        className="min-w-full border border-gray-300 bg-white border-collapse ">
+        <thead className="bg-blue-700 text-white border-blue-800">
+          <tr>
+            <th className="px-4 py-2 text-left font-medium border border-gray-300">
+              Cliente
+            </th>
+            <th className="px-4 py-2 text-left font-medium border border-gray-300">
+              Proyecto
+            </th>
+            <th className="px-4 py-2 text-left font-medium border border-gray-300">
+              Correo Electrónico
+            </th>
+            <th className="px-4 py-2 text-left font-medium border border-gray-300">
+              Número Telefónico
+            </th>
+            <th className="px-8 py-2 text-left font-medium border border-gray-300">
+              Ver
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentClients.length === 0 ? (
             <tr>
-              <th className="px-4 py-2 text-left  font-medium border-b">
-                Cliente
-              </th>
-              <th className="px-4 py-2 text-left  font-medium border-b">
-                Proyecto
-              </th>
-              <th className="px-4 py-2 text-left  font-medium border-b">
-                Correo Electrónico
-              </th>
-              <th className="px-4 py-2 text-left  font-medium border-b">
-                Número Telefónico
-              </th>
-              <th className="px-8 py-2 text-left  font-medium border-b"></th>
+              <td
+                colSpan={5}
+                className="px-4 py-8 text-center text-gray-500 border border-gray-300">
+                No hay clientes para mostrar.
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {currentClients.map((client, index) => (
-              <tr
-                key={client.id}
-                className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                <td className="px-4 py-4 text-sm text-gray-700 border-b flex items-center gap-4">
-                  <img
-                    id="imagen-cliente"
-                    src={
-                      client.image
-                        ? `http://localhost:5000${client.image}`
-                        : "../../../server/uploads/avatar_placeholder_large.png"
-                    }
-                    alt={client.fullName}
-                    className="w-12 h-12 rounded-full border-2 border-gray-300 object-cover bg-white"
-                  />
-                  {client.fullName} {client.lastName} {client.lastName2}
-                </td>
-                <td className="px-4 py-2 text-sm text-gray-700 border-b">
-                  {client.project}
-                </td>
-                <td className="px-4 py-2 text-sm text-gray-700 border-b">
-                  {client.email}
-                </td>
-                <td className="px-4 py-2 text-sm text-gray-700 border-b">
-                  {client.phoneNumber}
-                </td>
-                <td className="px-4 py-2 text-sm text-gray-700 border-b">
-                  <a
-                    href={`/clientes/${client.id}`}
-                    className="text-blue-600 hover:text-blue-800">
-                    <FaEye className="w-6 h-6 mx-auto" />
-                  </a>
-                </td>
-              </tr>
-            ))}
-            {emptyRows}
-          </tbody>
-        </table>
-      </div>
-
+          ) : (
+            <>
+              {currentClients.map((client, index) => (
+                <tr
+                  key={client.id}
+                  className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                  <td className="px-4 py-4 text-sm text-gray-700 border border-gray-300 flex items-center gap-4">
+                    <a href={`/clientes/${client.id}`}>
+                      <img
+                        id="imagen-cliente"
+                        src={
+                          client.image
+                            ? `http://localhost:5000${client.image}`
+                            : "../../../server/uploads/avatar_placeholder_large.png"
+                        }
+                        alt={client.fullName}
+                        className="w-12 h-12 rounded-full border-2 border-gray-300 object-cover bg-white"
+                      />
+                    </a>
+                    {client.fullName} {client.lastName} {client.lastName2}
+                  </td>
+                  <td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+                    {client.project}
+                  </td>
+                  <td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+                    {client.email}
+                  </td>
+                  <td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+                    {client.phoneNumber}
+                  </td>
+                  <td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+                    <a
+                      href={`/clientes/${client.id}`}
+                      className="text-blue-600 hover:text-blue-800">
+                      <FaEye className="w-6 h-6 mx-auto" />
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </>
+          )}
+        </tbody>
+      </table>
       {/* Mostrar controles de paginación solo si hay más de 3 clientes */}
       {clients.length > clientsPerPage && (
         <div className="flex justify-center mt-4">

@@ -76,7 +76,7 @@ const Cliente = () => {
   return (
     <DashboardTemplate title="Detalles del Cliente">
       {selectedClient ? (
-        <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
+        <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
           <article className="">
             <div className="flex w-full justify-end items-center">
               <a href="/clientes/" title="Ir a clientes">
@@ -130,7 +130,7 @@ const Cliente = () => {
                 </p>
               </div>
             </div>
-            <div className="col-span-12 flex flex-col md:flex-row items-center md:justify-between justify-center gap-6 xl:px-0 py-8">
+            <div className="col-span-12 flex flex-col items-center md:items-start justify-start gap-6 xl:px-0 py-8 2xl:mt-12">
               <h2 className="text-2xl font-semibold">Visita</h2>
               <div
                 id="tarjeta-redes-sociales"
