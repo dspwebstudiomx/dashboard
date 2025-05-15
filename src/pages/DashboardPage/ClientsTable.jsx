@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaEye } from "react-icons/fa6";
 
 const ClientsTable = () => {
   const [clients, setClients] = useState([]);
@@ -63,7 +64,9 @@ const ClientsTable = () => {
   return (
     <div className="p-0">
       <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-300 bg-white">
+        <table
+          id="clients-table"
+          className="min-w-full border border-gray-300 bg-white">
           <thead className="bg-blue-700 text-white border-blue-800">
             <tr>
               <th className="px-4 py-2 text-left text-sm font-medium border-b">
@@ -77,6 +80,9 @@ const ClientsTable = () => {
               </th>
               <th className="px-4 py-2 text-left text-sm font-medium border-b">
                 Número Telefónico
+              </th>
+              <th className="px-8 py-2 text-left text-sm font-medium border-b">
+                Ver
               </th>
             </tr>
           </thead>
@@ -106,6 +112,13 @@ const ClientsTable = () => {
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-700 border-b">
                   {client.phoneNumber}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-700 border-b">
+                  <a
+                    href={`/clientes/${client.id}`}
+                    className="text-blue-600 hover:text-blue-800">
+                    <FaEye className="w-6 h-6" />
+                  </a>
                 </td>
               </tr>
             ))}
