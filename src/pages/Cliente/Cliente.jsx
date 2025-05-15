@@ -158,6 +158,14 @@ const Cliente = () => {
                     {selectedClient.address}
                   </p>
                   <p>
+                    <strong>RFC:</strong> <br className="md:hidden" />
+                    {selectedClient.rfc}
+                  </p>
+                  <p>
+                    <strong>CURP:</strong> <br className="md:hidden" />
+                    {selectedClient.curp}
+                  </p>
+                  <p>
                     <strong>Proyecto:</strong> <br className="md:hidden" />
                     {selectedClient.project}
                   </p>

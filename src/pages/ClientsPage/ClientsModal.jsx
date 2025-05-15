@@ -338,7 +338,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
         <div
           id="image-group"
           className="form-group flex gap-4 mt-12 xl:mt-6 p-2">
-          <div className="flex items-center gap-4">
+          <div className="flex items-end gap-4">
             {formData.image && (
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <img
@@ -346,12 +346,6 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
                   alt="Imagen del cliente"
                   className="w-24 h-24 object-cover border-2 border-gray-200 rounded-full"
                 />
-                <button
-                  type="button"
-                  onClick={handleRemoveImage}
-                  className="bg-red-500 border-2 border-red-700 hover:bg-red-400 text-white text-sm w-10 h-11 rounded-md place-items-center">
-                  <RiDeleteBin6Line className="text-white text-xl" />
-                </button>
               </div>
             )}
             <div className="flex flex-col gap-4 justify-center items-start">
@@ -369,6 +363,12 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
                 className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none w-[52vw] md:w-[210px]"
               />
             </div>
+            <button
+              type="button"
+              onClick={handleRemoveImage}
+              className="bg-red-500 border-2 border-red-700 hover:bg-red-400 text-white text-sm w-12 h-12 rounded-md place-items-center">
+              <RiDeleteBin6Line className="text-white text-2xl" />
+            </button>
           </div>
         </div>
 
@@ -377,7 +377,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-gray-500 hover:bg-gray-400 text-white rounded-md">
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-md">
             Cancelar
           </button>
           <button
