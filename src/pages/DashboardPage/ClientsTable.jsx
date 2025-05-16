@@ -68,25 +68,25 @@ const ClientsTable = () => {
   };
 
   return (
-    <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[420px]">
+    <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[440px]">
       {/* Botones de ordenamiento */}
       <div className="flex gap-2 mb-2 justify-between items-center">
         <div className="flex gap-6">
           <button
-            className={`px-3 py-1 rounded ${
+            className={`px-3 py-3 rounded ${
               sortBy === "fullName"
                 ? "bg-blue-700 text-white"
-                : "bg-gray-200 text-gray-700"
+                : "bg-gray-500 text-gray-100"
             }`}
             onClick={() => setSortBy("fullName")}
             type="button">
             Ordenar por Nombre
           </button>
           <button
-            className={`px-3 py-1 rounded ${
+            className={`px-3 py-3 rounded ${
               sortBy === "lastName"
                 ? "bg-blue-700 text-white"
-                : "bg-gray-200 text-gray-700"
+                : "bg-gray-500 text-gray-100"
             }`}
             onClick={() => setSortBy("lastName")}
             type="button">
@@ -112,7 +112,7 @@ const ClientsTable = () => {
       </div>
       <table
         id="clients-table"
-        className="min-w-full border border-gray-300 bg-white border-collapse">
+        className="min-w-full border border-gray-300 bg-white border-collapse mt-12">
         <thead className="bg-blue-700 text-white border-blue-800">
           <tr>
             <th className="px-4 py-2 text-left font-medium border border-gray-300">

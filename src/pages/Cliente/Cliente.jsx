@@ -15,6 +15,11 @@ import {
 import { MdClose } from "react-icons/md";
 import { Helmet } from "react-helmet";
 import EditarCliente from "./EditarCliente";
+import CloseButton from "@components/Botones/CloseButton";
+import ClientImage from "@components/Imagenes/ClientImage";
+import FullNameText from "@components/Texts/FullNameText";
+import NewClientTag from "@components/Tags/NewClientTag";
+import Button from "@components/Botones/Button";
 
 const Cliente = () => {
   const [selectedClient, setSelectedClient] = useState(null);
@@ -30,54 +35,32 @@ const Cliente = () => {
   useEffect(() => {
     // Obtener el ID del cliente desde la URL y convertirlo a número
     const clientId = Number(window.location.pathname.split("/").pop());
+    console.log("ID del cliente desde la URL:", clientId);
 
     axios
       .get(`/server/clients.json`)
       .then((response) => {
+        console.log("Datos cargados:", response.data); // Verifica los datos cargados
+
         // Buscar el cliente por ID
         const client = response.data.find((client) => client.id === clientId);
+        console.log("Cliente encontrado:", client); // Verifica si se encuentra el cliente
 
         if (client) {
           // Si no existe la propiedad projects, créala como un arreglo vacío
           if (!client.projects) {
             client.projects = [];
           }
-          // Actualizar el estado con el cliente encontrado
           setSelectedClient(client);
-          // Verificar si el cliente tiene proyectos
           setIsProyectExist(client.projects.length > 0);
         } else {
           console.error("Cliente no encontrado con ID:", clientId);
         }
       })
-      // Manejo de errores
       .catch((error) => console.error("Error al cargar clientes:", error));
   }, []);
 
   const navigate = useNavigate();
-
-  const updatedProjects = selectedClient?.projects || [];
-  const onUpdateProjects = (newProject) => {
-    // Verificar si el nuevo proyecto ya existe
-    const projectExists = updatedProjects.some(
-      (project) => project.id === newProject.id
-    );
-
-    if (!projectExists) {
-      // Si no existe, agregar el nuevo proyecto al arreglo
-      updatedProjects.push(newProject);
-      setIsProyectExist(true);
-    } else {
-      // Si ya existe, puedes mostrar un mensaje o manejarlo de otra manera
-      console.log("El proyecto ya existe.");
-    }
-
-    // Actualizar el cliente con los nuevos proyectos
-    setSelectedClient((prevClient) => ({
-      ...prevClient,
-      projects: updatedProjects,
-    }));
-  };
 
   return (
     <>
@@ -92,51 +75,21 @@ const Cliente = () => {
         {selectedClient ? (
           <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
             <article className="">
-              <div className="flex w-full justify-end items-center">
-                <button
-                  id="boton-cerrar"
-                  onClick={() => navigate(-1)}
-                  title="Volver a la página anterior"
-                  className="bg-transparent border-none cursor-pointer">
-                  <MdClose className="text-4xl text-blue-900 dark:text-blue-500" />
-                </button>
-              </div>
-              <h1 className="text-3xl mb-12 flex items-center gap-4">
-                <img
-                  id="imagen-cliente"
-                  src={
-                    selectedClient.image
-                      ? `http://localhost:5000${selectedClient.image}`
-                      : "../../../server/uploads/avatar_placeholder_large.png"
-                  }
-                  alt={selectedClient.fullName}
-                  className="w-16 h-16 rounded-full border-2 border-gray-300 object-cover bg-white"
-                />
-                <div className="flex flex-col gap-3">
-                  <span>
-                    {selectedClient?.fullName} {selectedClient?.lastName}{" "}
-                    {selectedClient?.lastName2}
-                  </span>
-                  {/* Mostrar "Nuevo Cliente" si es reciente */}
-                  {selectedClient?.createdAt &&
-                    (() => {
-                      const created = new Date(selectedClient.createdAt);
-                      const now = new Date();
-                      const diffTime = now - created;
-                      const diffDays = diffTime / (1000 * 60 * 60 * 24);
-                      return diffDays <= 7 ? (
-                        <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-full text-xs font-semibold md:w-[110px] text-center">
-                          Nuevo Cliente
-                        </span>
-                      ) : null;
-                    })()}
+              <CloseButton onClick={() => navigate(-1)} />
+              <h1 className="text-2xl md:text-3xl mb-12 flex flex-col md:flex-row items-center gap-4">
+                <div className="flex items-center gap-4">
+                  <ClientImage selectedClient={selectedClient} />
+                  <div className="flex flex-col gap-3">
+                    <FullNameText selectedClient={selectedClient} />
+                    <NewClientTag selectedClient={selectedClient} />
+                  </div>
                 </div>
+
                 {/* Botón para abrir el modal de editar */}
-                <button
-                  className="ml-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-base"
-                  onClick={() => setIsModalOpen(true)}>
-                  Editar cliente
-                </button>
+                <Button
+                  onClick={() => setIsModalOpen(true)}
+                  text="Editar cliente"
+                />
                 {/* Modal de edición */}
                 <EditarCliente
                   selectedClient={selectedClient}
@@ -149,10 +102,10 @@ const Cliente = () => {
               </h1>
               {/* // Muestra todos los datos del cliente */}
               <div className="flex flex-col gap-6">
-                <h2 className="text-2xl font-semibold mb-4">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4">
                   Información del Cliente
                 </h2>
-                <div className="text-lg flex flex-col gap-4">
+                <div className="md:text-lg flex flex-col gap-4">
                   <p>
                     <strong>Número de Cliente:</strong>{" "}
                     <br className="md:hidden" />
@@ -187,7 +140,7 @@ const Cliente = () => {
                 </div>
               </div>
               <div className="col-span-12 flex flex-col items-center md:items-start justify-start gap-6 xl:px-0 py-8 2xl:mt-12">
-                <h2 className="text-2xl font-semibold">Visita</h2>
+                <h2 className="text-xl md:text-2xl font-semibold">Visita</h2>
                 <div
                   id="tarjeta-redes-sociales"
                   className="grid grid-cols-4 md:grid-cols-7 items-center gap-8 md:gap-4">
@@ -244,12 +197,21 @@ const Cliente = () => {
                 </div>
               </div>
             </article>
-            <div className="grid md:grid-cols-2">
+            <div className="">
               {/* //Proyectos del cliente */}
               <ProyectosCliente
                 isProyectExist={isProyectExist}
                 selectedClient={selectedClient}
-                onUpdateProjects={onUpdateProjects}
+                onUpdateProjects={(clientId, updatedProjects) => {
+                  setSelectedClient((prev) => {
+                    if (!prev) return prev;
+                    // Si no existe la propiedad projects, créala como un arreglo vacío
+                    const projects = updatedProjects || [];
+                    return { ...prev, projects };
+                  });
+                  setIsProyectExist(updatedProjects.length > 0);
+                  // Aquí puedes agregar una petición a tu backend si lo necesitas
+                }}
               />
             </div>
           </section>

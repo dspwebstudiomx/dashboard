@@ -162,7 +162,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClick={onClose}
       title={isEditing ? "Editar Cliente" : "Agregar Cliente"}
       className="flex items-center justify-center">
       <form

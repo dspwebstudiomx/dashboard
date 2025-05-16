@@ -40,7 +40,7 @@ const DashboardTemplate = ({ children, title }) => {
         }`}>
         {/* Contenido principal */}
         <Section
-          className="p-12"
+          className="p-4 md:p-12"
           columns={
             isSidebarOpen ? "col-span-12 md:col-span-10" : "col-span-12"
           }>

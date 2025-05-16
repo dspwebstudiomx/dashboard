@@ -71,7 +71,16 @@
         "priority": "Low"
       }
     ],
-    "projects": []
+    "projects": [
+      {
+        "title": "a",
+        "description": "a",
+        "startDate": "2025-05-16",
+        "dueDate": "2025-05-22",
+        "priority": "Media",
+        "id": 1747414860896
+      }
+    ]
   },
   {
     "id": 1745953383970,
@@ -83,7 +92,7 @@
     "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
     "company": "EasyLav",
     "project": "Sitio Web",
-    "image": "/uploads/android-chrome-512x512.png",
+    "image": "/uploads/1747433125788-705374573.png",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
     "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
@@ -103,6 +112,21 @@
         "startDate": "",
         "dueDate": "2025-05-06",
         "priority": "Medium"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Sitio Web - EasyLav",
+        "description": "Creación de Sitio Web con secciones.",
+        "services": [
+          "Optimización SEO",
+          "Diseño Web",
+          "Desarrollo Web"
+        ],
+        "startDate": "2025-01-01",
+        "dueDate": "2025-05-16",
+        "priority": "Media",
+        "id": 1747424023109
       }
     ]
   },
@@ -199,12 +223,12 @@
         "id": "1",
         "clientId": "1747336000817",
         "name": "",
-        "title": "Dar de alta al cliente en el sistema",
-        "description": "Dar de alta al cliente en el sistema, para que pueda tener acceso a su cuenta y pueda ver sus proyectos.",
+        "title": "Sitio Web",
+        "description": "Generación del Sitio Web completo",
         "startDate": "2025-05-15",
-        "dueDate": "2025-06-15",
+        "dueDate": "2025-06-16",
         "priority": "Baja"
       }
     ]
   }
-] 
+]

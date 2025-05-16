@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import CloseButton from "./Botones/CloseButton";
 
-const Modal = ({ isOpen, children, title }) => {
+const Modal = ({ isOpen, children, title, onClick }) => {
   useEffect(() => {
     if (isOpen) {
       // Desactiva el scroll del body
@@ -21,7 +22,13 @@ const Modal = ({ isOpen, children, title }) => {
 
   return (
     <section className="fixed inset-0 bg-black/30 dark:bg-black/80 flex items-center justify-center z-50">
-      <article className=" bg-white rounded-xl shadow-lg w-[90vw] h-auto xl:h-auto 2xl:w-auto 2xl:h-auto md:max-w-full p-6 md:p-12 xl:p-16 border-2 border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-6 justify-between">
+      <article
+        className="bg-white rounded-xl shadow-lg w-[90vw] max-h-[90vh] md:max-w-full p-6 md:p-12 xl:p-16 border-2 
+      border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-6 justify-between">
+        {/* Botón cerrar modal */}
+        <div className="flex justify-end">
+          <CloseButton onClick={onClick} />
+        </div>
         {/* Título del modal */}
         {title && (
           <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">
@@ -30,7 +37,7 @@ const Modal = ({ isOpen, children, title }) => {
         )}
 
         {/* Contenido dinámico */}
-        <div className="flex-1 overflow-y-auto">{children}</div>
+        <div className="flex-1 overflow-y-auto min-h-0">{children}</div>
       </article>
     </section>
   );
