@@ -140,6 +140,27 @@ app.put("/api/clients/:id", (req, res) => {
   });
 });
 
+// Agrega en clients.json la fecha de creación y la fecha de modificación del cliente
+app.post("/api/clients", (req, res) => {
+  readClientsFile((err, clients) => {
+    if (err)
+      return res
+        .status(500)
+        .json({ error: "Error al leer el archivo de clientes" });
+
+    const newClient = {
+      id: Date.now(),
+      ...req.body,
+      createdAt: new Date().toISOString(), // Fecha de creación
+      updatedAt: new Date().toISOString(), // Fecha de modificación
+      tasks: [],
+    };
+
+    clients.push(newClient);
+    writeClientsFile(clients, res, newClient);
+  });
+});
+
 // Actualizar un cliente (solo tareas)
 app.put("/api/clients/:id/tasks", (req, res) => {
   readClientsFile((err, clients) => {

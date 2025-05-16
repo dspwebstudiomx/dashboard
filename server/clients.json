@@ -2,6 +2,8 @@
   {
     "id": 1745897285167,
     "fullName": "Daniel Salvador",
+    "lastName": "Pérez",
+    "lastName2": "Bernal",
     "email": "danielperezber@outlook.com",
     "phoneNumber": "+52 443 918 8025",
     "address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
@@ -15,8 +17,8 @@
     "linkedin": "https://linkedin.com/dspwebstudio",
     "project": "Dashboard",
     "image": "/uploads/1747194262916-902081050.png",
-    "lastName2": "Bernal",
-    "lastName": "Pérez",
+    "createdAt": "2025-05-01",
+    "updatedAt": "2025-05-15",
     "tasks": [
       {
         "id": "1",
@@ -81,6 +83,8 @@
     "company": "EasyLav",
     "project": "Sitio Web",
     "image": "/uploads/android-chrome-512x512.png",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
     "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
     "instagram": "https://www.instagram.com/lavanderiaseasylav/",
     "linkedin": "",
@@ -119,6 +123,8 @@
     "linkedin": "",
     "twitter": "",
     "image": "/uploads/1747275463812-708020415.jpg",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
     "tasks": [
       {
         "id": "1",
@@ -150,6 +156,8 @@
     "linkedin": "",
     "project": "Hogar",
     "image": "/uploads/1747335405594-637348198.jpg",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
     "tasks": [],
     "projects": [
       {

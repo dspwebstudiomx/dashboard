@@ -112,10 +112,25 @@ const Cliente = () => {
                   alt={selectedClient.fullName}
                   className="w-16 h-16 rounded-full border-2 border-gray-300 object-cover bg-white"
                 />
-                <span>
-                  {selectedClient?.fullName} {selectedClient?.lastName}{" "}
-                  {selectedClient?.lastName2}
-                </span>
+                <div className="flex flex-col gap-3">
+                  <span>
+                    {selectedClient?.fullName} {selectedClient?.lastName}{" "}
+                    {selectedClient?.lastName2}
+                  </span>
+                  {/* Mostrar "Nuevo Cliente" si es reciente */}
+                  {selectedClient?.createdAt &&
+                    (() => {
+                      const created = new Date(selectedClient.createdAt);
+                      const now = new Date();
+                      const diffTime = now - created;
+                      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+                      return diffDays <= 7 ? (
+                        <span className="px-2 py-1 bg-blue-200 text-blue-800 rounded-full text-xs font-semibold md:w-[110px] text-center">
+                          Nuevo Cliente
+                        </span>
+                      ) : null;
+                    })()}
+                </div>
                 {/* Botón para abrir el modal de editar */}
                 <button
                   className="ml-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-base"
