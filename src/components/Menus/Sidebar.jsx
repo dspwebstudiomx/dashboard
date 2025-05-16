@@ -22,11 +22,11 @@ const Sidebar = ({ columns, isOpen }) => {
   const SidebarStyles = {
     sidebarAside: {
       columns: columns,
-      general: `bg-white text-blue-20 z-40 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-2 border-gray-300 dark:border-gray-700 rounded-xl mt-10`,
-      mobile: `fixed top-20 p-24 w-[100vw] h-[91vh] z-40`,
+      general: `bg-white text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100`,
+      mobile: `fixed top-10 p-24 w-[100vw] h-[96vh] z-[99999]`,
       visible: `translate-x-10 md:translate-x-0`, // Clase para mostrar el Sidebar
       hidden: `translate-x-full`, // Clase para ocultar el Sidebar
-      tablet: `md:p-5 md:rounded-xl shadow-lg md:w-[15vw] md:top-38 md:right-10 z-40`,
+      tablet: `md:p-5 md:rounded-xl shadow-lg md:w-[15vw] md:top-38 md:right-10 md:border-2 md:border-gray-300 md:dark:border-gray-700 md:rounded-xl md:mt-10 `,
       desktop: `xl:w-[15vw] xl:h-[60vh] right-10 xl:top-38`,
     },
     sidebarHeader: `mx-auto`,
