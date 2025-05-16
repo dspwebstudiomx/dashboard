@@ -70,29 +70,45 @@ const ClientsTable = () => {
   return (
     <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[420px]">
       {/* Botones de ordenamiento */}
-      <div className="flex gap-2 mb-2">
-        <button
-          className={`px-3 py-1 rounded ${
-            sortBy === "fullName"
-              ? "bg-blue-700 text-white"
-              : "bg-gray-200 text-gray-700"
-          }`}
-          onClick={() => setSortBy("fullName")}
-          type="button">
-          Ordenar por Nombre
-        </button>
-        <button
-          className={`px-3 py-1 rounded ${
-            sortBy === "lastName"
-              ? "bg-blue-700 text-white"
-              : "bg-gray-200 text-gray-700"
-          }`}
-          onClick={() => setSortBy("lastName")}
-          type="button">
-          Ordenar por Apellido Paterno
-        </button>
+      <div className="flex gap-2 mb-2 justify-between items-center">
+        <div className="flex gap-6">
+          <button
+            className={`px-3 py-1 rounded ${
+              sortBy === "fullName"
+                ? "bg-blue-700 text-white"
+                : "bg-gray-200 text-gray-700"
+            }`}
+            onClick={() => setSortBy("fullName")}
+            type="button">
+            Ordenar por Nombre
+          </button>
+          <button
+            className={`px-3 py-1 rounded ${
+              sortBy === "lastName"
+                ? "bg-blue-700 text-white"
+                : "bg-gray-200 text-gray-700"
+            }`}
+            onClick={() => setSortBy("lastName")}
+            type="button">
+            Ordenar por Apellido Paterno
+          </button>
+        </div>
 
         {/* Agregar filtro de búsqueda */}
+        <input
+          type="text"
+          placeholder="Buscar cliente..."
+          className="px-3 py-1 border rounded"
+          onChange={(e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredClients = clients.filter((client) =>
+              `${client.fullName} ${client.lastName} ${client.lastName2}`
+                .toLowerCase()
+                .includes(searchTerm)
+            );
+            setClients(filteredClients);
+          }}
+        />
       </div>
       <table
         id="clients-table"
