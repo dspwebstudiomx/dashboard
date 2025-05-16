@@ -30,54 +30,54 @@ const Cliente = () => {
   useEffect(() => {
     // Obtener el ID del cliente desde la URL y convertirlo a número
     const clientId = Number(window.location.pathname.split("/").pop());
-    console.log("ID del cliente desde la URL:", clientId);
 
     axios
-      .get("/server/clients.json")
+      .get(`/server/clients.json`)
       .then((response) => {
-        console.log("Datos cargados:", response.data); // Verifica los datos cargados
-
         // Buscar el cliente por ID
         const client = response.data.find((client) => client.id === clientId);
-        console.log("Cliente encontrado:", client); // Verifica si se encuentra el cliente
 
         if (client) {
           // Si no existe la propiedad projects, créala como un arreglo vacío
           if (!client.projects) {
             client.projects = [];
           }
+          // Actualizar el estado con el cliente encontrado
           setSelectedClient(client);
+          // Verificar si el cliente tiene proyectos
           setIsProyectExist(client.projects.length > 0);
         } else {
           console.error("Cliente no encontrado con ID:", clientId);
         }
       })
-      .catch((error) => console.error("Error al cargar clientes:", error));
-
-    axios
-      .get("localhost:5000/api/clients/:id/projects")
-      .then((response) => {
-        console.log("Proyectos cargados:", response.data); // Verifica los datos cargados
-
-        // Buscar el cliente por ID
-        const client = response.data.find((client) => client.id === clientId);
-        console.log("Cliente encontrado:", client); // Verifica si se encuentra el cliente
-
-        if (client) {
-          // Si no existe la propiedad projects, créala como un arreglo vacío
-          if (!client.projects) {
-            client.projects = [];
-          }
-          setSelectedClient(client);
-          setIsProyectExist(client.projects.length > 0);
-        } else {
-          console.error("Cliente no encontrado con ID:", clientId);
-        }
-      })
+      // Manejo de errores
       .catch((error) => console.error("Error al cargar clientes:", error));
   }, []);
 
   const navigate = useNavigate();
+
+  const updatedProjects = selectedClient?.projects || [];
+  const onUpdateProjects = (newProject) => {
+    // Verificar si el nuevo proyecto ya existe
+    const projectExists = updatedProjects.some(
+      (project) => project.id === newProject.id
+    );
+
+    if (!projectExists) {
+      // Si no existe, agregar el nuevo proyecto al arreglo
+      updatedProjects.push(newProject);
+      setIsProyectExist(true);
+    } else {
+      // Si ya existe, puedes mostrar un mensaje o manejarlo de otra manera
+      console.log("El proyecto ya existe.");
+    }
+
+    // Actualizar el cliente con los nuevos proyectos
+    setSelectedClient((prevClient) => ({
+      ...prevClient,
+      projects: updatedProjects,
+    }));
+  };
 
   return (
     <>
@@ -249,6 +249,7 @@ const Cliente = () => {
               <ProyectosCliente
                 isProyectExist={isProyectExist}
                 selectedClient={selectedClient}
+                onUpdateProjects={onUpdateProjects}
               />
             </div>
           </section>

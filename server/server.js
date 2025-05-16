@@ -255,6 +255,31 @@ app.post("/api/clients/:clientId/image", upload.single("image"), (req, res) => {
   });
 });
 
+// Actualizar los proyectos de un cliente
+app.put("/api/clients/:id/projects", (req, res) => {
+  const clientId = parseInt(req.params.id, 10);
+  const { projects } = req.body;
+
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
+    }
+
+    const clientIndex = clients.findIndex((c) => c.id === clientId);
+    if (clientIndex === -1) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+
+    // Actualiza solo la propiedad projects
+    clients[clientIndex].projects = projects;
+
+    writeClientsFile(clients, res, {
+      message: "Proyectos actualizados correctamente",
+      projects: clients[clientIndex].projects,
+    });
+  });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

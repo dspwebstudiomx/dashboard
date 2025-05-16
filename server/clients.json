@@ -193,6 +193,18 @@
     "image": "/uploads/1747336033064-462061038.png",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
-    "tasks": []
+    "tasks": [],
+    "projects": [
+      {
+        "id": "1",
+        "clientId": "1747336000817",
+        "name": "",
+        "title": "Dar de alta al cliente en el sistema",
+        "description": "Dar de alta al cliente en el sistema, para que pueda tener acceso a su cuenta y pueda ver sus proyectos.",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-06-15",
+        "priority": "Baja"
+      }
+    ]
   }
-]
+] 
