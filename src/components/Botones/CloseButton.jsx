@@ -4,7 +4,7 @@ import { MdClose } from "react-icons/md";
 const CloseButton = ({ onClick }) => {
   // const navigate = useNavigate();
   return (
-    <div className="flex w-full justify-end items-center">
+    <div className="flex w-full justify-end items-center mb-6">
       <button
         id="boton-cerrar"
         onClick={onClick}

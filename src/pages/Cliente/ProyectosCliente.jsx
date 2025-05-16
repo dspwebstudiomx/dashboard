@@ -211,7 +211,7 @@ const ProyectosCliente = ({
       <div className="flex justify-start mb-6">
         {!showForm && (
           <button
-            className="text-white px-6 py-4 rounded-xl bg-blue-900 dark:bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-2xl w-[320px] mt-8"
+            className="text-white px-6 py-4 rounded-xl bg-blue-900 dark:bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-2xl w-full md:w-[320px] mt-8"
             onClick={() => setShowForm(!showForm)}>
             {showForm ? "Cancelar" : "Agregar Proyecto"}
           </button>
