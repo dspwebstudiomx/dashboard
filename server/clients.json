@@ -70,7 +70,8 @@
         "dueDate": "2025-05-23",
         "priority": "Low"
       }
-    ]
+    ],
+    "projects": []
   },
   {
     "id": 1745953383970,
@@ -190,6 +191,8 @@
     "linkedin": "",
     "project": "",
     "image": "/uploads/1747336033064-462061038.png",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
     "tasks": []
   }
 ]

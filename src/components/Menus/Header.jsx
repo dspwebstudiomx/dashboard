@@ -82,7 +82,7 @@ const Header = ({ toggleSidebar, title }) => {
           <FaSun className="inline-block mr-2 text-yellow-400 ml-2" />
         </>
       );
-    } else if (hour <= 19) {
+    } else if (hour < 19) {
       return (
         <>
           Buenas tardes
