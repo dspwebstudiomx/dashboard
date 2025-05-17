@@ -47,6 +47,7 @@ const fields = [
     icon: <FaPhone />,
     type: "tel",
     placeholder: "Teléfono",
+    required: true,
   },
   {
     name: "address",
@@ -59,6 +60,7 @@ const fields = [
     icon: <FaBuilding />,
     type: "text",
     placeholder: "Empresa",
+    required: true,
   },
   {
     name: "project",

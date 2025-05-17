@@ -67,16 +67,16 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
         </div>
 
         {/* Botones de acción */}
-        <div className="flex flex-col md:flex-row justify-end gap-4 p-2">
+        <div className="flex flex-col md:flex-row justify-center gap-4 p-2">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-4 bg-blue-500 hover:bg-blue-400 text-white rounded-md w-full">
+            className="px-4 py-4 bg-blue-500 hover:bg-blue-400 text-white rounded-md w-full md:w-[210px]">
             Cancelar
           </button>
           <button
             type="submit"
-            className="px-4 py-4 bg-blue-700 hover:bg-blue-600 text-white rounded-md w-full">
+            className="px-4 py-4 bg-blue-700 hover:bg-blue-600 text-white rounded-md w-full md:w-[210px]">
             {isEditing ? "Actualizar Cliente" : "Agregar Cliente"}
           </button>
         </div>

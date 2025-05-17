@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 const ProjectCard = ({
   project,
   SERVICE_COSTS,
@@ -19,48 +21,93 @@ const ProjectCard = ({
     : 0;
   const total = totalServicios + totalSecciones;
 
+  // Lógica para recortar la descripción
+  const [showFullDesc, setShowFullDesc] = useState(false);
+  const descWords = project.description ? project.description.split(" ") : [];
+  const isLongDesc = descWords.length > 40;
+  const shortDesc = isLongDesc
+    ? descWords.slice(0, 40).join(" ") + "..."
+    : project.description;
+
   return (
     <li
       id={`Proyecto-${project.title}`}
-      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg p-4">
-      <article className="flex flex-col gap-4 p-4">
-        <h3 className="text-lg font-semibold">{project.title}</h3>
-        <p>{project.description}</p>
-        <div className="flex flex-col gap-1 mt-4">
-          <p className="text-sm dark:text-gray-100">
-            Fecha de inicio: {new Date(project.startDate).toLocaleDateString()}
-          </p>
-          <p className="text-sm dark:text-gray-100">
-            Fecha de término: {new Date(project.dueDate).toLocaleDateString()}
-          </p>
-          <p className="text-base text-gray-700 dark:text-gray-100">
-            Días restantes al día de hoy:{" "}
-            <span className="text-blue-900 dark:text-blue-400 font-semibold">
-              {Math.ceil(
-                (new Date(project.dueDate) - new Date()) / (1000 * 60 * 60 * 24)
-              )}
-            </span>
-          </p>
-          <p className="text-base text-gray-700 dark:text-gray-100 font-semibold mt-2">
-            Total del proyecto:{" "}
-            <span className="text-blue-900 dark:text-blue-400">
-              ${total.toLocaleString("es-MX")}
-            </span>
-          </p>
-        </div>
-        <div className="flex flex-col md:flex-row justify-between mt-4">
-          <div className="flex items-center gap-2">
-            <span
-              className={`text-base font-medium py-1 px-6 rounded-full ${
-                project.priority === "Alta"
-                  ? "bg-red-600 text-gray-100"
-                  : project.priority === "Media"
-                  ? "bg-yellow-400 text-gray-800"
-                  : "bg-green-600 text-gray-100"
-              }`}>
-              {project.priority}
-            </span>
+      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg">
+      <div
+        className={`h-2 w-full rounded-t-2xl ${
+          project.priority === "Alta"
+            ? "bg-red-600 text-gray-100"
+            : project.priority === "Media"
+            ? "bg-yellow-400 text-gray-800"
+            : "bg-green-600 text-gray-100"
+        }`}>
+        <br />
+      </div>
+      <article className="flex flex-col md:flex-row gap-12 p-4 md:p-8 justify-between">
+        <div className="flex flex-col gap-8 text-balance">
+          <div className="flex flex-col-reverse md:flex-row justify-between mt-4 gap-6">
+            <h3 className="text-lg md:text-xl font-semibold uppercase">
+              {project.title}
+            </h3>
+            <div className="flex justify-end md:items-center gap-2">
+              <span
+                className={`text-base font-medium py-1 px-6 rounded-full ${
+                  project.priority === "Alta"
+                    ? "bg-red-600 text-gray-100"
+                    : project.priority === "Media"
+                    ? "bg-yellow-400 text-gray-800"
+                    : "bg-green-600 text-gray-100"
+                }`}>
+                {project.priority}
+              </span>
+            </div>
           </div>
+          <div>
+            <p>
+              {showFullDesc || !isLongDesc ? project.description : shortDesc}
+            </p>
+            {isLongDesc && (
+              <button
+                className="text-blue-600 dark:text-blue-700 ml-2 mt-4 font-semibold"
+                onClick={() => setShowFullDesc((prev) => !prev)}
+                type="button">
+                {showFullDesc ? "Ver menos" : "Ver más..."}
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <div className="flex flex-col gap-1 mt-4">
+            <p className="text-sm dark:text-gray-100">
+              Fecha de inicio:{" "}
+              <span className="text-blue-900 dark:text-blue-400 font-semibold">
+                {new Date(project.startDate).toLocaleDateString()}
+              </span>
+            </p>
+            <p className="text-sm dark:text-gray-100">
+              Fecha de término:{" "}
+              <span className="text-blue-900 dark:text-blue-400 font-semibold">
+                {new Date(project.dueDate).toLocaleDateString()}
+              </span>
+            </p>
+            <p className="text-base text-gray-700 dark:text-gray-100">
+              Días restantes al día de hoy:{" "}
+              <span className="text-blue-900 dark:text-blue-400 font-semibold">
+                {Math.ceil(
+                  (new Date(project.dueDate) - new Date()) /
+                    (1000 * 60 * 60 * 24)
+                )}
+              </span>
+            </p>
+            <p className="text-base text-gray-700 dark:text-gray-100 font-semibold mt-2">
+              Total del proyecto:{" "}
+              <span className="text-blue-900 dark:text-blue-400">
+                ${total.toLocaleString("es-MX")}
+              </span>
+            </p>
+          </div>
+
           <div className="flex flex-col md:flex-row gap-4 mt-8">
             <button
               className="text-white px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300"
