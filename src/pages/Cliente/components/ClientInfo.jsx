@@ -74,7 +74,7 @@ const ClientInfo = ({ selectedClient }) => (
           <MdFolder className={iconClass} /> Proyecto:
         </strong>{" "}
         <br className="md:hidden" />
-        {selectedClient.projects?.title || "Sin proyecto"}
+        {selectedClient.project || "Sin proyecto"}
       </p>
     </div>
   </div>

@@ -4,12 +4,6 @@ const ProjectCard = ({
   SECTION_COSTS,
   onEdit,
   onDelete,
-  isEditing,
-  editProject,
-  handleEditInputChange,
-  handleEditProject,
-  setEditProjectId,
-  setEditProject,
 }) => {
   const totalServicios = Array.isArray(project.services)
     ? project.services.reduce(
@@ -24,71 +18,6 @@ const ProjectCard = ({
       )
     : 0;
   const total = totalServicios + totalSecciones;
-
-  if (isEditing) {
-    return (
-      <form onSubmit={handleEditProject} className="flex flex-col gap-2 mb-4">
-        <input
-          type="text"
-          name="title"
-          value={editProject.title}
-          onChange={handleEditInputChange}
-          required
-          className="p-2 rounded border"
-        />
-        <textarea
-          name="description"
-          value={editProject.description}
-          onChange={handleEditInputChange}
-          required
-          className="p-2 rounded border"
-        />
-        <div className="flex gap-2">
-          <input
-            type="date"
-            name="startDate"
-            value={editProject.startDate}
-            onChange={handleEditInputChange}
-            required
-            className="p-2 rounded border"
-          />
-          <input
-            type="date"
-            name="dueDate"
-            value={editProject.dueDate}
-            onChange={handleEditInputChange}
-            required
-            className="p-2 rounded border"
-          />
-          <select
-            name="priority"
-            value={editProject.priority}
-            onChange={handleEditInputChange}
-            className="p-2 rounded border">
-            <option value="Alta">Alta</option>
-            <option value="Media">Media</option>
-            <option value="Baja">Baja</option>
-          </select>
-        </div>
-        <div className="flex gap-2">
-          <button
-            type="submit"
-            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-            Guardar
-          </button>
-          <button
-            type="button"
-            className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
-            onClick={() => {
-              setEditProjectId(null);
-              setEditProject(null);
-            }}>
-            Cancelar
-          </button>
-        </div>
-      </form>
-    );
-  }
 
   return (
     <li

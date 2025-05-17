@@ -70,9 +70,17 @@ export default function useProjects(selectedClient, onUpdateProjects) {
       const updatedClients = clients.map((client) => {
         if (client.id === selectedClient.id) {
           const projects = Array.isArray(client.projects) ? client.projects : [];
+          // Si project no es array, lo inicializa
+          const projectTitles = Array.isArray(client.project) ? client.project : [];
+          // Agrega el nuevo título solo si no existe aún
+          const newProjectTitles = projectTitles.includes(projectWithId.title)
+            ? projectTitles
+            : [...projectTitles, projectWithId.title];
+
           return {
             ...client,
-            projects: [...projects, projectWithId],
+            project: newProjectTitles,
+            projects: [...projects, projectWithId]
           };
         }
         return client;
@@ -141,11 +149,14 @@ export default function useProjects(selectedClient, onUpdateProjects) {
       const updatedClients = clients.map((client) => {
         if (client.id === selectedClient.id) {
           const projects = Array.isArray(client.projects) ? client.projects : [];
+          const updatedProjects = projects.map((p) =>
+            p.id === editProject.id ? editProject : p
+          );
           return {
             ...client,
-            projects: projects.map((p) =>
-              p.id === editProject.id ? editProject : p
-            ),
+            // Actualiza el campo principal "project" con el título editado
+            project: editProject.title,
+            projects: updatedProjects,
           };
         }
         return client;
@@ -159,7 +170,6 @@ export default function useProjects(selectedClient, onUpdateProjects) {
       onUpdateProjects(
         updatedClients.find((c) => c.id === selectedClient.id).projects
       );
-
       setEditProjectId(null);
       setEditProject(null);
     } catch (error) {

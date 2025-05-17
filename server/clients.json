@@ -106,7 +106,7 @@
     "phoneNumber": "+52 443 520 0593",
     "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
     "company": "EasyLav",
-    "project": "Sitio Web",
+    "project": "Sitio Web - EasyLav",
     "image": "/uploads/1747449343205-426163373.jpg",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
@@ -136,7 +136,8 @@
         "services": [
           "Optimización SEO",
           "Diseño Web",
-          "Desarrollo Web"
+          "Desarrollo Web",
+          "Consultoria SEO"
         ],
         "startDate": "2025-01-01",
         "dueDate": "2025-05-16",
