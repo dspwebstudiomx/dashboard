@@ -280,6 +280,25 @@ app.put("/api/clients/:id/projects", (req, res) => {
   });
 });
 
+// Ejemplo de cupones válidos
+const cupones = [
+  { codigo: "DESCUENTO10", descuento: 10, activo: true },
+  { codigo: "DESCUENTO20", descuento: 20, activo: true },
+];
+
+// Endpoint para validar cupón
+app.get("/api/cupones/validar", (req, res) => {
+  const { codigo } = req.query;
+  const cupon = cupones.find(
+    (c) => c.codigo === codigo?.toUpperCase() && c.activo
+  );
+  if (cupon) {
+    res.json({ valido: true, descuento: cupon.descuento });
+  } else {
+    res.json({ valido: false });
+  }
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

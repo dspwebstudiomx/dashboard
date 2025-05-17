@@ -15,7 +15,7 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Dashboard",
+    "project": "test",
     "image": "/uploads/1747461319302-951278021.jpg",
     "createdAt": "2025-05-01",
     "updatedAt": "2025-05-15",
@@ -94,6 +94,26 @@
         "services": [
           "Landing Page"
         ]
+      },
+      {
+        "title": "test",
+        "description": "vxcvvczxczxczxczxvzv",
+        "services": [
+          "E-commerce"
+        ],
+        "sections": [
+          "Blog",
+          "Aviso Legal",
+          "Contacto",
+          "Términos y Condiciones",
+          "Facturación",
+          "Testimonios",
+          "Política de Cookies"
+        ],
+        "startDate": "2025-05-17",
+        "dueDate": "2025-07-30",
+        "priority": "Alta",
+        "id": 1747499029828
       }
     ]
   },
