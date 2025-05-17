@@ -1,0 +1,107 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const initialState = {
+    fullName: "",
+    lastName: "",
+    lastName2: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    company: "",
+    rfc: "",
+    curp: "",
+    website: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    linkedin: "",
+    project: "",
+    image: "",
+};
+
+const useClientForm = ({ client, onClientUpdate, onClose }) => {
+    const isEditing = !!client;
+    const [formData, setFormData] = useState(initialState);
+
+    useEffect(() => {
+        if (isEditing && client) {
+            setFormData((prev) => ({ ...prev, ...client }));
+        } else {
+            setFormData(initialState);
+        }
+    }, [isEditing, client]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let updatedClient;
+            if (isEditing) {
+                const response = await axios.put(
+                    `http://localhost:5000/api/clients/${client.id}`,
+                    formData
+                );
+                updatedClient = response.data;
+            } else {
+                const response = await axios.post(
+                    "http://localhost:5000/api/clients",
+                    formData
+                );
+                updatedClient = response.data;
+            }
+            onClientUpdate(updatedClient);
+            onClose();
+        } catch (error) {
+            console.error("Error al guardar el cliente:", error);
+        }
+    };
+
+    const handleRemoveImage = () => {
+        setFormData((prev) => ({ ...prev, image: "" }));
+    };
+
+    const handleImageUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        const formDataImage = new FormData();
+        formDataImage.append("image", file);
+
+        try {
+            const response = await fetch(
+                `http://localhost:5000/api/clients/${client?.id || "new"}/image`,
+                {
+                    method: "POST",
+                    body: formDataImage,
+                }
+            );
+            if (!response.ok) throw new Error(`Error al subir imagen: ${response.statusText}`);
+            const data = await response.json();
+            setFormData((prev) => ({ ...prev, image: data.image }));
+            if (onClientUpdate && client) {
+                onClientUpdate((prevClients) =>
+                    prevClients.map((c) =>
+                        c.id === client.id ? { ...c, image: data.image } : c
+                    )
+                );
+            }
+        } catch (error) {
+            console.error("Error subiendo imagen:", error.message);
+        }
+    };
+
+    return {
+        formData,
+        handleChange,
+        handleSubmit,
+        handleImageUpload,
+        handleRemoveImage,
+        isEditing,
+    };
+};
+
+export default useClientForm;

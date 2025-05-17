@@ -1,163 +1,20 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import PropTypes from "prop-types";
 import Modal from "@components/Modal";
-import { FaFileAlt, FaLinkedinIn, FaPhone, FaUserAlt } from "react-icons/fa";
-import {
-  FaAddressCard,
-  FaBuilding,
-  FaEnvelope,
-  FaFacebook,
-  FaGlobe,
-  FaInstagram,
-  FaRegImage,
-  FaUser,
-  FaXTwitter,
-} from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaRegImage } from "react-icons/fa6";
+import useClientForm from "./hooks/useClientForm";
+import ClientFormFields from "./components/ClientFormFields";
 
 const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
-  const isEditing = !!client; // Si hay un cliente, estamos editando
-
-  const [formData, setFormData] = useState({
-    fullName: "",
-    lastName: "",
-    lastName2: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    company: "",
-    rfc: "",
-    curp: "",
-    website: "",
-    facebook: "",
-    twitter: "",
-    instagram: "",
-    linkedin: "",
-    project: "",
-    image: "",
-  });
-
-  useEffect(() => {
-    if (isEditing && client) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        ...client,
-      }));
-    } else {
-      setFormData({
-        fullName: "",
-        lastName: "",
-        lastName2: "",
-        email: "",
-        phoneNumber: "",
-        address: "",
-        company: "",
-        rfc: "",
-        curp: "",
-        website: "",
-        facebook: "",
-        twitter: "",
-        instagram: "",
-        linkedin: "",
-        project: "",
-        image: "",
-      });
-    }
-  }, [isEditing, client]);
-
-  useEffect(() => {
-    if (isOpen) {
-      const modalElement = document.querySelector(".modal-class"); // Ajusta el selector según tu implementación
-      if (modalElement) {
-        modalElement.scrollTop = 0;
-      }
-    }
-  }, [isOpen]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Datos enviados:", formData);
-
-    try {
-      let updatedClient;
-      if (isEditing) {
-        const response = await axios.put(
-          `http://localhost:5000/api/clients/${client.id}`,
-          formData
-        );
-        updatedClient = response.data;
-      } else {
-        const response = await axios.post(
-          "http://localhost:5000/api/clients",
-          formData
-        );
-        updatedClient = response.data;
-      }
-
-      onClientUpdate(updatedClient);
-      onClose();
-    } catch (error) {
-      console.error("Error al guardar el cliente:", error);
-    }
-  };
-
-  const handleRemoveImage = () => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      image: "",
-    }));
-  };
-
-  // Necesito subir una imagen de un cliente y que se vea en la tarjeta
-  const handleImageUpload = async (event) => {
-    const file = event.target.files[0];
-    if (!file) {
-      console.error("No se seleccionó ningún archivo.");
-      return;
-    }
-
-    const formDataImage = new FormData();
-    formDataImage.append("image", file);
-
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/clients/${client?.id || "new"}/image`,
-        {
-          method: "POST",
-          body: formDataImage,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`Error al subir imagen: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      console.log("Imagen subida correctamente:", data);
-
-      // Actualiza el estado local para mostrar la imagen inmediatamente
-      setFormData((prev) => ({
-        ...prev,
-        image: data.image,
-      }));
-
-      if (onClientUpdate && client) {
-        onClientUpdate((prevClients) =>
-          prevClients.map((c) =>
-            c.id === client.id ? { ...c, image: data.image } : c
-          )
-        );
-      }
-    } catch (error) {
-      console.error("Error subiendo imagen:", error.message);
-    }
-  };
+  const {
+    formData,
+    handleChange,
+    handleSubmit,
+    handleImageUpload,
+    handleRemoveImage,
+    isEditing,
+  } = useClientForm({ client, onClientUpdate, onClose });
 
   return (
     <Modal
@@ -168,177 +25,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
       <form
         onSubmit={handleSubmit}
         className="space-y-4 max-h-[70vh] text-base">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {/* Campos del formulario */}
-          <div className="form-group flex items-center gap-4">
-            <FaUserAlt className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName || ""}
-              onChange={handleChange}
-              placeholder="Nombre(s)"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none"
-              required
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaUserAlt className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              placeholder="Apellido Paterno"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-              required
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaUser className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="lastName2"
-              value={formData.lastName2}
-              onChange={handleChange}
-              placeholder="Apellido Materno"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaEnvelope className="text-blue-900 text-2xl  dark:text-blue-500" />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Correo electrónico"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-              required
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaPhone className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              placeholder="Teléfono"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaAddressCard className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Dirección"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaBuilding className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              placeholder="Empresa"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaFileAlt className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="project"
-              value={formData.project}
-              onChange={handleChange}
-              placeholder="Proyecto"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaFileAlt className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="rfc"
-              value={formData.rfc}
-              onChange={handleChange}
-              placeholder="RFC"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaFileAlt className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="text"
-              name="curp"
-              value={formData.curp}
-              onChange={handleChange}
-              placeholder="CURP"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaGlobe className="text-blue-900 text-2xl  dark:text-blue-500" />
-            <input
-              type="url"
-              name="website"
-              value={formData.website}
-              onChange={handleChange}
-              placeholder="Sitio web"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaFacebook className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="url"
-              name="facebook"
-              value={formData.facebook}
-              onChange={handleChange}
-              placeholder="Facebook"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaXTwitter className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="url"
-              name="twitter"
-              value={formData.twitter}
-              onChange={handleChange}
-              placeholder="Twitter"
-              className="flex-1 p-2 border bg-gray-100 text-gray-800 rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaInstagram className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="url"
-              name="instagram"
-              value={formData.instagram}
-              onChange={handleChange}
-              placeholder="Instagram"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-          <div className="form-group flex items-center gap-4">
-            <FaLinkedinIn className="text-blue-900 text-2xl dark:text-blue-500" />
-            <input
-              type="url"
-              name="linkedin"
-              value={formData.linkedin}
-              onChange={handleChange}
-              placeholder="LinkedIn"
-              className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300  focus:border-blue-700 focus:border-2 focus:outline-none"
-            />
-          </div>
-        </div>
+        <ClientFormFields formData={formData} handleChange={handleChange} />
 
         {/* Imagen */}
         <div
@@ -390,15 +77,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
           <button
             type="submit"
             className="px-4 py-4 bg-blue-700 hover:bg-blue-600 text-white rounded-md w-full">
-            {isEditing ? (
-              <div>
-                <span>Actualizar Cliente</span>
-              </div>
-            ) : (
-              <div>
-                <span>Agregar Cliente</span>
-              </div>
-            )}
+            {isEditing ? "Actualizar Cliente" : "Agregar Cliente"}
           </button>
         </div>
       </form>
@@ -411,7 +90,6 @@ ClientsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   client: PropTypes.object,
   onClientUpdate: PropTypes.func.isRequired,
-  isEditing: PropTypes.bool.isRequired,
 };
 
 export default ClientsModal;

@@ -1,66 +1,23 @@
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useSelectedClient } from "./hooks/useSelectedClient";
 import DashboardTemplate from "@templates/DashboardTemplate";
 import ProyectosCliente from "./ProyectosCliente";
-import { FaHome } from "react-icons/fa";
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaPhone,
-  FaXTwitter,
-} from "react-icons/fa6";
-import { MdClose } from "react-icons/md";
 import { Helmet } from "react-helmet";
-import EditarCliente from "./EditarCliente";
 import CloseButton from "@components/Botones/CloseButton";
-import ClientImage from "@components/Imagenes/ClientImage";
-import FullNameText from "@components/Texts/FullNameText";
-import NewClientTag from "@components/Tags/NewClientTag";
-import Button from "@components/Botones/Button";
+import EditarCliente from "./EditarCliente";
+import ClientHeader from "./components/ClientHeader";
+import ClientInfo from "./components/ClientInfo";
+import ClientSocialLinks from "./components/ClientSocialLinks";
 
 const Cliente = () => {
-  const [selectedClient, setSelectedClient] = useState(null);
-  const [isProyectExist, setIsProyectExist] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Nuevo estado para el modal
-
-  const SocialStyles = {
-    link: "text-blue-700 hover:text-blue-500 mx-auto",
-    iconSize: "32",
-  };
-
-  // Cargar cliente desde el archivo JSON
-  useEffect(() => {
-    // Obtener el ID del cliente desde la URL y convertirlo a número
-    const clientId = Number(window.location.pathname.split("/").pop());
-    console.log("ID del cliente desde la URL:", clientId);
-
-    axios
-      .get(`/server/clients.json`)
-      .then((response) => {
-        console.log("Datos cargados:", response.data); // Verifica los datos cargados
-
-        // Buscar el cliente por ID
-        const client = response.data.find((client) => client.id === clientId);
-        console.log("Cliente encontrado:", client); // Verifica si se encuentra el cliente
-
-        if (client) {
-          // Si no existe la propiedad projects, créala como un arreglo vacío
-          if (!client.projects) {
-            client.projects = [];
-          }
-          setSelectedClient(client);
-          setIsProyectExist(client.projects.length > 0);
-        } else {
-          console.error("Cliente no encontrado con ID:", clientId);
-        }
-      })
-      .catch((error) => console.error("Error al cargar clientes:", error));
-  }, []);
-
-  const navigate = useNavigate();
+  const {
+    selectedClient,
+    setSelectedClient,
+    isProyectExist,
+    setIsProyectExist,
+    isModalOpen,
+    setIsModalOpen,
+    navigate,
+  } = useSelectedClient();
 
   return (
     <>
@@ -74,146 +31,29 @@ const Cliente = () => {
       <DashboardTemplate title="Detalles del Cliente">
         {selectedClient ? (
           <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
-            <article className="">
+            <article>
               <CloseButton onClick={() => navigate(-1)} />
-              <h1 className="text-2xl md:text-3xl mb-12 flex flex-col md:flex-row items-center gap-4">
-                <div className="flex items-center gap-4">
-                  <ClientImage selectedClient={selectedClient} />
-                  <div className="flex flex-col gap-3">
-                    <FullNameText selectedClient={selectedClient} />
-                    <NewClientTag selectedClient={selectedClient} />
-                  </div>
-                </div>
-
-                {/* Botón para abrir el modal de editar */}
-                <Button
-                  onClick={() => setIsModalOpen(true)}
-                  text="Editar cliente"
-                />
-                {/* Modal de edición */}
-                <EditarCliente
-                  selectedClient={selectedClient}
-                  setSelectedClient={setSelectedClient}
-                  isModalOpen={isModalOpen}
-                  handleSaveClient={() => setIsModalOpen(false)}
-                  handleCloseModal={() => setIsModalOpen(false)}
-                  handleClientUpdate={() => setIsModalOpen(false)}
-                />
-              </h1>
-              {/* // Muestra todos los datos del cliente */}
-              <div className="flex flex-col gap-6">
-                <h2 className="text-xl md:text-2xl font-semibold mb-4">
-                  Información del Cliente
-                </h2>
-                <div className="md:text-lg flex flex-col gap-4">
-                  <p>
-                    <strong>Número de Cliente:</strong>{" "}
-                    <br className="md:hidden" />
-                    {selectedClient.id}
-                  </p>
-                  <p>
-                    <strong>Correo Electrónico:</strong>{" "}
-                    <br className="md:hidden" />
-                    {selectedClient.email}
-                  </p>
-                  <p>
-                    <strong>Número Telefónico:</strong>{" "}
-                    <br className="md:hidden" />
-                    {selectedClient.phoneNumber}
-                  </p>
-                  <p>
-                    <strong>Dirección:</strong> <br className="md:hidden" />
-                    {selectedClient.address}
-                  </p>
-                  <p>
-                    <strong>RFC:</strong> <br className="md:hidden" />
-                    {selectedClient.rfc}
-                  </p>
-                  <p>
-                    <strong>CURP:</strong> <br className="md:hidden" />
-                    {selectedClient.curp}
-                  </p>
-                  <p>
-                    <strong>Proyecto:</strong> <br className="md:hidden" />
-                    {selectedClient.project}
-                  </p>
-                </div>
-              </div>
-              <div className="col-span-12 flex flex-col items-center md:items-start justify-start gap-6 xl:px-0 py-8 2xl:mt-12">
-                <h2 className="text-xl md:text-2xl font-semibold">Visita</h2>
-                <div
-                  id="tarjeta-redes-sociales"
-                  className="grid grid-cols-4 md:grid-cols-7 items-center gap-8 md:gap-4">
-                  {[
-                    {
-                      href: selectedClient?.website,
-                      icon: <FaHome size={SocialStyles.iconSize} />,
-                      title: "Visitar sitio web",
-                    },
-                    {
-                      href: `mailto:${selectedClient?.email}`,
-                      icon: <FaEnvelope size={SocialStyles.iconSize} />,
-                      title: "Enviar correo electrónico",
-                    },
-                    {
-                      href: `tel:${selectedClient?.phoneNumber}`,
-                      icon: <FaPhone size={SocialStyles.iconSize} />,
-                      title: "Llamar",
-                    },
-                    {
-                      href: selectedClient?.linkedin?.trim(),
-                      icon: <FaLinkedin size={SocialStyles.iconSize} />,
-                      title: "Visitar LinkedIn",
-                    },
-                    {
-                      href: selectedClient?.facebook?.trim(),
-                      icon: <FaFacebook size={SocialStyles.iconSize} />,
-                      title: "Visitar Facebook",
-                    },
-                    {
-                      href: selectedClient?.instagram?.trim(),
-                      icon: <FaInstagram size={SocialStyles.iconSize} />,
-                      title: "Visitar Instagram",
-                    },
-                    {
-                      href: selectedClient?.twitter?.trim(),
-                      icon: <FaXTwitter size={SocialStyles.iconSize} />,
-                      title: "Visitar Twitter",
-                    },
-                  ]
-                    .filter((social) => social.href)
-                    .map((social, index) => (
-                      <Link
-                        key={index}
-                        to={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={SocialStyles.link}
-                        aria-label={social.title}
-                        title={social.title}>
-                        {social.icon}
-                      </Link>
-                    ))}
-                </div>
-              </div>
-            </article>
-            <div className="">
-              {/* //Proyectos del cliente */}
-              <ProyectosCliente
-                isProyectExist={isProyectExist}
+              <ClientHeader
                 selectedClient={selectedClient}
-                onUpdateProjects={(clientId, updatedProjects) => {
-                  setSelectedClient((prev) => {
-                    if (!prev) return prev;
-                    // Si no existe la propiedad projects, créala como un arreglo vacío
-                    const projects = updatedProjects || [];
-                    return { ...prev, projects };
-                  });
-                  setIsProyectExist(updatedProjects.length > 0);
-                  // Aquí puedes agregar una petición a tu backend si lo necesitas
-                }}
+                setIsModalOpen={setIsModalOpen}
+                isModalOpen={isModalOpen}
+                setSelectedClient={setSelectedClient}
               />
-            </div>
+              <ClientInfo selectedClient={selectedClient} />
+              <ClientSocialLinks selectedClient={selectedClient} />
+            </article>
+            <ProyectosCliente
+              isProyectExist={isProyectExist}
+              selectedClient={selectedClient}
+              onUpdateProjects={(clientId, updatedProjects) => {
+                setSelectedClient((prev) => {
+                  if (!prev) return prev;
+                  const projects = updatedProjects || [];
+                  return { ...prev, projects };
+                });
+                setIsProyectExist(updatedProjects.length > 0);
+              }}
+            />
           </section>
         ) : (
           <p>Cargando cliente...</p>

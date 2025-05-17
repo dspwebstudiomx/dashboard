@@ -16,7 +16,7 @@
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
     "project": "Dashboard",
-    "image": "/uploads/1747194262916-902081050.png",
+    "image": "/uploads/1747461319302-951278021.jpg",
     "createdAt": "2025-05-01",
     "updatedAt": "2025-05-15",
     "tasks": [
@@ -73,12 +73,27 @@
     ],
     "projects": [
       {
-        "title": "a",
-        "description": "a",
+        "title": "Dspwebstudio  - Sitio Web",
+        "description": "Sitio web dspwebstudio ",
         "startDate": "2025-05-16",
         "dueDate": "2025-05-22",
         "priority": "Media",
-        "id": 1747414860896
+        "id": 1747414860896,
+        "sections": [
+          "Contacto",
+          "Blog",
+          "Nuestros Servicios",
+          "Política de Cookies",
+          "Política de Privacidad",
+          "Portafolio",
+          "Quienes Somos",
+          "Redes Sociales",
+          "Términos y Condiciones",
+          "Testimonios"
+        ],
+        "services": [
+          "Landing Page"
+        ]
       }
     ]
   },
@@ -92,7 +107,7 @@
     "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
     "company": "EasyLav",
     "project": "Sitio Web",
-    "image": "/uploads/1747433125788-705374573.png",
+    "image": "/uploads/1747449343205-426163373.jpg",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
     "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
@@ -100,7 +115,7 @@
     "linkedin": "",
     "twitter": "",
     "website": "https://easylav.mx",
-    "rfc": "aa",
+    "rfc": "",
     "curp": "",
     "tasks": [
       {
@@ -187,21 +202,23 @@
     "projects": [
       {
         "title": "Hogar",
-        "description": "Crear sitio web",
+        "description": "Crear sitio web para el hogar",
         "services": [
-          "Landing Page",
-          "Optimización SEO",
-          "Diseño Web"
+          "E-commerce"
         ],
         "sections": [
-          "Contacto",
-          "Blog",
-          "Política de Privacidad",
-          "Política de Cookies",
-          "Quienes Somos",
-          "Términos y Condiciones",
           "Redes Sociales",
-          "Aviso Legal"
+          "Contacto",
+          "Términos y Condiciones",
+          "Testimonios",
+          "Clientes",
+          "Portafolio",
+          "Proyectos",
+          "Política de Cookies",
+          "Preguntas Frecuentes",
+          "Aviso Legal",
+          "Nuestros Servicios",
+          "Quienes Somos"
         ],
         "startDate": "2025-05-22",
         "dueDate": "2025-06-30",

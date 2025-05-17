@@ -9,32 +9,32 @@ const SERVICE_COSTS = {
   "Consultoría de Diseño Web": 2200,
   "Desarrollo Web": 8000,
   "Diseño Web": 3000,
-  "E-commerce": 7000,
+  "E-commerce": 4000,
   "Integración de APIs": 1800,
-  "Landing Page": 1500,
-  "Mantenimiento Web": 1200,
+  "Landing Page": 6500,
+  "Mantenimiento Web": 4500,
   "Optimización SEO": 1700,
   "Rediseño Web": 3500,
 };
 
 const SECTION_COSTS = {
-  "Quienes Somos": 2000,
-  Servicios: 2500,
-  Proyectos: 2200,
-  Contacto: 8000,
-  Blog: 3000,
-  Testimonios: 7000,
-  Equipo: 1800,
-  Clientes: 1500,
+  "Quienes Somos": 500,
+  "Nuestros Servicios": 1100,
+  Proyectos: 1000,
+  Contacto: 1500,
+  Blog: 1500,
+  Testimonios: 500,
+  Equipo: 500,
+  Clientes: 500,
   Portafolio: 1500,
-  Ubicación: 1200,
-  "Preguntas Frecuentes": 2000,
-  "Términos y Condiciones": 1700,
-  "Redes Sociales": 1700,
-  "Política de Privacidad": 3500,
-  "Política de Cookies": 3500,
-  "Aviso Legal": 2000,
-  Facturación: 1200,
+  Ubicación: 600,
+  "Preguntas Frecuentes": 800,
+  "Términos y Condiciones": 1100,
+  "Redes Sociales": 600,
+  "Política de Privacidad": 1100,
+  "Política de Cookies": 1100,
+  "Aviso Legal": 1100,
+  Facturación: 1800,
 };
 
 const ProyectosCliente = ({
@@ -218,15 +218,19 @@ const ProyectosCliente = ({
         )}
       </div>
 
-      {showForm && (
+      {(showForm || editProjectId) && (
         <Modal
-          title="Crear Proyecto"
-          onClick={() => setShowForm(false)}
-          isOpen={showForm}>
+          title={editProjectId ? "Editar Proyecto" : "Crear Proyecto"}
+          onClick={() => {
+            setShowForm(false);
+            setEditProjectId(null);
+            setEditProject(null);
+          }}
+          isOpen={showForm || editProjectId}>
           <form
             id="form-proyecto"
             className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto"
-            onSubmit={handleCreateProject}>
+            onSubmit={editProjectId ? handleEditProject : handleCreateProject}>
             <div className="flex flex-col md:flex-row gap-6">
               {/* Nombre del Proyecto */}
               <div className="flex flex-col gap-2 w-full">
@@ -237,8 +241,10 @@ const ProyectosCliente = ({
                   type="text"
                   name="title"
                   placeholder="Título del proyecto"
-                  value={newProject.title}
-                  onChange={handleInputChange}
+                  value={editProjectId ? editProject.title : newProject.title}
+                  onChange={
+                    editProjectId ? handleEditInputChange : handleInputChange
+                  }
                   required
                   className="p-2 rounded border"
                 />
@@ -253,8 +259,14 @@ const ProyectosCliente = ({
                   <input
                     type="date"
                     name="startDate"
-                    value={newProject.startDate}
-                    onChange={handleInputChange}
+                    value={
+                      editProjectId
+                        ? editProject.startDate
+                        : newProject.startDate
+                    }
+                    onChange={
+                      editProjectId ? handleEditInputChange : handleInputChange
+                    }
                     required
                     className="p-2 rounded border"
                   />
@@ -266,8 +278,12 @@ const ProyectosCliente = ({
                   <input
                     type="date"
                     name="dueDate"
-                    value={newProject.dueDate}
-                    onChange={handleInputChange}
+                    value={
+                      editProjectId ? editProject.dueDate : newProject.dueDate
+                    }
+                    onChange={
+                      editProjectId ? handleEditInputChange : handleInputChange
+                    }
                     required
                     className="p-2 rounded border"
                   />
@@ -278,8 +294,12 @@ const ProyectosCliente = ({
                   </label>
                   <select
                     name="priority"
-                    value={newProject.priority}
-                    onChange={handleInputChange}
+                    value={
+                      editProjectId ? editProject.priority : newProject.priority
+                    }
+                    onChange={
+                      editProjectId ? handleEditInputChange : handleInputChange
+                    }
                     className="p-2 rounded border">
                     <option value="Alta">Alta</option>
                     <option value="Media">Media</option>
@@ -317,30 +337,58 @@ const ProyectosCliente = ({
                         name="services"
                         value={services}
                         checked={
-                          Array.isArray(newProject.services)
-                            ? newProject.services.includes(services)
+                          Array.isArray(
+                            editProjectId
+                              ? editProject.services
+                              : newProject.services
+                          )
+                            ? (editProjectId
+                                ? editProject.services
+                                : newProject.services
+                              ).includes(services)
                             : false
                         }
                         onChange={(e) => {
                           const checked = e.target.checked;
-                          setNewProject((prev) => {
-                            const prevServices = Array.isArray(prev.services)
-                              ? prev.services
-                              : [];
-                            if (checked) {
-                              return {
-                                ...prev,
-                                services: [...prevServices, services],
-                              };
-                            } else {
-                              return {
-                                ...prev,
-                                services: prevServices.filter(
-                                  (s) => s !== services
-                                ),
-                              };
-                            }
-                          });
+                          if (editProjectId) {
+                            setEditProject((prev) => {
+                              const prevServices = Array.isArray(prev.services)
+                                ? prev.services
+                                : [];
+                              if (checked) {
+                                return {
+                                  ...prev,
+                                  services: [...prevServices, services],
+                                };
+                              } else {
+                                return {
+                                  ...prev,
+                                  services: prevServices.filter(
+                                    (s) => s !== services
+                                  ),
+                                };
+                              }
+                            });
+                          } else {
+                            setNewProject((prev) => {
+                              const prevServices = Array.isArray(prev.services)
+                                ? prev.services
+                                : [];
+                              if (checked) {
+                                return {
+                                  ...prev,
+                                  services: [...prevServices, services],
+                                };
+                              } else {
+                                return {
+                                  ...prev,
+                                  services: prevServices.filter(
+                                    (s) => s !== services
+                                  ),
+                                };
+                              }
+                            });
+                          }
                         }}
                       />
                       <span>
@@ -362,7 +410,7 @@ const ProyectosCliente = ({
               <div className="grid md:grid-cols-3 gap-2">
                 {[
                   "Quienes Somos",
-                  "Servicios",
+                  "Nuestros Servicios",
                   "Proyectos",
                   "Contacto",
                   "Blog",
@@ -389,30 +437,58 @@ const ProyectosCliente = ({
                         name="sections"
                         value={sections}
                         checked={
-                          Array.isArray(newProject.sections)
-                            ? newProject.sections.includes(sections)
+                          Array.isArray(
+                            editProjectId
+                              ? editProject.sections
+                              : newProject.sections
+                          )
+                            ? (editProjectId
+                                ? editProject.sections
+                                : newProject.sections
+                              ).includes(sections)
                             : false
                         }
                         onChange={(e) => {
                           const checked = e.target.checked;
-                          setNewProject((prev) => {
-                            const prevSections = Array.isArray(prev.sections)
-                              ? prev.sections
-                              : [];
-                            if (checked) {
-                              return {
-                                ...prev,
-                                sections: [...prevSections, sections],
-                              };
-                            } else {
-                              return {
-                                ...prev,
-                                sections: prevSections.filter(
-                                  (s) => s !== sections
-                                ),
-                              };
-                            }
-                          });
+                          if (editProjectId) {
+                            setEditProject((prev) => {
+                              const prevSections = Array.isArray(prev.sections)
+                                ? prev.sections
+                                : [];
+                              if (checked) {
+                                return {
+                                  ...prev,
+                                  sections: [...prevSections, sections],
+                                };
+                              } else {
+                                return {
+                                  ...prev,
+                                  sections: prevSections.filter(
+                                    (s) => s !== sections
+                                  ),
+                                };
+                              }
+                            });
+                          } else {
+                            setNewProject((prev) => {
+                              const prevSections = Array.isArray(prev.sections)
+                                ? prev.sections
+                                : [];
+                              if (checked) {
+                                return {
+                                  ...prev,
+                                  sections: [...prevSections, sections],
+                                };
+                              } else {
+                                return {
+                                  ...prev,
+                                  sections: prevSections.filter(
+                                    (s) => s !== sections
+                                  ),
+                                };
+                              }
+                            });
+                          }
                         }}
                       />
                       <span>
@@ -434,18 +510,24 @@ const ProyectosCliente = ({
               <textarea
                 name="description"
                 placeholder=""
-                value={newProject.description}
-                onChange={handleInputChange}
+                value={
+                  editProjectId
+                    ? editProject.description
+                    : newProject.description
+                }
+                onChange={
+                  editProjectId ? handleEditInputChange : handleInputChange
+                }
                 required
                 className="p-2 rounded border min-h-[220px] dark:bg-gray-600"
               />
             </div>
 
-            {/* Botón de Crear Proyecto */}
+            {/* Botón de Crear/Editar Proyecto */}
             <button
               type="submit"
               className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition mt-8 w-full md:w-[210px] mx-auto">
-              Crear Proyecto
+              {editProjectId ? "Guardar Cambios" : "Crear Proyecto"}
             </button>
           </form>
         </Modal>
@@ -455,12 +537,19 @@ const ProyectosCliente = ({
         <ul className="mt-12 grid md:grid-cols-2 gap-12">
           {isProyectExist && selectedClient.projects.length > 0 ? (
             selectedClient.projects.map((project) => {
-              const total = Array.isArray(project.services)
+              const totalServicios = Array.isArray(project.services)
                 ? project.services.reduce(
-                    (sum, sections) => sum + (SERVICE_COSTS[sections] || 0),
+                    (sum, servicio) => sum + (SERVICE_COSTS[servicio] || 0),
                     0
                   )
                 : 0;
+              const totalSecciones = Array.isArray(project.sections)
+                ? project.sections.reduce(
+                    (sum, seccion) => sum + (SECTION_COSTS[seccion] || 0),
+                    0
+                  )
+                : 0;
+              const total = totalServicios + totalSecciones;
               return (
                 <li
                   id={`Proyecto-${project.title}`}
@@ -573,9 +662,6 @@ const ProyectosCliente = ({
                           </span>
                         </div>
                         <div className="flex flex-col md:flex-row gap-4 mt-8">
-                          <button className="text-white px-4 py-2 rounded-lg bg-blue-400 hover:bg-blue-500 transition duration-300">
-                            Ver Detalles
-                          </button>
                           <button
                             className="text-white px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300"
                             onClick={() => handleEditClick(project)}
