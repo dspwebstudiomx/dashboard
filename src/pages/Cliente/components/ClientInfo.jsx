@@ -17,55 +17,55 @@ const ClientInfo = ({ selectedClient }) => (
     </h2>
     <div className="md:text-base flex flex-col gap-6 md:ml-4">
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdAssignmentInd className={iconClass} /> Número de Cliente:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         {selectedClient.id}
       </p>
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdEmail className={iconClass} /> Correo Electrónico:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         <span className="lowercase">
           {selectedClient.email ? selectedClient.email : "Sin correo"}
         </span>
       </p>
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdPhone className={iconClass} /> Número Telefónico:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         {selectedClient.phoneNumber
           ? selectedClient.phoneNumber
           : "Sin teléfono"}
       </p>
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdHome className={iconClass} /> Dirección:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         {selectedClient.address ? selectedClient.address : "Sin dirección"}
       </p>
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdFingerprint className={iconClass} /> RFC:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         {selectedClient.rfc ? selectedClient.rfc : "Sin RFC"}
       </p>
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdFingerprint className={iconClass} /> CURP:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         {selectedClient.curp ? selectedClient.curp : "Sin CURP"}
       </p>
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdDateRange className={iconClass} /> Fecha de Registro:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         {new Date(selectedClient.createdAt).toLocaleDateString("es-MX", {
           year: "numeric",
@@ -74,9 +74,9 @@ const ClientInfo = ({ selectedClient }) => (
         })}
       </p>
       <p>
-        <strong>
+        <span className="font-semibold">
           <MdFolder className={iconClass} /> Proyectos:
-        </strong>{" "}
+        </span>{" "}
         <br className="md:hidden" />
         {Array.isArray(selectedClient.projects) &&
         selectedClient.projects.length > 0 ? (

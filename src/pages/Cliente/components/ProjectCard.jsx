@@ -29,12 +29,19 @@ const ProjectCard = ({
     ? descWords.slice(0, 40).join(" ") + "..."
     : project.description;
 
+  const [isCompleted, setIsCompleted] = useState(project.completed || false);
+
+  const handleComplete = () => {
+    setIsCompleted(true);
+    // Aquí puedes llamar a una función para actualizar el estado en el backend si lo necesitas
+  };
+
   return (
     <li
       id={`Proyecto-${project.title}`}
-      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg">
+      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden">
       <div
-        className={`h-2 w-full rounded-t-2xl ${
+        className={`h-2 w-full ${
           project.priority === "Alta"
             ? "bg-red-600 text-gray-100"
             : project.priority === "Media"
@@ -44,7 +51,7 @@ const ProjectCard = ({
         <br />
       </div>
       <article className="flex flex-col md:flex-row gap-12 p-4 md:p-8 justify-between">
-        <div className="flex flex-col gap-8 text-balance">
+        <div className="flex flex-col gap-8 text-balance w-full ">
           <div className="flex flex-col-reverse md:flex-row justify-between mt-4 gap-6">
             <h3 className="text-lg md:text-xl font-semibold uppercase">
               {project.title}
@@ -63,7 +70,7 @@ const ProjectCard = ({
             </div>
           </div>
           <div>
-            <p>
+            <p style={{ whiteSpace: "pre-line" }}>
               {showFullDesc || !isLongDesc ? project.description : shortDesc}
             </p>
             {isLongDesc && (
@@ -102,13 +109,15 @@ const ProjectCard = ({
             </p>
             <p className="text-base text-gray-700 dark:text-gray-100 font-semibold mt-2">
               Total del proyecto:{" "}
-              <span className="text-blue-900 dark:text-blue-400">
+              <span className="text-blue-900 dark:text-blue-400 text-lg">
                 ${total.toLocaleString("es-MX")}
               </span>
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4 mt-8">
+          <div
+            id="botones-tarjeta-proyecto"
+            className="flex flex-col md:flex-row gap-4 mt-8">
             <button
               className="text-white px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300"
               onClick={onEdit}
@@ -121,6 +130,19 @@ const ProjectCard = ({
               type="button">
               Eliminar
             </button>
+            {!isCompleted && (
+              <button
+                className="text-white px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 transition duration-300"
+                onClick={handleComplete}
+                type="button">
+                Marcar como Terminado
+              </button>
+            )}
+            {isCompleted && (
+              <span className="px-4 py-2 rounded-lg bg-green-200 text-green-800 font-semibold flex items-center">
+                Proyecto Terminado
+              </span>
+            )}
           </div>
         </div>
       </article>

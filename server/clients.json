@@ -71,28 +71,7 @@
         "priority": "Low"
       }
     ],
-    "projects": [
-      {
-        "title": "Prueba de Tarjeta",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum placerat justo vestibulum sapien ornare blandit. Cras lacus nisl, congue sed lectus vehicula, consectetur fermentum nisl. Curabitur et egestas nisi, quis eleifend odio. Nulla eleifend leo eu odio imperdiet, ut malesuada augue efficitur. Sed id arcu lobortis purus sollicitudin tincidunt id quis nisi. Sed efficitur nibh nibh, sit amet tempor augue lacinia quis. Maecenas sit amet metus quam. Morbi eget lacinia lorem. Aenean urna nisl, luctus non blandit vel, ultrices id diam. Sed id eros ultricies sem tincidunt pulvinar non id urna.\n\nDuis in condimentum neque, ac volutpat purus. Nam consectetur velit non pellentesque fermentum. Ut tempor a orci non scelerisque. Nullam et tincidunt velit, in cursus quam. Nullam porttitor nisl ac ex iaculis, vel faucibus turpis dictum. In sit amet quam quis ex dapibus fringilla quis ac mi. Curabitur aliquam consequat sem ut blandit.\n\nProin in imperdiet ex. Ut leo orci, pharetra in iaculis eu, sollicitudin nec ligula. Nulla a nunc congue, fringilla enim ac, vulputate turpis. Suspendisse lectus odio, varius a ex vitae, tempor tincidunt dui. In finibus ipsum quis elementum pulvinar. Proin sit amet libero laoreet, gravida quam quis, faucibus nisl. Etiam tempus turpis risus, vitae volutpat dolor accumsan nec.\n\nVivamus nec maximus leo. Praesent vitae erat augue. Praesent molestie, massa et vehicula dictum, ante metus tincidunt justo, vitae feugiat erat dui id neque. Ut sollicitudin mollis hendrerit. Proin pulvinar eros a turpis auctor, ut commodo sem volutpat. Suspendisse gravida, elit quis venenatis mattis, mauris tortor placerat turpis, nec rutrum urna ipsum congue ex. Donec pretium elit dui, eu fringilla ligula efficitur sed. Cras vitae justo scelerisque dui sagittis sagittis. Sed aliquet, orci a convallis malesuada, erat nibh auctor ex, eu luctus mi mi ac nisi. Phasellus finibus viverra ante, vitae rutrum nisi vestibulum non. Sed mattis quam vel nisi iaculis imperdiet. Suspendisse efficitur arcu nec erat accumsan gravida. Nulla quis ultricies arcu.\n\nInteger mattis, nisl vitae pretium cursus, diam lacus suscipit purus, ac placerat enim nisl in ligula. Sed condimentum ex a efficitur cursus. Integer accumsan arcu non malesuada commodo. Cras vel arcu justo. Suspendisse potenti. Donec maximus dictum urna, eget iaculis velit gravida in. Phasellus dictum convallis ante, feugiat facilisis nibh. Morbi vitae ex aliquam, posuere elit condimentum, pulvinar felis.\n\n",
-        "services": [
-          "E-commerce"
-        ],
-        "sections": [
-          "Blog",
-          "Aviso Legal",
-          "Contacto",
-          "Términos y Condiciones",
-          "Facturación",
-          "Testimonios",
-          "Política de Cookies"
-        ],
-        "startDate": "2025-05-17",
-        "dueDate": "2025-07-30",
-        "priority": "Media",
-        "id": 1747499029828
-      }
-    ]
+    "projects": []
   },
   {
     "id": 1745953383970,
@@ -194,12 +173,25 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": "Hogar",
+    "project": "Consultoría SEO - Básico",
     "image": "/uploads/1747335405594-637348198.jpg",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
     "tasks": [],
-    "projects": []
+    "projects": [
+      {
+        "title": "Consultoría SEO - Básico",
+        "description": "Tengo un negocio con productos y servicios de gran calidad, pero mi página web no está generando suficientes visitas ni conversiones. He intentado algunas estrategias, como publicar contenido regularmente y compartir en redes sociales, pero sigo sin posicionarme bien en Google.\n\nTal vez mi sitio tenga problemas de velocidad, una estructura poco intuitiva o que mis palabras clave no sean las adecuadas. No sé si mis imágenes están optimizadas, si mi contenido es suficientemente atractivo para los buscadores, o si mi competencia tiene una ventaja técnica que me impide destacar.\n\nNecesito una consultoría SEO que me ayude a identificar los puntos débiles de mi sitio y me proporcione soluciones prácticas para mejorar mi posicionamiento. Busco recomendaciones claras y un plan de acción que no requiera una reconstrucción total de mi página, sino ajustes estratégicos que me permitan atraer más clientes y aumentar mi visibilidad online.\n",
+        "services": [
+          "Consultoria SEO"
+        ],
+        "sections": [],
+        "startDate": "2025-05-17",
+        "dueDate": "2025-05-28",
+        "priority": "Media",
+        "id": 1747521768783
+      }
+    ]
   },
   {
     "id": 1747336000817,
