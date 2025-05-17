@@ -68,7 +68,7 @@ const ClientsTable = () => {
   };
 
   return (
-    <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[440px]">
+    <div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[460px]">
       {/* Botones de ordenamiento */}
       <div className="flex gap-2 mb-2 justify-between items-center">
         <div className="flex gap-6">
