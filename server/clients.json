@@ -186,14 +186,27 @@
     "tasks": [],
     "projects": [
       {
-        "id": "1",
-        "clientId": "1747254921859",
-        "name": "",
-        "title": "Dar de alta al cliente en el sistema",
-        "description": "Dar de alta al cliente en el sistema, para que pueda tener acceso a su cuenta y pueda ver sus proyectos.",
-        "startDate": "2025-05-15",
-        "dueDate": "2025-06-15",
-        "priority": "Baja"
+        "title": "Hogar",
+        "description": "Crear sitio web",
+        "services": [
+          "Landing Page",
+          "Optimización SEO",
+          "Diseño Web"
+        ],
+        "sections": [
+          "Contacto",
+          "Blog",
+          "Política de Privacidad",
+          "Política de Cookies",
+          "Quienes Somos",
+          "Términos y Condiciones",
+          "Redes Sociales",
+          "Aviso Legal"
+        ],
+        "startDate": "2025-05-22",
+        "dueDate": "2025-06-30",
+        "priority": "Alta",
+        "id": 1747442249956
       }
     ]
   },

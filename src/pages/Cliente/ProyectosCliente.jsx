@@ -220,32 +220,77 @@ const ProyectosCliente = ({
 
       {showForm && (
         <Modal
-          title="Agregar Proyecto"
+          title="Crear Proyecto"
           onClick={() => setShowForm(false)}
           isOpen={showForm}>
           <form
             id="form-proyecto"
-            className="flex flex-col gap-6 md:gap-12 p-4 md:p-8 rounded-lg mb-8 overflow-y-auto"
+            className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto"
             onSubmit={handleCreateProject}>
-            {/* Nombre del Proyecto */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm text-gray-600 dark:text-gray-300">
-                Nombre del Proyecto
-              </label>
-              <input
-                type="text"
-                name="title"
-                placeholder="Título del proyecto"
-                value={newProject.title}
-                onChange={handleInputChange}
-                required
-                className="p-2 rounded border"
-              />
-            </div>
+            <div className="flex flex-col md:flex-row gap-6">
+              {/* Nombre del Proyecto */}
+              <div className="flex flex-col gap-2 w-full">
+                <label className="text-sm text-gray-600 dark:text-gray-300">
+                  Nombre del Proyecto
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Título del proyecto"
+                  value={newProject.title}
+                  onChange={handleInputChange}
+                  required
+                  className="p-2 rounded border"
+                />
+              </div>
 
+              {/* Fechas y Prioridad */}
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300">
+                    Fecha de Inicio
+                  </label>
+                  <input
+                    type="date"
+                    name="startDate"
+                    value={newProject.startDate}
+                    onChange={handleInputChange}
+                    required
+                    className="p-2 rounded border"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300">
+                    Fecha de Término
+                  </label>
+                  <input
+                    type="date"
+                    name="dueDate"
+                    value={newProject.dueDate}
+                    onChange={handleInputChange}
+                    required
+                    className="p-2 rounded border"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-gray-600 dark:text-gray-300">
+                    Prioridad
+                  </label>
+                  <select
+                    name="priority"
+                    value={newProject.priority}
+                    onChange={handleInputChange}
+                    className="p-2 rounded border">
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="Baja">Baja</option>
+                  </select>
+                </div>
+              </div>
+            </div>
             {/* Tipo de Servicio */}
             <div className="flex flex-col gap-4">
-              <label className="text-sm text-gray-600 dark:text-gray-300">
+              <label className="text-xl text-gray-600 dark:text-gray-300">
                 Tipo de Servicio
               </label>
               <div className="grid md:grid-cols-3 gap-2">
@@ -344,25 +389,25 @@ const ProyectosCliente = ({
                         name="sections"
                         value={sections}
                         checked={
-                          Array.isArray(newProject.services)
-                            ? newProject.services.includes(sections)
+                          Array.isArray(newProject.sections)
+                            ? newProject.sections.includes(sections)
                             : false
                         }
                         onChange={(e) => {
                           const checked = e.target.checked;
                           setNewProject((prev) => {
-                            const prevServices = Array.isArray(prev.services)
-                              ? prev.services
+                            const prevSections = Array.isArray(prev.sections)
+                              ? prev.sections
                               : [];
                             if (checked) {
                               return {
                                 ...prev,
-                                services: [...prevServices, sections],
+                                sections: [...prevSections, sections],
                               };
                             } else {
                               return {
                                 ...prev,
-                                services: prevServices.filter(
+                                sections: prevSections.filter(
                                   (s) => s !== sections
                                 ),
                               };
@@ -394,35 +439,6 @@ const ProyectosCliente = ({
                 required
                 className="p-2 rounded border min-h-[220px] dark:bg-gray-600"
               />
-            </div>
-
-            {/* Fechas y Prioridad */}
-            <div className="flex flex-col md:flex-row gap-4">
-              <input
-                type="date"
-                name="startDate"
-                value={newProject.startDate}
-                onChange={handleInputChange}
-                required
-                className="p-2 rounded border"
-              />
-              <input
-                type="date"
-                name="dueDate"
-                value={newProject.dueDate}
-                onChange={handleInputChange}
-                required
-                className="p-2 rounded border"
-              />
-              <select
-                name="priority"
-                value={newProject.priority}
-                onChange={handleInputChange}
-                className="p-2 rounded border">
-                <option value="Alta">Alta</option>
-                <option value="Media">Media</option>
-                <option value="Baja">Baja</option>
-              </select>
             </div>
 
             {/* Botón de Crear Proyecto */}
