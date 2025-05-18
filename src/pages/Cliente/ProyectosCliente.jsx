@@ -3,6 +3,8 @@ import { MdErrorOutline } from "react-icons/md";
 import useProjects from "./hooks/useProjects";
 import ProjectForm from "./components/ProjectForm";
 import ProjectCard from "./components/ProjectCard";
+import Button from "@components/Botones/Button";
+import { IoMdAdd } from "react-icons/io";
 
 const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
   const {
@@ -39,14 +41,12 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
             Puedes agregar, editar o eliminar proyectos según sea necesario.
           </p>
         </div>
-        <div className="flex justify-start mb-6">
-          {!showForm && (
-            <button
-              className="text-white px-6 py-2 rounded-xl bg-blue-900 dark:bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-2xl w-full md:w-[180px] mt-8"
-              onClick={() => setShowForm(true)}>
-              Agregar Proyecto
-            </button>
-          )}
+        <div className="flex items-center justify-center md:justify-end">
+          <Button
+            text="Agregar Proyecto"
+            onClick={() => setShowForm(true)}
+            icon={IoMdAdd}
+          />
         </div>
       </div>
 
@@ -100,11 +100,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
               No hay proyectos disponibles para {selectedClient.fullName}{" "}
               {selectedClient.lastName} {selectedClient.lastName2}.
             </p>
-            <button
-              className="text-white px-6 py-2 rounded-xl bg-blue-900 dark:bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-2xl"
-              onClick={() => setShowForm(true)}>
-              Agregar Proyecto
-            </button>
+            <Button text="Agregar Proyecto" onClick={() => setShowForm(true)} />
           </div>
         )}
       </ul>
