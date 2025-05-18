@@ -15,7 +15,9 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Prueba de Tarjeta",
+    "project": [
+      "Prueba Sistemas"
+    ],
     "image": "/uploads/1747461319302-951278021.jpg",
     "createdAt": "2025-05-01",
     "updatedAt": "2025-05-15",
@@ -71,7 +73,24 @@
         "priority": "Low"
       }
     ],
-    "projects": []
+    "projects": [
+      {
+        "title": "Prueba Sistemas",
+        "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit fermentum, venenatis turpis dapibus suspendisse aptent montes iaculis rutrum, nam morbi sagittis quis enim quisque mus. Dictum natoque phasellus mollis potenti rutrum tortor hac augue odio, dui posuere felis montes diam enim class dis risus parturient, volutpat conubia tempus ultrices auctor erat est ut. Accumsan posuere sociosqu dictum morbi semper per cum condimentum, leo at sapien nascetur primis mauris neque metus, tempus iaculis torquent vestibulum tincidunt senectus lacus.\n\nProin libero etiam convallis facilisis cras dignissim vitae tempor, ridiculus lacus elementum erat parturient imperdiet porta nisi ac, habitant viverra nam donec lacinia conubia pharetra. Himenaeos leo erat vestibulum justo laoreet a augue lobortis, sollicitudin aliquam curabitur in luctus rutrum malesuada, nunc lectus gravida felis dictum nisl tempus. Commodo quis quisque habitasse justo suspendisse parturient turpis varius, sapien tempus est fames ridiculus odio praesent nullam, sociosqu auctor mauris et aliquet placerat volutpat.",
+        "services": [
+          "Diseño Web",
+          "Desarrollo Web"
+        ],
+        "sections": [
+          "Blog"
+        ],
+        "startDate": "2025-05-18",
+        "dueDate": "2025-06-24",
+        "priority": "Baja",
+        "completed": true,
+        "id": 1747531564248
+      }
+    ]
   },
   {
     "id": 1745953383970,
@@ -189,8 +208,9 @@
         "sections": [],
         "startDate": "2025-05-17",
         "dueDate": "2025-05-28",
-        "priority": "Media",
-        "id": 1747521768783
+        "priority": "Alta",
+        "id": 1747521768783,
+        "completed": true
       }
     ]
   },

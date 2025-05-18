@@ -17,11 +17,13 @@ const ClientInfo = ({ selectedClient }) => (
     </h2>
     <div className="md:text-base flex flex-col gap-6 md:ml-4">
       <p>
-        <span className="font-semibold">
+        <span className="font-normal">
           <MdAssignmentInd className={iconClass} /> Número de Cliente:
         </span>{" "}
         <br className="md:hidden" />
-        {selectedClient.id}
+        <span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
+          {selectedClient.id}
+        </span>
       </p>
       <p>
         <span className="font-semibold">

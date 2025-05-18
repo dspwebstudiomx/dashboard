@@ -45,7 +45,9 @@ const ProjectCard = ({
       className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden">
       <div
         className={`h-2 w-full ${
-          project.priority === "Alta"
+          project.completed
+            ? "bg-blue-600 text-gray-100"
+            : project.priority === "Alta"
             ? "bg-red-600 text-gray-100"
             : project.priority === "Media"
             ? "bg-yellow-400 text-gray-800"
