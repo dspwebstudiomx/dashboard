@@ -16,7 +16,8 @@
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
     "project": [
-      "Prueba Sistemas"
+      "Prueba Sistemas",
+      "Consultoría de Diseño Web"
     ],
     "image": "/uploads/1747461319302-951278021.jpg",
     "createdAt": "2025-05-01",
@@ -89,6 +90,19 @@
         "priority": "Baja",
         "completed": true,
         "id": 1747531564248
+      },
+      {
+        "title": "Consultoría de Diseño Web",
+        "description": "Aclarar dudas sobre el Diseño Web",
+        "services": [
+          "Consultoría de Diseño Web"
+        ],
+        "sections": [],
+        "startDate": "2025-05-17",
+        "dueDate": "2025-05-24",
+        "priority": "Alta",
+        "completed": false,
+        "id": 1747534150277
       }
     ]
   },
@@ -210,7 +224,7 @@
         "dueDate": "2025-05-28",
         "priority": "Alta",
         "id": 1747521768783,
-        "completed": true
+        "completed": false
       }
     ]
   },

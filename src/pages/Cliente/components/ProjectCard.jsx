@@ -55,10 +55,10 @@ const ProjectCard = ({
         }`}>
         <br />
       </div>
-      <article className="flex flex-col md:flex-row gap-12 p-4 md:p-8 justify-between">
+      <article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between">
         <div className="flex flex-col gap-8 text-balance w-full ">
-          <div className="flex flex-col-reverse md:flex-row justify-between mt-4 gap-6">
-            <h3 className="text-lg md:text-xl font-semibold uppercase">
+          <div className="flex flex-col-reverse md:flex-row justify-between mt-4 gap-12 md:gap-6">
+            <h3 className="text-xl md:text-xl font-semibold uppercase">
               {project.title}
             </h3>
             <div className="flex justify-end md:items-center gap-2">
@@ -89,21 +89,21 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div>
-          <div className="flex flex-col gap-1 mt-4">
-            <p className="text-sm dark:text-gray-100">
+        <div className="text-lg md:text-base">
+          <div className="flex flex-col gap-2 mt-4">
+            <p className=" dark:text-gray-100">
               Fecha de inicio:{" "}
               <span className="text-blue-900 dark:text-blue-400 font-semibold">
                 {new Date(project.startDate).toLocaleDateString()}
               </span>
             </p>
-            <p className="text-sm dark:text-gray-100">
+            <p className=" dark:text-gray-100">
               Fecha de término:{" "}
               <span className="text-blue-900 dark:text-blue-400 font-semibold">
                 {new Date(project.dueDate).toLocaleDateString()}
               </span>
             </p>
-            <p className="text-base text-gray-700 dark:text-gray-100">
+            <p className=" text-gray-700 dark:text-gray-100">
               Días restantes al día de hoy:{" "}
               <span className="text-blue-900 dark:text-blue-400 font-semibold">
                 {isCompleted
@@ -117,9 +117,9 @@ const ProjectCard = ({
                     )}
               </span>
             </p>
-            <p className="text-base text-gray-700 dark:text-gray-100 font-semibold mt-2">
+            <p className=" text-gray-700 dark:text-gray-100 font-semibold mt-2">
               Total del proyecto:{" "}
-              <span className="text-blue-900 dark:text-blue-400 text-lg">
+              <span className="text-blue-900 dark:text-blue-400 text-xl">
                 ${total.toLocaleString("es-MX")}
               </span>
             </p>
@@ -127,7 +127,7 @@ const ProjectCard = ({
 
           <div
             id="botones-tarjeta-proyecto"
-            className="flex flex-col gap-4 mt-8">
+            className="flex flex-col gap-4 mt-16 mb-8 md:mt-8">
             <div className="flex flex-col gap-4 items-center">
               <button
                 className="text-white px-4 h-15 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300 w-[210px]"
