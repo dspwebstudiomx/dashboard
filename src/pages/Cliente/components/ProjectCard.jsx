@@ -106,10 +106,15 @@ const ProjectCard = ({
             <p className="text-base text-gray-700 dark:text-gray-100">
               Días restantes al día de hoy:{" "}
               <span className="text-blue-900 dark:text-blue-400 font-semibold">
-                {Math.ceil(
-                  (new Date(project.dueDate) - new Date()) /
-                    (1000 * 60 * 60 * 24)
-                )}
+                {isCompleted
+                  ? "terminado"
+                  : Math.max(
+                      0,
+                      Math.ceil(
+                        (new Date(project.dueDate) - new Date()) /
+                          (1000 * 60 * 60 * 24)
+                      )
+                    )}
               </span>
             </p>
             <p className="text-base text-gray-700 dark:text-gray-100 font-semibold mt-2">
@@ -123,15 +128,15 @@ const ProjectCard = ({
           <div
             id="botones-tarjeta-proyecto"
             className="flex flex-col gap-4 mt-8">
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-4 items-center">
               <button
-                className="text-white px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300"
+                className="text-white px-4 h-15 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300 w-[210px]"
                 onClick={onEdit}
                 type="button">
                 Editar
               </button>
               <button
-                className="text-white px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-600 transition duration-300"
+                className="text-white px-4  h-15 rounded-lg bg-blue-600 hover:bg-blue-600 transition duration-300 w-[210px]"
                 onClick={onDelete}
                 type="button">
                 Eliminar
@@ -139,15 +144,15 @@ const ProjectCard = ({
             </div>
             {!isCompleted && (
               <button
-                className="text-white px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 transition duration-300"
+                className="text-white px-4 h-15 w-[210px] mx-auto  rounded-lg bg-blue-700 hover:bg-blue-800 transition duration-300"
                 onClick={handleCompleteClick}
                 type="button">
                 Cerrar Proyecto
               </button>
             )}
             {isCompleted && (
-              <span className="px-4 py-2 rounded-lg bg-green-200 text-green-800 font-semibold flex items-center text-sm justify-center">
-                Proyecto Terminado
+              <span className="px-4 h-15 w-[210px] mx-auto rounded-lg bg-green-200 text-green-800 font-semibold flex items-center text-sm justify-center">
+                Proyecto Cerrado
               </span>
             )}
           </div>
