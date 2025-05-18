@@ -1,4 +1,3 @@
-// ...código existente...
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -23,4 +22,4 @@ app.patch('/api/proyectos/:id/completar', async (req, res) => {
   }
 });
 
-// ...código existente...
+module.exports = app;

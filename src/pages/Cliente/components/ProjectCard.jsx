@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const ProjectCard = ({
   project,
+  handleComplete,
   SERVICE_COSTS,
   SECTION_COSTS,
   onEdit,
@@ -29,11 +30,13 @@ const ProjectCard = ({
     ? descWords.slice(0, 40).join(" ") + "..."
     : project.description;
 
+  // Estado local para mostrar si el proyecto está terminado
   const [isCompleted, setIsCompleted] = useState(project.completed || false);
 
-  const handleComplete = () => {
+  // Función para manejar el cierre del proyecto
+  const handleCompleteClick = async () => {
+    await handleComplete(project.id);
     setIsCompleted(true);
-    // Aquí puedes llamar a una función para actualizar el estado en el backend si lo necesitas
   };
 
   return (
@@ -117,29 +120,31 @@ const ProjectCard = ({
 
           <div
             id="botones-tarjeta-proyecto"
-            className="flex flex-col md:flex-row gap-4 mt-8">
-            <button
-              className="text-white px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300"
-              onClick={onEdit}
-              type="button">
-              Editar
-            </button>
-            <button
-              className="text-white px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-600 transition duration-300"
-              onClick={onDelete}
-              type="button">
-              Eliminar
-            </button>
+            className="flex flex-col gap-4 mt-8">
+            <div className="flex gap-4">
+              <button
+                className="text-white px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300"
+                onClick={onEdit}
+                type="button">
+                Editar
+              </button>
+              <button
+                className="text-white px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-600 transition duration-300"
+                onClick={onDelete}
+                type="button">
+                Eliminar
+              </button>
+            </div>
             {!isCompleted && (
               <button
-                className="text-white px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 transition duration-300"
-                onClick={handleComplete}
+                className="text-white px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 transition duration-300"
+                onClick={handleCompleteClick}
                 type="button">
-                Marcar como Terminado
+                Cerrar Proyecto
               </button>
             )}
             {isCompleted && (
-              <span className="px-4 py-2 rounded-lg bg-green-200 text-green-800 font-semibold flex items-center">
+              <span className="px-4 py-2 rounded-lg bg-green-200 text-green-800 font-semibold flex items-center text-sm justify-center">
                 Proyecto Terminado
               </span>
             )}

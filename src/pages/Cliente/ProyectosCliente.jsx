@@ -20,6 +20,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
     handleEditClick,
     handleEditInputChange,
     handleEditProject,
+    handleComplete,
     SERVICE_COSTS,
     SECTION_COSTS,
   } = useProjects(selectedClient, onUpdateProjects);
@@ -86,6 +87,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
               handleEditProject={handleEditProject}
               setEditProjectId={setEditProjectId}
               setEditProject={setEditProject}
+              handleComplete={handleComplete}
             />
           ))
         ) : (

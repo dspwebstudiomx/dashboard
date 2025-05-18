@@ -19,7 +19,7 @@ const app = express(); // Inicializar la aplicación de Express
 app.use(
   cors({
     origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   })
 );
 app.use(express.json({ limit: "100mb" })); // Aumenta el límite a 10 MB
@@ -276,6 +276,39 @@ app.put("/api/clients/:id/projects", (req, res) => {
     writeClientsFile(clients, res, {
       message: "Proyectos actualizados correctamente",
       projects: clients[clientIndex].projects,
+    });
+  });
+});
+
+// Marcar un proyecto como terminado
+app.patch("/api/clients/:clientId/projects/:projectId/completed", (req, res) => {
+  const clientId = parseInt(req.params.clientId, 10);
+  const projectId = req.params.projectId;
+
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
+    }
+
+    const client = clients.find((c) => c.id === clientId);
+    if (!client) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+
+    if (!Array.isArray(client.projects)) {
+      return res.status(404).json({ error: "El cliente no tiene proyectos" });
+    }
+
+    const project = client.projects.find((p) => String(p.id) === String(projectId));
+    if (!project) {
+      return res.status(404).json({ error: "Proyecto no encontrado" });
+    }
+
+    project.completed = true;
+
+    writeClientsFile(clients, res, {
+      message: "Proyecto marcado como terminado",
+      project,
     });
   });
 });

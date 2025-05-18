@@ -43,7 +43,7 @@ const initialProject = () => ({
   startDate: "",
   dueDate: "",
   priority: "Media",
-  id: Date.now(),
+  completed: false,
 });
 
 export default function useProjects(selectedClient, onUpdateProjects) {
@@ -177,6 +177,22 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     }
   };
 
+  const handleComplete = async (projectId) => {
+    try {
+      await axios.patch(
+        `http://localhost:5000/api/clients/${selectedClient.id}/projects/${projectId}/completed`
+      );
+      // Opcional: Actualiza la lista de proyectos en el frontend
+      const response = await axios.get("http://localhost:5000/api/clients");
+      const client = response.data.find((c) => c.id === selectedClient.id);
+      if (client && client.projects) {
+        onUpdateProjects(client.projects);
+      }
+    } catch (error) {
+      console.error("Error al marcar el proyecto como terminado:", error);
+    }
+  };
+
   return {
     showForm,
     setShowForm,
@@ -192,6 +208,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     handleEditClick,
     handleEditInputChange,
     handleEditProject,
+    handleComplete,
     SERVICE_COSTS,
     SECTION_COSTS,
   };
