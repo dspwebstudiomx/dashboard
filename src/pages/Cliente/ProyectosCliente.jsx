@@ -71,7 +71,9 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
         </Modal>
       )}
 
-      <ul className="mt-12 grid md:grid-cols-2 gap-12">
+      <ul
+        id="lista-proyectos"
+        className="mt-12 grid md:grid-cols-2 gap-12 items-start">
         {selectedClient.projects && selectedClient.projects.length > 0 ? (
           selectedClient.projects.map((project) => (
             <ProjectCard
@@ -91,7 +93,9 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
             />
           ))
         ) : (
-          <div className="w-full flex flex-col items-center justify-start rounded-xl shadow-2xl p-8 gap-8 mt-6 dark:bg-gray-700 bg-white border-2 border-gray-300 dark:border-gray-600">
+          <div
+            id="ventana-no-proyecto"
+            className="w-full flex flex-col items-center justify-start rounded-xl shadow-2xl p-8 gap-8 mt-6 dark:bg-gray-700 bg-white border-2 border-gray-300 dark:border-gray-600">
             <p className="text-gray-800 dark:text-gray-100 flex items-center gap-2 font-semibold">
               <MdErrorOutline
                 size={24}

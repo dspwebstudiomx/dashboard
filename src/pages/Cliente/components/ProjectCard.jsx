@@ -42,7 +42,7 @@ const ProjectCard = ({
   return (
     <li
       id={`Proyecto-${project.title}`}
-      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden">
+      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden h-auto">
       <div
         className={`h-2 w-full ${
           project.completed
