@@ -37,7 +37,8 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
             <span className="font-semibold">
               {selectedClient.fullName} {selectedClient.lastName}{" "}
               {selectedClient.lastName2}. <br />
-            </span>
+            </span>{" "}
+            <br />
             Puedes agregar, editar o eliminar proyectos según sea necesario.
           </p>
         </div>

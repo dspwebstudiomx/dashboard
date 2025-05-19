@@ -142,7 +142,7 @@ const Header = ({ toggleSidebar, title }) => {
             </a>
             <h1
               id="Título Página actual"
-              className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-gray-100">
               {title ? title : currentPage}
             </h1>
           </div>
@@ -150,7 +150,7 @@ const Header = ({ toggleSidebar, title }) => {
           {/* Navegación */}
           <nav
             id="header-funciones"
-            className="header-nav flex justify-end items-center gap-6">
+            className="header-nav flex justify-end items-center gap-4 md:gap-6">
             {/* Saludo al usuario */}
             <div
               id="saludo"

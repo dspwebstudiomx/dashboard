@@ -10,7 +10,7 @@ const ClientImage = ({ selectedClient }) => {
           : "../../../server/uploads/avatar_placeholder_large.png"
       }
       alt={selectedClient.fullName}
-      className="w-30 h-30 rounded-full border-2 border-gray-300 object-cover bg-white "
+      className="w-20 h-20 md:w-30 md:h-30 rounded-full border-2 border-gray-300 object-cover bg-white "
     />
   );
 };
