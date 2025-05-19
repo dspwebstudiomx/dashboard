@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Button from "@components/Botones/Button";
+import { LuPencil } from "react-icons/lu";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const ProjectCard = ({
   project,
@@ -128,30 +131,37 @@ const ProjectCard = ({
           <div
             id="botones-tarjeta-proyecto"
             className="flex flex-col gap-4 mt-16 mb-8 md:mt-8">
-            <div className="flex flex-col gap-4 items-center">
-              <button
-                className="text-white px-4 h-15 rounded-lg bg-blue-500 hover:bg-blue-600 transition duration-300 w-[210px]"
-                onClick={onEdit}
-                type="button">
-                Editar
-              </button>
-              <button
-                className="text-white px-4  h-15 rounded-lg bg-blue-600 hover:bg-blue-600 transition duration-300 w-[210px]"
-                onClick={onDelete}
-                type="button">
-                Eliminar
-              </button>
+            <div className="flex flex-col gap-1 items-center">
+              {!isCompleted && (
+                <>
+                  <Button
+                    variant="outline"
+                    text="Eliminar Proyecto"
+                    icon={FaRegTrashAlt}
+                    onClick={onDelete}
+                    type="button"
+                  />
+                  <Button
+                    variant="blue_3"
+                    text="Editar Proyecto"
+                    icon={LuPencil}
+                    onClick={onEdit}
+                    type="button"
+                  />
+                </>
+              )}
             </div>
             {!isCompleted && (
-              <button
-                className="text-white px-4 h-15 w-[210px] mx-auto  rounded-lg bg-blue-700 hover:bg-blue-800 transition duration-300"
+              <Button
+                className="text-white px-4 h-15 w-full md:w-[210px] mx-auto  rounded-lg bg-blue-700 hover:bg-blue-800 transition duration-300"
                 onClick={handleCompleteClick}
-                type="button">
-                Cerrar Proyecto
-              </button>
+                type="button"
+                text="Cerrar Proyecto"
+                icon={null}
+              />
             )}
             {isCompleted && (
-              <span className="px-4 h-15 w-[210px] mx-auto rounded-lg bg-green-200 text-green-800 font-semibold flex items-center text-sm justify-center">
+              <span className="px-4 h-15 text-lg w-full md:w-[210px] mx-auto rounded-lg bg-blue-200 text-blue-800 font-medium flex items-center justify-center border border-blue-800">
                 Proyecto Cerrado
               </span>
             )}

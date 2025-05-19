@@ -23,6 +23,7 @@ const ClientHeader = ({
       onClick={() => setIsModalOpen(true)}
       text="Editar cliente"
       icon={FaRegEdit}
+      variant="secondary"
     />
     <EditarCliente
       selectedClient={selectedClient}

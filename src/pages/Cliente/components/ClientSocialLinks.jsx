@@ -19,7 +19,7 @@ const ClientSocialLinks = ({ selectedClient }) => (
     <h2 className="text-xl md:text-2xl font-semibold">Visita</h2>
     <div
       id="tarjeta-redes-sociales"
-      className="grid grid-cols-4 md:grid-cols-7 items-center gap-8 md:gap-4">
+      className="grid grid-cols-4 md:grid-cols-7 items-center gap-6 md:gap-4">
       {[
         {
           href: selectedClient?.website,
