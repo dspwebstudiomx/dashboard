@@ -32,7 +32,9 @@ const Cliente = () => {
         {selectedClient ? (
           <section className="flex flex-col gap-12 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
             <article>
-              <CloseButton onClick={() => navigate(-1)} />
+              <div className="flex items-center justify-end">
+                <CloseButton onClick={() => navigate(-1)} />
+              </div>
               <ClientHeader
                 selectedClient={selectedClient}
                 setIsModalOpen={setIsModalOpen}

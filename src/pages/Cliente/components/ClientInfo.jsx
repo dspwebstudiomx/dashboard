@@ -11,7 +11,7 @@ import {
 const iconClass = "inline mr-2 text-2xl text-blue-600 dark:text-blue-500";
 
 const ClientInfo = ({ selectedClient }) => (
-  <div className="flex flex-col gap-6 capitalize">
+  <div className="flex flex-col gap-6">
     <h2 className="text-xl md:text-2xl font-semibold mb-4">
       Información del Cliente
     </h2>
