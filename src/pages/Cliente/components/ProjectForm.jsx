@@ -1,5 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
+import Button from "@components/Botones/Button";
+
+import { IoMdAdd } from "react-icons/io";
+import {
+  FaCalendarAlt,
+  FaRegCalendarAlt,
+  FaRegFileAlt,
+  FaTools,
+  FaTag,
+} from "react-icons/fa";
+import {
+  FaAlignLeft,
+  FaArrowsRotate,
+  FaCheck,
+  FaFlag,
+  FaLayerGroup,
+} from "react-icons/fa6";
 
 const SERVICES = [
   "Consultoria SEO",
@@ -85,9 +102,10 @@ const ProjectForm = ({
       id="form-proyecto"
       className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto"
       onSubmit={onSubmit}>
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="flex flex-col gap-2 w-full">
-          <label className="text-sm text-gray-600 dark:text-gray-300">
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-4 w-full">
+          <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+            <FaRegFileAlt className="text-blue-700" />
             Nombre del Proyecto
           </label>
           <input
@@ -100,35 +118,40 @@ const ProjectForm = ({
             className="p-2 rounded border"
           />
         </div>
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-600 dark:text-gray-300">
-              Fecha de Inicio
-            </label>
-            <input
-              type="date"
-              name="startDate"
-              value={project.startDate}
-              onChange={onChange}
-              required
-              className="p-2 rounded border"
-            />
+        <div className="flex flex-col md:flex-row gap-4 justify-between">
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex flex-col gap-4">
+              <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+                <FaRegCalendarAlt className="text-blue-700" />
+                Fecha de Inicio
+              </label>
+              <input
+                type="date"
+                name="startDate"
+                value={project.startDate}
+                onChange={onChange}
+                required
+                className="p-2 rounded border"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+                <FaCalendarAlt className="text-blue-700" />
+                Fecha de Término
+              </label>
+              <input
+                type="date"
+                name="dueDate"
+                value={project.dueDate}
+                onChange={onChange}
+                required
+                className="p-2 rounded border"
+              />
+            </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-600 dark:text-gray-300">
-              Fecha de Término
-            </label>
-            <input
-              type="date"
-              name="dueDate"
-              value={project.dueDate}
-              onChange={onChange}
-              required
-              className="p-2 rounded border"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-600 dark:text-gray-300">
+          <div className="flex flex-col gap-4 w-1/2">
+            <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <FaFlag className="text-blue-700" />
               Prioridad
             </label>
             <select
@@ -144,11 +167,12 @@ const ProjectForm = ({
         </div>
       </div>
       {/* Servicios */}
-      <div className="flex flex-col gap-4">
-        <label className="text-xl text-gray-600 dark:text-gray-300">
+      <div className="flex flex-col gap-8 text-lg">
+        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+          <FaTools className="text-blue-700" />
           Tipo de Servicio
         </label>
-        <div className="grid md:grid-cols-3 gap-2">
+        <div className="grid md:grid-cols-3 gap-4 md:ml-6">
           {SERVICES.sort((a, b) =>
             a.localeCompare(b, "es", { sensitivity: "base" })
           ).map((service) => (
@@ -190,11 +214,12 @@ const ProjectForm = ({
         </div>
       </div>
       {/* Secciones */}
-      <div className="flex flex-col gap-6">
-        <label className="text-xl text-gray-600 dark:text-gray-300">
+      <div className="flex flex-col gap-6 text-lg">
+        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+          <FaLayerGroup className="text-blue-700" />
           Secciones del Proyecto
         </label>
-        <div className="grid md:grid-cols-3 gap-2">
+        <div className="grid md:grid-cols-3 gap-4 md:ml-6">
           {SECTIONS.sort((a, b) =>
             a.localeCompare(b, "es", { sensitivity: "base" })
           ).map((section) => (
@@ -237,7 +262,8 @@ const ProjectForm = ({
       </div>
       {/* Descripción */}
       <div className="flex flex-col gap-6">
-        <label className="text-sm text-gray-600 dark:text-gray-300">
+        <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
+          <FaAlignLeft className="text-blue-700" />
           Descripción general del Proyecto
         </label>
         <textarea
@@ -252,10 +278,11 @@ const ProjectForm = ({
 
       {/* Cupón y totales */}
       <div className="flex flex-col gap-2 mt-4">
-        <label className="text-sm text-gray-600 dark:text-gray-300">
+        <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
+          <FaTag className="text-blue-700" />
           Código de cupón
         </label>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-col">
           <input
             type="text"
             value={cupon}
@@ -263,23 +290,24 @@ const ProjectForm = ({
             className="p-2 rounded border flex-1"
             placeholder="Ingresa tu cupón"
           />
-          <button
+          <Button
+            variant="primary"
             type="button"
             onClick={validarCupon}
-            className="bg-blue-600 text-white px-4 rounded hover:bg-blue-700">
-            Validar
-          </button>
-          <button
+            icon={FaCheck}
+            text="Validar cupón"
+          />
+          <Button
             type="button"
             onClick={() => {
               setCupon("");
               setDescuento(0);
               setCuponMsg("");
             }}
-            className="bg-gray-300 text-gray-700 px-4 rounded hover:bg-gray-400"
-            title="Reiniciar cupón">
-            Reiniciar
-          </button>
+            variant="secondary"
+            text="Reiniciar cupón"
+            icon={FaArrowsRotate}
+          />
         </div>
         {cuponMsg && (
           <span className={descuento > 0 ? "text-green-600" : "text-red-500"}>
@@ -289,7 +317,9 @@ const ProjectForm = ({
         <div className="mt-6 text-lg font-semibold flex flex-col justify-center w-full items-end gap-4">
           <div>
             Subtotal:{" "}
-            <span className="font-semibold text-base">${subtotal}</span>
+            <span className="font-semibold text-base">
+              ${subtotal.toFixed(2)}
+            </span>
           </div>
           {descuento > 0 && (
             <div>
@@ -305,11 +335,24 @@ const ProjectForm = ({
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition mt-8 w-full md:w-[210px] mx-auto">
-        {isEdit ? "Guardar Cambios" : "Crear Proyecto"}
-      </button>
+      <div>
+        {isEdit ? (
+          <Button
+            type="button"
+            variant="primary"
+            text="Actualizar Proyecto"
+            icon={FaArrowsRotate}
+            onClick={onSubmit}
+          />
+        ) : (
+          <Button
+            type="submit"
+            variant="primary"
+            text="Crear Proyecto"
+            icon={IoMdAdd}
+          />
+        )}
+      </div>
     </form>
   );
 };

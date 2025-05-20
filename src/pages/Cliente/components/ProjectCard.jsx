@@ -43,9 +43,11 @@ const ProjectCard = ({
   };
 
   return (
+    // Tarjeta del proyecto
     <li
       id={`Proyecto-${project.title}`}
       className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden h-auto">
+      {/* Linea de tarjeta */}
       <div
         className={`h-2 w-full ${
           project.completed
@@ -58,8 +60,10 @@ const ProjectCard = ({
         }`}>
         <br />
       </div>
+      {/* Contenido de la tarjeta */}
       <article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between">
         <div className="flex flex-col gap-8 text-balance w-full ">
+          {/* Título y prioridad */}
           <div className="flex flex-col-reverse md:flex-row justify-between mt-4 gap-12 md:gap-6">
             <h3 className="text-xl md:text-xl font-semibold uppercase">
               {project.title}
@@ -77,10 +81,12 @@ const ProjectCard = ({
               </span>
             </div>
           </div>
+          {/* Descripción del Proyecto */}
           <div>
             <p style={{ whiteSpace: "pre-line" }}>
               {showFullDesc || !isLongDesc ? project.description : shortDesc}
             </p>
+
             {isLongDesc && (
               <button
                 className="text-blue-600 dark:text-blue-700 ml-2 mt-4 font-semibold"
@@ -90,8 +96,49 @@ const ProjectCard = ({
               </button>
             )}
           </div>
+
+          {/* Servicios */}
+          <div id="servicios" className="flex flex-col gap-2">
+            <h4 className="text-lg font-semibold">Servicios:</h4>
+            {Array.isArray(project.services) && project.services.length > 0 ? (
+              <ul className="flex flex-wrap gap-2 mt-4">
+                {project.services.map((service, index) => (
+                  <span
+                    key={index}
+                    className="dark:text-gray-100 bg-blue-400 dark:bg-blue-600 text-gray-100 font-semibold py-1 px-4 rounded-full mr-2 mb-2 border-2 border-blue-600">
+                    {service}
+                  </span>
+                ))}
+              </ul>
+            ) : (
+              <span className="bg-blue-100 text-blue-800 dark:text-gray-200 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-600">
+                No requeridos
+              </span>
+            )}
+          </div>
+
+          {/* Secciones requeridas por el cliente */}
+          <div id="secciones" className="flex flex-col gap-2">
+            <h4 className="text-lg font-semibold">Secciones requeridas:</h4>
+            {Array.isArray(project.sections) && project.sections.length > 0 ? (
+              <ul className="flex flex-wrap gap-2 mt-4">
+                {project.sections.map((section, index) => (
+                  <span
+                    key={index}
+                    className="dark:text-gray-100 bg-blue-400 dark:bg-blue-600 text-gray-100 font-semibold py-1 px-4 rounded-full mr-2 mb-2 border-2 border-blue-500">
+                    {section}
+                  </span>
+                ))}
+              </ul>
+            ) : (
+              <span className="bg-blue-100 text-blue-400 dark:text-gray-200 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-400">
+                No requeridas
+              </span>
+            )}
+          </div>
         </div>
 
+        {/* Datos del Proyecto */}
         <div className="text-lg md:text-base">
           <div className="flex flex-col gap-2 mt-4">
             <p className=" dark:text-gray-100">
