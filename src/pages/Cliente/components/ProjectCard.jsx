@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "@components/Botones/Button";
 import { LuPencil } from "react-icons/lu";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { MdLockOutline } from "react-icons/md";
 
 const ProjectCard = ({
   project,
@@ -24,6 +25,8 @@ const ProjectCard = ({
       )
     : 0;
   const total = totalServicios + totalSecciones;
+  const impuestos = total * 0.16;
+  const totalConImpuestos = total + impuestos;
 
   // Lógica para recortar la descripción
   const [showFullDesc, setShowFullDesc] = useState(false);
@@ -53,7 +56,7 @@ const ProjectCard = ({
           project.completed
             ? "bg-blue-600 text-gray-100"
             : project.priority === "Alta"
-            ? "bg-red-600 text-gray-100"
+            ? "bg-red-500 text-gray-100"
             : project.priority === "Media"
             ? "bg-yellow-400 text-gray-800"
             : "bg-green-600 text-gray-100"
@@ -68,14 +71,15 @@ const ProjectCard = ({
             <h3 className="text-xl md:text-xl font-semibold uppercase">
               {project.title}
             </h3>
+            {/* Prioridad */}
             <div className="flex justify-end md:items-center gap-2">
               <span
                 className={`text-base font-medium py-1 px-6 rounded-full ${
                   project.priority === "Alta"
-                    ? "bg-red-600 text-gray-100"
+                    ? "bg-red-400 text-gray-100 border-2 border-red-500"
                     : project.priority === "Media"
-                    ? "bg-yellow-400 text-gray-800"
-                    : "bg-green-600 text-gray-100"
+                    ? "bg-yellow-400 text-gray-100 border-2 border-yellow-500"
+                    : "bg-green-500 text-gray-100 border-2 border-green-600"
                 }`}>
                 {project.priority}
               </span>
@@ -111,7 +115,7 @@ const ProjectCard = ({
                 ))}
               </ul>
             ) : (
-              <span className="bg-blue-100 text-blue-800 dark:text-gray-200 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-600">
+              <span className="bg-blue-100 text-blue-800 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-600">
                 No requeridos
               </span>
             )}
@@ -119,19 +123,19 @@ const ProjectCard = ({
 
           {/* Secciones requeridas por el cliente */}
           <div id="secciones" className="flex flex-col gap-2">
-            <h4 className="text-lg font-semibold">Secciones requeridas:</h4>
+            <h4 className="text-lg font-semibold">Secciones:</h4>
             {Array.isArray(project.sections) && project.sections.length > 0 ? (
               <ul className="flex flex-wrap gap-2 mt-4">
                 {project.sections.map((section, index) => (
                   <span
                     key={index}
-                    className="dark:text-gray-100 bg-blue-400 dark:bg-blue-600 text-gray-100 font-semibold py-1 px-4 rounded-full mr-2 mb-2 border-2 border-blue-500">
+                    className="bg-blue-400 dark:bg-blue-600 text-gray-100 font-semibold py-1 px-4 rounded-full mr-2 mb-2 border-2 border-blue-500">
                     {section}
                   </span>
                 ))}
               </ul>
             ) : (
-              <span className="bg-blue-100 text-blue-400 dark:text-gray-200 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-400">
+              <span className="bg-blue-100 text-blue-400 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-400">
                 No requeridas
               </span>
             )}
@@ -170,7 +174,7 @@ const ProjectCard = ({
             <p className=" text-gray-700 dark:text-gray-100 font-semibold mt-2">
               Total del proyecto:{" "}
               <span className="text-blue-900 dark:text-blue-400 text-xl">
-                ${total.toLocaleString("es-MX")}
+                ${totalConImpuestos.toLocaleString("es-MX")}
               </span>
             </p>
           </div>
@@ -204,7 +208,7 @@ const ProjectCard = ({
                 onClick={handleCompleteClick}
                 type="button"
                 text="Cerrar Proyecto"
-                icon={null}
+                icon={MdLockOutline}
               />
             )}
             {isCompleted && (

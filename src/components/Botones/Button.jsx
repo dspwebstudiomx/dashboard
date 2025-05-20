@@ -9,7 +9,7 @@ const VARIANT_CLASSES = {
   secondary:
     "bg-blue-100 hover:bg-blue-200 text-blue-700 border border-blue-600",
   outline:
-    "bg-transparent border border-blue-600 text-blue-600 hover:bg-blue-50",
+    "bg-transparent border border-blue-600 text-blue-600 hover:bg-blue-50 dark:bg-blue-50",
   ghost: "bg-transparent text-blue-600 hover:bg-blue-50",
 };
 

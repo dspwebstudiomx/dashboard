@@ -15,7 +15,7 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Consultoría de Diseño Web",
+    "project": "Prueba Sistemas",
     "image": "/uploads/1747461319302-951278021.jpg",
     "createdAt": "2025-05-01",
     "updatedAt": "2025-05-15",
@@ -79,13 +79,11 @@
           "Diseño Web",
           "Desarrollo Web"
         ],
-        "sections": [
-          "Blog"
-        ],
+        "sections": [],
         "startDate": "2025-05-18",
         "dueDate": "2025-06-24",
-        "priority": "Baja",
-        "completed": true,
+        "priority": "Alta",
+        "completed": false,
         "id": 1747531564248
       },
       {
@@ -93,21 +91,13 @@
         "description": "Aclarar dudas sobre el Diseño Web",
         "services": [
           "Consultoría de Diseño Web",
-          "Desarrollo Web",
-          "Integración de APIs",
-          "Optimización SEO",
-          "Consultoria SEO",
-          "Diseño Web",
-          "Landing Page",
-          "Rediseño Web",
           "Consultoría UX/UI",
-          "E-commerce",
           "Mantenimiento Web"
         ],
         "sections": [],
         "startDate": "2025-05-17",
         "dueDate": "2025-05-31",
-        "priority": "Media",
+        "priority": "Alta",
         "completed": false,
         "id": 1747534150277
       }

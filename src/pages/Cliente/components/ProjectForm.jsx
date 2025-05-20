@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import {
   FaAlignLeft,
+  FaArrowRotateLeft,
   FaArrowsRotate,
   FaCheck,
   FaFlag,
@@ -76,7 +77,8 @@ const ProjectForm = ({
     0
   );
   const subtotal = totalServicios + totalSecciones;
-  const totalFinal = subtotal - (subtotal * descuento) / 100;
+  const impuestos = subtotal * 0.16;
+  const totalFinal = subtotal + impuestos - (subtotal * descuento) / 100;
 
   // Validar cupón (puedes conectar con backend aquí)
   const validarCupon = async () => {
@@ -149,7 +151,7 @@ const ProjectForm = ({
               />
             </div>
           </div>
-          <div className="flex flex-col gap-4 w-1/2">
+          <div className="flex flex-col gap-4 w-full md:w-1/2 ">
             <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
               <FaFlag className="text-blue-700" />
               Prioridad
@@ -158,7 +160,7 @@ const ProjectForm = ({
               name="priority"
               value={project.priority}
               onChange={onChange}
-              className="p-2 rounded border">
+              className="p-2 rounded border w-full">
               <option value="Alta">Alta</option>
               <option value="Media">Media</option>
               <option value="Baja">Baja</option>
@@ -178,6 +180,7 @@ const ProjectForm = ({
           ).map((service) => (
             <label key={service} className="flex items-center gap-2">
               <input
+                className="w-4 h-4 rounded-2xl"
                 type="checkbox"
                 name="services"
                 value={service}
@@ -225,6 +228,7 @@ const ProjectForm = ({
           ).map((section) => (
             <div key={section} className="flex items-center gap-2">
               <input
+                className="w-4 h-4 rounded-2xl"
                 type="checkbox"
                 name="sections"
                 value={section}
@@ -278,16 +282,17 @@ const ProjectForm = ({
 
       {/* Cupón y totales */}
       <div className="flex flex-col gap-2 mt-4">
-        <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
+        <label className="text-lg text-gray-600 dark:text-gray-300 flex items-center gap-2">
           <FaTag className="text-blue-700" />
           Código de cupón
         </label>
-        <div className="flex gap-2 flex-col">
+        <div className="flex gap-2 flex-col md:flex-row items-center justify-between">
           <input
+            className="p-2 rounded border flex-1 h-12"
             type="text"
+            name="cupon"
             value={cupon}
             onChange={(e) => setCupon(e.target.value)}
-            className="p-2 rounded border flex-1"
             placeholder="Ingresa tu cupón"
           />
           <Button
@@ -306,7 +311,7 @@ const ProjectForm = ({
             }}
             variant="secondary"
             text="Reiniciar cupón"
-            icon={FaArrowsRotate}
+            icon={FaArrowRotateLeft}
           />
         </div>
         {cuponMsg && (
@@ -319,6 +324,13 @@ const ProjectForm = ({
             Subtotal:{" "}
             <span className="font-semibold text-base">
               ${subtotal.toFixed(2)}
+            </span>
+          </div>
+          {/* impuestos del 16% */}
+          <div>
+            (+) Impuestos:{" "}
+            <span className="font-semibold text-base">
+              ${(subtotal * 0.16).toFixed(2)}
             </span>
           </div>
           {descuento > 0 && (
