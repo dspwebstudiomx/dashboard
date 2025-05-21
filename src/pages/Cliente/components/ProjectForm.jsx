@@ -106,7 +106,7 @@ const ProjectForm = ({
       onSubmit={onSubmit}>
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4 w-full">
-          <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+          <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
             <FaRegFileAlt className="text-blue-700" />
             Nombre del Proyecto
           </label>
@@ -123,7 +123,7 @@ const ProjectForm = ({
         <div className="flex flex-col md:flex-row gap-4 justify-between">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex flex-col gap-4">
-              <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
                 <FaRegCalendarAlt className="text-blue-700" />
                 Fecha de Inicio
               </label>
@@ -137,7 +137,7 @@ const ProjectForm = ({
               />
             </div>
             <div className="flex flex-col gap-4">
-              <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
                 <FaCalendarAlt className="text-blue-700" />
                 Fecha de Término
               </label>
@@ -152,7 +152,7 @@ const ProjectForm = ({
             </div>
           </div>
           <div className="flex flex-col gap-4 w-full md:w-1/2 ">
-            <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+            <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
               <FaFlag className="text-blue-700" />
               Prioridad
             </label>
@@ -170,7 +170,7 @@ const ProjectForm = ({
       </div>
       {/* Servicios */}
       <div className="flex flex-col gap-8 text-lg">
-        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
           <FaTools className="text-blue-700" />
           Tipo de Servicio
         </label>
@@ -218,7 +218,7 @@ const ProjectForm = ({
       </div>
       {/* Secciones */}
       <div className="flex flex-col gap-6 text-lg">
-        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2">
+        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
           <FaLayerGroup className="text-blue-700" />
           Secciones del Proyecto
         </label>
@@ -266,7 +266,7 @@ const ProjectForm = ({
       </div>
       {/* Descripción */}
       <div className="flex flex-col gap-6">
-        <label className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2">
+        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
           <FaAlignLeft className="text-blue-700" />
           Descripción general del Proyecto
         </label>
@@ -282,7 +282,7 @@ const ProjectForm = ({
 
       {/* Cupón y totales */}
       <div className="flex flex-col gap-2 mt-4">
-        <label className="text-lg text-gray-600 dark:text-gray-300 flex items-center gap-2">
+        <label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
           <FaTag className="text-blue-700" />
           Código de cupón
         </label>
@@ -350,7 +350,7 @@ const ProjectForm = ({
         </div>
       </div>
 
-      <div>
+      <div className="flex items-center justify-center gap-4">
         {isEdit ? (
           <Button
             type="button"

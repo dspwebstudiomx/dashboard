@@ -51,7 +51,7 @@ const ProjectCard = ({
     // Tarjeta del proyecto
     <li
       id={`Proyecto-${project.title}`}
-      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden h-auto">
+      className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden h-auto min-h-[600px]">
       {/* Linea de tarjeta */}
       <div
         className={`h-2 w-full ${
@@ -171,18 +171,21 @@ const ProjectCard = ({
         {/* Datos del Proyecto */}
         <div className="text-lg md:text-base">
           <div className="flex flex-col gap-2 mt-4">
+            {/* Fecha de Inicio */}
             <p className=" dark:text-gray-100">
               Fecha de inicio:{" "}
               <span className="text-blue-900 dark:text-blue-400 font-semibold">
                 {new Date(project.startDate).toLocaleDateString()}
               </span>
             </p>
+            {/* Fecha de término */}
             <p className=" dark:text-gray-100">
               Fecha de término:{" "}
               <span className="text-blue-900 dark:text-blue-400 font-semibold">
                 {new Date(project.dueDate).toLocaleDateString()}
               </span>
             </p>
+            {/* Días restantes */}
             <p className=" text-gray-700 dark:text-gray-100">
               Días restantes al día de hoy:{" "}
               <span className="text-blue-900 dark:text-blue-400 font-semibold">
@@ -197,6 +200,18 @@ const ProjectCard = ({
                     )}
               </span>
             </p>
+            {/* Duración del Proyecto */}
+            <p className=" text-gray-700 dark:text-gray-100">
+              Duración del Proyecto:{" "}
+              <span className="text-blue-900 dark:text-blue-400 font-semibold">
+                {Math.ceil(
+                  (new Date(project.dueDate) - new Date(project.startDate)) /
+                    (1000 * 60 * 60 * 24)
+                )}{" "}
+                días
+              </span>
+            </p>
+            {/* Costo total */}
             <p className=" text-gray-700 dark:text-gray-100 font-semibold mt-2">
               Total del proyecto:{" "}
               <span className="text-blue-900 dark:text-blue-400 text-xl">

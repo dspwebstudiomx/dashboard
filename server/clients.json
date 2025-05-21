@@ -15,7 +15,7 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Consultoría de Diseño Web",
+    "project": "prueba 2",
     "image": "/uploads/1747461319302-951278021.jpg",
     "createdAt": "2025-05-01",
     "updatedAt": "2025-05-15",
@@ -76,7 +76,8 @@
         "title": "Prueba Sistemas",
         "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit fermentum, venenatis turpis dapibus suspendisse aptent montes iaculis rutrum, nam morbi sagittis quis enim quisque mus. Dictum natoque phasellus mollis potenti rutrum tortor hac augue odio, dui posuere felis montes diam enim class dis risus parturient, volutpat conubia tempus ultrices auctor erat est ut. Accumsan posuere sociosqu dictum morbi semper per cum condimentum, leo at sapien nascetur primis mauris neque metus, tempus iaculis torquent vestibulum tincidunt senectus lacus.\n\nProin libero etiam convallis facilisis cras dignissim vitae tempor, ridiculus lacus elementum erat parturient imperdiet porta nisi ac, habitant viverra nam donec lacinia conubia pharetra. Himenaeos leo erat vestibulum justo laoreet a augue lobortis, sollicitudin aliquam curabitur in luctus rutrum malesuada, nunc lectus gravida felis dictum nisl tempus. Commodo quis quisque habitasse justo suspendisse parturient turpis varius, sapien tempus est fames ridiculus odio praesent nullam, sociosqu auctor mauris et aliquet placerat volutpat.",
         "services": [
-          "Diseño Web"
+          "Diseño Web",
+          "Desarrollo Web"
         ],
         "sections": [],
         "startDate": "2025-05-18",
@@ -89,19 +90,40 @@
         "title": "Consultoría de Diseño Web",
         "description": "Aclarar dudas sobre el Diseño Web",
         "services": [
-          "Consultoría de Diseño Web",
-          "Consultoría UX/UI",
-          "Mantenimiento Web",
-          "Desarrollo Web",
-          "Integración de APIs",
-          "Optimización SEO"
+          "Consultoría de Diseño Web"
         ],
-        "sections": [],
+        "sections": [
+          "Términos y Condiciones",
+          "Proyectos"
+        ],
         "startDate": "2025-05-17",
         "dueDate": "2025-05-31",
         "priority": "Media",
         "completed": false,
         "id": 1747534150277
+      },
+      {
+        "title": "prueba 2",
+        "description": "Lorem ipsum dolor sit amet. Qui perferendis cupiditate ea laboriosam sapiente 33 velit expedita id odit magni eos illo voluptatem aut magni consequuntur in consequuntur unde. Aut internos quia aut voluptatem architecto ut incidunt libero? Aut velit cupiditate est neque rerum At nulla delectus sit quisquam voluptatem et accusamus tempore. </p><p>Vel corrupti maiores aut voluptatem quia nam autem dolore. Ab illo dolor sed obcaecati ducimus aut fuga placeat aut adipisci Quis qui possimus nisi! A modi possimus qui atque quibusdam sed internos earum est quidem aperiam est accusantium aperiam qui enim dicta ea unde ratione. Et distinctio dolores sit assumenda sint et atque internos et quia alias in reprehenderit quaerat. </p><p>Et harum quaerat sed quisquam ipsa sed officiis earum sit iure maxime quo dignissimos magnam. Et culpa maxime qui architecto internos aut reprehenderit nisi quo ipsa doloribus et illum facilis. Sed repellat dolores et optio numquam et enim debitis.\n",
+        "services": [
+          "Diseño Web",
+          "Optimización SEO",
+          "Desarrollo Web",
+          "Landing Page",
+          "Rediseño Web",
+          "E-commerce",
+          "Mantenimiento Web"
+        ],
+        "sections": [
+          "Blog",
+          "Preguntas Frecuentes",
+          "Política de Cookies"
+        ],
+        "startDate": "2025-05-20",
+        "dueDate": "2025-05-23",
+        "priority": "Alta",
+        "completed": false,
+        "id": 1747793737945
       }
     ]
   },
@@ -148,11 +170,11 @@
           "Consultoria SEO",
           "Rediseño Web"
         ],
-        "startDate": "2025-01-01",
-        "dueDate": "2025-05-16",
+        "startDate": "2024-09-01",
+        "dueDate": "2025-05-20",
         "priority": "Media",
         "id": 1747424023109,
-        "completed": true
+        "completed": false
       }
     ]
   },
