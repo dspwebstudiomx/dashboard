@@ -214,6 +214,18 @@ const ProjectForm = ({
               </span>
             </label>
           ))}
+          {/* Boton para limpiar todos los servicios */}
+          {project.services.length > 0 && (
+            <Button
+              variant="primary"
+              onClick={() => {
+                project.services = [];
+              }}
+              type="button"
+              text="Limpiar"
+              icon={FaArrowRotateLeft}
+            />
+          )}
         </div>
       </div>
       {/* Secciones */}
@@ -262,6 +274,18 @@ const ProjectForm = ({
               </span>
             </div>
           ))}
+          {/* Boton para limpiar todos los servicios */}
+          {project.sections.length > 0 && (
+            <Button
+              variant="primary"
+              onClick={() => {
+                project.sections = [];
+              }}
+              type="button"
+              text="Limpiar"
+              icon={FaArrowRotateLeft}
+            />
+          )}
         </div>
       </div>
       {/* Descripción */}

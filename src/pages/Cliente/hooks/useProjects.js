@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
+
 const SERVICE_COSTS = {
   "Consultoria SEO": 2000,
   "Consultoría UX/UI": 2500,
@@ -44,6 +45,9 @@ const initialProject = () => ({
   dueDate: "",
   priority: "Media",
   completed: false,
+  status: "",
+  totalProgress: "",
+  tasks: [],
 });
 
 export default function useProjects(selectedClient, onUpdateProjects) {
