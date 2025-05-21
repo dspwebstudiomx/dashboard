@@ -14,6 +14,8 @@ import CloseActionButton from "./CloseActionButton";
 import DeleteActionButton from "./DeleteActionButton";
 import EditActionButton from "./EditActionButton";
 import AdminActionButton from "./AdminActionButton";
+import { useProjectDescription } from "@hooks/useProjectDescription";
+import ProjectActionButtons from "./ProjectActionButtons";
 
 const ContentProjectCard = ({
   project,
@@ -24,15 +26,8 @@ const ContentProjectCard = ({
   totalConImpuestos,
   openAdminModal,
 }) => {
-  // Lógica de descripción y estados visuales
   const [showFullDesc, setShowFullDesc] = useState(false);
-  const descriptionWords = project.description
-    ? project.description.split(" ")
-    : [];
-  const isLongDescription = descriptionWords.length > 40;
-  const shortDesc = isLongDescription
-    ? descriptionWords.slice(0, 40).join(" ") + "..."
-    : project.description;
+  const { isLong, short } = useProjectDescription(project.description);
 
   return (
     <article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between">
@@ -47,8 +42,8 @@ const ContentProjectCard = ({
 
         <ProjectDescriptionInfoCard
           project={project}
-          isLongDescription={isLongDescription}
-          shortDesc={shortDesc}
+          isLongDescription={isLong}
+          shortDesc={short}
           showFullDesc={showFullDesc}
           setShowFullDesc={setShowFullDesc}
         />
@@ -65,31 +60,14 @@ const ContentProjectCard = ({
         </div>
 
         {/* Botones de acción */}
-        <div
-          id="botones-tarjeta-proyecto"
-          className="flex flex-col gap-4 mt-16 mb-8 md:mt-8">
-          <div className="flex flex-col gap-1 items-center">
-            {!isCompleted && (
-              <>
-                <AdminActionButton
-                  onClick={openAdminModal}
-                  text={"Ver Proyecto"}
-                />
-                <EditActionButton onClick={onEdit} text={"Editar Proyecto"} />
-                <DeleteActionButton
-                  onClick={onDelete}
-                  text={"Eliminar Proyecto"}
-                />
-                <CloseActionButton
-                  handleCompleteClick={handleCompleteClick}
-                  text={"Cerrar Proyecto"}
-                  onClick={handleCompleteClick}
-                />
-              </>
-            )}
-          </div>
-          {isCompleted && <CloseProjectMessaje />}
-        </div>
+        <ProjectActionButtons
+          isCompleted={isCompleted}
+          openAdminModal={openAdminModal}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          handleCompleteClick={handleCompleteClick}
+        />
+        {isCompleted && <CloseProjectMessaje />}
       </div>
     </article>
   );
