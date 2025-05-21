@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import Modal from "@components/Modal";
-import ContentProjectCard from "./ContentProjectCard";
-import AdminProjectModal from "./AdminProjectModal"; // <-- Importa el nuevo componente
+import React, { useMemo } from "react";
+import ContentProjectCard from "./ProjectCard/ContentProjectCard";
+import AdminProjectModal from "./ProjectCard/AdminProjectModal";
+import LinePriorityCard from "./ProjectCard/LinePriorityCard";
+import { useProjectCard } from "../hooks/useProjectCard";
+import { FinancialCalculate } from "../data/FinancialCalculate";
 
 const ProjectCard = ({
   project,
@@ -11,56 +13,27 @@ const ProjectCard = ({
   onEdit,
   onDelete,
 }) => {
-  const totalServicios = Array.isArray(project.services)
-    ? project.services.reduce(
-        (sum, servicio) => sum + (SERVICE_COSTS[servicio] || 0),
-        0
-      )
-    : 0;
-  const totalSecciones = Array.isArray(project.sections)
-    ? project.sections.reduce(
-        (sum, seccion) => sum + (SECTION_COSTS[seccion] || 0),
-        0
-      )
-    : 0;
-  const total = totalServicios + totalSecciones;
-  const impuestos = total * 0.16;
-  const totalConImpuestos = total + impuestos;
+  // Memoizar el cálculo de totalConImpuestos
+  const { totalConImpuestos } = useMemo(
+    () => FinancialCalculate(project, SERVICE_COSTS, SECTION_COSTS),
+    [project, SERVICE_COSTS, SECTION_COSTS]
+  );
 
-  // Estado local para mostrar si el proyecto está terminado
-  const [isCompleted, setIsCompleted] = useState(project.completed || false);
-
-  // Estado para el modal de administración
-  const [modalAdminProject, setModalAdminProject] = useState(false);
-
-  // Función para manejar el cierre del modal
-  const closeModal = () => {
-    setModalAdminProject(false);
-  };
-
-  // Función para manejar el cierre del proyecto
-  const handleCompleteClick = async () => {
-    await handleComplete(project.id);
-    setIsCompleted(true);
-  };
+  // Usar el custom hook
+  const {
+    isCompleted,
+    modalAdminProject,
+    closeModal,
+    openModal,
+    handleCompleteClick,
+  } = useProjectCard(project, handleComplete);
 
   return (
     <li
       id={`Proyecto-${project.title}`}
       className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden h-auto">
       {/* Línea de tarjeta */}
-      <div
-        className={`h-2 w-full ${
-          project.completed
-            ? "bg-blue-600 text-gray-100"
-            : project.priority === "Alta"
-            ? "bg-red-500 text-gray-100"
-            : project.priority === "Media"
-            ? "bg-yellow-400 text-gray-800"
-            : "bg-green-600 text-gray-100"
-        }`}>
-        <br />
-      </div>
+      <LinePriorityCard project={project} />
       {/* Contenido de la tarjeta */}
       <ContentProjectCard
         project={project}
@@ -68,10 +41,8 @@ const ProjectCard = ({
         onEdit={onEdit}
         onDelete={onDelete}
         handleCompleteClick={handleCompleteClick}
-        SERVICE_COSTS={SERVICE_COSTS}
-        SECTION_COSTS={SECTION_COSTS}
         totalConImpuestos={totalConImpuestos}
-        openAdminModal={() => setModalAdminProject(true)}
+        openAdminModal={openModal}
       />
       {/* Modal de administración */}
       <AdminProjectModal

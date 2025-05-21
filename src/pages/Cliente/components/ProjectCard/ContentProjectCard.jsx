@@ -1,21 +1,15 @@
 import React, { useState } from "react";
-import Button from "@components/Botones/Button";
-import { LuPencil } from "react-icons/lu";
-import { FaEye, FaRegTrashAlt } from "react-icons/fa";
-import ServicesProjectTag from "./ServicesProjectTag";
-import SectionsProjectTag from "./SectionsProjectTag";
-import ProjectDescriptionInfoCard from "./ProjectDescriptionInfoCard";
-import Priority from "./Priority";
+
+import ServicesProjectTag from "../ServicesProjectTag";
+import SectionsProjectTag from "../SectionsProjectTag";
+import ProjectDescriptionInfoCard from "../ProjectDescriptionInfoCard";
+import Priority from "../Priority";
 import TitleProjectCard from "@components/Texts/TitleProjectCard";
 import ProjectCardDates from "./ProjectCardDates";
-import TotalCostProyectCard from "./TotalCostProyectCard";
+import TotalCostProyectCard from "../TotalCostProyectCard";
 import CloseProjectMessaje from "./CloseProjectMessaje";
-import CloseActionButton from "./CloseActionButton";
-import DeleteActionButton from "./DeleteActionButton";
-import EditActionButton from "./EditActionButton";
-import AdminActionButton from "./AdminActionButton";
 import { useProjectDescription } from "@hooks/useProjectDescription";
-import ProjectActionButtons from "./ProjectActionButtons";
+import ProjectActionButtons from "../ProjectActionButtons";
 
 const ContentProjectCard = ({
   project,
