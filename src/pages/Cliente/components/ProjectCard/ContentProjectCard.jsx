@@ -54,14 +54,16 @@ const ContentProjectCard = ({
         </div>
 
         {/* Botones de acción */}
-        <ProjectActionButtons
-          isCompleted={isCompleted}
-          openAdminModal={openAdminModal}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          handleCompleteClick={handleCompleteClick}
-        />
-        {isCompleted && <CloseProjectMessaje />}
+        <div className="flex flex-col gap-2 mt-12">
+          <ProjectActionButtons
+            isCompleted={isCompleted}
+            openAdminModal={openAdminModal}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            handleCompleteClick={handleCompleteClick}
+          />
+          {isCompleted && <CloseProjectMessaje />}
+        </div>
       </div>
     </article>
   );
