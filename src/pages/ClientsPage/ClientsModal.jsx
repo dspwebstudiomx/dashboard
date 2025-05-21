@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Modal from "@components/Modal";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -11,12 +11,23 @@ import { IoPersonAddOutline } from "react-icons/io5";
 const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
   const {
     formData,
+    setFormData,
     handleChange,
     handleSubmit,
     handleImageUpload,
     handleRemoveImage,
     isEditing,
   } = useClientForm({ client, onClientUpdate, onClose });
+
+  useEffect(() => {
+    if (client) {
+      // Rellenar el formulario con los datos del cliente
+      setFormData(client);
+    } else {
+      // Limpiar el formulario para agregar nuevo cliente
+      setFormData({ nombre: "", email: "", imagen: "", telefono: "" });
+    }
+  }, [client, setFormData]);
 
   return (
     <Modal

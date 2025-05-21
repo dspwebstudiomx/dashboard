@@ -96,6 +96,7 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
 
     return {
         formData,
+        setFormData,
         handleChange,
         handleSubmit,
         handleImageUpload,
