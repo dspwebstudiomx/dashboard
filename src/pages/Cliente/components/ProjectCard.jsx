@@ -30,10 +30,12 @@ const ProjectCard = ({
 
   // Lógica para recortar la descripción
   const [showFullDesc, setShowFullDesc] = useState(false);
-  const descWords = project.description ? project.description.split(" ") : [];
-  const isLongDesc = descWords.length > 40;
-  const shortDesc = isLongDesc
-    ? descWords.slice(0, 40).join(" ") + "..."
+  const descriptionWords = project.description
+    ? project.description.split(" ")
+    : [];
+  const isLongDescription = descriptionWords.length > 40;
+  const shortDesc = isLongDescription
+    ? descriptionWords.slice(0, 40).join(" ") + "..."
     : project.description;
 
   // Estado local para mostrar si el proyecto está terminado
@@ -88,10 +90,12 @@ const ProjectCard = ({
           {/* Descripción del Proyecto */}
           <div>
             <p style={{ whiteSpace: "pre-line" }}>
-              {showFullDesc || !isLongDesc ? project.description : shortDesc}
+              {showFullDesc || !isLongDescription
+                ? project.description
+                : shortDesc}
             </p>
 
-            {isLongDesc && (
+            {isLongDescription && (
               <button
                 className="text-blue-600 dark:text-blue-700 ml-2 mt-4 font-semibold"
                 onClick={() => setShowFullDesc((prev) => !prev)}
@@ -127,7 +131,7 @@ const ProjectCard = ({
               </ul>
             ) : (
               <span className="bg-blue-100 text-blue-800 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-600">
-                No requeridos
+                No solicitados
               </span>
             )}
           </div>
@@ -158,7 +162,7 @@ const ProjectCard = ({
               </ul>
             ) : (
               <span className="bg-blue-100 text-blue-400 font-semibold py-1 px-4 rounded-full mt-4 w-fit border-2 border-blue-400">
-                No requeridas
+                No solicitadas
               </span>
             )}
           </div>
