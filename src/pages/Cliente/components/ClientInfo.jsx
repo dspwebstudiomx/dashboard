@@ -85,7 +85,7 @@ const ClientInfo = ({ selectedClient }) => (
           })}
         </span>
       </p>
-      <p>
+      <article>
         <span className="font-normal">
           <MdFolder className={iconClass} /> Proyectos:
         </span>{" "}
@@ -107,7 +107,7 @@ const ClientInfo = ({ selectedClient }) => (
             "Sin proyectos"
           )}
         </span>
-      </p>
+      </article>
     </div>
   </div>
 );

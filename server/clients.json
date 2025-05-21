@@ -88,7 +88,7 @@
         "startDate": "2025-05-18",
         "dueDate": "2025-06-24",
         "priority": "Baja",
-        "completed": false,
+        "completed": true,
         "id": 1747531564248
       },
       {
