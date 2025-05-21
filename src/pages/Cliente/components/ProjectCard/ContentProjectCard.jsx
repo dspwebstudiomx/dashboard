@@ -10,6 +10,7 @@ import TotalCostProyectCard from "../TotalCostProyectCard";
 import CloseProjectMessaje from "./CloseProjectMessaje";
 import { useProjectDescription } from "@hooks/useProjectDescription";
 import ProjectActionButtons from "../ProjectActionButtons";
+import AdminActionButton from "../AdminActionButton";
 
 const ContentProjectCard = ({
   project,
@@ -62,7 +63,12 @@ const ContentProjectCard = ({
             onDelete={onDelete}
             handleCompleteClick={handleCompleteClick}
           />
-          {isCompleted && <CloseProjectMessaje />}
+          {isCompleted && (
+            <div className="flex flex-col gap-8">
+              <AdminActionButton onClick={openAdminModal} text="Ver Proyecto" />
+              <CloseProjectMessaje />
+            </div>
+          )}
         </div>
       </div>
     </article>

@@ -8,7 +8,7 @@ const AdminActionButton = ({ onClick, text }) => {
       variant="primary"
       text={text}
       icon={FaEye}
-      onClick={onClick} // <-- Corrección aquí
+      onClick={onClick}
       type="button"
     />
   );
