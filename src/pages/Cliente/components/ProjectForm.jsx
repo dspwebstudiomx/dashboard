@@ -84,7 +84,7 @@ const ProjectForm = ({
   const validarCupon = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/api/cupones/validar?codigo=${cupon}`
+        `http://localhost:5000/api/cupones/validar?codigo=${cupon}`
       );
       if (res.data.valido) {
         setDescuento(res.data.descuento);
@@ -294,6 +294,9 @@ const ProjectForm = ({
             value={cupon}
             onChange={(e) => setCupon(e.target.value)}
             placeholder="Ingresa tu cupón"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") e.preventDefault();
+            }}
           />
           <Button
             variant="primary"
