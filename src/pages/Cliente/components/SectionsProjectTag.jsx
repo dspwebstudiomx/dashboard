@@ -3,7 +3,7 @@ import React from "react";
 const SectionsProjectTag = ({ project }) => {
   return (
     <div id="secciones" className="flex flex-col gap-2">
-      <h4 className="text-lg font-semibold">Secciones:</h4>
+      {/* <h4 className="text-lg font-semibold">Secciones:</h4> */}
       {Array.isArray(project.sections) && project.sections.length > 0 ? (
         <ul className="flex flex-wrap gap-2 mt-4">
           {project.sections.map((section, index) => {
