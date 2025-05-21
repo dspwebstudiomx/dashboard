@@ -90,14 +90,14 @@ const ClientInfo = ({ selectedClient }) => (
           <MdFolder className={iconClass} /> Proyectos:
         </span>{" "}
         <br className="md:hidden" />
-        <span className="text-gray-800 dark:text-gray-100 font-semibold ml-10 md:ml-0">
+        <span className="text-gray-800 dark:text-gray-100 font-normal ml-10 md:ml-0">
           {Array.isArray(selectedClient.projects) &&
           selectedClient.projects.length > 0 ? (
-            <ul className="list-disc ml-6 mt-3">
+            <ul className="ml-6 mt-3">
               {selectedClient.projects.map((proyecto, idx) => (
                 <li key={idx} className="mb-1 list-none">
                   <span>
-                    <MdFolder className={`${iconClass} text-xl`} />
+                    <MdFolder className={`${iconClass} text-xl font-medium`} />
                   </span>
                   {proyecto.title ? proyecto.title : JSON.stringify(proyecto)}
                 </li>
