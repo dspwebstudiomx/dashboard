@@ -1,6 +1,6 @@
 import React from "react";
 
-const LinePriorityCard = ({ project }) => {
+const LinePriority = ({ project }) => {
   return (
     <div
       className={`h-2 w-full ${
@@ -15,4 +15,4 @@ const LinePriorityCard = ({ project }) => {
   );
 };
 
-export default LinePriorityCard;
+export default LinePriority;
