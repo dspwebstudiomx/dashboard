@@ -92,6 +92,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
               setEditProject={setEditProject}
               handleComplete={handleComplete}
               isCompleted={project.completed}
+              clientId={selectedClient.id}
             />
           ))
         ) : (

@@ -89,7 +89,35 @@
         "dueDate": "2025-06-24",
         "priority": "Baja",
         "completed": true,
-        "id": 1747531564248
+        "id": 1747531564248,
+        "tasks": [
+          {
+            "title": "Diseño Web",
+            "description": "Diseño de la página web",
+            "priority": "Baja",
+            "state": "En progreso",
+            "progress": 100,
+            "completed": true
+          },
+          {
+            "title": "Desarrollo Web",
+            "description": "Desarrollo de la página web",
+            "progress": 100,
+            "completed": true
+          },
+          {
+            "title": "Optimización SEO",
+            "description": "Optimización SEO de la página web",
+            "progress": 100,
+            "completed": true
+          },
+          {
+            "title": "a",
+            "description": "a",
+            "status": "Pendiente",
+            "priority": "Baja"
+          }
+        ]
       },
       {
         "title": "Consultoría de Diseño Web",
@@ -102,7 +130,15 @@
         "dueDate": "2025-05-31",
         "priority": "Alta",
         "completed": false,
-        "id": 1747534150277
+        "id": 1747534150277,
+        "tasks": [
+          {
+            "title": "a",
+            "description": "a",
+            "status": "Pendiente",
+            "priority": "Baja"
+          }
+        ]
       }
     ]
   },

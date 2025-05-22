@@ -330,6 +330,67 @@ app.get("/api/cupones/validar", (req, res) => {
   }
 });
 
+// Endpoint para crear tarea desde clients.json en projects/tasks
+app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
+  const clientId = parseInt(req.params.clientId, 10);
+  const projectId = req.params.projectId;
+  const newTask = req.body;
+
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
+    }
+
+    const client = clients.find((c) => c.id === clientId);
+    if (!client) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+
+    // Cambia esta línea:
+    // const project = client.projects.find((p) => p.id === projectId);
+    // Por esta:
+    const project = client.projects.find((p) => String(p.id) === String(projectId));
+    if (!project) {
+      return res.status(404).json({ error: "Proyecto no encontrado" });
+    }
+
+    if (!Array.isArray(project.tasks)) {
+      project.tasks = [];
+    }
+
+    project.tasks.push(newTask);
+
+    writeClientsFile(clients, res, {
+      message: "Tarea creada correctamente",
+      task: newTask,
+    });
+  });
+});
+
+// Endpoint para ver tarea desde clients.json en projects/tasks
+app.get("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
+  const clientId = parseInt(req.params.clientId, 10);
+  const projectId = req.params.projectId;
+
+  readClientsFile((err, clients) => {
+    if (err) {
+      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
+    }
+
+    const client = clients.find((c) => c.id === clientId);
+    if (!client) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+
+    const project = client.projects.find((p) => String(p.id) === String(projectId));
+    if (!project) {
+      return res.status(404).json({ error: "Proyecto no encontrado" });
+    }
+
+    res.json({ tasks: project.tasks || [] });
+  });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

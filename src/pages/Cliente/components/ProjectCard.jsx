@@ -7,6 +7,7 @@ import { FinancialCalculate } from "../data/FinancialCalculate";
 
 const ProjectCard = ({
   project,
+  clientId,
   handleComplete,
   SERVICE_COSTS,
   SECTION_COSTS,
@@ -49,6 +50,7 @@ const ProjectCard = ({
         isOpen={modalAdminProject}
         onClose={closeModal}
         project={project}
+        clientId={clientId}
       />
     </li>
   );
