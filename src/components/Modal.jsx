@@ -23,7 +23,7 @@ const Modal = ({ isOpen, children, title, onClick }) => {
   return (
     <section className="fixed inset-0 bg-black/40 dark:bg-black/80 flex items-center justify-center z-50">
       <article
-        className="bg-white rounded-xl shadow-lg w-[90vw] md:w-[60vw] max-h-[90vh] md:max-w-full p-6 md:p-12 xl:p-12 border-2 
+        className="bg-white rounded-xl shadow-lg w-[90vw] md:w-[80vw] max-h-[90vh] md:max-w-full p-6 md:p-12 xl:p-12 border-2 
       border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-6 justify-between">
         {/* Botón cerrar modal */}
         <div className="flex justify-end">

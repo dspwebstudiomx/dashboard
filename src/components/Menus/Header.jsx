@@ -51,12 +51,27 @@ const Header = ({ toggleSidebar, title }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // Efecto para cargar el modo oscuro guardado en localStorage
+  // Efecto para cargar el modo oscuro guardado en localStorage o según el sistema
   useEffect(() => {
-    const savedDarkMode = localStorage.getItem("darkMode") === "true";
-    setDarkMode(savedDarkMode);
-    if (savedDarkMode) {
-      document.documentElement.classList.add("dark");
+    const savedDarkMode = localStorage.getItem("darkMode");
+    let prefersDark = false;
+    if (savedDarkMode === null) {
+      // Si no hay preferencia guardada, usar la del sistema
+      prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(prefersDark);
+      if (prefersDark) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } else {
+      const isDark = savedDarkMode === "true";
+      setDarkMode(isDark);
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     }
   }, []);
 
@@ -156,7 +171,7 @@ const Header = ({ toggleSidebar, title }) => {
               id="saludo"
               className="greeting text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex">
               <span className="text-gray-800 dark:text-gray-100 font-semibold text-xl">
-                {getGreeting()},{" "}
+                {getGreeting()}{" "}
                 <span className="text-blue-900 dark:text-blue-400 mr-1">
                   {localStorage.getItem("nombreUsuario") || "Daniel Salvador"}
                 </span>

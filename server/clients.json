@@ -123,22 +123,17 @@
         "title": "Consultoría de Diseño Web",
         "description": "Aclarar dudas sobre el Diseño Web",
         "services": [
-          "Consultoría de Diseño Web"
+          "Consultoría de Diseño Web",
+          "Landing Page",
+          "Diseño Web"
         ],
         "sections": [],
         "startDate": "2025-05-17",
         "dueDate": "2025-05-31",
-        "priority": "Alta",
+        "priority": "Media",
         "completed": false,
         "id": 1747534150277,
-        "tasks": [
-          {
-            "title": "a",
-            "description": "a",
-            "status": "Pendiente",
-            "priority": "Baja"
-          }
-        ]
+        "tasks": []
       }
     ]
   },
@@ -192,26 +187,7 @@
         "completed": false,
         "status": "",
         "totalProgress": 50,
-        "tasks": [
-          {
-            "title": "Diseño Web",
-            "description": "Diseño de la página web",
-            "progress": 0,
-            "completed": false
-          },
-          {
-            "title": "Desarrollo Web",
-            "description": "Desarrollo de la página web",
-            "progress": 50,
-            "completed": false
-          },
-          {
-            "title": "Optimización SEO",
-            "description": "Optimización SEO de la página web",
-            "progress": 100,
-            "completed": false
-          }
-        ]
+        "tasks": []
       }
     ]
   },

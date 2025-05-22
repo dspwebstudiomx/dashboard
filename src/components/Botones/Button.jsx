@@ -23,7 +23,7 @@ const Button = ({ text, onClick, icon: Icon, variant = "primary" }) => {
   return (
     <button
       className={clsx(
-        "md:ml-4 px-4 h-15 w-full md:w-[210px] text-base rounded-lg transition mt-6 ml-0 flex items-center justify-center gap-2",
+        "md:ml-4 px-4 h-15 w-full md:w-[210px] rounded-lg transition mt-6 ml-0 flex items-center justify-center gap-2 text-lg",
         VARIANT_CLASSES[variant]
       )}
       onClick={onClick}>

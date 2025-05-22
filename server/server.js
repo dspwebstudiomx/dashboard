@@ -391,6 +391,43 @@ app.get("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
   });
 });
 
+// Endpoint para eliminar una tarea de un proyecto desde clients.json projects/tasks
+app.delete(
+  "/api/clients/:clientId/projects/:projectId/tasks/:taskId",
+  (req, res) => {
+    const clientId = parseInt(req.params.clientId, 10);
+    const projectId = req.params.projectId;
+
+    readClientsFile((err, clients) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ error: "Error al leer el archivo de clientes" });
+      }
+
+      const client = clients.find((c) => c.id === clientId);
+      if (!client) {
+        return res.status(404).json({ error: "Cliente no encontrado" });
+      }
+
+      const project = client.projects.find(
+        (p) => String(p.id) === String(projectId)
+      );
+      if (!project) {
+        return res.status(404).json({ error: "Proyecto no encontrado" });
+      }
+
+      // Busca la tarea así:
+      project.tasks = project.tasks.filter(task => task.taskId !== Number(req.params.taskId));
+
+      writeClientsFile(clients, res, {
+        message: "Tarea eliminada correctamente",
+      });
+    });
+  }
+);
+
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
