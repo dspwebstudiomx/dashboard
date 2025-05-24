@@ -43,7 +43,11 @@ const ClientsList = () => {
       // Agregar nuevo cliente
       setClients((prevClients) => [
         ...prevClients,
-        { ...client, id: Date.now() },
+        {
+          ...client,
+          id: Date.now(),
+          createdAt: new Date().toISOString(),
+        },
       ]);
     }
     handleCloseModal();

@@ -334,7 +334,7 @@ app.get("/api/cupones/validar", (req, res) => {
 app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
   const clientId = parseInt(req.params.clientId, 10);
   const projectId = req.params.projectId;
-  const newTask = req.body;
+  const newTask = { ...req.body, clientId }; // <-- Asegura que clientId esté en la tarea
 
   readClientsFile((err, clients) => {
     if (err) {
@@ -346,9 +346,6 @@ app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
       return res.status(404).json({ error: "Cliente no encontrado" });
     }
 
-    // Cambia esta línea:
-    // const project = client.projects.find((p) => p.id === projectId);
-    // Por esta:
     const project = client.projects.find((p) => String(p.id) === String(projectId));
     if (!project) {
       return res.status(404).json({ error: "Proyecto no encontrado" });

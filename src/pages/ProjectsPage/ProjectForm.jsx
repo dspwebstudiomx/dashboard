@@ -60,7 +60,7 @@ const ProjectForm = ({ project, onClose }) => {
           <option value="" disabled>
             Select a client
           </option>
-          {clients.map((client) => (
+          {(Array.isArray(clients) ? clients : []).map((client) => (
             <option key={client.id} value={client.name}>
               {client.fullName} {client.lastName}
             </option>

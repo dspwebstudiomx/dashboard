@@ -2,16 +2,16 @@ import React from "react";
 
 const ProjectCardDates = ({ project, isCompleted }) => {
   return (
-    <>
+    <div className="flex flex-col gap-6 text-lg">
       {/* Fecha de Inicio */}
-      <p className=" dark:text-gray-100">
+      <p className="text-gray-800 dark:text-gray-100">
         Fecha de inicio:{" "}
         <span className="text-blue-900 dark:text-blue-400 font-semibold">
           {new Date(project.startDate).toLocaleDateString()}
         </span>
       </p>
       {/* Fecha de término */}
-      <p className=" dark:text-gray-100">
+      <p className=" text-gray-800 dark:text-gray-100">
         Fecha de término:{" "}
         <span className="text-blue-900 dark:text-blue-400 font-semibold">
           {new Date(project.dueDate).toLocaleDateString()}
@@ -43,7 +43,7 @@ const ProjectCardDates = ({ project, isCompleted }) => {
           días
         </span>
       </p>
-    </>
+    </div>
   );
 };
 

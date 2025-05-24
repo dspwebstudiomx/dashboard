@@ -49,6 +49,7 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
       description: taskDescription,
       status: taskStatus,
       priority: taskPriority,
+      clientId: clientId, // <-- Agrega el clientId aquí
     };
 
     fetch(
@@ -222,6 +223,7 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 
       {/* Modal secundario para el formulario de tarea */}
       <Modal
+        id="modal-tarea"
         isOpen={showTaskModal}
         onClick={() => setShowTaskModal(false)}
         title="Crear Nueva Tarea">

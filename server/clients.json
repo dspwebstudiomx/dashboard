@@ -90,34 +90,7 @@
         "priority": "Baja",
         "completed": true,
         "id": 1747531564248,
-        "tasks": [
-          {
-            "title": "Diseño Web",
-            "description": "Diseño de la página web",
-            "priority": "Baja",
-            "state": "En progreso",
-            "progress": 100,
-            "completed": true
-          },
-          {
-            "title": "Desarrollo Web",
-            "description": "Desarrollo de la página web",
-            "progress": 100,
-            "completed": true
-          },
-          {
-            "title": "Optimización SEO",
-            "description": "Optimización SEO de la página web",
-            "progress": 100,
-            "completed": true
-          },
-          {
-            "title": "a",
-            "description": "a",
-            "status": "Pendiente",
-            "priority": "Baja"
-          }
-        ]
+        "tasks": []
       },
       {
         "title": "Consultoría de Diseño Web",
@@ -133,7 +106,16 @@
         "priority": "Media",
         "completed": false,
         "id": 1747534150277,
-        "tasks": []
+        "tasks": [
+          {
+            "taskId": 1747936202817,
+            "title": "prueba sistemas",
+            "description": "hola",
+            "status": "Nuevo",
+            "priority": "Baja",
+            "clientId": 1745897285167
+          }
+        ]
       }
     ]
   },
@@ -187,7 +169,16 @@
         "completed": false,
         "status": "",
         "totalProgress": 50,
-        "tasks": []
+        "tasks": [
+          {
+            "taskId": 1748026894118,
+            "title": "prueba",
+            "description": "prueba",
+            "status": "En Proceso",
+            "priority": "Baja",
+            "clientId": 1745953383970
+          }
+        ]
       }
     ]
   },

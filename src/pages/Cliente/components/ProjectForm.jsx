@@ -117,7 +117,7 @@ const ProjectForm = ({
             value={project.title}
             onChange={onChange}
             required
-            className="p-2 rounded border"
+            className="p-2 rounded border dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
           />
         </div>
         <div className="flex flex-col md:flex-row gap-4 justify-between">
@@ -133,7 +133,7 @@ const ProjectForm = ({
                 value={project.startDate}
                 onChange={onChange}
                 required
-                className="p-2 rounded border"
+                className="p-2 rounded border  dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
               />
             </div>
             <div className="flex flex-col gap-4">
@@ -147,7 +147,7 @@ const ProjectForm = ({
                 value={project.dueDate}
                 onChange={onChange}
                 required
-                className="p-2 rounded border"
+                className="p-2 rounded border  dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
               />
             </div>
           </div>
@@ -160,7 +160,7 @@ const ProjectForm = ({
               name="priority"
               value={project.priority}
               onChange={onChange}
-              className="p-2 rounded border w-full">
+              className="p-2 rounded border w-full  dark:bg-gray-900 bg-gray-100 dark:text-gray-200">
               <option value="Alta">Alta</option>
               <option value="Media">Media</option>
               <option value="Baja">Baja</option>
@@ -300,7 +300,7 @@ const ProjectForm = ({
           value={project.description}
           onChange={onChange}
           required
-          className="p-2 rounded border min-h-[220px] dark:bg-gray-600"
+          className="p-4 md:p-6 rounded border min-h-[220px] dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
         />
       </div>
 
@@ -312,7 +312,7 @@ const ProjectForm = ({
         </label>
         <div className="flex gap-2 flex-col md:flex-row items-center justify-between">
           <input
-            className="p-2 rounded border flex-1 h-12"
+            className="p-2 md:p-4 rounded border flex-1 h-12  dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
             type="text"
             name="cupon"
             value={cupon}
