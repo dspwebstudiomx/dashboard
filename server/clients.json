@@ -251,7 +251,8 @@
         "dueDate": "2025-05-28",
         "priority": "Baja",
         "id": 1747521768783,
-        "completed": false
+        "completed": false,
+        "tasks": []
       }
     ]
   },

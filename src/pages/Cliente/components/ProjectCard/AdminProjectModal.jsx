@@ -252,11 +252,7 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 						>
 							Crear
 						</button>
-						<button
-							type="button"
-							className="bg-gray-400 text-white px-4 py-1 rounded"
-							onClick={() => setShowTaskModal(false)}
-						>
+						<button type="button" className="bg-gray-400 text-white px-4 py-1 rounded">
 							Cancelar
 						</button>
 					</div>
