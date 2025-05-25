@@ -90,15 +90,22 @@
         "priority": "Baja",
         "completed": true,
         "id": 1747531564248,
-        "tasks": []
+        "tasks": [
+          {
+            "taskId": 1748214037271,
+            "title": "a",
+            "description": "a",
+            "status": "Nuevo",
+            "priority": "Baja",
+            "clientId": 1745897285167
+          }
+        ]
       },
       {
         "title": "Consultoría de Diseño Web",
         "description": "Aclarar dudas sobre el Diseño Web",
         "services": [
-          "Consultoría de Diseño Web",
-          "Landing Page",
-          "Diseño Web"
+          "Consultoría de Diseño Web"
         ],
         "sections": [],
         "startDate": "2025-05-17",
@@ -106,16 +113,7 @@
         "priority": "Media",
         "completed": false,
         "id": 1747534150277,
-        "tasks": [
-          {
-            "taskId": 1747936202817,
-            "title": "prueba sistemas",
-            "description": "hola",
-            "status": "Nuevo",
-            "priority": "Baja",
-            "clientId": 1745897285167
-          }
-        ]
+        "tasks": []
       }
     ]
   },
@@ -169,16 +167,7 @@
         "completed": false,
         "status": "",
         "totalProgress": 50,
-        "tasks": [
-          {
-            "taskId": 1748026894118,
-            "title": "prueba",
-            "description": "prueba",
-            "status": "En Proceso",
-            "priority": "Baja",
-            "clientId": 1745953383970
-          }
-        ]
+        "tasks": []
       }
     ]
   },
@@ -272,7 +261,7 @@
     "lastName": "Pérez ",
     "lastName2": "Ferreira",
     "email": "soyelperez@fortnite.com",
-    "phoneNumber": "xxxxxx1",
+    "phoneNumber": "xxxxxx",
     "address": "",
     "company": "xxxxx",
     "rfc": "",
@@ -282,7 +271,7 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": "",
+    "project": "Creación de sitio web",
     "image": "/uploads/1747336033064-462061038.png",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
