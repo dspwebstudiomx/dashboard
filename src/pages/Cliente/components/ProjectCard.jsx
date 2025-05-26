@@ -31,6 +31,7 @@ const ProjectCard = ({
 		>
 			{/* Línea de tarjeta */}
 			<LinePriorityCard project={project} />
+
 			{/* Contenido de la tarjeta */}
 			<ContentProjectCard
 				project={project}
@@ -41,6 +42,7 @@ const ProjectCard = ({
 				totalConImpuestos={totalConImpuestos}
 				openAdminModal={openModal}
 			/>
+
 			{/* Modal de administración */}
 			<AdminProjectModal
 				isOpen={modalAdminProject}
