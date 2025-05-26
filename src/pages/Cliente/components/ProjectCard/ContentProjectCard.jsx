@@ -10,17 +10,12 @@ import { useProjectDescription } from '@hooks/useProjectDescription';
 import ProjectActionButtons from '../ProjectActionButtons';
 import AdminActionButton from '../AdminActionButton';
 
-const ContentProjectCard = ({
-	project,
-	isCompleted,
-	onEdit,
-	onDelete,
-	handleCompleteClick,
-	totalConImpuestos,
-	openAdminModal,
-}) => {
+const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 	const [showFullDesc, setShowFullDesc] = useState(false);
 	const { isLong, short } = useProjectDescription(project.description);
+
+	// Desestructuramos las acciones para usarlas fácilmente
+	const { isCompleted, onEdit, onDelete, handleCompleteClick, openAdminModal } = actions;
 
 	return (
 		<article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between">

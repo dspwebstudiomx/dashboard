@@ -24,6 +24,15 @@ const ProjectCard = ({
 	const { isCompleted, modalAdminProject, closeModal, openModal, handleCompleteClick } =
 		useProjectCard(project, handleComplete);
 
+	// Agrupar acciones relacionadas
+	const actions = {
+		isCompleted,
+		onEdit,
+		onDelete,
+		handleCompleteClick,
+		openAdminModal: openModal,
+	};
+
 	return (
 		<li
 			id={`Proyecto-${project.title}`}
@@ -35,12 +44,8 @@ const ProjectCard = ({
 			{/* Contenido de la tarjeta */}
 			<ContentProjectCard
 				project={project}
-				isCompleted={isCompleted}
-				onEdit={onEdit}
-				onDelete={onDelete}
-				handleCompleteClick={handleCompleteClick}
+				actions={actions}
 				totalConImpuestos={totalConImpuestos}
-				openAdminModal={openModal}
 			/>
 
 			{/* Modal de administración */}
