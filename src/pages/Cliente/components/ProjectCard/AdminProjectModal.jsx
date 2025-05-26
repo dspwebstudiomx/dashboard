@@ -18,6 +18,7 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 	const [tasks, setTasks] = useState([]);
 	const [taskPriority, setTaskPriority] = useState('Baja');
 	const [taskStatus, setTaskStatus] = useState('Nuevo'); // Nuevo estado para el status
+	const [editTask, setEditTask] = useState(null); // NUEVO: estado para tarea en edición
 
 	// Cargar tareas cuando se abre el modal o cambia el proyecto
 	useEffect(() => {
@@ -80,6 +81,52 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 			.then((data) => {
 				setTasks(data.tasks ?? []);
 				setSuccessMessage('Tarea eliminada exitosamente.');
+				setTimeout(() => setSuccessMessage(''), 3000);
+			});
+	};
+
+	// NUEVO: función para abrir modal en modo edición
+	const handleEditTaskClick = (task) => {
+		setEditTask(task);
+		setTaskTitle(task.title);
+		setTaskDescription(task.description);
+		setTaskPriority(task.priority);
+		setTaskStatus(task.status);
+		setShowTaskModal(true);
+	};
+
+	// NUEVO: función para editar tarea
+	const handleEditTask = (e) => {
+		e.preventDefault();
+		if (!clientId || !project?.id || !editTask) {
+			alert('No se puede editar la tarea: faltan datos.');
+			return;
+		}
+		const updatedTask = {
+			...editTask,
+			title: taskTitle,
+			description: taskDescription,
+			priority: taskPriority,
+			status: taskStatus,
+		};
+		fetch(
+			`http://localhost:5000/api/clients/${clientId}/projects/${project.id}/tasks/${editTask.taskId}`,
+			{
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(updatedTask),
+			}
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				setSuccessMessage('Tarea editada exitosamente.');
+				setTasks(data.tasks ?? []);
+				setEditTask(null);
+				setTaskTitle('');
+				setTaskDescription('');
+				setTaskPriority('Baja');
+				setTaskStatus('Nuevo');
+				setShowTaskModal(false);
 				setTimeout(() => setSuccessMessage(''), 3000);
 			});
 	};
@@ -162,7 +209,10 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 												<td className="border border-gray-200 px-4 py-2">{task.status}</td>
 												<td className="border border-gray-200 px-4 py-2">
 													{/* Botones para Editar o Eliminar tarea */}
-													<button className="bg-yellow-500 text-white px-2 py-1 rounded">
+													<button
+														className="bg-yellow-500 text-white px-2 py-1 rounded"
+														onClick={() => handleEditTaskClick(task)}
+													>
 														Editar
 													</button>
 													<button
@@ -192,10 +242,16 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 			<Modal
 				id="modal-tarea"
 				isOpen={showTaskModal}
-				onClick={() => setShowTaskModal(false)}
-				title="Crear Nueva Tarea"
+				onClick={() => {
+					setShowTaskModal(false);
+					setEditTask(null); // Limpia el estado de edición al cerrar
+				}}
+				title={editTask ? 'Editar Tarea' : 'Crear Nueva Tarea'}
 			>
-				<form onSubmit={handleCreateTask} className="flex flex-col gap-4 p-4">
+				<form
+					onSubmit={editTask ? handleEditTask : handleCreateTask}
+					className="flex flex-col gap-4 p-4"
+				>
 					<div className="flex flex-col gap-2">
 						<label htmlFor="taskTitle">Título de la tarea</label>
 						<input
@@ -245,14 +301,17 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 						</select>
 					</div>
 					<div className="flex gap-2">
-						<button
-							onClick={handleCreateTask}
-							type="submit"
-							className="bg-green-500 text-white px-4 py-1 rounded"
-						>
-							Crear
+						<button type="submit" className="bg-green-500 text-white px-4 py-1 rounded">
+							{editTask ? 'Guardar' : 'Crear'}
 						</button>
-						<button type="button" className="bg-gray-400 text-white px-4 py-1 rounded">
+						<button
+							type="button"
+							className="bg-gray-400 text-white px-4 py-1 rounded"
+							onClick={() => {
+								setShowTaskModal(false);
+								setEditTask(null);
+							}}
+						>
 							Cancelar
 						</button>
 					</div>
