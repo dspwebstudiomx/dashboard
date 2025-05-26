@@ -1,10 +1,9 @@
-import React from 'react';
+import Button from '@components/Botones/Button';
 import Modal from '@components/Modal';
-import { useProjectTasks } from './useProjectTasks';
-import GeneralProjectInfo from './GeneralProjectInfo';
+import React from 'react';
+import { FaPlus } from 'react-icons/fa6';
 
-// Modal para administrar el proyecto
-const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
+const ProjectTasks = ({ actions }) => {
 	const {
 		showTaskModal,
 		setShowTaskModal,
@@ -25,22 +24,67 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 		handleEditTaskClick,
 		handleEditTask,
 		resetTaskForm,
-	} = useProjectTasks({ clientId, project, isOpen });
-
+	} = actions;
 	return (
 		<>
-			<GeneralProjectInfo
-				isOpen={isOpen}
-				onClose={onClose}
-				project={project}
-				successMessage={successMessage}
-				setShowTaskModal={setShowTaskModal}
-				tasks={tasks}
-				handleEditTaskClick={handleEditTaskClick}
-				handleDeleteTask={handleDeleteTask}
-				handleEditTask={handleEditTask}
-			/>
-
+			<h2 className="text-2xl font-semibold text-center uppercase mt-12">Tareas</h2>
+			<div
+				id="Asignacion-Tareas"
+				className="flex flex-col md:flex-col gap-12 rounded-2xl shadow-sm bg-gray-50 p-8"
+			>
+				<div className="flex flex-col md:flex-row justify-end items-center gap-4">
+					<Button text="Crear Tarea" icon={FaPlus} onClick={() => setShowTaskModal(true)} />
+					{successMessage && <span className="text-green-600">{successMessage}</span>}
+				</div>
+				{/* Tabla que muestra las tareas creadas */}
+				<div className="overflow-x-auto">
+					<table className="min-w-full border-collapse border border-gray-200">
+						<thead>
+							<tr>
+								<th className="border border-gray-200 px-4 py-2">ID</th>
+								<th className="border border-gray-200 px-4 py-2">Título</th>
+								<th className="border border-gray-200 px-4 py-2">Descripción</th>
+								<th className="border border-gray-200 px-4 py-2">Prioridad</th>
+								<th className="border border-gray-200 px-4 py-2">Estado</th>
+								<th className="border border-gray-200 px-4 py-2">Editar/Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+							{tasks && tasks.length > 0 ? (
+								tasks.map((task, index) => (
+									<tr key={index}>
+										<td className="border border-gray-200 px-4 py-2">{task.taskId}</td>
+										<td className="border border-gray-200 px-4 py-2">{task.title}</td>
+										<td className="border border-gray-200 px-4 py-2">{task.description}</td>
+										<td className="border border-gray-200 px-4 py-2">{task.priority}</td>
+										<td className="border border-gray-200 px-4 py-2">{task.status}</td>
+										<td className="border border-gray-200 px-4 py-2">
+											<button
+												className="bg-yellow-500 text-white px-2 py-1 rounded"
+												onClick={() => handleEditTaskClick(task)}
+											>
+												Editar
+											</button>
+											<button
+												onClick={() => handleDeleteTask(task.taskId)}
+												className="bg-red-500 text-white px-2 py-1 rounded ml-2"
+											>
+												Eliminar
+											</button>
+										</td>
+									</tr>
+								))
+							) : (
+								<tr>
+									<td colSpan={6} className="text-center py-4 text-gray-500">
+										No hay tareas creadas
+									</td>
+								</tr>
+							)}
+						</tbody>
+					</table>
+				</div>
+			</div>
 			{/* Modal secundario para el formulario de tarea */}
 			<Modal
 				id="modal-tarea"
@@ -126,4 +170,4 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 	);
 };
 
-export default AdminProjectModal;
+export default ProjectTasks;

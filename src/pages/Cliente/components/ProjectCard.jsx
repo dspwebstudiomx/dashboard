@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import ContentProjectCard from './ProjectCard/ContentProjectCard';
-import AdminProjectModal from './ProjectCard/AdminProjectModal';
+import AdminProjectModal from './ProjectCard/AdminProjectModal/AdminProjectModal';
 import LinePriorityCard from './ProjectCard/LinePriority';
 import { useProjectCard } from '../hooks/useProjectCard';
 import { FinancialCalculate } from '../data/FinancialCalculate';

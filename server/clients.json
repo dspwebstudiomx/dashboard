@@ -90,16 +90,7 @@
         "priority": "Baja",
         "completed": true,
         "id": 1747531564248,
-        "tasks": [
-          {
-            "taskId": 1748223352807,
-            "title": "a",
-            "description": "ab",
-            "status": "Terminado",
-            "priority": "Baja",
-            "clientId": 1745897285167
-          }
-        ]
+        "tasks": []
       },
       {
         "title": "Consultoría de Diseño Web",
