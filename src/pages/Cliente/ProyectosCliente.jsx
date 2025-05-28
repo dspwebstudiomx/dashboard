@@ -68,7 +68,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 				</Modal>
 			)}
 
-			<ul id="lista-proyectos" className="mt-12 grid md:grid-cols-2 gap-12 items-start">
+			<ul id="lista-proyectos" className="mt-12 grid xl:grid-cols-2 gap-12 items-start">
 				{selectedClient.projects && selectedClient.projects.length > 0 ? (
 					selectedClient.projects.map((project) => (
 						<ProjectCard
