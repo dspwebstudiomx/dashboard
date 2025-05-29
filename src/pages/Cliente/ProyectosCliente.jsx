@@ -5,6 +5,7 @@ import ProjectForm from './components/ProjectForm';
 import ProjectCard from './components/ProjectCard';
 import Button from '@components/Botones/Button';
 import { IoMdAdd } from 'react-icons/io';
+import { FaPlus } from 'react-icons/fa6';
 
 const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 	const {
@@ -48,7 +49,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 
 			{(showForm || editProjectId) && (
 				<Modal
-					title={editProjectId ? 'Editar Proyecto' : 'Crear Proyecto'}
+					title={editProjectId ? 'Editar Proyecto' : 'Nuevo Proyecto'}
 					onClick={() => {
 						setShowForm(false);
 						setEditProjectId(null);
@@ -102,7 +103,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 							No hay proyectos disponibles para {selectedClient.fullName} {selectedClient.lastName}{' '}
 							{selectedClient.lastName2}.
 						</p>
-						<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} />
+						<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} icon={FaPlus} />
 					</div>
 				)}
 			</ul>

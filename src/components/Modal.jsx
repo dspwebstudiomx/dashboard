@@ -32,7 +32,7 @@ const Modal = ({ isOpen, onClick, children, title }) => {
 				</div>
 				{/* Título del modal */}
 				{title && (
-					<h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">
+					<h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">
 						{title}
 					</h2>
 				)}
