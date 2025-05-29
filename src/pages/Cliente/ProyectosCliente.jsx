@@ -92,10 +92,10 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 				) : (
 					<div
 						id="ventana-no-proyecto"
-						className="w-full flex flex-col items-center justify-start rounded-xl shadow-2xl p-8 gap-8 mt-6 dark:bg-gray-700 bg-white border-2 border-gray-300 dark:border-gray-600"
+						className="w-full flex flex-col items-center justify-start rounded-xl shadow-2xl p-6 md:p-8 gap-8 mt-6 dark:bg-gray-700 bg-white border-2 border-gray-300 dark:border-gray-600"
 					>
-						<p className="text-gray-800 dark:text-gray-100 flex items-center gap-2 font-semibold">
-							<MdErrorOutline size={24} className="inline-block text-2xl text-red-700" />
+						<p className="text-gray-800 dark:text-gray-100 flex items-center gap-4  font-semibold">
+							<MdErrorOutline size={24} className="inline-block text-2xl text-red-700 w-22 h-22" />
 							No hay proyectos disponibles para {selectedClient.fullName} {selectedClient.lastName}{' '}
 							{selectedClient.lastName2}.
 						</p>
