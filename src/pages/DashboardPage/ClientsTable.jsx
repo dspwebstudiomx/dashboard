@@ -65,30 +65,9 @@ const ClientsTable = () => {
 	};
 
 	return (
-		<div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[460px]">
-			{/* Botones de ordenamiento */}
-			<div className="flex gap-2 mb-2 justify-between items-center">
-				<div className="flex gap-6">
-					<button
-						className={`px-3 py-3 rounded ${
-							sortBy === 'fullName' ? 'bg-blue-700 text-white' : 'bg-gray-500 text-gray-100'
-						}`}
-						onClick={() => setSortBy('fullName')}
-						type="button"
-					>
-						Ordenar por Nombre
-					</button>
-					<button
-						className={`px-3 py-3 rounded ${
-							sortBy === 'lastName' ? 'bg-blue-700 text-white' : 'bg-gray-500 text-gray-100'
-						}`}
-						onClick={() => setSortBy('lastName')}
-						type="button"
-					>
-						Ordenar por Apellido Paterno
-					</button>
-				</div>
-
+		<div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[520px]">
+			{/* Filtro de Búsqueda 🔍 */}
+			<div className="flex gap-2 mb-2 justify-end items-center">
 				{/* Agregar filtro de búsqueda */}
 				<input
 					type="text"
@@ -105,6 +84,8 @@ const ClientsTable = () => {
 					}}
 				/>
 			</div>
+
+			{/* Tabla de Clientes */}
 			<table
 				id="clients-table"
 				className="min-w-full border border-gray-300 bg-white border-collapse mt-12"
@@ -174,24 +155,49 @@ const ClientsTable = () => {
 					)}
 				</tbody>
 			</table>
-			{/* Mostrar controles de paginación solo si hay más de 3 clientes */}
-			{clients.length > clientsPerPage && (
-				<div className="flex justify-center mt-4">
-					{Array.from({ length: totalPages }, (_, index) => (
+
+			{/* Paginación y ordenamiento */}
+			<div className="flex flex-col md:flex-row items-center justify-between w-full mt-12 bg-red-300">
+				<div className="flex gap-2 mb-2 justify-between items-center">
+					<div className="flex flex-col md:flex-row gap-6">
 						<button
-							key={index + 1}
-							onClick={() => handlePageChange(index + 1)}
-							className={`px-4 py-2 mx-1 border rounded-full ${
-								currentPage === index + 1
-									? 'bg-blue-700 text-white'
-									: 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200'
+							className={`px-3 py-3 rounded ${
+								sortBy === 'fullName' ? 'bg-blue-700 text-white' : 'bg-gray-500 text-gray-100'
 							}`}
+							onClick={() => setSortBy('fullName')}
+							type="button"
 						>
-							{index + 1}
+							Ordenar por Nombre
 						</button>
-					))}
+						<button
+							className={`px-3 py-3 rounded ${
+								sortBy === 'lastName' ? 'bg-blue-700 text-white' : 'bg-gray-500 text-gray-100'
+							}`}
+							onClick={() => setSortBy('lastName')}
+							type="button"
+						>
+							Ordenar por Apellido Paterno
+						</button>
+					</div>
+					{clients.length > clientsPerPage && (
+						<div className="flex">
+							{Array.from({ length: totalPages }, (_, index) => (
+								<button
+									key={index + 1}
+									onClick={() => handlePageChange(index + 1)}
+									className={`px-4 py-2 mx-1 border rounded-full ${
+										currentPage === index + 1
+											? 'bg-blue-700 text-white'
+											: 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200'
+									}`}
+								>
+									{index + 1}
+								</button>
+							))}
+						</div>
+					)}
 				</div>
-			)}
+			</div>
 		</div>
 	);
 };

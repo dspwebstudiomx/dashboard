@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProjectTasks } from './Tasks/useProjectTasks';
+import { useProjectTasks } from '../../../../../hooks/useProjectTasks';
 import GeneralProjectInfo from '../GeneralProjectInfo';
 
 // Modal para administrar el proyecto

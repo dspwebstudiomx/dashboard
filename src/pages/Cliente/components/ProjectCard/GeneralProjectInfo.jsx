@@ -36,8 +36,8 @@ const GeneralProjectInfo = ({
 			isOpen={isOpen}
 			onClick={onClose}
 			title={
-				<div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-					<h2 id="titulo-proyecto" className="text-3xl text-center">
+				<div className="flex flex-col-reverse  sm:flex-row items-center justify-center gap-6">
+					<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center">
 						{project.title}
 					</h2>
 					<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
@@ -63,6 +63,8 @@ const GeneralProjectInfo = ({
 				<GrayLine />
 
 				<ProjectTasks
+					project={project}
+					clientId={project?.clientId}
 					actions={{
 						showTaskModal,
 						setShowTaskModal,

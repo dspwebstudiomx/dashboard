@@ -29,7 +29,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 
 	return (
 		<article className="grid">
-			<div className="flex flex-col md:flex-row justify-between gap-6 mb-0">
+			<div className="flex flex-col md:flex-row justify-between gap-6 mb-0 mt-20">
 				<div>
 					<h2 className="text-2xl font-semibold mb-4">Mis Proyectos</h2>
 					<p className="mb-4 text-lg">

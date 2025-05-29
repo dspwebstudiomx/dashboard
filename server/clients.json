@@ -212,7 +212,9 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": "Consultoría SEO - Básico",
+    "project": [
+      "Prueba Sistemas Maripaz"
+    ],
     "image": "/uploads/1747789662552-328971791.jpg",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
@@ -244,6 +246,23 @@
         "id": 1747521768783,
         "completed": false,
         "tasks": []
+      },
+      {
+        "title": "Prueba Sistemas Maripaz",
+        "description": "Lorem ipsum dolor sit amet. Rem quasi galisum et tempora cupiditate ab vero nobis et doloremque debitis aut dicta aliquid vel esse labore! Qui molestias tempore ut eaque voluptatem non similique vero ut tenetur minus ut galisum enim est veritatis deserunt! Et ratione totam id quibusdam nihil sit fugiat galisum. \n\nUt iusto quas ea quae iure a velit architecto? Non nihil tenetur ea dolores impedit est illum corrupti. Et voluptas quia sit laudantium voluptatem non nulla nemo et accusantium praesentium et dolorem beatae? Et nesciunt accusamus in facilis quibusdam non voluptatem enim. \n",
+        "services": [
+          "Diseño Web",
+          "Landing Page"
+        ],
+        "sections": [],
+        "startDate": "2025-05-29",
+        "dueDate": "2025-06-29",
+        "priority": "Alta",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [],
+        "id": 1748543438191
       }
     ]
   },
@@ -253,7 +272,7 @@
     "lastName": "Pérez ",
     "lastName2": "Ferreira",
     "email": "soyelperez@fortnite.com",
-    "phoneNumber": "xxxxxx",
+    "phoneNumber": "1234567890",
     "address": "",
     "company": "xxxxx",
     "rfc": "",
