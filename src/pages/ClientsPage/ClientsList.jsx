@@ -71,14 +71,14 @@ const ClientsList = () => {
 			{/* // Botones de la barra lateral */}
 			<aside
 				id="clients-aside-buttons"
-				className="fixed bottom-0 left-0 md:right-0  md:top-50 flex md:flex-col md:gap-6 items-center z-20 w-[100vw] md:w-[20vw]"
+				className="fixed bottom-0 left-0 md:right-0  md:top-50 flex md:flex-col md:gap-6 items-center z-20 w-[100vw] md:w-[25vw]"
 			>
 				{/* Botón editar clientes */}
 				{/* Botón agregar clientes */}
 				<button
 					id="agregar-cliente"
 					onClick={() => handleOpenModal()}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 shadow-2xl w-full md:w-[210px]"
+					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 shadow-2xl w-full md:w-[170px] lg:w-[210px]"
 					aria-label="Agregar cliente"
 				>
 					<IoPersonAddSharp size={25} />
@@ -89,7 +89,7 @@ const ClientsList = () => {
 				<button
 					id="ir-a-inicio"
 					onClick={handleScrollToTop}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 shadow-2xl w-full md:w-[210px]"
+					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 shadow-2xl w-full md:w-[160px]  lg:w-[210px]"
 					aria-label="Ir a inicio"
 				>
 					<FaArrowUp size={25} />
@@ -100,7 +100,7 @@ const ClientsList = () => {
 				<button
 					id="ir-al-final"
 					onClick={handleScrollToBottom}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 shadow-2xl w-full md:w-[210px]"
+					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 shadow-2xl w-full  md:w-[160px]  lg:w-[210px]"
 					aria-label="Ir al final"
 				>
 					<FaArrowDown size={25} />
@@ -111,7 +111,7 @@ const ClientsList = () => {
 			{/* // Lista de clientes */}
 			<ul
 				id="clients-list"
-				className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 col-span-12 w-full md:w-[80%] md:ml-auto 2xl:pr-0"
+				className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-6 lg:gap-12 col-span-12 w-full md:w-[80%] md:ml-auto 2xl:pr-0"
 			>
 				{clients.map((client) => (
 					<ClientsCard
