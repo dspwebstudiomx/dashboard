@@ -27,7 +27,6 @@ const ProjectTaskForm = ({
 	// Obtener los datos del cliente y proyecto desde el hook
 	const { project: projectData } = useProjectTasks({
 		selectedClient,
-		// project,
 		isOpen,
 	});
 	// Despliego los datos del cliente y proyecto
@@ -39,7 +38,6 @@ const ProjectTaskForm = ({
 
 	const { createTask, updateTask } = useProjectTasks({
 		selectedClient,
-		// project,
 		isOpen,
 	});
 
@@ -78,7 +76,7 @@ const ProjectTaskForm = ({
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!selectedClient || !project.id) {
+		if (!selectedClient || !projectToShow?.id) {
 			alert('Faltan datos obligatorios: Cliente o Proyecto');
 			return;
 		}
@@ -86,9 +84,9 @@ const ProjectTaskForm = ({
 		const taskWithProject = {
 			...task,
 			taskId: isNew ? Date.now() : task.taskId,
-			selectedClient: project.client,
+			selectedClient: projectToShow.client,
 			clientId: realClientId,
-			projectId: project.id,
+			projectId: projectToShow.id,
 			priority: task.priority || 'Baja',
 			status: task.status || 'Nuevo',
 		};
@@ -108,11 +106,17 @@ const ProjectTaskForm = ({
 		}
 	};
 
+	// Usar el proyecto disponible (prop o hook)
+	const projectToShow = project && project.title ? project : projectData;
+
+	// Determinar si es edición o creación
+	const isEdit = Boolean(initialData && initialData.taskId);
+
 	return (
 		<Modal
 			isOpen={isOpen}
 			onClick={onClose}
-			title={task.taskId ? 'Editar Tarea' : 'Agregar Tarea'}
+			title={isEdit ? 'Editar Tarea' : 'Agregar Tarea'}
 			className="flex items-center justify-center"
 		>
 			{/* Encabezado con icono y título */}
@@ -136,7 +140,7 @@ const ProjectTaskForm = ({
 				<div className="flex items-center gap-2 font-medium text-gray-700">
 					<FaProjectDiagram className="text-blue-600 text-4xl" size={32} />
 					<p className="">
-						Proyecto: <span className="font-semibold">{project?.title || 'No definido'}</span>
+						Proyecto: <span className="font-semibold">{projectToShow?.title || 'No definido'}</span>
 					</p>
 				</div>
 			</div>
@@ -313,7 +317,7 @@ const ProjectTaskForm = ({
 						type="submit"
 						className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded shadow transition"
 					>
-						{task.taskId ? 'Actualizar tarea' : 'Agregar tarea'}
+						{isEdit ? 'Actualizar tarea' : 'Agregar tarea'}
 					</button>
 				</div>
 			</form>
