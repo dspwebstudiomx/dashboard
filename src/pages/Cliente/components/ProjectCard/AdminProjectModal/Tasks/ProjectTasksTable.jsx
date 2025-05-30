@@ -13,7 +13,7 @@ const ProjectTasksTable = ({ tasks = [], clientId, project }) => {
 
 	return (
 		<>
-			<div className="flex items-center justify-start mb-0 bg-red-300">
+			<div className="flex items-center justify-start mb-0">
 				{/* Icono */}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const ProjectTasksTable = ({ tasks = [], clientId, project }) => {
 				</svg>
 				<h2 className="text-2xl font-semibold">Mis Tareas</h2>
 			</div>
-			<div className="flex justify-end mb-4 bg-red-200">
+			<div className="flex justify-end mb-4">
 				<Button text="Agregar Tarea" onClick={handleOpenModal} icon={FaPlus} />
 			</div>
 			<table className="min-w-full bg-white border border-gray-200">

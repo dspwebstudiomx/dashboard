@@ -107,10 +107,14 @@ const ProjectTaskForm = ({
 	};
 
 	// Usar el proyecto disponible (prop o hook)
-	const projectToShow = project && project.title ? project : projectData;
+	const projectToShow = project && project.id && project.title ? project : projectData;
 
 	// Determinar si es edición o creación
 	const isEdit = Boolean(initialData && initialData.taskId);
+
+	if (!projectToShow || !projectToShow.title) {
+		return <div>Cargando proyecto...</div>;
+	}
 
 	return (
 		<Modal
