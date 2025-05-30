@@ -11,14 +11,21 @@ const VARIANT_CLASSES = {
 	ghost: 'bg-transparent text-blue-600 hover:bg-blue-50',
 };
 
-const Button = ({ text, onClick, icon: Icon, variant = 'primary' }) => {
+const SIZE_CLASSES = {
+	sm: 'px-3 py-1 text-sm h-9 md:w-[120px]',
+	md: 'px-4 py-2 text-base h-12 md:w-[180px]',
+	lg: 'px-6 py-3 text-lg h-15 md:w-[210px]',
+};
+
+const Button = ({ text, onClick, icon: Icon, variant = 'primary', size = 'md' }) => {
 	const iconClass = clsx('w-5 h-5', variant === 'primary' ? 'text-white' : 'text-blue-600');
 	const iconSize = 24;
 
 	return (
 		<button
 			className={clsx(
-				'md:ml-4 px-4 h-15 w-full md:w-[210px] rounded-lg transition ml-0 flex items-center justify-center gap-2 text-lg',
+				'md:ml-4 w-full rounded-lg transition ml-0 flex items-center justify-center gap-2',
+				SIZE_CLASSES[size],
 				VARIANT_CLASSES[variant]
 			)}
 			onClick={onClick}
