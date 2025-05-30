@@ -74,6 +74,7 @@ const ProjectTasksTable = ({ tasks = [], clientId, project }) => {
 					initialData={null}
 					selectedClient={project.client}
 					clientId={clientId}
+					project={project} // <-- Prop project agregado aquí
 				/>
 			)}
 		</>
