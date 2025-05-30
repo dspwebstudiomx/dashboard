@@ -28,6 +28,10 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 		SECTION_COSTS,
 	} = useProjects(selectedClient, onUpdateProjects);
 
+	if (!selectedClient) {
+		return <div>Cargando datos del cliente...</div>;
+	}
+
 	return (
 		<article className="grid">
 			<div className="flex flex-col md:flex-row justify-between gap-6 mb-0 mt-20">
@@ -88,6 +92,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 							handleComplete={handleComplete}
 							isCompleted={project.completed}
 							clientId={selectedClient.id}
+							selectedClient={selectedClient}
 						/>
 					))
 				) : (

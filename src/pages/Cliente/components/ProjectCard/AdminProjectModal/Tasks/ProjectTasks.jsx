@@ -1,12 +1,27 @@
 import React from 'react';
+import { useProjectTasks } from '@hooks/useProjectTasks';
 import ProjectTasksTable from './ProjectTasksTable';
 
-const ProjectTasks = ({ project, clientId, actions }) => {
+const ProjectTasks = ({ selectedClient, project, isOpen }) => {
+	const { tasks, handleCreateTask, handleDeleteTask, handleEditTaskClick } = useProjectTasks({
+		selectedClient,
+		project,
+		isOpen,
+	});
+
+	console.log('Proyecto recibido:', project);
+	console.log('Tareas del proyecto:', project?.tasks);
+	console.log('Tareas del hook:', tasks);
+
 	return (
-		<>
-			<h2 className="text-2xl font-semibold text-center uppercase mt-12">Tareas</h2>
-			<ProjectTasksTable project={project} clientId={clientId} actions={actions} />
-		</>
+		<ProjectTasksTable
+			tasks={tasks}
+			selectedClient={selectedClient}
+			onCreateTask={handleCreateTask}
+			onDeleteTask={handleDeleteTask}
+			onEditTaskClick={handleEditTaskClick}
+			// ...otros props necesarios...
+		/>
 	);
 };
 

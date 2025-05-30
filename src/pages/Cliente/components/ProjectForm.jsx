@@ -294,66 +294,75 @@ const ProjectForm = ({
 			</div>
 
 			{/* Cupón y totales */}
-			<div className="flex flex-col gap-2 mt-4">
-				<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
-					<FaTag className="text-blue-700" />
-					Código de cupón
-				</label>
-				<div className="flex gap-2 flex-col md:flex-row items-center justify-between">
-					<input
-						className="p-2 md:p-4 rounded border flex-1 h-12  dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
-						type="text"
-						name="cupon"
-						value={cupon}
-						onChange={(e) => setCupon(e.target.value)}
-						placeholder="Ingresa tu cupón"
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') e.preventDefault();
-						}}
-					/>
-					<Button
-						variant="primary"
-						type="button"
-						onClick={validarCupon}
-						icon={FaCheck}
-						text="Validar cupón"
-					/>
-					<Button
-						type="button"
-						onClick={() => {
-							setCupon('');
-							setDescuento(0);
-							setCuponMsg('');
-						}}
-						variant="secondary"
-						text="Reiniciar cupón"
-						icon={FaArrowRotateLeft}
-					/>
+			<div className="flex flex-col gap-2">
+				<div
+					id="cupon-section"
+					className="flex flex-col md:flex-row gap-4 items-center justify-end"
+				>
+					<div className="flex gap-4 flex-col items-start justify-start">
+						<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
+							<FaTag className="text-blue-700" />
+							Código de cupón
+						</label>
+						<input
+							className="p-2 md:p-4 rounded border flex-1 h-12  dark:bg-gray-900 bg-gray-100 dark:text-gray-200 md:w-[320px]"
+							type="text"
+							name="cupon"
+							value={cupon}
+							onChange={(e) => setCupon(e.target.value)}
+							placeholder="Ingresa tu cupón"
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') e.preventDefault();
+							}}
+						/>
+					</div>
+					<div className="flex items-center justify-end gap-2 mt-2">
+						<Button
+							variant="primary"
+							type="button"
+							onClick={validarCupon}
+							icon={FaCheck}
+							text="Validar cupón"
+						/>
+						<Button
+							type="button"
+							onClick={() => {
+								setCupon('');
+								setDescuento(0);
+								setCuponMsg('');
+							}}
+							variant="secondary"
+							text="Reiniciar cupón"
+							icon={FaArrowRotateLeft}
+						/>
+					</div>
 				</div>
 				{cuponMsg && (
 					<span className={descuento > 0 ? 'text-green-600' : 'text-red-500'}>{cuponMsg}</span>
 				)}
-				<div className="mt-6 text-lg font-semibold flex flex-col justify-center w-full items-end gap-4">
+			</div>
+			{/* Totales */}
+			<div className="mt-6 text-lg font-semibold flex flex-col justify-center w-full items-end gap-4">
+				<div>
+					Subtotal: <span className="font-semibold text-base">${subtotal.toFixed(2)}</span>
+				</div>
+				{/* impuestos del 16% */}
+				<div>
+					(+) Impuestos:{' '}
+					<span className="font-semibold text-base">${(subtotal * 0.16).toFixed(2)}</span>
+				</div>
+				{descuento > 0 && (
 					<div>
-						Subtotal: <span className="font-semibold text-base">${subtotal.toFixed(2)}</span>
+						Descuento: <span className="font-semibold text-green-600">-{descuento}%</span>
 					</div>
-					{/* impuestos del 16% */}
-					<div>
-						(+) Impuestos:{' '}
-						<span className="font-semibold text-base">${(subtotal * 0.16).toFixed(2)}</span>
-					</div>
-					{descuento > 0 && (
-						<div>
-							Descuento: <span className="font-semibold text-green-600">-{descuento}%</span>
-						</div>
-					)}
-					<div>
-						<span className="font-bold">Total: ${totalFinal.toFixed(2)}</span>
-					</div>
+				)}
+				<div>
+					<span className="font-bold">Total: ${totalFinal.toFixed(2)}</span>
 				</div>
 			</div>
 
-			<div className="flex items-center justify-center gap-4">
+			{/* Botones de Acción */}
+			<div className="flex items-center justify-center md:justify-end gap-4">
 				{isEdit ? (
 					<Button
 						type="button"

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-export function useProjectTasks({ clientId, project, isOpen }) {
+export function useProjectTasks({ selectedClient = null, project = {} } = {}) {
+  const clientId = selectedClient?.id; // <--- Agrega esta línea
+
   const [showTaskModal, setShowTaskModal] = useState(false);
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
@@ -10,37 +12,43 @@ export function useProjectTasks({ clientId, project, isOpen }) {
   const [taskStatus, setTaskStatus] = useState('Nuevo');
   const [editTask, setEditTask] = useState(null);
 
-  // Cargar tareas cuando se abre el modal o cambia el proyecto
+  // Cargar tareas del proyecto actual cada vez que cambie el proyecto o se abra el modal
   useEffect(() => {
-    if (!clientId || !project?.id) return;
-    if (isOpen) {
-      fetch(`http://localhost:5000/api/clients/${clientId}/projects/${project.id}/tasks`)
-        .then((res) => res.json())
-        .then((data) => setTasks(data.tasks ?? []));
+    if (project?.tasks) {
+      setTasks(project.tasks);
     }
-  }, [isOpen, project, clientId]);
+  }, [project]);
 
-  const handleCreateTask = (e) => {
-    e.preventDefault();
-    if (!clientId || !project?.id) return;
-    const newTask = {
-      taskId: Date.now(),
-      title: taskTitle,
-      description: taskDescription,
-      status: taskStatus,
-      priority: taskPriority,
+  const handleCreateTask = (newTask) => {
+    if (!clientId || !project?.id) {
+      return Promise.reject(new Error('Faltan clientId o project.id'));
+    }
+    const taskToSend = {
+      ...newTask,
+      taskId: newTask.taskId || Date.now(),
       clientId: clientId,
+      projectId: project.id,
+      status: newTask.status || 'Nuevo',
+      priority: newTask.priority || 'Baja',
     };
 
-    fetch(`http://localhost:5000/api/clients/${clientId}/projects/${project.id}/tasks`, {
+    return fetch(`http://localhost:5000/api/clients/${clientId}/projects/${project.id}/tasks`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newTask),
+      body: JSON.stringify(taskToSend),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then(err => { throw new Error(err.message || 'Error en el servidor'); });
+        }
+        return res.json();
+      })
       .then((data) => {
         setSuccessMessage('Tarea creada exitosamente.');
         setTasks(data.tasks ?? []);
+        if (project && data.tasks) {
+          project.tasks = data.tasks; // <--- sincroniza el proyecto en memoria
+        }
         resetTaskForm();
         setShowTaskModal(false);
         setTimeout(() => setSuccessMessage(''), 3000);
@@ -55,6 +63,9 @@ export function useProjectTasks({ clientId, project, isOpen }) {
       .then((res) => res.json())
       .then((data) => {
         setTasks(data.tasks ?? []);
+        if (project && data.tasks) {
+          project.tasks = data.tasks; // <--- sincroniza el proyecto en memoria
+        }
         setSuccessMessage('Tarea eliminada exitosamente.');
         setTimeout(() => setSuccessMessage(''), 3000);
       });
@@ -91,6 +102,9 @@ export function useProjectTasks({ clientId, project, isOpen }) {
       .then((data) => {
         setSuccessMessage('Tarea editada exitosamente.');
         setTasks(data.tasks ?? []);
+        if (project && data.tasks) {
+          project.tasks = data.tasks; // <--- sincroniza el proyecto en memoria
+        }
         resetTaskForm();
         setShowTaskModal(false);
         setTimeout(() => setSuccessMessage(''), 3000);
@@ -103,6 +117,27 @@ export function useProjectTasks({ clientId, project, isOpen }) {
     setTaskDescription('');
     setTaskPriority('Baja');
     setTaskStatus('Nuevo');
+  };
+
+  const updateTask = (taskId, updatedTask) => {
+    if (!clientId || !project?.id) return;
+    fetch(
+      `http://localhost:5000/api/clients/${clientId}/projects/${project.id}/tasks/${taskId}`,
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedTask),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks(data.tasks ?? []);
+        if (project && data.tasks) {
+          project.tasks = data.tasks; // <--- sincroniza el proyecto en memoria
+        }
+        setSuccessMessage('Tarea actualizada exitosamente.');
+        setTimeout(() => setSuccessMessage(''), 3000);
+      });
   };
 
   return {
@@ -122,10 +157,11 @@ export function useProjectTasks({ clientId, project, isOpen }) {
     setTaskStatus,
     editTask,
     setEditTask,
-    handleCreateTask,
+    createTask: handleCreateTask,
     handleDeleteTask,
     handleEditTaskClick,
     handleEditTask,
     resetTaskForm,
+    updateTask
   };
 }

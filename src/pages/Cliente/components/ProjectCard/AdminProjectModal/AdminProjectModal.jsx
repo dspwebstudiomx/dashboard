@@ -27,6 +27,8 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 				handleEditTaskClick={handleEditTaskClick}
 				handleDeleteTask={handleDeleteTask}
 				handleEditTask={handleEditTask}
+				selectedClient={project.client}
+				clientId={clientId}
 			/>
 		</>
 	);

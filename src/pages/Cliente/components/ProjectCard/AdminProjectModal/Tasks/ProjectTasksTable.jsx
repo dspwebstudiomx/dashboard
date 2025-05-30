@@ -1,21 +1,21 @@
-import Button from '@components/Botones/Button';
 import React, { useState } from 'react';
+import Button from '@components/Botones/Button';
 import ProjectTaskForm from './ProjectTaskForm';
 import { FaPlus } from 'react-icons/fa6';
 
-const ProjectTasksTable = () => {
+const ProjectTasksTable = ({ tasks = [], selectedClient }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleOpenModal = () => setIsModalOpen(true);
 	const handleCloseModal = () => setIsModalOpen(false);
 
+	console.log('Tareas recibidas:', tasks); // <-- Diagnóstico
+
 	return (
 		<>
-			{/* Botón para agregar tarea, si le doy clic me abre el componente ProjectTaskForm */}
 			<div className="flex justify-end mb-4">
 				<Button text="Agregar Tarea" onClick={handleOpenModal} icon={FaPlus} />
 			</div>
-			{/* Tabla de tareas */}
 			<table className="min-w-full bg-white border border-gray-200">
 				<thead>
 					<tr>
@@ -27,19 +27,23 @@ const ProjectTasksTable = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{/* Aquí se mapearían las tareas */}
-					{/* Ejemplo de una fila de tarea */}
-					<tr>
-						<td className="border px-4 py-2">Tarea 1</td>
-						<td className="border px-4 py-2">Descripción de la tarea 1</td>
-						<td className="border px-4 py-2">Alta</td>
-						<td className="border px-4 py-2">Pendiente</td>
-						<td className="border px-4 py-2">
-							{/* Botones para editar y eliminar tarea */}
-							<button className="bg-yellow-500 text-white px-2 py-1 rounded mr-2">Editar</button>
-							<button className="bg-red-500 text-white px-2 py-1 rounded">Eliminar</button>
-						</td>
-					</tr>
+					{tasks.length > 0 ? (
+						tasks.map((task) => (
+							<tr key={task.id || task.taskId}>
+								<td className="border px-4 py-2">{task.title}</td>
+								<td className="border px-4 py-2">{task.description}</td>
+								<td className="border px-4 py-2">{task.priority}</td>
+								<td className="border px-4 py-2">{task.status || '-'}</td>
+								<td className="border px-4 py-2">{/* Botones de acción */}</td>
+							</tr>
+						))
+					) : (
+						<tr>
+							<td colSpan={5} className="text-center py-4">
+								No hay tareas para este proyecto.
+							</td>
+						</tr>
+					)}
 				</tbody>
 			</table>
 			{isModalOpen && (
@@ -48,6 +52,7 @@ const ProjectTasksTable = () => {
 					onClose={handleCloseModal}
 					onSave={handleCloseModal}
 					initialData={null}
+					selectedClient={selectedClient}
 				/>
 			)}
 		</>
