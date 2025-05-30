@@ -76,7 +76,7 @@ const ProjectTaskForm = ({
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!selectedClient || !projectToShow?.id) {
+		if (!realClientId || !projectToShow?.id) {
 			alert('Faltan datos obligatorios: Cliente o Proyecto');
 			return;
 		}

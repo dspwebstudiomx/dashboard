@@ -114,6 +114,19 @@ export function useProjectTasks({ selectedClient = null, project = {} } = {}) {
     ];
   };
 
+  // Función para guardar (agregar o actualizar) una tarea
+  const handleSaveTask = (newTask) => {
+    setTasks(prevTasks => {
+      const exists = prevTasks.some(t => t.taskId === newTask.taskId);
+      if (exists) {
+        // Actualiza la tarea existente
+        return prevTasks.map(t => t.taskId === newTask.taskId ? newTask : t);
+      }
+      // Agrega la nueva tarea
+      return [...prevTasks, newTask];
+    });
+  };
+
   // Modifica updateTask para agregar historial
   const updateTask = (taskId, updatedTask) => {
     if (!clientId || !project?.id) return;
@@ -212,6 +225,7 @@ export function useProjectTasks({ selectedClient = null, project = {} } = {}) {
     handleEditTaskClick,
     handleEditTask,
     resetTaskForm,
-    updateTask
+    updateTask,
+    handleSaveTask,
   };
 }

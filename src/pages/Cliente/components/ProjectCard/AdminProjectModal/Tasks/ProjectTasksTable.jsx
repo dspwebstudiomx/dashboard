@@ -3,7 +3,7 @@ import Button from '@components/Botones/Button';
 import ProjectTaskForm from './ProjectTaskForm';
 import { FaPlus } from 'react-icons/fa6';
 
-const ProjectTasksTable = ({ tasks = [], clientId, project }) => {
+const ProjectTasksTable = ({ tasks = [], clientId, project, handleSaveTask }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleOpenModal = () => setIsModalOpen(true);
@@ -70,11 +70,11 @@ const ProjectTasksTable = ({ tasks = [], clientId, project }) => {
 				<ProjectTaskForm
 					isOpen={isModalOpen}
 					onClose={handleCloseModal}
-					onSave={handleCloseModal}
+					onSave={handleSaveTask}
 					initialData={null}
 					selectedClient={project.client}
 					clientId={clientId}
-					project={project} // <-- Prop project agregado aquí
+					project={project}
 				/>
 			)}
 		</>
