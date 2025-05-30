@@ -330,11 +330,12 @@ app.get("/api/cupones/validar", (req, res) => {
   }
 });
 
-// Endpoint para crear tarea desde clients.json en projects/tasks
+// SOLO DEJA ESTE ENDPOINT para crear tareas en proyectos
 app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
+  console.log('Nueva tarea recibida:', req.body);
   const clientId = parseInt(req.params.clientId, 10);
   const projectId = req.params.projectId;
-  const newTask = { ...req.body, clientId }; // <-- Asegura que clientId esté en la tarea
+  const newTask = { ...req.body, clientId };
 
   readClientsFile((err, clients) => {
     if (err) {
@@ -355,130 +356,19 @@ app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
       project.tasks = [];
     }
 
+    // Validación básica
+    if (!newTask.taskId || !newTask.title) {
+      return res.status(400).json({ error: "Faltan campos obligatorios" });
+    }
+
     project.tasks.push(newTask);
 
     writeClientsFile(clients, res, {
       message: "Tarea creada correctamente",
       task: newTask,
+      tasks: project.tasks,
     });
   });
-});
-
-// Endpoint para ver tarea desde clients.json en projects/tasks
-app.get("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
-  const clientId = parseInt(req.params.clientId, 10);
-  const projectId = req.params.projectId;
-
-  readClientsFile((err, clients) => {
-    if (err) {
-      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
-    }
-
-    const client = clients.find((c) => c.id === clientId);
-    if (!client) {
-      return res.status(404).json({ error: "Cliente no encontrado" });
-    }
-
-    const project = client.projects.find((p) => String(p.id) === String(projectId));
-    if (!project) {
-      return res.status(404).json({ error: "Proyecto no encontrado" });
-    }
-
-    res.json({ tasks: project.tasks || [] });
-  });
-});
-
-// Endpoint para eliminar una tarea de un proyecto desde clients.json projects/tasks
-app.delete(
-  "/api/clients/:clientId/projects/:projectId/tasks/:taskId",
-  (req, res) => {
-    const clientId = parseInt(req.params.clientId, 10);
-    const projectId = req.params.projectId;
-
-    readClientsFile((err, clients) => {
-      if (err) {
-        return res
-          .status(500)
-          .json({ error: "Error al leer el archivo de clientes" });
-      }
-
-      const client = clients.find((c) => c.id === clientId);
-      if (!client) {
-        return res.status(404).json({ error: "Cliente no encontrado" });
-      }
-
-      const project = client.projects.find(
-        (p) => String(p.id) === String(projectId)
-      );
-      if (!project) {
-        return res.status(404).json({ error: "Proyecto no encontrado" });
-      }
-
-      // Busca la tarea así:
-      project.tasks = project.tasks.filter(task => task.taskId !== Number(req.params.taskId));
-
-      writeClientsFile(clients, res, {
-        message: "Tarea eliminada correctamente",
-      });
-    });
-  }
-);
-
-// Actualizar una tarea de un proyecto
-app.put('/api/clients/:clientId/projects/:projectId/tasks/:taskId', (req, res) => {
-  const { clientId, projectId, taskId } = req.params;
-  const updatedTask = req.body;
-
-  readClientsFile((err, clients) => {
-    if (err) {
-      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
-    }
-
-    // Cambia parseInt por String para comparar como string
-    const client = clients.find((c) => String(c.id) === String(clientId));
-    if (!client) {
-      return res.status(404).json({ error: "Cliente no encontrado" });
-    }
-
-    const project = client.projects.find((p) => String(p.id) === String(projectId));
-    if (!project) {
-      return res.status(404).json({ error: "Proyecto no encontrado" });
-    }
-
-    const taskIndex = project.tasks.findIndex((t) => String(t.taskId) === String(taskId));
-    if (taskIndex === -1) {
-      return res.status(404).json({ error: "Tarea no encontrada" });
-    }
-
-    // Actualiza la tarea
-    project.tasks[taskIndex] = { ...project.tasks[taskIndex], ...updatedTask };
-
-    writeClientsFile(clients, res, {
-      message: "Tarea actualizada correctamente",
-      task: project.tasks[taskIndex],
-      tasks: project.tasks // <-- para que el frontend reciba la lista actualizada
-    });
-  });
-});
-
-// Ejemplo de endpoint para agregar tarea a un proyecto
-app.post('/api/clients/:clientId/projects/:projectId/tasks', (req, res) => {
-  const { clientId, projectId } = req.params;
-  const newTask = req.body;
-  const clients = JSON.parse(fs.readFileSync(CLIENTS_FILE, "utf8") || "[]");
-  const client = clients.find(c => String(c.id) === String(clientId));
-  if (!client) return res.status(404).json({ error: 'Cliente no encontrado' });
-
-  const project = client.projects.find(p => String(p.id) === String(projectId));
-  if (!project) return res.status(404).json({ error: 'Proyecto no encontrado' });
-
-  project.tasks = project.tasks || [];
-  project.tasks.push(newTask);
-
-  // Guarda el archivo clients.json actualizado
-  fs.writeFileSync(CLIENTS_FILE, JSON.stringify(clients, null, 2));
-
-  res.json({ tasks: project.tasks });
 });
 
 // Iniciar el servidor

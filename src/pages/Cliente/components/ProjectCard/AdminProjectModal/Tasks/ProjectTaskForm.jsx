@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '@components/Modal';
 import { useProjectTasks } from '@hooks/useProjectTasks';
-import { FaUser, FaHeading, FaAlignLeft, FaCalendarAlt, FaFlag, FaPercent } from 'react-icons/fa';
+import {
+	FaUser,
+	FaAlignLeft,
+	FaCalendarAlt,
+	FaFlag,
+	FaPercent,
+	FaProjectDiagram,
+} from 'react-icons/fa';
+import { FaTable } from 'react-icons/fa6';
+import { CiDatabase } from 'react-icons/ci';
+import { IoPerson, IoPersonOutline } from 'react-icons/io5';
+import GrayLine from '@components/Lineas/GrayLine';
 
 const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient }) => {
 	const project = initialData?.project || {};
 
+	// Obtener los datos del cliente y proyecto desde el hook
+	const { project: projectData } = useProjectTasks({
+		selectedClient,
+		project,
+		isOpen,
+	});
+	// Despliego los datos del cliente y proyecto
 	useEffect(() => {
-		if (isOpen && selectedClient) {
-			console.log('Datos del cliente:', selectedClient);
+		if (projectData) {
+			console.log('Datos del proyecto:', projectData);
 		}
-	}, [isOpen, selectedClient]);
-
-	const clientFullName = selectedClient
-		? `${selectedClient.fullName || ''} ${selectedClient.lastName || ''} ${
-				selectedClient.lastName2 || ''
-		  }`.trim()
-		: '';
-
-	const clientId = selectedClient?.id || '';
+	}, [projectData]);
 
 	const { createTask, updateTask } = useProjectTasks({
 		selectedClient,
@@ -26,15 +36,19 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 		isOpen,
 	});
 
+	const clientId = selectedClient?.id || '';
+	const clientFullName = selectedClient?.fullName || '';
+
 	const [task, setTask] = useState(
 		initialData || {
-			taskId: '',
-			clientId: clientId,
+			taskId: Date.now(),
+			clientId: selectedClient?.id || '',
+			clientFullName: selectedClient?.fullName || '',
 			title: '',
 			description: '',
 			startDate: '',
 			dueDate: '',
-			priority: 'media',
+			priority: 'Baja', // Usa la misma convención que el backend
 			totalProgress: 0,
 			status: 'Nuevo',
 		}
@@ -61,13 +75,17 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 			alert('Faltan datos obligatorios: Cliente o Proyecto');
 			return;
 		}
+		const isNew = !task.taskId;
 		const taskWithProject = {
 			...task,
-			clientId: clientId,
+			taskId: isNew ? Date.now() : task.taskId,
+			clientId: Number(clientId), // <-- asegúrate que sea número si así está en clients.json
 			projectId: project.id,
+			priority: task.priority || 'Baja',
+			status: task.status || 'Nuevo',
 		};
 		try {
-			if (task.taskId) {
+			if (!isNew) {
 				await updateTask(task.taskId, taskWithProject);
 				alert('Tarea actualizada correctamente');
 			} else {
@@ -89,32 +107,46 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 			title={task.taskId ? 'Editar Tarea' : 'Agregar Tarea'}
 			className="flex items-center justify-center"
 		>
-			<form onSubmit={handleSubmit} className="space-y-12 max-h-[70vh] text-base ">
-				<input type="hidden" name="taskId" value={task.taskId} />
+			{/* Encabezado con icono y título */}
+			<div className="flex flex-col md:flex-row gap-12 font-medium text-gray-700 sticky top-0 bg-white dark:bg-gray-800 p-4 pb-8 w-full border-b border-blue-200">
+				{/* ID de la tarea */}
+				<div className="flex items-center gap-2">
+					{/* react icon */}
+					<CiDatabase className="text-blue-600 text-4xl" size={32} />
+					<p className="">
+						ID de la tarea: <span className="font-semibold">{task.taskId || 'Nueva Tarea'}</span>
+					</p>
+					{/* <input type="text" name="projectId" value={project.task.id} /> */}
+				</div>
+				{/* Cliente */}
+				<div className="flex items-center gap-2">
+					<IoPersonOutline className="text-blue-600 text-4xl" size={32} />
+					<p className="">
+						Cliente: <span className="font-semibold">{clientFullName || 'No definido'}</span>
+					</p>
+					{/* <input type="text" name="projectId" value={project.task.id} /> */}
+				</div>
+				{/* Nombre del Proyecto */}
+				<div className="flex items-center gap-2 font-medium text-gray-700">
+					<FaProjectDiagram className="text-blue-600 text-4xl" size={32} />
+					<p className="">
+						Proyecto: <span className="font-semibold">{project.title || 'No definido'}</span>
+					</p>
+				</div>
+			</div>
+			<form
+				onSubmit={handleSubmit}
+				className="space-y-12 max-h-[70vh] text-base text-gray-700 dark:text-gray-100 p-8"
+			>
+				{/* <GrayLine /> */}
 
-				{/* Cliente y Título en dos columnas */}
+				{/* Título en dos columnas */}
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-					{/* Cliente */}
-					<div className="flex flex-col gap-8 font-medium text-gray-700">
-						<span className="flex items-center gap-2">
-							<FaUser className="text-blue-500" />
-							Cliente
-						</span>
-						<input
-							type="text"
-							name="clientFullName"
-							value={clientFullName}
-							readOnly
-							disabled
-							className="border-2 border-blue-300 rounded-lg px-3 py-2 bg-gray-100 text-gray-700 cursor-not-allowed"
-						/>
-						<input type="hidden" name="clientId" value={clientId} />
-					</div>
 					{/* Título */}
-					<div className="flex flex-col gap-8 font-medium text-gray-700">
+					<div className="flex flex-col gap-8 font-medium">
 						<span className="flex items-center gap-2">
-							<FaHeading className="text-blue-500" />
-							Título
+							<FaTable className="text-blue-500" />
+							Título de la tarea
 						</span>
 						<input
 							type="text"
@@ -122,7 +154,7 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 							value={task.title}
 							onChange={handleChange}
 							required
-							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-900/50 dark:text-gray-100"
 						/>
 					</div>
 				</div>
@@ -139,7 +171,7 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 							name="startDate"
 							value={task.startDate}
 							onChange={handleChange}
-							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-900/50 dark:text-gray-100"
 						/>
 					</div>
 					<div className="flex flex-col gap-8 font-medium text-gray-700">
@@ -152,7 +184,7 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 							name="dueDate"
 							value={task.dueDate}
 							onChange={handleChange}
-							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-900/50 dark:text-gray-100"
 						/>
 					</div>
 				</div>
@@ -169,11 +201,12 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 							name="priority"
 							value={task.priority}
 							onChange={handleChange}
-							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-900/50 dark:text-gray-100"
 						>
-							<option value="alta">Alta</option>
-							<option value="media">Media</option>
-							<option value="baja">Baja</option>
+							{' '}
+							<option value="Baja">Baja</option>
+							<option value="Media">Media</option>
+							<option value="Alta">Alta</option>
 						</select>
 					</div>
 
@@ -187,7 +220,7 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 							name="status"
 							value={task.status || 'Nuevo'}
 							onChange={handleChange}
-							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+							className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-900/50 dark:text-gray-100"
 						>
 							<option value="Nuevo">Nuevo</option>
 							<option value="En Progreso">En Progreso</option>
@@ -208,7 +241,7 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 							max="100"
 							value={task.totalProgress}
 							onChange={handleProgressChange}
-							className="w-full accent-blue-500"
+							className="w-full accent-blue-500 border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-900/50 dark:text-gray-100"
 						/>
 					</div>
 				</div>
@@ -223,9 +256,43 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 						name="description"
 						value={task.description}
 						onChange={handleChange}
-						className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none overflow-y-auto p-4 md:p-8"
+						className="border-2 border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-900/50 dark:text-gray-100 resize-none overflow-y-auto p-4 md:p-8"
 						rows={15}
 					/>
+				</div>
+
+				{/* tabla con historial de actualizaciones de la tarea */}
+				<div className="flex flex-col gap-8 font-medium text-gray-700">
+					<span className="flex items-center gap-2">
+						<FaUser className="text-blue-500" />
+						Historial de Actualizaciones
+					</span>
+					<table className="min-w-full bg-white border border-gray-200 text-base">
+						<thead>
+							<tr>
+								<th className="border px-4 py-2">Fecha</th>
+								<th className="border px-4 py-2">Descripción</th>
+							</tr>
+						</thead>
+						<tbody>
+							{task.history && task.history.length > 0 ? (
+								task.history.map((update, index) => (
+									<tr key={index}>
+										<td className="border px-4 py-2">
+											{new Date(update.date).toLocaleDateString()}
+										</td>
+										<td className="border px-4 py-2">{update.description}</td>
+									</tr>
+								))
+							) : (
+								<tr className="border">
+									<td colSpan={2} className="text-center py-4">
+										No hay actualizaciones.
+									</td>
+								</tr>
+							)}
+						</tbody>
+					</table>
 				</div>
 
 				<div className="flex flex-col md:flex-row justify-center items-end gap-1 md:gap-4 p-2">
