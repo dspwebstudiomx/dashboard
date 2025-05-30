@@ -3,7 +3,7 @@ import { useProjectTasks } from '../../../../../hooks/useProjectTasks';
 import GeneralProjectInfo from '../GeneralProjectInfo';
 
 // Modal para administrar el proyecto
-const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
+const AdminProjectModal = ({ isOpen, onClose, project, clientId, selectedClient }) => {
 	const {
 		showTaskModal,
 		setShowTaskModal,
@@ -27,7 +27,7 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId }) => {
 				handleEditTaskClick={handleEditTaskClick}
 				handleDeleteTask={handleDeleteTask}
 				handleEditTask={handleEditTask}
-				selectedClient={project.client}
+				selectedClient={selectedClient}
 				clientId={clientId}
 			/>
 		</>

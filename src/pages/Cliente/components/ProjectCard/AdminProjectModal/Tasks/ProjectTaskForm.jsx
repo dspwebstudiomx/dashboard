@@ -11,16 +11,23 @@ import {
 } from 'react-icons/fa';
 import { FaTable } from 'react-icons/fa6';
 import { CiDatabase } from 'react-icons/ci';
-import { IoPerson, IoPersonOutline } from 'react-icons/io5';
-import GrayLine from '@components/Lineas/GrayLine';
+import { IoPersonOutline } from 'react-icons/io5';
 
-const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient }) => {
-	const project = initialData?.project || {};
+const ProjectTaskForm = ({
+	isOpen,
+	onClose,
+	onSave,
+	initialData,
+	selectedClient,
+	clientId,
+	project,
+}) => {
+	// const project = initialData?.project || {};
 
 	// Obtener los datos del cliente y proyecto desde el hook
 	const { project: projectData } = useProjectTasks({
 		selectedClient,
-		project,
+		// project,
 		isOpen,
 	});
 	// Despliego los datos del cliente y proyecto
@@ -32,27 +39,27 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 
 	const { createTask, updateTask } = useProjectTasks({
 		selectedClient,
-		project,
+		// project,
 		isOpen,
 	});
 
-	const clientId = selectedClient?.id || '';
-	const clientFullName = selectedClient?.fullName || '';
+	const realClientId = clientId || initialData?.clientId || selectedClient?.clientId || '';
 
 	const [task, setTask] = useState(
 		initialData || {
 			taskId: Date.now(),
-			clientId: selectedClient?.id || '',
-			clientFullName: selectedClient?.fullName || '',
+			clientId: realClientId,
 			title: '',
 			description: '',
 			startDate: '',
 			dueDate: '',
-			priority: 'Baja', // Usa la misma convención que el backend
+			priority: 'Baja',
 			totalProgress: 0,
 			status: 'Nuevo',
 		}
 	);
+	console.log('Datos de la tarea:', task);
+	console.log('ID del cliente:', realClientId);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -79,7 +86,8 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 		const taskWithProject = {
 			...task,
 			taskId: isNew ? Date.now() : task.taskId,
-			clientId: Number(clientId), // <-- asegúrate que sea número si así está en clients.json
+			selectedClient: project.client,
+			clientId: realClientId,
 			projectId: project.id,
 			priority: task.priority || 'Baja',
 			status: task.status || 'Nuevo',
@@ -122,15 +130,13 @@ const ProjectTaskForm = ({ isOpen, onClose, onSave, initialData, selectedClient 
 				<div className="flex items-center gap-2">
 					<IoPersonOutline className="text-blue-600 text-4xl" size={32} />
 					<p className="">
-						Cliente: <span className="font-semibold">{clientFullName || 'No definido'}</span>
+						Cliente: <span className="font-semibold">{clientId || 'No definido'}</span>
 					</p>
-					{/* <input type="text" name="projectId" value={project.task.id} /> */}
 				</div>
-				{/* Nombre del Proyecto */}
 				<div className="flex items-center gap-2 font-medium text-gray-700">
 					<FaProjectDiagram className="text-blue-600 text-4xl" size={32} />
 					<p className="">
-						Proyecto: <span className="font-semibold">{project.title || 'No definido'}</span>
+						Proyecto: <span className="font-semibold">{project?.title || 'No definido'}</span>
 					</p>
 				</div>
 			</div>

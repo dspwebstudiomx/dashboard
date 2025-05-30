@@ -30,6 +30,7 @@ const GeneralProjectInfo = ({
 	handleEditTaskClick,
 	handleEditTask,
 	resetTaskForm,
+	clientId,
 }) => {
 	return (
 		<Modal
@@ -62,8 +63,9 @@ const GeneralProjectInfo = ({
 				<GrayLine />
 
 				<ProjectTasks
+					selectedClient={project.client}
+					clientId={clientId}
 					project={project}
-					clientId={project?.clientId}
 					actions={{
 						showTaskModal,
 						setShowTaskModal,
@@ -84,6 +86,7 @@ const GeneralProjectInfo = ({
 						handleEditTaskClick,
 						handleEditTask,
 						resetTaskForm,
+						clientId,
 					}}
 				/>
 			</div>

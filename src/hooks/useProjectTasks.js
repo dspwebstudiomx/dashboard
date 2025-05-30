@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export function useProjectTasks({ selectedClient = null, project = {} } = {}) {
-  const clientId = selectedClient?.id; // <--- Agrega esta línea
+  const clientId = selectedClient?.clientId || project?.clientId || '';
 
   const [showTaskModal, setShowTaskModal] = useState(false);
   const [taskTitle, setTaskTitle] = useState('');

@@ -1,0 +1,6 @@
+Cliente.jsx
+  └── ProyectosCliente.jsx (selectedClient)
+        └── AdminProjectModal.jsx (clientId, selectedClient)
+              └── GeneralProjectInfo.jsx (clientId, selectedClient)
+                    └── ProjectTasks.jsx (clientId, selectedClient)
+                          └── ProjectTaskForm.jsx (clientId, selectedClient)
