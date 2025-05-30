@@ -16,7 +16,7 @@ const ProjectTasks = ({ selectedClient, project, isOpen }) => {
 	return (
 		<ProjectTasksTable
 			tasks={tasks}
-			selectedClient={selectedClient}
+			clientId={selectedClient?.clientId}
 			onCreateTask={handleCreateTask}
 			onDeleteTask={handleDeleteTask}
 			onEditTaskClick={handleEditTaskClick}

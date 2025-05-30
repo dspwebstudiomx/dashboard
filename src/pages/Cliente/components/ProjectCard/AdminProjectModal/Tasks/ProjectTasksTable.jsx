@@ -68,7 +68,7 @@ const ProjectTasksTable = ({ tasks = [], selectedClient }) => {
 					onClose={handleCloseModal}
 					onSave={handleCloseModal}
 					initialData={null}
-					selectedClient={selectedClient}
+					clientId={selectedClient?.clientId}
 				/>
 			)}
 		</>

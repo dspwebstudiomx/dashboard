@@ -59,7 +59,6 @@ const GeneralProjectInfo = ({
 
 				<GrayLine />
 				<ServicesSectionsInfo project={project} />
-
 				<GrayLine />
 
 				<ProjectTasks
