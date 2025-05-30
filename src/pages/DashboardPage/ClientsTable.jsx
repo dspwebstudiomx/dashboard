@@ -65,7 +65,7 @@ const ClientsTable = () => {
 	};
 
 	return (
-		<div className="overflow-x-auto flex flex-col items-stretch justify-between w-full min-h-[520px]">
+		<div className="overflow-x-auto flex flex-col items-stretch justify-between w-full">
 			{/* Filtro de Búsqueda 🔍 */}
 			<div className="flex gap-2 mb-2 justify-end items-center">
 				{/* Agregar filtro de búsqueda */}
@@ -84,81 +84,80 @@ const ClientsTable = () => {
 					}}
 				/>
 			</div>
-
-			{/* Tabla de Clientes */}
-			<table
-				id="clients-table"
-				className="min-w-full border border-gray-300 bg-white border-collapse mt-12"
-			>
-				<thead className="bg-blue-700 text-white border-blue-800">
-					<tr>
-						<th className="px-4 py-2 text-left font-medium border border-gray-300">Cliente</th>
-						<th className="px-4 py-2 text-left font-medium border border-gray-300">Proyecto</th>
-						<th className="px-4 py-2 text-left font-medium border border-gray-300">
-							Correo Electrónico
-						</th>
-						<th className="px-4 py-2 text-left font-medium border border-gray-300">
-							Número Telefónico
-						</th>
-						<th className="px-8 py-2 text-left font-medium border border-gray-300">Ver</th>
-					</tr>
-				</thead>
-				<tbody>
-					{currentClients.length === 0 ? (
+			<div className="w-full overflow-x-auto mt-6 min-h-[400px] flex flex-col items-stretch justify-between">
+				{/* Tabla de Clientes */}
+				<table
+					id="clients-table"
+					className="min-w-full border border-gray-300 bg-white border-collapse"
+				>
+					<thead className="bg-blue-700 text-white border-blue-800">
 						<tr>
-							<td
-								colSpan={5}
-								className="px-4 py-8 text-center text-gray-500 border border-gray-300"
-							>
-								No hay clientes para mostrar.
-							</td>
+							<th className="px-4 py-2 text-left font-medium border border-gray-300">Cliente</th>
+							<th className="px-4 py-2 text-left font-medium border border-gray-300">Proyecto</th>
+							<th className="px-4 py-2 text-left font-medium border border-gray-300">
+								Correo Electrónico
+							</th>
+							<th className="px-4 py-2 text-left font-medium border border-gray-300">
+								Número Telefónico
+							</th>
+							<th className="px-8 py-2 text-left font-medium border border-gray-300">Ver</th>
 						</tr>
-					) : (
-						<>
-							{currentClients.map((client, index) => (
-								<tr key={client.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-									<td className="px-4 py-4 text-sm text-gray-700 border border-gray-300 flex items-center gap-4">
-										<a href={`/clientes/${client.id}`}>
-											<img
-												id="imagen-cliente"
-												src={
-													client.image
-														? `http://localhost:5000${client.image}`
-														: '../../../server/uploads/avatar_placeholder_large.png'
-												}
-												alt={client.fullName}
-												className="hidden md:w-12 md:h-12 md:block rounded-full border-2 border-gray-300 object-cover bg-white"
-											/>
-										</a>
-										{client.fullName} {client.lastName} {client.lastName2}
-									</td>
-									<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
-										{client.project}
-									</td>
-									<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
-										{client.email}
-									</td>
-									<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
-										{client.phoneNumber}
-									</td>
-									<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
-										<a
-											href={`/clientes/${client.id}`}
-											className="text-blue-600 hover:text-blue-800"
-										>
-											<FaEye className="w-6 h-6 mx-auto" />
-										</a>
-									</td>
-								</tr>
-							))}
-						</>
-					)}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{currentClients.length === 0 ? (
+							<tr>
+								<td
+									colSpan={5}
+									className="px-4 py-8 text-center text-gray-500 border border-gray-300"
+								>
+									No hay clientes para mostrar.
+								</td>
+							</tr>
+						) : (
+							<>
+								{currentClients.map((client, index) => (
+									<tr key={client.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+										<td className="px-4 py-4 text-sm text-gray-700 border border-gray-300 flex items-center gap-4">
+											<a href={`/clientes/${client.id}`}>
+												<img
+													id="imagen-cliente"
+													src={
+														client.image
+															? `http://localhost:5000${client.image}`
+															: '../../../server/uploads/avatar_placeholder_large.png'
+													}
+													alt={client.fullName}
+													className="hidden md:w-12 md:h-12 md:block rounded-full border-2 border-gray-300 object-cover bg-white"
+												/>
+											</a>
+											{client.fullName} {client.lastName} {client.lastName2}
+										</td>
+										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+											{client.project}
+										</td>
+										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+											{client.email}
+										</td>
+										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+											{client.phoneNumber}
+										</td>
+										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+											<a
+												href={`/clientes/${client.id}`}
+												className="text-blue-600 hover:text-blue-800"
+											>
+												<FaEye className="w-6 h-6 mx-auto" />
+											</a>
+										</td>
+									</tr>
+								))}
+							</>
+						)}
+					</tbody>
+				</table>
 
-			{/* Paginación y ordenamiento */}
-			<div className="flex flex-col md:flex-row items-center justify-between w-full mt-12 bg-red-300">
-				<div className="flex gap-2 mb-2 justify-between items-center">
+				{/* Paginación y ordenamiento */}
+				<div className="flex flex-col md:flex-row items-center justify-between w-full mt-12">
 					<div className="flex flex-col md:flex-row gap-6">
 						<button
 							className={`px-3 py-3 rounded ${
@@ -179,8 +178,9 @@ const ClientsTable = () => {
 							Ordenar por Apellido Paterno
 						</button>
 					</div>
+					{/* Paginación al final de la fila */}
 					{clients.length > clientsPerPage && (
-						<div className="flex">
+						<div id="paginación" className="flex ml-auto mt-4 md:mt-0">
 							{Array.from({ length: totalPages }, (_, index) => (
 								<button
 									key={index + 1}
