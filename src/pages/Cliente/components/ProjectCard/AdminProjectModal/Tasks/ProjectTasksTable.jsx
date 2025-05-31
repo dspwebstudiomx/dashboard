@@ -74,12 +74,12 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 									key={task.taskId || task.id}
 									className="hover:bg-gray-100 dark:hover:bg-gray-700"
 								>
-									<td className="px-4 py-2 border-b">{task.taskId || task.id}</td>
-									<td className="px-4 py-2 border-b">{task.title}</td>
-									<td className="px-4 py-2 border-b">{task.description}</td>
-									<td className="px-4 py-2 border-b">{task.startDate}</td>
-									<td className="px-4 py-2 border-b">{task.dueDate}</td>
-									<td className="px-4 py-2 border-b">
+									<td className="px-4 py-6 border-b">{task.taskId || task.id}</td>
+									<td className="px-4 py-6 border-b">{task.title}</td>
+									<td className="px-4 py-6 border-b">{task.description}</td>
+									<td className="px-4 py-6 border-b">{task.startDate}</td>
+									<td className="px-4 py-6 border-b">{task.dueDate}</td>
+									<td className="px-4 py-6 border-b">
 										<span
 											className={`px-2 py-1 rounded text-xs font-semibold ${
 												task.status === 'Completado'
@@ -92,15 +92,12 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 											{task.status}
 										</span>
 									</td>
-									{/* Avance */}
-									<td className="px-4 py-2 border-b">
+									<td className="px-4 py-6 border-b">
 										<span className="text-sm text-gray-600">
 											{task.progress ? `${task.progress}%` : '0%'}
 										</span>
 									</td>
-
-									{/* Acciones */}
-									<td className="px-4 py-2 border-b flex items-center gap-2">
+									<td className="px-4 py-6 border-b flex items-center gap-0">
 										<Button
 											onClick={() => handleEditTask(task)}
 											text="Editar"
