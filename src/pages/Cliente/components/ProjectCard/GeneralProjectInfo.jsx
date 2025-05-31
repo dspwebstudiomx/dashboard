@@ -43,7 +43,7 @@ const GeneralProjectInfo = ({
 			onClick={onClose}
 			title={
 				<div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6">
-					<div className="flex-1 flex-col md:flex-row items-left justify-between gap-4">
+					<div className="flex flex-col-reverse md:flex-row items-left gap-8 w-full md:mb-24">
 						<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center">
 							{project.title}
 						</h2>
