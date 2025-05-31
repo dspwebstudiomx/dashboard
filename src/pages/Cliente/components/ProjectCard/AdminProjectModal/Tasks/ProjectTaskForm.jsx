@@ -100,89 +100,105 @@ const ProjectTaskForm = ({
 		>
 			<form
 				onSubmit={handleSubmit}
-				className="space-y-4 max-h-[70vh] text-base mt-20 overflow-y-auto"
+				className="space-y-4 max-h-[70vh] text-base md:mt-20 p-4 py-12 flex flex-col gap-6"
 			>
-				<label className="flex items-center gap-2">
-					<FaRegEdit className="text-xl text-blue-600" />
-					<span className="w-24">Título</span>
+				<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+					<div className="flex items-center gap-2">
+						<FaRegEdit className="text-xl text-blue-600" />
+						<span className="w-24 font-semibold text-base">Título</span>
+					</div>
 					<input
 						name="title"
 						value={task.title}
 						onChange={handleChange}
 						placeholder="Título"
 						required
-						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-auto"
 					/>
 				</label>
-				<label className="flex items-center gap-2">
-					<FaListAlt className="text-xl text-blue-600" />
-					<span className="w-24">Descripción</span>
+
+				<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+					<div className="flex items-center gap-2">
+						<FaListAlt className="text-xl text-blue-600" />
+						<span className="w-24 font-semibold text-base">Descripción</span>
+					</div>
 					<textarea
 						name="description"
 						value={task.description}
 						onChange={handleChange}
 						placeholder="Descripción"
-						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-auto"
 					/>
 				</label>
-				<div className="flex gap-4">
-					<label className="flex items-center gap-2 w-1/2">
+
+				<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+					<div className="flex items-center gap-2">
 						<FaRegCalendarAlt className="text-xl text-blue-600" />
-						<span className="w-20">Inicio</span>
-						<input
-							name="startDate"
-							type="date"
-							value={task.startDate}
-							onChange={handleChange}
-							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-						/>
-					</label>
-					<label className="flex items-center gap-2 w-1/2">
+						<span className="w-24 font-semibold text-base">Inicio</span>
+					</div>
+					<input
+						name="startDate"
+						type="date"
+						value={task.startDate}
+						onChange={handleChange}
+						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-auto"
+					/>
+				</label>
+
+				<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+					<div className="flex items-center gap-2">
 						<FaRegClock className="text-xl text-blue-600" />
-						<span className="w-20">Entrega</span>
-						<input
-							name="dueDate"
-							type="date"
-							value={task.dueDate}
-							onChange={handleChange}
-							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-						/>
-					</label>
-				</div>
-				<div className="flex gap-4">
-					<label className="flex items-center gap-2 w-1/2">
+						<span className="w-24 font-semibold text-base">Entrega</span>
+					</div>
+					<input
+						name="dueDate"
+						type="date"
+						value={task.dueDate}
+						onChange={handleChange}
+						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-auto"
+					/>
+				</label>
+
+				<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+					<div className="flex items-center gap-2">
 						<FaFlag className="text-xl text-blue-600" />
-						<span className="w-20">Prioridad</span>
-						<select
-							name="priority"
-							value={task.priority}
-							onChange={handleChange}
-							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-						>
-							<option value="Baja">Baja</option>
-							<option value="Media">Media</option>
-							<option value="Alta">Alta</option>
-						</select>
-					</label>
-					<label className="flex items-center gap-2 w-1/2">
+						<span className="w-24 font-semibold text-base">Prioridad</span>
+					</div>
+					<select
+						name="priority"
+						value={task.priority}
+						onChange={handleChange}
+						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-auto"
+					>
+						<option value="Baja">Baja</option>
+						<option value="Media">Media</option>
+						<option value="Alta">Alta</option>
+					</select>
+				</label>
+
+				<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+					<div className="flex items-center gap-2">
 						<FaCheckCircle className="text-xl text-blue-600" />
-						<span className="w-20">Estado</span>
-						<select
-							name="status"
-							value={task.status}
-							onChange={handleChange}
-							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-						>
-							<option value="Nuevo">Nuevo</option>
-							<option value="En Proceso">En Proceso</option>
-							<option value="Completado">Completado</option>
-						</select>
-					</label>
-				</div>
+						<span className="w-24 font-semibold text-base">Estado</span>
+					</div>
+					<select
+						name="status"
+						value={task.status}
+						onChange={handleChange}
+						className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-auto"
+					>
+						<option value="Nuevo">Nuevo</option>
+						<option value="En Proceso">En Proceso</option>
+						<option value="Completado">Completado</option>
+					</select>
+				</label>
+
 				{initialData && (
-					<label className="flex items-center gap-2">
-						<FaRegClock className="text-xl text-blue-600" />
-						<span className="w-24">Progreso</span>
+					<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+						<div className="flex items-center gap-2">
+							<FaRegClock className="text-xl text-blue-600" />
+							<span className="w-24 font-semibold text-base">Progreso</span>
+						</div>
 						<input
 							name="totalProgress"
 							type="range"
@@ -190,12 +206,13 @@ const ProjectTaskForm = ({
 							max="100"
 							value={task.totalProgress}
 							onChange={handleChange}
-							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-auto"
 						/>
 						<span>{task.totalProgress}%</span>
 					</label>
 				)}
-				<div className="flex flex-col md:flex-row justify-center items-end gap-1 md:gap-4 p-2">
+
+				<div className="flex flex-row justify-center items-end gap-4 md:gap-4 p-2">
 					<Button
 						variant="secondary"
 						type="button"

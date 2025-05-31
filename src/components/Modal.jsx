@@ -73,7 +73,10 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 							{title}
 						</h2>
 					)}
-					<div ref={contentRef} className="flex-1 overflow-y-auto min-h-0 md:pr-12">
+					<div
+						ref={contentRef}
+						className="flex-1 overflow-y-auto min-h-0 max-h-[65vh] md:max-h-[70vh] w-full"
+					>
 						{children}
 					</div>
 				</article>

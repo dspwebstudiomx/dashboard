@@ -46,13 +46,7 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
 					Tareas del Proyecto
 				</h2>
-				<Button
-					onClick={handleAddTask}
-					text="Agregar Tarea"
-					variant="primary"
-					size="md"
-					icon={FaPlus}
-				/>
+				<Button onClick={handleAddTask} text="Agregar" variant="primary" size="md" icon={FaPlus} />
 			</div>
 			<div className="overflow-x-auto rounded shadow">
 				<table className=" min-w-full bg-white dark:bg-gray-800">
@@ -98,7 +92,7 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 											{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
 										</span>
 									</td>
-									<td className="px-4 py-4 border-b flex items-center gap-0">
+									<td className="px-4 py-4 border-b flex items-center gap-">
 										<Button
 											onClick={() => handleEditTask(task)}
 											text="Editar"
