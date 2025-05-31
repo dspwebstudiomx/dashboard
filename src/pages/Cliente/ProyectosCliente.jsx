@@ -54,7 +54,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 			{(showForm || editProjectId) && (
 				<Modal
 					title={editProjectId ? 'Editar Proyecto' : 'Nuevo Proyecto'}
-					onClick={() => {
+					onClose={() => {
 						setShowForm(false);
 						setEditProjectId(null);
 						setEditProject(null);

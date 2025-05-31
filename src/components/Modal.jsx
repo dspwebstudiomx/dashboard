@@ -78,7 +78,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 					</div>
 				</article>
 				{hasOverflow && isTopModal && (
-					<aside className="flex flex-col justify-center gap-4 dark:bg-gray-800 p-4 z-50 rounded-r-xl shadow-lg h-full">
+					<aside className="flex flex-col justify-center gap-4 dark:bg-gray-700 py-8 px-4 z-50 rounded-r-xl shadow-lg h-full">
 						<button
 							className="bg-blue-500 text-white p-2 w-16 h-16 shadow-lg hover:bg-blue-600 transition flex items-center justify-center rounded-full"
 							onClick={scrollToTop}
