@@ -74,30 +74,30 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 									key={task.taskId || task.id}
 									className="hover:bg-gray-100 dark:hover:bg-gray-700"
 								>
-									<td className="px-4 py-6 border-b">{task.taskId || task.id}</td>
-									<td className="px-4 py-6 border-b">{task.title}</td>
-									<td className="px-4 py-6 border-b">{task.description}</td>
-									<td className="px-4 py-6 border-b">{task.startDate}</td>
-									<td className="px-4 py-6 border-b">{task.dueDate}</td>
-									<td className="px-4 py-6 border-b">
+									<td className="px-4 py-4 border-b">{task.taskId || task.id}</td>
+									<td className="px-4 py-4 border-b">{task.title}</td>
+									<td className="px-4 py-4 border-b">{task.description}</td>
+									<td className="px-4 py-4 border-b">{task.startDate}</td>
+									<td className="px-4 py-4 border-b">{task.dueDate}</td>
+									<td className="px-4 py-4 border-b">
 										<span
-											className={`px-2 py-1 rounded text-xs font-semibold ${
+											className={`px-4 py-1 rounded-full text-base font-semibold ${
 												task.status === 'Completado'
 													? 'bg-green-100 text-green-700'
 													: task.status === 'En Proceso'
 													? 'bg-yellow-100 text-yellow-700'
-													: 'bg-gray-200 text-gray-800'
+													: 'bg-blue-300 text-blue-800'
 											}`}
 										>
 											{task.status}
 										</span>
 									</td>
-									<td className="px-4 py-6 border-b">
-										<span className="text-sm text-gray-600">
-											{task.progress ? `${task.progress}%` : '0%'}
+									<td className="px-4 py-4 border-b">
+										<span className="text-base font-semibold text-gray-600 dark:text-gray-100">
+											{task.progress ? `${task.progress}{" "}%` : '0 %'}
 										</span>
 									</td>
-									<td className="px-4 py-6 border-b flex items-center gap-0">
+									<td className="px-4 py-4 border-b flex items-center gap-0">
 										<Button
 											onClick={() => handleEditTask(task)}
 											text="Editar"
