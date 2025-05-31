@@ -95,12 +95,12 @@
             "taskId": 1748650574662,
             "clientId": 1745897285167,
             "projectId": 1747531564248,
-            "title": "Prueba 👍",
-            "description": "prueba sistemas",
+            "title": "prueba 👍",
+            "description": "prueba sistemas dani",
             "startDate": "2025-05-30",
             "dueDate": "2025-05-31",
             "priority": "Baja",
-            "totalProgress": 0,
+            "totalProgress": "0",
             "status": "Nuevo"
           }
         ]

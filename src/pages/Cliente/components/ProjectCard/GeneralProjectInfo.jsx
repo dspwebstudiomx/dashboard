@@ -9,6 +9,8 @@ import ProjectTasks from './AdminProjectModal/Tasks/ProjectTasks';
 import Button from '@components/Botones/Button';
 import { LuPencil } from 'react-icons/lu';
 import { FaTrashAlt } from 'react-icons/fa';
+import EditActionButton from '../EditActionButton';
+import DeleteActionButton from '../DeleteActionButton';
 
 const GeneralProjectInfo = ({
 	isOpen,
@@ -44,7 +46,7 @@ const GeneralProjectInfo = ({
 			title={
 				<div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6">
 					<div className="flex flex-col-reverse md:flex-row items-left gap-8 w-full md:mb-24">
-						<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center">
+						<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center ml-10">
 							{project.title}
 						</h2>
 						<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
@@ -53,21 +55,8 @@ const GeneralProjectInfo = ({
 					</div>
 					{/* Botones */}
 					<div className="flex gap-2">
-						<Button
-							variant="secondary"
-							// onClick={}
-							text="Editar"
-							icon={LuPencil}
-							size="md"
-						/>
-
-						<Button
-							variant="outline"
-							// onClick={}
-							text="Eliminar"
-							icon={FaTrashAlt}
-							size="md"
-						/>
+						<EditActionButton onClick={''} text="Editar Proyecto" />
+						<DeleteActionButton onClick={''} />
 					</div>
 				</div>
 			}

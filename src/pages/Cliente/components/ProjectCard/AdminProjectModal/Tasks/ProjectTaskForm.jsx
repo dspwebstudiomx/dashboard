@@ -152,6 +152,25 @@ const ProjectTaskForm = ({
 						</select>
 					</label>
 				</div>
+				{/* colocar el progreso de la tarea si se está editando la tarea, hacerlo con barra de desplazamiento de porcentaje */}
+				{initialData && (
+					<label className="flex items-center gap-2">
+						<FaRegClock />
+						<span className="w-24">Progreso</span>
+						{/* Barra de avance de 0 a 100 */}
+						<input
+							name="totalProgress"
+							type="range"
+							min="0"
+							max="100"
+							value={task.totalProgress}
+							onChange={handleChange}
+							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+						/>
+						<span>{task.totalProgress}%</span>
+					</label>
+				)}
+				{/* Botones de acción */}
 				<div className="flex gap-4 mt-4">
 					<button
 						type="submit"

@@ -75,8 +75,8 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 									className="hover:bg-gray-100 dark:hover:bg-gray-700"
 								>
 									<td className="px-4 py-4 border-b">{task.taskId || task.id}</td>
-									<td className="px-4 py-4 border-b">{task.title}</td>
-									<td className="px-4 py-4 border-b">{task.description}</td>
+									<td className="px-4 py-4 border-b first-letter:uppercase">{task.title}</td>
+									<td className="px-4 py-4 border-b first-letter:uppercase">{task.description}</td>
 									<td className="px-4 py-4 border-b">{task.startDate}</td>
 									<td className="px-4 py-4 border-b">{task.dueDate}</td>
 									<td className="px-4 py-4 border-b">
@@ -94,7 +94,7 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 									</td>
 									<td className="px-4 py-4 border-b">
 										<span className="text-base font-semibold text-gray-600 dark:text-gray-100">
-											{task.progress ? `${task.progress}{" "}%` : '0 %'}
+											{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
 										</span>
 									</td>
 									<td className="px-4 py-4 border-b flex items-center gap-0">

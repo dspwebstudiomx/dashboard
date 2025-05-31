@@ -18,7 +18,7 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 	const { isCompleted, onEdit, onDelete, handleCompleteClick, openAdminModal } = actions;
 
 	return (
-		<article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between">
+		<article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between first-letter:uppercase">
 			{/* Contenido principal del proyecto */}
 			<div className="flex flex-col gap-6 justify-between">
 				<div className="flex flex-col gap-8 text-balance w-full ">
@@ -51,14 +51,14 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 						</p>
 					</div>
 					{/* mostrar nombre Tareas generadas*/}
-					<div className="flex flex-col gap-2">
+					<div className="flex flex-col gap-2 first-letter:uppercase">
 						<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
 							Tareas generadas
 						</h3>
-						<p className="text-gray-700 dark:text-gray-200">
+						<p className="text-gray-700 dark:text-gray-200 first-letter:uppercase">
 							{project.tasks && project.tasks.length > 0 ? (
 								project.tasks.map((task, idx) => (
-									<span key={task.id || idx} className="block text-pretty">
+									<span key={task.id || idx} className="block text-pretty first-letter:uppercase">
 										<MdKeyboardArrowRight className="inline mr-1 text-blue-500" size={24} />
 										{task.title || task.name || 'Sin descripción'}
 									</span>
