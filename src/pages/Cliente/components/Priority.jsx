@@ -3,7 +3,7 @@ import React from 'react';
 const Priority = ({ project }) => {
 	return (
 		<span
-			className={`text-lg font-medium py-1 px-6  rounded-full h-auto w-24 md:w-22 md:text-base flex items-center justify-center ${
+			className={`text-lg font-medium py-1 px-6  rounded-full h-auto w-[75%] md:w-22 md:text-base flex items-center justify-center ${
 				project.priority === 'Alta'
 					? 'bg-red-400 text-gray-100 border-2 border-red-500'
 					: project.priority === 'Media'
