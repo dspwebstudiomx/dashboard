@@ -14,14 +14,14 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 	useEffect(() => {
 		if (isOpen) {
 			registerModal(modalId);
-			document.body.style.overflow = 'hidden';
+			document.body.classList.add('modal-open');
 		} else {
 			unregisterModal(modalId);
-			document.body.style.overflow = '';
+			document.body.classList.remove('modal-open');
 		}
 		return () => {
 			unregisterModal(modalId);
-			document.body.style.overflow = '';
+			document.body.classList.remove('modal-open');
 		};
 		// eslint-disable-next-line
 	}, [isOpen]);
