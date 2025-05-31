@@ -52,6 +52,11 @@ const ProjectTaskForm = ({
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		// Validación de fechas
+		if (task.startDate && task.dueDate && task.dueDate < task.startDate) {
+			alert('La fecha de entrega no puede ser anterior a la fecha de inicio.');
+			return;
+		}
 		try {
 			if (initialData && initialData.taskId) {
 				await updateTask(initialData.taskId, task);
@@ -62,7 +67,7 @@ const ProjectTaskForm = ({
 			}
 			onClose();
 		} catch (error) {
-			console.error(error); // <-- Así usas la variable y evitas el warning
+			console.error(error);
 			alert('Error al guardar la tarea');
 		}
 	};
