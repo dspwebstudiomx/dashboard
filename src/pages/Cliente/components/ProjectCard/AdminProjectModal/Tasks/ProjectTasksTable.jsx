@@ -1,83 +1,102 @@
 import React, { useState } from 'react';
-import Button from '@components/Botones/Button';
 import ProjectTaskForm from './ProjectTaskForm';
-import { FaPlus } from 'react-icons/fa6';
+import { FaEdit, FaPlus } from 'react-icons/fa';
 
-const ProjectTasksTable = ({ tasks = [], clientId, project, handleSaveTask }) => {
-	const [isModalOpen, setIsModalOpen] = useState(false);
+const ProjectTasksTable = ({ clientId, project }) => {
+	const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+	const [selectedTask, setSelectedTask] = useState(null);
 
-	const handleOpenModal = () => setIsModalOpen(true);
-	const handleCloseModal = () => setIsModalOpen(false);
+	const handleAddTask = () => {
+		setSelectedTask(null);
+		setIsTaskModalOpen(true);
+	};
 
-	console.log('Tareas recibidas:', tasks); // <-- Diagnóstico
+	const handleEditTask = (task) => {
+		setSelectedTask(task);
+		setIsTaskModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsTaskModalOpen(false);
+		setSelectedTask(null);
+	};
 
 	return (
-		<>
-			<div className="flex items-center justify-start mb-0">
-				{/* Icono */}
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					className="h-8 w-8 text-blue-500 mr-2"
-					viewBox="0 0 20 20"
-					fill="currentColor"
+		<div className="w-full">
+			<div className="flex items-center justify-between mb-4">
+				<h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+					Tareas del Proyecto: <span className="font-bold">{project.title}</span>
+				</h2>
+				<button
+					onClick={handleAddTask}
+					className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
 				>
-					<path
-						fillRule="evenodd"
-						d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 4a1 1 0 00-2 0v3H6a1 1 0 000 2h3v3a1 1 0 002 0v-3h3a1 1 0 000-2h-3V6z"
-						clipRule="evenodd"
-					/>
-				</svg>
-				<h2 className="text-2xl font-semibold">Mis Tareas</h2>
+					<FaPlus /> Agregar tarea
+				</button>
 			</div>
-			<div className="flex justify-end mb-4">
-				<Button text="Agregar Tarea" onClick={handleOpenModal} icon={FaPlus} />
-			</div>
-			<table className="min-w-full bg-white border border-gray-200">
-				<thead>
-					<tr>
-						<th className="border px-4 py-2">ID</th>
-						<th className="border px-4 py-2">Título</th>
-						<th className="border px-4 py-2">Descripción</th>
-						<th className="border px-4 py-2">Prioridad</th>
-						<th className="border px-4 py-2">Estado</th>
-						<th className="border px-4 py-2">Client ID</th>
-						<th className="border px-4 py-2">Acciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					{tasks.length > 0 ? (
-						tasks.map((task) => (
-							<tr key={task.id || task.taskId}>
-								<td className="border px-4 py-2">{task.id || task.taskId}</td>
-								<td className="border px-4 py-2">{task.title}</td>
-								<td className="border px-4 py-2">{task.description}</td>
-								<td className="border px-4 py-2">{task.priority}</td>
-								<td className="border px-4 py-2">{task.status || '-'}</td>
-								<td className="border px-4 py-2">{task.clientId || clientId || '-'}</td>
-								<td className="border px-4 py-2">{/* Botones de acción */}</td>
-							</tr>
-						))
-					) : (
+			<div className="overflow-x-auto rounded shadow">
+				<table className="min-w-full bg-white dark:bg-gray-800">
+					<thead>
 						<tr>
-							<td colSpan={7} className="text-center py-4">
-								No hay tareas para este proyecto.
-							</td>
+							<th className="px-4 py-2 border-b text-left">Título</th>
+							<th className="px-4 py-2 border-b text-left">Descripción</th>
+							<th className="px-4 py-2 border-b text-left">Estado</th>
+							<th className="px-4 py-2 border-b text-left">Acciones</th>
 						</tr>
-					)}
-				</tbody>
-			</table>
-			{isModalOpen && (
+					</thead>
+					<tbody>
+						{project.tasks && project.tasks.length > 0 ? (
+							project.tasks.map((task) => (
+								<tr
+									key={task.taskId || task.id}
+									className="hover:bg-gray-100 dark:hover:bg-gray-700"
+								>
+									<td className="px-4 py-2 border-b">{task.title}</td>
+									<td className="px-4 py-2 border-b">{task.description}</td>
+									<td className="px-4 py-2 border-b">
+										<span
+											className={`px-2 py-1 rounded text-xs font-semibold ${
+												task.status === 'Completado'
+													? 'bg-green-100 text-green-700'
+													: task.status === 'En Proceso'
+													? 'bg-yellow-100 text-yellow-700'
+													: 'bg-gray-200 text-gray-800'
+											}`}
+										>
+											{task.status}
+										</span>
+									</td>
+									<td className="px-4 py-2 border-b">
+										<button
+											onClick={() => handleEditTask(task)}
+											className="text-blue-600 hover:text-blue-800 transition"
+											title="Editar"
+										>
+											<FaEdit />
+										</button>
+									</td>
+								</tr>
+							))
+						) : (
+							<tr>
+								<td colSpan={4} className="px-4 py-6 text-center text-gray-500">
+									No hay tareas
+								</td>
+							</tr>
+						)}
+					</tbody>
+				</table>
+			</div>
+			{isTaskModalOpen && (
 				<ProjectTaskForm
-					isOpen={isModalOpen}
+					isOpen={isTaskModalOpen}
 					onClose={handleCloseModal}
-					onSave={handleSaveTask}
-					initialData={null}
-					selectedClient={project.client}
+					initialData={selectedTask}
 					clientId={clientId}
-					project={project}
+					projectId={project.id}
 				/>
 			)}
-		</>
+		</div>
 	);
 };
 

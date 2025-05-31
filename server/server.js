@@ -43,10 +43,9 @@ const writeClientsFile = (clients, res, successMessage) => {
   fs.writeFile(CLIENTS_FILE, JSON.stringify(clients, null, 2), (err) => {
     if (err) {
       console.error("Error al guardar el archivo de clientes:", err);
-      return res
-        .status(500)
-        .json({ error: "Error al guardar el archivo de clientes" });
+      return res.status(500).json({ error: "Error al guardar el archivo de clientes" });
     }
+    console.log("Archivo clients.json guardado correctamente");
     res.status(200).json(successMessage);
   });
 };
@@ -332,35 +331,25 @@ app.get("/api/cupones/validar", (req, res) => {
 
 // SOLO DEJA ESTE ENDPOINT para crear tareas en proyectos
 app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
-  console.log('Nueva tarea recibida:', req.body);
-  const clientId = parseInt(req.params.clientId, 10);
-  const projectId = req.params.projectId;
-  const newTask = { ...req.body, clientId };
-
   readClientsFile((err, clients) => {
-    if (err) {
+    console.log('params:', req.params);
+    if (err || !Array.isArray(clients)) {
+      console.log('Error al leer el archivo de clientes:', err);
       return res.status(500).json({ error: "Error al leer el archivo de clientes" });
     }
-
-    const client = clients.find((c) => c.id === clientId);
+    console.log('IDs de clientes:', clients.map(c => c.id));
+    const client = clients.find((c) => String(c.id) === String(req.params.clientId));
     if (!client) {
+      console.log('Cliente no encontrado:', req.params.clientId);
       return res.status(404).json({ error: "Cliente no encontrado" });
     }
-
-    const project = client.projects.find((p) => String(p.id) === String(projectId));
+    console.log('IDs de proyectos:', client.projects.map(p => p.id));
+    const project = client.projects.find((p) => String(p.id) === String(req.params.projectId));
     if (!project) {
+      console.log('Proyecto no encontrado:', req.params.projectId);
       return res.status(404).json({ error: "Proyecto no encontrado" });
     }
-
-    if (!Array.isArray(project.tasks)) {
-      project.tasks = [];
-    }
-
-    // Validación básica
-    if (!newTask.taskId || !newTask.title) {
-      return res.status(400).json({ error: "Faltan campos obligatorios" });
-    }
-
+    const newTask = req.body;
     project.tasks.push(newTask);
 
     writeClientsFile(clients, res, {

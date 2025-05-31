@@ -63,8 +63,8 @@ const GeneralProjectInfo = ({
 				<GrayLine />
 
 				<ProjectTasks
-					selectedClient={project.client}
 					clientId={clientId}
+					projectId={project.id}
 					project={project}
 					actions={{
 						showTaskModal,
