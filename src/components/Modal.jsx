@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CloseButton from './Botones/CloseButton';
 import { FaArrowDown } from 'react-icons/fa';
 import { FaArrowUp } from 'react-icons/fa6';
-import { useModalStack } from '../context/ModalStackContext';
+import { useModalStack } from '@context/ModalStackContext';
 
 const Modal = ({ isOpen, onClose, children, title }) => {
 	const contentRef = useRef(null);
