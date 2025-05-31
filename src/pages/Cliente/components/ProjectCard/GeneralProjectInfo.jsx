@@ -6,6 +6,9 @@ import GrayLine from '@components/Lineas/GrayLine';
 
 import ServicesSectionsInfo from './AdminProjectModal/ServicesSectionsInfo';
 import ProjectTasks from './AdminProjectModal/Tasks/ProjectTasks';
+import Button from '@components/Botones/Button';
+import { LuPencil } from 'react-icons/lu';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const GeneralProjectInfo = ({
 	isOpen,
@@ -39,12 +42,32 @@ const GeneralProjectInfo = ({
 			isOpen={isOpen}
 			onClick={onClose}
 			title={
-				<div className="flex flex-col-reverse  sm:flex-row items-center justify-center gap-6">
-					<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center">
-						{project.title}
-					</h2>
-					<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
-						<Priority project={project} />
+				<div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6">
+					<div className="flex-1 flex-col md:flex-row items-left justify-between gap-4">
+						<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center">
+							{project.title}
+						</h2>
+						<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
+							<Priority project={project} />
+						</div>
+					</div>
+					{/* Botones */}
+					<div className="flex gap-2">
+						<Button
+							variant="secondary"
+							// onClick={}
+							text="Editar"
+							icon={LuPencil}
+							size="md"
+						/>
+
+						<Button
+							variant="outline"
+							// onClick={}
+							text="Eliminar"
+							icon={FaTrashAlt}
+							size="md"
+						/>
 					</div>
 				</div>
 			}
