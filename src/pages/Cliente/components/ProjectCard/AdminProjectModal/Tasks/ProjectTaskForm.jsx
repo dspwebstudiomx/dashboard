@@ -46,8 +46,24 @@ const ProjectTaskForm = ({
 	}, [initialData, clientId, projectId]);
 
 	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setTask((prev) => ({ ...prev, [name]: value }));
+		const { name, value, type } = e.target;
+		let newValue = value;
+		if (type === 'range' || name === 'totalProgress') {
+			newValue = Number(value);
+		}
+		setTask((prev) => {
+			let updatedTask = { ...prev, [name]: newValue };
+			if (name === 'totalProgress') {
+				if (newValue >= 100) {
+					updatedTask.status = 'Completado';
+				} else if (newValue >= 1) {
+					updatedTask.status = 'En Proceso';
+				} else if (newValue === 0) {
+					updatedTask.status = 'Nuevo';
+				}
+			}
+			return updatedTask;
+		});
 	};
 
 	const handleSubmit = async (e) => {
