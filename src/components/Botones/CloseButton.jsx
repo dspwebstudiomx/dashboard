@@ -10,7 +10,7 @@ const CloseButton = ({ onClick }) => {
 			title="Volver a la página anterior"
 			className="bg-transparent border-none cursor-pointer"
 		>
-			<MdClose className="text-3xl md:text-4xl text-blue-900 dark:text-blue-500" />
+			<MdClose className="text-4xl md:text-4xl text-blue-800 dark:text-blue-500" />
 		</button>
 	);
 };
