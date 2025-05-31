@@ -33,7 +33,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
 	return (
 		<Modal
 			isOpen={isOpen}
-			onClick={onClose} // <-- Corrige aquí
+			onClose={onClose}
 			title={isEditing ? 'Editar Cliente' : 'Agregar Cliente'}
 			className="flex items-center justify-center"
 		>

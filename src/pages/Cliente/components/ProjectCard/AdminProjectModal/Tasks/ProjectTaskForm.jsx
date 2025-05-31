@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '@components/Modal';
+import Button from '@components/Botones/Button';
 import {
 	FaRegEdit,
 	FaRegCalendarAlt,
@@ -91,13 +92,18 @@ const ProjectTaskForm = ({
 	if (!isOpen) return null;
 
 	return (
-		<Modal isOpen={isOpen} onClick={onClose} title="Formulario de Tarea">
-			<form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
-				<h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
-					<FaListAlt /> {initialData ? 'Editar Tarea' : 'Nueva Tarea'}
-				</h3>
+		<Modal
+			isOpen={isOpen}
+			onClose={onClose}
+			title={initialData ? 'Actualizar Tarea' : 'Crear Nueva Tarea'}
+			className="flex items-center justify-center"
+		>
+			<form
+				onSubmit={handleSubmit}
+				className="space-y-4 max-h-[70vh] text-base mt-20 overflow-y-auto"
+			>
 				<label className="flex items-center gap-2">
-					<FaRegEdit />
+					<FaRegEdit className="text-xl text-blue-600" />
 					<span className="w-24">Título</span>
 					<input
 						name="title"
@@ -109,7 +115,7 @@ const ProjectTaskForm = ({
 					/>
 				</label>
 				<label className="flex items-center gap-2">
-					<FaListAlt />
+					<FaListAlt className="text-xl text-blue-600" />
 					<span className="w-24">Descripción</span>
 					<textarea
 						name="description"
@@ -121,7 +127,7 @@ const ProjectTaskForm = ({
 				</label>
 				<div className="flex gap-4">
 					<label className="flex items-center gap-2 w-1/2">
-						<FaRegCalendarAlt />
+						<FaRegCalendarAlt className="text-xl text-blue-600" />
 						<span className="w-20">Inicio</span>
 						<input
 							name="startDate"
@@ -132,7 +138,7 @@ const ProjectTaskForm = ({
 						/>
 					</label>
 					<label className="flex items-center gap-2 w-1/2">
-						<FaRegClock />
+						<FaRegClock className="text-xl text-blue-600" />
 						<span className="w-20">Entrega</span>
 						<input
 							name="dueDate"
@@ -145,7 +151,7 @@ const ProjectTaskForm = ({
 				</div>
 				<div className="flex gap-4">
 					<label className="flex items-center gap-2 w-1/2">
-						<FaFlag />
+						<FaFlag className="text-xl text-blue-600" />
 						<span className="w-20">Prioridad</span>
 						<select
 							name="priority"
@@ -159,7 +165,7 @@ const ProjectTaskForm = ({
 						</select>
 					</label>
 					<label className="flex items-center gap-2 w-1/2">
-						<FaCheckCircle />
+						<FaCheckCircle className="text-xl text-blue-600" />
 						<span className="w-20">Estado</span>
 						<select
 							name="status"
@@ -173,12 +179,10 @@ const ProjectTaskForm = ({
 						</select>
 					</label>
 				</div>
-				{/* colocar el progreso de la tarea si se está editando la tarea, hacerlo con barra de desplazamiento de porcentaje */}
 				{initialData && (
 					<label className="flex items-center gap-2">
-						<FaRegClock />
+						<FaRegClock className="text-xl text-blue-600" />
 						<span className="w-24">Progreso</span>
-						{/* Barra de avance de 0 a 100 */}
 						<input
 							name="totalProgress"
 							type="range"
@@ -191,21 +195,20 @@ const ProjectTaskForm = ({
 						<span>{task.totalProgress}%</span>
 					</label>
 				)}
-				{/* Botones de acción */}
-				<div className="flex gap-4 mt-4">
-					<button
-						type="submit"
-						className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-					>
-						<FaCheckCircle /> {initialData ? 'Actualizar' : 'Crear'}
-					</button>
-					<button
+				<div className="flex flex-col md:flex-row justify-center items-end gap-1 md:gap-4 p-2">
+					<Button
+						variant="secondary"
 						type="button"
 						onClick={onClose}
-						className="flex items-center gap-2 px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition"
-					>
-						<FaTimes /> Cancelar
-					</button>
+						text="Cancelar"
+						icon={FaTimes}
+					/>
+					<Button
+						variant="primary"
+						type="submit"
+						text={initialData ? 'Actualizar' : 'Crear'}
+						icon={FaCheckCircle}
+					/>
 				</div>
 			</form>
 		</Modal>

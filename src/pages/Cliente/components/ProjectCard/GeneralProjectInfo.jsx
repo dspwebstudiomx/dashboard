@@ -42,7 +42,7 @@ const GeneralProjectInfo = ({
 	return (
 		<Modal
 			isOpen={isOpen}
-			onClick={onClose}
+			onClose={onClose}
 			title={
 				<div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6">
 					<div className="flex flex-col-reverse md:flex-row items-left gap-8 w-full md:mb-24">
