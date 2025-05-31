@@ -117,20 +117,7 @@
         "priority": "Media",
         "completed": false,
         "id": 1747534150277,
-        "tasks": [
-          {
-            "taskId": 1748635486374,
-            "clientId": 1745897285167,
-            "projectId": 1747534150277,
-            "title": "Estudio del Caso",
-            "description": "se revisa el caso para su elaboración",
-            "startDate": "2025-05-30",
-            "dueDate": "2025-05-30",
-            "priority": "Baja",
-            "totalProgress": 0,
-            "status": "En Proceso"
-          }
-        ]
+        "tasks": []
       }
     ]
   },

@@ -394,6 +394,34 @@ app.put("/api/clients/:clientId/projects/:projectId/tasks/:taskId", (req, res) =
   });
 });
 
+// Eliminar una tarea de un proyecto de un cliente
+app.delete("/api/clients/:clientId/projects/:projectId/tasks/:taskId", (req, res) => {
+  readClientsFile((err, clients) => {
+    if (err || !Array.isArray(clients)) {
+      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
+    }
+    const client = clients.find((c) => String(c.id) === String(req.params.clientId));
+    if (!client) {
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+    const project = client.projects.find((p) => String(p.id) === String(req.params.projectId));
+    if (!project) {
+      return res.status(404).json({ error: "Proyecto no encontrado" });
+    }
+    const taskIndex = project.tasks.findIndex((t) => String(t.taskId) === String(req.params.taskId));
+    if (taskIndex === -1) {
+      return res.status(404).json({ error: "Tarea no encontrada" });
+    }
+    // Elimina la tarea del proyecto
+    project.tasks.splice(taskIndex, 1);
+
+    writeClientsFile(clients, res, {
+      message: "Tarea eliminada correctamente",
+      tasks: project.tasks,
+    });
+  });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

@@ -31,6 +31,8 @@ const GeneralProjectInfo = ({
 	handleEditTask,
 	resetTaskForm,
 	clientId,
+	selectedClient,
+	loadClientOrProjectData,
 }) => {
 	return (
 		<Modal
@@ -63,9 +65,11 @@ const GeneralProjectInfo = ({
 				<GrayLine />
 
 				<ProjectTasks
+					selectedClient={selectedClient}
 					clientId={clientId}
-					projectId={project.id}
 					project={project}
+					isOpen={isOpen}
+					loadClientOrProjectData={loadClientOrProjectData}
 					actions={{
 						showTaskModal,
 						setShowTaskModal,

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import ProjectTaskForm from './ProjectTaskForm';
 import { FaEdit, FaPlus } from 'react-icons/fa';
+import Button from '@components/Botones/Button';
+import { MdDelete } from 'react-icons/md';
 
-const ProjectTasksTable = ({ clientId, project, createTask, updateTask }) => {
+const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDeleted }) => {
 	const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 	const [selectedTask, setSelectedTask] = useState(null);
 
@@ -21,11 +23,28 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask }) => {
 		setSelectedTask(null);
 	};
 
+	const handleDeleteTask = async (task) => {
+		if (window.confirm(`¿Estás seguro de que deseas eliminar la tarea "${task.title}"?`)) {
+			try {
+				await fetch(
+					`http://localhost:5000/api/clients/${clientId}/projects/${project.id}/tasks/${
+						task.taskId || task.id
+					}`,
+					{ method: 'DELETE' }
+				);
+				if (onTaskDeleted) onTaskDeleted(); // Notifica al padre para recargar datos
+			} catch (error) {
+				console.error('Error al eliminar la tarea:', error);
+				alert('Error al eliminar la tarea');
+			}
+		}
+	};
+
 	return (
 		<div className="w-full">
-			<div className="flex items-center justify-between mb-4">
-				<h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
-					Tareas del Proyecto: <span className="font-bold">{project.title}</span>
+			<div className="flex items-center justify-between mb-12">
+				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+					Tareas del Proyecto
 				</h2>
 				<button
 					onClick={handleAddTask}
@@ -35,12 +54,16 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask }) => {
 				</button>
 			</div>
 			<div className="overflow-x-auto rounded shadow">
-				<table className="min-w-full bg-white dark:bg-gray-800">
+				<table className=" min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>
+							<th className="px-4 py-2 border-b text-left">ID Tarea</th>
 							<th className="px-4 py-2 border-b text-left">Título</th>
 							<th className="px-4 py-2 border-b text-left">Descripción</th>
+							<th className="px-4 py-2 border-b text-left">Fecha Inicio</th>
+							<th className="px-4 py-2 border-b text-left">Fecha Termino</th>
 							<th className="px-4 py-2 border-b text-left">Estado</th>
+							<th className="px-4 py-2 border-b text-left">Avance</th>
 							<th className="px-4 py-2 border-b text-left">Acciones</th>
 						</tr>
 					</thead>
@@ -51,8 +74,11 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask }) => {
 									key={task.taskId || task.id}
 									className="hover:bg-gray-100 dark:hover:bg-gray-700"
 								>
+									<td className="px-4 py-2 border-b">{task.taskId || task.id}</td>
 									<td className="px-4 py-2 border-b">{task.title}</td>
 									<td className="px-4 py-2 border-b">{task.description}</td>
+									<td className="px-4 py-2 border-b">{task.startDate}</td>
+									<td className="px-4 py-2 border-b">{task.dueDate}</td>
 									<td className="px-4 py-2 border-b">
 										<span
 											className={`px-2 py-1 rounded text-xs font-semibold ${
@@ -66,20 +92,35 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask }) => {
 											{task.status}
 										</span>
 									</td>
+									{/* Avance */}
 									<td className="px-4 py-2 border-b">
-										<button
+										<span className="text-sm text-gray-600">
+											{task.progress ? `${task.progress}%` : '0%'}
+										</span>
+									</td>
+
+									{/* Acciones */}
+									<td className="px-4 py-2 border-b flex items-center gap-2">
+										<Button
 											onClick={() => handleEditTask(task)}
-											className="text-blue-600 hover:text-blue-800 transition"
-											title="Editar"
-										>
-											<FaEdit />
-										</button>
+											text="Editar"
+											icon={FaEdit}
+											variant="secondary"
+											size="sm"
+										/>
+										<Button
+											onClick={() => handleDeleteTask(task)}
+											text="Eliminar"
+											icon={MdDelete}
+											variant="outline"
+											size="sm"
+										/>
 									</td>
 								</tr>
 							))
 						) : (
 							<tr>
-								<td colSpan={4} className="px-4 py-6 text-center text-gray-500">
+								<td colSpan={8} className="px-4 py-6 text-center text-gray-500 border-b">
 									No hay tareas
 								</td>
 							</tr>
