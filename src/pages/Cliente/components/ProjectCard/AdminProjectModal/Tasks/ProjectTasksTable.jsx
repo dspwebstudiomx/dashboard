@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProjectTaskForm from './ProjectTaskForm';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 
-const ProjectTasksTable = ({ clientId, project }) => {
+const ProjectTasksTable = ({ clientId, project, createTask, updateTask }) => {
 	const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 	const [selectedTask, setSelectedTask] = useState(null);
 
@@ -94,6 +94,8 @@ const ProjectTasksTable = ({ clientId, project }) => {
 					initialData={selectedTask}
 					clientId={clientId}
 					projectId={project.id}
+					createTask={createTask}
+					updateTask={updateTask}
 				/>
 			)}
 		</div>

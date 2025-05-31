@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useProjectTasks } from '@hooks/useProjectTasks';
 import Modal from '@components/Modal';
 import {
 	FaRegEdit,
@@ -11,9 +10,15 @@ import {
 	FaTimes,
 } from 'react-icons/fa';
 
-const ProjectTaskForm = ({ isOpen, onClose, initialData, clientId, projectId }) => {
-	const { createTask } = useProjectTasks({ clientId, projectId, isOpen });
-
+const ProjectTaskForm = ({
+	isOpen,
+	onClose,
+	initialData,
+	clientId,
+	projectId,
+	createTask,
+	updateTask,
+}) => {
 	const [task, setTask] = useState(
 		initialData || {
 			taskId: Date.now(),
@@ -30,8 +35,15 @@ const ProjectTaskForm = ({ isOpen, onClose, initialData, clientId, projectId }) 
 	);
 
 	useEffect(() => {
-		if (initialData) setTask(initialData);
-	}, [initialData]);
+		if (initialData) {
+			setTask((prev) => ({
+				...prev,
+				...initialData,
+				clientId: initialData.clientId || clientId,
+				projectId: initialData.projectId || projectId,
+			}));
+		}
+	}, [initialData, clientId, projectId]);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -41,10 +53,16 @@ const ProjectTaskForm = ({ isOpen, onClose, initialData, clientId, projectId }) 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await createTask(task);
-			alert('Tarea creada correctamente');
+			if (initialData && initialData.taskId) {
+				await updateTask(initialData.taskId, task);
+				alert('Tarea actualizada correctamente');
+			} else {
+				await createTask(task);
+				alert('Tarea creada correctamente');
+			}
 			onClose();
 		} catch (error) {
+			console.error(error); // <-- Así usas la variable y evitas el warning
 			alert('Error al guardar la tarea');
 		}
 	};

@@ -3,34 +3,22 @@ import { useProjectTasks } from '@hooks/useProjectTasks';
 import ProjectTasksTable from './ProjectTasksTable';
 
 const ProjectTasks = ({ selectedClient, clientId, project, isOpen }) => {
-	const { tasks, handleCreateTask, handleDeleteTask, handleEditTaskClick, handleSaveTask } =
+	const { tasks, createTask, updateTask, handleDeleteTask, handleEditTaskClick, handleSaveTask } =
 		useProjectTasks({
-			selectedClient,
-			project,
+			clientId,
+			projectId: project?.id,
 			isOpen,
 		});
 
-	console.log('Proyecto recibido:', project);
-	console.log('Tareas del proyecto:', project?.tasks);
-	console.log('Tareas del hook:', tasks);
-	console.log('selectedClient:', selectedClient);
-	console.log('project.clientId:', project?.clientId);
-	console.log('Cliente seleccionado:', selectedClient?.id || project?.clientId);
-
-	// Mostrar el clientId de cada tarea si existe
-	if (Array.isArray(tasks)) {
-		tasks.forEach((task, idx) => {
-			console.log(`Tarea ${idx + 1} - clientId:`, task.clientId);
-		});
-	}
+	// ...logs y depuración...
 
 	return (
 		<ProjectTasksTable
 			tasks={tasks}
 			clientId={clientId}
 			project={project}
-			onSaveTask={handleSaveTask}
-			handleCreateTask={handleCreateTask}
+			createTask={createTask}
+			updateTask={updateTask}
 			handleDeleteTask={handleDeleteTask}
 			handleEditTaskClick={handleEditTaskClick}
 			handleSaveTask={handleSaveTask}

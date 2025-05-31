@@ -95,7 +95,7 @@
             "taskId": 1748650574662,
             "clientId": 1745897285167,
             "projectId": 1747531564248,
-            "title": "hola",
+            "title": "Prueba 👍",
             "description": "prueba sistemas",
             "startDate": "2025-05-30",
             "dueDate": "2025-05-31",
@@ -122,13 +122,13 @@
             "taskId": 1748635486374,
             "clientId": 1745897285167,
             "projectId": 1747534150277,
-            "title": "cxzcxzczz",
-            "description": "x<zx<xx",
+            "title": "Estudio del Caso",
+            "description": "se revisa el caso para su elaboración",
             "startDate": "2025-05-30",
-            "dueDate": "2025-05-31",
+            "dueDate": "2025-05-30",
             "priority": "Baja",
             "totalProgress": 0,
-            "status": "Nuevo"
+            "status": "En Proceso"
           }
         ]
       }

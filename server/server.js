@@ -360,6 +360,40 @@ app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
   });
 });
 
+// Actualizar una tarea de un proyecto de un cliente
+app.put("/api/clients/:clientId/projects/:projectId/tasks/:taskId", (req, res) => {
+  readClientsFile((err, clients) => {
+    console.log('PUT params:', req.params);
+    if (err || !Array.isArray(clients)) {
+      return res.status(500).json({ error: "Error al leer el archivo de clientes" });
+    }
+    const client = clients.find((c) => String(c.id) === String(req.params.clientId));
+    if (!client) {
+      console.log('Cliente no encontrado:', req.params.clientId);
+      return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+    const project = client.projects.find((p) => String(p.id) === String(req.params.projectId));
+    if (!project) {
+      console.log('Proyecto no encontrado:', req.params.projectId);
+      return res.status(404).json({ error: "Proyecto no encontrado" });
+    }
+    const taskIndex = project.tasks.findIndex((t) => String(t.taskId) === String(req.params.taskId));
+    if (taskIndex === -1) {
+      console.log('Tarea no encontrada:', req.params.taskId);
+      return res.status(404).json({ error: "Tarea no encontrada" });
+    }
+    // Actualiza la tarea con los datos recibidos
+    project.tasks[taskIndex] = { ...project.tasks[taskIndex], ...req.body };
+
+    writeClientsFile(clients, res, {
+      message: "Tarea actualizada correctamente",
+      client, // Devuelve el cliente actualizado
+      task: project.tasks[taskIndex],
+      tasks: project.tasks,
+    });
+  });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

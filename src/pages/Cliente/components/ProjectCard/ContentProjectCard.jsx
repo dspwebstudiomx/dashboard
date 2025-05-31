@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { MdKeyboardArrowRight } from 'react-icons/md';
 import ProjectDescriptionInfoCard from '../ProjectDescriptionInfoCard';
 import Priority from '../Priority';
 import TitleProjectCard from '@components/Texts/TitleProjectCard';
@@ -59,7 +59,8 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 							{project.tasks && project.tasks.length > 0 ? (
 								project.tasks.map((task, idx) => (
 									<span key={task.id || idx} className="block text-pretty">
-										{task.description || task.name || 'Sin descripción'}
+										<MdKeyboardArrowRight className="inline mr-1 text-blue-500" size={24} />
+										{task.title || task.name || 'Sin descripción'}
 									</span>
 								))
 							) : (
@@ -79,7 +80,7 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 				</div>
 
 				{/* Botones de acción */}
-				<div className="flex flex-col gap-2 mt-12">
+				<div className="flex flex-col gap-4 mt-12">
 					<ProjectActionButtons
 						isCompleted={isCompleted}
 						openAdminModal={openAdminModal}
@@ -88,7 +89,7 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 						handleCompleteClick={handleCompleteClick}
 					/>
 					{isCompleted && (
-						<div className="flex flex-col gap-8">
+						<div className="flex flex-col gap-4">
 							<AdminActionButton onClick={openAdminModal} text="Ver Proyecto" />
 							<CloseProjectMessaje />
 						</div>

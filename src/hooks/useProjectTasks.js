@@ -46,8 +46,31 @@ export function useProjectTasks({ clientId, projectId, isOpen = false } = {}) {
     return data;
   };
 
+  const updateTask = async (taskId, updatedTask) => {
+    if (!clientId || !projectId) throw new Error('Faltan clientId o projectId');
+    console.log('Actualizando tarea:', { clientId, projectId, taskId, updatedTask });
+
+    const url = `http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks/${taskId}`;
+    console.log('URL updateTask:', url);
+
+    const res = await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedTask),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      console.error('Respuesta error:', text);
+      throw new Error('Error en el servidor');
+    }
+    const data = await res.json();
+    setTasks(data.tasks ?? []);
+    return data;
+  };
+
   return {
     tasks,
     createTask,
+    updateTask,
   };
 }
