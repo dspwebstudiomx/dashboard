@@ -46,12 +46,13 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
 					Tareas del Proyecto
 				</h2>
-				<button
+				<Button
 					onClick={handleAddTask}
-					className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-				>
-					<FaPlus /> Agregar tarea
-				</button>
+					text="Agregar Tarea"
+					variant="primary"
+					size="md"
+					icon={FaPlus}
+				/>
 			</div>
 			<div className="overflow-x-auto rounded shadow">
 				<table className=" min-w-full bg-white dark:bg-gray-800">
