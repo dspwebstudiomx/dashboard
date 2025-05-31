@@ -180,7 +180,7 @@ const ProjectForm = ({
 						(service) => (
 							<label key={service} className="flex items-center gap-2">
 								<input
-									className="w-4 h-4 rounded-2xl"
+									className="w-6 h-6 rounded-2xl"
 									type="checkbox"
 									name="services"
 									value={service}
@@ -234,7 +234,7 @@ const ProjectForm = ({
 						(section) => (
 							<div key={section} className="flex items-center gap-2">
 								<input
-									className="w-4 h-4 rounded-2xl"
+									className="w-6 h-6 rounded-2xl"
 									type="checkbox"
 									name="sections"
 									value={section}
