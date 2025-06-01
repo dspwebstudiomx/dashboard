@@ -212,6 +212,21 @@ const ProjectTaskForm = ({
 					</label>
 				)}
 
+				{initialData && initialData.updatedAt && (
+					<label className="flex flex-col md:flex-row items-start md:items-center gap-4">
+						<div className="flex items-center gap-2">
+							<FaRegCalendarAlt className="text-xl text-blue-600" />
+							<span className="w-24 font-semibold text-base">Actualizado</span>
+						</div>
+						<input
+							type="text"
+							value={new Date(initialData.updatedAt).toLocaleString()}
+							readOnly
+							className="flex-1 border rounded px-3 py-2 bg-gray-100 text-gray-600 w-full md:w-auto"
+						/>
+					</label>
+				)}
+
 				<div className="flex flex-row justify-center items-end gap-4 md:gap-4 p-2">
 					<Button
 						variant="secondary"

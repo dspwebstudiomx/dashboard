@@ -44,17 +44,20 @@ const GeneralProjectInfo = ({
 			isOpen={isOpen}
 			onClose={onClose}
 			title={
-				<div className="flex flex-col md:flex-col-reverse sm:flex-row items-center justify-between gap-6">
-					<div className="flex flex-col md:flex-row items-left gap-8 w-full md:mb-24">
-						<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center ml-10">
+				<div className="flex flex-col md:flex-col-reverse lg:flex-row items-center justify-between gap-6">
+					{/* Título y Prioridad */}
+					<div className="flex flex-col md:flex-row items-left gap-8 w-full md:w-auto md:mb-12">
+						{/* Título del proyecto */}
+						<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center ml-6">
 							{project.title}
 						</h2>
+						{/* Prioridad del proyecto */}
 						<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
 							<Priority project={project} />
 						</div>
 					</div>
 					{/* Botones */}
-					<div className="hidden  md:flex flex-col md:flex-row gap-4">
+					<div className="hidden  md:flex md:flex-row gap-4">
 						<EditActionButton onClick={''} text="Editar Proyecto" />
 						<DeleteActionButton onClick={''} />
 					</div>

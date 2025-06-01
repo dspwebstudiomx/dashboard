@@ -43,12 +43,12 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between mb-12">
-				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+				<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
 					Tareas del Proyecto
 				</h2>
 				<Button onClick={handleAddTask} text="Agregar" variant="primary" size="md" icon={FaPlus} />
 			</div>
-			<div className="overflow-x-auto rounded shadow">
+			<div className="overflow-x-auto rounded shadow text-sm">
 				<table className=" min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>
@@ -57,6 +57,7 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 							<th className="px-4 py-2 border-b text-left">Descripción</th>
 							<th className="px-4 py-2 border-b text-left">Fecha Inicio</th>
 							<th className="px-4 py-2 border-b text-left">Fecha Termino</th>
+							<th className="px-4 py-2 border-b text-left">Fecha Actualización</th>
 							<th className="px-4 py-2 border-b text-left">Estado</th>
 							<th className="px-4 py-2 border-b text-left">Avance</th>
 							<th className="px-4 py-2 border-b text-left">Acciones</th>
@@ -75,13 +76,27 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 									<td className="px-4 py-4 border-b">{task.startDate}</td>
 									<td className="px-4 py-4 border-b">{task.dueDate}</td>
 									<td className="px-4 py-4 border-b">
+										{
+											// Colocar fecha de actualización
+											task.updatedAt
+												? new Date(task.updatedAt).toLocaleString('es-ES', {
+														year: 'numeric',
+														month: '2-digit',
+														day: '2-digit',
+														hour: '2-digit',
+														minute: '2-digit',
+												  })
+												: 'No disponible'
+										}
+									</td>
+									<td className="px-4 py-4 border-b">
 										<span
 											className={`px-4 py-1 rounded-full text-base font-semibold ${
 												task.status === 'Completado'
-													? 'bg-green-100 text-green-700'
+													? 'bg-green-100 text-green-500 border border-green-500'
 													: task.status === 'En Proceso'
-													? 'bg-yellow-100 text-yellow-700'
-													: 'bg-blue-300 text-blue-800'
+													? 'bg-yellow-100 text-yellow-600 border border-yellow-500'
+													: 'bg-blue-300 text-blue-600 border border-blue-500'
 											}`}
 										>
 											{task.status}
@@ -93,20 +108,19 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 										</span>
 									</td>
 									<td className="px-4 py-4 border-b flex items-center gap-">
-										<Button
+										<button
+											className="text-blue-600 hover:text-blue-800 transition-colors mr-2"
 											onClick={() => handleEditTask(task)}
-											text="Editar"
-											icon={FaEdit}
-											variant="secondary"
-											size="sm"
-										/>
-										<Button
+											aria-label="Editar tarea"
+										>
+											<FaEdit className="text-3xl" />
+										</button>
+										<button
 											onClick={() => handleDeleteTask(task)}
-											text="Eliminar"
-											icon={MdDelete}
-											variant="outline"
-											size="sm"
-										/>
+											className="text-blue-600 hover:text-blue-800 transition-colors"
+										>
+											<MdDelete className="text-3xl" />
+										</button>
 									</td>
 								</tr>
 							))

@@ -21,6 +21,8 @@ export function useProjectTasks({ clientId, projectId, isOpen = false } = {}) {
       projectId,
       status: newTask.status || 'Nuevo',
       priority: newTask.priority || 'Baja',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     });
 
     const taskToSend = {
@@ -30,6 +32,8 @@ export function useProjectTasks({ clientId, projectId, isOpen = false } = {}) {
       projectId,
       status: newTask.status || 'Nuevo',
       priority: newTask.priority || 'Baja',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
 
     const res = await fetch(`http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks`, {
