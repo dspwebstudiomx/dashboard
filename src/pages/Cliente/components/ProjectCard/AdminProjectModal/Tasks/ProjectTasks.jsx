@@ -28,6 +28,7 @@ const ProjectTasks = ({
 			handleSaveTask={handleSaveTask}
 			selectedClient={selectedClient}
 			onTaskDeleted={loadClientOrProjectData}
+			onTasksChanged={loadClientOrProjectData} // Esta función debe recargar el proyecto y sus tareas
 		/>
 	);
 };

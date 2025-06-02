@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useProjectTasks } from '../../../../../hooks/useProjectTasks';
 import GeneralProjectInfo from '../GeneralProjectInfo';
 
@@ -13,6 +13,8 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId, selectedClient 
 		handleEditTaskClick,
 		handleEditTask,
 	} = useProjectTasks({ clientId, project, isOpen });
+
+	const [showForm, setShowForm] = useState(false);
 
 	return (
 		<>
@@ -29,6 +31,8 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId, selectedClient 
 				handleEditTask={handleEditTask}
 				selectedClient={selectedClient}
 				clientId={clientId}
+				showForm={showForm}
+				setShowForm={setShowForm}
 			/>
 		</>
 	);

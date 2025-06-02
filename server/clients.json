@@ -1,317 +1,779 @@
 [
-	{
-		"id": 1745897285167,
-		"fullName": "Daniel Salvador",
-		"lastName": "Pérez",
-		"lastName2": "Bernal",
-		"email": "danielperezber@outlook.com",
-		"phoneNumber": "+52 443 918 8025",
-		"address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
-		"company": "dspwebstudio",
-		"rfc": "PEBD81011C21",
-		"curp": "PEBD81011C21",
-		"website": "https://dspwebstudio.com",
-		"facebook": "https://www.facebook.com/dspwebstudio",
-		"twitter": "https://twitter.com/dspwebstudio",
-		"instagram": "https://instagram.com/dspwebstudio",
-		"linkedin": "https://linkedin.com/dspwebstudio",
-		"project": "Consultoría de Diseño Web",
-		"image": "/uploads/1747857046531-161990523.jpeg",
-		"createdAt": "2025-05-01",
-		"updatedAt": "2025-05-15",
-		"tasks": [
-			{
-				"id": "1",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "Prerender service",
-				"startDate": "2025-05-21",
-				"dueDate": "2025-05-22",
-				"priority": "Low"
-			},
-			{
-				"id": "2",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "aa",
-				"startDate": "2025-04-27",
-				"dueDate": "2025-05-21",
-				"priority": "Medium"
-			},
-			{
-				"id": "3",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "b",
-				"startDate": "2025-05-15",
-				"dueDate": "2025-05-16",
-				"priority": "Low"
-			},
-			{
-				"id": "4",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "a",
-				"startDate": "2025-05-15",
-				"dueDate": "2025-05-30",
-				"priority": "Low"
-			},
-			{
-				"id": "5",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "c",
-				"description": "x",
-				"startDate": "2025-05-02",
-				"dueDate": "2025-05-23",
-				"priority": "Low"
-			}
-		],
-		"projects": [
-			{
-				"title": "Prueba Sistemas",
-				"description": "Lorem ipsum dolor sit amet consectetur adipiscing elit fermentum, venenatis turpis dapibus suspendisse aptent montes iaculis rutrum, nam morbi sagittis quis enim quisque mus. Dictum natoque phasellus mollis potenti rutrum tortor hac augue odio, dui posuere felis montes diam enim class dis risus parturient, volutpat conubia tempus ultrices auctor erat est ut. Accumsan posuere sociosqu dictum morbi semper per cum condimentum, leo at sapien nascetur primis mauris neque metus, tempus iaculis torquent vestibulum tincidunt senectus lacus.\n\nProin libero etiam convallis facilisis cras dignissim vitae tempor, ridiculus lacus elementum erat parturient imperdiet porta nisi ac, habitant viverra nam donec lacinia conubia pharetra. Himenaeos leo erat vestibulum justo laoreet a augue lobortis, sollicitudin aliquam curabitur in luctus rutrum malesuada, nunc lectus gravida felis dictum nisl tempus. Commodo quis quisque habitasse justo suspendisse parturient turpis varius, sapien tempus est fames ridiculus odio praesent nullam, sociosqu auctor mauris et aliquet placerat volutpat.",
-				"services": ["Consultoria SEO", "Diseño Web", "Landing Page"],
-				"sections": ["Preguntas Frecuentes", "Nuestros Servicios", "Contacto"],
-				"startDate": "2025-05-18",
-				"dueDate": "2025-06-24",
-				"priority": "Baja",
-				"completed": true,
-				"id": 1747531564248,
-				"tasks": [
-					{
-						"taskId": 1748650574662,
-						"clientId": 1745897285167,
-						"projectId": 1747531564248,
-						"title": "prueba 👍",
-						"description": "prueba sistemas dani",
-						"startDate": "2025-05-30",
-						"dueDate": "2025-05-31",
-						"priority": "Baja",
-						"totalProgress": 0,
-						"status": "Nuevo",
-						"createdAt": "2025-05-30T12:00:00.000Z",
-						"updatedAt": "2025-05-30T12:00:00.000Z"
-					},
-					{
-						"taskId": 1748806338825,
-						"clientId": 1745897285167,
-						"projectId": 1747531564248,
-						"title": "aSasS",
-						"description": "SasSas",
-						"startDate": "2025-06-01",
-						"dueDate": "2025-06-27",
-						"priority": "Media",
-						"totalProgress": 100,
-						"status": "Completado"
-					}
-				]
-			},
-			{
-				"title": "Consultoría de Diseño Web",
-				"description": "Aclarar dudas sobre el Diseño Web",
-				"services": ["Consultoría de Diseño Web"],
-				"sections": [],
-				"startDate": "2025-05-17",
-				"dueDate": "2025-05-31",
-				"priority": "Media",
-				"completed": false,
-				"id": 1747534150277,
-				"tasks": []
-			}
-		]
-	},
-	{
-		"id": 1745953383970,
-		"fullName": "Alfonso",
-		"lastName": "Alonzo",
-		"lastName2": "",
-		"email": "a.alonzo@easylav.mx",
-		"phoneNumber": "+52 443 520 0593",
-		"address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
-		"company": "EasyLav",
-		"project": "Sitio Web - EasyLav",
-		"image": "/uploads/1747449343205-426163373.jpg",
-		"createdAt": "2025-05-15",
-		"updatedAt": "2025-05-15",
-		"facebook": "https://www.facebook.com/profile.php?id=61562871132158",
-		"instagram": "https://www.instagram.com/lavanderiaseasylav/",
-		"linkedin": "",
-		"twitter": "",
-		"website": "https://easylav.mx",
-		"rfc": "",
-		"curp": "",
-		"tasks": [
-			{
-				"id": "1",
-				"clientId": "1745953383970",
-				"name": "",
-				"title": "a",
-				"description": "Prerender service",
-				"startDate": "",
-				"dueDate": "2025-05-06",
-				"priority": "Medium"
-			}
-		],
-		"projects": [
-			{
-				"title": "Sitio Web - EasyLav",
-				"description": "Creación de Sitio Web con secciones.",
-				"services": [
-					"Optimización SEO",
-					"Diseño Web",
-					"Desarrollo Web",
-					"Consultoria SEO",
-					"Rediseño Web"
-				],
-				"startDate": "2024-09-01",
-				"dueDate": "2025-05-20",
-				"priority": "Media",
-				"id": 1747424023109,
-				"completed": false,
-				"status": "",
-				"totalProgress": 50,
-				"tasks": []
-			}
-		]
-	},
-	{
-		"id": 1746509316001,
-		"fullName": "Alexis Daniel",
-		"lastName": "Vallarta",
-		"lastName2": "Pérez",
-		"email": "vallartaalexis1711@gmail.com",
-		"phoneNumber": "+52 443195268",
-		"address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
-		"company": "Hogares Deesa",
-		"project": ["test"],
-		"rfc": "",
-		"website": "https://www.hogaresdeesa.com/",
-		"curp": "",
-		"facebook": "https://www.facebook.com/alexis.ferguson.587",
-		"instagram": "",
-		"linkedin": "",
-		"twitter": "",
-		"image": "/uploads/1747275463812-708020415.jpg",
-		"createdAt": "2025-05-15",
-		"updatedAt": "2025-05-15",
-		"tasks": [
-			{
-				"id": "1",
-				"clientId": "1746509316001",
-				"name": "",
-				"title": "a",
-				"description": "a",
-				"startDate": "2025-05-08",
-				"dueDate": "2025-05-08",
-				"priority": "Low"
-			}
-		],
-		"projects": [
-			{
-				"title": "test",
-				"description": "pruebas",
-				"services": ["Desarrollo Web"],
-				"sections": [],
-				"startDate": "2025-05-30",
-				"dueDate": "2025-07-31",
-				"priority": "Baja",
-				"completed": false,
-				"status": "",
-				"totalProgress": "",
-				"tasks": [],
-				"id": 1748547399321
-			}
-		]
-	},
-	{
-		"id": 1747254921859,
-		"fullName": "Maria de la Paz",
-		"lastName": "Bernal",
-		"lastName2": "Navarro",
-		"email": "benp5014@hotmail.com",
-		"phoneNumber": "4439188025",
-		"address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
-		"company": "Hogar",
-		"rfc": "",
-		"curp": "",
-		"website": "",
-		"facebook": "",
-		"twitter": "",
-		"instagram": "",
-		"linkedin": "",
-		"project": ["Prueba Sistemas Maripaz"],
-		"image": "/uploads/1747789662552-328971791.jpg",
-		"createdAt": "2025-05-15",
-		"updatedAt": "2025-05-15",
-		"tasks": [],
-		"projects": [
-			{
-				"title": "Consultoría SEO - Básico",
-				"description": "Tengo un negocio con productos y servicios de gran calidad, pero mi página web no está generando suficientes visitas ni conversiones. He intentado algunas estrategias, como publicar contenido regularmente y compartir en redes sociales, pero sigo sin posicionarme bien en Google.\n\nTal vez mi sitio tenga problemas de velocidad, una estructura poco intuitiva o que mis palabras clave no sean las adecuadas. No sé si mis imágenes están optimizadas, si mi contenido es suficientemente atractivo para los buscadores, o si mi competencia tiene una ventaja técnica que me impide destacar.\n\nNecesito una consultoría SEO que me ayude a identificar los puntos débiles de mi sitio y me proporcione soluciones prácticas para mejorar mi posicionamiento. Busco recomendaciones claras y un plan de acción que no requiera una reconstrucción total de mi página, sino ajustes estratégicos que me permitan atraer más clientes y aumentar mi visibilidad online.\n",
-				"services": ["Consultoria SEO"],
-				"sections": [
-					"SEO Básico",
-					"Blog",
-					"Nuestros Servicios",
-					"Contacto",
-					"Testimonios",
-					"Quienes Somos",
-					"Política de Privacidad",
-					"Términos y Condiciones",
-					"Política de Cookies",
-					"Preguntas Frecuentes",
-					"Redes Sociales",
-					"Portafolio"
-				],
-				"startDate": "2025-05-17",
-				"dueDate": "2025-05-28",
-				"priority": "Baja",
-				"id": 1747521768783,
-				"completed": false,
-				"tasks": []
-			},
-			{
-				"title": "Prueba Sistemas Maripaz",
-				"description": "Lorem ipsum dolor sit amet. Rem quasi galisum et tempora cupiditate ab vero nobis et doloremque debitis aut dicta aliquid vel esse labore! Qui molestias tempore ut eaque voluptatem non similique vero ut tenetur minus ut galisum enim est veritatis deserunt! Et ratione totam id quibusdam nihil sit fugiat galisum. \n\nUt iusto quas ea quae iure a velit architecto? Non nihil tenetur ea dolores impedit est illum corrupti. Et voluptas quia sit laudantium voluptatem non nulla nemo et accusantium praesentium et dolorem beatae? Et nesciunt accusamus in facilis quibusdam non voluptatem enim. \n",
-				"services": ["Diseño Web", "Landing Page"],
-				"sections": [],
-				"startDate": "2025-05-29",
-				"dueDate": "2025-06-29",
-				"priority": "Alta",
-				"completed": false,
-				"status": "",
-				"totalProgress": "",
-				"tasks": [],
-				"id": 1748543438191
-			}
-		]
-	},
-	{
-		"id": 1747336000817,
-		"fullName": "Daniel",
-		"lastName": "Pérez ",
-		"lastName2": "Ferreira",
-		"email": "soyelperez@fortnite.com",
-		"phoneNumber": "1234567890",
-		"address": "",
-		"company": "xxxxx",
-		"rfc": "",
-		"curp": "",
-		"website": "",
-		"facebook": "",
-		"twitter": "",
-		"instagram": "",
-		"linkedin": "",
-		"project": "Creación de sitio web",
-		"image": "/uploads/1747336033064-462061038.png",
-		"createdAt": "2025-05-15",
-		"updatedAt": "2025-05-15",
-		"tasks": [],
-		"projects": []
-	}
+  {
+    "id": 1745897285167,
+    "fullName": "Daniel Salvador",
+    "lastName": "Pérez",
+    "lastName2": "Bernal",
+    "email": "danielperezber@outlook.com",
+    "phoneNumber": "+52 443 918 8025",
+    "address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
+    "company": "dspwebstudio",
+    "rfc": "PEBD81011C21",
+    "curp": "PEBD81011C21",
+    "website": "https://dspwebstudio.com",
+    "facebook": "https://www.facebook.com/dspwebstudio",
+    "twitter": "https://twitter.com/dspwebstudio",
+    "instagram": "https://instagram.com/dspwebstudio",
+    "linkedin": "https://linkedin.com/dspwebstudio",
+    "project": [
+      "Prueba tareas"
+    ],
+    "image": "/uploads/1747857046531-161990523.jpeg",
+    "createdAt": "2025-05-01",
+    "updatedAt": "2025-05-15",
+    "tasks": [
+      {
+        "id": "1",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "Prerender service",
+        "startDate": "2025-05-21",
+        "dueDate": "2025-05-22",
+        "priority": "Low"
+      },
+      {
+        "id": "2",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "aa",
+        "startDate": "2025-04-27",
+        "dueDate": "2025-05-21",
+        "priority": "Medium"
+      },
+      {
+        "id": "3",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "b",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-05-16",
+        "priority": "Low"
+      },
+      {
+        "id": "4",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "a",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-05-30",
+        "priority": "Low"
+      },
+      {
+        "id": "5",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "c",
+        "description": "x",
+        "startDate": "2025-05-02",
+        "dueDate": "2025-05-23",
+        "priority": "Low"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Prueba Sistemas",
+        "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit fermentum, venenatis turpis dapibus suspendisse aptent montes iaculis rutrum, nam morbi sagittis quis enim quisque mus. Dictum natoque phasellus mollis potenti rutrum tortor hac augue odio, dui posuere felis montes diam enim class dis risus parturient, volutpat conubia tempus ultrices auctor erat est ut. Accumsan posuere sociosqu dictum morbi semper per cum condimentum, leo at sapien nascetur primis mauris neque metus, tempus iaculis torquent vestibulum tincidunt senectus lacus.\n\nProin libero etiam convallis facilisis cras dignissim vitae tempor, ridiculus lacus elementum erat parturient imperdiet porta nisi ac, habitant viverra nam donec lacinia conubia pharetra. Himenaeos leo erat vestibulum justo laoreet a augue lobortis, sollicitudin aliquam curabitur in luctus rutrum malesuada, nunc lectus gravida felis dictum nisl tempus. Commodo quis quisque habitasse justo suspendisse parturient turpis varius, sapien tempus est fames ridiculus odio praesent nullam, sociosqu auctor mauris et aliquet placerat volutpat.",
+        "services": [
+          "Consultoria SEO",
+          "Diseño Web",
+          "Landing Page"
+        ],
+        "sections": [
+          "Preguntas Frecuentes",
+          "Nuestros Servicios",
+          "Contacto"
+        ],
+        "startDate": "2025-05-18",
+        "dueDate": "2025-06-24",
+        "priority": "Baja",
+        "completed": false,
+        "id": 1747531564248,
+        "tasks": [
+          {
+            "taskId": "1748826229620-sec-0",
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Sección: Preguntas Frecuentes",
+            "description": "Tarea para la sección Preguntas Frecuentes",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826229620-sec-1",
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Sección: Nuestros Servicios",
+            "description": "Tarea para la sección Nuestros Servicios",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826229620-sec-2",
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Sección: Contacto",
+            "description": "Tarea para la sección Contacto",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826229620-srv-0",
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Servicio: Consultoria SEO",
+            "description": "Tarea para el servicio Consultoria SEO",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          {
+            "taskId": "1748826229620-srv-1",
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Servicio: Diseño Web",
+            "description": "Tarea para el servicio Diseño Web",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          {
+            "taskId": "1748826229620-srv-2",
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Servicio: Landing Page",
+            "description": "Tarea para el servicio Landing Page",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ]
+      },
+      {
+        "title": "Consultoría de Diseño Web",
+        "description": "Aclarar dudas sobre el Diseño Web",
+        "services": [
+          "Consultoría de Diseño Web"
+        ],
+        "sections": [],
+        "startDate": "2025-05-17",
+        "dueDate": "2025-05-31",
+        "priority": "Media",
+        "completed": false,
+        "id": 1747534150277,
+        "tasks": [
+          {
+            "taskId": "1748826258228-srv-0",
+            "clientId": 1745897285167,
+            "projectId": 1747534150277,
+            "title": "Servicio: Consultoría de Diseño Web",
+            "description": "Tarea para el servicio Consultoría de Diseño Web",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ]
+      },
+      {
+        "title": "Prueba tareas",
+        "description": "<zx<zx<zx<x<dasfsffsdsdfsdfsd",
+        "services": [
+          "Consultoría de Diseño Web",
+          "Desarrollo Web",
+          "Integración de APIs"
+        ],
+        "sections": [],
+        "startDate": "2025-06-01",
+        "dueDate": "2025-06-02",
+        "priority": "Media",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [
+          {
+            "taskId": "1748826305647-srv-0",
+            "clientId": 1745897285167,
+            "projectId": 1748809863981,
+            "title": "Servicio: Consultoría de Diseño Web",
+            "description": "Tarea para el servicio Consultoría de Diseño Web",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          {
+            "taskId": "1748826305647-srv-1",
+            "clientId": 1745897285167,
+            "projectId": 1748809863981,
+            "title": "Servicio: Desarrollo Web",
+            "description": "Tarea para el servicio Desarrollo Web",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          {
+            "taskId": "1748826305647-srv-2",
+            "clientId": 1745897285167,
+            "projectId": 1748809863981,
+            "title": "Servicio: Integración de APIs",
+            "description": "Tarea para el servicio Integración de APIs",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ],
+        "id": 1748809863981
+      }
+    ]
+  },
+  {
+    "id": 1745953383970,
+    "fullName": "Alfonso",
+    "lastName": "Alonzo",
+    "lastName2": "",
+    "email": "a.alonzo@easylav.mx",
+    "phoneNumber": "+52 443 520 0593",
+    "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
+    "company": "EasyLav",
+    "project": "Sitio Web - EasyLav",
+    "image": "/uploads/1747449343205-426163373.jpg",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
+    "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
+    "instagram": "https://www.instagram.com/lavanderiaseasylav/",
+    "linkedin": "",
+    "twitter": "",
+    "website": "https://easylav.mx",
+    "rfc": "",
+    "curp": "",
+    "tasks": [
+      {
+        "id": "1",
+        "clientId": "1745953383970",
+        "name": "",
+        "title": "a",
+        "description": "Prerender service",
+        "startDate": "",
+        "dueDate": "2025-05-06",
+        "priority": "Medium"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Sitio Web - EasyLav",
+        "description": "Creación de Sitio Web con secciones.",
+        "services": [
+          "Optimización SEO",
+          "Diseño Web",
+          "Desarrollo Web",
+          "Consultoria SEO",
+          "Rediseño Web"
+        ],
+        "startDate": "2024-09-01",
+        "dueDate": "2025-05-20",
+        "priority": "Media",
+        "id": 1747424023109,
+        "completed": false,
+        "status": "",
+        "totalProgress": 50,
+        "tasks": []
+      }
+    ]
+  },
+  {
+    "id": 1746509316001,
+    "fullName": "Alexis Daniel",
+    "lastName": "Vallarta",
+    "lastName2": "Pérez",
+    "email": "vallartaalexis1711@gmail.com",
+    "phoneNumber": "+52 443195268",
+    "address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
+    "company": "Hogares Deesa",
+    "project": [
+      "test"
+    ],
+    "rfc": "",
+    "website": "https://www.hogaresdeesa.com/",
+    "curp": "",
+    "facebook": "https://www.facebook.com/alexis.ferguson.587",
+    "instagram": "",
+    "linkedin": "",
+    "twitter": "",
+    "image": "/uploads/1747275463812-708020415.jpg",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
+    "tasks": [
+      {
+        "id": "1",
+        "clientId": "1746509316001",
+        "name": "",
+        "title": "a",
+        "description": "a",
+        "startDate": "2025-05-08",
+        "dueDate": "2025-05-08",
+        "priority": "Low"
+      }
+    ],
+    "projects": [
+      {
+        "title": "test",
+        "description": "pruebas",
+        "services": [
+          "Desarrollo Web"
+        ],
+        "sections": [],
+        "startDate": "2025-05-30",
+        "dueDate": "2025-07-31",
+        "priority": "Baja",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [],
+        "id": 1748547399321
+      }
+    ]
+  },
+  {
+    "id": 1747254921859,
+    "fullName": "Maria de la Paz",
+    "lastName": "Bernal",
+    "lastName2": "Navarro",
+    "email": "benp5014@hotmail.com",
+    "phoneNumber": "4439188025",
+    "address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
+    "company": "Hogar",
+    "rfc": "",
+    "curp": "",
+    "website": "",
+    "facebook": "",
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "project": [
+      "Prueba Sistemas Maripaz",
+      "Prueba 2 Maripaz"
+    ],
+    "image": "/uploads/1747789662552-328971791.jpg",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
+    "tasks": [],
+    "projects": [
+      {
+        "title": "Consultoría SEO - Básico",
+        "description": "Tengo un negocio con productos y servicios de gran calidad, pero mi página web no está generando suficientes visitas ni conversiones. He intentado algunas estrategias, como publicar contenido regularmente y compartir en redes sociales, pero sigo sin posicionarme bien en Google.\n\nTal vez mi sitio tenga problemas de velocidad, una estructura poco intuitiva o que mis palabras clave no sean las adecuadas. No sé si mis imágenes están optimizadas, si mi contenido es suficientemente atractivo para los buscadores, o si mi competencia tiene una ventaja técnica que me impide destacar.\n\nNecesito una consultoría SEO que me ayude a identificar los puntos débiles de mi sitio y me proporcione soluciones prácticas para mejorar mi posicionamiento. Busco recomendaciones claras y un plan de acción que no requiera una reconstrucción total de mi página, sino ajustes estratégicos que me permitan atraer más clientes y aumentar mi visibilidad online.\n",
+        "services": [
+          "Consultoria SEO"
+        ],
+        "sections": [
+          "SEO Básico",
+          "Blog",
+          "Nuestros Servicios",
+          "Contacto",
+          "Testimonios",
+          "Quienes Somos",
+          "Política de Privacidad",
+          "Términos y Condiciones",
+          "Política de Cookies",
+          "Preguntas Frecuentes",
+          "Redes Sociales",
+          "Portafolio"
+        ],
+        "startDate": "2025-05-17",
+        "dueDate": "2025-05-28",
+        "priority": "Baja",
+        "id": 1747521768783,
+        "completed": false,
+        "tasks": [
+          {
+            "taskId": "1748826547163-sec-0",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: SEO Básico",
+            "description": "Tarea para la sección SEO Básico",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-1",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Blog",
+            "description": "Tarea para la sección Blog",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-2",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Nuestros Servicios",
+            "description": "Tarea para la sección Nuestros Servicios",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-3",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Contacto",
+            "description": "Tarea para la sección Contacto",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-4",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Testimonios",
+            "description": "Tarea para la sección Testimonios",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-5",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Quienes Somos",
+            "description": "Tarea para la sección Quienes Somos",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-6",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Política de Privacidad",
+            "description": "Tarea para la sección Política de Privacidad",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-7",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Términos y Condiciones",
+            "description": "Tarea para la sección Términos y Condiciones",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-8",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Política de Cookies",
+            "description": "Tarea para la sección Política de Cookies",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-9",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Preguntas Frecuentes",
+            "description": "Tarea para la sección Preguntas Frecuentes",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-10",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Redes Sociales",
+            "description": "Tarea para la sección Redes Sociales",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-sec-11",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Sección: Portafolio",
+            "description": "Tarea para la sección Portafolio",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748826547163-srv-0",
+            "clientId": 1747254921859,
+            "projectId": 1747521768783,
+            "title": "Servicio: Consultoria SEO",
+            "description": "Tarea para el servicio Consultoria SEO",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ]
+      },
+      {
+        "title": "Prueba Sistemas Maripaz",
+        "description": "Lorem ipsum dolor sit amet. Rem quasi galisum et tempora cupiditate ab vero nobis et doloremque debitis aut dicta aliquid vel esse labore! Qui molestias tempore ut eaque voluptatem non similique vero ut tenetur minus ut galisum enim est veritatis deserunt! Et ratione totam id quibusdam nihil sit fugiat galisum. \n\nUt iusto quas ea quae iure a velit architecto? Non nihil tenetur ea dolores impedit est illum corrupti. Et voluptas quia sit laudantium voluptatem non nulla nemo et accusantium praesentium et dolorem beatae? Et nesciunt accusamus in facilis quibusdam non voluptatem enim. \n",
+        "services": [
+          "Diseño Web",
+          "Landing Page"
+        ],
+        "sections": [],
+        "startDate": "2025-05-29",
+        "dueDate": "2025-06-29",
+        "priority": "Alta",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [
+          {
+            "taskId": "1748826562554-srv-0",
+            "clientId": 1747254921859,
+            "projectId": 1748543438191,
+            "title": "Servicio: Diseño Web",
+            "description": "Tarea para el servicio Diseño Web",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          {
+            "taskId": "1748826562554-srv-1",
+            "clientId": 1747254921859,
+            "projectId": 1748543438191,
+            "title": "Servicio: Landing Page",
+            "description": "Tarea para el servicio Landing Page",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ],
+        "id": 1748543438191
+      },
+      {
+        "title": "Prueba 2 Maripaz",
+        "description": "Lorem ipsum dolor sit amet. Et molestiae doloremque id repellendus repellat sed tempora consectetur rem blanditiis minima. Et quibusdam sunt et officiis dolorum vel obcaecati consequatur eum animi nulla. Et assumenda distinctio ut amet illum ex voluptatibus Quis et minus expedita ut magnam vero ad sequi tempore aut laboriosam laboriosam. Aut vero repellat ut tempora voluptates eos deleniti perspiciatis? \n\nQui possimus recusandae ut iusto esse ut velit placeat ex saepe dolores est odit praesentium sit soluta ipsam qui voluptates consequatur. Ut quasi repellat aut ipsam architecto eos numquam quibusdam ut itaque velit. Ut fuga rerum in cumque rerum non explicabo aliquid? \nQui corrupti error est cumque aliquid eum dolores natus aut quod magnam sit iusto quis est rerum molestiae! Vel exercitationem tempore ex repellendus quia et consequuntur exercitationem ad voluptatibus iste. Vel assumenda internos nam omnis vitae vel expedita fugiat quo magni temporibus ut quasi laboriosam. Hic architecto recusandae est inventore rerum in quidem quis. \n",
+        "services": [
+          "Diseño Web",
+          "Rediseño Web"
+        ],
+        "sections": [
+          "Política de Cookies",
+          "Preguntas Frecuentes",
+          "Equipo"
+        ],
+        "startDate": "2025-06-01",
+        "dueDate": "2025-08-08",
+        "priority": "Alta",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [
+          {
+            "taskId": "1748827648070-sec-0",
+            "clientId": 1747254921859,
+            "projectId": 1748827625260,
+            "title": "Sección: Política de Cookies",
+            "description": "Tarea para la sección Política de Cookies",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748827648070-sec-1",
+            "clientId": 1747254921859,
+            "projectId": 1748827625260,
+            "title": "Sección: Preguntas Frecuentes",
+            "description": "Tarea para la sección Preguntas Frecuentes",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748827648070-sec-2",
+            "clientId": 1747254921859,
+            "projectId": 1748827625260,
+            "title": "Sección: Equipo",
+            "description": "Tarea para la sección Equipo",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748827648070-srv-0",
+            "clientId": 1747254921859,
+            "projectId": 1748827625260,
+            "title": "Servicio: Diseño Web",
+            "description": "Tarea para el servicio Diseño Web",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          {
+            "taskId": "1748827648070-srv-1",
+            "clientId": 1747254921859,
+            "projectId": 1748827625260,
+            "title": "Servicio: Rediseño Web",
+            "description": "Tarea para el servicio Rediseño Web",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ],
+        "id": 1748827625260
+      }
+    ]
+  },
+  {
+    "id": 1747336000817,
+    "fullName": "Daniel",
+    "lastName": "Pérez ",
+    "lastName2": "Ferreira",
+    "email": "soyelperez@fortnite.com",
+    "phoneNumber": "1234567890",
+    "address": "",
+    "company": "xxxxx",
+    "rfc": "",
+    "curp": "",
+    "website": "",
+    "facebook": "",
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "project": "Creación de sitio web",
+    "image": "/uploads/1747336033064-462061038.png",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-05-15",
+    "tasks": [],
+    "projects": []
+  }
 ]

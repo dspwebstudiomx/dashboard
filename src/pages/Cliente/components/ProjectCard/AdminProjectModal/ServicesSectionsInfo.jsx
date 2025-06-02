@@ -12,7 +12,7 @@ const ServicesSectionsInfo = ({ project }) => {
 				</span>
 			</div>
 			<div className="flex flex-col gap-4">
-				<h2 className="text-2xl font-semibold">Servicios Requeridos</h2>
+				<h2 className="text-2xl font-semibold">Secciones Requeridas</h2>
 				<span className="ml-4">
 					<SectionsProjectTag project={project} />
 				</span>

@@ -4,7 +4,14 @@ import { FaEdit, FaPlus } from 'react-icons/fa';
 import Button from '@components/Botones/Button';
 import { MdDelete } from 'react-icons/md';
 
-const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDeleted }) => {
+const ProjectTasksTable = ({
+	clientId,
+	project,
+	projectId,
+	createTask,
+	updateTask,
+	onTasksChanged,
+}) => {
 	const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 	const [selectedTask, setSelectedTask] = useState(null);
 
@@ -27,17 +34,75 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 		if (window.confirm(`¿Estás seguro de que deseas eliminar la tarea "${task.title}"?`)) {
 			try {
 				await fetch(
-					`http://localhost:5000/api/clients/${clientId}/projects/${project.id}/tasks/${
-						task.taskId || task.id
-					}`,
+					`http://localhost:5000/api/clients/${clientId}/projects/${
+						project.id || projectId
+					}/tasks/${task.taskId || task.id}`,
 					{ method: 'DELETE' }
 				);
-				if (onTaskDeleted) onTaskDeleted(); // Notifica al padre para recargar datos
+				if (onTasksChanged) onTasksChanged(); // Cambia aquí
 			} catch (error) {
 				console.error('Error al eliminar la tarea:', error);
 				alert('Error al eliminar la tarea');
 			}
 		}
+	};
+
+	const handleAutoGenerateTasks = async () => {
+		const newTasks = [];
+		let uniqueBase = Date.now();
+
+		// Generar tareas por secciones
+		if (project.sections && Array.isArray(project.sections)) {
+			project.sections.forEach((section, idx) => {
+				const sectionName = typeof section === 'string' ? section : section.name;
+				newTasks.push({
+					taskId: `${uniqueBase}-sec-${idx}`,
+					clientId,
+					projectId: project.id || projectId,
+					title: `Sección: ${sectionName}`,
+					description: `Tarea para la sección ${sectionName}`,
+					startDate: '',
+					dueDate: '',
+					updatedAt: '',
+					createdAt: '',
+					priority: 'Media',
+					totalProgress: 0,
+					status: 'Nuevo',
+				});
+			});
+		}
+
+		// Generar tareas por servicios
+		if (project.services && Array.isArray(project.services)) {
+			project.services.forEach((service, idx) => {
+				const serviceName = typeof service === 'string' ? service : service.name;
+				newTasks.push({
+					taskId: `${uniqueBase}-srv-${idx}`,
+					clientId,
+					projectId: project.id || projectId,
+					title: `Servicio: ${serviceName}`,
+					description: `Tarea para el servicio ${serviceName}`,
+					startDate: '',
+					dueDate: '',
+					priority: 'Media',
+					totalProgress: 0,
+					status: 'Nuevo',
+					createdAt: '',
+					updatedAt: '',
+				});
+			});
+		}
+
+		// Crear todas las tareas al mismo tiempo con una sola petición
+		await fetch(
+			`http://localhost:5000/api/clients/${clientId}/projects/${project.id || projectId}/tasks`,
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(newTasks),
+			}
+		);
+		if (typeof onTasksChanged === 'function') onTasksChanged();
 	};
 
 	return (
@@ -46,21 +111,36 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 				<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
 					Tareas del Proyecto
 				</h2>
-				<Button onClick={handleAddTask} text="Agregar" variant="primary" size="md" icon={FaPlus} />
+				<div className="flex gap-2">
+					<Button
+						onClick={handleAddTask}
+						text="Agregar"
+						variant="primary"
+						size="md"
+						icon={FaPlus}
+					/>
+					<Button
+						onClick={handleAutoGenerateTasks}
+						text="Generar"
+						variant="secondary"
+						icon={FaPlus}
+						size="md"
+					/>
+				</div>
 			</div>
 			<div className="overflow-x-auto rounded shadow text-sm">
 				<table className=" min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>
-							<th className="px-4 py-2 border-b text-left">ID Tarea</th>
-							<th className="px-4 py-2 border-b text-left">Título</th>
-							<th className="px-4 py-2 border-b text-left">Descripción</th>
-							<th className="px-4 py-2 border-b text-left">Fecha Inicio</th>
-							<th className="px-4 py-2 border-b text-left">Fecha Termino</th>
-							<th className="px-4 py-2 border-b text-left">Fecha Actualización</th>
-							<th className="px-4 py-2 border-b text-left">Estado</th>
-							<th className="px-4 py-2 border-b text-left">Avance</th>
-							<th className="px-4 py-2 border-b text-left">Acciones</th>
+							<th className="px-2 py-2 border-b text-left w-24">ID</th>
+							<th className="px-2 py-2 border-b text-left w-48">Título</th>
+							<th className="px-2 py-2 border-b text-left w-64">Descripción</th>
+							<th className="px-2 py-2 border-b text-center w-28">Inicio</th>
+							<th className="px-2 py-2 border-b text-center w-28">Término</th>
+							<th className="px-2 py-2 border-b text-center w-40">Actualización</th>
+							<th className="px-2 py-2 border-b text-center w-32">Estado</th>
+							<th className="px-2 py-2 border-b text-center w-24">Avance</th>
+							<th className="px-2 py-2 border-b text-center w-24">Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -70,28 +150,29 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 									key={task.taskId || task.id}
 									className="hover:bg-gray-100 dark:hover:bg-gray-700"
 								>
-									<td className="px-4 py-4 border-b">{task.taskId || task.id}</td>
-									<td className="px-4 py-4 border-b first-letter:uppercase">{task.title}</td>
-									<td className="px-4 py-4 border-b first-letter:uppercase">{task.description}</td>
-									<td className="px-4 py-4 border-b">{task.startDate}</td>
-									<td className="px-4 py-4 border-b">{task.dueDate}</td>
-									<td className="px-4 py-4 border-b">
-										{
-											// Colocar fecha de actualización
-											task.updatedAt
-												? new Date(task.updatedAt).toLocaleString('es-ES', {
-														year: 'numeric',
-														month: '2-digit',
-														day: '2-digit',
-														hour: '2-digit',
-														minute: '2-digit',
-												  })
-												: 'No disponible'
-										}
+									<td className="px-2 py-2 border-b text-xs truncate">{task.taskId || task.id}</td>
+									<td className="px-2 py-2 border-b first-letter:uppercase text-sm truncate">
+										{task.title}
 									</td>
-									<td className="px-4 py-4 border-b">
+									<td className="px-2 py-2 border-b first-letter:uppercase text-xs truncate">
+										{task.description}
+									</td>
+									<td className="px-2 py-2 border-b text-center text-xs">{task.startDate}</td>
+									<td className="px-2 py-2 border-b text-center text-xs">{task.dueDate}</td>
+									<td className="px-2 py-2 border-b text-center text-xs">
+										{task.updatedAt
+											? new Date(task.updatedAt).toLocaleString('es-ES', {
+													year: 'numeric',
+													month: '2-digit',
+													day: '2-digit',
+													hour: '2-digit',
+													minute: '2-digit',
+											  })
+											: 'No disponible'}
+									</td>
+									<td className="px-2 py-2 border-b text-center">
 										<span
-											className={`px-4 py-1 rounded-full text-base font-semibold ${
+											className={`px-2 py-1 rounded-full text-xs font-semibold ${
 												task.status === 'Completado'
 													? 'bg-green-100 text-green-500 border border-green-500'
 													: task.status === 'En Proceso'
@@ -102,31 +183,31 @@ const ProjectTasksTable = ({ clientId, project, createTask, updateTask, onTaskDe
 											{task.status}
 										</span>
 									</td>
-									<td className="px-4 py-4 border-b">
-										<span className="text-base font-semibold text-gray-600 dark:text-gray-100">
+									<td className="px-2 py-2 border-b text-center text-xs">
+										<span className="font-semibold text-gray-600 dark:text-gray-100">
 											{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
 										</span>
 									</td>
-									<td className="px-4 py-4 border-b flex items-center gap-">
+									<td className="px-2 py-2 border-b flex items-center justify-center gap-1">
 										<button
-											className="text-blue-600 hover:text-blue-800 transition-colors mr-2"
+											className="text-blue-600 hover:text-blue-800 transition-colors mr-1"
 											onClick={() => handleEditTask(task)}
 											aria-label="Editar tarea"
 										>
-											<FaEdit className="text-3xl" />
+											<FaEdit className="text-xl" />
 										</button>
 										<button
 											onClick={() => handleDeleteTask(task)}
 											className="text-blue-600 hover:text-blue-800 transition-colors"
 										>
-											<MdDelete className="text-3xl" />
+											<MdDelete className="text-xl" />
 										</button>
 									</td>
 								</tr>
 							))
 						) : (
 							<tr>
-								<td colSpan={8} className="px-4 py-6 text-center text-gray-500 border-b">
+								<td colSpan={9} className="px-2 py-6 text-center text-gray-500 border-b">
 									No hay tareas
 								</td>
 							</tr>

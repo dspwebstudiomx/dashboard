@@ -332,29 +332,24 @@ app.get("/api/cupones/validar", (req, res) => {
 // SOLO DEJA ESTE ENDPOINT para crear tareas en proyectos
 app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
   readClientsFile((err, clients) => {
-    console.log('params:', req.params);
     if (err || !Array.isArray(clients)) {
-      console.log('Error al leer el archivo de clientes:', err);
       return res.status(500).json({ error: "Error al leer el archivo de clientes" });
     }
-    console.log('IDs de clientes:', clients.map(c => c.id));
     const client = clients.find((c) => String(c.id) === String(req.params.clientId));
     if (!client) {
-      console.log('Cliente no encontrado:', req.params.clientId);
       return res.status(404).json({ error: "Cliente no encontrado" });
     }
-    console.log('IDs de proyectos:', client.projects.map(p => p.id));
     const project = client.projects.find((p) => String(p.id) === String(req.params.projectId));
     if (!project) {
-      console.log('Proyecto no encontrado:', req.params.projectId);
       return res.status(404).json({ error: "Proyecto no encontrado" });
     }
-    const newTask = req.body;
-    project.tasks.push(newTask);
+    // Permite recibir un arreglo de tareas o una sola tarea
+    const newTasks = Array.isArray(req.body) ? req.body : [req.body];
+    project.tasks = project.tasks || [];
+    project.tasks.push(...newTasks);
 
     writeClientsFile(clients, res, {
-      message: "Tarea creada correctamente",
-      task: newTask,
+      message: "Tareas creadas correctamente",
       tasks: project.tasks,
     });
   });

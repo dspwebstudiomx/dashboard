@@ -1,16 +1,21 @@
-// Supón que req.body contiene la tarea completa
-const newTask = req.body;
+app.post('/api/clients/:clientId/projects/:projectId/tasks', (req, res) => {
+  const { clientId, projectId } = req.params;
+  const newTask = req.body;
 
-// Busca el cliente y el proyecto
-const client = clients.find(c => c.id == req.params.clientId);
-const project = client.projects.find(p => p.id == req.params.projectId);
+  // Busca el cliente
+  const client = clients.find(c => c.id == clientId);
+  if (!client) return res.status(404).json({ error: 'Cliente no encontrado' });
 
-if (project) {
-  // Asegúrate de guardar todos los campos
+  // Busca el proyecto
+  const project = client.projects.find(p => p.id == projectId);
+  if (!project) return res.status(404).json({ error: 'Proyecto no encontrado' });
+
+  // Agrega la tarea al proyecto
+  project.tasks = project.tasks || [];
   project.tasks.push(newTask);
-  // Guarda el archivo clients.json actualizado
-  fs.writeFileSync('server/clients.json', JSON.stringify(clients, null, 2));
-  res.json({ tasks: project.tasks });
-} else {
-  res.status(404).json({ error: 'Proyecto no encontrado' });
-}
+
+  // Guarda el archivo clients.json (simulado)
+  saveClientsToFile();
+
+  res.json({ success: true, task: newTask });
+});
