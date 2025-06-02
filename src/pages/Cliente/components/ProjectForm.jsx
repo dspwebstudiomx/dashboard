@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import axios from 'axios';
 import Button from '@components/Botones/Button';
-
 import { IoMdAdd } from 'react-icons/io';
 import { FaCalendarAlt, FaRegCalendarAlt, FaRegFileAlt, FaTools, FaTag } from 'react-icons/fa';
 import {
@@ -49,49 +46,33 @@ const SECTIONS = [
 
 const ProjectForm = ({
 	isEdit,
-	project,
+	project = {
+		title: '',
+		description: '',
+		services: [],
+		sections: [],
+		startDate: '',
+		dueDate: '',
+		priority: 'Media',
+	},
 	onChange,
 	onSubmit,
 	setProject,
-	SERVICE_COSTS,
-	SECTION_COSTS,
-	onClose, // <-- agrega esta prop
+	SERVICE_COSTS = {},
+	SECTION_COSTS = {},
+	subtotal = 0,
+	ivaTax = 0,
+	isrTax = 0,
+	total = 0,
+	cupon,
+	setCupon,
+	descuento,
+	setDescuento,
+	cuponMsg,
+	setCuponMsg,
+	validarCupon,
+	onClose,
 }) => {
-	// Estados para cupón y descuento
-	const [cupon, setCupon] = useState('');
-	const [descuento, setDescuento] = useState(0);
-	const [cuponMsg, setCuponMsg] = useState('');
-
-	// Calcular totales
-	const totalServicios = (project.services || []).reduce(
-		(acc, s) => acc + (SERVICE_COSTS[s] || 0),
-		0
-	);
-	const totalSecciones = (project.sections || []).reduce(
-		(acc, s) => acc + (SECTION_COSTS[s] || 0),
-		0
-	);
-	const subtotal = totalServicios + totalSecciones;
-	const impuestos = subtotal * 0.16;
-	const totalFinal = subtotal + impuestos - (subtotal * descuento) / 100;
-
-	// Validar cupón (puedes conectar con backend aquí)
-	const validarCupon = async () => {
-		try {
-			const res = await axios.get(`http://localhost:5000/api/cupones/validar?codigo=${cupon}`);
-			if (res.data.valido) {
-				setDescuento(res.data.descuento);
-				setCuponMsg(`¡Cupón aplicado! ${res.data.descuento}% de descuento.`);
-			} else {
-				setDescuento(0);
-				setCuponMsg('Cupón inválido o expirado.');
-			}
-		} catch {
-			setDescuento(0);
-			setCuponMsg('Error al validar el cupón.');
-		}
-	};
-
 	// Cambia el submit para llamar a onClose si existe
 	const handleSubmit = async (e) => {
 		await onSubmit(e);
@@ -204,18 +185,18 @@ const ProjectForm = ({
 								/>
 								<span>
 									{service}{' '}
-									<span className="text-xs text-gray-500">(${SERVICE_COSTS[service]})</span>
+									<span className="text-xs text-gray-500">
+										(${SERVICE_COSTS && SERVICE_COSTS[service] ? SERVICE_COSTS[service] : 0})
+									</span>
 								</span>
 							</label>
 						)
 					)}
-					{/* Boton para limpiar todos los servicios */}
+					{/* Botón para limpiar todos los servicios */}
 					{project.services.length > 0 && (
 						<Button
 							variant="primary"
-							onClick={() => {
-								project.services = [];
-							}}
+							onClick={() => setProject((prev) => ({ ...prev, services: [] }))}
 							type="button"
 							text="Limpiar"
 							icon={FaArrowRotateLeft}
@@ -263,13 +244,11 @@ const ProjectForm = ({
 							</div>
 						)
 					)}
-					{/* Boton para limpiar todos los servicios */}
+					{/* Botón para limpiar todas las secciones */}
 					{project.sections.length > 0 && (
 						<Button
 							variant="primary"
-							onClick={() => {
-								project.sections = [];
-							}}
+							onClick={() => setProject((prev) => ({ ...prev, sections: [] }))}
 							type="button"
 							text="Limpiar"
 							icon={FaArrowRotateLeft}
@@ -292,7 +271,6 @@ const ProjectForm = ({
 					className="p-4 md:p-6 rounded border min-h-[220px] dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
 				/>
 			</div>
-
 			{/* Cupón y totales */}
 			<div className="flex flex-col gap-2">
 				<div
@@ -344,20 +322,17 @@ const ProjectForm = ({
 			{/* Totales */}
 			<div className="mt-6 text-lg font-semibold flex flex-col justify-center w-full items-end gap-4">
 				<div>
-					Subtotal: <span className="font-semibold text-base">${subtotal.toFixed(2)}</span>
+					Subtotal: <span className="font-semibold text-base">${(subtotal ?? 0).toFixed(2)}</span>
 				</div>
-				{/* impuestos del 16% */}
 				<div>
 					(+) Impuestos:{' '}
-					<span className="font-semibold text-base">${(subtotal * 0.16).toFixed(2)}</span>
+					<span className="font-semibold text-base">${(ivaTax ?? 0).toFixed(2)}</span>
 				</div>
-				{descuento > 0 && (
-					<div>
-						Descuento: <span className="font-semibold text-green-600">-{descuento}%</span>
-					</div>
-				)}
 				<div>
-					<span className="font-bold">Total: ${totalFinal.toFixed(2)}</span>
+					(+) I.S.R. : <span className="font-semibold text-base">${(isrTax ?? 0).toFixed(2)}</span>
+				</div>
+				<div>
+					<span className="font-bold">Total: ${(total ?? 0).toFixed(2)}</span>
 				</div>
 			</div>
 

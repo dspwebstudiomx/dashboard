@@ -15,6 +15,7 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId, selectedClient 
 	} = useProjectTasks({ clientId, project, isOpen });
 
 	const [showForm, setShowForm] = useState(false);
+	const [editProjectId, setEditProjectId] = useState(null);
 
 	return (
 		<>
@@ -23,6 +24,8 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId, selectedClient 
 				onClose={onClose}
 				project={project}
 				successMessage={successMessage}
+				editProjectId={editProjectId}
+				setEditProjectId={setEditProjectId}
 				setShowTaskModal={setShowTaskModal}
 				showTaskModal={showTaskModal}
 				tasks={tasks}

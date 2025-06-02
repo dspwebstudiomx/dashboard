@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '@components/Modal';
 import Priority from '../Priority';
 import ProjectDescriptionInfoCard from '../ProjectDescriptionInfoCard';
@@ -58,17 +58,11 @@ const GeneralProjectInfo = ({
 	setShowForm,
 	editProjectId,
 	setEditProjectId,
-	editProject,
-	setEditProject,
-	handleInputChange,
-	handleEditInputChange,
-	handleCreateProject,
-	handleEditProject,
 	newProject,
-	setNewProject, // <-- agrega esto
-	SERVICE_COSTS,
-	SECTION_COSTS,
+	setNewProject,
 }) => {
+	const [editProject, setEditProject] = useState(null);
+
 	return (
 		<>
 			<Modal
@@ -89,7 +83,14 @@ const GeneralProjectInfo = ({
 						</div>
 						{/* Botones */}
 						<div className="hidden  md:flex md:flex-row gap-4">
-							<EditActionButton onClick={() => setShowForm(true)} text="Editar Proyecto" />
+							<EditActionButton
+								onClick={() => {
+									setEditProject(project);
+									setEditProjectId(project.id);
+									setShowForm(true);
+								}}
+								text="Editar Proyecto"
+							/>
 							<DeleteActionButton onClick={() => {}} />
 						</div>
 					</div>
@@ -155,27 +156,14 @@ const GeneralProjectInfo = ({
 					onClose={() => {
 						setShowForm(false);
 						setEditProjectId(null);
-						setEditProject(null);
 					}}
-					isOpen={!!showForm || !!editProjectId} // <-- fuerza booleano
+					isOpen={!!showForm || !!editProjectId}
 				>
 					<ProjectForm
-						project={editProject || newProject || {}}
-						onClose={() => {
-							setShowForm(false);
-							setEditProjectId(null);
-							setEditProject(null);
-						}}
-						SERVICES={project.services || []}
-						SECTIONS={project.sections || []}
-						handleInputChange={handleInputChange}
-						handleEditInputChange={handleEditInputChange}
-						handleCreateProject={handleCreateProject}
-						handleEditProject={handleEditProject}
-						SERVICE_COSTS={SERVICE_COSTS}
-						SECTION_COSTS={SECTION_COSTS}
-						setNewProject={setNewProject}
-						newProject={newProject}
+						project={editProjectId ? editProject : newProject}
+						isEdit={!!editProjectId}
+						setProject={editProjectId ? setEditProject : setNewProject}
+						// ...el resto de props igual
 					/>
 				</Modal>
 			)}

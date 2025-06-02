@@ -26,6 +26,10 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 		handleComplete,
 		SERVICE_COSTS,
 		SECTION_COSTS,
+		subtotal,
+		ivaTax,
+		isrTax,
+		total,
 	} = useProjects(selectedClient, onUpdateProjects);
 
 	if (!selectedClient) {
@@ -69,11 +73,15 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 						setProject={editProjectId ? setEditProject : setNewProject}
 						SERVICE_COSTS={SERVICE_COSTS}
 						SECTION_COSTS={SECTION_COSTS}
+						subtotal={subtotal}
+						ivaTax={ivaTax}
+						isrTax={isrTax}
+						total={total}
 					/>
 				</Modal>
 			)}
 
-			<ul id="lista-proyectos" className="mt-12 grid xl:grid-cols-2 gap-12 items-start">
+			<ul id="lista-proyectos" className="mt-12 grid lg:grid-cols-2 gap-12 items-start">
 				{selectedClient.projects && selectedClient.projects.length > 0 ? (
 					selectedClient.projects.map((project) => (
 						<ProjectCard

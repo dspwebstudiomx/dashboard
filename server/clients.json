@@ -335,7 +335,8 @@
     "address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
     "company": "Hogares Deesa",
     "project": [
-      "test"
+      "test",
+      "a"
     ],
     "rfc": "",
     "website": "https://www.hogaresdeesa.com/",
@@ -344,7 +345,7 @@
     "instagram": "",
     "linkedin": "",
     "twitter": "",
-    "image": "/uploads/1747275463812-708020415.jpg",
+    "image": "/uploads/1748875247715-883425634.jpg",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
     "tasks": [
@@ -375,6 +376,182 @@
         "totalProgress": "",
         "tasks": [],
         "id": 1748547399321
+      },
+      {
+        "title": "a",
+        "description": "czxc<zc<z<czczc",
+        "services": [
+          "Consultoría UX/UI",
+          "E-commerce"
+        ],
+        "sections": [
+          "Clientes",
+          "Aviso Legal",
+          "Nuestros Servicios",
+          "Portafolio",
+          "Quienes Somos",
+          "Política de Privacidad",
+          "Equipo",
+          "Preguntas Frecuentes"
+        ],
+        "startDate": "2025-06-02",
+        "dueDate": "2025-06-05",
+        "priority": "Media",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [
+          {
+            "taskId": "1748875128133-sec-0",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Clientes",
+            "description": "Tarea para la sección Clientes",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-sec-1",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Aviso Legal",
+            "description": "Tarea para la sección Aviso Legal",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-sec-2",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Nuestros Servicios",
+            "description": "Tarea para la sección Nuestros Servicios",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-sec-3",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Portafolio",
+            "description": "Tarea para la sección Portafolio",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-sec-4",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Quienes Somos",
+            "description": "Tarea para la sección Quienes Somos",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-sec-5",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Política de Privacidad",
+            "description": "Tarea para la sección Política de Privacidad",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-sec-6",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Equipo",
+            "description": "Tarea para la sección Equipo",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-sec-7",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Sección: Preguntas Frecuentes",
+            "description": "Tarea para la sección Preguntas Frecuentes",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748875128133-srv-0",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Servicio: Consultoría UX/UI",
+            "description": "Tarea para el servicio Consultoría UX/UI",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          },
+          {
+            "taskId": "1748875128133-srv-1",
+            "clientId": 1746509316001,
+            "projectId": 1748875082478,
+            "title": "Servicio: E-commerce",
+            "description": "Tarea para el servicio E-commerce",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ],
+        "costs": {
+          "totalServices": 6500,
+          "totalSections": 7100,
+          "subtotalCost": 13600,
+          "ivaTax": 2176,
+          "isrTax": 217.60000000000002,
+          "totalCost": 15993.6,
+          "descuento": 0
+        },
+        "id": 1748875082478
       }
     ]
   },
@@ -769,11 +946,130 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": "Creación de sitio web",
+    "project": [
+      "danielito test"
+    ],
     "image": "/uploads/1747336033064-462061038.png",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
     "tasks": [],
-    "projects": []
+    "projects": [
+      {
+        "title": "danielito test",
+        "description": "Lorem ipsum dolor sit amet. Eum placeat ratione est omnis nihil est similique consequatur et minus voluptatem ut quia amet ut assumenda voluptatem. At eius distinctio et sapiente consequatur ut quia labore eos doloremque laborum. Aut architecto rerum ea dolorem quas et asperiores fuga a sequi voluptatem eos voluptatem labore?",
+        "services": [
+          "Landing Page"
+        ],
+        "sections": [
+          "Blog",
+          "Equipo",
+          "Preguntas Frecuentes",
+          "Política de Cookies",
+          "Nuestros Servicios"
+        ],
+        "startDate": "2025-06-02",
+        "dueDate": "2025-07-02",
+        "priority": "Media",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [
+          {
+            "taskId": "1748879556260-sec-0",
+            "clientId": 1747336000817,
+            "projectId": 1748879546590,
+            "title": "Sección: Blog",
+            "description": "Tarea para la sección Blog",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748879556260-sec-1",
+            "clientId": 1747336000817,
+            "projectId": 1748879546590,
+            "title": "Sección: Equipo",
+            "description": "Tarea para la sección Equipo",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748879556260-sec-2",
+            "clientId": 1747336000817,
+            "projectId": 1748879546590,
+            "title": "Sección: Preguntas Frecuentes",
+            "description": "Tarea para la sección Preguntas Frecuentes",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748879556260-sec-3",
+            "clientId": 1747336000817,
+            "projectId": 1748879546590,
+            "title": "Sección: Política de Cookies",
+            "description": "Tarea para la sección Política de Cookies",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748879556260-sec-4",
+            "clientId": 1747336000817,
+            "projectId": 1748879546590,
+            "title": "Sección: Nuestros Servicios",
+            "description": "Tarea para la sección Nuestros Servicios",
+            "startDate": "",
+            "dueDate": "",
+            "updatedAt": "",
+            "createdAt": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1748879556260-srv-0",
+            "clientId": 1747336000817,
+            "projectId": 1748879546590,
+            "title": "Servicio: Landing Page",
+            "description": "Tarea para el servicio Landing Page",
+            "startDate": "",
+            "dueDate": "",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "",
+            "updatedAt": ""
+          }
+        ],
+        "id": 1748879546590,
+        "costs": {
+          "totalServices": 6500,
+          "totalSections": 5000,
+          "subtotalCost": 11500,
+          "ivaTax": 1840,
+          "isrTax": 184,
+          "totalCost": 13524,
+          "descuento": 0
+        }
+      }
+    ]
   }
 ]

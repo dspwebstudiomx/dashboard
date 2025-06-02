@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-
 const SERVICE_COSTS = {
   "Consultoria SEO": 2000,
   "Consultoría UX/UI": 2500,
@@ -48,6 +47,7 @@ const initialProject = () => ({
   status: "",
   totalProgress: "",
   tasks: [],
+
 });
 
 export default function useProjects(selectedClient, onUpdateProjects) {
@@ -55,6 +55,36 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   const [newProject, setNewProject] = useState(initialProject());
   const [editProjectId, setEditProjectId] = useState(null);
   const [editProject, setEditProject] = useState(null);
+
+  // Estados para cupón y descuento
+  const [cupon, setCupon] = useState('');
+  const [descuento, setDescuento] = useState(0);
+  const [cuponMsg, setCuponMsg] = useState('');
+
+  // Cálculos de costos y totales
+  const subtotal =
+    (newProject.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0) +
+    (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
+  const ivaTax = subtotal * 0.16 || 0;
+  const isrTax = ivaTax * 0.1 || 0;
+  const total = subtotal + ivaTax + isrTax - (subtotal * descuento) / 100 || 0;
+
+  // Validar cupón
+  const validarCupon = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5000/api/cupones/validar?codigo=${cupon}`);
+      if (res.data.valido) {
+        setDescuento(res.data.descuento);
+        setCuponMsg(`¡Cupón aplicado! ${res.data.descuento}% de descuento.`);
+      } else {
+        setDescuento(0);
+        setCuponMsg('Cupón inválido o expirado.');
+      }
+    } catch {
+      setDescuento(0);
+      setCuponMsg('Error al validar el cupón.');
+    }
+  };
 
   const handleInputChange = (e) => {
     setNewProject({
@@ -65,7 +95,25 @@ export default function useProjects(selectedClient, onUpdateProjects) {
 
   const handleCreateProject = async (e) => {
     e.preventDefault();
-    const projectWithId = { ...newProject, id: Date.now() };
+
+    // Incluye los costos en el objeto costs
+    const projectWithId = {
+      ...newProject,
+      id: Date.now(),
+      costs: {
+        totalServices: (newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ),
+        totalSections: (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ),
+        subtotalCost: subtotal,
+        ivaTax,
+        isrTax,
+        totalCost: total,
+        descuento,
+      }
+    };
 
     try {
       const response = await axios.get("http://localhost:5000/api/clients");
@@ -74,9 +122,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
       const updatedClients = clients.map((client) => {
         if (client.id === selectedClient.id) {
           const projects = Array.isArray(client.projects) ? client.projects : [];
-          // Si project no es array, lo inicializa
           const projectTitles = Array.isArray(client.project) ? client.project : [];
-          // Agrega el nuevo título solo si no existe aún
           const newProjectTitles = projectTitles.includes(projectWithId.title)
             ? projectTitles
             : [...projectTitles, projectWithId.title];
@@ -98,6 +144,9 @@ export default function useProjects(selectedClient, onUpdateProjects) {
       onUpdateProjects(projectWithId);
       setNewProject(initialProject());
       setShowForm(false);
+      setCupon('');
+      setDescuento(0);
+      setCuponMsg('');
     } catch (error) {
       console.error("Error al obtener o actualizar los clientes:", error);
     }
@@ -133,8 +182,9 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   };
 
   const handleEditClick = (project) => {
+    setEditProject(project);
     setEditProjectId(project.id);
-    setEditProject({ ...project });
+    setShowForm(true);
   };
 
   const handleEditInputChange = (e) => {
@@ -146,6 +196,32 @@ export default function useProjects(selectedClient, onUpdateProjects) {
 
   const handleEditProject = async (e) => {
     e.preventDefault();
+
+    // Recalcula los costos por si se editaron servicios o secciones
+    const totalServices = (editProject.services || []).reduce(
+      (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+    );
+    const totalSections = (editProject.sections || []).reduce(
+      (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+    );
+    const subtotalCost = totalServices + totalSections;
+    const ivaTax = subtotalCost * 0.16;
+    const isrTax = ivaTax * 0.1;
+    const totalCost = subtotalCost + ivaTax + isrTax;
+
+    // Actualiza los costos en el proyecto editado
+    const updatedEditProject = {
+      ...editProject,
+      costs: {
+        totalServices,
+        totalSections,
+        subtotalCost,
+        ivaTax,
+        isrTax,
+        totalCost,
+      }
+    };
+
     try {
       const response = await axios.get("http://localhost:5000/api/clients");
       const clients = response.data;
@@ -154,12 +230,11 @@ export default function useProjects(selectedClient, onUpdateProjects) {
         if (client.id === selectedClient.id) {
           const projects = Array.isArray(client.projects) ? client.projects : [];
           const updatedProjects = projects.map((p) =>
-            p.id === editProject.id ? editProject : p
+            p.id === updatedEditProject.id ? updatedEditProject : p
           );
           return {
             ...client,
-            // Actualiza el campo principal "project" con el título editado
-            project: editProject.title,
+            project: updatedEditProject.title,
             projects: updatedProjects,
           };
         }
@@ -215,5 +290,16 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     handleComplete,
     SERVICE_COSTS,
     SECTION_COSTS,
+    subtotal,
+    ivaTax,
+    isrTax,
+    total,
+    cupon,
+    setCupon,
+    descuento,
+    setDescuento,
+    cuponMsg,
+    setCuponMsg,
+    validarCupon,
   };
 }
