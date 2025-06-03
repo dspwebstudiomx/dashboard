@@ -134,7 +134,7 @@ const ProjectTasksTable = ({
 						icon={FaPlus}
 					/>
 					<Button
-          id="auto-generate-tasks-button"
+						id="auto-generate-tasks-button"
 						onClick={handleAutoGenerateTasks}
 						text="Generar"
 						variant="secondary"
@@ -187,12 +187,12 @@ const ProjectTasksTable = ({
 									</td>
 									<td className="px-2 py-2 border-b text-center">
 										<span
-											className={`px-2 py-1 rounded-full text-xs font-semibold ${
+											className={`px-2 py-1 text-xs font-semibold rounded-full ${
 												task.status === 'Completado'
-													? 'bg-green-100 text-green-500 border border-green-500'
+													? 'bg-green-100 text-green-500 border border-green-500 w-30'
 													: task.status === 'En Proceso'
-													? 'bg-yellow-100 text-yellow-600 border border-yellow-500'
-													: 'bg-blue-300 text-blue-600 border border-blue-500'
+													? 'bg-yellow-100 text-yellow-600 border border-yellow-500 px-3'
+													: 'bg-blue-200 text-blue-600 border border-blue-500 w-30 px-6 py-1'
 											}`}
 										>
 											{task.status}

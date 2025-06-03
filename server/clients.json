@@ -103,8 +103,8 @@
             "startDate": "2025-06-10",
             "dueDate": "2025-06-19",
             "priority": "Media",
-            "totalProgress": 17,
-            "status": "En Proceso",
+            "totalProgress": 100,
+            "status": "Completado",
             "createdAt": "2025-06-03T18:07:58.240Z",
             "updatedAt": "2025-06-03T18:07:58.240Z"
           },
@@ -119,8 +119,8 @@
             "updatedAt": "",
             "createdAt": "",
             "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo"
+            "totalProgress": 7,
+            "status": "En Proceso"
           },
           {
             "taskId": "1748974165963-sec-1",
