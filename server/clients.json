@@ -95,20 +95,6 @@
         "id": 1747531564248,
         "tasks": [
           {
-            "taskId": 1748974041493,
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Test",
-            "description": "asfaSFSAdAFDgaSFSADasfsaddas",
-            "startDate": "2025-06-10",
-            "dueDate": "2025-06-19",
-            "priority": "Media",
-            "totalProgress": 100,
-            "status": "Completado",
-            "createdAt": "2025-06-03T18:07:58.240Z",
-            "updatedAt": "2025-06-03T18:07:58.240Z"
-          },
-          {
             "taskId": "1748974165963-sec-0",
             "clientId": 1745897285167,
             "projectId": 1747531564248,
@@ -116,10 +102,10 @@
             "description": "Tarea para la sección Preguntas Frecuentes",
             "startDate": "2025-06-03",
             "dueDate": "2025-06-04",
-            "updatedAt": "2025-06-03T18:33:53.632Z",
+            "updatedAt": "2025-06-03T18:43:16.548Z",
             "createdAt": "",
             "priority": "Baja",
-            "totalProgress": 7,
+            "totalProgress": 18,
             "status": "En Proceso"
           },
           {
@@ -191,6 +177,20 @@
             "status": "Nuevo",
             "createdAt": "",
             "updatedAt": ""
+          },
+          {
+            "taskId": 1748976356783,
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Dar seguimiento con el cliente",
+            "description": "Dar seguimiento con el cliente",
+            "startDate": "2025-06-03",
+            "dueDate": "2025-06-04",
+            "priority": "Baja",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "2025-06-03T18:46:33.424Z",
+            "updatedAt": "2025-06-03T18:46:33.424Z"
           }
         ]
       },

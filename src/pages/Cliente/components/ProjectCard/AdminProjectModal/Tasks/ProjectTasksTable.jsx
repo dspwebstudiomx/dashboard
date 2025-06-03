@@ -181,7 +181,17 @@ const ProjectTasksTable = ({
 										<td className="px-2 py-2 border-b first-letter:uppercase text-xs truncate">
 											{task.description}
 										</td>
-										<td className="px-2 py-2 border-b text-center text-xs">{task.startDate}</td>
+										<td
+											className={`px-2 py-2 border-b border-gray-800 text-center text-xs ${
+												task.startDate &&
+												new Date(task.startDate) <= new Date(new Date().toDateString()) &&
+												(task.totalProgress ?? 0) < 100 // Solo aplica rojo si el avance es menor a 100%
+													? 'text-red-600 font-semibold'
+													: ''
+											}`}
+										>
+											{task.startDate}
+										</td>
 										<td className="px-2 py-2 border-b text-center text-xs">{task.dueDate}</td>
 										<td className="px-2 py-2 border-b text-center text-xs">
 											{task.updatedAt
