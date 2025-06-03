@@ -51,24 +51,30 @@ const ProjectTasksTable = ({
 		const newTasks = [];
 		let uniqueBase = Date.now();
 
+		// Obtener títulos existentes
+		const existingTitles = (project.tasks || []).map((t) => t.title);
+
 		// Generar tareas por secciones
 		if (project.sections && Array.isArray(project.sections)) {
 			project.sections.forEach((section, idx) => {
 				const sectionName = typeof section === 'string' ? section : section.name;
-				newTasks.push({
-					taskId: `${uniqueBase}-sec-${idx}`,
-					clientId,
-					projectId: project.id || projectId,
-					title: `Sección: ${sectionName}`,
-					description: `Tarea para la sección ${sectionName}`,
-					startDate: '',
-					dueDate: '',
-					updatedAt: '',
-					createdAt: '',
-					priority: 'Media',
-					totalProgress: 0,
-					status: 'Nuevo',
-				});
+				const title = `Sección: ${sectionName}`;
+				if (!existingTitles.includes(title)) {
+					newTasks.push({
+						taskId: `${uniqueBase}-sec-${idx}`,
+						clientId,
+						projectId: project.id || projectId,
+						title,
+						description: `Tarea para la sección ${sectionName}`,
+						startDate: '',
+						dueDate: '',
+						updatedAt: '',
+						createdAt: '',
+						priority: 'Media',
+						totalProgress: 0,
+						status: 'Nuevo',
+					});
+				}
 			});
 		}
 
@@ -76,21 +82,29 @@ const ProjectTasksTable = ({
 		if (project.services && Array.isArray(project.services)) {
 			project.services.forEach((service, idx) => {
 				const serviceName = typeof service === 'string' ? service : service.name;
-				newTasks.push({
-					taskId: `${uniqueBase}-srv-${idx}`,
-					clientId,
-					projectId: project.id || projectId,
-					title: `Servicio: ${serviceName}`,
-					description: `Tarea para el servicio ${serviceName}`,
-					startDate: '',
-					dueDate: '',
-					priority: 'Media',
-					totalProgress: 0,
-					status: 'Nuevo',
-					createdAt: '',
-					updatedAt: '',
-				});
+				const title = `Servicio: ${serviceName}`;
+				if (!existingTitles.includes(title)) {
+					newTasks.push({
+						taskId: `${uniqueBase}-srv-${idx}`,
+						clientId,
+						projectId: project.id || projectId,
+						title,
+						description: `Tarea para el servicio ${serviceName}`,
+						startDate: '',
+						dueDate: '',
+						priority: 'Media',
+						totalProgress: 0,
+						status: 'Nuevo',
+						createdAt: '',
+						updatedAt: '',
+					});
+				}
 			});
+		}
+
+		if (newTasks.length === 0) {
+			alert('No hay nuevas tareas para generar.');
+			return;
 		}
 
 		// Crear todas las tareas al mismo tiempo con una sola petición
@@ -107,7 +121,7 @@ const ProjectTasksTable = ({
 
 	return (
 		<div className="w-full">
-			<div className="flex items-center justify-between mb-12">
+			<div className="flex items-center justify-between my-12">
 				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
 					Tareas del Proyecto
 				</h2>
@@ -120,6 +134,7 @@ const ProjectTasksTable = ({
 						icon={FaPlus}
 					/>
 					<Button
+          id="auto-generate-tasks-button"
 						onClick={handleAutoGenerateTasks}
 						text="Generar"
 						variant="secondary"

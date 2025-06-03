@@ -133,7 +133,7 @@ const GeneralProjectInfo = ({
 			>
 				<div
 					id="modal-content"
-					className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-gray-200 text-gray-800 bg-white p-8 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10"
+					className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-gray-200 text-gray-800 bg-white p-8 md:p-20 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10"
 				>
 					<div className="flex flex-col gap-6 py-12">
 						<h2 className="text-2xl font-semibold">Descripción del Proyecto</h2>
@@ -199,7 +199,38 @@ const GeneralProjectInfo = ({
 						isEdit={!!editProjectId}
 						setProject={editProjectId ? setEditProject : setNewProject}
 						onSubmit={handleProjectSubmit}
-						// ...el resto de props igual
+						onChange={(e) => {
+							const { name, value } = e.target;
+							if (editProjectId) {
+								setEditProject((prev) => ({ ...prev, [name]: value }));
+							} else {
+								setNewProject((prev) => ({ ...prev, [name]: value }));
+							}
+						}}
+						SERVICE_COSTS={SERVICE_COSTS}
+						SECTION_COSTS={SECTION_COSTS}
+						clientId={clientId}
+						selectedClient={selectedClient}
+						successMessage={successMessage}
+						loadClientOrProjectData={loadClientOrProjectData}
+						tasks={tasks}
+						resetTaskForm={resetTaskForm}
+						handleCreateTask={handleCreateTask}
+						handleDeleteTask={handleDeleteTask}
+						handleEditTask={handleEditTask}
+						handleEditTaskClick={handleEditTaskClick}
+						taskTitle={taskTitle}
+						setTaskTitle={setTaskTitle}
+						taskDescription={taskDescription}
+						setTaskDescription={setTaskDescription}
+						taskPriority={taskPriority}
+						setTaskPriority={setTaskPriority}
+						taskStatus={taskStatus}
+						setTaskStatus={setTaskStatus}
+						editTask={editTask}
+						setEditTask={setEditTask}
+						showTaskModal={showTaskModal}
+						setShowTaskModal={setShowTaskModal}
 					/>
 				</Modal>
 			)}

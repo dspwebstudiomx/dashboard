@@ -95,21 +95,35 @@
         "id": 1747531564248,
         "tasks": [
           {
-            "taskId": "1748826229620-sec-0",
+            "taskId": 1748974041493,
+            "clientId": 1745897285167,
+            "projectId": 1747531564248,
+            "title": "Test",
+            "description": "asfaSFSAdAFDgaSFSADasfsaddas",
+            "startDate": "2025-06-10",
+            "dueDate": "2025-06-19",
+            "priority": "Media",
+            "totalProgress": 17,
+            "status": "En Proceso",
+            "createdAt": "2025-06-03T18:07:58.240Z",
+            "updatedAt": "2025-06-03T18:07:58.240Z"
+          },
+          {
+            "taskId": "1748974165963-sec-0",
             "clientId": 1745897285167,
             "projectId": 1747531564248,
             "title": "Sección: Preguntas Frecuentes",
             "description": "Tarea para la sección Preguntas Frecuentes",
-            "startDate": "2025-06-03",
-            "dueDate": "2025-06-11",
+            "startDate": "",
+            "dueDate": "",
             "updatedAt": "",
             "createdAt": "",
             "priority": "Media",
-            "totalProgress": 4,
-            "status": "En Proceso"
+            "totalProgress": 0,
+            "status": "Nuevo"
           },
           {
-            "taskId": "1748826229620-sec-1",
+            "taskId": "1748974165963-sec-1",
             "clientId": 1745897285167,
             "projectId": 1747531564248,
             "title": "Sección: Nuestros Servicios",
@@ -123,7 +137,7 @@
             "status": "Nuevo"
           },
           {
-            "taskId": "1748826229620-sec-2",
+            "taskId": "1748974165963-sec-2",
             "clientId": 1745897285167,
             "projectId": 1747531564248,
             "title": "Sección: Contacto",
@@ -137,7 +151,7 @@
             "status": "Nuevo"
           },
           {
-            "taskId": "1748826229620-srv-0",
+            "taskId": "1748974165963-srv-0",
             "clientId": 1745897285167,
             "projectId": 1747531564248,
             "title": "Servicio: Consultoria SEO",
@@ -151,7 +165,7 @@
             "updatedAt": ""
           },
           {
-            "taskId": "1748826229620-srv-1",
+            "taskId": "1748974165963-srv-1",
             "clientId": 1745897285167,
             "projectId": 1747531564248,
             "title": "Servicio: Diseño Web",
@@ -165,7 +179,7 @@
             "updatedAt": ""
           },
           {
-            "taskId": "1748826229620-srv-2",
+            "taskId": "1748974165963-srv-2",
             "clientId": 1745897285167,
             "projectId": 1747531564248,
             "title": "Servicio: Landing Page",
