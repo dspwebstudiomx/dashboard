@@ -175,7 +175,7 @@ const ProjectTasksTable = ({
 										<td className="px-2 py-2 border-b text-xs truncate">
 											{task.taskId || task.id}
 										</td>
-										<td className="px-2 py-2 border-b first-letter:uppercase text-sm truncate">
+										<td className="px-2 py-2 border-b first-letter:uppercase text-xs truncate">
 											{task.title}
 										</td>
 										<td className="px-2 py-2 border-b first-letter:uppercase text-xs truncate">

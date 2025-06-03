@@ -100,9 +100,9 @@
             "projectId": 1747531564248,
             "title": "Sección: Preguntas Frecuentes",
             "description": "Tarea para la sección Preguntas Frecuentes",
-            "startDate": "2025-06-03",
+            "startDate": "2025-06-04",
             "dueDate": "2025-06-04",
-            "updatedAt": "2025-06-03T18:43:16.548Z",
+            "updatedAt": "2025-06-03T18:59:38.486Z",
             "createdAt": "",
             "priority": "Baja",
             "totalProgress": 18,
@@ -128,9 +128,9 @@
             "projectId": 1747531564248,
             "title": "Sección: Contacto",
             "description": "Tarea para la sección Contacto",
-            "startDate": "2025-06-04",
-            "dueDate": "2025-06-05",
-            "updatedAt": "2025-06-03T18:36:49.414Z",
+            "startDate": "2025-06-05",
+            "dueDate": "2025-06-06",
+            "updatedAt": "2025-06-03T19:01:55.669Z",
             "createdAt": "",
             "priority": "Media",
             "totalProgress": 0,
@@ -142,13 +142,13 @@
             "projectId": 1747531564248,
             "title": "Servicio: Consultoria SEO",
             "description": "Tarea para el servicio Consultoria SEO",
-            "startDate": "",
-            "dueDate": "",
+            "startDate": "2025-06-06",
+            "dueDate": "2025-06-06",
             "priority": "Media",
             "totalProgress": 0,
             "status": "Nuevo",
             "createdAt": "",
-            "updatedAt": ""
+            "updatedAt": "2025-06-03T18:57:39.604Z"
           },
           {
             "taskId": "1748974165963-srv-1",
@@ -185,12 +185,12 @@
             "title": "Dar seguimiento con el cliente",
             "description": "Dar seguimiento con el cliente",
             "startDate": "2025-06-03",
-            "dueDate": "2025-06-04",
+            "dueDate": "2025-06-05",
             "priority": "Baja",
             "totalProgress": 0,
             "status": "Nuevo",
             "createdAt": "2025-06-03T18:46:33.424Z",
-            "updatedAt": "2025-06-03T18:46:33.424Z"
+            "updatedAt": "2025-06-03T19:00:40.307Z"
           }
         ]
       },
