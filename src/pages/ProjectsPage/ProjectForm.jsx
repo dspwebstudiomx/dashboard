@@ -5,7 +5,6 @@ const ProjectForm = ({ project, onClose }) => {
 	const [name, setName] = useState(project ? project.name : '');
 	const [client, setClient] = useState(project ? project.client : '');
 	const [clients, setClients] = useState([]);
-	const services = project?.services || [];
 
 	useEffect(() => {
 		// Cargar clientes desde clients.json

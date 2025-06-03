@@ -11,25 +11,24 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 	const {
 		showForm,
 		setShowForm,
+		editProjectId,
+		setEditProjectId,
+		editProject,
+		setEditProject,
+		handleEditInputChange,
+		handleInputChange,
+		handleEditProject,
+		handleDeleteProject,
+		handleComplete,
 		newProject,
 		setNewProject,
-		editProjectId,
-		editProject,
-		setEditProjectId,
-		setEditProject,
-		handleInputChange,
-		handleCreateProject,
-		handleDeleteProject,
-		handleEditClick,
-		handleEditInputChange,
-		handleEditProject,
-		handleComplete,
 		SERVICE_COSTS,
 		SECTION_COSTS,
 		subtotal,
 		ivaTax,
 		isrTax,
 		total,
+		handleEditClick,
 	} = useProjects(selectedClient, onUpdateProjects);
 
 	if (!selectedClient) {
@@ -66,17 +65,16 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 					isOpen={showForm || editProjectId}
 				>
 					<ProjectForm
-						isEdit={!!editProjectId}
 						project={editProjectId ? editProject : newProject}
-						onChange={editProjectId ? handleEditInputChange : handleInputChange}
-						onSubmit={editProjectId ? handleEditProject : handleCreateProject}
 						setProject={editProjectId ? setEditProject : setNewProject}
+						onChange={editProjectId ? handleEditInputChange : handleInputChange}
 						SERVICE_COSTS={SERVICE_COSTS}
 						SECTION_COSTS={SECTION_COSTS}
 						subtotal={subtotal}
 						ivaTax={ivaTax}
 						isrTax={isrTax}
 						total={total}
+						// Puedes agregar aquí otras props necesarias
 					/>
 				</Modal>
 			)}

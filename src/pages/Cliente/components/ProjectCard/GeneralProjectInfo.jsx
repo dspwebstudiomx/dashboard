@@ -8,6 +8,7 @@ import ProjectTasks from './AdminProjectModal/Tasks/ProjectTasks';
 import EditActionButton from '../EditActionButton';
 import DeleteActionButton from '../DeleteActionButton';
 import ProjectForm from '../ProjectForm';
+import { SERVICE_COSTS, SECTION_COSTS } from '../../hooks/useProjects';
 
 class ErrorBoundary extends React.Component {
 	state = { hasError: false };
@@ -63,6 +64,20 @@ const GeneralProjectInfo = ({
 }) => {
 	const [editProject, setEditProject] = useState(null);
 
+	const handleProjectSubmit = async (e) => {
+		e.preventDefault();
+		if (editProjectId) {
+			// Aquí deberías guardar editProject en tu backend o estado global
+			if (typeof loadClientOrProjectData === 'function') {
+				await loadClientOrProjectData();
+			}
+			setShowForm(false);
+			setEditProjectId(null);
+		} else {
+			setShowForm(false);
+		}
+	};
+
 	return (
 		<>
 			<Modal
@@ -85,7 +100,27 @@ const GeneralProjectInfo = ({
 						<div className="hidden  md:flex md:flex-row gap-4">
 							<EditActionButton
 								onClick={() => {
-									setEditProject(project);
+									setEditProject({
+										...project,
+										services: Array.isArray(project.services)
+											? project.services.map((s) => ({
+													...(typeof s === 'string' ? { name: s } : s),
+													cost:
+														typeof s === 'string'
+															? SERVICE_COSTS[s] ?? 0
+															: s.cost ?? SERVICE_COSTS[s.name] ?? 0,
+											  }))
+											: [],
+										sections: Array.isArray(project.sections)
+											? project.sections.map((sec) => ({
+													...(typeof sec === 'string' ? { name: sec } : sec),
+													cost:
+														typeof sec === 'string'
+															? SECTION_COSTS[sec] ?? 0
+															: sec.cost ?? SECTION_COSTS[sec.name] ?? 0,
+											  }))
+											: [],
+									});
 									setEditProjectId(project.id);
 									setShowForm(true);
 								}}
@@ -98,7 +133,7 @@ const GeneralProjectInfo = ({
 			>
 				<div
 					id="modal-content"
-					className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-gray-200 text-gray-800 bg-white p-8 shadow-lg dark:bg-gray-800 dark:text-gray-100"
+					className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-gray-200 text-gray-800 bg-white p-8 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10"
 				>
 					<div className="flex flex-col gap-6 py-12">
 						<h2 className="text-2xl font-semibold">Descripción del Proyecto</h2>
@@ -163,6 +198,7 @@ const GeneralProjectInfo = ({
 						project={editProjectId ? editProject : newProject}
 						isEdit={!!editProjectId}
 						setProject={editProjectId ? setEditProject : setNewProject}
+						onSubmit={handleProjectSubmit}
 						// ...el resto de props igual
 					/>
 				</Modal>

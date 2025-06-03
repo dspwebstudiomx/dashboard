@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const SERVICE_COSTS = {
+export const SERVICE_COSTS = {
   "Consultoria SEO": 2000,
   "Consultoría UX/UI": 2500,
   "Consultoría de Diseño Web": 2200,
@@ -15,7 +15,7 @@ const SERVICE_COSTS = {
   "Rediseño Web": 3500,
 };
 
-const SECTION_COSTS = {
+export const SECTION_COSTS = {
   "Quienes Somos": 500,
   "Nuestros Servicios": 1100,
   Proyectos: 1000,
@@ -87,10 +87,11 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   };
 
   const handleInputChange = (e) => {
-    setNewProject({
-      ...newProject,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setNewProject((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleCreateProject = async (e) => {
@@ -182,16 +183,20 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   };
 
   const handleEditClick = (project) => {
-    setEditProject(project);
+    setEditProject({
+      ...initialProject(),
+      ...project,
+    });
     setEditProjectId(project.id);
     setShowForm(true);
   };
 
   const handleEditInputChange = (e) => {
-    setEditProject({
-      ...editProject,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setEditProject((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleEditProject = async (e) => {

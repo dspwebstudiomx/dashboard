@@ -16,7 +16,8 @@
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
     "project": [
-      "Prueba tareas"
+      "Prueba tareas",
+      "TEST"
     ],
     "image": "/uploads/1747857046531-161990523.jpeg",
     "createdAt": "2025-05-01",
@@ -99,13 +100,13 @@
             "projectId": 1747531564248,
             "title": "Sección: Preguntas Frecuentes",
             "description": "Tarea para la sección Preguntas Frecuentes",
-            "startDate": "",
-            "dueDate": "",
+            "startDate": "2025-06-03",
+            "dueDate": "2025-06-11",
             "updatedAt": "",
             "createdAt": "",
             "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo"
+            "totalProgress": 4,
+            "status": "En Proceso"
           },
           {
             "taskId": "1748826229620-sec-1",
@@ -268,6 +269,34 @@
           }
         ],
         "id": 1748809863981
+      },
+      {
+        "title": "TEST",
+        "description": "Prueba nuevo proyecto",
+        "services": [
+          "Consultoría de Diseño Web",
+          "Desarrollo Web",
+          "Integración de APIs",
+          "Optimización SEO"
+        ],
+        "sections": [],
+        "startDate": "2025-06-03",
+        "dueDate": "2025-06-28",
+        "priority": "Baja",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [],
+        "id": 1748959007222,
+        "costs": {
+          "totalServices": 13700,
+          "totalSections": 0,
+          "subtotalCost": 13700,
+          "ivaTax": 2192,
+          "isrTax": 219.20000000000002,
+          "totalCost": 16111.2,
+          "descuento": 0
+        }
       }
     ]
   },
