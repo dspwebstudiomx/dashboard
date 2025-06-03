@@ -108,7 +108,7 @@ const ProjectTasksTable = ({
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between mb-12">
-				<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
+				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
 					Tareas del Proyecto
 				</h2>
 				<div className="flex gap-2">
