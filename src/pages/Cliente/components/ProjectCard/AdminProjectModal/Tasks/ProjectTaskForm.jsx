@@ -76,7 +76,11 @@ const ProjectTaskForm = ({
 		}
 		try {
 			if (initialData && initialData.taskId) {
-				await updateTask(initialData.taskId, task);
+				const updatedTask = {
+					...task,
+					updatedAt: new Date().toISOString(), // <-- Actualiza la fecha aquí
+				};
+				await updateTask(initialData.taskId, updatedTask);
 				alert('Tarea actualizada correctamente');
 			} else {
 				await createTask(task);

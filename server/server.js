@@ -380,6 +380,9 @@ app.put("/api/clients/:clientId/projects/:projectId/tasks/:taskId", (req, res) =
     // Actualiza la tarea con los datos recibidos
     project.tasks[taskIndex] = { ...project.tasks[taskIndex], ...req.body };
 
+    // Actualiza la fecha de modificación
+    project.tasks[taskIndex].updatedAt = new Date();
+
     writeClientsFile(clients, res, {
       message: "Tarea actualizada correctamente",
       client, // Devuelve el cliente actualizado
