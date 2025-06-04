@@ -29,3 +29,11 @@ export function mapTasksToGantt(tareasOriginales) {
       },
     }));
 }
+
+export function ganttDateRange2(task) {
+  if (!task || !task.start) {
+    // Maneja el error o retorna un valor por defecto
+    return null;
+  }
+  // ...código existente...
+}

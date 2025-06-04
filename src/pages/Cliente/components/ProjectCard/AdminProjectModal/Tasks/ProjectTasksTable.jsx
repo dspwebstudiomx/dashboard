@@ -51,7 +51,15 @@ const ProjectTasksTable = ({
 	const handleAutoGenerateTasks = async () => {
 		const newTasks = [];
 		let uniqueBase = Date.now();
-		const now = new Date().toISOString();
+		const now = new Date();
+		const nowISO = now.toISOString();
+
+		// Función para sumar días a una fecha
+		const addDays = (date, days) => {
+			const result = new Date(date);
+			result.setDate(result.getDate() + days);
+			return result.toISOString().split('T')[0]; // Solo fecha (YYYY-MM-DD)
+		};
 
 		// Obtener títulos existentes
 		const existingTitles = (project.tasks || []).map((t) => t.title);
@@ -62,16 +70,18 @@ const ProjectTasksTable = ({
 				const sectionName = typeof section === 'string' ? section : section.name;
 				const title = `Sección: ${sectionName}`;
 				if (!existingTitles.includes(title)) {
+					const startDate = addDays(now, idx); // Cada sección inicia un día después
+					const dueDate = addDays(now, idx + 3); // Dura 3 días
 					newTasks.push({
 						taskId: `${uniqueBase}-sec-${idx}`,
 						clientId,
 						projectId: project.id || projectId,
 						title,
 						description: `Tarea para la sección ${sectionName}`,
-						startDate: '',
-						dueDate: '',
-						updatedAt: now,
-						createdAt: now,
+						startDate,
+						dueDate,
+						updatedAt: nowISO,
+						createdAt: nowISO,
 						priority: 'Media',
 						totalProgress: 0,
 						status: 'Nuevo',
@@ -86,19 +96,21 @@ const ProjectTasksTable = ({
 				const serviceName = typeof service === 'string' ? service : service.name;
 				const title = `Servicio: ${serviceName}`;
 				if (!existingTitles.includes(title)) {
+					const startDate = addDays(now, idx); // Cada servicio inicia un día después
+					const dueDate = addDays(now, idx + 2); // Dura 2 días
 					newTasks.push({
 						taskId: `${uniqueBase}-srv-${idx}`,
 						clientId,
 						projectId: project.id || projectId,
 						title,
 						description: `Tarea para el servicio ${serviceName}`,
-						startDate: '',
-						dueDate: '',
+						startDate,
+						dueDate,
 						priority: 'Media',
 						totalProgress: 0,
 						status: 'Nuevo',
-						createdAt: now, // <-- aquí
-						updatedAt: now, // <-- aquí
+						createdAt: nowISO,
+						updatedAt: nowISO,
 					});
 				}
 			});

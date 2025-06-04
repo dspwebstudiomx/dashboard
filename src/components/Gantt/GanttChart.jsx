@@ -3,15 +3,32 @@ import { Gantt, ViewMode } from 'gantt-task-react';
 import 'gantt-task-react/dist/index.css';
 import { mapTasksToGantt } from './ganttUtils';
 
+class ErrorBoundary extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { hasError: false };
+	}
+	static getDerivedStateFromError() {
+		return { hasError: true };
+	}
+	componentDidCatch(error, errorInfo) {
+		console.error('Error en Gantt:', error, errorInfo);
+	}
+	render() {
+		if (this.state.hasError) {
+			return <div>Ocurrió un error al mostrar el diagrama de Gantt.</div>;
+		}
+		return this.props.children;
+	}
+}
+
 const GanttChart = ({ tasks }) => {
 	const [view, setView] = useState(ViewMode.Week);
 
 	const ganttTasks = mapTasksToGantt(tasks);
 
-	// Depuración: muestra las tareas en consola
-	console.log('ganttTasks', ganttTasks);
+	console.log('ganttTasks detallado', JSON.stringify(ganttTasks, null, 2));
 
-	// Opcional: filtra tareas inválidas para evitar el error
 	const validGanttTasks = ganttTasks.filter((task, idx) => {
 		if (
 			!task ||
@@ -34,18 +51,20 @@ const GanttChart = ({ tasks }) => {
 				<button onClick={() => setView(ViewMode.Week)}>Semana</button>
 				<button onClick={() => setView(ViewMode.Month)}>Mes</button>
 			</div>
-			<Gantt
-				tasks={validGanttTasks}
-				viewMode={view}
-				onDateChange={(task, start, end) => {
-					console.log('Fecha cambiada:', task, start, end);
-				}}
-				locale="es"
-				listCellWidth="205px"
-				barFill={60}
-				columnWidth={100}
-				viewDate={new Date()}
-			/>
+			<ErrorBoundary>
+				<Gantt
+					tasks={validGanttTasks}
+					viewMode={view}
+					onDateChange={(task, start, end) => {
+						console.log('Fecha cambiada:', task, start, end);
+					}}
+					locale="es"
+					listCellWidth="205px"
+					barFill={60}
+					columnWidth={100}
+					viewDate={new Date()}
+				/>
+			</ErrorBoundary>
 		</div>
 	);
 };
