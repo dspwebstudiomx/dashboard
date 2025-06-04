@@ -96,8 +96,10 @@ const GanttChart = ({ tasks }) => {
 	}, [taskData]);
 
 	return (
-		<div className="w-full p-4 min-h-[740px] my-20">
-			<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-12">Cronograma</h2>
+		<div className="p-4 my-20">
+			<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-12">
+				Cronograma del Proyecto
+			</h2>
 			<div ref={ganttRef} className="gantt-chart"></div>
 		</div>
 	);
