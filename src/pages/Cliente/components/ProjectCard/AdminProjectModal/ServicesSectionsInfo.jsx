@@ -4,7 +4,7 @@ import SectionsProjectTag from '../../SectionsProjectTag';
 
 const ServicesSectionsInfo = ({ project }) => {
 	return (
-		<div className="flex flex-col md:flex-col gap-12 py-12">
+		<div className="grid md:grid-cols-2 gap-12 py-12">
 			<div className="flex flex-col gap-4">
 				<h2 className="text-2xl font-semibold sticky">Servicios Requeridos</h2>
 				<span className="ml-4">

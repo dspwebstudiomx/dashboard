@@ -119,8 +119,8 @@ const GeneralProjectInfo = ({
 						</div>
 						{/* Botones */}
 						<div className="flex gap-4 mt-12">
-							<EditActionButton onClick={handleEditProjectLocal} text="Editar Proyecto" />
-							<DeleteActionButton onClick={onDelete} text="Eliminar Proyecto" />
+							<EditActionButton onClick={handleEditProjectLocal} text="Editar" />
+							<DeleteActionButton onClick={onDelete} text="Eliminar" />
 						</div>
 					</div>
 				}
