@@ -248,10 +248,10 @@
             "startDate": "2025-06-03",
             "dueDate": "2025-06-16",
             "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
+            "totalProgress": 22,
+            "status": "En Proceso",
             "createdAt": "",
-            "updatedAt": "2025-06-03T18:33:18.560Z"
+            "updatedAt": "2025-06-04T14:41:21.850Z"
           },
           {
             "taskId": "1748826305647-srv-1",
@@ -307,13 +307,13 @@
             "projectId": 1748959007222,
             "title": "Servicio: Consultoría de Diseño Web",
             "description": "Tarea para el servicio Consultoría de Diseño Web",
-            "startDate": "2025-06-03",
-            "dueDate": "2025-06-19",
+            "startDate": "2025-06-05",
+            "dueDate": "2025-06-16",
             "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
+            "totalProgress": 35,
+            "status": "En Proceso",
             "createdAt": "2025-06-03T18:29:23.603Z",
-            "updatedAt": "2025-06-03T18:29:23.603Z"
+            "updatedAt": "2025-06-04T14:48:44.226Z"
           },
           {
             "taskId": "1748975363603-srv-1",
@@ -321,13 +321,13 @@
             "projectId": 1748959007222,
             "title": "Servicio: Desarrollo Web",
             "description": "Tarea para el servicio Desarrollo Web",
-            "startDate": "",
-            "dueDate": "",
+            "startDate": "2025-06-11",
+            "dueDate": "2025-06-13",
             "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
+            "totalProgress": 6,
+            "status": "En Proceso",
             "createdAt": "2025-06-03T18:29:23.603Z",
-            "updatedAt": "2025-06-03T18:29:23.603Z"
+            "updatedAt": "2025-06-04T14:42:20.789Z"
           },
           {
             "taskId": "1748975363603-srv-2",
@@ -335,13 +335,13 @@
             "projectId": 1748959007222,
             "title": "Servicio: Integración de APIs",
             "description": "Tarea para el servicio Integración de APIs",
-            "startDate": "",
-            "dueDate": "",
+            "startDate": "2025-06-23",
+            "dueDate": "2025-06-28",
             "priority": "Media",
             "totalProgress": 0,
             "status": "Nuevo",
             "createdAt": "2025-06-03T18:29:23.603Z",
-            "updatedAt": "2025-06-03T18:29:23.603Z"
+            "updatedAt": "2025-06-04T14:50:32.862Z"
           },
           {
             "taskId": "1748975363603-srv-3",

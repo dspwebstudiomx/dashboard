@@ -176,14 +176,14 @@ const ProjectTasksTable = ({
 										<td className="px-2 py-2 border-b text-xs truncate">
 											{task.taskId || task.id}
 										</td>
-										<td className="px-2 py-2 border-b first-letter:uppercase text-xs truncate">
+										<td className="px-2 py-2 border-b first-letter:uppercase text-sm truncate h-12">
 											{task.title}
 										</td>
-										<td className="px-2 py-2 border-b first-letter:uppercase text-xs truncate">
+										<td className="px-2 border-b first-letter:uppercase truncate w-10 text-sm">
 											{task.description}
 										</td>
 										<td
-											className={`px-2 py-2 border-b border-gray-800 text-center text-xs ${
+											className={`px-2 py-2 border-b border-gray-800 text-center text-sm w-20 ${
 												task.startDate &&
 												new Date(task.startDate) <= new Date(new Date().toDateString()) &&
 												(task.totalProgress ?? 0) < 100 // Solo aplica rojo si el avance es menor a 100%
@@ -193,7 +193,7 @@ const ProjectTasksTable = ({
 										>
 											{task.startDate}
 										</td>
-										<td className="px-2 py-2 border-b text-center text-xs">{task.dueDate}</td>
+										<td className="px-2 py-2 border-b text-center text-xs w-20">{task.dueDate}</td>
 										<td className="px-2 py-2 border-b text-center text-xs">
 											{task.updatedAt
 												? new Date(task.updatedAt).toLocaleString('es-ES', {
@@ -205,7 +205,7 @@ const ProjectTasksTable = ({
 												  })
 												: 'No disponible'}
 										</td>
-										<td className="px-2 py-2 border-b text-center">
+										<td className="px-2 py-2 border-b text-center h-16">
 											<span
 												className={`px-2 py-1 text-xs font-semibold rounded-full ${
 													task.status === 'Completado'
@@ -218,18 +218,18 @@ const ProjectTasksTable = ({
 												{task.status}
 											</span>
 										</td>
-										<td className="px-2 py-2 border-b text-center text-xs">
+										<td className="px-2 py-2 border-b text-center text-xs h-16">
 											<span className="font-semibold text-gray-600 dark:text-gray-100">
 												{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
 											</span>
 										</td>
-										<td className="px-2 py-2 border-b flex items-center justify-center gap-1">
+										<td className="px-2 py-2 border-b flex items-center justify-center gap-1 h-16">
 											<button
 												className="text-blue-600 hover:text-blue-800 transition-colors mr-1"
 												onClick={() => handleEditTask(task)}
 												aria-label="Editar tarea"
 											>
-												<FaEdit className="text-xl" />
+												<FaEdit className="text-xl" size={24} />
 											</button>
 											<button
 												onClick={() => handleDeleteTask(task)}
@@ -262,7 +262,7 @@ const ProjectTasksTable = ({
 				/>
 			)}
 
-			<GanttChart tasks={project.tasks || []} />
+			<GanttChart tasks={(project.tasks || []).filter((t) => t.startDate && t.dueDate)} />
 		</div>
 	);
 };
