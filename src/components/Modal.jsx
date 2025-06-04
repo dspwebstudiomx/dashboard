@@ -80,7 +80,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 						{children}
 					</div>
 				</article>
-				{/* {hasOverflow && isTopModal && (
+				{hasOverflow && isTopModal && (
 					<aside className="hidden md:flex bg-gray-100 border-r-2 border-gray-500 flex-col justify-center gap-4 dark:bg-gray-700 dark:border-gray-600 py-8 px-4 z-50 rounded-r-xl shadow-lg h-full">
 						<button
 							className="bg-blue-500 text-white p-2 w-16 h-16 shadow-lg hover:bg-blue-600 transition flex items-center justify-center rounded-full border border-blue-700"
@@ -95,7 +95,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 							<FaArrowDown size={28} />
 						</button>
 					</aside>
-				)} */}
+				)}
 			</div>
 		</section>
 	);
