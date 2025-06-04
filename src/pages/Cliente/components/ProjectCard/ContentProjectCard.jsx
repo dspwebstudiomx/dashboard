@@ -39,22 +39,18 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 					/>
 				</div>
 				<div className="flex flex-col gap-6">
-					{/* contador de tareas generadas */}
-					<div className="flex flex-col gap-2">
-						<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-							{project.tasks && project.tasks.length === 1 ? 'Tarea generada' : 'Tareas generadas'}
-						</h3>
-						<p className="text-gray-700 dark:text-gray-200">
-							{project.tasks && project.tasks.length === 1
-								? `1 Tarea generada`
-								: `${project.tasks ? project.tasks.length : 0} Tareas generadas`}
-						</p>
-					</div>
 					{/* mostrar nombre Tareas generadas*/}
-					<div className="flex flex-col gap-2 first-letter:uppercase">
-						<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-							Tareas generadas
-						</h3>
+					<div className="flex flex-col gap-4 first-letter:uppercase text-sm">
+						<div className="flex gap-3 items-center">
+							<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+								Tareas generadas
+							</h3>
+							<p className="text-gray-100 bg-blue-400 border border-blue-500 rounded-full w-7 h-7 flex items-center justify-center text-sm font-semibold">
+								{project.tasks && project.tasks.length === 1
+									? `1`
+									: `${project.tasks ? project.tasks.length : 0}`}
+							</p>
+						</div>
 						<p className="text-gray-700 dark:text-gray-200 first-letter:uppercase">
 							{project.tasks && project.tasks.length > 0 ? (
 								project.tasks.map((task, idx) => (
