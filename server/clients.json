@@ -280,6 +280,20 @@
             "status": "Nuevo",
             "createdAt": "",
             "updatedAt": "2025-06-03T19:38:37.104Z"
+          },
+          {
+            "taskId": 1749050385362,
+            "clientId": 1745897285167,
+            "projectId": 1748809863981,
+            "title": "prueba sistemas",
+            "description": "prueba sistemas",
+            "startDate": "2025-06-04",
+            "dueDate": "2025-06-04",
+            "priority": "Baja",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "2025-06-04T15:20:03.150Z",
+            "updatedAt": "2025-06-04T15:20:03.150Z"
           }
         ],
         "id": 1748809863981
