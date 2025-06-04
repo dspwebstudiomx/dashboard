@@ -23,8 +23,9 @@ export function mapTasksToGantt(tareasOriginales) {
       progress: task.totalProgress || 0,
       dependencies: '',
       styles: {
-        progressColor: '#6c63ff',
-        progressSelectedColor: '#6c63ff',
+        progressColor: '#2b7fff',
+        progressSelectedColor: '#dbeafe',
+        progressPendingColor: '#dbeafe',
       },
     }));
 }

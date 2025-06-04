@@ -20,6 +20,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 		handleEditProject,
 		handleDeleteProject,
 		handleComplete,
+		handleCreateProject,
 		newProject,
 		setNewProject,
 		SERVICE_COSTS,
@@ -65,6 +66,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 					isOpen={showForm || editProjectId}
 				>
 					<ProjectForm
+						isEdit={!!editProjectId}
 						project={editProjectId ? editProject : newProject}
 						setProject={editProjectId ? setEditProject : setNewProject}
 						onChange={editProjectId ? handleEditInputChange : handleInputChange}
@@ -74,12 +76,13 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 						ivaTax={ivaTax}
 						isrTax={isrTax}
 						total={total}
+						onSubmit={editProjectId ? handleEditProject : handleCreateProject}
 						// Puedes agregar aquí otras props necesarias
 					/>
 				</Modal>
 			)}
 
-			<ul id="lista-proyectos" className="mt-12 grid lg:grid-cols-2 gap-12 items-start">
+			<ul id="lista-proyectos" className="mt-12 grid xl:grid-cols-2 gap-12 items-start">
 				{selectedClient.projects && selectedClient.projects.length > 0 ? (
 					selectedClient.projects.map((project) => (
 						<ProjectCard

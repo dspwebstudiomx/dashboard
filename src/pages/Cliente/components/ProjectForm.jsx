@@ -75,6 +75,7 @@ const ProjectForm = ({
 }) => {
 	// Cambia el submit para llamar a onClose si existe
 	const handleSubmit = async (e) => {
+		e.preventDefault();
 		await onSubmit(e);
 		if (onClose) onClose();
 	};
