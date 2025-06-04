@@ -9,6 +9,7 @@ import EditActionButton from '../EditActionButton';
 import DeleteActionButton from '../DeleteActionButton';
 import ProjectForm from '../ProjectForm';
 import { SERVICE_COSTS, SECTION_COSTS } from '../../hooks/useProjects';
+import ProjectActionButtons from '../ProjectActionButtons';
 
 class ErrorBoundary extends React.Component {
 	state = { hasError: false };
@@ -55,26 +56,46 @@ const GeneralProjectInfo = ({
 	clientId,
 	selectedClient,
 	loadClientOrProjectData,
-	showForm,
-	setShowForm,
-	editProjectId,
-	setEditProjectId,
+	showForm: showFormProp,
+	setShowForm: setShowFormProp,
+	editProjectId: editProjectIdProp,
+	setEditProjectId: setEditProjectIdProp,
 	newProject,
 	setNewProject,
+	onDelete,
+	handleEditProject,
+	editProjectId,
 }) => {
-	const [editProject, setEditProject] = useState(null);
+	const [editProjectState, setEditProjectState] = useState(null);
+	const [showForm, setShowForm] = useState(false);
+
+	// Si recibes los estados como props, usa los props, si no, usa los locales
+	const effectiveShowForm = typeof showFormProp === 'boolean' ? showFormProp : showForm;
+	const effectiveSetShowForm = setShowFormProp || setShowForm;
+	const effectiveEditProjectId =
+		typeof editProjectIdProp !== 'undefined' ? editProjectIdProp : editProjectId;
+	const effectiveSetEditProjectId = setEditProjectIdProp || effectiveSetEditProjectId;
+
+	const handleEditProjectLocal = () => {
+		effectiveSetEditProjectId(project.id);
+		setEditProjectState({ ...project }); // Copia los datos actuales del proyecto
+		effectiveSetShowForm(true);
+	};
 
 	const handleProjectSubmit = async (e) => {
 		e.preventDefault();
-		if (editProjectId) {
-			// Aquí deberías guardar editProject en tu backend o estado global
-			if (typeof loadClientOrProjectData === 'function') {
-				await loadClientOrProjectData();
+		if (effectiveEditProjectId) {
+			if (typeof handleEditProject === 'function') {
+				// Llama a la función que actualiza el proyecto en el backend
+				await handleEditProject(e);
+			} else {
+				console.error('handleEditProject no está definido o no es una función');
 			}
-			setShowForm(false);
-			setEditProjectId(null);
+			effectiveSetShowForm(false);
+			effectiveSetEditProjectId(null);
+			setEditProjectState(null);
 		} else {
-			setShowForm(false);
+			effectiveSetShowForm(false);
 		}
 	};
 
@@ -97,36 +118,9 @@ const GeneralProjectInfo = ({
 							</div>
 						</div>
 						{/* Botones */}
-						<div className="hidden  md:flex md:flex-row gap-4">
-							<EditActionButton
-								onClick={() => {
-									setEditProject({
-										...project,
-										services: Array.isArray(project.services)
-											? project.services.map((s) => ({
-													...(typeof s === 'string' ? { name: s } : s),
-													cost:
-														typeof s === 'string'
-															? SERVICE_COSTS[s] ?? 0
-															: s.cost ?? SERVICE_COSTS[s.name] ?? 0,
-											  }))
-											: [],
-										sections: Array.isArray(project.sections)
-											? project.sections.map((sec) => ({
-													...(typeof sec === 'string' ? { name: sec } : sec),
-													cost:
-														typeof sec === 'string'
-															? SECTION_COSTS[sec] ?? 0
-															: sec.cost ?? SECTION_COSTS[sec.name] ?? 0,
-											  }))
-											: [],
-									});
-									setEditProjectId(project.id);
-									setShowForm(true);
-								}}
-								text="Editar Proyecto"
-							/>
-							<DeleteActionButton onClick={() => {}} />
+						<div className="flex gap-4 mt-12">
+							<EditActionButton onClick={handleEditProjectLocal} text="Editar Proyecto" />
+							<DeleteActionButton onClick={onDelete} text="Eliminar Proyecto" />
 						</div>
 					</div>
 				}
@@ -175,65 +169,61 @@ const GeneralProjectInfo = ({
 							clientId,
 						}}
 					/>
-
-					{/* Botones */}
-					<div className="md:hidden flex flex-col md:flex-row gap-4 mt-12">
-						<EditActionButton onClick={() => setShowForm(true)} text="Editar Proyecto" />
-						<DeleteActionButton onClick={() => {}} />
-					</div>
 				</div>
 			</Modal>
 
 			{/* Modal para editar proyecto */}
-			{(showForm || editProjectId) && (
-				<Modal
-					title={editProjectId ? 'Editar Proyecto' : 'Nuevo Proyecto'}
-					onClose={() => {
-						setShowForm(false);
-						setEditProjectId(null);
-					}}
-					isOpen={!!showForm || !!editProjectId}
-				>
-					<ProjectForm
-						project={editProjectId ? editProject : newProject}
-						isEdit={!!editProjectId}
-						setProject={editProjectId ? setEditProject : setNewProject}
-						onSubmit={handleProjectSubmit}
-						onChange={(e) => {
-							const { name, value } = e.target;
-							if (editProjectId) {
-								setEditProject((prev) => ({ ...prev, [name]: value }));
-							} else {
-								setNewProject((prev) => ({ ...prev, [name]: value }));
-							}
+			{(effectiveShowForm || effectiveEditProjectId) &&
+				(!effectiveEditProjectId || (effectiveEditProjectId && editProjectState)) && (
+					<Modal
+						title={effectiveEditProjectId ? 'Editar Proyecto' : 'Nuevo Proyecto'}
+						onClose={() => {
+							effectiveSetShowForm(false);
+							effectiveSetEditProjectId(null);
+							setEditProjectState(null);
 						}}
-						SERVICE_COSTS={SERVICE_COSTS}
-						SECTION_COSTS={SECTION_COSTS}
-						clientId={clientId}
-						selectedClient={selectedClient}
-						successMessage={successMessage}
-						loadClientOrProjectData={loadClientOrProjectData}
-						tasks={tasks}
-						resetTaskForm={resetTaskForm}
-						handleCreateTask={handleCreateTask}
-						handleDeleteTask={handleDeleteTask}
-						handleEditTask={handleEditTask}
-						handleEditTaskClick={handleEditTaskClick}
-						taskTitle={taskTitle}
-						setTaskTitle={setTaskTitle}
-						taskDescription={taskDescription}
-						setTaskDescription={setTaskDescription}
-						taskPriority={taskPriority}
-						setTaskPriority={setTaskPriority}
-						taskStatus={taskStatus}
-						setTaskStatus={setTaskStatus}
-						editTask={editTask}
-						setEditTask={setEditTask}
-						showTaskModal={showTaskModal}
-						setShowTaskModal={setShowTaskModal}
-					/>
-				</Modal>
-			)}
+						isOpen={!!effectiveShowForm || !!effectiveEditProjectId}
+					>
+						<ProjectForm
+							project={effectiveEditProjectId ? editProjectState : newProject}
+							isEdit={!!effectiveEditProjectId}
+							setProject={effectiveEditProjectId ? setEditProjectState : setNewProject}
+							onSubmit={handleProjectSubmit}
+							onChange={(e) => {
+								const { name, value } = e.target;
+								if (effectiveEditProjectId) {
+									setEditProjectState((prev) => ({ ...prev, [name]: value }));
+								} else {
+									setNewProject((prev) => ({ ...prev, [name]: value }));
+								}
+							}}
+							SERVICE_COSTS={SERVICE_COSTS}
+							SECTION_COSTS={SECTION_COSTS}
+							clientId={clientId}
+							selectedClient={selectedClient}
+							successMessage={successMessage}
+							loadClientOrProjectData={loadClientOrProjectData}
+							tasks={tasks}
+							resetTaskForm={resetTaskForm}
+							handleCreateTask={handleCreateTask}
+							handleDeleteTask={handleDeleteTask}
+							handleEditTask={handleEditTask}
+							handleEditTaskClick={handleEditTaskClick}
+							taskTitle={taskTitle}
+							setTaskTitle={setTaskTitle}
+							taskDescription={taskDescription}
+							setTaskDescription={setTaskDescription}
+							taskPriority={taskPriority}
+							setTaskPriority={setTaskPriority}
+							taskStatus={taskStatus}
+							setTaskStatus={setTaskStatus}
+							editTask={editTask}
+							setEditTask={setEditTask}
+							showTaskModal={showTaskModal}
+							setShowTaskModal={setShowTaskModal}
+						/>
+					</Modal>
+				)}
 		</>
 	);
 };

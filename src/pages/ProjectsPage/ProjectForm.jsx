@@ -20,6 +20,10 @@ const ProjectForm = ({ project, onClose }) => {
 		fetchClients();
 	}, []);
 
+	useEffect(() => {
+		setName(project ? project.name : '');
+		setClient(project ? project.client : '');
+	}, [project]);
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 

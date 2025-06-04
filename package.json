@@ -19,7 +19,7 @@
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "express": "^5.1.0",
-    "frappe-gantt": "^1.0.3",
+    "gantt-task-react": "^0.3.9",
     "multer": "^1.4.5-lts.2",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
