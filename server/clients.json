@@ -259,9 +259,7 @@
     "phoneNumber": "+52 443195268",
     "address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
     "company": "Hogares Deesa",
-    "project": [
-      "Prueba tareas"
-    ],
+    "project": "Prueba tareas",
     "rfc": "",
     "website": "https://www.hogaresdeesa.com/",
     "curp": "",
@@ -293,11 +291,18 @@
           "Integración de APIs",
           "Optimización SEO",
           "Rediseño Web",
-          "Diseño Web"
+          "Diseño Web",
+          "Desarrollo Web"
         ],
         "sections": [
           "Política de Cookies",
-          "Preguntas Frecuentes"
+          "Preguntas Frecuentes",
+          "Aviso Legal",
+          "Nuestros Servicios",
+          "Contacto",
+          "Portafolio",
+          "Quienes Somos",
+          "Testimonios"
         ],
         "startDate": "2025-06-04",
         "dueDate": "2025-06-27",
@@ -382,13 +387,13 @@
             "projectId": 1749061465405,
             "title": "Servicio: Diseño Web",
             "description": "Tarea para el servicio Diseño Web",
-            "startDate": "2025-06-08",
-            "dueDate": "2025-06-10",
+            "startDate": "2025-06-04",
+            "dueDate": "2025-06-11",
             "priority": "Media",
             "totalProgress": 0,
             "status": "Nuevo",
             "createdAt": "2025-06-04T18:33:15.543Z",
-            "updatedAt": "2025-06-04T18:33:15.543Z"
+            "updatedAt": "2025-06-04T18:37:06.369Z"
           },
           {
             "taskId": "1749062089533-srv-3",
@@ -403,17 +408,114 @@
             "status": "Nuevo",
             "createdAt": "2025-06-04T18:34:49.533Z",
             "updatedAt": "2025-06-04T18:34:49.533Z"
+          },
+          {
+            "taskId": "1749062183047-sec-2",
+            "clientId": 1746509316001,
+            "projectId": 1749061465405,
+            "title": "Sección: Aviso Legal",
+            "description": "Tarea para la sección Aviso Legal",
+            "startDate": "2025-06-06",
+            "dueDate": "2025-06-09",
+            "updatedAt": "2025-06-04T18:36:23.047Z",
+            "createdAt": "2025-06-04T18:36:23.047Z",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1749062183047-sec-3",
+            "clientId": 1746509316001,
+            "projectId": 1749061465405,
+            "title": "Sección: Nuestros Servicios",
+            "description": "Tarea para la sección Nuestros Servicios",
+            "startDate": "2025-06-07",
+            "dueDate": "2025-06-10",
+            "updatedAt": "2025-06-04T18:36:23.047Z",
+            "createdAt": "2025-06-04T18:36:23.047Z",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1749062183047-sec-4",
+            "clientId": 1746509316001,
+            "projectId": 1749061465405,
+            "title": "Sección: Contacto",
+            "description": "Tarea para la sección Contacto",
+            "startDate": "2025-06-08",
+            "dueDate": "2025-06-11",
+            "updatedAt": "2025-06-04T18:36:23.047Z",
+            "createdAt": "2025-06-04T18:36:23.047Z",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1749062183047-sec-5",
+            "clientId": 1746509316001,
+            "projectId": 1749061465405,
+            "title": "Sección: Portafolio",
+            "description": "Tarea para la sección Portafolio",
+            "startDate": "2025-06-09",
+            "dueDate": "2025-06-12",
+            "updatedAt": "2025-06-04T18:36:23.047Z",
+            "createdAt": "2025-06-04T18:36:23.047Z",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1749062183047-sec-6",
+            "clientId": 1746509316001,
+            "projectId": 1749061465405,
+            "title": "Sección: Quienes Somos",
+            "description": "Tarea para la sección Quienes Somos",
+            "startDate": "2025-06-10",
+            "dueDate": "2025-06-13",
+            "updatedAt": "2025-06-04T18:36:23.047Z",
+            "createdAt": "2025-06-04T18:36:23.047Z",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1749062183047-sec-7",
+            "clientId": 1746509316001,
+            "projectId": 1749061465405,
+            "title": "Sección: Testimonios",
+            "description": "Tarea para la sección Testimonios",
+            "startDate": "2025-06-11",
+            "dueDate": "2025-06-14",
+            "updatedAt": "2025-06-04T18:36:23.047Z",
+            "createdAt": "2025-06-04T18:36:23.047Z",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo"
+          },
+          {
+            "taskId": "1749062183047-srv-5",
+            "clientId": 1746509316001,
+            "projectId": 1749061465405,
+            "title": "Servicio: Desarrollo Web",
+            "description": "Tarea para el servicio Desarrollo Web",
+            "startDate": "2025-06-09",
+            "dueDate": "2025-06-11",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "2025-06-04T18:36:23.047Z",
+            "updatedAt": "2025-06-04T18:36:23.047Z"
           }
         ],
         "id": 1749061465405,
         "costs": {
-          "totalServices": 12200,
-          "totalSections": 1900,
-          "subtotalCost": 14100,
-          "ivaTax": 2256,
-          "isrTax": 225.60000000000002,
-          "totalCost": 16581.6,
-          "descuento": 0
+          "totalServices": 20200,
+          "totalSections": 8100,
+          "subtotalCost": 28300,
+          "ivaTax": 4528,
+          "isrTax": 452.8,
+          "totalCost": 33280.8
         }
       }
     ]
