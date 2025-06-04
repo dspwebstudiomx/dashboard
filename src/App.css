@@ -1,56 +1,58 @@
 @tailwind base;
 @tailwind components;
-@import "tailwindcss";
+@import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #1f2937; /* Color de fondo */
-    --text-color: #e5e7eb; /* Color del texto */
-    --primary-color: #3b82f6; /* Color primario */
-    --secondary-color: #2563eb; /* Color secundario */
-  }
+	:root {
+		--bg-color: #1f2937; /* Color de fondo */
+		--text-color: #e5e7eb; /* Color del texto */
+		--primary-color: #3b82f6; /* Color primario */
+		--secondary-color: #2563eb; /* Color secundario */
+	}
 }
 @media (prefers-color-scheme: light) {
-  :root {
-    --bg-color: #f3f4f6; /* Color de fondo */
-    --text-color: #111827; /* Color del texto */
-    --primary-color: #3b82f6; /* Color primario */
-    --secondary-color: #2563eb; /* Color secundario */
-  }
+	:root {
+		--bg-color: #f3f4f6; /* Color de fondo */
+		--text-color: #111827; /* Color del texto */
+		--primary-color: #3b82f6; /* Color primario */
+		--secondary-color: #2563eb; /* Color secundario */
+	}
+}
+html {
+	scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 html.dark {
-  scroll-behavior: smooth; /* Desplazamiento suave */
-  background-color: var(--bg-color);
+	background-color: var(--bg-color);
 }
 
 /* Scroll personalizado */
 ::-webkit-scrollbar {
-  width: 8px; /* Ancho del scroll */
-  height: 8px; /* Altura del scroll horizontal */
+	width: 8px; /* Ancho del scroll */
+	height: 8px; /* Altura del scroll horizontal */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #3b82f6; /* Color del "pulgar" */
-  border-radius: 4px; /* Bordes redondeados */
+	background-color: #3b82f6; /* Color del "pulgar" */
+	border-radius: 4px; /* Bordes redondeados */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #2563eb; /* Color al pasar el mouse */
+	background-color: #2563eb; /* Color al pasar el mouse */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #f3f4f6; /* Color de la pista */
-  border-radius: 4px; /* Bordes redondeados */
+	background-color: #f3f4f6; /* Color de la pista */
+	border-radius: 4px; /* Bordes redondeados */
 }
 
 /* Scroll en modo oscuro */
 .dark ::-webkit-scrollbar-thumb {
-  background-color: #2563eb; /* Color del "pulgar" en modo oscuro */
+	background-color: #2563eb; /* Color del "pulgar" en modo oscuro */
 }
 
 .dark ::-webkit-scrollbar-track {
-  background-color: #1f2937; /* Color de la pista en modo oscuro */
+	background-color: #1f2937; /* Color de la pista en modo oscuro */
 }

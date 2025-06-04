@@ -3,6 +3,7 @@ import ProjectTaskForm from './ProjectTaskForm';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 import Button from '@components/Botones/Button';
 import { MdDelete } from 'react-icons/md';
+import GanttChart from '@components/Gantt/GanttChart';
 
 const ProjectTasksTable = ({
 	clientId,
@@ -260,6 +261,8 @@ const ProjectTasksTable = ({
 					updateTask={updateTask}
 				/>
 			)}
+
+			<GanttChart tasks={project.tasks || []} />
 		</div>
 	);
 };
