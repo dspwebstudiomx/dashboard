@@ -72,6 +72,7 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 				{/* Fechas y total del proyecto */}
 				<div className="flex flex-col gap-2 mt-4">
 					<ProjectCardDates project={project} isCompleted={isCompleted} />
+					<span className="h-4"></span>
 					<TotalCostProyectCard totalConImpuestos={totalConImpuestos} />
 				</div>
 

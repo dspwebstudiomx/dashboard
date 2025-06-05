@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProjectCardDates = ({ project, isCompleted }) => {
 	return (
-		<div className="flex flex-col gap-6 text-base">
+		<div className="flex flex-col gap-3 text-base">
 			{/* Fecha de Inicio */}
 			<p className="text-gray-800 dark:text-gray-100">
 				Fecha de inicio:{' '}
