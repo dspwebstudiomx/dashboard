@@ -43,8 +43,18 @@ const GanttChart = ({ tasks }) => {
 		return true;
 	});
 
+	const today = new Date();
+	const sevenDaysLater = new Date(today);
+	sevenDaysLater.setDate(today.getDate() + 6);
+
+	// Filtra tareas solo para la vista diaria
+	const filteredTasks =
+		view === ViewMode.Day
+			? validGanttTasks.filter((task) => task.start <= sevenDaysLater && task.end >= today)
+			: validGanttTasks;
+
 	return (
-		<div className="my-20 p-4 bg-white overflow-x-auto">
+		<div className="my-20 p-4 bg-white overflow-x-auto max-w-full">
 			<h2 className="text-2xl font-semibold">Diagrama de Gantt del Proyecto</h2>
 			<div className=" flex justify-end mb-4 items-center gap-4">
 				<button onClick={() => setView(ViewMode.Day)}>Día</button>
@@ -53,7 +63,7 @@ const GanttChart = ({ tasks }) => {
 			</div>
 			<ErrorBoundary>
 				<Gantt
-					tasks={validGanttTasks}
+					tasks={filteredTasks}
 					viewMode={view}
 					onDateChange={(task, start, end) => {
 						console.log('Fecha cambiada:', task, start, end);
@@ -61,8 +71,14 @@ const GanttChart = ({ tasks }) => {
 					locale="es"
 					listCellWidth="205px"
 					barFill={60}
-					columnWidth={77}
-					viewDate={new Date()}
+					columnWidth={
+						view === ViewMode.Day
+							? 45 // Más pequeño para vista diaria
+							: view === ViewMode.Week
+							? 120
+							: 80
+					}
+					viewDate={view === ViewMode.Day ? today : new Date()}
 				/>
 			</ErrorBoundary>
 		</div>

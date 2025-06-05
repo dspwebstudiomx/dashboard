@@ -4,7 +4,14 @@ import { MdLockOutline } from 'react-icons/md';
 
 const CloseActionButton = ({ onClick, text }) => {
 	return (
-		<Button variant="outline" onClick={onClick} type="button" text={text} icon={MdLockOutline} />
+		<Button
+			variant="outline"
+			onClick={onClick}
+			type="button"
+			text={text}
+			icon={MdLockOutline}
+			size="md"
+		/>
 	);
 };
 

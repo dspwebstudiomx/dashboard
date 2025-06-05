@@ -10,6 +10,7 @@ const EditActionButton = ({ onClick, text }) => {
 			icon={LuPencil}
 			onClick={onClick}
 			type="button"
+			size="md"
 		/>
 	);
 };

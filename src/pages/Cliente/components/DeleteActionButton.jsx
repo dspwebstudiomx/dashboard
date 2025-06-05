@@ -10,6 +10,7 @@ const DeleteActionButton = ({ onClick, text }) => {
 			icon={FaRegTrashAlt}
 			onClick={onClick}
 			type="button"
+			size="md"
 		/>
 	);
 };

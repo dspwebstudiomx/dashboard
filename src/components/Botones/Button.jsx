@@ -12,9 +12,9 @@ const VARIANT_CLASSES = {
 };
 
 const SIZE_CLASSES = {
-	sm: 'px-3 py-1 text-sm h-9 md:w-[120px]',
-	md: 'px-4 py-2 text-base h-12 md:w-[180px]',
-	lg: 'px-6 py-3 text-lg h-15 md:w-[210px]',
+	sm: 'px-3 py-1 text-sm h-9 md:w-[120px] text-sm',
+	md: 'px-4 py-2 text-base h-12 md:w-[180px] text-sm',
+	lg: 'px-6 py-3 text-lg h-15 md:w-[190px] text-sm',
 };
 
 const Button = ({ text, onClick, icon: Icon, variant = 'primary', size = 'md' }) => {
