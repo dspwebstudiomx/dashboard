@@ -215,7 +215,9 @@ const ProjectTasksTable = ({
 						<tr>
 							<th className="px-2 py-2 border-b text-left w-24">ID</th>
 							<th className="px-2 py-2 border-b text-left w-48">Prioridad</th>
-							<th className="px-2 py-2 border-b text-left w-64">Descripción</th>
+							<th className="px-2 py-2 border-b text-left" style={{ width: '35%' }}>
+								Descripción
+							</th>
 							<th className="px-2 py-2 border-b text-center w-28">Inicio</th>
 							<th className="px-2 py-2 border-b text-center w-28">Término</th>
 							<th className="px-2 py-2 border-b text-center w-40">Actualización</th>
@@ -257,7 +259,10 @@ const ProjectTasksTable = ({
 												</td>
 												<td className="px-2 py-2 border-b text-xs">{task.priority}</td>
 
-												<td className="px-2 border-b first-letter:uppercase truncate w-10 text-sm">
+												<td
+													className="px-2 border-b first-letter:uppercase truncate text-sm text-wrap"
+													style={{ width: '35%' }}
+												>
 													{task.description}
 												</td>
 												<td
