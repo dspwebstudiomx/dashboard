@@ -15,10 +15,7 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": [
-      "Prueba tareas",
-      "TEST"
-    ],
+    "project": "Prueba Sistemas",
     "image": "/uploads/1747857046531-161990523.jpeg",
     "createdAt": "2025-05-01",
     "updatedAt": "2025-05-15",
@@ -74,127 +71,7 @@
         "priority": "Low"
       }
     ],
-    "projects": [
-      {
-        "title": "Prueba Sistemas",
-        "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit fermentum, venenatis turpis dapibus suspendisse aptent montes iaculis rutrum, nam morbi sagittis quis enim quisque mus. Dictum natoque phasellus mollis potenti rutrum tortor hac augue odio, dui posuere felis montes diam enim class dis risus parturient, volutpat conubia tempus ultrices auctor erat est ut. Accumsan posuere sociosqu dictum morbi semper per cum condimentum, leo at sapien nascetur primis mauris neque metus, tempus iaculis torquent vestibulum tincidunt senectus lacus.\n\nProin libero etiam convallis facilisis cras dignissim vitae tempor, ridiculus lacus elementum erat parturient imperdiet porta nisi ac, habitant viverra nam donec lacinia conubia pharetra. Himenaeos leo erat vestibulum justo laoreet a augue lobortis, sollicitudin aliquam curabitur in luctus rutrum malesuada, nunc lectus gravida felis dictum nisl tempus. Commodo quis quisque habitasse justo suspendisse parturient turpis varius, sapien tempus est fames ridiculus odio praesent nullam, sociosqu auctor mauris et aliquet placerat volutpat.",
-        "services": [
-          "Consultoria SEO",
-          "Diseño Web",
-          "Landing Page"
-        ],
-        "sections": [
-          "Preguntas Frecuentes",
-          "Nuestros Servicios",
-          "Contacto"
-        ],
-        "startDate": "2025-05-18",
-        "dueDate": "2025-06-24",
-        "priority": "Baja",
-        "completed": false,
-        "id": 1747531564248,
-        "tasks": [
-          {
-            "taskId": "1748974165963-sec-0",
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Sección: Preguntas Frecuentes",
-            "description": "Tarea para la sección Preguntas Frecuentes",
-            "startDate": "2025-06-04",
-            "dueDate": "2025-06-20",
-            "updatedAt": "2025-06-04T02:39:00.854Z",
-            "createdAt": "",
-            "priority": "Baja",
-            "totalProgress": 47,
-            "status": "En Proceso"
-          },
-          {
-            "taskId": "1748974165963-sec-1",
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Sección: Nuestros Servicios",
-            "description": "Tarea para la sección Nuestros Servicios",
-            "startDate": "2025-06-10",
-            "dueDate": "2025-06-11",
-            "updatedAt": "2025-06-03T18:34:50.371Z",
-            "createdAt": "",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo"
-          },
-          {
-            "taskId": "1748974165963-sec-2",
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Sección: Contacto",
-            "description": "Tarea para la sección Contacto",
-            "startDate": "2025-06-05",
-            "dueDate": "2025-06-06",
-            "updatedAt": "2025-06-03T19:01:55.669Z",
-            "createdAt": "",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo"
-          },
-          {
-            "taskId": "1748974165963-srv-0",
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Servicio: Consultoria SEO",
-            "description": "Tarea para el servicio Consultoria SEO",
-            "startDate": "2025-06-06",
-            "dueDate": "2025-06-06",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "",
-            "updatedAt": "2025-06-03T18:57:39.604Z"
-          },
-          {
-            "taskId": "1748974165963-srv-1",
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Servicio: Diseño Web",
-            "description": "Tarea para el servicio Diseño Web",
-            "startDate": "2025-06-06",
-            "dueDate": "2025-06-20",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "",
-            "updatedAt": "2025-06-04T17:00:09.047Z"
-          },
-          {
-            "taskId": "1748974165963-srv-2",
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Servicio: Landing Page",
-            "description": "Tarea para el servicio Landing Page",
-            "startDate": "",
-            "dueDate": "",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "",
-            "updatedAt": ""
-          },
-          {
-            "taskId": 1748976356783,
-            "clientId": 1745897285167,
-            "projectId": 1747531564248,
-            "title": "Dar seguimiento con el cliente",
-            "description": "Dar seguimiento con el cliente",
-            "startDate": "2025-06-03",
-            "dueDate": "2025-06-05",
-            "priority": "Baja",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "2025-06-03T18:46:33.424Z",
-            "updatedAt": "2025-06-03T19:00:40.307Z"
-          }
-        ]
-      }
-    ]
+    "projects": []
   },
   {
     "id": 1745953383970,
@@ -228,27 +105,7 @@
         "priority": "Medium"
       }
     ],
-    "projects": [
-      {
-        "title": "Sitio Web - EasyLav",
-        "description": "Creación de Sitio Web con secciones.",
-        "services": [
-          "Optimización SEO",
-          "Diseño Web",
-          "Desarrollo Web",
-          "Consultoria SEO",
-          "Rediseño Web"
-        ],
-        "startDate": "2024-09-01",
-        "dueDate": "2025-05-20",
-        "priority": "Media",
-        "id": 1747424023109,
-        "completed": false,
-        "status": "",
-        "totalProgress": 50,
-        "tasks": []
-      }
-    ]
+    "projects": []
   },
   {
     "id": 1746509316001,
@@ -260,7 +117,8 @@
     "address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
     "company": "Hogares Deesa",
     "project": [
-      "Prueba Alexis"
+      "Prueba nombres de tareas",
+      "prueba nombres de tareas"
     ],
     "rfc": "",
     "website": "https://www.hogaresdeesa.com/",
@@ -284,92 +142,6 @@
         "priority": "Low"
       }
     ],
-    "projects": [
-      {
-        "title": "Prueba Alexis",
-        "description": "<p>Lorem ipsum dolor sit amet. Non obcaecati labore et molestiae sapiente ea dignissimos dolor ex mollitia voluptatibus. Et repellat dolore aut minus sapiente rem perferendis aspernatur sit sunt repudiandae qui voluptatem molestiae. Est voluptatum cupiditate et dolorum repudiandae vel placeat fugiat. </p><p>Aut ipsum laboriosam sit excepturi dicta aut autem sint et nulla ratione id nobis ullam ea iste excepturi ab illo sequi. Sit omnis asperiores est quisquam velit in odit minus est maiores illo vel explicabo similique cum eveniet debitis et voluptatem velit. Ea dolor cumque ut autem repellendus qui iusto distinctio qui velit officiis ut maiores aperiam est officia obcaecati. </p><p>Est excepturi corporis ad quas nulla et earum voluptatem quo velit natus qui galisum quod. Et magni dolor non Quis placeat ut veniam vero et libero quia qui odit consequatur! </p>\n",
-        "services": [
-          "Consultoría de Diseño Web",
-          "Desarrollo Web",
-          "Integración de APIs",
-          "Optimización SEO"
-        ],
-        "sections": [],
-        "startDate": "2025-06-04",
-        "dueDate": "2025-06-13",
-        "priority": "Media",
-        "completed": false,
-        "status": "",
-        "totalProgress": "",
-        "tasks": [
-          {
-            "taskId": "1749062425136-srv-0",
-            "clientId": 1746509316001,
-            "projectId": 1749062415121,
-            "title": "Servicio: Consultoría de Diseño Web",
-            "description": "Tarea para el servicio Consultoría de Diseño Web",
-            "startDate": "2025-06-04",
-            "dueDate": "2025-06-06",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "2025-06-04T18:40:25.136Z",
-            "updatedAt": "2025-06-04T18:40:25.136Z"
-          },
-          {
-            "taskId": "1749062425136-srv-1",
-            "clientId": 1746509316001,
-            "projectId": 1749062415121,
-            "title": "Servicio: Desarrollo Web",
-            "description": "Tarea para el servicio Desarrollo Web",
-            "startDate": "2025-06-05",
-            "dueDate": "2025-06-07",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "2025-06-04T18:40:25.136Z",
-            "updatedAt": "2025-06-04T18:40:25.136Z"
-          },
-          {
-            "taskId": "1749062425136-srv-2",
-            "clientId": 1746509316001,
-            "projectId": 1749062415121,
-            "title": "Servicio: Integración de APIs",
-            "description": "Tarea para el servicio Integración de APIs",
-            "startDate": "2025-06-06",
-            "dueDate": "2025-06-08",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "2025-06-04T18:40:25.136Z",
-            "updatedAt": "2025-06-04T18:40:25.136Z"
-          },
-          {
-            "taskId": "1749062425136-srv-3",
-            "clientId": 1746509316001,
-            "projectId": 1749062415121,
-            "title": "Servicio: Optimización SEO",
-            "description": "Tarea para el servicio Optimización SEO",
-            "startDate": "2025-06-07",
-            "dueDate": "2025-06-09",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "2025-06-04T18:40:25.136Z",
-            "updatedAt": "2025-06-04T18:40:25.136Z"
-          }
-        ],
-        "id": 1749062415121,
-        "costs": {
-          "totalServices": 13700,
-          "totalSections": 0,
-          "subtotalCost": 13700,
-          "ivaTax": 2192,
-          "isrTax": 219.20000000000002,
-          "totalCost": 16111.2,
-          "descuento": 0
-        }
-      }
-    ]
+    "projects": []
   }
 ]

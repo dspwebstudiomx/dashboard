@@ -16,9 +16,9 @@ export function useProjectTasks({ clientId, projectId, isOpen = false } = {}) {
     console.log('URL:', `http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks`);
     console.log('Payload:', {
       ...newTask,
-      taskId: newTask.taskId || Date.now(),
       clientId,
       projectId,
+      taskId: newTask.taskId || Date.now(),
       status: newTask.status || 'Nuevo',
       priority: newTask.priority || 'Baja',
       createdAt: new Date().toISOString(),

@@ -50,7 +50,6 @@ const ProjectTasksTable = ({
 
 	const handleAutoGenerateTasks = async () => {
 		const newTasks = [];
-		let uniqueBase = Date.now();
 		const now = new Date();
 		const nowISO = now.toISOString();
 
@@ -58,7 +57,7 @@ const ProjectTasksTable = ({
 		const addDays = (date, days) => {
 			const result = new Date(date);
 			result.setDate(result.getDate() + days);
-			return result.toISOString().split('T')[0]; // Solo fecha (YYYY-MM-DD)
+			return result.toISOString().split('T')[0];
 		};
 
 		// Obtener títulos existentes
@@ -73,7 +72,7 @@ const ProjectTasksTable = ({
 					const startDate = addDays(now, idx); // Cada sección inicia un día después
 					const dueDate = addDays(now, idx + 3); // Dura 3 días
 					newTasks.push({
-						taskId: `${uniqueBase}-sec-${idx}`,
+						taskId: `${project.id || projectId}-sec-${idx}`,
 						clientId,
 						projectId: project.id || projectId,
 						title,
@@ -92,14 +91,17 @@ const ProjectTasksTable = ({
 
 		// Generar tareas por servicios
 		if (project.services && Array.isArray(project.services)) {
+			// Asegurarse de que project.services sea un array
 			project.services.forEach((service, idx) => {
-				const serviceName = typeof service === 'string' ? service : service.name;
-				const title = `Servicio: ${serviceName}`;
+				const serviceName = typeof service === 'string' ? service : service.name; // Asegurarse de que service.name esté definido
+				const title = `Servicio: ${serviceName}`; // Título de la tarea
+				// Verificar si ya existe una tarea con este título
 				if (!existingTitles.includes(title)) {
 					const startDate = addDays(now, idx); // Cada servicio inicia un día después
 					const dueDate = addDays(now, idx + 2); // Dura 2 días
+					// Agregar la tarea al array de nuevas tareas
 					newTasks.push({
-						taskId: `${uniqueBase}-srv-${idx}`,
+						taskId: `${project.id || projectId}-srv-${idx}`,
 						clientId,
 						projectId: project.id || projectId,
 						title,
@@ -116,6 +118,7 @@ const ProjectTasksTable = ({
 			});
 		}
 
+		// Verificar si hay nuevas tareas para agregar
 		if (newTasks.length === 0) {
 			alert('No hay nuevas tareas para generar.');
 			return;
@@ -130,14 +133,15 @@ const ProjectTasksTable = ({
 				body: JSON.stringify(newTasks),
 			}
 		);
+		alert('Tareas generadas automáticamente con éxito.');
 		if (typeof onTasksChanged === 'function') onTasksChanged();
 	};
 
 	// Función para agrupar tareas por sección y servicio
 	const getGroupedTasks = () => {
-		const grouped = [];
-		const sectionMap = {};
-		const serviceMap = {};
+		const grouped = []; // Array para almacenar las tareas agrupadas
+		const sectionMap = {}; // Mapa para rastrear tareas de sección
+		const serviceMap = {}; // Mapa para rastrear tareas de servicio
 
 		// Agrupa por sección
 		if (project.sections && Array.isArray(project.sections)) {
@@ -171,7 +175,7 @@ const ProjectTasksTable = ({
 
 		// Tareas que no pertenecen a sección ni servicio
 		const otherTasks = (project.tasks || []).filter(
-			(t) => !sectionMap[t.taskId || t.id] && !serviceMap[t.taskId || t.id]
+			(task) => !sectionMap[task.taskId || task.id] && !serviceMap[task.taskId || task.id]
 		);
 		if (otherTasks.length > 0) {
 			grouped.push({ type: 'other', name: 'Otras', tasks: otherTasks });
@@ -186,6 +190,7 @@ const ProjectTasksTable = ({
 				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
 					Tareas del Proyecto
 				</h2>
+				{/* // Botones para agregar y generar tareas */}
 				<div className="flex gap-2">
 					<Button
 						onClick={handleAddTask}
@@ -209,7 +214,7 @@ const ProjectTasksTable = ({
 					<thead>
 						<tr>
 							<th className="px-2 py-2 border-b text-left w-24">ID</th>
-							<th className="px-2 py-2 border-b text-left w-48">Título</th>
+							<th className="px-2 py-2 border-b text-left w-48">Prioridad</th>
 							<th className="px-2 py-2 border-b text-left w-64">Descripción</th>
 							<th className="px-2 py-2 border-b text-center w-28">Inicio</th>
 							<th className="px-2 py-2 border-b text-center w-28">Término</th>
@@ -249,9 +254,8 @@ const ProjectTasksTable = ({
 												<td className="px-2 py-2 border-b text-xs truncate">
 													{task.taskId || task.id}
 												</td>
-												<td className="px-2 py-2 border-b first-letter:uppercase text-sm truncate h-12">
-													{task.title}
-												</td>
+												<td className="px-2 py-2 border-b text-xs  bg-blue-200">{task.priority}</td>
+
 												<td className="px-2 border-b first-letter:uppercase truncate w-10 text-sm">
 													{task.description}
 												</td>
@@ -340,7 +344,9 @@ const ProjectTasksTable = ({
 			)}
 
 			{project.tasks && project.tasks.length > 0 && (
-				<GanttChart tasks={(project.tasks || []).filter((t) => t.startDate && t.dueDate)} />
+				<GanttChart
+					tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
+				/>
 			)}
 		</div>
 	);

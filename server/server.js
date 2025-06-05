@@ -329,7 +329,7 @@ app.get("/api/cupones/validar", (req, res) => {
   }
 });
 
-// SOLO DEJA ESTE ENDPOINT para crear tareas en proyectos
+// Endpoint para crear tareas en proyectos
 app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
   readClientsFile((err, clients) => {
     if (err || !Array.isArray(clients)) {

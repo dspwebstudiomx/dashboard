@@ -61,7 +61,7 @@ const GanttChart = ({ tasks }) => {
 					locale="es"
 					listCellWidth="205px"
 					barFill={60}
-					columnWidth={100}
+					columnWidth={77}
 					viewDate={new Date()}
 				/>
 			</ErrorBoundary>
