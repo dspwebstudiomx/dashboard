@@ -241,6 +241,7 @@ const ProjectTasksTable = ({
 										</td>
 									</tr>
 									{group.tasks
+										.slice() // Para no mutar el array original
 										.sort((a, b) => {
 											if (!a.startDate) return 1;
 											if (!b.startDate) return -1;
