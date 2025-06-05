@@ -60,10 +60,10 @@ const ProjectForm = ({
 	setProject,
 	SERVICE_COSTS = {},
 	SECTION_COSTS = {},
-	subtotal = 0,
+	subtotalCost = 0,
 	ivaTax = 0,
 	isrTax = 0,
-	total = 0,
+	totalCost = 0,
 	cupon,
 	setCupon,
 	descuento,
@@ -323,17 +323,31 @@ const ProjectForm = ({
 			{/* Totales */}
 			<div className="mt-6 text-lg font-semibold flex flex-col justify-center w-full items-end gap-4">
 				<div>
-					Subtotal: <span className="font-semibold text-base">${(subtotal ?? 0).toFixed(2)}</span>
+					Subtotal:{' '}
+					<span className="font-semibold text-base">
+						$
+						{isEdit
+							? (project?.costs?.subtotalCost ?? 0).toFixed(2)
+							: (subtotalCost ?? 0).toFixed(2)}
+					</span>
 				</div>
 				<div>
 					(+) Impuestos:{' '}
-					<span className="font-semibold text-base">${(ivaTax ?? 0).toFixed(2)}</span>
+					<span className="font-semibold text-base">
+						${isEdit ? (project?.costs?.ivaTax ?? 0).toFixed(2) : (ivaTax ?? 0).toFixed(2)}
+					</span>
 				</div>
 				<div>
-					(+) I.S.R. : <span className="font-semibold text-base">${(isrTax ?? 0).toFixed(2)}</span>
+					(+) I.S.R.:{' '}
+					<span className="font-semibold text-base">
+						${isEdit ? (project?.costs?.isrTax ?? 0).toFixed(2) : (isrTax ?? 0).toFixed(2)}
+					</span>
 				</div>
 				<div>
-					<span className="font-bold">Total: ${(total ?? 0).toFixed(2)}</span>
+					<span className="font-bold">
+						Total: $
+						{isEdit ? (project?.costs?.totalCost ?? 0).toFixed(2) : (totalCost ?? 0).toFixed(2)}
+					</span>
 				</div>
 			</div>
 

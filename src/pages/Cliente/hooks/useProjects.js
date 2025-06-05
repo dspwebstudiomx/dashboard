@@ -186,6 +186,14 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     setEditProject({
       ...initialProject(),
       ...project,
+      costs: project.costs || {
+        totalServices: 0,
+        totalSections: 0,
+        subtotalCost: 0,
+        ivaTax: 0,
+        isrTax: 0,
+        totalCost: 0,
+      }
     });
     setEditProjectId(project.id);
     setShowForm(true);
