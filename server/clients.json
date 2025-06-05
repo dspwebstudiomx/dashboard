@@ -15,7 +15,7 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Prueba Sistemas",
+    "project": "Tareas Personales",
     "image": "/uploads/1747857046531-161990523.jpeg",
     "createdAt": "2025-05-01",
     "updatedAt": "2025-05-15",
@@ -73,89 +73,54 @@
     ],
     "projects": [
       {
-        "title": "Prueba Sistemas",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "services": [
-          "Consultoria SEO",
-          "Desarrollo Web",
-          "Landing Page"
-        ],
-        "sections": [
-          "Portafolio",
-          "Equipo"
-        ],
+        "title": "Tareas Personales",
+        "description": "Usa esta tarjeta para tus pendientes",
+        "services": [],
+        "sections": [],
         "startDate": "2025-06-05",
-        "dueDate": "2025-07-05",
+        "dueDate": "2029-12-05",
         "priority": "Media",
         "completed": false,
         "status": "",
         "totalProgress": "",
         "tasks": [
           {
-            "taskId": "1749143212256-sec-0",
+            "taskId": 1749147637333,
             "clientId": 1745897285167,
-            "projectId": 1749143212256,
-            "title": "Sección: Portafolio",
-            "description": "Tarea para la sección Portafolio",
+            "projectId": 1749147630013,
+            "title": "Sincronizar que muestre los totales y subtotales",
+            "description": "Sincronizar que muestre los totales y subtotales en el ProjectForm para crear o editar Proyectos",
             "startDate": "2025-06-05",
-            "dueDate": "2025-06-08",
-            "updatedAt": "2025-06-05T17:07:19.169Z",
-            "createdAt": "2025-06-05T17:07:19.169Z",
+            "dueDate": "2025-06-06",
             "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo"
+            "totalProgress": 7,
+            "status": "En Proceso",
+            "createdAt": "2025-06-05T18:21:36.639Z",
+            "updatedAt": "2025-06-05T18:38:28.390Z"
           },
           {
-            "taskId": "1749143212256-sec-1",
+            "taskId": 1749148046443,
             "clientId": 1745897285167,
-            "projectId": 1749143212256,
-            "title": "Sección: Equipo",
-            "description": "Tarea para la sección Equipo",
+            "projectId": 1749147630013,
+            "title": "Botones de editar y eliminar proyecto",
+            "description": "Hacer que funcionen los botones de editar y eliminar proyecto desde GeneralProjectInfo",
             "startDate": "2025-06-06",
-            "dueDate": "2025-06-09",
-            "updatedAt": "2025-06-05T17:07:19.169Z",
-            "createdAt": "2025-06-05T17:07:19.169Z",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo"
-          },
-          {
-            "taskId": "1749143212256-srv-0",
-            "clientId": 1745897285167,
-            "projectId": 1749143212256,
-            "title": "Servicio: Consultoria SEO",
-            "description": "Tarea para el servicio Consultoria SEO",
-            "startDate": "2025-06-05",
             "dueDate": "2025-06-07",
             "priority": "Media",
             "totalProgress": 0,
             "status": "Nuevo",
-            "createdAt": "2025-06-05T17:07:19.169Z",
-            "updatedAt": "2025-06-05T17:07:19.169Z"
-          },
-          {
-            "taskId": "1749143212256-srv-1",
-            "clientId": 1745897285167,
-            "projectId": 1749143212256,
-            "title": "Servicio: Desarrollo Web",
-            "description": "Tarea para el servicio Desarrollo Web",
-            "startDate": "2025-06-06",
-            "dueDate": "2025-06-08",
-            "priority": "Media",
-            "totalProgress": 0,
-            "status": "Nuevo",
-            "createdAt": "2025-06-05T17:07:19.169Z",
-            "updatedAt": "2025-06-05T17:07:19.169Z"
+            "createdAt": "2025-06-05T18:28:54.103Z",
+            "updatedAt": "2025-06-05T18:28:54.103Z"
           }
         ],
-        "id": 1749143212256,
+        "id": 1749147630013,
         "costs": {
-          "totalServices": 16500,
-          "totalSections": 2000,
-          "subtotalCost": 18500,
-          "ivaTax": 2960,
-          "isrTax": 296,
-          "totalCost": 21756
+          "totalServices": 0,
+          "totalSections": 0,
+          "subtotalCost": 0,
+          "ivaTax": 0,
+          "isrTax": 0,
+          "totalCost": 0
         }
       }
     ]

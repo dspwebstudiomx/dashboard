@@ -255,7 +255,7 @@ const ProjectTasksTable = ({
 												<td className="px-2 py-2 border-b text-xs truncate">
 													{task.taskId || task.id}
 												</td>
-												<td className="px-2 py-2 border-b text-xs  bg-blue-200">{task.priority}</td>
+												<td className="px-2 py-2 border-b text-xs">{task.priority}</td>
 
 												<td className="px-2 border-b first-letter:uppercase truncate w-10 text-sm">
 													{task.description}
@@ -345,9 +345,11 @@ const ProjectTasksTable = ({
 			)}
 
 			{project.tasks && project.tasks.length > 0 && (
-				<GanttChart
-					tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
-				/>
+				<div className="overflow-x-auto my-8">
+					<GanttChart
+						tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
+					/>
+				</div>
 			)}
 		</div>
 	);

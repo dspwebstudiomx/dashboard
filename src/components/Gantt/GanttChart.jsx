@@ -44,7 +44,7 @@ const GanttChart = ({ tasks }) => {
 	});
 
 	return (
-		<div className="my-20 p-4 bg-white">
+		<div className="my-20 p-4 bg-white overflow-x-auto">
 			<h2 className="text-2xl font-semibold">Diagrama de Gantt del Proyecto</h2>
 			<div className=" flex justify-end mb-4 items-center gap-4">
 				<button onClick={() => setView(ViewMode.Day)}>Día</button>

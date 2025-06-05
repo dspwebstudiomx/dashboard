@@ -61,13 +61,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   const [descuento, setDescuento] = useState(0);
   const [cuponMsg, setCuponMsg] = useState('');
 
-  // Cálculos de costos y totales
-  const subtotal =
-    (newProject.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0) +
-    (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
-  const ivaTax = subtotal * 0.16 || 0;
-  const isrTax = ivaTax * 0.1 || 0;
-  const total = subtotal + ivaTax + isrTax - (subtotal * descuento) / 100 || 0;
+
 
   // Validar cupón
   const validarCupon = async () => {
@@ -108,10 +102,10 @@ export default function useProjects(selectedClient, onUpdateProjects) {
         totalSections: (newProject.sections || []).reduce(
           (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
         ),
-        subtotalCost: subtotal,
+        subtotalCost: subtotal, // <--- usa subtotal
         ivaTax,
         isrTax,
-        totalCost: total,
+        totalCost: total,       // <--- usa total
         descuento,
       }
     };
@@ -285,28 +279,46 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     }
   };
 
+  // Cálculos de costos y totales para newProject (crear)
+  const subtotal = (newProject.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
+    + (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
+  const ivaTax = subtotal * 0.16;
+  const isrTax = ivaTax * 0.1;
+  const total = subtotal + ivaTax + isrTax - (subtotal * descuento) / 100;
+
+  // Cálculos de costos y totales para editProject (editar)
+  const editSubtotal = (editProject?.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
+    + (editProject?.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
+  const editIvaTax = editSubtotal * 0.16;
+  const editIsrTax = editIvaTax * 0.1;
+  const editTotal = editSubtotal + editIvaTax + editIsrTax - (editSubtotal * descuento) / 100;
+
   return {
     showForm,
     setShowForm,
+    editProjectId,
+    setEditProjectId,
+    editProject,
+    setEditProject,
+    handleEditInputChange,
+    handleInputChange,
+    handleEditProject,
+    handleDeleteProject,
+    handleComplete,
+    handleCreateProject,
     newProject,
     setNewProject,
-    editProjectId,
-    editProject,
-    setEditProjectId,
-    setEditProject,
-    handleInputChange,
-    handleCreateProject,
-    handleDeleteProject,
-    handleEditClick,
-    handleEditInputChange,
-    handleEditProject,
-    handleComplete,
     SERVICE_COSTS,
     SECTION_COSTS,
     subtotal,
     ivaTax,
     isrTax,
     total,
+    editSubtotal,
+    editIvaTax,
+    editIsrTax,
+    editTotal,
+    handleEditClick,
     cupon,
     setCupon,
     descuento,

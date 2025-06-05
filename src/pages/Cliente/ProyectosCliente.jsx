@@ -29,6 +29,10 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 		ivaTax,
 		isrTax,
 		total,
+		editSubtotal,
+		editIvaTax,
+		editIsrTax,
+		editTotal,
 		handleEditClick,
 	} = useProjects(selectedClient, onUpdateProjects);
 
@@ -72,10 +76,10 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 						onChange={editProjectId ? handleEditInputChange : handleInputChange}
 						SERVICE_COSTS={SERVICE_COSTS}
 						SECTION_COSTS={SECTION_COSTS}
-						subtotal={subtotal}
-						ivaTax={ivaTax}
-						isrTax={isrTax}
-						total={total}
+						subtotalCost={editProjectId ? editSubtotal : subtotal}
+						ivaTax={editProjectId ? editIvaTax : ivaTax}
+						isrTax={editProjectId ? editIsrTax : isrTax}
+						totalCost={editProjectId ? editTotal : total}
 						onSubmit={editProjectId ? handleEditProject : handleCreateProject}
 						// Puedes agregar aquí otras props necesarias
 					/>

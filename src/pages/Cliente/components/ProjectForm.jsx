@@ -324,30 +324,17 @@ const ProjectForm = ({
 			<div className="mt-6 text-lg font-semibold flex flex-col justify-center w-full items-end gap-4">
 				<div>
 					Subtotal:{' '}
-					<span className="font-semibold text-base">
-						$
-						{isEdit
-							? (project?.costs?.subtotalCost ?? 0).toFixed(2)
-							: (subtotalCost ?? 0).toFixed(2)}
-					</span>
+					<span className="font-semibold text-base">${(subtotalCost ?? 0).toFixed(2)}</span>
 				</div>
 				<div>
 					(+) Impuestos:{' '}
-					<span className="font-semibold text-base">
-						${isEdit ? (project?.costs?.ivaTax ?? 0).toFixed(2) : (ivaTax ?? 0).toFixed(2)}
-					</span>
+					<span className="font-semibold text-base">${(ivaTax ?? 0).toFixed(2)}</span>
 				</div>
 				<div>
-					(+) I.S.R.:{' '}
-					<span className="font-semibold text-base">
-						${isEdit ? (project?.costs?.isrTax ?? 0).toFixed(2) : (isrTax ?? 0).toFixed(2)}
-					</span>
+					(+) I.S.R.: <span className="font-semibold text-base">${(isrTax ?? 0).toFixed(2)}</span>
 				</div>
 				<div>
-					<span className="font-bold">
-						Total: $
-						{isEdit ? (project?.costs?.totalCost ?? 0).toFixed(2) : (totalCost ?? 0).toFixed(2)}
-					</span>
+					<span className="font-bold">Total: ${(totalCost ?? 0).toFixed(2)}</span>
 				</div>
 			</div>
 
