@@ -3,84 +3,69 @@ import { Gantt, ViewMode } from 'gantt-task-react';
 import 'gantt-task-react/dist/index.css';
 import { mapTasksToGantt } from './ganttUtils';
 
-class ErrorBoundary extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { hasError: false };
-	}
-	static getDerivedStateFromError() {
-		return { hasError: true };
-	}
-	componentDidCatch(error, errorInfo) {
-		console.error('Error en Gantt:', error, errorInfo);
-	}
-	render() {
-		if (this.state.hasError) {
-			return <div>Ocurrió un error al mostrar el diagrama de Gantt.</div>;
+const GanttChart = ({ tasks, onTaskClick }) => {
+	const [viewMode, setViewMode] = useState(ViewMode.Week);
+	const [selectedTask, setSelectedTask] = useState(null);
+	const [taskList, setTaskList] = useState(mapTasksToGantt(tasks));
+
+	const handleTaskClick = (task) => {
+		setSelectedTask(task);
+		if (onTaskClick) {
+			onTaskClick(task);
 		}
-		return this.props.children;
-	}
-}
-
-const GanttChart = ({ tasks }) => {
-	const [view, setView] = useState(ViewMode.Week);
-
-	const ganttTasks = mapTasksToGantt(tasks);
-
-	console.log('ganttTasks detallado', JSON.stringify(ganttTasks, null, 2));
-
-	const validGanttTasks = ganttTasks.filter((task, idx) => {
-		if (
-			!task ||
-			!(task.start instanceof Date) ||
-			isNaN(task.start) ||
-			!(task.end instanceof Date) ||
-			isNaN(task.end)
-		) {
-			console.warn(`Tarea inválida en el índice ${idx}:`, task);
-			return false;
-		}
-		return true;
-	});
-
-	const today = new Date();
-	const sevenDaysLater = new Date(today);
-	sevenDaysLater.setDate(today.getDate() + 6);
-
-	// Filtra tareas solo para la vista diaria
-	const filteredTasks =
-		view === ViewMode.Day
-			? validGanttTasks.filter((task) => task.start <= sevenDaysLater && task.end >= today)
-			: validGanttTasks;
-
+	};
+	const handleViewModeChange = (mode) => {
+		setViewMode(mode);
+	};
+	const handleTaskChange = (task) => {
+		const updatedTasks = taskList.map((t) => (t.id === task.id ? task : t));
+		setTaskList(updatedTasks);
+	};
 	return (
-		<div className="my-20 p-4 bg-white overflow-x-auto max-w-full">
-			<h2 className="text-2xl font-semibold">Diagrama de Gantt del Proyecto</h2>
-			<div className=" flex justify-end mb-4 items-center gap-4">
-				<button onClick={() => setView(ViewMode.Day)}>Día</button>
-				<button onClick={() => setView(ViewMode.Week)}>Semana</button>
-				<button onClick={() => setView(ViewMode.Month)}>Mes</button>
+		<div className="gantt-chart-container">
+			<div className="view-mode-controls flex justify-end mb-2 gap-4">
+				<button
+					className="rounded-full px-4 py-1 shadow-3xl bg-gray-100 border border-gray-300"
+					onClick={() => handleViewModeChange(ViewMode.Day)}
+				>
+					Day
+				</button>
+				<button
+					className="border rounded-full px-4 py-1 shadow-2xl"
+					onClick={() => handleViewModeChange(ViewMode.Week)}
+				>
+					Week
+				</button>
+				<button
+					className="border rounded-full px-4 py-1 shadow-2xl"
+					onClick={() => handleViewModeChange(ViewMode.Month)}
+				>
+					Month
+				</button>
 			</div>
-			<ErrorBoundary>
-				<Gantt
-					tasks={filteredTasks}
-					viewMode={view}
-					onDateChange={(task, start, end) => {
-						console.log('Fecha cambiada:', task, start, end);
-					}}
-					locale="es"
-					listCellWidth="205px"
-					barFill={60}
-					columnWidth={
-						view === ViewMode.Day
-							? 45 // Más pequeño para vista diaria
-							: view === ViewMode.Week
-							? 120
-							: 80
-					}
-					viewDate={view === ViewMode.Day ? today : new Date()}
-				/>
-			</ErrorBoundary>
+			<Gantt
+				tasks={taskList}
+				viewMode={viewMode}
+				onClick={handleTaskClick}
+				onTaskChange={handleTaskChange}
+				onViewChange={handleViewModeChange}
+				selectedTask={selectedTask}
+				project={{ name: 'Project Name', start: new Date(), end: new Date() }}
+				onDateChange={(task, start, end) => {
+					console.log('Fecha cambiada:', task, start, end);
+				}}
+				locale="es"
+				listCellWidth="0" // Ocultar celdas de la lista
+				nameCellWidth="0" // Ocultar celdas de nombres
+				taskNameWidth="0" // Ocultar nombres de tareas
+				columnWidth={viewMode === ViewMode.Day ? 60 : viewMode === ViewMode.Week ? 100 : 300} // Ajustar ancho de columna según el modo de vista
+				barFill={60}
+				taskListWidth="0" // Ocultar lista de tareas
+				taskListCellWidth="0" // Ocultar celdas de la lista de tareas
+				taskListCellHeight="0" // Ocultar altura de las celdas
+				taskListCellPadding="0" // Eliminar padding de las celdas
+				taskListCellBorderRadius="0" // Eliminar bordes redondeados
+			/>
 		</div>
 	);
 };

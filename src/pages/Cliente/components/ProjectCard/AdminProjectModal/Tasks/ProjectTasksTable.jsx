@@ -215,9 +215,7 @@ const ProjectTasksTable = ({
 						<tr>
 							<th className="px-2 py-2 border-b text-left w-24">ID</th>
 							<th className="px-2 py-2 border-b text-left w-48">Prioridad</th>
-							<th className="px-2 py-2 border-b text-left" style={{ width: '35%' }}>
-								Descripción
-							</th>
+							<th className="px-2 py-2 border-b text-left">Título</th>
 							<th className="px-2 py-2 border-b text-center w-28">Inicio</th>
 							<th className="px-2 py-2 border-b text-center w-28">Término</th>
 							<th className="px-2 py-2 border-b text-center w-40">Actualización</th>
@@ -260,10 +258,10 @@ const ProjectTasksTable = ({
 												<td className="px-2 py-2 border-b text-xs">{task.priority}</td>
 
 												<td
-													className="px-2 border-b first-letter:uppercase truncate text-sm text-wrap"
-													style={{ width: '35%' }}
+													className="p-2 py-3 border-b first-letter:uppercase truncate text-sm text-wrap"
+													style={{ width: '25%' }}
 												>
-													{task.description}
+													{task.title}
 												</td>
 												<td
 													className={`px-2 py-2 border-b border-gray-800 text-center text-sm w-20 ${
@@ -350,7 +348,7 @@ const ProjectTasksTable = ({
 			)}
 
 			{project.tasks && project.tasks.length > 0 && (
-				<div className="overflow-x-auto my-8">
+				<div className="overflow-x-auto my-8 hidden">
 					<GanttChart
 						tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
 					/>
