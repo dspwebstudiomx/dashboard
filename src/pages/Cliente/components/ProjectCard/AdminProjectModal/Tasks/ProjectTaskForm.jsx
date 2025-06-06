@@ -194,6 +194,42 @@ const ProjectTaskForm = ({
 					/>
 				</label>
 
+				{/* Barra de desplazamiento para el avance del proyecto */}
+				<label className="flex flex-col items-start gap-4 w-full">
+					<div className="flex items-center gap-2">
+						<FaRegClock className="text-xl text-blue-600" />
+						<span className="font-semibold text-base">Avance del Proyecto</span>
+					</div>
+					<input
+						name="totalProgress"
+						type="range"
+						min="0"
+						max="100"
+						value={task.totalProgress}
+						onChange={handleChange}
+						className="w-full"
+					/>
+					<span>{task.totalProgress}%</span>
+				</label>
+
+				{/* Estatus del proyecto */}
+				<label className="flex flex-col items-start gap-4 w-full">
+					<div className="flex items-center gap-2">
+						<FaCheckCircle className="text-xl text-blue-600" />
+						<span className="font-semibold text-base">Estatus del Proyecto</span>
+					</div>
+					<select
+						name="status"
+						value={task.status}
+						onChange={handleChange}
+						className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+					>
+						<option value="Nuevo">Nuevo</option>
+						<option value="En Proceso">En Proceso</option>
+						<option value="Completado">Completado</option>
+					</select>
+				</label>
+
 				{/* Botones de acción */}
 				<div className="flex flex-row justify-center items-end gap-4 p-2">
 					<Button

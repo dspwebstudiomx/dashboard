@@ -45,17 +45,19 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
 						handleImageUpload={handleImageUpload}
 						handleRemoveImage={handleRemoveImage}
 					/>
-					<Button variant="secondary" type="button" onClick={onClose} text="Cancelar" />
-					{isEditing ? (
-						<Button variant="primary" type="submit" text="Actualizar cliente" />
-					) : (
-						<Button
-							variant="primary"
-							type="submit"
-							text="Agregar cliente"
-							icon={IoPersonAddOutline}
-						/>
-					)}
+					<div className="flex gap-2 w-full justify-center items-center my-12 mt-6">
+						<Button variant="secondary" type="button" onClick={onClose} text="Cancelar" />
+						{isEditing ? (
+							<Button variant="primary" type="submit" text="Actualizar cliente" />
+						) : (
+							<Button
+								variant="primary"
+								type="submit"
+								text="Agregar cliente"
+								icon={IoPersonAddOutline}
+							/>
+						)}
+					</div>
 				</div>
 			</form>
 		</Modal>
