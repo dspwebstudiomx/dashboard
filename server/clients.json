@@ -235,11 +235,11 @@
             "description": "Tarea para el servicio Consultoría de Diseño Web",
             "startDate": "2025-06-06",
             "dueDate": "2025-06-08",
-            "priority": "Media",
+            "priority": "Alta",
             "totalProgress": 0,
             "status": "Nuevo",
             "createdAt": "2025-06-06T00:24:55.168Z",
-            "updatedAt": "2025-06-06T00:24:55.168Z"
+            "updatedAt": "2025-06-06T16:05:03.945Z"
           },
           {
             "taskId": "1749169487959-srv-1",

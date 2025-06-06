@@ -24,7 +24,7 @@ const GanttChart = ({ tasks, onTaskClick }) => {
 	return (
 		<div className="gantt-chart-container mt-20">
 			<h2 className="text-2xl font-semibold">Diagrama de Gantt</h2>
-			<div className="view-mode-controls flex justify-end mb-2 gap-4">
+			<div className="view-mode-controls flex justify-end gap-4 mb-6">
 				<button
 					className="rounded-full px-4 py-1 shadow-3xl bg-gray-100 border border-gray-300"
 					onClick={() => handleViewModeChange(ViewMode.Day)}
