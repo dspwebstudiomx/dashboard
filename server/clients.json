@@ -106,11 +106,11 @@
             "description": "Hacer que funcionen los botones de editar y eliminar proyecto desde GeneralProjectInfo",
             "startDate": "2025-06-06",
             "dueDate": "2025-06-07",
-            "priority": "Media",
+            "priority": "Alta",
             "totalProgress": 0,
             "status": "Nuevo",
             "createdAt": "2025-06-05T18:28:54.103Z",
-            "updatedAt": "2025-06-05T18:28:54.103Z"
+            "updatedAt": "2025-06-06T16:38:27.812Z"
           },
           {
             "taskId": 1749224945464,
@@ -125,6 +125,20 @@
             "status": "Nuevo",
             "createdAt": "2025-06-06T15:52:54.487Z",
             "updatedAt": "2025-06-06T15:52:54.487Z"
+          },
+          {
+            "taskId": 1749228252646,
+            "clientId": 1745897285167,
+            "projectId": 1749147630013,
+            "title": "Adaptar Agregar/Editar Cliente",
+            "description": "Se abre la ventana y no despliega los íconos, así como ajustar la sección de la imagen y los botones",
+            "startDate": "2025-06-06",
+            "dueDate": "2025-06-09",
+            "priority": "Media",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "2025-06-06T16:45:19.977Z",
+            "updatedAt": "2025-06-06T16:45:19.977Z"
           }
         ],
         "id": 1749147630013,

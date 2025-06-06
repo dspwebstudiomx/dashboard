@@ -61,7 +61,9 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 			<div className="relative flex items-center">
 				<article
 					className={`bg-white rounded-xl shadow-lg ${
-						hasOverflow ? 'w-[80vw] max-h-[80vh] md:max-h-[90vh]' : 'w-[80%] max-h-[90vh]'
+						hasOverflow
+							? 'w-auto md:min-w-[50%] max-h-[80vh] md:max-h-[90vh]'
+							: 'w-[80%] max-h-[90vh]'
 					} max-h-[89vh] md:max-w-full p-6 md:p-12 xl:p-12 border-2 
       border-blue-400 dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-6 justify-between`}
 				>

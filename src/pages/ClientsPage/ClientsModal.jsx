@@ -39,7 +39,7 @@ const ClientsModal = ({ isOpen, onClose, client, onClientUpdate }) => {
 		>
 			<form onSubmit={handleSubmit} className="space-y-4 max-h-[70vh] text-base">
 				<ClientFormFields formData={formData} handleChange={handleChange} />
-				<div className="flex flex-col md:flex-row justify-center items-end gap-1 md:gap-4 p-2">
+				<div className="flex flex-col justify-center items-end gap-1 md:gap-4 p-2">
 					<ImageClientModal
 						formData={formData}
 						handleImageUpload={handleImageUpload}
