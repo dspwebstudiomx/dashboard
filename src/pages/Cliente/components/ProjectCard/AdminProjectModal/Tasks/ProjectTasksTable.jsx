@@ -243,9 +243,19 @@ const ProjectTasksTable = ({
 									{group.tasks
 										.slice() // Para no mutar el array original
 										.sort((a, b) => {
-											if (!a.startDate) return 1;
-											if (!b.startDate) return -1;
-											return new Date(a.startDate) - new Date(b.startDate);
+											// Ordenar por prioridad
+											const priorityOrder = ['Alta', 'Media', 'Baja']; // Define el orden de las prioridades
+											const priorityComparison =
+												priorityOrder.indexOf(a.priority) - priorityOrder.indexOf(b.priority);
+											if (priorityComparison !== 0) return priorityComparison;
+
+											// Ordenar por fecha de creación
+											const dateComparison = new Date(a.createdAt) - new Date(b.createdAt);
+											if (dateComparison !== 0) return dateComparison;
+
+											// Ordenar por estatus
+											const statusOrder = ['Nuevo', 'En Proceso', 'Completado']; // Define el orden de los estatus
+											return statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
 										})
 										.map((task) => (
 											<tr
