@@ -45,7 +45,15 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 							<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
 								Tareas generadas
 							</h3>
-							<p className="text-gray-100 bg-blue-400 border border-blue-500 rounded-full w-7 h-7 flex items-center justify-center text-sm font-semibold">
+							<p
+								className={`text-gray-100 border rounded-full w-7 h-7 flex items-center justify-center text-sm font-semibold ${
+									project.priority === 'Alta'
+										? 'bg-red-400 border-red-500'
+										: project.priority === 'Media'
+										? 'bg-yellow-400 border-yellow-500'
+										: 'bg-green-500 border-green-600'
+								}`}
+							>
 								{project.tasks && project.tasks.length === 1
 									? `1`
 									: `${project.tasks ? project.tasks.length : 0}`}
@@ -55,7 +63,16 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 							{project.tasks && project.tasks.length > 0 ? (
 								project.tasks.map((task, idx) => (
 									<span key={task.id || idx} className="block text-pretty first-letter:uppercase">
-										<MdKeyboardArrowRight className="inline mr-1 text-blue-500" size={24} />
+										<MdKeyboardArrowRight
+											className={`inline mr-1 ${
+												project.priority === 'Alta'
+													? 'text-red-500'
+													: project.priority === 'Media'
+													? 'text-yellow-500'
+													: 'text-green-500'
+											}`}
+											size={24}
+										/>
 										{task.title || task.name || 'Sin descripción'}
 									</span>
 								))

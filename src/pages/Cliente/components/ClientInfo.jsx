@@ -14,8 +14,8 @@ const ClientInfo = ({ selectedClient }) => (
 	<div className="flex flex-col gap-6">
 		<h2 className="text-xl md:text-2xl font-semibold mb-4">Información del Cliente</h2>
 		<div className="md:text-base flex flex-col gap-6 md:ml-4">
-			<div className="grid md:grid-cols-2 gap-8">
-				<p>
+			<ul className="grid md:grid-cols-2 gap-8 w-3/4">
+				<li>
 					<span className="font-normal">
 						<MdAssignmentInd className={iconClass} /> Número de Cliente:
 					</span>{' '}
@@ -23,8 +23,8 @@ const ClientInfo = ({ selectedClient }) => (
 					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
 						{selectedClient.id}
 					</span>
-				</p>
-				<p>
+				</li>
+				<li>
 					<span className="font-normal">
 						<MdEmail className={iconClass} /> Correo Electrónico:
 					</span>{' '}
@@ -32,8 +32,8 @@ const ClientInfo = ({ selectedClient }) => (
 					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0 lowercase">
 						{selectedClient.email ? selectedClient.email : 'Sin correo'}
 					</span>
-				</p>
-				<p>
+				</li>
+				<li>
 					<span className="font-normal">
 						<MdPhone className={iconClass} /> Número Telefónico:
 					</span>{' '}
@@ -41,8 +41,8 @@ const ClientInfo = ({ selectedClient }) => (
 					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
 						{selectedClient.phoneNumber ? selectedClient.phoneNumber : 'Sin teléfono'}
 					</span>
-				</p>
-				<p>
+				</li>
+				<li>
 					<span className="font-normal">
 						<MdHome className={iconClass} /> Dirección:
 					</span>{' '}
@@ -50,8 +50,8 @@ const ClientInfo = ({ selectedClient }) => (
 					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
 						{selectedClient.address ? selectedClient.address : 'Sin dirección'}
 					</span>
-				</p>
-				<p>
+				</li>
+				<li>
 					<span className="font-normal">
 						<MdFingerprint className={iconClass} /> RFC:
 					</span>{' '}
@@ -59,8 +59,8 @@ const ClientInfo = ({ selectedClient }) => (
 					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
 						{selectedClient.rfc ? selectedClient.rfc : 'Sin RFC'}
 					</span>
-				</p>
-				<p>
+				</li>
+				<li>
 					<span className="font-normal">
 						<MdFingerprint className={iconClass} /> CURP:
 					</span>{' '}
@@ -68,8 +68,8 @@ const ClientInfo = ({ selectedClient }) => (
 					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
 						{selectedClient.curp ? selectedClient.curp : 'Sin CURP'}
 					</span>
-				</p>
-				<p>
+				</li>
+				<li>
 					<span className="font-normal">
 						<MdDateRange className={iconClass} /> Fecha de Registro:
 					</span>{' '}
@@ -81,8 +81,8 @@ const ClientInfo = ({ selectedClient }) => (
 							day: 'numeric',
 						})}
 					</span>
-				</p>
-			</div>
+				</li>
+			</ul>
 			<article>
 				<span className="font-normal">
 					<MdFolder className={iconClass} /> Proyectos:
