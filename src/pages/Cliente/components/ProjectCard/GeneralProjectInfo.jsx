@@ -8,8 +8,9 @@ import ProjectTasks from './AdminProjectModal/Tasks/ProjectTasks';
 import EditActionButton from '../EditActionButton';
 import DeleteActionButton from '../DeleteActionButton';
 import ProjectForm from '../ProjectForm';
-import { SERVICE_COSTS, SECTION_COSTS } from '../../hooks/useProjects';
+// import { SERVICE_COSTS, SECTION_COSTS } from '../../hooks/useProjects';
 import ProjectActionButtons from '../ProjectActionButtons';
+import { useProjectDescription } from '@hooks/useProjectDescription';
 
 class ErrorBoundary extends React.Component {
 	state = { hasError: false };
@@ -56,49 +57,9 @@ const GeneralProjectInfo = ({
 	clientId,
 	selectedClient,
 	loadClientOrProjectData,
-	showForm: showFormProp,
-	setShowForm: setShowFormProp,
-	editProjectId: editProjectIdProp,
-	setEditProjectId: setEditProjectIdProp,
-	newProject,
-	setNewProject,
+
 	onDelete,
-	handleEditProject,
-	editProjectId,
 }) => {
-	const [editProjectState, setEditProjectState] = useState(null);
-	const [showForm, setShowForm] = useState(false);
-
-	// Si recibes los estados como props, usa los props, si no, usa los locales
-	const effectiveShowForm = typeof showFormProp === 'boolean' ? showFormProp : showForm;
-	const effectiveSetShowForm = setShowFormProp || setShowForm;
-	const effectiveEditProjectId =
-		typeof editProjectIdProp !== 'undefined' ? editProjectIdProp : editProjectId;
-	const effectiveSetEditProjectId = setEditProjectIdProp || effectiveSetEditProjectId;
-
-	const handleEditProjectLocal = () => {
-		effectiveSetEditProjectId(project.id);
-		setEditProjectState({ ...project }); // Copia los datos actuales del proyecto
-		effectiveSetShowForm(true);
-	};
-
-	const handleProjectSubmit = async (e) => {
-		e.preventDefault();
-		if (effectiveEditProjectId) {
-			if (typeof handleEditProject === 'function') {
-				// Llama a la función que actualiza el proyecto en el backend
-				await handleEditProject(e);
-			} else {
-				console.error('handleEditProject no está definido o no es una función');
-			}
-			effectiveSetShowForm(false);
-			effectiveSetEditProjectId(null);
-			setEditProjectState(null);
-		} else {
-			effectiveSetShowForm(false);
-		}
-	};
-
 	return (
 		<>
 			<Modal
@@ -119,7 +80,7 @@ const GeneralProjectInfo = ({
 						</div>
 						{/* Botones */}
 						<div className="flex gap-4 mt-12">
-							<EditActionButton onClick={handleEditProjectLocal} text="Editar" />
+							<EditActionButton onClick={onDelete} text="Editar" />
 							<DeleteActionButton onClick={onDelete} text="Eliminar" />
 						</div>
 					</div>
@@ -127,7 +88,7 @@ const GeneralProjectInfo = ({
 			>
 				<div
 					id="modal-content"
-					className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-gray-200 text-gray-800 bg-white p-8 md:p-10 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10"
+					className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-gray-200 text-gray-800 bg-white p-8 md:p-10 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10 max-w-screen-xl mx-auto"
 				>
 					<div className="flex flex-col gap-6 py-12">
 						<h2 className="text-2xl font-semibold">Descripción del Proyecto</h2>
@@ -171,60 +132,111 @@ const GeneralProjectInfo = ({
 					/>
 				</div>
 			</Modal>
-
-			{/* Modal para editar proyecto */}
-			{(effectiveShowForm || effectiveEditProjectId) &&
-				(!effectiveEditProjectId || (effectiveEditProjectId && editProjectState)) && (
-					<Modal
-						title={effectiveEditProjectId ? 'Editar Proyecto' : 'Nuevo Proyecto'}
-						onClose={() => {
-							effectiveSetShowForm(false);
-							effectiveSetEditProjectId(null);
-							setEditProjectState(null);
-						}}
-						isOpen={!!effectiveShowForm || !!effectiveEditProjectId}
-					>
-						<ProjectForm
-							project={effectiveEditProjectId ? editProjectState : newProject}
-							isEdit={!!effectiveEditProjectId}
-							setProject={effectiveEditProjectId ? setEditProjectState : setNewProject}
-							onSubmit={handleProjectSubmit}
-							onChange={(e) => {
-								const { name, value } = e.target;
-								if (effectiveEditProjectId) {
-									setEditProjectState((prev) => ({ ...prev, [name]: value }));
-								} else {
-									setNewProject((prev) => ({ ...prev, [name]: value }));
-								}
-							}}
-							SERVICE_COSTS={SERVICE_COSTS}
-							SECTION_COSTS={SECTION_COSTS}
-							clientId={clientId}
-							selectedClient={selectedClient}
-							successMessage={successMessage}
-							loadClientOrProjectData={loadClientOrProjectData}
-							tasks={tasks}
-							resetTaskForm={resetTaskForm}
-							handleCreateTask={handleCreateTask}
-							handleDeleteTask={handleDeleteTask}
-							handleEditTask={handleEditTask}
-							handleEditTaskClick={handleEditTaskClick}
-							taskTitle={taskTitle}
-							setTaskTitle={setTaskTitle}
-							taskDescription={taskDescription}
-							setTaskDescription={setTaskDescription}
-							taskPriority={taskPriority}
-							setTaskPriority={setTaskPriority}
-							taskStatus={taskStatus}
-							setTaskStatus={setTaskStatus}
-							editTask={editTask}
-							setEditTask={setEditTask}
-							showTaskModal={showTaskModal}
-							setShowTaskModal={setShowTaskModal}
-						/>
-					</Modal>
-				)}
 		</>
+	);
+};
+
+const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
+	const [showFullDesc, setShowFullDesc] = useState(false);
+	const { isLong, short } = useProjectDescription(project.description);
+
+	// Desestructuramos las acciones para usarlas fácilmente
+	const { isCompleted, onEdit, onDelete, handleCompleteClick, openAdminModal } = actions;
+
+	return (
+		<article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between first-letter:uppercase">
+			{/* Contenido principal del proyecto */}
+			<div className="flex flex-col gap-6 justify-between">
+				<div className="flex flex-col gap-8 text-balance w-full ">
+					{/* Título y prioridad */}
+					<div className="flex flex-col-reverse md:flex-row justify-between mt-4 gap-12 md:gap-6">
+						<TitleProjectCard project={project} />
+						<div className="flex justify-end md:items-center gap-2">
+							<Priority project={project} />
+						</div>
+					</div>
+
+					<ProjectDescriptionInfoCard
+						project={project}
+						isLongDescription={isLong}
+						shortDesc={short}
+						showFullDesc={showFullDesc}
+						setShowFullDesc={setShowFullDesc}
+					/>
+				</div>
+				<div className="flex flex-col gap-6">
+					{/* mostrar nombre Tareas generadas */}
+					<div className="flex flex-col gap-4 first-letter:uppercase text-sm">
+						<div className="flex gap-3 items-center">
+							<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+								Tareas generadas
+							</h3>
+							<p
+								className={`text-gray-100 border rounded-full w-7 h-7 flex items-center justify-center text-sm font-semibold ${
+									project.priority === 'Alta'
+										? 'bg-red-400 border-red-500'
+										: project.priority === 'Media'
+										? 'bg-yellow-400 border-yellow-500'
+										: 'bg-green-500 border-green-600'
+								}`}
+							>
+								{project.tasks && project.tasks.length === 1
+									? `1`
+									: `${project.tasks ? project.tasks.length : 0}`}
+							</p>
+						</div>
+						<p className="text-gray-700 dark:text-gray-200 first-letter:uppercase">
+							{project.tasks && project.tasks.length > 0 ? (
+								project.tasks.map((task, idx) => (
+									<span key={task.id || idx} className="block text-pretty first-letter:uppercase">
+										<MdKeyboardArrowRight
+											className={`inline mr-1 ${
+												task.priority === 'Alta'
+													? 'text-red-500'
+													: task.priority === 'Media'
+													? 'text-yellow-500'
+													: 'text-green-500'
+											}`}
+											size={24}
+										/>
+										{task.title || task.name || 'Sin descripción'}
+									</span>
+								))
+							) : (
+								<span>No hay tareas generadas</span>
+							)}
+						</p>
+					</div>
+				</div>
+			</div>
+
+			{/* Fechas y Botones de Acción */}
+			<div className="text-lg md:text-base flex flex-col gap-8 justify-between h-full">
+				{/* Fechas y total del proyecto */}
+				<div className="flex flex-col gap-2 mt-4">
+					<ProjectCardDates project={project} isCompleted={isCompleted} />
+					<span className="h-4"></span>
+					<TotalCostProyectCard totalConImpuestos={totalConImpuestos} />
+				</div>
+
+				{/* Botones de acción */}
+				<div className="flex flex-col gap-4 mt-12">
+					<ProjectActionButtons
+						isCompleted={isCompleted}
+						openAdminModal={openAdminModal}
+						onEdit={onEdit}
+						onDelete={onDelete}
+						handleCompleteClick={handleCompleteClick}
+					/>
+					{isCompleted && (
+						<div className="flex flex-col gap-4">
+							<AdminActionButton onClick={openAdminModal} text="Ver Proyecto" />
+							<CloseProjectMessaje />
+						</div>
+					)}
+				</div>
+			</div>
+		</article>
 	);
 };
 

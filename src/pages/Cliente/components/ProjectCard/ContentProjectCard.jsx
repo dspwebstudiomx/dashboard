@@ -59,23 +59,35 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 									: `${project.tasks ? project.tasks.length : 0}`}
 							</p>
 						</div>
-						<p className="text-gray-700 dark:text-gray-200 first-letter:uppercase">
+						<p className="text-gray-700 dark:text-gray-200 first-letter:uppercase text-base">
 							{project.tasks && project.tasks.length > 0 ? (
-								project.tasks.map((task, idx) => (
-									<span key={task.id || idx} className="block text-pretty first-letter:uppercase">
-										<MdKeyboardArrowRight
-											className={`inline mr-1 ${
-												task.priority === 'Alta'
-													? 'text-red-500'
-													: task.priority === 'Media'
-													? 'text-yellow-500'
-													: 'text-green-500'
+								project.tasks
+									.sort((a, b) =>
+										a.status === 'Completado' ? 1 : b.status === 'Completado' ? -1 : 0
+									) // Ordena las tareas, colocando las completadas al final
+									.map((task, idx) => (
+										<span
+											key={task.id || idx}
+											className={`block text-pretty first-letter:uppercase ${
+												task.status === 'Completado' ? 'line-through text-gray-500' : ''
 											}`}
-											size={24}
-										/>
-										{task.title || task.name || 'Sin descripción'}
-									</span>
-								))
+										>
+											<MdKeyboardArrowRight
+												className={`inline mr-1 ${
+													task.priority === 'Alta'
+														? 'text-red-500'
+														: task.priority === 'Media'
+														? 'text-yellow-500'
+														: 'text-green-500'
+												}`}
+												size={24}
+											/>
+											{task.title || task.name || 'Sin descripción'} -
+											<span className="text-sm text-gray-600 dark:text-gray-400 ml-4 font-semibold">
+												{task.totalProgress}%
+											</span>
+										</span>
+									))
 							) : (
 								<span>No hay tareas generadas</span>
 							)}

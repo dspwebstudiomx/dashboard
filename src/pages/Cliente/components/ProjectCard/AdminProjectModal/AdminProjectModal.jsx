@@ -15,10 +15,16 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId, selectedClient 
 		editProject,
 		setEditProject,
 		handleEditProject,
+		handleCompleteClick, // Desestructuración de handleCompleteClick
 	} = useProjectTasks({ clientId, project, isOpen });
 
 	const [showForm, setShowForm] = useState(false);
 	const [editProjectId, setEditProjectId] = useState(null);
+
+	// Definir openAdminModal
+	const openAdminModal = () => {
+		setShowForm(true); // Ejemplo: abre el formulario
+	};
 
 	return (
 		<>
@@ -42,6 +48,9 @@ const AdminProjectModal = ({ isOpen, onClose, project, clientId, selectedClient 
 				clientId={clientId}
 				showForm={showForm}
 				setShowForm={setShowForm}
+				openAdminModal={openAdminModal} // Prop agregada
+				isCompleted={project.isCompleted} // Prop agregada
+				handleCompleteClick={handleCompleteClick} // Prop agregada
 			/>
 		</>
 	);

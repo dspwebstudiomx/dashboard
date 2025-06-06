@@ -214,7 +214,7 @@ const ProjectTasksTable = ({
 					<thead>
 						<tr>
 							<th className="px-2 py-2 border-b text-left w-24">ID</th>
-							<th className="px-2 py-2 border-b text-left w-48">Prioridad</th>
+							<th className="px-2 py-2 border-b text-left w-12">Prioridad</th>
 							<th className="px-2 py-2 border-b text-left">Título</th>
 							<th className="px-2 py-2 border-b text-center w-28">Inicio</th>
 							<th className="px-2 py-2 border-b text-center w-28">Término</th>
@@ -250,12 +250,23 @@ const ProjectTasksTable = ({
 										.map((task) => (
 											<tr
 												key={task.taskId || task.id}
-												className="hover:bg-gray-100 dark:hover:bg-gray-700"
+												className="hover:bg-gray-100 dark:hover:bg-gray-700 h-16" // Ajusta la altura de las filas
 											>
 												<td className="px-2 py-2 border-b text-xs truncate">
 													{task.taskId || task.id}
 												</td>
-												<td className="px-2 py-2 border-b text-xs">{task.priority}</td>
+												<td className="px-2 py-2 border-b text-xs text-center w-12">
+													<span
+														className={`inline-block w-4 h-4 rounded-full ${
+															task.priority === 'Alta'
+																? 'bg-red-500'
+																: task.priority === 'Media'
+																? 'bg-yellow-500 border-yellow-600 border'
+																: 'bg-green-500 border-green-600 border'
+														}`}
+														title={task.priority}
+													></span>
+												</td>
 
 												<td
 													className="p-2 py-3 border-b first-letter:uppercase truncate text-sm text-wrap"
@@ -264,11 +275,11 @@ const ProjectTasksTable = ({
 													{task.title}
 												</td>
 												<td
-													className={`px-2 py-2 border-b border-gray-800 text-center text-sm w-20 ${
+													className={`px-2 py-2 border-b border-gray-800 dark:border-gray-100 text-center text-sm w-20 ${
 														task.startDate &&
 														new Date(task.startDate) <= new Date(new Date().toDateString()) &&
 														(task.totalProgress ?? 0) < 100 // Solo aplica rojo si el avance es menor a 100%
-															? 'text-red-600 font-semibold'
+															? 'text-red-600 font-semibold dark:text-red-400'
 															: ''
 													}`}
 												>

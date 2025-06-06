@@ -49,11 +49,14 @@ const ProjectTaskForm = ({
 	const handleChange = (e) => {
 		const { name, value, type } = e.target;
 		let newValue = value;
+
 		if (type === 'range' || name === 'totalProgress') {
 			newValue = Number(value);
 		}
+
 		setTask((prev) => {
 			let updatedTask = { ...prev, [name]: newValue };
+
 			if (name === 'totalProgress') {
 				if (newValue >= 100) {
 					updatedTask.status = 'Completado';
@@ -63,6 +66,11 @@ const ProjectTaskForm = ({
 					updatedTask.status = 'Nuevo';
 				}
 			}
+
+			if (name === 'status' && newValue === 'Completado') {
+				updatedTask.totalProgress = 100;
+			}
+
 			return updatedTask;
 		});
 	};
