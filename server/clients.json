@@ -75,7 +75,9 @@
       {
         "title": "Tareas Personales",
         "description": "Usa esta tarjeta para tus pendientes",
-        "services": [],
+        "services": [
+          "Consultoría de Diseño Web"
+        ],
         "sections": [],
         "startDate": "2025-06-05",
         "dueDate": "2029-12-05",
@@ -93,10 +95,10 @@
             "startDate": "2025-06-05",
             "dueDate": "2025-06-06",
             "priority": "Media",
-            "totalProgress": 47,
+            "totalProgress": 67,
             "status": "En Proceso",
             "createdAt": "2025-06-05T18:21:36.639Z",
-            "updatedAt": "2025-06-05T20:30:47.072Z"
+            "updatedAt": "2025-06-06T00:00:59.410Z"
           },
           {
             "taskId": 1749148046443,
@@ -115,12 +117,12 @@
         ],
         "id": 1749147630013,
         "costs": {
-          "totalServices": 0,
+          "totalServices": 2200,
           "totalSections": 0,
-          "subtotalCost": 0,
-          "ivaTax": 0,
-          "isrTax": 0,
-          "totalCost": 0
+          "subtotalCost": 2200,
+          "ivaTax": 352,
+          "isrTax": 35.2,
+          "totalCost": 2587.2
         }
       }
     ]
