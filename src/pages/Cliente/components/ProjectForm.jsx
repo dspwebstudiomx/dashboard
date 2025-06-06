@@ -273,11 +273,9 @@ const ProjectForm = ({
 				/>
 			</div>
 			{/* Cupón y totales */}
-			<div className="flex flex-col gap-2">
-				<div
-					id="cupon-section"
-					className="flex flex-col md:flex-row gap-4 items-center justify-end"
-				>
+			<div className="flex flex-col gap-2 items-right justify-center">
+				<div id="cupon-section" className="flex flex-col md:flex-row gap-4 items-end justify-end">
+					{/* Cupón */}
 					<div className="flex gap-4 flex-col items-start justify-start">
 						<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
 							<FaTag className="text-blue-700" />
@@ -295,7 +293,9 @@ const ProjectForm = ({
 							}}
 						/>
 					</div>
-					<div className="flex items-center justify-end gap-2 mt-2">
+
+					{/* Botones de Validar y Reiniciar Cupón */}
+					<div className="flex items-center justify-end gap-2 mt-2 md:mt-0">
 						<Button
 							variant="primary"
 							type="button"
