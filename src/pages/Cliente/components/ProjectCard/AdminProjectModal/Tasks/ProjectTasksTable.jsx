@@ -17,6 +17,11 @@ const ProjectTasksTable = ({
 	const [selectedTask, setSelectedTask] = useState(null);
 	const [showCompletedTasks, setShowCompletedTasks] = useState(true); // Estado para controlar la visibilidad de tareas completadas
 
+	// Calcula el total de tareas completadas
+	const totalCompletedTasks = (project.tasks || []).filter(
+		(task) => task.status === 'Completado'
+	).length;
+
 	const handleAddTask = () => {
 		setSelectedTask(null);
 		setIsTaskModalOpen(true);
@@ -131,22 +136,30 @@ const ProjectTasksTable = ({
 				<div className="flex gap-2">
 					<Button
 						onClick={handleAddTask}
-						text="Agregar"
+						text="Agregar Tarea Nuevo"
+						aria-label="Agregar nueva tarea"
 						variant="primary"
 						size="md"
 						icon={FaPlus}
 					/>
 					<Button
 						id="auto-generate-tasks-button"
+						aria-label="Generar tareas automáticamente"
 						onClick={handleAutoGenerateTasks}
-						text="Generar"
+						text="Generar automáticamente"
 						variant="secondary"
 						icon={FaPlus}
 						size="md"
 					/>
 					<Button
+						id="toggle-completed-tasks-button"
+						aria-label="Alternar tareas completadas"
 						onClick={() => setShowCompletedTasks((prev) => !prev)}
-						text={showCompletedTasks ? 'Ocultar Completados' : 'Mostrar Completados'}
+						text={
+							showCompletedTasks
+								? `Ocultar Completados (${totalCompletedTasks})`
+								: `Mostrar Completados (${totalCompletedTasks})`
+						}
 						variant="secondary"
 						size="md"
 					/>
