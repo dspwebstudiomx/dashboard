@@ -348,7 +348,7 @@ const ProjectTasksTable = ({
 			)}
 
 			{project.tasks && project.tasks.length > 0 && (
-				<div className="overflow-x-auto my-8 hidden">
+				<div className="overflow-x-auto my-8">
 					<GanttChart
 						tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
 					/>

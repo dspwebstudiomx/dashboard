@@ -22,7 +22,8 @@ const GanttChart = ({ tasks, onTaskClick }) => {
 		setTaskList(updatedTasks);
 	};
 	return (
-		<div className="gantt-chart-container">
+		<div className="gantt-chart-container mt-20">
+			<h2 className="text-2xl font-semibold">Diagrama de Gantt</h2>
 			<div className="view-mode-controls flex justify-end mb-2 gap-4">
 				<button
 					className="rounded-full px-4 py-1 shadow-3xl bg-gray-100 border border-gray-300"
@@ -55,16 +56,8 @@ const GanttChart = ({ tasks, onTaskClick }) => {
 					console.log('Fecha cambiada:', task, start, end);
 				}}
 				locale="es"
-				listCellWidth="0" // Ocultar celdas de la lista
-				nameCellWidth="0" // Ocultar celdas de nombres
-				taskNameWidth="0" // Ocultar nombres de tareas
-				columnWidth={viewMode === ViewMode.Day ? 60 : viewMode === ViewMode.Week ? 100 : 300} // Ajustar ancho de columna según el modo de vista
+				columnWidth={viewMode === ViewMode.Day ? 100 : viewMode === ViewMode.Week ? 120 : 300} // Ajustar ancho de columna según el modo de vista
 				barFill={60}
-				taskListWidth="0" // Ocultar lista de tareas
-				taskListCellWidth="0" // Ocultar celdas de la lista de tareas
-				taskListCellHeight="0" // Ocultar altura de las celdas
-				taskListCellPadding="0" // Eliminar padding de las celdas
-				taskListCellBorderRadius="0" // Eliminar bordes redondeados
 			/>
 		</div>
 	);
