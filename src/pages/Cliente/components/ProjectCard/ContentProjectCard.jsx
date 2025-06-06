@@ -65,9 +65,9 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 									<span key={task.id || idx} className="block text-pretty first-letter:uppercase">
 										<MdKeyboardArrowRight
 											className={`inline mr-1 ${
-												project.priority === 'Alta'
+												task.priority === 'Alta'
 													? 'text-red-500'
-													: project.priority === 'Media'
+													: task.priority === 'Media'
 													? 'text-yellow-500'
 													: 'text-green-500'
 											}`}

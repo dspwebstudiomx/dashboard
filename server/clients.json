@@ -89,14 +89,14 @@
             "clientId": 1745897285167,
             "projectId": 1749147630013,
             "title": "Sincronizar que muestre los totales y subtotales",
-            "description": "Sincronizar que muestre los totales y subtotales en el ProjectForm para crear o editar Proyectos\n\n- Se ajustaron los parámetros para que se sincronizara.",
+            "description": "Sincronizar que muestre los totales y subtotales en el ProjectForm para crear o editar Proyectos\n\n- Se ajustaron los parámetros para que se sincronizara.\n- Quedó resuelta la tarea.",
             "startDate": "2025-06-05",
             "dueDate": "2025-06-06",
-            "priority": "Media",
-            "totalProgress": 67,
-            "status": "En Proceso",
+            "priority": "Baja",
+            "totalProgress": 100,
+            "status": "Completado",
             "createdAt": "2025-06-05T18:21:36.639Z",
-            "updatedAt": "2025-06-06T00:00:59.410Z"
+            "updatedAt": "2025-06-06T15:58:31.721Z"
           },
           {
             "taskId": 1749148046443,
@@ -111,6 +111,20 @@
             "status": "Nuevo",
             "createdAt": "2025-06-05T18:28:54.103Z",
             "updatedAt": "2025-06-05T18:28:54.103Z"
+          },
+          {
+            "taskId": 1749224945464,
+            "clientId": 1745897285167,
+            "projectId": 1749147630013,
+            "title": "Ajustar el modal",
+            "description": "Está mal en el ancho del modal en dispositivos. Específicamente en \"Crear nueva tarea\"",
+            "startDate": "2025-06-06",
+            "dueDate": "2025-06-06",
+            "priority": "Alta",
+            "totalProgress": 0,
+            "status": "Nuevo",
+            "createdAt": "2025-06-06T15:52:54.487Z",
+            "updatedAt": "2025-06-06T15:52:54.487Z"
           }
         ],
         "id": 1749147630013,
