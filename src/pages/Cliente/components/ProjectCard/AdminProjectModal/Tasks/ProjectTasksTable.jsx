@@ -127,6 +127,53 @@ const ProjectTasksTable = ({
 		return grouped;
 	};
 
+	const handleTaskDateChange = async (taskId, newStartDate, newEndDate) => {
+		try {
+			// Normaliza las fechas a UTC para evitar disparidades
+			const normalizedStartDate = new Date(newStartDate).toISOString();
+			const normalizedEndDate = new Date(newEndDate).toISOString();
+
+			// Realiza una solicitud PUT para actualizar las fechas directamente en el backend
+			const response = await fetch(
+				`http://localhost:5000/api/clients/${clientId}/projects/${
+					project.id || projectId
+				}/tasks/${taskId}`,
+				{
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						startDate: normalizedStartDate,
+						dueDate: normalizedEndDate,
+					}),
+				}
+			);
+
+			if (!response.ok) {
+				throw new Error('Error al actualizar las fechas en el servidor');
+			}
+
+			// Obtén los datos actualizados del servidor
+			const updatedTask = await response.json();
+
+			// Actualiza las tareas en el estado local con los datos actualizados del servidor
+			const updatedTasks = project.tasks.map((task) =>
+				(task.taskId || task.id) === taskId
+					? { ...task, startDate: updatedTask.startDate, dueDate: updatedTask.dueDate }
+					: task
+			);
+
+			// Llama a la función `onTasksChanged` para actualizar el estado del componente padre
+			if (onTasksChanged) {
+				onTasksChanged(updatedTasks);
+			}
+		} catch (error) {
+			console.error('Error al actualizar las fechas de la tarea:', error);
+			alert('Error al actualizar las fechas de la tarea');
+		}
+	};
+
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between my-12">
@@ -165,7 +212,7 @@ const ProjectTasksTable = ({
 					/>
 				</div>
 			</div>
-			<div className="overflow-x-auto rounded shadow text-sm">
+			<div className="overflow-x-auto rounded shadow text-sm ml-6">
 				<table className="min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>
@@ -310,6 +357,22 @@ const ProjectTasksTable = ({
 				<div className="overflow-x-auto my-8">
 					<GanttChart
 						tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
+						onTaskClick={(task) => {
+							// Si deseas abrir el modal solo al hacer clic en una tarea, puedes mantener esta lógica
+							handleEditTask(task);
+						}}
+						onDateChange={(task, start, end) => {
+							// Asegúrate de que `start` y `end` sean objetos Date válidos
+							if (start instanceof Date && end instanceof Date) {
+								handleTaskDateChange(
+									task.taskId || task.id,
+									start.toISOString(),
+									end.toISOString()
+								);
+							} else {
+								console.error('Las fechas proporcionadas no son válidas:', { start, end });
+							}
+						}}
 					/>
 				</div>
 			)}

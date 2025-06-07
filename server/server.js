@@ -420,6 +420,33 @@ app.delete("/api/clients/:clientId/projects/:projectId/tasks/:taskId", (req, res
   });
 });
 
+// Ejemplo en Node.js
+app.put('/api/clients/:clientId/projects/:projectId/tasks/:taskId', (req, res) => {
+  const { clientId, projectId, taskId } = req.params;
+  const { startDate, dueDate } = req.body;
+
+  // Carga el archivo clients.json
+  const clients = JSON.parse(fs.readFileSync('clients.json', 'utf-8'));
+
+  // Encuentra el cliente, proyecto y tarea
+  const client = clients.find((c) => c.id === clientId);
+  const project = client.projects.find((p) => p.id === projectId);
+  const task = project.tasks.find((t) => t.id === taskId);
+
+  if (task) {
+    // Actualiza las fechas
+    task.startDate = startDate;
+    task.dueDate = dueDate;
+
+    // Guarda los cambios en clients.json
+    fs.writeFileSync('clients.json', JSON.stringify(clients, null, 2));
+
+    res.json(task);
+  } else {
+    res.status(404).send('Tarea no encontrada');
+  }
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
