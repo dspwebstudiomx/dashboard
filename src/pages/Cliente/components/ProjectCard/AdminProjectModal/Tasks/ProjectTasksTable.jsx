@@ -212,7 +212,7 @@ const ProjectTasksTable = ({
 					/>
 				</div>
 			</div>
-			<div className="overflow-x-auto rounded shadow text-sm ml-6">
+			<div className="overflow-x-auto rounded shadow text-base ml-6 mt-20">
 				<table className="min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>
@@ -307,7 +307,7 @@ const ProjectTasksTable = ({
 													{task.status}
 												</span>
 											</td>
-											<td className="px-2 py-2 border-b text-center text-xs h-16">
+											<td className="px-2 py-2 border-b text-center text-base h-16">
 												<span className="font-semibold text-gray-600 dark:text-gray-100">
 													{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
 												</span>
