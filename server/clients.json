@@ -101,20 +101,6 @@
             "updatedAt": "2025-06-06T16:59:10.530Z"
           },
           {
-            "taskId": 1749228708460,
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "title": "Proyectos - Ajustar",
-            "description": "mover el texto y la tarjetas a la izquierda ml-12",
-            "startDate": "2025-06-06",
-            "dueDate": "2025-06-06",
-            "priority": "Baja",
-            "totalProgress": 45,
-            "status": "En Proceso",
-            "createdAt": "2025-06-06T16:52:39.403Z",
-            "updatedAt": "2025-06-07T18:29:27.841Z"
-          },
-          {
             "taskId": 1749234073289,
             "clientId": 1745897285167,
             "projectId": 1749147630013,
@@ -233,49 +219,7 @@
         "completed": false,
         "status": "",
         "totalProgress": "",
-        "tasks": [
-          {
-            "taskId": 1749359405513,
-            "clientId": 1745953383970,
-            "projectId": 1749359394741,
-            "title": "hola",
-            "description": "prueba - ",
-            "startDate": "2025-06-07",
-            "dueDate": "2025-06-14",
-            "priority": "Baja",
-            "totalProgress": 26,
-            "status": "En Proceso",
-            "createdAt": "2025-06-08T05:10:21.637Z",
-            "updatedAt": "2025-06-08T05:10:37.731Z"
-          },
-          {
-            "id": "service-1",
-            "title": "Tarea de servicio: Consultoría de Diseño Web",
-            "status": "Pendiente",
-            "priority": "Alta",
-            "startDate": "2025-06-08T05:19:58.968Z",
-            "dueDate": "2025-06-09T05:19:58.968Z",
-            "totalProgress": 0
-          },
-          {
-            "id": "service-2",
-            "title": "Tarea de servicio: Desarrollo Web",
-            "status": "Pendiente",
-            "priority": "Alta",
-            "startDate": "2025-06-08T05:19:58.968Z",
-            "dueDate": "2025-06-10T05:19:58.968Z",
-            "totalProgress": 0
-          },
-          {
-            "id": "service-3",
-            "title": "Tarea de servicio: Integración de APIs",
-            "status": "Pendiente",
-            "priority": "Alta",
-            "startDate": "2025-06-08T05:19:58.968Z",
-            "dueDate": "2025-06-11T05:19:58.968Z",
-            "totalProgress": 0
-          }
-        ],
+        "tasks": [],
         "id": 1749359394741,
         "costs": {
           "totalServices": 12000,
