@@ -53,11 +53,11 @@ const ProjectTasksTable = ({
 		}
 	};
 
-	const handleAutoGenerateTasks = () => {
+	const handleAutoGenerateTasks = async () => {
 		const generatedTasks = [];
 
-		// Generar tareas basadas en secciones
-		if (project.sections && Array.isArray(project.sections)) {
+		// Generar tareas basadas en sections y services
+		if (Array.isArray(project.sections)) {
 			project.sections.forEach((section, index) => {
 				const sectionName = typeof section === 'string' ? section : section.name;
 				generatedTasks.push({
@@ -72,8 +72,7 @@ const ProjectTasksTable = ({
 			});
 		}
 
-		// Generar tareas basadas en servicios
-		if (project.services && Array.isArray(project.services)) {
+		if (Array.isArray(project.services)) {
 			project.services.forEach((service, index) => {
 				const serviceName = typeof service === 'string' ? service : service.name;
 				generatedTasks.push({
@@ -88,13 +87,32 @@ const ProjectTasksTable = ({
 			});
 		}
 
-		// Verifica que project.tasks sea un array válido
-		if (Array.isArray(project.tasks)) {
-			if (onTasksChanged) {
-				onTasksChanged([...project.tasks, ...generatedTasks]);
+		try {
+			const response = await fetch(
+				`http://localhost:5000/api/clients/${clientId}/projects/${project.id || projectId}/tasks`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(generatedTasks),
+				}
+			);
+
+			if (!response.ok) {
+				throw new Error('Error al guardar las tareas en el servidor');
 			}
-		} else {
-			console.error('project.tasks no es un array válido');
+
+			const result = await response.json();
+			console.log('Tareas guardadas en el servidor:', result.tasks);
+
+			// Actualiza el estado local con las tareas guardadas
+			if (onTasksChanged) {
+				onTasksChanged(result.tasks);
+			}
+		} catch (error) {
+			console.error('Error al guardar las tareas:', error);
+			alert('Error al guardar las tareas');
 		}
 	};
 

@@ -192,7 +192,9 @@
     "phoneNumber": "+52 443 520 0593",
     "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
     "company": "EasyLav",
-    "project": "Sitio Web - EasyLav",
+    "project": [
+      "prueba"
+    ],
     "image": "/uploads/1749057988777-974404235.ico",
     "createdAt": "2025-05-15",
     "updatedAt": "2025-05-15",
@@ -215,7 +217,77 @@
         "priority": "Medium"
       }
     ],
-    "projects": []
+    "projects": [
+      {
+        "title": "prueba",
+        "description": "pruena",
+        "services": [
+          "Consultoría de Diseño Web",
+          "Desarrollo Web",
+          "Integración de APIs"
+        ],
+        "sections": [],
+        "startDate": "2025-06-07",
+        "dueDate": "2025-06-21",
+        "priority": "Alta",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "tasks": [
+          {
+            "taskId": 1749359405513,
+            "clientId": 1745953383970,
+            "projectId": 1749359394741,
+            "title": "hola",
+            "description": "prueba - ",
+            "startDate": "2025-06-07",
+            "dueDate": "2025-06-14",
+            "priority": "Baja",
+            "totalProgress": 26,
+            "status": "En Proceso",
+            "createdAt": "2025-06-08T05:10:21.637Z",
+            "updatedAt": "2025-06-08T05:10:37.731Z"
+          },
+          {
+            "id": "service-1",
+            "title": "Tarea de servicio: Consultoría de Diseño Web",
+            "status": "Pendiente",
+            "priority": "Alta",
+            "startDate": "2025-06-08T05:19:58.968Z",
+            "dueDate": "2025-06-09T05:19:58.968Z",
+            "totalProgress": 0
+          },
+          {
+            "id": "service-2",
+            "title": "Tarea de servicio: Desarrollo Web",
+            "status": "Pendiente",
+            "priority": "Alta",
+            "startDate": "2025-06-08T05:19:58.968Z",
+            "dueDate": "2025-06-10T05:19:58.968Z",
+            "totalProgress": 0
+          },
+          {
+            "id": "service-3",
+            "title": "Tarea de servicio: Integración de APIs",
+            "status": "Pendiente",
+            "priority": "Alta",
+            "startDate": "2025-06-08T05:19:58.968Z",
+            "dueDate": "2025-06-11T05:19:58.968Z",
+            "totalProgress": 0
+          }
+        ],
+        "id": 1749359394741,
+        "costs": {
+          "totalServices": 12000,
+          "totalSections": 0,
+          "subtotalCost": 12000,
+          "ivaTax": 1920,
+          "isrTax": 192,
+          "totalCost": 14112,
+          "descuento": 0
+        }
+      }
+    ]
   },
   {
     "id": 1746509316001,
