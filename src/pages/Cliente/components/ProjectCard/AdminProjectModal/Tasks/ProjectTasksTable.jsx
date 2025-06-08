@@ -15,8 +15,7 @@ const ProjectTasksTable = ({
 }) => {
 	const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 	const [selectedTask, setSelectedTask] = useState(null);
-	const [showCompletedTasks, setShowCompletedTasks] = useState(true); // Estado para controlar la visibilidad de tareas completadas
-
+	const [showCompletedTasks, setShowCompletedTasks] = useState(false);
 	// Calcula el total de tareas completadas
 	const totalCompletedTasks = (project.tasks || []).filter(
 		(task) => task.status === 'Completado'
@@ -55,30 +54,47 @@ const ProjectTasksTable = ({
 	};
 
 	const handleAutoGenerateTasks = () => {
-		const generatedTasks = [
-			{
-				id: '1',
-				title: 'Tarea generada 1',
-				status: 'En Proceso',
-				priority: 'Alta',
-				startDate: new Date().toISOString(),
-				dueDate: new Date(Date.now() + 86400000).toISOString(), // +1 día
-				totalProgress: 0,
-			},
-			{
-				id: '2',
-				title: 'Tarea generada 2',
-				status: 'Pendiente',
-				priority: 'Media',
-				startDate: new Date().toISOString(),
-				dueDate: new Date(Date.now() + 172800000).toISOString(), // +2 días
-				totalProgress: 0,
-			},
-		];
+		const generatedTasks = [];
 
-		// Simula agregar las tareas al proyecto
-		if (onTasksChanged) {
-			onTasksChanged([...project.tasks, ...generatedTasks]);
+		// Generar tareas basadas en secciones
+		if (project.sections && Array.isArray(project.sections)) {
+			project.sections.forEach((section, index) => {
+				const sectionName = typeof section === 'string' ? section : section.name;
+				generatedTasks.push({
+					id: `section-${index + 1}`,
+					title: `Tarea de sección: ${sectionName}`,
+					status: 'Pendiente',
+					priority: 'Media',
+					startDate: new Date().toISOString(),
+					dueDate: new Date(Date.now() + (index + 1) * 86400000).toISOString(),
+					totalProgress: 0,
+				});
+			});
+		}
+
+		// Generar tareas basadas en servicios
+		if (project.services && Array.isArray(project.services)) {
+			project.services.forEach((service, index) => {
+				const serviceName = typeof service === 'string' ? service : service.name;
+				generatedTasks.push({
+					id: `service-${index + 1}`,
+					title: `Tarea de servicio: ${serviceName}`,
+					status: 'Pendiente',
+					priority: 'Alta',
+					startDate: new Date().toISOString(),
+					dueDate: new Date(Date.now() + (index + 1) * 86400000).toISOString(),
+					totalProgress: 0,
+				});
+			});
+		}
+
+		// Verifica que project.tasks sea un array válido
+		if (Array.isArray(project.tasks)) {
+			if (onTasksChanged) {
+				onTasksChanged([...project.tasks, ...generatedTasks]);
+			}
+		} else {
+			console.error('project.tasks no es un array válido');
 		}
 	};
 
@@ -212,7 +228,7 @@ const ProjectTasksTable = ({
 					/>
 				</div>
 			</div>
-			<div className="overflow-x-auto rounded shadow text-base ml-6 mt-20">
+			<div className="overflow-x-auto rounded shadow text-base mt-20 ml-6">
 				<table className="min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>

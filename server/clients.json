@@ -75,7 +75,11 @@
       {
         "title": "Tareas Personales",
         "description": "Usa esta tarjeta para tus pendientes",
-        "services": [],
+        "services": [
+          "Consultoría de Diseño Web",
+          "Consultoria SEO",
+          "Consultoría UX/UI"
+        ],
         "sections": [],
         "startDate": "2025-06-05",
         "dueDate": "2029-12-05",
@@ -171,12 +175,12 @@
         ],
         "id": 1749147630013,
         "costs": {
-          "totalServices": 0,
+          "totalServices": 6700,
           "totalSections": 0,
-          "subtotalCost": 0,
-          "ivaTax": 0,
-          "isrTax": 0,
-          "totalCost": 0
+          "subtotalCost": 6700,
+          "ivaTax": 1072,
+          "isrTax": 107.2,
+          "totalCost": 7879.2
         }
       }
     ]
