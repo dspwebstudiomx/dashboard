@@ -343,13 +343,13 @@ app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
     if (!project) {
       return res.status(404).json({ error: "Proyecto no encontrado" });
     }
-    // Permite recibir un arreglo de tareas o una sola tarea
-    const newTasks = Array.isArray(req.body) ? req.body : [req.body];
+
+    const newTask = req.body;
     project.tasks = project.tasks || [];
-    project.tasks.push(...newTasks);
+    project.tasks.push(newTask);
 
     writeClientsFile(clients, res, {
-      message: "Tareas creadas correctamente",
+      message: "Tarea creada correctamente",
       tasks: project.tasks,
     });
   });

@@ -22,8 +22,9 @@ const ProjectTasksTable = ({
 	).length;
 
 	const handleAddTask = () => {
-		setSelectedTask(null);
-		setIsTaskModalOpen(true);
+		// Limpia cualquier tarea seleccionada y abre el modal
+		setSelectedTask(null); // Asegúrate de que no haya datos de tarea seleccionados
+		setIsTaskModalOpen(true); // Abre el modal
 	};
 
 	const handleEditTask = (task) => {
@@ -56,34 +57,51 @@ const ProjectTasksTable = ({
 	const handleAutoGenerateTasks = async () => {
 		const generatedTasks = [];
 
-		// Generar tareas basadas en sections y services
 		if (Array.isArray(project.sections)) {
 			project.sections.forEach((section, index) => {
 				const sectionName = typeof section === 'string' ? section : section.name;
-				generatedTasks.push({
-					id: `section-${index + 1}`,
-					title: `Tarea de sección: ${sectionName}`,
-					status: 'Pendiente',
-					priority: 'Media',
-					startDate: new Date().toISOString(),
-					dueDate: new Date(Date.now() + (index + 1) * 86400000).toISOString(),
-					totalProgress: 0,
-				});
+				const taskTitle = `Tarea de sección: ${sectionName}`;
+
+				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
+
+				if (!taskExists) {
+					const startDate = new Date().toISOString().split('T')[0]; // Formato yyyy-MM-dd
+					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0]; // Formato yyyy-MM-dd
+
+					generatedTasks.push({
+						taskId: `${clientId}-sec-${index + 1}`,
+						title: taskTitle,
+						status: 'Pendiente',
+						priority: 'Media',
+						startDate,
+						dueDate,
+						totalProgress: 0,
+					});
+				}
 			});
 		}
 
 		if (Array.isArray(project.services)) {
 			project.services.forEach((service, index) => {
 				const serviceName = typeof service === 'string' ? service : service.name;
-				generatedTasks.push({
-					id: `service-${index + 1}`,
-					title: `Tarea de servicio: ${serviceName}`,
-					status: 'Pendiente',
-					priority: 'Alta',
-					startDate: new Date().toISOString(),
-					dueDate: new Date(Date.now() + (index + 1) * 86400000).toISOString(),
-					totalProgress: 0,
-				});
+				const taskTitle = `Tarea de servicio: ${serviceName}`;
+
+				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
+
+				if (!taskExists) {
+					const startDate = new Date().toISOString().split('T')[0]; // Formato yyyy-MM-dd
+					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0]; // Formato yyyy-MM-dd
+
+					generatedTasks.push({
+						taskId: `${clientId}-srv-${index + 1}`,
+						title: taskTitle,
+						status: 'Pendiente',
+						priority: 'Alta',
+						startDate,
+						dueDate,
+						totalProgress: 0,
+					});
+				}
 			});
 		}
 
@@ -106,7 +124,6 @@ const ProjectTasksTable = ({
 			const result = await response.json();
 			console.log('Tareas guardadas en el servidor:', result.tasks);
 
-			// Actualiza el estado local con las tareas guardadas
 			if (onTasksChanged) {
 				onTasksChanged(result.tasks);
 			}
@@ -163,11 +180,9 @@ const ProjectTasksTable = ({
 
 	const handleTaskDateChange = async (taskId, newStartDate, newEndDate) => {
 		try {
-			// Normaliza las fechas a UTC para evitar disparidades
-			const normalizedStartDate = new Date(newStartDate).toISOString();
-			const normalizedEndDate = new Date(newEndDate).toISOString();
+			const normalizedStartDate = new Date(newStartDate).toISOString(); // Mantén el formato completo
+			const normalizedEndDate = new Date(newEndDate).toISOString(); // Mantén el formato completo
 
-			// Realiza una solicitud PUT para actualizar las fechas directamente en el backend
 			const response = await fetch(
 				`http://localhost:5000/api/clients/${clientId}/projects/${
 					project.id || projectId
@@ -188,17 +203,14 @@ const ProjectTasksTable = ({
 				throw new Error('Error al actualizar las fechas en el servidor');
 			}
 
-			// Obtén los datos actualizados del servidor
 			const updatedTask = await response.json();
 
-			// Actualiza las tareas en el estado local con los datos actualizados del servidor
 			const updatedTasks = project.tasks.map((task) =>
 				(task.taskId || task.id) === taskId
 					? { ...task, startDate: updatedTask.startDate, dueDate: updatedTask.dueDate }
 					: task
 			);
 
-			// Llama a la función `onTasksChanged` para actualizar el estado del componente padre
 			if (onTasksChanged) {
 				onTasksChanged(updatedTasks);
 			}
@@ -312,10 +324,26 @@ const ProjectTasksTable = ({
 														: ''
 												}`}
 											>
-												{task.startDate}
+												{task.startDate
+													? new Date(task.startDate).toLocaleString('es-ES', {
+															year: 'numeric',
+															month: '2-digit',
+															day: '2-digit',
+															hour: '2-digit',
+															minute: '2-digit',
+													  })
+													: 'No disponible'}
 											</td>
 											<td className="px-2 py-2 border-b text-center text-xs w-20">
-												{task.dueDate}
+												{task.dueDate
+													? new Date(task.dueDate).toLocaleString('es-ES', {
+															year: 'numeric',
+															month: '2-digit',
+															day: '2-digit',
+															hour: '2-digit',
+															minute: '2-digit',
+													  })
+													: 'No disponible'}
 											</td>
 											<td className="px-2 py-2 border-b text-center text-xs">
 												{task.updatedAt

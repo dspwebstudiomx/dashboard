@@ -42,7 +42,27 @@ const ProjectTaskForm = ({
 				...initialData,
 				clientId: initialData.clientId || clientId,
 				projectId: initialData.projectId || projectId,
+				startDate: initialData.startDate
+					? new Date(initialData.startDate).toISOString().slice(0, 16) // Formato yyyy-MM-ddTHH:mm
+					: '',
+				dueDate: initialData.dueDate
+					? new Date(initialData.dueDate).toISOString().slice(0, 16) // Formato yyyy-MM-ddTHH:mm
+					: '',
 			}));
+		} else {
+			// Inicializa una nueva tarea solo si es necesario
+			setTask({
+				taskId: `${clientId}-task-${Date.now()}`,
+				clientId,
+				projectId,
+				title: '',
+				description: '',
+				startDate: '',
+				dueDate: '',
+				priority: 'Baja',
+				totalProgress: 0,
+				status: 'Nuevo',
+			});
 		}
 	}, [initialData, clientId, projectId]);
 
@@ -83,15 +103,22 @@ const ProjectTaskForm = ({
 			return;
 		}
 		try {
+			const updatedTask = {
+				...task,
+				startDate: new Date(task.startDate).toISOString(),
+				dueDate: new Date(task.dueDate).toISOString(),
+				updatedAt: new Date().toISOString(),
+			};
+
+			if (!updatedTask.taskId) {
+				throw new Error('El ID de la tarea es inválido.');
+			}
+
 			if (initialData && initialData.taskId) {
-				const updatedTask = {
-					...task,
-					updatedAt: new Date().toISOString(),
-				};
 				await updateTask(initialData.taskId, updatedTask);
 				alert('Tarea actualizada correctamente');
 			} else {
-				await createTask(task);
+				await createTask(updatedTask);
 				alert('Tarea creada correctamente');
 			}
 			onClose();
@@ -107,7 +134,7 @@ const ProjectTaskForm = ({
 		<Modal
 			isOpen={isOpen}
 			onClose={onClose}
-			title={initialData ? 'Actualizar Tarea' : 'Crear Nueva Tarea'}
+			title={initialData && initialData.taskId ? 'Actualizar Tarea' : 'Crear Nueva Tarea'}
 			className="flex items-center justify-center"
 		>
 			<form
@@ -162,7 +189,7 @@ const ProjectTaskForm = ({
 						</div>
 						<input
 							name="startDate"
-							type="date"
+							type="datetime-local"
 							value={task.startDate}
 							onChange={handleChange}
 							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -177,7 +204,7 @@ const ProjectTaskForm = ({
 						</div>
 						<input
 							name="dueDate"
-							type="date"
+							type="datetime-local"
 							value={task.dueDate}
 							onChange={handleChange}
 							className="flex-1 border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -250,7 +277,7 @@ const ProjectTaskForm = ({
 					<Button
 						variant="primary"
 						type="submit"
-						text={initialData ? 'Actualizar' : 'Crear'}
+						text={initialData && initialData.taskId ? 'Actualizar' : 'Crear'}
 						icon={FaCheckCircle}
 					/>
 				</div>
