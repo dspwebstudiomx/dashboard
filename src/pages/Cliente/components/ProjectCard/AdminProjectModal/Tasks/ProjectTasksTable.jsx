@@ -369,7 +369,7 @@ const ProjectTasksTable = ({
 												{task.description || 'Sin descripción, favor de llenarla.'}
 											</td>
 											<td
-												className={`px-2 py-2 border-b border-gray-800 dark:border-gray-100 text-center text-sm w-20 ${
+												className={`px-2 py-2 border-b border-gray-800 dark:border-gray-100 text-center text-sm w-32 whitespace-nowrap ${
 													task.startDate &&
 													new Date(task.startDate) <= new Date(new Date().toDateString()) &&
 													(task.totalProgress ?? 0) < 100
@@ -387,7 +387,7 @@ const ProjectTasksTable = ({
 													  })
 													: 'No disponible'}
 											</td>
-											<td className="px-2 py-2 border-b text-center text-xs w-20">
+											<td className="px-2 py-2 border-b text-center text-xs w-32 whitespace-nowrap">
 												{task.dueDate
 													? new Date(task.dueDate).toLocaleString('es-ES', {
 															year: 'numeric',
@@ -398,7 +398,7 @@ const ProjectTasksTable = ({
 													  })
 													: 'No disponible'}
 											</td>
-											<td className="px-2 py-2 border-b text-center text-xs">
+											<td className="px-2 py-2 border-b text-center text-xs w-32 whitespace-nowrap">
 												{task.updatedAt
 													? new Date(task.updatedAt).toLocaleString('es-ES', {
 															year: 'numeric',
