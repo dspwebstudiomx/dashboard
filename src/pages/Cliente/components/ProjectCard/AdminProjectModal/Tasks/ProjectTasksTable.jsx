@@ -316,7 +316,7 @@ const ProjectTasksTable = ({
 				<table className="min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>
-							<th className="px-2 py-2 border-b text-left w-24">ID</th>
+							<th className="px-2 py-2 border-b text-left w-24">Ticket ID</th>
 							<th className="px-2 py-2 border-b text-left w-12">Prioridad</th>
 							<th className="px-2 py-2 border-b text-left">Descripción</th>
 							<th className="px-2 py-2 border-b text-center w-28">Inicio</th>
