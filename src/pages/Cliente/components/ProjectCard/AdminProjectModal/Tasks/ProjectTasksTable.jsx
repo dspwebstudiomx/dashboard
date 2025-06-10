@@ -162,7 +162,7 @@ const ProjectTasksTable = ({
 
 		try {
 			const response = await fetch(
-				`http://localhost:5000/api/clients/${clientId}/projects/${project.id || projectId}/tasks`,
+				`http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks`,
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -240,9 +240,7 @@ const ProjectTasksTable = ({
 			const normalizedEndDate = new Date(newEndDate).toISOString(); // Mantén el formato completo
 
 			const response = await fetch(
-				`http://localhost:5000/api/clients/${clientId}/projects/${
-					project.id || projectId
-				}/tasks/${taskId}`,
+				`http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks/${taskId}`,
 				{
 					method: 'PUT',
 					headers: {
