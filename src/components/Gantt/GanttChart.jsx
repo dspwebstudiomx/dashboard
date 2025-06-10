@@ -3,9 +3,12 @@ import { Gantt, ViewMode } from 'gantt-task-react';
 import 'gantt-task-react/dist/index.css';
 import { mapTasksToGantt } from './ganttUtils';
 
-const GanttChart = ({ tasks, onTaskClick, onDateChange }) => {
+const GanttChart = ({ tasks, onTaskClick, onDateChange, clientId, projectId, taskId }) => {
 	const [viewMode, setViewMode] = useState(ViewMode.Day); // Cambiar a ViewMode.Day
-	const [taskList, setTaskList] = useState(mapTasksToGantt(tasks));
+	const [taskList, setTaskList] = useState(() => {
+		// Asegúrate de que tasks esté definido y contenga datos válidos
+		return mapTasksToGantt(tasks || []);
+	});
 
 	const handleTaskClick = (task) => {
 		if (onTaskClick) {
@@ -54,13 +57,69 @@ const GanttChart = ({ tasks, onTaskClick, onDateChange }) => {
 					viewMode={viewMode}
 					onClick={handleTaskClick}
 					onTaskChange={handleTaskChange}
-					onDateChange={(task, start, end) => {
-						if (onDateChange) {
-							onDateChange(task, start, end);
+					onDateChange={async (task, start, end) => {
+						try {
+							// Validar que los valores no sean nulos o indefinidos
+							if (!start || !end) {
+								console.error('Fechas no proporcionadas:', { start, end });
+								throw new Error('Las fechas proporcionadas no son válidas');
+							}
+
+							// Convertir las fechas si no son objetos Date
+							if (!(start instanceof Date)) {
+								start = new Date(start);
+							}
+							if (!(end instanceof Date)) {
+								end = new Date(end);
+							}
+
+							// Validar que las fechas sean válidas
+							if (isNaN(start) || isNaN(end)) {
+								console.error('Fechas inválidas después de la conversión:', { start, end });
+								throw new Error('Las fechas proporcionadas no son válidas');
+							}
+
+							const response = await fetch(
+								`http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks/${taskId}`,
+								{
+									method: 'PUT',
+									headers: { 'Content-Type': 'application/json' },
+									body: JSON.stringify({
+										startDate: start.toISOString(),
+										dueDate: end.toISOString(),
+									}),
+								}
+							);
+
+							if (!response.ok) {
+								console.error('Error en la respuesta del servidor:', response.statusText);
+								throw new Error('Error al actualizar las fechas en el servidor');
+							}
+
+							const updatedTask = await response.json();
+
+							// Actualiza el estado local
+							const updatedTasks = taskList.map((t) =>
+								t.id === updatedTask.id
+									? {
+											...t,
+											start: new Date(updatedTask.startDate),
+											end: new Date(updatedTask.dueDate),
+									  }
+									: t
+							);
+							setTaskList(updatedTasks);
+
+							if (onDateChange) {
+								onDateChange(task, start, end);
+							}
+						} catch (error) {
+							console.error('Error al actualizar las fechas:', error);
+							alert('Error al actualizar las fechas');
 						}
 					}}
-					locale="es"
-					columnWidth={viewMode === ViewMode.Day ? 100 : viewMode === ViewMode.Week ? 120 : 300} // Ajustar ancho de columna según el modo de vista
+					locale="es-MX"
+					columnWidth={viewMode === ViewMode.Day ? 60 : viewMode === ViewMode.Week ? 120 : 300}
 					barFill={60}
 				/>
 			</div>

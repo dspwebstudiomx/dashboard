@@ -426,25 +426,47 @@ app.put('/api/clients/:clientId/projects/:projectId/tasks/:taskId', (req, res) =
   const { clientId, projectId, taskId } = req.params;
   const { startDate, dueDate } = req.body;
 
-  // Carga el archivo clients.json
-  const clients = JSON.parse(fs.readFileSync('clients.json', 'utf-8'));
+  try {
+    // Carga el archivo clients.json
+    const clients = JSON.parse(fs.readFileSync(CLIENTS_FILE, 'utf-8'));
 
-  // Encuentra el cliente, proyecto y tarea
-  const client = clients.find((c) => c.id === clientId);
-  const project = client.projects.find((p) => p.id === projectId);
-  const task = project.tasks.find((t) => t.id === taskId);
+    // Encuentra el cliente
+    const client = clients.find((c) => String(c.id) === String(clientId));
+    if (!client) {
+      return res.status(404).json({ error: 'Cliente no encontrado' });
+    }
 
-  if (task) {
+    // Encuentra el proyecto
+    const project = client.projects.find((p) => String(p.id) === String(projectId));
+    if (!project) {
+      return res.status(404).json({ error: 'Proyecto no encontrado' });
+    }
+
+    // Encuentra la tarea
+    const task = project.tasks.find((t) => String(t.taskId) === String(taskId));
+    if (!task) {
+      return res.status(404).json({ error: 'Tarea no encontrada' });
+    }
+
+    // Validar las fechas
+    const newStartDate = new Date(startDate);
+    const newDueDate = new Date(dueDate);
+    if (isNaN(newStartDate) || isNaN(newDueDate)) {
+      return res.status(400).json({ error: 'Fechas inválidas' });
+    }
+
     // Actualiza las fechas
-    task.startDate = startDate;
-    task.dueDate = dueDate;
+    task.startDate = newStartDate.toISOString();
+    task.dueDate = newDueDate.toISOString();
+    task.updatedAt = new Date().toISOString();
 
     // Guarda los cambios en clients.json
-    fs.writeFileSync('clients.json', JSON.stringify(clients, null, 2));
+    fs.writeFileSync(CLIENTS_FILE, JSON.stringify(clients, null, 2));
 
-    res.json(task);
-  } else {
-    res.status(404).send('Tarea no encontrada');
+    res.status(200).json({ message: 'Tarea actualizada correctamente', task });
+  } catch (error) {
+    console.error('Error al actualizar la tarea:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 });
 

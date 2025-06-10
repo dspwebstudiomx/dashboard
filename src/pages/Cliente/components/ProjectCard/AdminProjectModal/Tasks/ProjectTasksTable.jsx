@@ -243,19 +243,14 @@ const ProjectTasksTable = ({
 
 	const handleTaskDateChange = async (taskId, newStartDate, newEndDate) => {
 		try {
-			const normalizedStartDate = new Date(newStartDate).toISOString(); // Mantén el formato completo
-			const normalizedEndDate = new Date(newEndDate).toISOString(); // Mantén el formato completo
-
 			const response = await fetch(
 				`http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks/${taskId}`,
 				{
 					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json',
-					},
+					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
-						startDate: normalizedStartDate,
-						dueDate: normalizedEndDate,
+						startDate: newStartDate,
+						dueDate: newEndDate,
 					}),
 				}
 			);
@@ -479,6 +474,8 @@ const ProjectTasksTable = ({
 			{project.tasks && project.tasks.length > 0 && (
 				<div className="overflow-x-auto my-8">
 					<GanttChart
+						clientId={clientId}
+						projectId={projectId}
 						tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
 						onTaskClick={(task) => {
 							// Si deseas abrir el modal solo al hacer clic en una tarea, puedes mantener esta lógica
@@ -487,11 +484,7 @@ const ProjectTasksTable = ({
 						onDateChange={(task, start, end) => {
 							// Asegúrate de que `start` y `end` sean objetos Date válidos
 							if (start instanceof Date && end instanceof Date) {
-								handleTaskDateChange(
-									task.taskId || task.id,
-									start.toISOString(),
-									end.toISOString()
-								);
+								handleTaskDateChange(task.taskId, start.toISOString(), end.toISOString());
 							} else {
 								console.error('Las fechas proporcionadas no son válidas:', { start, end });
 							}

@@ -1,10 +1,10 @@
 /**
  * Convierte un arreglo de tareas de tu backend al formato de gantt-task-react
- * @param {Array} tareasOriginales
+ * @param {Array} tasks
  * @returns {Array}
  */
-export function mapTasksToGantt(tareasOriginales) {
-  return (tareasOriginales || [])
+export function mapTasksToGantt(tasks) {
+  return (tasks || [])
     .filter(
       (task) => {
         if (!task.startDate || !task.dueDate) return false;
@@ -19,14 +19,8 @@ export function mapTasksToGantt(tareasOriginales) {
       name: task.title,
       start: new Date(task.startDate),
       end: new Date(task.dueDate),
-      type: 'task',
       progress: task.totalProgress || 0,
-      dependencies: '',
-      styles: {
-        progressColor: '#2b7fff',
-        progressSelectedColor: '#dbeafe',
-        progressPendingColor: '#dbeafe',
-      },
+      type: 'task',
     }));
 }
 
