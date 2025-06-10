@@ -194,6 +194,21 @@ const ProjectTasksTable = ({
 		const sectionMap = {};
 		const serviceMap = {};
 
+		// Primero, procesa los servicios
+		if (project.services && Array.isArray(project.services)) {
+			project.services.forEach((service) => {
+				const serviceName = typeof service === 'string' ? service : service.name;
+				const serviceTasks = (project.tasks || [])
+					.filter((t) => t.title?.toLowerCase().includes(`servicio: ${serviceName}`.toLowerCase()))
+					.filter((t) => showCompletedTasks || t.status !== 'Completado'); // Filtrar tareas completadas
+				if (serviceTasks.length > 0) {
+					grouped.push({ type: 'service', name: serviceName, tasks: serviceTasks });
+					serviceTasks.forEach((t) => (serviceMap[t.taskId || t.id] = true));
+				}
+			});
+		}
+
+		// Luego, procesa las secciones
 		if (project.sections && Array.isArray(project.sections)) {
 			project.sections.forEach((section) => {
 				const sectionName = typeof section === 'string' ? section : section.name;
@@ -207,23 +222,7 @@ const ProjectTasksTable = ({
 			});
 		}
 
-		if (project.services && Array.isArray(project.services)) {
-			project.services.forEach((service) => {
-				const serviceName = typeof service === 'string' ? service : service.name;
-				const serviceTasks = (project.tasks || [])
-					.filter(
-						(t) =>
-							!sectionMap[t.taskId || t.id] &&
-							t.title?.toLowerCase().includes(`servicio: ${serviceName}`.toLowerCase())
-					)
-					.filter((t) => showCompletedTasks || t.status !== 'Completado'); // Filtrar tareas completadas
-				if (serviceTasks.length > 0) {
-					grouped.push({ type: 'service', name: serviceName, tasks: serviceTasks });
-					serviceTasks.forEach((t) => (serviceMap[t.taskId || t.id] = true));
-				}
-			});
-		}
-
+		// Finalmente, agrega las tareas que no pertenecen ni a servicios ni a secciones
 		const otherTasks = (project.tasks || [])
 			.filter((task) => !sectionMap[task.taskId || task.id] && !serviceMap[task.taskId || task.id])
 			.filter((t) => showCompletedTasks || t.status !== 'Completado'); // Filtrar tareas completadas

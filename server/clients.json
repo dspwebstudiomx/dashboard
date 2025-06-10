@@ -312,6 +312,19 @@
             "startDate": "2025-06-10",
             "dueDate": "2025-06-15",
             "totalProgress": 0
+          },
+          {
+            "clientId": 1745953383970,
+            "projectId": 1749359394741,
+            "taskId": "1749359394741-task-1",
+            "title": "Test",
+            "status": "Completado",
+            "priority": "Media",
+            "startDate": "2025-06-10T12:00:00.000Z",
+            "dueDate": "2025-06-11T12:00:00.000Z",
+            "totalProgress": 100,
+            "description": "prueba de generación de tarea",
+            "updatedAt": "2025-06-10T19:22:11.509Z"
           }
         ],
         "id": 1749359394741,
