@@ -164,8 +164,8 @@
             "title": "Sección: Equipo",
             "status": "Pendiente",
             "priority": "Media",
-            "startDate": "2025-06-10",
-            "dueDate": "2025-06-11",
+            "startDate": "2025-06-11",
+            "dueDate": "2025-06-12",
             "totalProgress": 0
           },
           {
@@ -175,8 +175,8 @@
             "title": "Sección: Política de Cookies",
             "status": "Pendiente",
             "priority": "Media",
-            "startDate": "2025-06-10",
-            "dueDate": "2025-06-12",
+            "startDate": "2025-06-11",
+            "dueDate": "2025-06-13",
             "totalProgress": 0
           },
           {
@@ -186,8 +186,8 @@
             "title": "Servicio: Desarrollo Web",
             "status": "Pendiente",
             "priority": "Alta",
-            "startDate": "2025-06-10",
-            "dueDate": "2025-06-11",
+            "startDate": "2025-06-11",
+            "dueDate": "2025-06-12",
             "totalProgress": 0
           }
         ],

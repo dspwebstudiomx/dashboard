@@ -116,8 +116,10 @@ const ProjectTasksTable = ({
 				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
 
 				if (!taskExists) {
-					const startDate = new Date().toISOString().split('T')[0];
-					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0];
+					// Fecha de inicio: día siguiente en formato ISO (YYYY-MM-DD)
+					const startDate = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+					// Fecha de término: día siguiente + índice en formato ISO (YYYY-MM-DD)
+					const dueDate = new Date(Date.now() + (index + 2) * 86400000).toISOString().split('T')[0];
 
 					newTasks.push({
 						clientId,
@@ -142,8 +144,10 @@ const ProjectTasksTable = ({
 				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
 
 				if (!taskExists) {
-					const startDate = new Date().toISOString().split('T')[0];
-					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0];
+					// Fecha de inicio: día siguiente en formato ISO (YYYY-MM-DD)
+					const startDate = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+					// Fecha de término: día siguiente + índice en formato ISO (YYYY-MM-DD)
+					const dueDate = new Date(Date.now() + (index + 2) * 86400000).toISOString().split('T')[0];
 
 					newTasks.push({
 						clientId,
@@ -159,6 +163,9 @@ const ProjectTasksTable = ({
 				}
 			});
 		}
+
+		// Ordena las tareas por fecha de inicio
+		newTasks.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
 
 		try {
 			const response = await fetch(
@@ -311,7 +318,7 @@ const ProjectTasksTable = ({
 					/>
 				</div>
 			</div>
-			<div className="overflow-x-auto rounded shadow text-base mt-20 ml-6">
+			<div className="overflow-x-auto rounded shadow text-base mt-20 ml-6 p-4">
 				<table className="min-w-full bg-white dark:bg-gray-800">
 					<thead>
 						<tr>
@@ -347,12 +354,10 @@ const ProjectTasksTable = ({
 											key={task.taskId || task.id || `${groupIndex}-${Math.random()}`}
 											className="hover:bg-gray-100 dark:hover:bg-gray-700 h-16"
 										>
-											<td className="px-2 py-2 border-b text-xs truncate">
-												{task.taskId || task.id}
-											</td>
-											<td className="px-2 py-2 border-b text-xs text-center w-12">
+											<td className="px-2 py-2 text-xs truncate">{task.taskId || task.id}</td>
+											<td className="px-2 py-2 text-xs text-center">
 												<span
-													className={`inline-block w-4 h-4 rounded-full ${
+													className={`inline-block w-5 h-5 rounded-full ${
 														task.priority === 'Alta'
 															? 'bg-red-500'
 															: task.priority === 'Media'
@@ -363,13 +368,13 @@ const ProjectTasksTable = ({
 												></span>
 											</td>
 											<td
-												className="p-2 py-3 border-b first-letter:uppercase truncate text-sm text-wrap"
+												className="p-2 py-3 first-letter:uppercase truncate text-sm text-wrap"
 												style={{ width: '25%' }}
 											>
 												{task.description || 'Sin descripción, favor de llenarla.'}
 											</td>
 											<td
-												className={`px-2 py-2 border-b border-gray-800 dark:border-gray-100 text-center text-sm w-32 whitespace-nowrap ${
+												className={`px-2 py-2 text-center text-sm w-32 whitespace-nowrap ${
 													task.startDate &&
 													new Date(task.startDate) <= new Date(new Date().toDateString()) &&
 													(task.totalProgress ?? 0) < 100
@@ -378,7 +383,7 @@ const ProjectTasksTable = ({
 												}`}
 											>
 												{task.startDate
-													? new Date(task.startDate).toLocaleString('es-ES', {
+													? new Date(task.startDate).toLocaleString('es-MX', {
 															year: 'numeric',
 															month: '2-digit',
 															day: '2-digit',
@@ -387,9 +392,9 @@ const ProjectTasksTable = ({
 													  })
 													: 'No disponible'}
 											</td>
-											<td className="px-2 py-2 border-b text-center text-xs w-32 whitespace-nowrap">
+											<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
 												{task.dueDate
-													? new Date(task.dueDate).toLocaleString('es-ES', {
+													? new Date(task.dueDate).toLocaleString('es-MX', {
 															year: 'numeric',
 															month: '2-digit',
 															day: '2-digit',
@@ -398,9 +403,9 @@ const ProjectTasksTable = ({
 													  })
 													: 'No disponible'}
 											</td>
-											<td className="px-2 py-2 border-b text-center text-xs w-32 whitespace-nowrap">
+											<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
 												{task.updatedAt
-													? new Date(task.updatedAt).toLocaleString('es-ES', {
+													? new Date(task.updatedAt).toLocaleString('es-MX', {
 															year: 'numeric',
 															month: '2-digit',
 															day: '2-digit',
@@ -409,25 +414,27 @@ const ProjectTasksTable = ({
 													  })
 													: 'No disponible'}
 											</td>
-											<td className="px-2 py-2 border-b text-center h-16">
+											<td className="px-2 py-2 text-center h-20">
 												<span
 													className={`px-2 py-1 text-xs font-semibold rounded-full ${
 														task.status === 'Completado'
 															? 'bg-green-100 text-green-500 border border-green-500 w-30'
 															: task.status === 'En Proceso'
 															? 'bg-yellow-100 text-yellow-600 border border-yellow-500 px-3'
-															: 'bg-blue-200 text-blue-600 border border-blue-500 w-30 px-6 py-1'
+															: task.status === 'Pendiente'
+															? 'bg-gray-100 text-gray-600 border border-gray-500 w-28 px-4 py-1'
+															: 'bg-blue-100 text-blue-600 border border-blue-500 w-30 px-6 py-1'
 													}`}
 												>
 													{task.status}
 												</span>
 											</td>
-											<td className="px-2 py-2 border-b text-center text-base h-16">
+											<td className="px-2 py-2 text-center text-base h-20">
 												<span className="font-semibold text-gray-600 dark:text-gray-100">
 													{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
 												</span>
 											</td>
-											<td className="px-2 py-2 border-b flex items-center justify-center gap-1 h-16">
+											<td className="px-2 py-2 flex items-center justify-center gap-1 h-20">
 												<button
 													className="text-blue-600 hover:text-blue-800 transition-colors mr-1"
 													onClick={() => handleEditTask(task)}
