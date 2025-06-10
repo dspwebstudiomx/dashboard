@@ -116,9 +116,7 @@ const ProjectTasksTable = ({
 				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
 
 				if (!taskExists) {
-					// Fecha de inicio: día siguiente en formato ISO (YYYY-MM-DD)
 					const startDate = new Date(Date.now() + 86400000).toISOString().split('T')[0];
-					// Fecha de término: día siguiente + índice en formato ISO (YYYY-MM-DD)
 					const dueDate = new Date(Date.now() + (index + 2) * 86400000).toISOString().split('T')[0];
 
 					newTasks.push({
@@ -144,9 +142,7 @@ const ProjectTasksTable = ({
 				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
 
 				if (!taskExists) {
-					// Fecha de inicio: día siguiente en formato ISO (YYYY-MM-DD)
 					const startDate = new Date(Date.now() + 86400000).toISOString().split('T')[0];
-					// Fecha de término: día siguiente + índice en formato ISO (YYYY-MM-DD)
 					const dueDate = new Date(Date.now() + (index + 2) * 86400000).toISOString().split('T')[0];
 
 					newTasks.push({
@@ -162,6 +158,11 @@ const ProjectTasksTable = ({
 					});
 				}
 			});
+		}
+
+		if (newTasks.length === 0) {
+			alert('Todas las tareas solicitadas ya existen.');
+			return;
 		}
 
 		// Ordena las tareas por fecha de inicio
@@ -359,7 +360,7 @@ const ProjectTasksTable = ({
 												<span
 													className={`inline-block w-5 h-5 rounded-full ${
 														task.priority === 'Alta'
-															? 'bg-red-500'
+															? 'bg-red-500 border-red-600 border'
 															: task.priority === 'Media'
 															? 'bg-yellow-500 border-yellow-600 border'
 															: 'bg-green-500 border-green-600 border'
