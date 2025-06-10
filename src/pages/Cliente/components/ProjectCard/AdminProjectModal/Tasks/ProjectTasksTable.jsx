@@ -21,10 +21,63 @@ const ProjectTasksTable = ({
 		(task) => task.status === 'Completado'
 	).length;
 
-	const handleAddTask = () => {
-		// Limpia cualquier tarea seleccionada y abre el modal
-		setSelectedTask(null); // Asegúrate de que no haya datos de tarea seleccionados
-		setIsTaskModalOpen(true); // Abre el modal
+	const handleAddTask = async () => {
+		// Filtra las tareas que contienen "task" en el taskId o title
+		const taskCount = (project.tasks || []).filter(
+			(task) =>
+				(typeof task.taskId === 'string' && task.taskId.includes('task')) ||
+				(typeof task.title === 'string' && task.title.includes('task'))
+		).length;
+
+		// Si no hay tareas con "task", comienza el contador en 1
+		const newTaskNumber = taskCount === 0 ? 1 : taskCount + 1;
+
+		// Genera un título único con el número calculado
+		const newTaskTitle = `Nueva Tarea ${newTaskNumber}`;
+		const newTaskId = `${projectId}-task-${newTaskNumber}`; // Usa el número de tarea como parte del ID
+
+		// Nueva tarea a enviar al servidor
+		const newTask = {
+			clientId,
+			projectId,
+			taskId: newTaskId,
+			title: newTaskTitle,
+			status: 'Pendiente',
+			priority: 'Media',
+			startDate: new Date().toISOString().split('T')[0],
+			dueDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+			totalProgress: 0,
+		};
+
+		try {
+			// Envía la nueva tarea al servidor
+			const response = await fetch(
+				`http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks`,
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(newTask),
+				}
+			);
+
+			if (!response.ok) {
+				throw new Error('Error al crear la nueva tarea en el servidor');
+			}
+
+			const createdTask = await response.json();
+
+			// Actualiza las tareas locales
+			if (onTasksChanged) {
+				onTasksChanged([...project.tasks, createdTask]);
+			}
+
+			// Abre el modal con la nueva tarea
+			setSelectedTask(createdTask);
+			setIsTaskModalOpen(true);
+		} catch (error) {
+			console.error('Error al crear la nueva tarea:', error);
+			alert('Error al crear la nueva tarea');
+		}
 	};
 
 	const handleEditTask = (task) => {
@@ -41,9 +94,7 @@ const ProjectTasksTable = ({
 		if (window.confirm(`¿Estás seguro de que deseas eliminar la tarea "${task.title}"?`)) {
 			try {
 				await fetch(
-					`http://localhost:5000/api/clients/${clientId}/projects/${
-						project.id || projectId
-					}/tasks/${task.taskId || task.id}`,
+					`http://localhost:5000/api/clients/${clientId}/projects/${projectId}/tasks/${task.taskId}`,
 					{ method: 'DELETE' }
 				);
 				if (onTasksChanged) onTasksChanged();
@@ -55,21 +106,23 @@ const ProjectTasksTable = ({
 	};
 
 	const handleAutoGenerateTasks = async () => {
-		const generatedTasks = [];
+		const newTasks = [];
 
-		if (Array.isArray(project.sections)) {
+		if (project.sections) {
 			project.sections.forEach((section, index) => {
 				const sectionName = typeof section === 'string' ? section : section.name;
-				const taskTitle = `Tarea de sección: ${sectionName}`;
+				const taskTitle = `Sección: ${sectionName}`;
 
 				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
 
 				if (!taskExists) {
-					const startDate = new Date().toISOString().split('T')[0]; // Formato yyyy-MM-dd
-					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0]; // Formato yyyy-MM-dd
+					const startDate = new Date().toISOString().split('T')[0];
+					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0];
 
-					generatedTasks.push({
-						taskId: `${clientId}-sec-${index + 1}`,
+					newTasks.push({
+						clientId,
+						projectId,
+						taskId: `${projectId}-sec-${index + 1}`,
 						title: taskTitle,
 						status: 'Pendiente',
 						priority: 'Media',
@@ -81,19 +134,21 @@ const ProjectTasksTable = ({
 			});
 		}
 
-		if (Array.isArray(project.services)) {
+		if (project.services) {
 			project.services.forEach((service, index) => {
 				const serviceName = typeof service === 'string' ? service : service.name;
-				const taskTitle = `Tarea de servicio: ${serviceName}`;
+				const taskTitle = `Servicio: ${serviceName}`;
 
 				const taskExists = (project.tasks || []).some((t) => t.title === taskTitle);
 
 				if (!taskExists) {
-					const startDate = new Date().toISOString().split('T')[0]; // Formato yyyy-MM-dd
-					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0]; // Formato yyyy-MM-dd
+					const startDate = new Date().toISOString().split('T')[0];
+					const dueDate = new Date(Date.now() + (index + 1) * 86400000).toISOString().split('T')[0];
 
-					generatedTasks.push({
-						taskId: `${clientId}-srv-${index + 1}`,
+					newTasks.push({
+						clientId,
+						projectId,
+						taskId: `${projectId}-srv-${index + 1}`,
 						title: taskTitle,
 						status: 'Pendiente',
 						priority: 'Alta',
@@ -110,10 +165,8 @@ const ProjectTasksTable = ({
 				`http://localhost:5000/api/clients/${clientId}/projects/${project.id || projectId}/tasks`,
 				{
 					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(generatedTasks),
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(newTasks),
 				}
 			);
 
@@ -124,8 +177,11 @@ const ProjectTasksTable = ({
 			const result = await response.json();
 			console.log('Tareas guardadas en el servidor:', result.tasks);
 
+			// Actualiza el estado local con las tareas existentes más las nuevas
+			project.tasks = [...(project.tasks || []), ...newTasks];
+
 			if (onTasksChanged) {
-				onTasksChanged(result.tasks);
+				onTasksChanged(project.tasks);
 			}
 		} catch (error) {
 			console.error('Error al guardar las tareas:', error);
@@ -264,7 +320,7 @@ const ProjectTasksTable = ({
 						<tr>
 							<th className="px-2 py-2 border-b text-left w-24">ID</th>
 							<th className="px-2 py-2 border-b text-left w-12">Prioridad</th>
-							<th className="px-2 py-2 border-b text-left">Título</th>
+							<th className="px-2 py-2 border-b text-left">Descripción</th>
 							<th className="px-2 py-2 border-b text-center w-28">Inicio</th>
 							<th className="px-2 py-2 border-b text-center w-28">Término</th>
 							<th className="px-2 py-2 border-b text-center w-40">Actualización</th>
@@ -275,8 +331,8 @@ const ProjectTasksTable = ({
 					</thead>
 					<tbody>
 						{project.tasks && project.tasks.length > 0 ? (
-							getGroupedTasks().map((group) => (
-								<React.Fragment key={group.type + group.name}>
+							getGroupedTasks().map((group, groupIndex) => (
+								<React.Fragment key={`${group.type}-${group.name}-${groupIndex}`}>
 									<tr>
 										<td
 											colSpan={9}
@@ -291,7 +347,7 @@ const ProjectTasksTable = ({
 									</tr>
 									{group.tasks.map((task) => (
 										<tr
-											key={task.taskId || task.id}
+											key={task.taskId || task.id || `${groupIndex}-${Math.random()}`}
 											className="hover:bg-gray-100 dark:hover:bg-gray-700 h-16"
 										>
 											<td className="px-2 py-2 border-b text-xs truncate">
@@ -313,7 +369,7 @@ const ProjectTasksTable = ({
 												className="p-2 py-3 border-b first-letter:uppercase truncate text-sm text-wrap"
 												style={{ width: '25%' }}
 											>
-												{task.title}
+												{task.description || 'Sin descripción, favor de llenarla.'}
 											</td>
 											<td
 												className={`px-2 py-2 border-b border-gray-800 dark:border-gray-100 text-center text-sm w-20 ${

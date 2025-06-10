@@ -335,21 +335,22 @@ app.post("/api/clients/:clientId/projects/:projectId/tasks", (req, res) => {
     if (err || !Array.isArray(clients)) {
       return res.status(500).json({ error: "Error al leer el archivo de clientes" });
     }
+
     const client = clients.find((c) => String(c.id) === String(req.params.clientId));
     if (!client) {
       return res.status(404).json({ error: "Cliente no encontrado" });
     }
+
     const project = client.projects.find((p) => String(p.id) === String(req.params.projectId));
     if (!project) {
       return res.status(404).json({ error: "Proyecto no encontrado" });
     }
 
-    const newTask = req.body;
-    project.tasks = project.tasks || [];
-    project.tasks.push(newTask);
+    const newTasks = Array.isArray(req.body) ? req.body : [req.body]; // Asegúrate de que las tareas sean un array
+    project.tasks = [...(project.tasks || []), ...newTasks]; // Agrega las nuevas tareas al conjunto existente
 
     writeClientsFile(clients, res, {
-      message: "Tarea creada correctamente",
+      message: "Tareas agregadas correctamente",
       tasks: project.tasks,
     });
   });
@@ -420,7 +421,7 @@ app.delete("/api/clients/:clientId/projects/:projectId/tasks/:taskId", (req, res
   });
 });
 
-// Ejemplo en Node.js
+// Actualizar fechas de inicio y vencimiento de una tarea para Gantt Chart
 app.put('/api/clients/:clientId/projects/:projectId/tasks/:taskId', (req, res) => {
   const { clientId, projectId, taskId } = req.params;
   const { startDate, dueDate } = req.body;
