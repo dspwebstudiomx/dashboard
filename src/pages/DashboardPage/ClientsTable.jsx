@@ -3,6 +3,7 @@ import { FaEye } from 'react-icons/fa6';
 
 const ClientsTable = () => {
 	const [clients, setClients] = useState([]);
+	const [filteredClients, setFilteredClients] = useState([]); // Nuevo estado para clientes filtrados
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +19,7 @@ const ClientsTable = () => {
 				}
 				const data = await response.json();
 				setClients(data);
+				setFilteredClients(data); // Inicializar clientes filtrados
 			} catch (err) {
 				setError(err.message);
 			} finally {
@@ -41,7 +43,7 @@ const ClientsTable = () => {
 	const indexOfFirstClient = indexOfLastClient - clientsPerPage;
 
 	// Ordenar según el criterio seleccionado
-	const sortedClients = [...clients].sort((a, b) => {
+	const sortedClients = [...filteredClients].sort((a, b) => {
 		if (sortBy === 'fullName') {
 			const nameA = `${a.fullName} ${a.lastName} ${a.lastName2}`.toLowerCase();
 			const nameB = `${b.fullName} ${b.lastName} ${b.lastName2}`.toLowerCase();
@@ -57,7 +59,7 @@ const ClientsTable = () => {
 	const currentClients = sortedClients.slice(indexOfFirstClient, indexOfLastClient);
 
 	// Calcular el número total de páginas
-	const totalPages = Math.ceil(clients.length / clientsPerPage);
+	const totalPages = Math.ceil(filteredClients.length / clientsPerPage);
 
 	// Cambiar de página
 	const handlePageChange = (pageNumber) => {
@@ -75,12 +77,13 @@ const ClientsTable = () => {
 					className="px-3 py-1 border rounded"
 					onChange={(e) => {
 						const searchTerm = e.target.value.toLowerCase();
-						const filteredClients = clients.filter((client) =>
+						const filtered = clients.filter((client) =>
 							`${client.fullName} ${client.lastName} ${client.lastName2}`
 								.toLowerCase()
 								.includes(searchTerm)
 						);
-						setClients(filteredClients);
+						setFilteredClients(filtered);
+						setCurrentPage(1); // Reiniciar a la primera página
 					}}
 				/>
 			</div>
@@ -185,7 +188,7 @@ const ClientsTable = () => {
 						</button>
 					</div>
 					{/* Paginación al final de la fila */}
-					{clients.length > clientsPerPage && (
+					{filteredClients.length > clientsPerPage && (
 						<div id="paginación" className="flex ml-auto mt-4 md:mt-0">
 							{Array.from({ length: totalPages }, (_, index) => (
 								<button
