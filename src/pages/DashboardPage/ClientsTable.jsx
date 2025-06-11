@@ -76,14 +76,14 @@ const ClientsTable = () => {
 					placeholder="Buscar cliente..."
 					className="px-3 py-1 border rounded"
 					onChange={(e) => {
-						const searchTerm = e.target.value.toLowerCase();
+						const searchTerm = removeAccents(e.target.value.toLowerCase());
 						if (searchTerm === '') {
 							// Si el campo de búsqueda está vacío, mostrar todos los clientes
 							setFilteredClients(clients);
 						} else {
 							// Filtrar clientes según el término de búsqueda
 							const filtered = clients.filter((client) =>
-								`${client.fullName} ${client.lastName} ${client.lastName2}`
+								removeAccents(`${client.fullName} ${client.lastName} ${client.lastName2}`)
 									.toLowerCase()
 									.includes(searchTerm)
 							);
@@ -218,3 +218,8 @@ const ClientsTable = () => {
 };
 
 export default ClientsTable;
+
+// Función para eliminar acentos
+const removeAccents = (str) => {
+	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+};
