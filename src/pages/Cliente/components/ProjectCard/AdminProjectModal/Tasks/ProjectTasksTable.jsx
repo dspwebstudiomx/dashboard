@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import ProjectTaskForm from './ProjectTaskForm';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 import Button from '@components/Botones/Button';
@@ -201,7 +201,7 @@ const ProjectTasksTable = ({
 		}
 	};
 
-	const getGroupedTasks = () => {
+	const getGroupedTasks = useCallback(() => {
 		const grouped = [];
 		const sectionMap = {};
 		const serviceMap = {};
@@ -258,7 +258,7 @@ const ProjectTasksTable = ({
 		}
 
 		return grouped;
-	};
+	}, [project.services, project.sections, project.tasks, showCompletedTasks]);
 
 	// Actualiza el estado de collapsedGroups solo una vez, por ejemplo, en un efecto
 	React.useEffect(() => {
@@ -272,7 +272,7 @@ const ProjectTasksTable = ({
 			});
 			return updatedGroups;
 		});
-	}, [project.tasks]);
+	}, [getGroupedTasks]);
 
 	const handleTaskDateChange = async (taskId, newStartDate, newEndDate) => {
 		try {
