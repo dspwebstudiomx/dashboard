@@ -133,7 +133,13 @@ const ClientsTable = () => {
 											{client.fullName} {client.lastName} {client.lastName2}
 										</td>
 										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
-											{client.project}
+											{client.projects && client.projects.length > 0
+												? client.projects.map((project, index) => (
+														<div key={index} className="mb-1">
+															{project.title}
+														</div>
+												  ))
+												: 'Sin proyectos asignados'}
 										</td>
 										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
 											{client.email}
