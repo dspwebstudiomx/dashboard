@@ -99,7 +99,7 @@ const ProjectForm = ({
 						value={project.title}
 						onChange={onChange}
 						required
-						className="p-2 rounded border dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
+						className="p-2 rounded border"
 					/>
 				</div>
 				<div className="flex flex-col md:flex-row gap-4 justify-between">
@@ -115,7 +115,7 @@ const ProjectForm = ({
 								value={project.startDate}
 								onChange={onChange}
 								required
-								className="p-2 rounded border  dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
+								className="p-2 rounded border"
 							/>
 						</div>
 						<div className="flex flex-col gap-4">
@@ -129,7 +129,7 @@ const ProjectForm = ({
 								value={project.dueDate}
 								onChange={onChange}
 								required
-								className="p-2 rounded border  dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
+								className="p-2 rounded border"
 							/>
 						</div>
 					</div>
@@ -142,7 +142,7 @@ const ProjectForm = ({
 							name="priority"
 							value={project.priority}
 							onChange={onChange}
-							className="p-2 rounded border w-full  dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
+							className="p-2 rounded border w-full"
 						>
 							<option value="Alta">Alta</option>
 							<option value="Media">Media</option>
@@ -269,7 +269,8 @@ const ProjectForm = ({
 					value={project.description}
 					onChange={onChange}
 					required
-					className="p-4 md:p-6 rounded border min-h-[220px] dark:bg-gray-900 bg-gray-100 dark:text-gray-200"
+					rows={10}
+					className="p-4 md:p-6 rounded border"
 				/>
 			</div>
 			{/* Cupón y totales */}
@@ -282,7 +283,7 @@ const ProjectForm = ({
 							Código de cupón
 						</label>
 						<input
-							className="p-2 md:p-4 rounded border flex-1 h-12  dark:bg-gray-900 bg-gray-100 dark:text-gray-200 md:w-[320px]"
+							className="p-2 md:p-4 rounded border flex-1 h-12 md:w-[320px]"
 							type="text"
 							name="cupon"
 							value={cupon}
