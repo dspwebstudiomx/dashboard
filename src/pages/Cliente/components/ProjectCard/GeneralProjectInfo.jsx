@@ -70,8 +70,12 @@ const GeneralProjectInfo = ({
 						{/* Título y Prioridad */}
 						<div className="flex flex-col md:flex-row items-left gap-8 w-full md:w-auto md:mb-12">
 							{/* Título del proyecto */}
-							<h2 id="titulo-proyecto" className="md:text-3xl text-left md:text-center ml-6">
+							<h2
+								id="titulo-proyecto"
+								className="md:text-3xl text-left ml-6 flex flex-col font-semibold text-gray-800 dark:text-white"
+							>
 								{project.title}
+								<span className="text-base">ID: {project.id}</span>
 							</h2>
 							{/* Prioridad del proyecto */}
 							<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
