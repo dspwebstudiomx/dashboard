@@ -232,23 +232,11 @@
         "sections": [],
         "startDate": "2025-06-11",
         "dueDate": "2025-07-31",
-        "priority": "Media",
+        "priority": "Baja",
         "completed": false,
         "status": "",
         "totalProgress": "",
-        "tasks": [
-          {
-            "clientId": 1745953383970,
-            "projectId": 1749663893834,
-            "taskId": "1749663893834-task-1",
-            "title": "Nueva Tarea 1",
-            "status": "Pendiente",
-            "priority": "Media",
-            "startDate": "2025-06-11",
-            "dueDate": "2025-06-12",
-            "totalProgress": 0
-          }
-        ],
+        "tasks": [],
         "id": 1749663893834,
         "costs": {
           "totalServices": 0,
