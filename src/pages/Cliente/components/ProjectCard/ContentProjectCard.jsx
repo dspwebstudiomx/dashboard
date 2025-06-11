@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import {
+	MdKeyboardArrowRight,
+	MdKeyboardDoubleArrowLeft,
+	MdKeyboardDoubleArrowRight,
+} from 'react-icons/md';
 import ProjectDescriptionInfoCard from '../ProjectDescriptionInfoCard';
 import Priority from '../Priority';
 import TitleProjectCard from '@components/Texts/TitleProjectCard';
@@ -9,13 +13,24 @@ import CloseProjectMessaje from './CloseProjectMessaje';
 import { useProjectDescription } from '@hooks/useProjectDescription';
 import ProjectActionButtons from '../ProjectActionButtons';
 import AdminActionButton from '../AdminActionButton';
+import Button from '@components/Botones/Button';
 
 const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 	const [showFullDesc, setShowFullDesc] = useState(false);
 	const { isLong, short } = useProjectDescription(project.description);
+	const [currentPage, setCurrentPage] = useState(1);
+	const tasksPerPage = 4;
 
 	// Desestructuramos las acciones para usarlas fácilmente
 	const { isCompleted, onEdit, onDelete, handleCompleteClick, openAdminModal } = actions;
+
+	// Calcular tareas para la página actual
+	const totalTasks = project.tasks || [];
+	const totalPages = Math.ceil(totalTasks.length / tasksPerPage);
+	const paginatedTasks = totalTasks.slice(
+		(currentPage - 1) * tasksPerPage,
+		currentPage * tasksPerPage
+	);
 
 	return (
 		<article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between first-letter:uppercase">
@@ -40,7 +55,7 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 				</div>
 				<div className="flex flex-col gap-6">
 					{/* mostrar nombre Tareas generadas*/}
-					<div className="flex flex-col gap-4 first-letter:uppercase text-sm">
+					<div className="flex flex-col justify-between gap-4 first-letter:uppercase text-sm h-64 overflow-y-auto">
 						<div className="flex gap-3 items-center">
 							<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
 								Tareas generadas
@@ -54,14 +69,12 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 										: 'bg-green-500 border-green-600'
 								}`}
 							>
-								{project.tasks && project.tasks.length === 1
-									? `1`
-									: `${project.tasks ? project.tasks.length : 0}`}
+								{totalTasks.length}
 							</p>
 						</div>
 						<p className="text-gray-700 dark:text-gray-200 first-letter:uppercase text-base">
-							{project.tasks && project.tasks.length > 0 ? (
-								project.tasks
+							{paginatedTasks.length > 0 ? (
+								paginatedTasks
 									.sort((a, b) =>
 										a.status === 'Completado' ? 1 : b.status === 'Completado' ? -1 : 0
 									) // Ordena las tareas, colocando las completadas al final
@@ -92,6 +105,27 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 								<span>No hay tareas generadas</span>
 							)}
 						</p>
+						{/* Paginación */}
+						{totalPages > 1 && (
+							<div className="flex gap-2 mt-4">
+								{currentPage > 1 && (
+									<Button
+										onClick={() => setCurrentPage((prev) => prev - 1)}
+										text="Anterior"
+										icon={MdKeyboardDoubleArrowLeft}
+										size="sm"
+									/>
+								)}
+								{currentPage < totalPages && (
+									<Button
+										onClick={() => setCurrentPage((prev) => prev + 1)}
+										icon={MdKeyboardDoubleArrowRight}
+										text="Siguiente"
+										size="sm"
+									/>
+								)}
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
