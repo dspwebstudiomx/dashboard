@@ -253,9 +253,11 @@
             "title": "Sección: Equipo",
             "status": "Nuevo",
             "priority": "Baja",
-            "startDate": "2025-06-12",
-            "dueDate": "2025-06-13",
-            "totalProgress": 0
+            "startDate": "2025-06-12T06:00:00.000Z",
+            "dueDate": "2025-06-13T06:00:00.000Z",
+            "totalProgress": 0,
+            "description": "Estoy interesado en agregar una sección de equipo de trabajo a mi sitio web. Me gustaría que la presentación fuera moderna, visualmente atractiva y estructurada de manera que resalte la experiencia y roles de cada miembro del equipo. Es importante que el diseño mantenga coherencia con el resto del sitio y que facilite la navegación para los usuarios.\nAdemás, quisiera incluir fotos y descripciones breves de cada integrante, destacando sus habilidades y contribuciones clave. ¿Podrían ayudarme a definir el mejor enfoque para esta sección? También me gustaría conocer sus propuestas sobre estructura, estilo y optimización para SEO. ¡Gracias!\n",
+            "updatedAt": "2025-06-11T17:53:38.980Z"
           },
           {
             "clientId": 1745953383970,
@@ -264,22 +266,24 @@
             "title": "Sección: Preguntas Frecuentes",
             "status": "Nuevo",
             "priority": "Baja",
-            "startDate": "2025-06-12",
-            "dueDate": "2025-06-14",
-            "totalProgress": 0
+            "startDate": "2025-06-12T06:00:00.000Z",
+            "dueDate": "2025-06-14T06:00:00.000Z",
+            "totalProgress": 0,
+            "description": "Estoy interesado en agregar una sección de preguntas frecuentes a mi sitio web para mejorar la experiencia de los usuarios y reducir dudas recurrentes. Me gustaría que el diseño fuera intuitivo y organizado, con una estructura que facilite la navegación y permita encontrar respuestas rápidamente.",
+            "updatedAt": "2025-06-11T17:54:54.696Z"
           },
           {
             "clientId": 1745953383970,
             "projectId": 1749663893834,
             "taskId": "1749663893834-srv-1",
             "title": "Servicio: Consultoría de Diseño Web",
-            "status": "Nuevo",
+            "status": "Completado",
             "priority": "Baja",
-            "startDate": "2025-06-12T06:00:00.000Z",
-            "dueDate": "2025-06-13T06:00:00.000Z",
-            "totalProgress": 0,
+            "startDate": "2025-06-12T12:00:00.000Z",
+            "dueDate": "2025-06-13T12:00:00.000Z",
+            "totalProgress": 100,
             "description": "Estoy buscando una consultoría de diseño web que me ayude a mejorar la apariencia y funcionalidad de mi sitio. Necesito una estructura clara para la navegación, optimización para SEO y un diseño atractivo que refleje la identidad de mi negocio. Además, me interesa mejorar la velocidad de carga y la experiencia del usuario. ¿Podrías orientarme sobre cómo abordar estos aspectos?",
-            "updatedAt": "2025-06-11T17:47:09.531Z"
+            "updatedAt": "2025-06-11T18:02:34.651Z"
           },
           {
             "clientId": 1745953383970,
@@ -288,20 +292,11 @@
             "title": "Servicio: Desarrollo Web",
             "status": "Nuevo",
             "priority": "Baja",
-            "startDate": "2025-06-12",
-            "dueDate": "2025-06-14",
-            "totalProgress": 0
-          },
-          {
-            "clientId": 1745953383970,
-            "projectId": 1749663893834,
-            "taskId": "1749663893834-srv-3",
-            "title": "Servicio: Integración de APIs",
-            "status": "Nuevo",
-            "priority": "Baja",
-            "startDate": "2025-06-12",
-            "dueDate": "2025-06-15",
-            "totalProgress": 0
+            "startDate": "2025-06-12T06:00:00.000Z",
+            "dueDate": "2025-06-14T06:00:00.000Z",
+            "totalProgress": 0,
+            "description": "Hola, estoy buscando un servicio de desarrollo web que me ayude a crear un sitio moderno, optimizado y funcional. Me interesa que el diseño sea intuitivo, con una excelente experiencia de usuario y que esté optimizado para SEO. Además, necesito que la estructura sea escalable y que pueda integrar herramientas de análisis y gestión de contenido. ¿Podrían explicarme cómo trabajan y qué metodología utilizan para el desarrollo? Me gustaría conocer sus propuestas en cuanto a tecnologías, tiempos de entrega y costos. Gracias.\"",
+            "updatedAt": "2025-06-11T17:51:54.427Z"
           }
         ],
         "id": 1749663893834,

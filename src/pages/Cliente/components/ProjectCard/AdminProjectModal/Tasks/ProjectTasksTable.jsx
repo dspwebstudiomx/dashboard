@@ -19,6 +19,7 @@ const ProjectTasksTable = ({
 	const [collapsedGroups, setCollapsedGroups] = useState({
 		'Tareas Completadas': false, // Inicializa el grupo "Tareas Completadas" como expandido
 	}); // Estado para controlar grupos colapsados
+	const [isCollapsed, setIsCollapsed] = useState(false); // Estado para alternar entre colapsar y expandir
 	// Calcula el total de tareas completadas
 	const totalCompletedTasks = (project.tasks || []).filter(
 		(task) => task.status === 'Completado'
@@ -204,7 +205,7 @@ const ProjectTasksTable = ({
 		const grouped = [];
 		const sectionMap = {};
 		const serviceMap = {};
-		const completedMap = {}; // Mapa para registrar tareas completadas
+		const completedMap = {};
 
 		// Procesa los servicios
 		if (project.services && Array.isArray(project.services)) {
@@ -245,17 +246,33 @@ const ProjectTasksTable = ({
 			grouped.push({ type: 'other', name: 'Otras', tasks: otherTasks });
 		}
 
-		// Agrega el grupo de tareas completadas
-		const completedTasks = (project.tasks || [])
-			.filter((task) => task.status === 'Completado')
-			.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)); // Ordena por fecha de actualización
-		if (completedTasks.length > 0) {
-			grouped.push({ type: 'completed', name: 'Tareas Completadas', tasks: completedTasks });
-			completedTasks.forEach((t) => (completedMap[t.taskId || t.id] = true)); // Registra tareas completadas
+		// Agrega el grupo de tareas completadas si `showCompletedTasks` está activado
+		if (showCompletedTasks) {
+			const completedTasks = (project.tasks || [])
+				.filter((task) => task.status === 'Completado')
+				.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)); // Ordena por fecha de actualización
+			if (completedTasks.length > 0) {
+				grouped.push({ type: 'completed', name: 'Tareas Completadas', tasks: completedTasks });
+				completedTasks.forEach((t) => (completedMap[t.taskId || t.id] = true)); // Registra tareas completadas
+			}
 		}
 
 		return grouped;
 	};
+
+	// Actualiza el estado de collapsedGroups solo una vez, por ejemplo, en un efecto
+	React.useEffect(() => {
+		const allGroupNames = getGroupedTasks().map((group) => group.name);
+		setCollapsedGroups((prev) => {
+			const updatedGroups = { ...prev };
+			allGroupNames.forEach((name) => {
+				if (!(name in updatedGroups)) {
+					updatedGroups[name] = false; // Inicializa como expandido
+				}
+			});
+			return updatedGroups;
+		});
+	}, [project.tasks]);
 
 	const handleTaskDateChange = async (taskId, newStartDate, newEndDate) => {
 		try {
@@ -299,6 +316,17 @@ const ProjectTasksTable = ({
 		}));
 	};
 
+	const toggleAllGroups = () => {
+		setCollapsedGroups((prev) => {
+			const updatedGroups = {};
+			Object.keys(prev).forEach((groupName) => {
+				updatedGroups[groupName] = !isCollapsed;
+			});
+			return updatedGroups;
+		});
+		setIsCollapsed((prev) => !prev); // Alterna el estado
+	};
+
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between my-12">
@@ -332,6 +360,14 @@ const ProjectTasksTable = ({
 								? `Ocultar Completados (${totalCompletedTasks})`
 								: `Mostrar Completados (${totalCompletedTasks})`
 						}
+						variant="secondary"
+						size="md"
+					/>
+					<Button
+						id="toggle-all-groups-button"
+						aria-label="Colapsar/Expandir todos los grupos"
+						onClick={toggleAllGroups}
+						text={isCollapsed ? 'Expandir Todo' : 'Colapsar Todo'}
 						variant="secondary"
 						size="md"
 					/>
