@@ -124,8 +124,8 @@ const ProjectTasksTable = ({
 						projectId,
 						taskId: `${projectId}-sec-${index + 1}`,
 						title: taskTitle,
-						status: 'Pendiente',
-						priority: 'Media',
+						status: 'Nuevo',
+						priority: 'Baja',
 						startDate,
 						dueDate,
 						totalProgress: 0,
@@ -150,8 +150,8 @@ const ProjectTasksTable = ({
 						projectId,
 						taskId: `${projectId}-srv-${index + 1}`,
 						title: taskTitle,
-						status: 'Pendiente',
-						priority: 'Alta',
+						status: 'Nuevo',
+						priority: 'Baja',
 						startDate,
 						dueDate,
 						totalProgress: 0,
@@ -417,9 +417,11 @@ const ProjectTasksTable = ({
 															? 'bg-green-100 text-green-500 border border-green-500 w-30'
 															: task.status === 'En Proceso'
 															? 'bg-yellow-100 text-yellow-600 border border-yellow-500 px-3'
-															: task.status === 'Pendiente'
+															: task.status === 'Cancelado'
 															? 'bg-gray-100 text-gray-600 border border-gray-500 w-28 px-4 py-1'
-															: 'bg-blue-100 text-blue-600 border border-blue-500 w-30 px-6 py-1'
+															: task.status === 'Pendiente'
+															? 'bg-blue-100 text-blue-600 border border-blue-500 w-28 px-4 py-1'
+															: 'bg-transparent text-blue-600 border border-blue-500 w-28 px-6 py-1'
 													}`}
 												>
 													{task.status}

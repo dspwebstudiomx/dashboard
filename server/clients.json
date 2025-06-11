@@ -156,6 +156,19 @@
             "totalProgress": 0,
             "description": "Ajustar la altura automática de los botones de acciones en la tabla con el contenido de la descripción automáticamente.",
             "updatedAt": "2025-06-10T18:34:39.679Z"
+          },
+          {
+            "clientId": 1745897285167,
+            "projectId": 1749147630013,
+            "taskId": "1749147630013-task-3",
+            "title": "Revisar la creación de nueva tarea",
+            "status": "Nuevo",
+            "priority": "Media",
+            "startDate": "2025-06-11T18:00:00.000Z",
+            "dueDate": "2025-06-12T18:00:00.000Z",
+            "totalProgress": 0,
+            "description": "Revisar la creación de nueva tarea",
+            "updatedAt": "2025-06-11T01:20:46.436Z"
           }
         ],
         "id": 1749147630013,

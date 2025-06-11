@@ -262,6 +262,8 @@ const ProjectTaskForm = ({
 						<option value="Nuevo">Nuevo</option>
 						<option value="En Proceso">En Proceso</option>
 						<option value="Completado">Completado</option>
+						<option value="Pendiente">Pendiente</option>
+						<option value="Cancelado">Cancelado</option>
 					</select>
 				</label>
 
