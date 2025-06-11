@@ -395,7 +395,10 @@ const ProjectTasksTable = ({
 													className="p-2 py-3 first-letter:uppercase truncate text-sm text-wrap"
 													style={{ width: '25%' }}
 												>
-													{task.description || 'Sin descripción, favor de llenarla.'}
+													{task.description
+														? task.description.split(' ').slice(0, 15).join(' ') +
+														  (task.description.split(' ').length > 15 ? '...' : '')
+														: 'Sin descripción, favor de llenarla.'}
 												</td>
 												<td
 													className={`px-2 py-2 text-center text-sm w-32 whitespace-nowrap ${
