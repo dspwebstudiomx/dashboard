@@ -60,6 +60,7 @@ const ProjectForm = ({
 	setProject,
 	SERVICE_COSTS = {},
 	SECTION_COSTS = {},
+
 	subtotalCost = 0,
 	ivaTax = 0,
 	isrTax = 0,

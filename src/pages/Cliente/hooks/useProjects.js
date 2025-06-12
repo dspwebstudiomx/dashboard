@@ -46,8 +46,18 @@ const initialProject = () => ({
   completed: false,
   status: "",
   totalProgress: "",
+  costs: {
+    totalServices: 0,
+    totalSections: 0,
+    netPayable: 0,
+    baseRate: 0,
+    ivaTax: 0,
+    subtotal: 0,
+    ivaRetention: 0,
+    isrRetention: 0,
+    isrTax: 0,
+  },
   tasks: [],
-
 });
 
 export default function useProjects(selectedClient, onUpdateProjects) {
@@ -100,13 +110,46 @@ export default function useProjects(selectedClient, onUpdateProjects) {
           (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
         ),
         totalSections: (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0),
+        netPayable: (newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
           (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
-        ),
-        subtotalCost: subtotal, // <--- usa subtotal
-        ivaTax,
-        isrTax,
-        totalCost: total,       // <--- usa total
-        descuento,
+        ) - descuento,
+        baseRate: ((newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ) - descuento) * 0.95332923754846,
+        ivaTax: ((newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ) - descuento) * 0.16,
+        subtotal: ((newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ) - descuento) + ((newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ) - descuento) * 0.16,
+        ivaRetention: ((newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ) - descuento) * 0.10667,
+        isrRetention: ((newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ) - descuento) * 0.1,
+        isrTax: ((newProject.services || []).reduce(
+          (acc, service) => acc + (SERVICE_COSTS[service] || 0), 0
+        ) + (newProject.sections || []).reduce(
+          (acc, section) => acc + (SECTION_COSTS[section] || 0), 0
+        ) - descuento) * 0.1,
       }
     };
 
@@ -180,13 +223,16 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     setEditProject({
       ...initialProject(),
       ...project,
-      costs: project.costs || {
-        totalServices: 0,
-        totalSections: 0,
-        subtotalCost: 0,
-        ivaTax: 0,
-        isrTax: 0,
-        totalCost: 0,
+      costs: {
+        totalServices: project.costs?.totalServices || 0,
+        totalSections: project.costs?.totalSections || 0,
+        netPayable: project.costs?.netPayable || 0,
+        baseRate: project.costs?.baseRate || 0,
+        ivaTax: project.costs?.ivaTax || 0,
+        subtotal: project.costs?.subtotal || 0,
+        ivaRetention: project.costs?.ivaRetention || 0,
+        isrRetention: project.costs?.isrRetention || 0,
+        isrTax: project.costs?.isrTax || 0,
       }
     });
     setEditProjectId(project.id);
@@ -280,18 +326,30 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   };
 
   // Cálculos de costos y totales para newProject (crear)
-  const subtotal = (newProject.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
-    + (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
-  const ivaTax = subtotal * 0.16;
+  const totalServices = (newProject.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
+
+  const totalSections = (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
+  const netPayable = (totalServices + totalSections) - descuento;
+  const baseRate = netPayable * 0.95332923754846;
+  const ivaTax = baseRate * 0.16;
+  const subtotal = netPayable + ivaTax;
+  const ivaRetention = subtotal * 0.10667;
+  const isrRetention = subtotal * 0.1;
   const isrTax = ivaTax * 0.1;
-  const total = subtotal + ivaTax + isrTax - (subtotal * descuento) / 100;
+
 
   // Cálculos de costos y totales para editProject (editar)
-  const editSubtotal = (editProject?.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
-    + (editProject?.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
-  const editIvaTax = editSubtotal * 0.16;
+  const editTotalServicesSections = (editProject?.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
+
+  const editTotalSections = (editProject?.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
+  const editNetPayable = editTotalServicesSections + editTotalSections - descuento;
+  const editBaseRate = editNetPayable * 0.95332923754846;
+  const editIvaTax = editBaseRate * 0.16;
+  const editSubtotal = editNetPayable + editIvaTax;
+  const editIvaRetention = editSubtotal * 0.10667;
+  const editIsrRetention = editSubtotal * 0.1;
   const editIsrTax = editIvaTax * 0.1;
-  const editTotal = editSubtotal + editIvaTax + editIsrTax - (editSubtotal * descuento) / 100;
+
 
   return {
     showForm,
@@ -310,14 +368,23 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     setNewProject,
     SERVICE_COSTS,
     SECTION_COSTS,
-    subtotal,
+    totalServices,
+    totalSections,
+    netPayable,
+    baseRate,
     ivaTax,
+    subtotal,
+    ivaRetention,
+    isrRetention,
     isrTax,
-    total,
-    editSubtotal,
+    editTotalServicesSections,
+    editNetPayable,
+    editBaseRate,
     editIvaTax,
+    editSubtotal,
+    editIvaRetention,
+    editIsrRetention,
     editIsrTax,
-    editTotal,
     handleEditClick,
     cupon,
     setCupon,
