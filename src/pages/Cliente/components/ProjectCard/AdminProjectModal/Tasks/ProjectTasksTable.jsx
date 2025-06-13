@@ -436,15 +436,8 @@ const ProjectTasksTable = ({
 														  (task.description.split(' ').length > 15 ? '...' : '')
 														: 'Sin descripción, favor de llenarla.'}
 												</td>
-												<td
-													className={`px-2 py-2 text-center text-sm w-32 whitespace-nowrap ${
-														task.startDate &&
-														new Date(task.startDate) <= new Date(new Date().toDateString()) &&
-														(task.totalProgress ?? 0) < 100
-															? 'text-red-600 font-semibold dark:text-red-400'
-															: ''
-													}`}
-												>
+
+												<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
 													{task.startDate
 														? new Date(task.startDate).toLocaleString('es-MX', {
 																year: 'numeric',
@@ -455,7 +448,15 @@ const ProjectTasksTable = ({
 														  })
 														: 'No disponible'}
 												</td>
-												<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
+												<td
+													className={`px-2 py-2 text-center text-sm w-32 whitespace-nowrap ${
+														task.dueDate &&
+														new Date(task.dueDate) <= new Date(new Date().toDateString()) &&
+														(task.totalProgress ?? 0) < 100
+															? 'text-red-600 font-semibold dark:text-red-400'
+															: ''
+													}`}
+												>
 													{task.dueDate
 														? new Date(task.dueDate).toLocaleString('es-MX', {
 																year: 'numeric',
@@ -466,6 +467,7 @@ const ProjectTasksTable = ({
 														  })
 														: 'No disponible'}
 												</td>
+
 												<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
 													{task.updatedAt
 														? new Date(task.updatedAt).toLocaleString('es-MX', {

@@ -103,26 +103,26 @@
             "projectId": 1749147630013,
             "title": "Botones de editar y eliminar proyecto",
             "description": "Hacer que funcionen los botones de editar y eliminar proyecto desde GeneralProjectInfo",
-            "startDate": "2025-06-06T06:00:00.000Z",
-            "dueDate": "2025-06-07T06:00:00.000Z",
+            "startDate": "2025-06-16T18:00:00.000Z",
+            "dueDate": "2025-06-20T18:00:00.000Z",
             "priority": "Alta",
-            "totalProgress": 43,
-            "status": "Pendiente",
+            "totalProgress": 0,
+            "status": "Nuevo",
             "createdAt": "2025-06-05T18:28:54.103Z",
-            "updatedAt": "2025-06-11T01:26:00.307Z"
+            "updatedAt": "2025-06-13T22:54:38.062Z"
           },
           {
             "clientId": 1745897285167,
             "projectId": 1749147630013,
             "taskId": "1749147630013-task-2",
             "title": "Sincronizar fechas en el Diagrama de Gantt",
-            "status": "Pendiente",
+            "status": "Nuevo",
             "priority": "Baja",
-            "startDate": "2025-06-11T12:00:00.000Z",
-            "dueDate": "2025-06-12T12:00:00.000Z",
-            "totalProgress": 23,
+            "startDate": "2025-06-17T00:00:00.000Z",
+            "dueDate": "2025-06-21T00:00:00.000Z",
+            "totalProgress": 0,
             "description": "Sincronizar fechas en el Diagrama de Gantt con la tabla de las tareas del proyecto.",
-            "updatedAt": "2025-06-11T01:26:17.492Z"
+            "updatedAt": "2025-06-13T22:55:14.271Z"
           },
           {
             "taskId": "1749147630013-task-3",
@@ -157,13 +157,13 @@
             "projectId": 1749147630013,
             "taskId": "1749147630013-task-5",
             "title": "Ajustar la altura de los botones de acciones en la tabla",
-            "status": "Pendiente",
+            "status": "Completado",
             "priority": "Media",
-            "startDate": "2025-06-10T06:00:00.000Z",
-            "dueDate": "2025-06-11T06:00:00.000Z",
-            "totalProgress": 0,
+            "startDate": "2025-06-10T12:00:00.000Z",
+            "dueDate": "2025-06-13T12:00:00.000Z",
+            "totalProgress": 100,
             "description": "Ajustar la altura automática de los botones de acciones en la tabla con el contenido de la descripción automáticamente.",
-            "updatedAt": "2025-06-10T18:34:39.679Z"
+            "updatedAt": "2025-06-13T22:56:46.146Z"
           },
           {
             "clientId": 1745897285167,
@@ -172,11 +172,11 @@
             "title": "Revisar la creación de nueva tarea",
             "status": "Nuevo",
             "priority": "Media",
-            "startDate": "2025-06-11T18:00:00.000Z",
-            "dueDate": "2025-06-12T18:00:00.000Z",
+            "startDate": "2025-06-17T00:00:00.000Z",
+            "dueDate": "2025-06-21T00:00:00.000Z",
             "totalProgress": 0,
             "description": "Revisar la creación de nueva tarea",
-            "updatedAt": "2025-06-11T01:20:46.436Z"
+            "updatedAt": "2025-06-13T22:56:05.833Z"
           },
           {
             "clientId": 1745897285167,
