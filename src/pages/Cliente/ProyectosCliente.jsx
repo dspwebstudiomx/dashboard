@@ -28,7 +28,7 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 		subtotal,
 		ivaTax,
 		isrTax,
-		total,
+		netPayable,
 		editSubtotal,
 		editIvaTax,
 		editIsrTax,
@@ -76,10 +76,10 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 						onChange={editProjectId ? handleEditInputChange : handleInputChange}
 						SERVICE_COSTS={SERVICE_COSTS}
 						SECTION_COSTS={SECTION_COSTS}
-						subtotalCost={editProjectId ? editSubtotal : subtotal}
+						subtotal={editProjectId ? editSubtotal : subtotal}
 						ivaTax={editProjectId ? editIvaTax : ivaTax}
 						isrTax={editProjectId ? editIsrTax : isrTax}
-						totalCost={editProjectId ? editTotal : total}
+						netPayable={editProjectId ? editTotal : netPayable}
 						onSubmit={editProjectId ? handleEditProject : handleCreateProject}
 						// Puedes agregar aquí otras props necesarias
 					/>

@@ -1,27 +1,29 @@
 import React from 'react'
 
-export function FinancialCalculate(project, SERVICE_COSTS, SECTION_COSTS) {
-    const totalServicios = Array.isArray(project.services)
-        ? project.services.reduce(
-            (sum, servicio) => sum + (SERVICE_COSTS[servicio] || 0),
-            0
-        )
-        : 0;
-    const totalSecciones = Array.isArray(project.sections)
-        ? project.sections.reduce(
-            (sum, seccion) => sum + (SECTION_COSTS[seccion] || 0),
-            0
-        )
-        : 0;
-    const total = totalServicios + totalSecciones;
-    const impuestos = total * 0.16;
-    const totalConImpuestos = total + impuestos;
+export function FinancialCalculate(project, SERVICE_COSTS, SECTION_COSTS, discount) {
+  const totalServices = (project.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0);
+  const totalSections = (project.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
 
-    return {
-        totalServicios,
-        totalSecciones,
-        total,
-        impuestos,
-        totalConImpuestos
-    }
+  const validDiscount = typeof discount === 'number' && discount >= 0 ? discount : 0;
+
+  const netPayable = (totalServices + totalSections) - validDiscount;
+  const baseRate = netPayable / 0.95332923754846;
+  const ivaTax = baseRate * 0.16;
+  const subtotal = baseRate + ivaTax;
+  const ivaRetention = subtotal * 0.10667;
+  const isrRetention = subtotal * 0.1;
+  const isrTax = ivaTax * 0.1;
+
+  return {
+    totalServices,
+    totalSections,
+    netPayable: isNaN(netPayable) ? 0 : netPayable,
+    baseRate,
+    ivaTax,
+    subtotal,
+    ivaRetention,
+    isrRetention,
+    isrTax,
+    discount: validDiscount,
+  };
 }

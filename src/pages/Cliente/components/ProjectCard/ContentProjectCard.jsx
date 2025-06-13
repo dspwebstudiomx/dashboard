@@ -15,7 +15,7 @@ import ProjectActionButtons from '../ProjectActionButtons';
 import AdminActionButton from '../AdminActionButton';
 import Button from '@components/Botones/Button';
 
-const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
+const ContentProjectCard = ({ project, actions, netPayable }) => {
 	const [showFullDesc, setShowFullDesc] = useState(false);
 	const { isLong, short } = useProjectDescription(project.description);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -136,7 +136,7 @@ const ContentProjectCard = ({ project, actions, totalConImpuestos }) => {
 				<div className="flex flex-col gap-2 mt-4">
 					<ProjectCardDates project={project} isCompleted={isCompleted} />
 					<span className="h-4"></span>
-					<TotalCostProyectCard totalConImpuestos={totalConImpuestos} />
+					<TotalCostProyectCard netPayable={netPayable} />
 				</div>
 
 				{/* Botones de acción */}

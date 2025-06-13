@@ -14,8 +14,8 @@ const ProjectCard = ({
 	onEdit,
 	onDelete,
 }) => {
-	// Memoizar el cálculo de totalConImpuestos
-	const { totalConImpuestos } = useMemo(
+	// Memorizar el cálculo de netPayable para evitar cálculos innecesarios
+	const { netPayable } = useMemo(
 		() => FinancialCalculate(project, SERVICE_COSTS, SECTION_COSTS),
 		[project, SERVICE_COSTS, SECTION_COSTS]
 	);
@@ -42,11 +42,7 @@ const ProjectCard = ({
 			<LinePriorityCard project={project} />
 
 			{/* Contenido de la tarjeta */}
-			<ContentProjectCard
-				project={project}
-				actions={actions}
-				totalConImpuestos={totalConImpuestos}
-			/>
+			<ContentProjectCard project={project} actions={actions} netPayable={netPayable} />
 
 			{/* Modal de administración */}
 			<AdminProjectModal

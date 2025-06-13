@@ -316,14 +316,14 @@ app.patch("/api/clients/:clientId/projects/:projectId/completed", (req, res) => 
 app.get("/api/cupones/validar", (req, res) => {
   const { codigo } = req.query;
   const cupones = [
-    { codigo: "DESCUENTO10", descuento: 10, activo: true },
-    { codigo: "DESCUENTO20", descuento: 20, activo: true },
+    { codigo: "discount10", discount: 10, activo: true },
+    { codigo: "discount20", discount: 20, activo: true },
   ];
   const cupon = cupones.find(
     (c) => c.codigo === codigo?.toUpperCase() && c.activo
   );
   if (cupon) {
-    res.json({ valido: true, descuento: cupon.descuento });
+    res.json({ valido: true, discount: cupon.discount });
   } else {
     res.json({ valido: false });
   }

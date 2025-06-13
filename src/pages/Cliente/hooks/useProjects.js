@@ -69,9 +69,9 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   const [totalSections, setTotalSections] = useState(0);
 
 
-  // Estados para cupón y descuento
+  // Estados para cupón y discount
   const [cupon, setCupon] = useState('');
-  const [descuento, setDescuento] = useState(0);
+  const [discount, setdiscount] = useState(0);
   const [cuponMsg, setCuponMsg] = useState('');
 
 
@@ -81,14 +81,14 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     try {
       const res = await axios.get(`http://localhost:5000/api/cupones/validar?codigo=${cupon}`);
       if (res.data.valido) {
-        setDescuento(res.data.descuento);
-        setCuponMsg(`¡Cupón aplicado! ${res.data.descuento}% de descuento.`);
+        setdiscount(res.data.discount);
+        setCuponMsg(`¡Cupón aplicado! ${res.data.discount}% de discount.`);
       } else {
-        setDescuento(0);
+        setdiscount(0);
         setCuponMsg('Cupón inválido o expirado.');
       }
     } catch {
-      setDescuento(0);
+      setdiscount(0);
       setCuponMsg('Error al validar el cupón.');
     }
   };
@@ -109,7 +109,10 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const totalSections = (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
     setTotalSections(totalSections);
     // Calcula los costos
-    const netPayable = (totalServices + totalSections) - descuento;
+    const discount = newProject.cupon ? (totalServices + totalSections) * (discount / 100) :
+      0;
+    setdiscount(discount);
+    const netPayable = (totalServices + totalSections) - discount;
     const baseRate = netPayable / 0.95332923754846;
     const ivaTax = baseRate * 0.16;
     const subtotal = baseRate + ivaTax;
@@ -131,6 +134,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
         ivaRetention,
         isrRetention,
         isrTax,
+        discount
       }
     };
 
@@ -164,7 +168,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
       setNewProject(initialProject());
       setShowForm(false);
       setCupon('');
-      setDescuento(0);
+      setdiscount(0);
       setCuponMsg('');
     } catch (error) {
       console.error("Error al obtener o actualizar los clientes:", error);
@@ -234,8 +238,10 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     // Recalcula los costos por si se editaron servicios o secciones
     const editTotalServices = (editProject?.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
 
+    const discount = editProject.cupon ? (editTotalServices + totalSections) * (discount / 100) : 0;
+    setdiscount(discount);
     const editTotalSections = (editProject?.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
-    const editNetPayable = editTotalServices + editTotalSections - descuento;
+    const editNetPayable = editTotalServices + editTotalSections - discount;
     const editBaseRate = editNetPayable / 0.95332923754846;
     const editIvaTax = editBaseRate * 0.16;
     const editSubtotal = editBaseRate + editIvaTax;
@@ -330,8 +336,8 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     handleEditClick,
     cupon,
     setCupon,
-    descuento,
-    setDescuento,
+    discount,
+    setdiscount,
     cuponMsg,
     setCuponMsg,
     validarCupon,

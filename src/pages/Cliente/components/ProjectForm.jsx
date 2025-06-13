@@ -55,6 +55,16 @@ const ProjectForm = ({
 		startDate: '',
 		dueDate: '',
 		priority: 'Media',
+		costs: {
+			totalServices: 0,
+			totalSections: 0,
+			baseRate: 0,
+			ivaTax: 0,
+			subtotal: 0,
+			ivaRetention: 0,
+			isrRetention: 0,
+			netPayable: 0,
+		},
 	},
 	onChange,
 	onSubmit,
@@ -63,8 +73,8 @@ const ProjectForm = ({
 	SECTION_COSTS = {},
 	cupon,
 	setCupon,
-	descuento,
-	setDescuento,
+	discount,
+	setdiscount,
 	cuponMsg,
 	setCuponMsg,
 	validarCupon,
@@ -305,7 +315,7 @@ const ProjectForm = ({
 							type="button"
 							onClick={() => {
 								setCupon('');
-								setDescuento(0);
+								setdiscount(0);
 								setCuponMsg('');
 							}}
 							variant="secondary"
@@ -315,7 +325,7 @@ const ProjectForm = ({
 					</div>
 				</div>
 				{cuponMsg && (
-					<span className={descuento > 0 ? 'text-green-600' : 'text-red-500'}>{cuponMsg}</span>
+					<span className={discount > 0 ? 'text-green-600' : 'text-red-500'}>{cuponMsg}</span>
 				)}
 			</div>
 			{/* Totales */}
