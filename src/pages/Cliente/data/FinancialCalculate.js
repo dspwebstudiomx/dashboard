@@ -10,9 +10,9 @@ export function FinancialCalculate(project, SERVICE_COSTS, SECTION_COSTS, discou
   const baseRate = netPayable / 0.95332923754846;
   const ivaTax = baseRate * 0.16;
   const subtotal = baseRate + ivaTax;
-  const ivaRetention = subtotal * 0.10667;
-  const isrRetention = subtotal * 0.1;
-  const isrTax = ivaTax * 0.1;
+  const ivaRetention = baseRate * 0.10667;
+  const isrRetention = baseRate * 0.1;
+  const isrTax = baseRate * 0.1;
 
   return {
     totalServices,

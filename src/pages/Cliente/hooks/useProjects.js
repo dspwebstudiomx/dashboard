@@ -116,8 +116,8 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const baseRate = netPayable / 0.95332923754846;
     const ivaTax = baseRate * 0.16;
     const subtotal = baseRate + ivaTax;
-    const ivaRetention = subtotal * 0.10667;
-    const isrRetention = subtotal * 0.1;
+    const ivaRetention = baseRate * 0.10667;
+    const isrRetention = baseRate * 0.1;
     const isrTax = ivaTax * 0.1;
 
     // Incluye los costos en el objeto costs
@@ -245,8 +245,8 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const editBaseRate = editNetPayable / 0.95332923754846;
     const editIvaTax = editBaseRate * 0.16;
     const editSubtotal = editBaseRate + editIvaTax;
-    const editIvaRetention = editSubtotal * 0.10667;
-    const editIsrRetention = editSubtotal * 0.1;
+    const editIvaRetention = editBaseRate * 0.10667;
+    const editIsrRetention = editBaseRate * 0.1;
     const editIsrTax = editIvaTax * 0.1;
 
     // Actualiza los costos en el proyecto editado
