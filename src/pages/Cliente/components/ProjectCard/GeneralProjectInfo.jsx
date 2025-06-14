@@ -75,7 +75,7 @@ const GeneralProjectInfo = ({
 								className="md:text-3xl text-left ml-6 flex flex-col font-semibold text-gray-800 dark:text-white"
 							>
 								{project.title}
-								<span className="text-base md:ml-3 text-gray-400">ID: {project.id}</span>
+								<span className="text-base md:ml-3 text-gray-400">ID Proyecto: {project.id}</span>
 							</h2>
 							{/* Prioridad del proyecto */}
 							<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
