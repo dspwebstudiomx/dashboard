@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useClientContext } from '../@context/ClientContext';
 
-const ProjectTaskForm = ({ onSubmit }) => {
+const ProjectTaskForm = ({ onSubmit, openModal, taskId }) => {
 	const { selectedClient } = useClientContext();
 	const [taskName, setTaskName] = useState('');
 	const [taskDescription, setTaskDescription] = useState('');
+	const isEditing = Boolean(taskId);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -24,9 +25,19 @@ const ProjectTaskForm = ({ onSubmit }) => {
 		setTaskDescription('');
 	};
 
+	if (taskId) {
+		openModal('update', taskId);
+	} else {
+		openModal('create');
+	}
+
+	const modalTitle = isEditing ? 'Actualizar Tarea' : 'Crear Tarea';
+
 	return (
 		<form onSubmit={handleSubmit}>
-			<h3>Agregar Tarea para {selectedClient?.fullName || 'Cliente'}</h3>
+			<h3>
+				{modalTitle} para {selectedClient?.fullName || 'Cliente'}
+			</h3>
 			<div>
 				<label htmlFor="taskName">Nombre de la Tarea:</label>
 				<input
@@ -46,7 +57,7 @@ const ProjectTaskForm = ({ onSubmit }) => {
 					required
 				/>
 			</div>
-			<button type="submit">Agregar Tarea</button>
+			<button type="submit">{isEditing ? 'Actualizar' : 'Agregar'} Tarea</button>
 		</form>
 	);
 };

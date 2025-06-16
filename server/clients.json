@@ -189,19 +189,6 @@
             "dueDate": "2025-06-13T12:00:00.000Z",
             "totalProgress": 100,
             "updatedAt": "2025-06-11T16:33:32.420Z"
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-srv-1",
-            "title": "Servicio: Mantenimiento Web",
-            "status": "Nuevo",
-            "priority": "Media",
-            "startDate": "2025-06-23T12:00:00.000Z",
-            "dueDate": "2025-06-27T12:00:00.000Z",
-            "totalProgress": 0,
-            "description": "Revisar todo el mantenimiento del sitio web",
-            "updatedAt": "2025-06-14T20:30:36.123Z"
           }
         ],
         "id": 1749147630013
@@ -244,7 +231,9 @@
       {
         "title": "Test",
         "description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? Est maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
-        "services": [],
+        "services": [
+          "Mantenimiento Web"
+        ],
         "sections": [],
         "startDate": "2025-06-11",
         "dueDate": "2025-07-31",
@@ -252,16 +241,31 @@
         "completed": false,
         "status": "",
         "totalProgress": "",
-        "tasks": [],
-        "id": 1749663893834,
         "costs": {
-          "totalServices": 0,
+          "totalServices": 4500,
           "totalSections": 0,
-          "subtotalCost": 0,
-          "ivaTax": 0,
-          "isrTax": 0,
-          "totalCost": 0
-        }
+          "netPayable": 4500,
+          "baseRate": 4720.300000000005,
+          "ivaTax": 755.2480000000007,
+          "subtotal": 5475.548000000005,
+          "ivaRetention": 503.51440100000053,
+          "isrRetention": 472.0300000000005,
+          "isrTax": 75.52480000000007
+        },
+        "tasks": [
+          {
+            "clientId": 1745953383970,
+            "projectId": 1749663893834,
+            "taskId": "1749663893834-srv-1",
+            "title": "Servicio: Mantenimiento Web",
+            "status": "Nuevo",
+            "priority": "Baja",
+            "startDate": "2025-06-15",
+            "dueDate": "2025-06-16",
+            "totalProgress": 0
+          }
+        ],
+        "id": 1749663893834
       }
     ]
   },

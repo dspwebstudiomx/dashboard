@@ -55,7 +55,7 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 				</div>
 				<div className="flex flex-col gap-6">
 					{/* mostrar nombre Tareas generadas*/}
-					<div className="flex flex-col justify-between gap-4 first-letter:uppercase text-sm h-64 overflow-y-auto">
+					<div className="flex flex-col justify-end gap-4 first-letter:uppercase text-sm h-64 overflow-y-auto">
 						<div className="flex gap-3 items-center">
 							<h3 className="text-lg font-semibold text-gray-800 dark:text-white">
 								Tareas generadas

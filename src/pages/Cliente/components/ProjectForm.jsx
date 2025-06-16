@@ -102,9 +102,10 @@ const ProjectForm = ({
 		const isrTax = baseRate * 0.1;
 
 		setProject((prev) => ({
-			...prev,
+			...prev, // Copia todas las propiedades existentes del estado anterior (prev) al nuevo estado.
 			costs: {
-				totalServices,
+				// Sobrescribe o define la propiedad `costs` en el nuevo estado.
+				totalServices, // Estas son variables (probablemente definidas previamente) que se asignan como valores de las propiedades.
 				totalSections,
 				netPayable,
 				baseRate,

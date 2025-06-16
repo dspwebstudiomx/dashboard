@@ -1,14 +1,15 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".", // Define la raíz del proyecto
-    "paths": {
-      "@components/*": ["src/components/*"], // Alias para componentes
-      "@pages/*": ["src/pages/*"], // Alias para páginas
-      "@utils/*": ["src/utils/*"], // Alias para utilidades
-      "@styles/*": ["src/styles/*"], // Alias para estilos
-      "@data/*": ["src/data/*"] // Alias para datos
-    }
-  },
-  "include": ["src/**/*"], // Incluye todos los archivos dentro de la carpeta src
-  "exclude": ["node_modules", "dist"] // Excluye estas carpetas
+	"compilerOptions": {
+		"baseUrl": ".", // Define la raíz del proyecto
+		"paths": {
+			"@components/*": ["src/components/*"], // Alias para componentes
+			"@pages/*": ["src/pages/*"], // Alias para páginas
+			"@utils/*": ["src/utils/*"], // Alias para utilidades
+			"@styles/*": ["src/styles/*"], // Alias para estilos
+			"@data/*": ["src/data/*"], // Alias para datos
+			"@context/*": ["src/context/*"] // Alias para datos
+		}
+	},
+	"include": ["src/**/*"], // Incluye todos los archivos dentro de la carpeta src
+	"exclude": ["node_modules", "dist"] // Excluye estas carpetas
 }
