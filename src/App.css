@@ -22,6 +22,10 @@
 }
 html {
 	scroll-behavior: smooth; /* Desplazamiento suave */
+	user-select: none; /* Evita la selección de texto */
+	-webkit-user-select: none; /* Para navegadores basados en WebKit */
+	-moz-user-select: none; /* Para Firefox */
+	-ms-user-select: none; /* Para Internet Explorer/Edge */
 }
 
 html.dark {

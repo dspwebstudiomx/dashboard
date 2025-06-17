@@ -55,7 +55,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 
 	return (
 		<section
-			className="fixed inset-0 bg-black/40 dark:bg-black/60 flex items-center justify-center"
+			className="fixed inset-0 bg-black/40 dark:bg-black/60 flex items-center justify-center 2xl:min-w-screen-2xl"
 			style={{ zIndex: 50 + (isTopModal ? 1 : 0) }}
 		>
 			<div className="relative flex items-center">

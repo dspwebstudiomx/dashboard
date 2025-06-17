@@ -336,7 +336,7 @@ const ProjectTasksTable = ({
 				<div className="flex gap-2">
 					<Button
 						onClick={handleAddTask}
-						text="Agregar Tarea Nuevo"
+						text="Agregar tarea"
 						aria-label="Agregar nueva tarea"
 						variant="primary"
 						size="md"
@@ -346,7 +346,7 @@ const ProjectTasksTable = ({
 						id="auto-generate-tasks-button"
 						aria-label="Generar tareas automáticamente"
 						onClick={handleAutoGenerateTasks}
-						text="Generar automáticamente"
+						text="Autogenerar"
 						variant="secondary"
 						icon={FaPlus}
 						size="md"
@@ -357,8 +357,8 @@ const ProjectTasksTable = ({
 						onClick={() => setShowCompletedTasks((prev) => !prev)}
 						text={
 							showCompletedTasks
-								? `Ocultar Completados (${totalCompletedTasks})`
-								: `Mostrar Completados (${totalCompletedTasks})`
+								? `Ocultar Completas (${totalCompletedTasks})`
+								: `Mostrar Completas (${totalCompletedTasks})`
 						}
 						variant="secondary"
 						size="md"
@@ -414,8 +414,8 @@ const ProjectTasksTable = ({
 												key={task.taskId || task.id || `${groupIndex}-${Math.random()}`}
 												className="hover:bg-gray-100 dark:hover:bg-gray-700 h-16"
 											>
-												<td className="px-2 py-2 text-xs truncate">{task.taskId || task.id}</td>
-												<td className="px-2 py-2 text-xs text-center">
+												<td className="px-2 py-2 text-base truncate">{task.taskId || task.id}</td>
+												<td className="px-2 py-2 text-center">
 													<span
 														className={`inline-block w-5 h-5 rounded-full ${
 															task.priority === 'Alta'
@@ -428,7 +428,7 @@ const ProjectTasksTable = ({
 													></span>
 												</td>
 												<td
-													className="p-2 py-3 first-letter:uppercase truncate text-sm text-wrap"
+													className="p-2 py-3 first-letter:uppercase truncate text-wrap"
 													style={{ width: '25%' }}
 												>
 													{task.description
