@@ -490,7 +490,7 @@ const ProjectTasksTable = ({
 																? 'bg-gray-100 text-gray-600 border border-gray-500 w-28 px-4 py-1'
 																: task.status === 'Pendiente'
 																? 'bg-blue-100 text-blue-600 border border-blue-500 w-28 px-4 py-1'
-																: 'bg-transparent text-blue-600 border border-blue-500 w-28 px-6 py-1'
+																: 'bg-transparent dark:bg-gray-700 text-blue-600 border border-blue-500 w-28 px-6 py-1'
 														}`}
 													>
 														{task.status}
