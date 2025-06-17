@@ -1,12 +1,12 @@
-import { useSelectedClient } from './hooks/useSelectedClient';
+import { useSelectedClient } from '../hooks/useSelectedClient';
 import DashboardTemplate from '@templates/DashboardTemplate';
 import ProyectosCliente from './ProyectosCliente';
 import { Helmet } from 'react-helmet';
 import CloseButton from '@components/Botones/CloseButton';
 import EditarCliente from './EditarCliente';
-import ClientHeader from './components/ClientHeader';
-import ClientInfo from './components/ClientInfo';
-import ClientSocialLinks from './components/ClientSocialLinks';
+import ClientHeader from './ClientHeader';
+import ClientInfo from './ClientInfo';
+import ClientSocialLinks from './ClientSocialLinks';
 
 const Cliente = () => {
 	const {

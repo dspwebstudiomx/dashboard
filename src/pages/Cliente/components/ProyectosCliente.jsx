@@ -1,11 +1,12 @@
 import Modal from '@components/Modal';
 import { MdErrorOutline } from 'react-icons/md';
-import useProjects from './hooks/useProjects';
-import ProjectForm from './components/ProjectForm';
-import ProjectCard from './components/ProjectCard';
+
 import Button from '@components/Botones/Button';
 import { IoMdAdd } from 'react-icons/io';
 import { FaPlus } from 'react-icons/fa6';
+import ProjectCard from './ProjectCard';
+import ProjectForm from './ProjectForm';
+import useProjects from '../hooks/useProjects';
 
 const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 	const {
