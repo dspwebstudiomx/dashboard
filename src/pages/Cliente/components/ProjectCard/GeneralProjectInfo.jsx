@@ -141,7 +141,7 @@ const GeneralProjectInfo = ({
 };
 
 const ContentProjectCard = ({ project, actions, netPayable }) => {
-	const [showFullDesc, setShowFullDesc] = useState(false);
+	const [showFullDescription, setshowFullDescriptionription] = useState(false);
 	const { isLong, short } = useProjectDescription(project.description);
 
 	// Desestructuramos las acciones para usarlas fácilmente
@@ -164,8 +164,8 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 						project={project}
 						isLongDescription={isLong}
 						shortDesc={short}
-						showFullDesc={showFullDesc}
-						setShowFullDesc={setShowFullDesc}
+						showFullDescription={showFullDescription}
+						setshowFullDescriptionription={setshowFullDescriptionription}
 					/>
 				</div>
 				<div className="flex flex-col gap-6">

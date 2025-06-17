@@ -189,6 +189,19 @@
             "dueDate": "2025-06-13T12:00:00.000Z",
             "totalProgress": 100,
             "updatedAt": "2025-06-11T16:33:32.420Z"
+          },
+          {
+            "clientId": 1745897285167,
+            "projectId": 1749147630013,
+            "taskId": "1749147630013-task-7",
+            "title": "Mejorar frontend de los costos del proyecto.",
+            "status": "Pendiente",
+            "priority": "Baja",
+            "startDate": "2025-06-23T06:00:00.000Z",
+            "dueDate": "2025-06-27T06:00:00.000Z",
+            "totalProgress": 0,
+            "description": "Mejorar frontend de los costos del proyecto.",
+            "updatedAt": "2025-06-17T17:27:51.240Z"
           }
         ],
         "id": 1749147630013

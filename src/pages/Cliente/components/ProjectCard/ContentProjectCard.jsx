@@ -16,7 +16,7 @@ import AdminActionButton from '../AdminActionButton';
 import Button from '@components/Botones/Button';
 
 const ContentProjectCard = ({ project, actions, netPayable }) => {
-	const [showFullDesc, setShowFullDesc] = useState(false);
+	const [showFullDescriptionription, setshowFullDescriptionriptionription] = useState(false);
 	const { isLong, short } = useProjectDescription(project.description);
 	const [currentPage, setCurrentPage] = useState(1);
 	const tasksPerPage = 4;
@@ -49,8 +49,8 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 						project={project}
 						isLongDescription={isLong}
 						shortDesc={short}
-						showFullDesc={showFullDesc}
-						setShowFullDesc={setShowFullDesc}
+						showFullDescriptionription={showFullDescriptionription}
+						setshowFullDescriptionription={setshowFullDescriptionriptionription}
 					/>
 				</div>
 				<div className="flex flex-col gap-6">
