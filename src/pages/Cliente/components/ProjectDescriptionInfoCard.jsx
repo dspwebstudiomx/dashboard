@@ -3,14 +3,14 @@ import React from 'react';
 const ProjectDescriptionInfoCard = ({
 	project,
 	isLongDescription,
-	shortDesc,
+	shorrDescription,
 	showFullDescriptionription,
 	setshowFullDescriptionription,
 }) => {
 	return (
 		<div>
 			<p style={{ whiteSpace: 'pre-line' }}>
-				{showFullDescriptionription || !isLongDescription ? project.description : shortDesc}
+				{showFullDescriptionription || !isLongDescription ? project.description : shorrDescription}
 			</p>
 
 			{isLongDescription && (

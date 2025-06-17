@@ -48,7 +48,7 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 					<ProjectDescriptionInfoCard
 						project={project}
 						isLongDescription={isLong}
-						shortDesc={short}
+						shorrDescription={short}
 						showFullDescriptionription={showFullDescriptionription}
 						setshowFullDescriptionription={setshowFullDescriptionriptionription}
 					/>

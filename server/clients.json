@@ -76,7 +76,8 @@
         "title": "Dashboard dspwebstudio",
         "description": "\nProyecto: CRM Dashboard\n\nObjetivo:\nDesarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario. Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
         "services": [
-          "Mantenimiento Web"
+          "Mantenimiento Web",
+          "Consultoría de Diseño Web"
         ],
         "sections": [],
         "startDate": "2025-06-05",
@@ -86,15 +87,15 @@
         "status": "",
         "totalProgress": "",
         "costs": {
-          "totalServices": 4500,
+          "totalServices": 6700,
           "totalSections": 0,
-          "netPayable": 4500,
-          "baseRate": 4720.300000000005,
-          "ivaTax": 755.2480000000007,
-          "subtotal": 5475.548000000005,
-          "ivaRetention": 503.51440100000053,
-          "isrRetention": 472.0300000000005,
-          "isrTax": 75.52480000000007
+          "netPayable": 6700,
+          "baseRate": 7028.002222222229,
+          "ivaTax": 1124.4803555555566,
+          "subtotal": 8152.482577777785,
+          "ivaRetention": 749.6769970444451,
+          "isrRetention": 702.8002222222229,
+          "isrTax": 112.44803555555566
         },
         "tasks": [
           {
@@ -202,6 +203,28 @@
             "totalProgress": 0,
             "description": "Mejorar frontend de los costos del proyecto.",
             "updatedAt": "2025-06-17T17:27:51.240Z"
+          },
+          {
+            "clientId": 1745897285167,
+            "projectId": 1749147630013,
+            "taskId": "1749147630013-srv-1",
+            "title": "Servicio: Mantenimiento Web",
+            "status": "Nuevo",
+            "priority": "Baja",
+            "startDate": "2025-06-18",
+            "dueDate": "2025-06-19",
+            "totalProgress": 0
+          },
+          {
+            "clientId": 1745897285167,
+            "projectId": 1749147630013,
+            "taskId": "1749147630013-srv-2",
+            "title": "Servicio: Consultoría de Diseño Web",
+            "status": "Nuevo",
+            "priority": "Baja",
+            "startDate": "2025-06-18",
+            "dueDate": "2025-06-20",
+            "totalProgress": 0
           }
         ],
         "id": 1749147630013
