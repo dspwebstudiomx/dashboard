@@ -21,15 +21,15 @@ const ImageClientModal = ({ formData, handleImageUpload, handleRemoveImage }) =>
 			</div>
 			<div className="flex flex-col gap-4 justify-center items-start">
 				<label className="text-gray-700 dark:text-gray-300 flex items-start gap-4">
-					<FaRegImage className="text-blue-900 text-2xl dark:text-gray-300" />
-					<span>{formData.image ? 'Cambiar imagen' : 'Agregar imagen'}</span>
+					<FaRegImage className="text-blue-900 text-2xl dark:text-blue-500" />
+					<span className="text-lg">{formData.image ? 'Cambiar imagen' : 'Agregar imagen'}</span>
 				</label>
 				<input
 					type="file"
 					name="image"
 					accept="image/*"
 					onChange={handleImageUpload}
-					className="p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 focus:border-blue-700 focus:border-2 focus:outline-none w-full md:w-[210px]"
+					className="p-2 rounded-md dark:bg-gray-800 border-0 dark:text-gray-300 outline-none w-full md:w-[310px]"
 				/>
 			</div>
 			<button
