@@ -28,7 +28,9 @@ const GanttChart = ({ tasks, onTaskClick, onDateChange, clientId, projectId, tas
 			<div className="view-mode-controls flex justify-end gap-4 mb-6">
 				<button
 					className={`rounded-full px-4 py-1 shadow-3xl border ${
-						viewMode === ViewMode.Day ? 'bg-blue-500 text-white' : 'bg-gray-100 border-gray-300'
+						viewMode === ViewMode.Day
+							? 'bg-blue-500 text-white'
+							: 'bg-gray-100 text-gray-700 border-gray-300 dark:border-gray-400 dark:text-gray-100'
 					} hover:bg-blue-600 hover:text-white`}
 					onClick={() => handleViewModeChange(ViewMode.Day)}
 				>
@@ -36,7 +38,9 @@ const GanttChart = ({ tasks, onTaskClick, onDateChange, clientId, projectId, tas
 				</button>
 				<button
 					className={`rounded-full px-4 py-1 shadow-3xl border ${
-						viewMode === ViewMode.Week ? 'bg-blue-500 text-white' : 'bg-gray-100 border-gray-300'
+						viewMode === ViewMode.Week
+							? 'bg-blue-500 text-white'
+							: 'bg-gray-100 text-gray-700 border-gray-300 dark:border-gray-400 dark:text-gray-100'
 					} hover:bg-blue-600 hover:text-white`}
 					onClick={() => handleViewModeChange(ViewMode.Week)}
 				>
@@ -44,7 +48,9 @@ const GanttChart = ({ tasks, onTaskClick, onDateChange, clientId, projectId, tas
 				</button>
 				<button
 					className={`rounded-full px-4 py-1 shadow-3xl border ${
-						viewMode === ViewMode.Month ? 'bg-blue-500 text-white' : 'bg-gray-100 border-gray-300'
+						viewMode === ViewMode.Month
+							? 'bg-blue-500 text-white'
+							: 'bg-gray-100 text-gray-700 border-gray-300 dark:border-gray-400 dark:text-gray-100'
 					} hover:bg-blue-600 hover:text-white`}
 					onClick={() => handleViewModeChange(ViewMode.Month)}
 				>
