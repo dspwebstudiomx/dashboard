@@ -337,5 +337,19 @@
       }
     ],
     "projects": []
+  },
+  {
+    "id": 1750184852786,
+    "nombre": "",
+    "email": "dsperez.tablet@gmail.com",
+    "imagen": "",
+    "telefono": "",
+    "fullName": "Alfonso",
+    "lastName": "Daniel",
+    "lastName2": "Pérez",
+    "phoneNumber": "4439188025",
+    "address": "Molibdeno 214",
+    "company": "EasyLav",
+    "tasks": []
   }
 ]

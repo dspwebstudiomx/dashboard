@@ -74,7 +74,7 @@ const ClientsTable = () => {
 				<input
 					type="text"
 					placeholder="Buscar cliente..."
-					className="px-3 py-1 border rounded"
+					className="px-3 py-4 md:py-2 border rounded-xl w-full md:w-1/3 lg:w-1/4 active:border-blue-500 active:rounded-xl  focus:outline-none focus:ring-2 focus:ring-blue-500"
 					onChange={(e) => {
 						const searchTerm = removeAccents(e.target.value.toLowerCase());
 						if (searchTerm === '') {
