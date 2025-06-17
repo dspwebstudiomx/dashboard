@@ -50,7 +50,7 @@ const DashboardTemplate = ({ children, title }) => {
 			</main>
 			<footer>
 				<div className="flex justify-center items-center py-8">
-					<p className="text-gray-600 dark:text-gray-400 text-sm">
+					<p className="text-gray-600 dark:text-gray-400 text-sm px-12 md:px-0">
 						&copy; {new Date().getFullYear()} dspwebstudio. Todos los derechos reservados.
 					</p>
 				</div>
