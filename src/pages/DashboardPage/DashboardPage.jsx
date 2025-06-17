@@ -21,7 +21,7 @@ import DashboardTemplate from '@templates/DashboardTemplate';
 const DashboardPage = () => {
 	// Estilos para el Dashboard
 	const DashboardStyles = {
-		title: `text-3xl font-bold mb-6 sm:hidden text-blue-950 text-center`,
+		title: `text-3xl font-bold mb-6 sm:hidden text-blue-950 text-center dark:text-blue-400 mb-20`,
 		grid: `grid md:grid-cols-12 gap-12 p-0`,
 		card: `bg-white p-6 rounded-lg shadow-md`,
 		cardTitle: `text-2xl font-semibold mb-12`,
