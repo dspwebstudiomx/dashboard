@@ -170,7 +170,7 @@ const ProjectTasksTable = ({
 		}
 
 		// Ordena las tareas por fecha de inicio
-		newTasks.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+		newTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
 		try {
 			const response = await fetch(
@@ -214,7 +214,7 @@ const ProjectTasksTable = ({
 				const serviceTasks = (project.tasks || [])
 					.filter((t) => t.title?.toLowerCase().includes(`servicio: ${serviceName}`.toLowerCase()))
 					.filter((t) => t.status !== 'Completado') // Excluye tareas completadas
-					.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)); // Ordena por fecha de actualización
+					.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)); // Ordena por fecha de actualización
 				if (serviceTasks.length > 0) {
 					grouped.push({ type: 'service', name: serviceName, tasks: serviceTasks });
 					serviceTasks.forEach((t) => (serviceMap[t.taskId || t.id] = true));
@@ -229,7 +229,7 @@ const ProjectTasksTable = ({
 				const sectionTasks = (project.tasks || [])
 					.filter((t) => t.title?.toLowerCase().includes(`sección: ${sectionName}`.toLowerCase()))
 					.filter((t) => t.status !== 'Completado') // Excluye tareas completadas
-					.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)); // Ordena por fecha de actualización
+					.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)); // Ordena por fecha de actualización
 				if (sectionTasks.length > 0) {
 					grouped.push({ type: 'section', name: sectionName, tasks: sectionTasks });
 					sectionTasks.forEach((t) => (sectionMap[t.taskId || t.id] = true));
@@ -241,7 +241,7 @@ const ProjectTasksTable = ({
 		const otherTasks = (project.tasks || [])
 			.filter((task) => !sectionMap[task.taskId || task.id] && !serviceMap[task.taskId || task.id])
 			.filter((t) => t.status !== 'Completado') // Excluye tareas completadas
-			.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)); // Ordena por fecha de actualización
+			.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)); // Ordena por fecha de actualización
 		if (otherTasks.length > 0) {
 			grouped.push({ type: 'other', name: 'Otras', tasks: otherTasks });
 		}
@@ -374,7 +374,7 @@ const ProjectTasksTable = ({
 				</div>
 			</div>
 			<div className="overflow-x-auto rounded shadow text-base mt-20 ml-6 p-4">
-				<table className="min-w-full bg-white dark:bg-gray-800">
+				<table className="min-w-full bg-white dark:bg-gray-800 table-auto">
 					<thead>
 						<tr>
 							<th className="px-2 py-2 border-b text-left w-24">Ticket ID</th>
