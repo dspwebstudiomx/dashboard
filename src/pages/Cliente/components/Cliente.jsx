@@ -42,7 +42,6 @@ const Cliente = () => {
 								setSelectedClient={setSelectedClient}
 							/>
 							<ClientInfo selectedClient={selectedClient} />
-							<ClientSocialLinks selectedClient={selectedClient} />
 							<ProyectosCliente
 								isProyectExist={isProyectExist}
 								selectedClient={selectedClient}
