@@ -17,72 +17,72 @@ const ClientInfo = ({ selectedClient }) => (
 		<article className="md:text-base flex flex-col gap-6 md:ml-4 md:flex-row">
 			<ul className="grid md:grid-cols-3 gap-8 w-full">
 				{/* Número de Cliente */}
-				<li>
+				<li className="flex flex-col">
 					<span className="font-normal">
 						<MdAssignmentInd className={iconClass} /> Número de Cliente:
 					</span>{' '}
 					<br className="md:hidden" />
-					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
+					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10">
 						{selectedClient.id}
 					</span>
 				</li>
 				{/* Correo Electrónico */}
-				<li>
+				<li className="flex flex-col">
 					<span className="font-normal">
 						<MdEmail className={iconClass} /> Correo Electrónico:
 					</span>{' '}
 					<br className="md:hidden" />
-					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0 lowercase">
+					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 lowercase">
 						{selectedClient.email ? selectedClient.email : 'Sin correo'}
 					</span>
 				</li>
 				{/* Número Telefónico */}
-				<li>
+				<li className="flex flex-col">
 					<span className="font-normal">
 						<MdPhone className={iconClass} /> Número Telefónico:
 					</span>{' '}
 					<br className="md:hidden" />
-					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
+					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10">
 						{selectedClient.phoneNumber ? selectedClient.phoneNumber : 'Sin teléfono'}
 					</span>
 				</li>
 				{/* Dirección */}
-				<li>
+				<li className="flex flex-col">
 					<span className="font-normal">
 						<MdHome className={iconClass} /> Dirección:
 					</span>{' '}
 					<br className="md:hidden" />
-					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
+					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10">
 						{selectedClient.address ? selectedClient.address : 'Sin dirección'}
 					</span>
 				</li>
 				{/* RFC */}
-				<li>
+				<li className="flex flex-col">
 					<span className="font-normal">
 						<MdFingerprint className={iconClass} /> RFC:
 					</span>{' '}
 					<br className="md:hidden" />
-					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
+					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 ">
 						{selectedClient.rfc ? selectedClient.rfc : 'Sin RFC'}
 					</span>
 				</li>
 				{/* CURP */}
-				<li>
+				<li className="flex flex-col">
 					<span className="font-normal">
 						<MdFingerprint className={iconClass} /> CURP:
 					</span>{' '}
 					<br className="md:hidden" />
-					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
+					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10">
 						{selectedClient.curp ? selectedClient.curp : 'Sin CURP'}
 					</span>
 				</li>
 				{/* Proyectos */}
-				<li>
+				<li className="flex flex-col">
 					<span className="font-normal">
 						<MdDateRange className={iconClass} /> Fecha de Registro:
 					</span>{' '}
 					<br className="md:hidden" />
-					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10 md:ml-0">
+					<span className="text-blue-900 dark:text-blue-400 font-semibold ml-10">
 						{new Date(selectedClient.createdAt).toLocaleDateString('es-MX', {
 							year: 'numeric',
 							month: 'long',
