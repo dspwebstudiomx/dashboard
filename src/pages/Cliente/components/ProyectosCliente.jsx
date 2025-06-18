@@ -42,51 +42,21 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 	}
 
 	return (
-		<article className="grid">
-			<div className="flex flex-col md:flex-row justify-between gap-6 mb-0 mt-20">
-				<div>
-					<h2 className="text-2xl font-semibold mb-4">Mis Proyectos</h2>
-					<p className="mb-4 text-lg">
-						Aquí puedes ver todos los proyectos relacionados con{' '}
-						<span className="font-semibold">
-							{selectedClient.fullName} {selectedClient.lastName} {selectedClient.lastName2}. <br />
-						</span>{' '}
-						<br />
-						Puedes agregar, editar o eliminar proyectos según sea necesario.
-					</p>
-				</div>
-				<div className="flex items-center justify-center md:justify-end">
+		<section className="flex flex-col justify-between gap-6 mb-0 mt-20">
+			<header className="flex flex-col items-start justify-center mb-6">
+				<h2 className="text-2xl font-semibold mb-4">Mis Proyectos</h2>
+				<p className="mb-4 text-lg">
+					Aquí puedes ver todos los proyectos relacionados con{' '}
+					<span className="font-semibold">
+						{selectedClient.fullName} {selectedClient.lastName} {selectedClient.lastName2}. <br />
+					</span>{' '}
+					<br />
+					Puedes agregar, editar o eliminar proyectos según sea necesario.
+				</p>
+				<div className="flex items-center justify-center md:justify-end w-full">
 					<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} icon={IoMdAdd} />
 				</div>
-			</div>
-
-			{(showForm || editProjectId) && (
-				<Modal
-					title={editProjectId ? 'Editar Proyecto' : 'Nuevo Proyecto'}
-					onClose={() => {
-						setShowForm(false);
-						setEditProjectId(null);
-						setEditProject(null);
-					}}
-					isOpen={showForm || editProjectId}
-				>
-					<ProjectForm
-						isEdit={!!editProjectId}
-						project={editProjectId ? editProject : newProject}
-						setProject={editProjectId ? setEditProject : setNewProject}
-						onChange={editProjectId ? handleEditInputChange : handleInputChange}
-						SERVICE_COSTS={SERVICE_COSTS}
-						SECTION_COSTS={SECTION_COSTS}
-						subtotal={editProjectId ? editSubtotal : subtotal}
-						ivaTax={editProjectId ? editIvaTax : ivaTax}
-						isrTax={editProjectId ? editIsrTax : isrTax}
-						netPayable={editProjectId ? editTotal : netPayable}
-						onSubmit={editProjectId ? handleEditProject : handleCreateProject}
-						// Puedes agregar aquí otras props necesarias
-					/>
-				</Modal>
-			)}
-
+			</header>
 			<ul id="lista-proyectos" className="mt-12 grid xl:grid-cols-2 gap-12 items-start">
 				{selectedClient.projects && selectedClient.projects.length > 0 ? (
 					selectedClient.projects.map((project) => (
@@ -126,7 +96,34 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 					</div>
 				)}
 			</ul>
-		</article>
+
+			{(showForm || editProjectId) && (
+				<Modal
+					title={editProjectId ? 'Editar Proyecto' : 'Nuevo Proyecto'}
+					onClose={() => {
+						setShowForm(false);
+						setEditProjectId(null);
+						setEditProject(null);
+					}}
+					isOpen={showForm || editProjectId}
+				>
+					<ProjectForm
+						isEdit={!!editProjectId}
+						project={editProjectId ? editProject : newProject}
+						setProject={editProjectId ? setEditProject : setNewProject}
+						onChange={editProjectId ? handleEditInputChange : handleInputChange}
+						SERVICE_COSTS={SERVICE_COSTS}
+						SECTION_COSTS={SECTION_COSTS}
+						subtotal={editProjectId ? editSubtotal : subtotal}
+						ivaTax={editProjectId ? editIvaTax : ivaTax}
+						isrTax={editProjectId ? editIsrTax : isrTax}
+						netPayable={editProjectId ? editTotal : netPayable}
+						onSubmit={editProjectId ? handleEditProject : handleCreateProject}
+						// Puedes agregar aquí otras props necesarias
+					/>
+				</Modal>
+			)}
+		</section>
 	);
 };
 
