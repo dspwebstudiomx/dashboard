@@ -33,7 +33,7 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 	);
 
 	return (
-		<article className="flex flex-col md:flex-row gap-12 p-6 md:p-8 justify-between first-letter:uppercase">
+		<article className="flex flex-col xl:flex-row gap-12 p-6 md:p-8 justify-between first-letter:uppercase">
 			{/* Contenido principal del proyecto */}
 			<div className="flex flex-col gap-6 justify-between">
 				<div className="flex flex-col gap-8 text-balance w-full ">
