@@ -12,16 +12,26 @@ import {
 import { es } from 'date-fns/locale';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
+// Función para ajustar la fecha manualmente a la zona horaria de México
+const adjustToMexicoTimezone = (date) => {
+	const utcOffsetMexico = -6; // UTC-6 para México (ajusta si hay horario de verano)
+	const localOffset = date.getTimezoneOffset() / 60; // Offset local en horas
+	const offsetDifference = utcOffsetMexico - localOffset;
+	return new Date(date.getTime() + offsetDifference * 60 * 60 * 1000);
+};
+
 const Calendar = () => {
-	const [currentDate, setCurrentDate] = useState(new Date());
-	const today = currentDate; // Día actual
+	const initialDate = adjustToMexicoTimezone(new Date());
+	const [currentDate, setCurrentDate] = useState(initialDate);
+
+	const today = adjustToMexicoTimezone(new Date()); // Día actual para resaltar
 
 	const handlePrev = () => {
-		setCurrentDate((prev) => subMonths(prev, 1));
+		setCurrentDate((prev) => adjustToMexicoTimezone(subMonths(prev, 1)));
 	};
 
 	const handleNext = () => {
-		setCurrentDate((prev) => addMonths(prev, 1));
+		setCurrentDate((prev) => adjustToMexicoTimezone(addMonths(prev, 1)));
 	};
 
 	const renderMonthView = () => {
@@ -30,7 +40,7 @@ const Calendar = () => {
 		const days = eachDayOfInterval({ start, end });
 
 		// Iniciales de los días de la semana en español
-		const weekDays = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+		const weekDays = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
 
 		// Calcular el índice del primer día del mes
 		const firstDayIndex = getDay(start);
@@ -57,7 +67,7 @@ const Calendar = () => {
 					{/* Días del mes */}
 					{days.map((day) => (
 						<div
-							key={day}
+							key={day.toString()}
 							className={`text-center p-2 rounded-lg ${
 								isSameDay(day, today)
 									? 'bg-blue-500 text-white rounded-full'
