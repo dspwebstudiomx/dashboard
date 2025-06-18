@@ -211,18 +211,7 @@
             "title": "Servicio: Mantenimiento Web",
             "status": "Nuevo",
             "priority": "Baja",
-            "startDate": "2025-06-18",
-            "dueDate": "2025-06-19",
-            "totalProgress": 0
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-srv-2",
-            "title": "Servicio: Consultoría de Diseño Web",
-            "status": "Nuevo",
-            "priority": "Baja",
-            "startDate": "2025-06-18",
+            "startDate": "2025-06-19",
             "dueDate": "2025-06-20",
             "totalProgress": 0
           }
@@ -336,20 +325,36 @@
         "priority": "Low"
       }
     ],
-    "projects": []
-  },
-  {
-    "id": 1750184852786,
-    "nombre": "",
-    "email": "dsperez.tablet@gmail.com",
-    "imagen": "",
-    "telefono": "",
-    "fullName": "Alfonso",
-    "lastName": "Daniel",
-    "lastName2": "Pérez",
-    "phoneNumber": "4439188025",
-    "address": "Molibdeno 214",
-    "company": "EasyLav",
-    "tasks": []
+    "projects": [
+      {
+        "title": "Prueba Sistema",
+        "description": "test",
+        "services": [],
+        "sections": [],
+        "startDate": "2025-06-18",
+        "dueDate": "2025-06-28",
+        "priority": "Alta",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 0,
+          "totalSections": 0,
+          "netPayable": 0,
+          "baseRate": 0,
+          "ivaTax": 0,
+          "subtotal": 0,
+          "ivaRetention": 0,
+          "isrRetention": 0,
+          "isrTax": 0,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1750270860606
+      }
+    ],
+    "project": [
+      "Prueba Sistema"
+    ]
   }
 ]
