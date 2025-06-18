@@ -26,7 +26,7 @@ const ClientSocialLinks = ({ selectedClient }) => (
 		{/* Iconos para contacto a cliente */}
 		<article
 			id="cliente-iconos-contacto"
-			className="grid grid-cols-4 md:grid-cols-7 items-center gap-12"
+			className="grid grid-cols-4 md:grid-cols-7 items-center gap-8"
 		>
 			{[
 				{
