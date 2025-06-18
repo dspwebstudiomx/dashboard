@@ -144,7 +144,7 @@ const ProjectForm = ({
 						value={project.title}
 						onChange={onChange}
 						required
-						className="p-2 rounded border"
+						className="p-2 rounded border-2 hover:border-blue-600  border-blue-600 active:border-blue-600 focus:border-blue-700 caret-blue-600"
 					/>
 				</div>
 				<div className="flex flex-col md:flex-row gap-4 justify-between">
