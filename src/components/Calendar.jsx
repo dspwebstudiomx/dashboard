@@ -49,7 +49,7 @@ const Calendar = () => {
 					))}
 				</div>
 				{/* Días del mes */}
-				<div className="grid grid-cols-7 gap-2">
+				<div className="grid grid-cols-7 gap-2 mt-6">
 					{/* Espacios vacíos antes del primer día del mes */}
 					{Array.from({ length: firstDayIndex }).map((_, index) => (
 						<div key={`empty-start-${index}`} className="p-2"></div>
