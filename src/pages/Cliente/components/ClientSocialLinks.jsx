@@ -15,11 +15,18 @@ const SocialStyles = {
 };
 
 const ClientSocialLinks = ({ selectedClient }) => (
-	<div className="col-span-12 flex flex-col items-center md:items-start justify-start gap-6 md:gap-12 xl:px-0 py-8 2xl:mt-12">
-		<h2 className="text-xl md:text-2xl font-semibold">Visita y Contacta</h2>
-		<div
-			id="tarjeta-redes-sociales"
-			className="grid grid-cols-4 md:grid-cols-7 items-center gap-6 md:gap-4 ml-6"
+	<section
+		id="cliente-seccion"
+		className="col-span-12 flex flex-col items-center md:items-start justify-start gap-6 md:gap-12 xl:px-0 2xl:mt-0"
+	>
+		{/* Título de la sección */}
+		<h2 id="cliente-titulo-contacto" className="text-xl md:text-2xl font-semibold">
+			Contacto
+		</h2>
+		{/* Iconos para contacto a cliente */}
+		<article
+			id="cliente-iconos-contacto"
+			className="grid grid-cols-4 md:grid-cols-7 items-center gap-12"
 		>
 			{[
 				{
@@ -72,8 +79,8 @@ const ClientSocialLinks = ({ selectedClient }) => (
 						{social.icon}
 					</Link>
 				))}
-		</div>
-	</div>
+		</article>
+	</section>
 );
 
 export default ClientSocialLinks;
