@@ -14,7 +14,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const Calendar = () => {
 	const [currentDate, setCurrentDate] = useState(new Date());
-	const today = new Date(); // Día actual
+	const today = currentDate; // Día actual
 
 	const handlePrev = () => {
 		setCurrentDate((prev) => subMonths(prev, 1));
@@ -59,7 +59,9 @@ const Calendar = () => {
 						<div
 							key={day}
 							className={`text-center p-2 rounded-lg ${
-								isSameDay(day, today) ? 'bg-blue-500 text-white' : 'bg-blue-100'
+								isSameDay(day, today)
+									? 'bg-blue-500 text-white rounded-full'
+									: 'dark:bg-gray-700 dark:text-gray-200 hover:bg-blue-100 hover:dark:bg-gray-600 bg-gray-100 text-gray-800 '
 							}`}
 						>
 							{format(day, 'd', { locale: es })}
