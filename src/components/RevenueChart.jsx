@@ -55,8 +55,8 @@ const RevenueChart = () => {
 			'diciembre',
 		];
 
+		// Si quieres usar solo los meses con ingresos, puedes filtrar así:
 		// const labels = monthOrder.filter((month) => monthlyRevenue[month] !== undefined);
-
 		// const data = labels.map((month) => monthlyRevenue[month]);
 
 		// Usar todos los meses como etiquetas
@@ -80,6 +80,30 @@ const RevenueChart = () => {
 		});
 	}, []);
 
+	// Plugin para mostrar el mes actual en el centro de la gráfica
+	const currentMonth = new Date().toLocaleString('es-MX', { month: 'long' });
+
+	const centerTextPlugin = {
+		id: 'centerText',
+		afterDraw: (chart) => {
+			const {
+				ctx,
+				chartArea: { width, height },
+			} = chart;
+			ctx.save();
+			ctx.font = 'bold 24px Arial';
+			ctx.fillStyle = 'rgba(59, 130, 246, 0.7)';
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+			ctx.fillText(
+				currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1),
+				width / 2 + chart.chartArea.left,
+				height / 2 + chart.chartArea.top
+			);
+			ctx.restore();
+		},
+	};
+
 	// Opciones del gráfico
 	const options = {
 		responsive: true,
@@ -93,10 +117,11 @@ const RevenueChart = () => {
 				text: 'Ingresos Netos por Mes',
 				color: 'rgba(59, 130, 246, 1)', // Azul
 			},
+			centerText: {}, // Activar el plugin
 		},
 	};
 
-	return <Line data={chartData} options={options} />;
+	return <Line data={chartData} options={options} plugins={[centerTextPlugin]} />;
 };
 
 export default RevenueChart;
