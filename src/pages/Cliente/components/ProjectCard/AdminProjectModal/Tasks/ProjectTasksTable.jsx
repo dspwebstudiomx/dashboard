@@ -339,6 +339,18 @@ const ProjectTasksTable = ({
 		handleCloseModal();
 	};
 
+	// Función para comparar prioridades
+	const priorityOrder = { Alta: 1, Media: 2, Baja: 3 };
+	const sortByPriorityAndDueDate = (a, b) => {
+		const pa = priorityOrder[a.priority] || 4;
+		const pb = priorityOrder[b.priority] || 4;
+		if (pa !== pb) return pa - pb;
+		// Si la prioridad es igual, ordena por fecha de término (ascendente)
+		const da = a.dueDate ? new Date(a.dueDate) : new Date(8640000000000000); // fecha máxima si no hay dueDate
+		const db = b.dueDate ? new Date(b.dueDate) : new Date(8640000000000000);
+		return da - db;
+	};
+
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between my-12">
@@ -421,115 +433,118 @@ const ProjectTasksTable = ({
 										</td>
 									</tr>
 									{!collapsedGroups[group.name] &&
-										group.tasks.map((task) => (
-											<tr
-												key={task.taskId || task.id || `${groupIndex}-${Math.random()}`}
-												className="hover:bg-gray-100 dark:hover:bg-gray-700 h-16"
-											>
-												<td className="px-2 py-2 text-base truncate">{task.taskId || task.id}</td>
-												<td className="px-2 py-2 text-center">
-													<span
-														className={`inline-block w-5 h-5 rounded-full ${
-															task.priority === 'Alta'
-																? 'bg-red-500 border-red-600 border'
-																: task.priority === 'Media'
-																? 'bg-yellow-500 border-yellow-600 border'
-																: 'bg-green-500 border-green-600 border'
-														}`}
-														title={task.priority}
-													></span>
-												</td>
-												<td
-													className="p-2 py-3 first-letter:uppercase truncate text-wrap"
-													style={{ width: '25%' }}
+										group.tasks
+											.slice() // Copia para no mutar el array original
+											.sort(sortByPriorityAndDueDate) // Ordena por prioridad y luego por fecha de término
+											.map((task) => (
+												<tr
+													key={task.taskId || task.id || `${groupIndex}-${Math.random()}`}
+													className="hover:bg-gray-100 dark:hover:bg-gray-700 h-16"
 												>
-													{task.description
-														? task.description.split(' ').slice(0, 15).join(' ') +
-														  (task.description.split(' ').length > 15 ? '...' : '')
-														: 'Sin descripción, favor de llenarla.'}
-												</td>
+													<td className="px-2 py-2 text-base truncate">{task.taskId || task.id}</td>
+													<td className="px-2 py-2 text-center">
+														<span
+															className={`inline-block w-5 h-5 rounded-full ${
+																task.priority === 'Alta'
+																	? 'bg-red-500 border-red-600 border'
+																	: task.priority === 'Media'
+																	? 'bg-yellow-500 border-yellow-600 border'
+																	: 'bg-green-500 border-green-600 border'
+															}`}
+															title={task.priority}
+														></span>
+													</td>
+													<td
+														className="p-2 py-3 first-letter:uppercase truncate text-wrap"
+														style={{ width: '25%' }}
+													>
+														{task.description
+															? task.description.split(' ').slice(0, 15).join(' ') +
+															  (task.description.split(' ').length > 15 ? '...' : '')
+															: 'Sin descripción, favor de llenarla.'}
+													</td>
 
-												<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
-													{task.startDate
-														? new Date(task.startDate).toLocaleString('es-MX', {
-																year: 'numeric',
-																month: '2-digit',
-																day: '2-digit',
-																hour: '2-digit',
-																minute: '2-digit',
-														  })
-														: 'No disponible'}
-												</td>
-												<td
-													className={`px-2 py-2 text-center text-sm w-32 whitespace-nowrap ${
-														task.dueDate &&
-														new Date(task.dueDate) <= new Date(new Date().toDateString()) &&
-														(task.totalProgress ?? 0) < 100
-															? 'text-red-600 font-semibold dark:text-red-400'
-															: ''
-													}`}
-												>
-													{task.dueDate
-														? new Date(task.dueDate).toLocaleString('es-MX', {
-																year: 'numeric',
-																month: '2-digit',
-																day: '2-digit',
-																hour: '2-digit',
-																minute: '2-digit',
-														  })
-														: 'No disponible'}
-												</td>
-
-												<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
-													{task.updatedAt
-														? new Date(task.updatedAt).toLocaleString('es-MX', {
-																year: 'numeric',
-																month: '2-digit',
-																day: '2-digit',
-																hour: '2-digit',
-																minute: '2-digit',
-														  })
-														: 'No disponible'}
-												</td>
-												<td className="px-2 py-2 text-center h-20">
-													<span
-														className={`px-2 py-1 text-xs font-semibold rounded-full ${
-															task.status === 'Completado'
-																? 'bg-green-100 text-green-500 border border-green-500 w-30'
-																: task.status === 'En Proceso'
-																? 'bg-yellow-100 text-yellow-600 border border-yellow-500 px-3'
-																: task.status === 'Cancelado'
-																? 'bg-gray-100 text-gray-600 border border-gray-500 w-28 px-4 py-1'
-																: task.status === 'Pendiente'
-																? 'bg-blue-100 text-blue-600 border border-blue-500 w-28 px-4 py-1'
-																: 'bg-transparent dark:bg-gray-700 text-blue-600 border border-blue-500 w-28 px-6 py-1'
+													<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
+														{task.startDate
+															? new Date(task.startDate).toLocaleString('es-MX', {
+																	year: 'numeric',
+																	month: '2-digit',
+																	day: '2-digit',
+																	hour: '2-digit',
+																	minute: '2-digit',
+															  })
+															: 'No disponible'}
+													</td>
+													<td
+														className={`px-2 py-2 text-center text-sm w-32 whitespace-nowrap ${
+															task.dueDate &&
+															new Date(task.dueDate) <= new Date(new Date().toDateString()) &&
+															(task.totalProgress ?? 0) < 100
+																? 'text-red-600 font-semibold dark:text-red-400'
+																: ''
 														}`}
 													>
-														{task.status}
-													</span>
-												</td>
-												<td className="px-2 py-2 text-center text-base h-20">
-													<span className="font-semibold text-gray-600 dark:text-gray-100">
-														{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
-													</span>
-												</td>
-												<td className="px-2 py-2 flex items-center justify-center gap-1 h-20">
-													<button
-														className="text-blue-600 hover:text-blue-800 transition-colors mr-1"
-														onClick={() => handleEditTask(task)}
-														aria-label="Editar tarea"
-													>
-														<FaEdit className="text-xl" size={24} />
-													</button>
-													<button
-														onClick={() => handleDeleteTask(task)}
-														className="text-blue-600 hover:text-blue-800 transition-colors"
-													>
-														<MdDelete className="text-xl" />
-													</button>
-												</td>
-											</tr>
-										))}
+														{task.dueDate
+															? new Date(task.dueDate).toLocaleString('es-MX', {
+																	year: 'numeric',
+																	month: '2-digit',
+																	day: '2-digit',
+																	hour: '2-digit',
+																	minute: '2-digit',
+															  })
+															: 'No disponible'}
+													</td>
+
+													<td className="px-2 py-2 text-center text-xs w-32 whitespace-nowrap">
+														{task.updatedAt
+															? new Date(task.updatedAt).toLocaleString('es-MX', {
+																	year: 'numeric',
+																	month: '2-digit',
+																	day: '2-digit',
+																	hour: '2-digit',
+																	minute: '2-digit',
+															  })
+															: 'No disponible'}
+													</td>
+													<td className="px-2 py-2 text-center h-20">
+														<span
+															className={`px-2 py-1 text-xs font-semibold rounded-full ${
+																task.status === 'Completado'
+																	? 'bg-green-100 text-green-500 border border-green-500 w-30'
+																	: task.status === 'En Proceso'
+																	? 'bg-yellow-100 text-yellow-600 border border-yellow-500 px-3'
+																	: task.status === 'Cancelado'
+																	? 'bg-gray-100 text-gray-600 border border-gray-500 w-28 px-4 py-1'
+																	: task.status === 'Pendiente'
+																	? 'bg-blue-100 text-blue-600 border border-blue-500 w-28 px-4 py-1'
+																	: 'bg-transparent dark:bg-gray-700 text-blue-600 border border-blue-500 w-28 px-6 py-1'
+															}`}
+														>
+															{task.status}
+														</span>
+													</td>
+													<td className="px-2 py-2 text-center text-base h-20">
+														<span className="font-semibold text-gray-600 dark:text-gray-100">
+															{task.totalProgress ? `${task.totalProgress} %` : '0 %'}
+														</span>
+													</td>
+													<td className="px-2 py-2 flex items-center justify-center gap-1 h-20">
+														<button
+															className="text-blue-600 hover:text-blue-800 transition-colors mr-1"
+															onClick={() => handleEditTask(task)}
+															aria-label="Editar tarea"
+														>
+															<FaEdit className="text-xl" size={24} />
+														</button>
+														<button
+															onClick={() => handleDeleteTask(task)}
+															className="text-blue-600 hover:text-blue-800 transition-colors"
+														>
+															<MdDelete className="text-xl" />
+														</button>
+													</td>
+												</tr>
+											))}
 								</React.Fragment>
 							))
 						) : (
