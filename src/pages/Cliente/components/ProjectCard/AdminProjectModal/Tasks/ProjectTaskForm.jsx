@@ -19,6 +19,7 @@ const ProjectTaskForm = ({
 	projectId,
 	createTask,
 	updateTask,
+	onTaskUpdated, // <-- NUEVO
 }) => {
 	const [task, setTask] = useState(
 		initialData || {
@@ -121,6 +122,7 @@ const ProjectTaskForm = ({
 				await createTask(updatedTask);
 				alert('Tarea creada correctamente');
 			}
+			if (onTaskUpdated) onTaskUpdated(updatedTask); // <-- PASA LA TAREA ACTUALIZADA
 			onClose();
 		} catch (error) {
 			console.error(error);

@@ -327,6 +327,18 @@ const ProjectTasksTable = ({
 		setIsCollapsed((prev) => !prev); // Alterna el estado
 	};
 
+	const handleUpdateTask = (updatedTask) => {
+		const updatedTasks = project.tasks.map((task) =>
+			(task.taskId || task.id) === (updatedTask.taskId || updatedTask.id)
+				? { ...task, ...updatedTask }
+				: task
+		);
+		if (onTasksChanged) {
+			onTasksChanged(updatedTasks);
+		}
+		handleCloseModal();
+	};
+
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between my-12">
@@ -539,6 +551,8 @@ const ProjectTasksTable = ({
 					projectId={project.id}
 					createTask={createTask}
 					updateTask={updateTask}
+					onTaskUpdated={handleUpdateTask}
+					onUpdate={handleUpdateTask}
 				/>
 			)}
 
@@ -549,8 +563,11 @@ const ProjectTasksTable = ({
 						projectId={projectId}
 						tasks={(project.tasks || []).filter((task) => task.startDate && task.dueDate)}
 						onTaskClick={(task) => {
-							// Si deseas abrir el modal solo al hacer clic en una tarea, puedes mantener esta lógica
-							handleEditTask(task);
+							// Aquí debería abrir el modal de edición, no el de agregar
+							this.openEditTaskModal(task);
+						}}
+						onTaskUpdate={(task) => {
+							handleUpdateTask(task);
 						}}
 						onDateChange={(task, start, end) => {
 							// Asegúrate de que `start` y `end` sean objetos Date válidos

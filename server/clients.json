@@ -74,8 +74,10 @@
     "projects": [
       {
         "title": "Dashboard dspwebstudio",
-        "description": "\nProyecto: CRM Dashboard\n\nObjetivo:\nDesarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario. Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
-        "services": [],
+        "description": "\nProyecto: CRM Dashboard\n\nObjetivo:\n\n Desarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario.     Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
+        "services": [
+          "Diseño Web"
+        ],
         "sections": [],
         "startDate": "2025-06-05",
         "dueDate": "2025-10-11",
@@ -84,15 +86,15 @@
         "status": "",
         "totalProgress": "",
         "costs": {
-          "totalServices": 0,
+          "totalServices": 3000,
           "totalSections": 0,
-          "netPayable": 0,
-          "baseRate": 0,
-          "ivaTax": 0,
-          "subtotal": 0,
-          "ivaRetention": 0,
-          "isrRetention": 0,
-          "isrTax": 0
+          "netPayable": 3000,
+          "baseRate": 3146.8666666666695,
+          "ivaTax": 503.49866666666713,
+          "subtotal": 3650.365333333337,
+          "ivaRetention": 335.6762673333336,
+          "isrRetention": 314.68666666666695,
+          "isrTax": 50.34986666666671
         },
         "tasks": [
           {
@@ -101,13 +103,13 @@
             "projectId": 1749147630013,
             "title": "Botones de editar y eliminar proyecto",
             "description": "Hacer que funcionen los botones de editar y eliminar proyecto desde GeneralProjectInfo",
-            "startDate": "2025-06-17T00:00:00.000Z",
-            "dueDate": "2025-06-21T00:00:00.000Z",
-            "priority": "Alta",
-            "totalProgress": 34,
-            "status": "En Proceso",
+            "startDate": "2025-06-17T18:00:00.000Z",
+            "dueDate": "2025-06-21T18:00:00.000Z",
+            "priority": "Baja",
+            "totalProgress": 25,
+            "status": "Nuevo",
             "createdAt": "2025-06-05T18:28:54.103Z",
-            "updatedAt": "2025-06-19T03:23:37.003Z"
+            "updatedAt": "2025-06-19T16:47:01.318Z"
           },
           {
             "clientId": 1745897285167,
@@ -116,11 +118,11 @@
             "title": "Sincronizar fechas en el Diagrama de Gantt",
             "status": "Nuevo",
             "priority": "Baja",
-            "startDate": "2025-06-17T00:00:00.000Z",
-            "dueDate": "2025-06-21T00:00:00.000Z",
+            "startDate": "2025-06-17T18:00:00.000Z",
+            "dueDate": "2025-06-21T18:00:00.000Z",
             "totalProgress": 0,
             "description": "Sincronizar fechas en el Diagrama de Gantt con la tabla de las tareas del proyecto.",
-            "updatedAt": "2025-06-13T22:55:14.271Z"
+            "updatedAt": "2025-06-19T16:46:17.696Z"
           },
           {
             "taskId": "1749147630013-task-3",
@@ -168,13 +170,13 @@
             "projectId": 1749147630013,
             "taskId": "1749147630013-task-6",
             "title": "Revisar la creación de nueva tarea",
-            "status": "En Proceso",
+            "status": "Nuevo",
             "priority": "Media",
-            "startDate": "2025-06-17T06:00:00.000Z",
-            "dueDate": "2025-06-21T06:00:00.000Z",
-            "totalProgress": 7,
+            "startDate": "2025-06-17T12:00:00.000Z",
+            "dueDate": "2025-06-21T12:00:00.000Z",
+            "totalProgress": 0,
             "description": "Revisar la creación de nueva tarea",
-            "updatedAt": "2025-06-14T20:27:52.467Z"
+            "updatedAt": "2025-06-19T16:46:53.563Z"
           },
           {
             "clientId": 1745897285167,
@@ -206,12 +208,12 @@
             "projectId": 1749147630013,
             "taskId": "1749147630013-srv-1",
             "title": "Servicio: Mantenimiento Web",
-            "status": "En Proceso",
-            "priority": "Baja",
-            "startDate": "2025-06-19T06:00:00.000Z",
-            "dueDate": "2025-06-20T06:00:00.000Z",
-            "totalProgress": 66,
-            "updatedAt": "2025-06-19T03:23:58.489Z"
+            "status": "Completado",
+            "priority": "Media",
+            "startDate": "2025-06-19T18:00:00.000Z",
+            "dueDate": "2025-06-20T18:00:00.000Z",
+            "totalProgress": 100,
+            "updatedAt": "2025-06-19T16:01:03.962Z"
           }
         ],
         "id": 1749147630013

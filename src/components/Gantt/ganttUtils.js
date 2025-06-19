@@ -15,12 +15,13 @@ export function mapTasksToGantt(tasks) {
       }
     )
     .map((task) => ({
-      id: task.taskId || task.id,
-      name: task.title,
+      id: task.taskId,
+      name: task.title || '',
       start: new Date(task.startDate),
       end: new Date(task.dueDate),
       progress: task.totalProgress || 0,
       type: 'task',
+      // Puedes agregar más campos según lo que requiera tu Gantt
     }));
 }
 
