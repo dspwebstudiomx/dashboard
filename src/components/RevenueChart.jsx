@@ -27,7 +27,7 @@ const RevenueChart = () => {
 
 		clients.forEach((client) => {
 			client.projects?.forEach((project) => {
-				const month = new Date(project.startDate).toLocaleString('es-MX', {
+				const month = new Date(project.dueDate).toLocaleString('es-MX', {
 					month: 'long',
 				});
 
@@ -39,9 +39,31 @@ const RevenueChart = () => {
 			});
 		});
 
-		// Generar etiquetas y valores para el gráfico
-		const labels = Object.keys(monthlyRevenue);
-		const data = Object.values(monthlyRevenue);
+		// Ordenar los meses en el orden correcto
+		const monthOrder = [
+			'enero',
+			'febrero',
+			'marzo',
+			'abril',
+			'mayo',
+			'junio',
+			'julio',
+			'agosto',
+			'septiembre',
+			'octubre',
+			'noviembre',
+			'diciembre',
+		];
+
+		// const labels = monthOrder.filter((month) => monthlyRevenue[month] !== undefined);
+
+		// const data = labels.map((month) => monthlyRevenue[month]);
+
+		// Usar todos los meses como etiquetas
+		const labels = monthOrder;
+
+		// Para cada mes, si no hay ingresos, poner 0
+		const data = monthOrder.map((month) => monthlyRevenue[month] || 0);
 
 		// Actualizar los datos del gráfico
 		setChartData({

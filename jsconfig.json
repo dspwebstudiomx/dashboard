@@ -7,9 +7,10 @@
 			"@utils/*": ["src/utils/*"], // Alias para utilidades
 			"@styles/*": ["src/styles/*"], // Alias para estilos
 			"@data/*": ["src/data/*"], // Alias para datos
-			"@context/*": ["src/context/*"] // Alias para datos
+			"@context/*": ["src/context/*"], // Alias para contextos
+			"@server/*": ["server/*"] // Alias para server
 		}
 	},
-	"include": ["src/**/*"], // Incluye todos los archivos dentro de la carpeta src
+	"include": ["src/**/*", "server/**/*"], // Incluye todos los archivos dentro de la carpeta src
 	"exclude": ["node_modules", "dist"] // Excluye estas carpetas
 }
