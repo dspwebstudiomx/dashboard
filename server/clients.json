@@ -1,362 +1,251 @@
 [
-  {
-    "id": 1745897285167,
-    "fullName": "Daniel Salvador",
-    "lastName": "Pérez",
-    "lastName2": "Bernal",
-    "email": "danielperezber@outlook.com",
-    "phoneNumber": "+52 443 918 8025",
-    "address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
-    "company": "dspwebstudio",
-    "rfc": "PEBD81011C21",
-    "curp": "PEBD81011C21",
-    "website": "https://dspwebstudio.com",
-    "facebook": "https://www.facebook.com/dspwebstudio",
-    "twitter": "https://twitter.com/dspwebstudio",
-    "instagram": "https://instagram.com/dspwebstudio",
-    "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Dashboard dspwebstudio",
-    "image": "/uploads/1750187673460-658328328.jpg",
-    "createdAt": "2025-05-01",
-    "updatedAt": "2025-05-15",
-    "tasks": [
-      {
-        "id": "1",
-        "clientId": "1745897285167",
-        "name": "",
-        "title": "a",
-        "description": "Prerender service",
-        "startDate": "2025-05-21",
-        "dueDate": "2025-05-22",
-        "priority": "Low"
-      },
-      {
-        "id": "2",
-        "clientId": "1745897285167",
-        "name": "",
-        "title": "a",
-        "description": "aa",
-        "startDate": "2025-04-27",
-        "dueDate": "2025-05-21",
-        "priority": "Medium"
-      },
-      {
-        "id": "3",
-        "clientId": "1745897285167",
-        "name": "",
-        "title": "a",
-        "description": "b",
-        "startDate": "2025-05-15",
-        "dueDate": "2025-05-16",
-        "priority": "Low"
-      },
-      {
-        "id": "4",
-        "clientId": "1745897285167",
-        "name": "",
-        "title": "a",
-        "description": "a",
-        "startDate": "2025-05-15",
-        "dueDate": "2025-05-30",
-        "priority": "Low"
-      },
-      {
-        "id": "5",
-        "clientId": "1745897285167",
-        "name": "",
-        "title": "c",
-        "description": "x",
-        "startDate": "2025-05-02",
-        "dueDate": "2025-05-23",
-        "priority": "Low"
-      }
-    ],
-    "projects": [
-      {
-        "title": "Dashboard dspwebstudio",
-        "description": "\nProyecto: CRM Dashboard\n\nObjetivo:\n\n Desarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario.     Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
-        "services": [
-          "Diseño Web"
-        ],
-        "sections": [],
-        "startDate": "2025-06-05",
-        "dueDate": "2025-10-11",
-        "priority": "Alta",
-        "completed": false,
-        "status": "",
-        "totalProgress": "",
-        "costs": {
-          "totalServices": 3000,
-          "totalSections": 0,
-          "netPayable": 3000,
-          "baseRate": 3146.8666666666695,
-          "ivaTax": 503.49866666666713,
-          "subtotal": 3650.365333333337,
-          "ivaRetention": 335.6762673333336,
-          "isrRetention": 314.68666666666695,
-          "isrTax": 50.34986666666671
-        },
-        "tasks": [
-          {
-            "taskId": "1749147630013-task-1",
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "title": "Botones de editar y eliminar proyecto",
-            "description": "Hacer que funcionen los botones de editar y eliminar proyecto desde GeneralProjectInfo",
-            "startDate": "2025-06-18T00:00:00.000Z",
-            "dueDate": "2025-06-22T00:00:00.000Z",
-            "priority": "Alta",
-            "totalProgress": 13,
-            "status": "En Proceso",
-            "createdAt": "2025-06-05T18:28:54.103Z",
-            "updatedAt": "2025-06-19T16:47:44.585Z"
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-task-2",
-            "title": "Sincronizar fechas en el Diagrama de Gantt",
-            "status": "Nuevo",
-            "priority": "Baja",
-            "startDate": "2025-06-17T18:00:00.000Z",
-            "dueDate": "2025-06-21T18:00:00.000Z",
-            "totalProgress": 0,
-            "description": "Sincronizar fechas en el Diagrama de Gantt con la tabla de las tareas del proyecto.",
-            "updatedAt": "2025-06-19T16:46:17.696Z"
-          },
-          {
-            "taskId": "1749147630013-task-3",
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "title": "Ajustar el modal",
-            "description": "Está mal en el ancho del modal en dispositivos. Específicamente en \"Crear nueva tarea\"\n\n-feat: Ajustar estilos del componente Modal para mejorar la presentación y adaptabilidad",
-            "startDate": "2025-06-06",
-            "dueDate": "2025-06-06",
-            "priority": "Alta",
-            "totalProgress": 100,
-            "status": "Completado",
-            "createdAt": "2025-06-06T15:52:54.487Z",
-            "updatedAt": "2025-06-06T18:06:42.431Z"
-          },
-          {
-            "taskId": "1749147630013-task-4",
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "title": "Adaptar Agregar/Editar Cliente",
-            "description": "Se abre la ventana y no despliega los íconos, así como ajustar la sección de la imagen y los botones\n\n- Se ajustó automáticamente con el ticket del modal.",
-            "startDate": "2025-06-06",
-            "dueDate": "2025-06-08",
-            "priority": "Media",
-            "totalProgress": 100,
-            "status": "Completado",
-            "createdAt": "2025-06-06T16:45:19.977Z",
-            "updatedAt": "2025-06-06T23:55:58.183Z"
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-task-5",
-            "title": "Ajustar la altura de los botones de acciones en la tabla",
-            "status": "Completado",
-            "priority": "Media",
-            "startDate": "2025-06-10T12:00:00.000Z",
-            "dueDate": "2025-06-13T12:00:00.000Z",
-            "totalProgress": 100,
-            "description": "Ajustar la altura automática de los botones de acciones en la tabla con el contenido de la descripción automáticamente.",
-            "updatedAt": "2025-06-13T22:56:46.146Z"
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-task-6",
-            "title": "Revisar la creación de nueva tarea",
-            "status": "Nuevo",
-            "priority": "Media",
-            "startDate": "2025-06-17T12:00:00.000Z",
-            "dueDate": "2025-06-21T12:00:00.000Z",
-            "totalProgress": 0,
-            "description": "Revisar la creación de nueva tarea",
-            "updatedAt": "2025-06-19T16:46:53.563Z"
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-sec-1",
-            "title": "Sección: Ubicación",
-            "status": "Completado",
-            "priority": "Baja",
-            "startDate": "2025-06-12T12:00:00.000Z",
-            "dueDate": "2025-06-13T12:00:00.000Z",
-            "totalProgress": 100,
-            "updatedAt": "2025-06-11T16:33:32.420Z"
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-task-7",
-            "title": "Mejorar frontend de los costos del proyecto.",
-            "status": "Pendiente",
-            "priority": "Baja",
-            "startDate": "2025-06-23T06:00:00.000Z",
-            "dueDate": "2025-06-27T06:00:00.000Z",
-            "totalProgress": 0,
-            "description": "Mejorar frontend de los costos del proyecto.",
-            "updatedAt": "2025-06-17T17:27:51.240Z"
-          },
-          {
-            "clientId": 1745897285167,
-            "projectId": 1749147630013,
-            "taskId": "1749147630013-srv-1",
-            "title": "Servicio: Mantenimiento Web",
-            "status": "Completado",
-            "priority": "Media",
-            "startDate": "2025-06-19T18:00:00.000Z",
-            "dueDate": "2025-06-20T18:00:00.000Z",
-            "totalProgress": 100,
-            "updatedAt": "2025-06-19T16:01:03.962Z"
-          }
-        ],
-        "id": 1749147630013
-      }
-    ]
-  },
-  {
-    "id": 1745953383970,
-    "fullName": "Alfonso",
-    "lastName": "Alonzo",
-    "lastName2": "",
-    "email": "a.alonzo@easylav.mx",
-    "phoneNumber": "+52 443 520 0593",
-    "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
-    "company": "EasyLav",
-    "project": "Sitio web EasyLav",
-    "image": "/uploads/1749057988777-974404235.ico",
-    "createdAt": "2025-05-15",
-    "updatedAt": "2025-05-15",
-    "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
-    "instagram": "https://www.instagram.com/lavanderiaseasylav/",
-    "linkedin": "",
-    "twitter": "",
-    "website": "https://easylav.mx",
-    "rfc": "",
-    "curp": "",
-    "tasks": [
-      {
-        "id": "1",
-        "clientId": "1745953383970",
-        "name": "",
-        "title": "a",
-        "description": "Prerender service",
-        "startDate": "",
-        "dueDate": "2025-05-06",
-        "priority": "Medium"
-      }
-    ],
-    "projects": [
-      {
-        "title": "Sitio web EasyLav",
-        "description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? Est maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
-        "services": [
-          "Landing Page"
-        ],
-        "sections": [],
-        "startDate": "2024-08-11",
-        "dueDate": "2025-05-30",
-        "priority": "Media",
-        "completed": false,
-        "status": "",
-        "totalProgress": "",
-        "costs": {
-          "totalServices": 6500,
-          "totalSections": 0,
-          "netPayable": 6500,
-          "baseRate": 6818.211111111118,
-          "ivaTax": 1090.913777777779,
-          "subtotal": 7909.124888888897,
-          "ivaRetention": 727.298579222223,
-          "isrRetention": 681.8211111111118,
-          "isrTax": 109.0913777777779
-        },
-        "tasks": [
-          {
-            "clientId": 1745953383970,
-            "projectId": 1749663893834,
-            "taskId": "1749663893834-srv-1",
-            "title": "Servicio: Landing Page",
-            "status": "Completado",
-            "priority": "Media",
-            "startDate": "2024-08-18T12:00:00.000Z",
-            "dueDate": "2025-03-30T12:00:00.000Z",
-            "totalProgress": 100,
-            "updatedAt": "2025-06-19T03:21:23.878Z",
-            "description": "Creación de sitio web con diferentes secciones."
-          }
-        ],
-        "id": 1749663893834
-      }
-    ]
-  },
-  {
-    "id": 1746509316001,
-    "fullName": "Alexis Daniel",
-    "lastName": "Vallarta",
-    "lastName2": "Pérez",
-    "email": "vallartaalexis1711@gmail.com",
-    "phoneNumber": "+52 443 199 5268",
-    "address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
-    "company": "Hogares Deesa",
-    "rfc": "",
-    "website": "https://www.hogaresdeesa.com/",
-    "curp": "",
-    "facebook": "https://www.facebook.com/alexis.ferguson.587",
-    "instagram": "",
-    "linkedin": "",
-    "twitter": "",
-    "image": "/uploads/1748875247715-883425634.jpg",
-    "createdAt": "2025-05-15",
-    "updatedAt": "2025-05-15",
-    "tasks": [
-      {
-        "id": "1",
-        "clientId": "1746509316001",
-        "name": "",
-        "title": "a",
-        "description": "a",
-        "startDate": "2025-05-08",
-        "dueDate": "2025-05-08",
-        "priority": "Low"
-      }
-    ],
-    "projects": [
-      {
-        "title": "Prueba Sistema",
-        "description": "test",
-        "services": [],
-        "sections": [],
-        "startDate": "2025-06-18",
-        "dueDate": "2025-06-28",
-        "priority": "Alta",
-        "completed": false,
-        "status": "",
-        "totalProgress": "",
-        "costs": {
-          "totalServices": 0,
-          "totalSections": 0,
-          "netPayable": 0,
-          "baseRate": 0,
-          "ivaTax": 0,
-          "subtotal": 0,
-          "ivaRetention": 0,
-          "isrRetention": 0,
-          "isrTax": 0,
-          "discount": 0
-        },
-        "tasks": [],
-        "id": 1750270860606
-      }
-    ],
-    "project": [
-      "Prueba Sistema"
-    ]
-  }
+	{
+		"id": 1745897285167,
+		"fullName": "Daniel Salvador",
+		"lastName": "Pérez",
+		"lastName2": "Bernal",
+		"email": "danielperezber@outlook.com",
+		"phoneNumber": "+52 443 918 8025",
+		"address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
+		"company": "dspwebstudio",
+		"rfc": "PEBD81011C21",
+		"curp": "PEBD81011C21",
+		"website": "https://dspwebstudio.com",
+		"facebook": "https://www.facebook.com/dspwebstudio",
+		"twitter": "https://twitter.com/dspwebstudio",
+		"instagram": "https://instagram.com/dspwebstudio",
+		"linkedin": "https://linkedin.com/dspwebstudio",
+		"project": "Dashboard dspwebstudio",
+		"image": "/uploads/1750187673460-658328328.jpg",
+		"createdAt": "2025-05-01",
+		"updatedAt": "2025-05-15",
+		"tasks": [
+			{
+				"id": "1",
+				"clientId": "1745897285167",
+				"name": "",
+				"title": "a",
+				"description": "Prerender service",
+				"startDate": "2025-05-21",
+				"dueDate": "2025-05-22",
+				"priority": "Low"
+			},
+			{
+				"id": "2",
+				"clientId": "1745897285167",
+				"name": "",
+				"title": "a",
+				"description": "aa",
+				"startDate": "2025-04-27",
+				"dueDate": "2025-05-21",
+				"priority": "Medium"
+			},
+			{
+				"id": "3",
+				"clientId": "1745897285167",
+				"name": "",
+				"title": "a",
+				"description": "b",
+				"startDate": "2025-05-15",
+				"dueDate": "2025-05-16",
+				"priority": "Low"
+			},
+			{
+				"id": "4",
+				"clientId": "1745897285167",
+				"name": "",
+				"title": "a",
+				"description": "a",
+				"startDate": "2025-05-15",
+				"dueDate": "2025-05-30",
+				"priority": "Low"
+			},
+			{
+				"id": "5",
+				"clientId": "1745897285167",
+				"name": "",
+				"title": "c",
+				"description": "x",
+				"startDate": "2025-05-02",
+				"dueDate": "2025-05-23",
+				"priority": "Low"
+			}
+		],
+		"projects": [
+			{
+				"title": "Dashboard dspwebstudio",
+				"description": "\nProyecto: CRM Dashboard\n\nObjetivo:\n\n Desarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario.     Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
+				"services": ["Diseño Web"],
+				"sections": [],
+				"startDate": "2025-06-05",
+				"dueDate": "2025-10-11",
+				"priority": "Alta",
+				"completed": false,
+				"status": "",
+				"totalProgress": "",
+				"costs": {
+					"totalServices": 3000,
+					"totalSections": 0,
+					"netPayable": 3000,
+					"baseRate": 3146.8666666666695,
+					"ivaTax": 503.49866666666713,
+					"subtotal": 3650.365333333337,
+					"ivaRetention": 335.6762673333336,
+					"isrRetention": 314.68666666666695,
+					"isrTax": 50.34986666666671
+				},
+				"tasks": [
+					{
+						"clientId": 1745897285167,
+						"projectId": 1745897285167,
+						"taskId": "1745897285167-srv-1",
+						"title": "Servicio: Diseño Web",
+						"status": "Completado",
+						"priority": "Alta",
+						"startDate": "2025-06-05T12:00:00.000Z",
+						"dueDate": "2025-10-11T12:00:00.000Z",
+						"totalProgress": 100,
+						"updatedAt": "2025-06-19T03:21:23.878Z",
+						"description": "Diseño y desarrollo de sitio web con diferentes secciones."
+					}
+				],
+				"id": 1749147630013
+			}
+		]
+	},
+	{
+		"id": 1745953383970,
+		"fullName": "Alfonso",
+		"lastName": "Alonzo",
+		"lastName2": "",
+		"email": "a.alonzo@easylav.mx",
+		"phoneNumber": "+52 443 520 0593",
+		"address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
+		"company": "EasyLav",
+		"project": "Sitio web EasyLav",
+		"image": "/uploads/1749057988777-974404235.ico",
+		"createdAt": "2025-05-15",
+		"updatedAt": "2025-05-15",
+		"facebook": "https://www.facebook.com/profile.php?id=61562871132158",
+		"instagram": "https://www.instagram.com/lavanderiaseasylav/",
+		"linkedin": "",
+		"twitter": "",
+		"website": "https://easylav.mx",
+		"rfc": "",
+		"curp": "",
+		"tasks": [
+			{
+				"id": "1",
+				"clientId": "1745953383970",
+				"name": "",
+				"title": "a",
+				"description": "Prerender service",
+				"startDate": "",
+				"dueDate": "2025-05-06",
+				"priority": "Medium"
+			}
+		],
+		"projects": [
+			{
+				"title": "Sitio web EasyLav",
+				"description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? Est maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
+				"services": ["Landing Page"],
+				"sections": [],
+				"startDate": "2024-08-11",
+				"dueDate": "2025-05-30",
+				"priority": "Media",
+				"completed": false,
+				"status": "",
+				"totalProgress": "",
+				"costs": {
+					"totalServices": 6500,
+					"totalSections": 0,
+					"netPayable": 6500,
+					"baseRate": 6818.211111111118,
+					"ivaTax": 1090.913777777779,
+					"subtotal": 7909.124888888897,
+					"ivaRetention": 727.298579222223,
+					"isrRetention": 681.8211111111118,
+					"isrTax": 109.0913777777779
+				},
+				"tasks": [
+					{
+						"clientId": 1745953383970,
+						"projectId": 1749663893834,
+						"taskId": "1749663893834-srv-1",
+						"title": "Servicio: Landing Page",
+						"status": "Completado",
+						"priority": "Media",
+						"startDate": "2024-08-18T12:00:00.000Z",
+						"dueDate": "2025-03-30T12:00:00.000Z",
+						"totalProgress": 100,
+						"updatedAt": "2025-06-19T03:21:23.878Z",
+						"description": "Creación de sitio web con diferentes secciones."
+					}
+				],
+				"id": 1749663893834
+			}
+		]
+	},
+	{
+		"id": 1746509316001,
+		"fullName": "Alexis Daniel",
+		"lastName": "Vallarta",
+		"lastName2": "Pérez",
+		"email": "vallartaalexis1711@gmail.com",
+		"phoneNumber": "+52 443 199 5268",
+		"address": "Molibdeno 214, Fracc. Villas del Pedregal, Morelia, Michoacán",
+		"company": "Hogares Deesa",
+		"rfc": "",
+		"website": "https://www.hogaresdeesa.com/",
+		"curp": "",
+		"facebook": "https://www.facebook.com/alexis.ferguson.587",
+		"instagram": "",
+		"linkedin": "",
+		"twitter": "",
+		"image": "/uploads/1748875247715-883425634.jpg",
+		"createdAt": "2025-05-15",
+		"updatedAt": "2025-05-15",
+		"tasks": [
+			{
+				"id": "1",
+				"clientId": "1746509316001",
+				"name": "",
+				"title": "a",
+				"description": "a",
+				"startDate": "2025-05-08",
+				"dueDate": "2025-05-08",
+				"priority": "Low"
+			}
+		],
+		"projects": [
+			{
+				"title": "Prueba Sistema",
+				"description": "test",
+				"services": [],
+				"sections": [],
+				"startDate": "2025-06-18",
+				"dueDate": "2025-06-28",
+				"priority": "Alta",
+				"completed": false,
+				"status": "",
+				"totalProgress": "",
+				"costs": {
+					"totalServices": 0,
+					"totalSections": 0,
+					"netPayable": 0,
+					"baseRate": 0,
+					"ivaTax": 0,
+					"subtotal": 0,
+					"ivaRetention": 0,
+					"isrRetention": 0,
+					"isrTax": 0,
+					"discount": 0
+				},
+				"tasks": [],
+				"id": 1750270860606
+			}
+		],
+		"project": ["Prueba Sistema"]
+	}
 ]
