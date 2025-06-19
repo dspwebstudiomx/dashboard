@@ -103,13 +103,13 @@
             "projectId": 1749147630013,
             "title": "Botones de editar y eliminar proyecto",
             "description": "Hacer que funcionen los botones de editar y eliminar proyecto desde GeneralProjectInfo",
-            "startDate": "2025-06-17T18:00:00.000Z",
-            "dueDate": "2025-06-21T18:00:00.000Z",
-            "priority": "Baja",
-            "totalProgress": 25,
-            "status": "Nuevo",
+            "startDate": "2025-06-18T00:00:00.000Z",
+            "dueDate": "2025-06-22T00:00:00.000Z",
+            "priority": "Alta",
+            "totalProgress": 13,
+            "status": "En Proceso",
             "createdAt": "2025-06-05T18:28:54.103Z",
-            "updatedAt": "2025-06-19T16:47:01.318Z"
+            "updatedAt": "2025-06-19T16:47:44.585Z"
           },
           {
             "clientId": 1745897285167,
