@@ -32,7 +32,7 @@ const DashboardPage = () => {
 		{
 			title: 'Resumen de Proyectos',
 			component: <ProjectSummary />,
-			colSpan: 'md:col-span-7 col-span-12',
+			colSpan: 'md:col-span-4 col-span-12',
 		},
 		{
 			title: 'Ingresos',
@@ -42,7 +42,7 @@ const DashboardPage = () => {
 		{
 			title: 'Lista de Tareas',
 			component: <TaskList />,
-			colSpan: 'md:col-span-4 col-span-12',
+			colSpan: 'md:col-span-3 col-span-12',
 		},
 		{
 			title: 'Clientes',
@@ -52,7 +52,7 @@ const DashboardPage = () => {
 		{
 			title: 'Notificaciones',
 			component: <Notifications />,
-			colSpan: 'md:col-span-6 col-span-12',
+			colSpan: 'md:col-span-4 col-span-12',
 		},
 		{
 			title: 'Calendario',
