@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClientsCard from './ClientsCard';
-import { ClientsModal, useClientsModal } from './ClientsModal';
+import { ClientsModal } from './ClientsModal';
 import { FaEdit } from 'react-icons/fa';
 import { IoPersonAddSharp } from 'react-icons/io5';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { handleScrollToTop, handleScrollToBottom } from '@api/GeneralApi';
+import { useClientsModal } from '@pages/Cliente/hooks/useClientsModal';
 
 const ClientsList = () => {
 	const modal = useClientsModal();

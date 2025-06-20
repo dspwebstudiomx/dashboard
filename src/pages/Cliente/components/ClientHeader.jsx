@@ -3,7 +3,8 @@ import FullNameText from '@components/Texts/FullNameText';
 import NewClientTag from '@components/Tags/NewClientTag';
 import Button from '@components/Botones/Button';
 import { FaRegEdit } from 'react-icons/fa';
-import { ClientsModal, useClientsModal } from '@pages/ClientsPage/ClientsModal';
+import { ClientsModal } from '@pages/ClientsPage/ClientsModal';
+import { useClientsModal } from '@pages/Cliente/hooks/useClientsModal';
 
 const ClientHeader = ({ selectedClient, setIsModalOpen, isModalOpen }) => {
 	const modal = useClientsModal();

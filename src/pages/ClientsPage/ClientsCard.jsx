@@ -23,7 +23,8 @@ import {
 	FaIdBadge,
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { ClientsModal, useClientsModal } from './ClientsModal';
+import { ClientsModal } from './ClientsModal';
+import { useClientsModal } from '@pages/Cliente/hooks/useClientsModal';
 import { IoWarningOutline } from 'react-icons/io5';
 import ClientDetailsTable from './ClientDetailsTable';
 import { Link } from 'react-router-dom';

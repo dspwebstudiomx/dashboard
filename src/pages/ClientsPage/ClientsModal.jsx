@@ -7,11 +7,6 @@ import ClientFormFields from './components/ClientFormFields';
 import Button from '@components/Botones/Button';
 import { IoPerson, IoPersonAdd, IoPersonAddOutline } from 'react-icons/io5';
 import ImageClientModal from './components/ImageClientModal';
-import { useModal } from '../../hooks/useModal'; // Ajusta la ruta si es necesario
-
-export function useClientsModal() {
-	return useModal();
-}
 
 const ClientsModal = ({
 	client,
