@@ -4,11 +4,11 @@ import { MdErrorOutline } from 'react-icons/md';
 import Button from '@components/Botones/Button';
 import { IoMdAdd } from 'react-icons/io';
 import { FaPlus } from 'react-icons/fa6';
-import ProjectCard from './ProjectCard';
-import ProjectForm from './ProjectForm';
-import useProjects from '../hooks/useProjects';
+import ProjectCard from '../ProjectCard';
+import ProjectForm from '../ProjectForm';
+import useProjects from '../../hooks/useProjects';
 
-const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
+const ClientProjects = ({ selectedClient, onUpdateProjects }) => {
 	const {
 		showForm,
 		setShowForm,
@@ -127,4 +127,4 @@ const ProyectosCliente = ({ selectedClient, onUpdateProjects }) => {
 	);
 };
 
-export default ProyectosCliente;
+export default ClientProjects;

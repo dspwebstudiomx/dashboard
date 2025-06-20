@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ClientContext = createContext();
 
@@ -6,7 +7,7 @@ export const ClientProvider = ({ children }) => {
 	const [selectedClient, setSelectedClient] = useState(null);
 	const [isProyectExist, setIsProyectExist] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [navigate, setNavigate] = useState(() => () => {});
+	const navigate = useNavigate();
 
 	return (
 		<ClientContext.Provider
@@ -18,7 +19,6 @@ export const ClientProvider = ({ children }) => {
 				isModalOpen,
 				setIsModalOpen,
 				navigate,
-				setNavigate,
 			}}
 		>
 			{children}

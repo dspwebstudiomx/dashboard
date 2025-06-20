@@ -1,12 +1,11 @@
-import { useSelectedClient } from '../hooks/useSelectedClient';
-import DashboardTemplate from '@templates/DashboardTemplate';
-import ProyectosCliente from './ProyectosCliente';
-import { Helmet } from 'react-helmet';
 import CloseButton from '@components/Botones/CloseButton';
+import DashboardTemplate from '@templates/DashboardTemplate';
 import ClientHeader from './ClientHeader';
 import ClientInfo from './ClientInfo';
+import ClientProjects from './ClientProjects';
+import { useSelectedClient } from '@hooks/useSelectedClient';
 
-const Cliente = () => {
+const Client = () => {
 	const {
 		selectedClient,
 		setSelectedClient,
@@ -19,13 +18,6 @@ const Cliente = () => {
 
 	return (
 		<>
-			<Helmet>
-				<title>Detalles del Cliente</title>
-				<meta name="description" content="Detalles del Cliente" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<link rel="canonical" href="http://localhost:5173/cliente" />
-				<meta property="og:title" content="Detalles del Cliente" />
-			</Helmet>
 			<DashboardTemplate title="Detalles del Cliente">
 				{selectedClient ? (
 					<section className="flex flex-col gap-18 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sm:p-16 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
@@ -40,7 +32,7 @@ const Cliente = () => {
 								setSelectedClient={setSelectedClient}
 							/>
 							<ClientInfo selectedClient={selectedClient} />
-							<ProyectosCliente
+							<ClientProjects
 								isProyectExist={isProyectExist}
 								selectedClient={selectedClient}
 								onUpdateProjects={(updatedProjects) => {
@@ -62,4 +54,4 @@ const Cliente = () => {
 	);
 };
 
-export default Cliente;
+export default Client;
