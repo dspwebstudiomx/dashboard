@@ -90,15 +90,15 @@ const Calendar = () => {
 
 	return (
 		<div className="flex flex-col justify-center items-center rounded-lg">
-			<div className="flex justify-between w-full px-4 items-center mb-4">
+			<div className="flex justify-between w-4/5 px-4 items-center mb-4">
 				<button onClick={handlePrev} className="p-2">
-					<FaArrowLeft size={28} className="text-blue-600" />
+					<FaArrowLeft size={28} className="text-blue-600 hover:text-blue-700" />
 				</button>
 				<h2 className="text-lg font-semibold">
 					{format(currentDate, 'MMMM yyyy', { locale: es })}
 				</h2>
 				<button onClick={handleNext} className="p-2">
-					<FaArrowRight size={28} className="text-blue-600" />
+					<FaArrowRight size={28} className="text-blue-600 hover:text-blue-700" />
 				</button>
 			</div>
 			{renderMonthView()}
