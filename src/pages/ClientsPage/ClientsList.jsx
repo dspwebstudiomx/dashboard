@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClientsCard from './ClientsCard';
-import ClientsModal from './ClientsModal';
+import { ClientsModal, useClientsModal } from './ClientsModal';
 import { FaEdit } from 'react-icons/fa';
 import { IoPersonAddSharp } from 'react-icons/io5';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { handleScrollToTop, handleScrollToBottom } from '@api/GeneralApi';
 
 const ClientsList = () => {
+	const modal = useClientsModal();
 	const [clients, setClients] = useState([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedClient, setSelectedClient] = useState(null);
@@ -133,7 +134,8 @@ const ClientsList = () => {
 					onClose={handleCloseModal}
 					isOpen={isModalOpen}
 					isEditing={!!selectedClient}
-					onClientUpdate={handleClientUpdate} // Pasa la función al componente hijo
+					onClientUpdate={handleClientUpdate}
+					modal={modal}
 				/>
 			)}
 		</section>

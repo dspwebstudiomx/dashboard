@@ -105,14 +105,14 @@ const GanttChart = ({ tasks, onTaskClick, onDateChange, clientId, projectId, tas
 							const updatedTask = await response.json();
 
 							// Actualiza el estado local
-							const updatedTasks = taskList.map((t) =>
-								t.id === updatedTask.id
+							const updatedTasks = taskList.map((task) =>
+								task.id === updatedTask.id
 									? {
-											...t,
+											...task,
 											start: new Date(updatedTask.startDate),
 											end: new Date(updatedTask.dueDate),
 									  }
-									: t
+									: task
 							);
 							setTaskList(updatedTasks);
 

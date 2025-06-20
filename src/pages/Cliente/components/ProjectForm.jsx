@@ -380,6 +380,7 @@ const ProjectForm = ({
 						text="Actualizar Proyecto"
 						icon={FaArrowsRotate}
 						onClick={onSubmit}
+						onClose={onClose}
 					/>
 				) : (
 					<Button type="submit" variant="primary" text="Crear Proyecto" icon={IoMdAdd} />

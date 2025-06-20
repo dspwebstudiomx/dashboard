@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import ContentProjectCard from './ProjectCard/ContentProjectCard';
-import LinePriorityCard from './ProjectCard/LinePriority';
-import { useProjectCard } from '../hooks/useProjectCard';
-import { FinancialCalculate } from '../data/FinancialCalculate';
-import GeneralProjectInfo from './GeneralProjectInfo/GeneralProjectInfo';
+import ContentProjectCard from '../ContentProjectCard';
+import LinePriorityCard from '../../LinePriority';
+import { useProjectCard } from '../../../hooks/useProjectCard';
+import { FinancialCalculate } from '../../../data/FinancialCalculate';
+import GeneralProjectInfo from '../../GeneralProjectInfo/GeneralProjectInfo';
 
 const ProjectCard = ({
 	project,
@@ -21,7 +21,7 @@ const ProjectCard = ({
 	);
 
 	// Usar el custom hook
-	const { isCompleted, modalAdminProject, closeModal, openModal, handleCompleteClick } =
+	const { isCompleted, generalProjectinfo, closeModal, openModal, handleCompleteClick } =
 		useProjectCard(project, handleComplete);
 
 	// Agrupar acciones relacionadas
@@ -46,7 +46,7 @@ const ProjectCard = ({
 
 			{/* Modal de administración */}
 			<GeneralProjectInfo
-				isOpen={modalAdminProject}
+				isOpen={generalProjectinfo}
 				onClose={closeModal}
 				project={project}
 				clientId={clientId}
