@@ -19,14 +19,6 @@ import DashboardTemplate from '@templates/DashboardTemplate';
 
 // Importar componentes de la página de Dashboard
 const DashboardPage = () => {
-	// Estilos para el Dashboard
-	const DashboardStyles = {
-		title: `text-3xl font-bold mb-6 sm:hidden text-blue-950 text-center dark:text-blue-400 mb-20`,
-		grid: `grid md:grid-cols-12 gap-12 p-0`,
-		card: `bg-white p-6 rounded-lg shadow-md`,
-		cardTitle: `text-2xl font-semibold mb-12`,
-	};
-
 	// Definición de tarjetas para el Dashboard
 	const cards = [
 		{
@@ -61,20 +53,25 @@ const DashboardPage = () => {
 		},
 	];
 
+	// Estilos para el Dashboard
+	const dashboardStyles = {
+		title: `text-3xl font-bold mb-6 sm:hidden text-blue-950 text-center dark:text-blue-400 mb-20`,
+		grid: `grid md:grid-cols-12 gap-12`,
+		card: ` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 p-6 rounded-xl shadow-md h-full 2xl:p-12 flex flex-col gap-12`,
+		cardTitle: `text-2xl font-semibold`,
+	};
+
 	// Renderizar el Dashboard
 	return (
 		<DashboardTemplate>
 			{/* Título del Dashboard */}
-			<h1 className={DashboardStyles.title}>Estadísticas</h1>
+			<h1 className={dashboardStyles.title}>Estadísticas</h1>
 
 			{/* Sección de tarjetas del Dashboard */}
 			<section className="grid grid-cols-12 gap-8 mx-auto justify-center items-center">
 				{cards.map((card, index) => (
-					<article
-						key={index}
-						className={` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 p-6 rounded-xl shadow-md ${card.colSpan} h-full 2xl:p-12`}
-					>
-						<h2 className={DashboardStyles.cardTitle}>{card.title}</h2>
+					<article key={index} className={dashboardStyles.card + ' ' + card.colSpan}>
+						<h2 className={dashboardStyles.cardTitle}>{card.title}</h2>
 						{card.component}
 					</article>
 				))}
