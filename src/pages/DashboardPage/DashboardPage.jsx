@@ -32,32 +32,32 @@ const DashboardPage = () => {
 		{
 			title: 'Resumen de Proyectos',
 			component: <ProjectSummary />,
-			colSpan: 'md:col-span-4 col-span-12',
-		},
-		{
-			title: 'Ingresos',
-			component: <RevenueChart />,
-			colSpan: 'md:col-span-5 col-span-12',
-		},
-		{
-			title: 'Lista de Tareas',
-			component: <TaskList />,
-			colSpan: 'md:col-span-3 col-span-12',
-		},
-		{
-			title: 'Clientes',
-			component: <ClientsTable />,
-			colSpan: 'md:col-span-8 col-span-12',
-		},
-		{
-			title: 'Notificaciones',
-			component: <Notifications />,
-			colSpan: 'md:col-span-4 col-span-12',
+			colSpan: 'col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-4',
 		},
 		{
 			title: 'Calendario',
 			component: <Calendar />,
-			colSpan: 'md:col-span-6 col-span-12',
+			colSpan: 'md:col-span-6 col-span-12 xl:col-span-4',
+		},
+		{
+			title: 'Lista de Tareas',
+			component: <TaskList />,
+			colSpan: 'col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-4',
+		},
+		{
+			title: 'Notificaciones',
+			component: <Notifications />,
+			colSpan: 'col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-4',
+		},
+		{
+			title: 'Clientes',
+			component: <ClientsTable />,
+			colSpan: 'col-span-12 md:col-span-12 lg:col-span-8',
+		},
+		{
+			title: 'Ingresos',
+			component: <RevenueChart />,
+			colSpan: 'md:col-span-12 lg:col-span-8 col-span-12',
 		},
 	];
 
