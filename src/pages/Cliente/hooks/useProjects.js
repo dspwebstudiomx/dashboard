@@ -70,26 +70,26 @@ export default function useProjects(selectedClient, onUpdateProjects) {
 
 
   // Estados para cupón y discount
-  const [cupon, setCupon] = useState('');
+  const [coupon, setcoupon] = useState('');
   const [discount, setdiscount] = useState(0);
-  const [cuponMsg, setCuponMsg] = useState('');
+  const [couponMsg, setcouponMsg] = useState('');
 
 
 
   // Validar cupón
-  const validarCupon = async () => {
+  const validarcoupon = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/cupones/validar?codigo=${cupon}`);
+      const res = await axios.get(`http://localhost:5000/api/coupones/validar?codigo=${coupon}`);
       if (res.data.valido) {
         setdiscount(res.data.discount);
-        setCuponMsg(`¡Cupón aplicado! ${res.data.discount}% de discount.`);
+        setcouponMsg(`¡Cupón aplicado! ${res.data.discount}% de discount.`);
       } else {
         setdiscount(0);
-        setCuponMsg('Cupón inválido o expirado.');
+        setcouponMsg('Cupón inválido o expirado.');
       }
     } catch {
       setdiscount(0);
-      setCuponMsg('Error al validar el cupón.');
+      setcouponMsg('Error al validar el cupón.');
     }
   };
 
@@ -109,7 +109,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const totalSections = (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
     setTotalSections(totalSections);
     // Calcula los costos
-    const discount = newProject.cupon ? (totalServices + totalSections) * (discount / 100) :
+    const discount = newProject.coupon ? (totalServices + totalSections) * (discount / 100) :
       0;
     setdiscount(discount);
     const netPayable = (totalServices + totalSections) - discount;
@@ -167,9 +167,9 @@ export default function useProjects(selectedClient, onUpdateProjects) {
       onUpdateProjects(projectWithId);
       setNewProject(initialProject());
       setShowForm(false);
-      setCupon('');
+      setcoupon('');
       setdiscount(0);
-      setCuponMsg('');
+      setcouponMsg('');
     } catch (error) {
       console.error("Error al obtener o actualizar los clientes:", error);
     }
@@ -238,7 +238,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     // Recalcula los costos por si se editaron servicios o secciones
     const editTotalServices = (editProject?.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
 
-    const discount = editProject.cupon ? (editTotalServices + totalSections) * (discount / 100) : 0;
+    const discount = editProject.coupon ? (editTotalServices + totalSections) * (discount / 100) : 0;
     setdiscount(discount);
     const editTotalSections = (editProject?.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
     const editNetPayable = editTotalServices + editTotalSections - discount;
@@ -334,13 +334,13 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     SERVICE_COSTS,
     SECTION_COSTS,
     handleEditClick,
-    cupon,
-    setCupon,
+    coupon,
+    setcoupon,
     discount,
     setdiscount,
-    cuponMsg,
-    setCuponMsg,
-    validarCupon,
+    couponMsg,
+    setcouponMsg,
+    validarcoupon,
     totalSections,
     totalServices
   };

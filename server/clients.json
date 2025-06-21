@@ -190,16 +190,18 @@
     ]
   },
   {
-    "id": 1750531205094,
+    "id": 1750531606898,
     "nombre": "",
     "email": "alevallarta@outlook.com",
     "imagen": "",
     "telefono": "",
     "fullName": "Alexis Daniel",
-    "lastName": "Vallarta ",
+    "lastName": "Vallarta",
     "lastName2": "Pérez",
-    "phoneNumber": "443123456789",
+    "phoneNumber": "+52 44 1234 56 7890",
     "company": "hogar",
-    "tasks": []
+    "tasks": [],
+    "projects": [],
+    "createdAt": "2025-06-21T18:46:46.898Z"
   }
 ]

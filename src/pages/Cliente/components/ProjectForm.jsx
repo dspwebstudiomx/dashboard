@@ -72,13 +72,13 @@ const ProjectForm = ({
 	setProject,
 	SERVICE_COSTS = {},
 	SECTION_COSTS = {},
-	cupon,
-	setCupon,
+	coupon,
+	setcoupon,
 	discount,
 	setdiscount,
-	cuponMsg,
-	setCuponMsg,
-	validarCupon,
+	couponMsg,
+	setcouponMsg,
+	validarcoupon,
 	onClose,
 }) => {
 	// Actualiza los costos en tiempo real
@@ -320,7 +320,7 @@ const ProjectForm = ({
 			</div>
 			{/* Cupón y totales */}
 			<div className="flex flex-col gap-2 items-right justify-center">
-				<div id="cupon-section" className="flex flex-col md:flex-row gap-4 items-end justify-end">
+				<div id="coupon-section" className="flex flex-col md:flex-row gap-4 items-end justify-end">
 					{/* Cupón */}
 					<div className="flex gap-4 flex-col items-start justify-start">
 						<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
@@ -330,9 +330,9 @@ const ProjectForm = ({
 						<input
 							className="p-2 md:p-4 rounded border flex-1 h-12 md:w-[320px]"
 							type="text"
-							name="cupon"
-							value={cupon}
-							onChange={(e) => setCupon(e.target.value)}
+							name="coupon"
+							value={coupon}
+							onChange={(e) => setcoupon(e.target.value)}
 							placeholder="Ingresa tu cupón"
 							onKeyDown={(e) => {
 								if (e.key === 'Enter') e.preventDefault();
@@ -345,16 +345,16 @@ const ProjectForm = ({
 						<Button
 							variant="primary"
 							type="button"
-							onClick={validarCupon}
+							onClick={validarcoupon}
 							icon={FaCheck}
 							text="Validar cupón"
 						/>
 						<Button
 							type="button"
 							onClick={() => {
-								setCupon('');
+								setcoupon('');
 								setdiscount(0);
-								setCuponMsg('');
+								setcouponMsg('');
 							}}
 							variant="secondary"
 							text="Reiniciar cupón"
@@ -362,8 +362,8 @@ const ProjectForm = ({
 						/>
 					</div>
 				</div>
-				{cuponMsg && (
-					<span className={discount > 0 ? 'text-green-600' : 'text-red-500'}>{cuponMsg}</span>
+				{couponMsg && (
+					<span className={discount > 0 ? 'text-green-600' : 'text-red-500'}>{couponMsg}</span>
 				)}
 			</div>
 			{/* Totales */}
