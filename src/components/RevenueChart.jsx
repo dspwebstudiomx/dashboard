@@ -107,17 +107,18 @@ const RevenueChart = () => {
 	// Opciones del gráfico
 	const options = {
 		responsive: true,
+		backgroundColor: 'rgba(255, 255, 255, 0.8)', // Fondo blanco con opacidad
 		plugins: {
 			legend: {
 				display: true,
-				position: 'top',
+				position: 'bottom',
 			},
+
 			title: {
 				display: true,
 				text: 'Ingresos Netos por Mes',
 				color: 'rgba(59, 130, 246, 1)', // Azul
 			},
-			centerText: {}, // Activar el plugin
 		},
 	};
 

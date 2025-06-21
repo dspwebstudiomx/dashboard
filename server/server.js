@@ -82,7 +82,7 @@ app.get("/api/clients", (req, res) => {
 // Obtener un cliente por ID
 app.get("/api/clients/:id", (req, res) => {
   const clients = JSON.parse(fs.readFileSync(CLIENTS_FILE, "utf8"));
-  const client = clients.find((c) => c.id === req.params.id);
+  const client = clients.find((c) => String(c.id) === String(req.params.id)); // <-- Importante
   if (!client) {
     return res.status(404).send({ error: "Cliente no encontrado" });
   }

@@ -13,16 +13,21 @@ const App = () => {
 	return (
 		<ModalStackProvider>
 			<Router>
-				<ClientProvider>
-					<Routes>
-						<Route path="/" element={<DashboardPage />} />
-						<Route path="/proyectos" element={<ProjectsPage />} />
-						<Route path="/clientes" element={<ClientsPage />} />
-						<Route path="/tareas" element={<TasksPage />} />
-						<Route path="/cotizaciones" element={<QuotesPage />} />
-						<Route path="/clientes/:id" element={<Client />} />
-					</Routes>
-				</ClientProvider>
+				<Routes>
+					<Route path="/" element={<DashboardPage />} />
+					<Route path="/proyectos" element={<ProjectsPage />} />
+					<Route path="/clientes" element={<ClientsPage />} />
+					<Route path="/tareas" element={<TasksPage />} />
+					<Route path="/cotizaciones" element={<QuotesPage />} />
+					<Route
+						path="/clientes/:id"
+						element={
+							<ClientProvider>
+								<Client />
+							</ClientProvider>
+						}
+					/>
+				</Routes>
 			</Router>
 		</ModalStackProvider>
 	);

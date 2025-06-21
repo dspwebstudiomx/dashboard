@@ -68,7 +68,7 @@ const ClientsList = () => {
 	return (
 		<section
 			id="clients-list-container"
-			className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none justify-center items-center"
+			className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none justify-center items-center  max-w-screen-xl"
 		>
 			{/* // Botones de la barra lateral */}
 			<aside
