@@ -8,6 +8,7 @@ import QuotesPage from './pages/QuotesPage/QuotesPage';
 import Client from './pages/Cliente/components/ClientWindow/Client';
 import { ModalStackProvider } from '@context/ModalStackContext';
 import { ClientProvider } from '@context/ClientContext';
+import { ClientsProvider } from '@context/ClientsProvider';
 
 const App = () => {
 	return (
@@ -16,7 +17,16 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<DashboardPage />} />
 					<Route path="/proyectos" element={<ProjectsPage />} />
-					<Route path="/clientes" element={<ClientsPage />} />
+					<Route
+						path="/clientes"
+						element={
+							<ClientsProvider>
+								<ClientProvider>
+									<ClientsPage />
+								</ClientProvider>
+							</ClientsProvider>
+						}
+					/>
 					<Route path="/tareas" element={<TasksPage />} />
 					<Route path="/cotizaciones" element={<QuotesPage />} />
 					<Route

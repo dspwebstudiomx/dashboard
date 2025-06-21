@@ -85,6 +85,7 @@ export const useClients = () => {
     addClient,
     editClient,
     handleAddClient,
+    setClients
   };
 };
 
