@@ -29,8 +29,6 @@ app.use(express.json({ limit: "100mb" })); // Aumenta el límite a 10 MB
 app.use(express.urlencoded({ extended: true, limit: "10mb" })); // Para datos codificados en URL
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-
-// Rutas
 // Usa los routers
 app.use("/api/clients", clientsRoutes);
 app.use("/api/clients", projectsRoutes);

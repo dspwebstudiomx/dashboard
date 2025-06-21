@@ -4,17 +4,17 @@ import { readClientsFile, writeClientsFile } from "../utils/clientsFileUtils.js"
 const router = express.Router();
 
 // Agregar tarea a cliente
-router.post("/:clientId/tasks", (req, res) => {
-  const clientId = parseInt(req.params.clientId, 10);
-  const newTask = req.body;
-  readClientsFile((err, clients) => {
-    if (err) return res.status(500).json({ error: "Error al leer el archivo de clientes" });
-    const client = clients.find((c) => c.id === clientId);
-    if (!client) return res.status(404).json({ message: "Cliente no encontrado" });
-    client.tasks.push(newTask);
-    writeClientsFile(clients, res, { message: "Tarea agregada correctamente", task: newTask });
-  });
-});
+// router.post("/:clientId/tasks", (req, res) => {
+//   const clientId = parseInt(req.params.clientId, 10);
+//   const newTask = req.body;
+//   readClientsFile((err, clients) => {
+//     if (err) return res.status(500).json({ error: "Error al leer el archivo de clientes" });
+//     const client = clients.find((c) => c.id === clientId);
+//     if (!client) return res.status(404).json({ message: "Cliente no encontrado" });
+//     client.tasks.push(newTask);
+//     writeClientsFile(clients, res, { message: "Tarea agregada correctamente", task: newTask });
+//   });
+// });
 
 // Agregar tareas a proyecto
 router.post("/:clientId/projects/:projectId/tasks", (req, res) => {
