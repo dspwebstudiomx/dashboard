@@ -1,5 +1,21 @@
+/* 
+RevenueChart.jsx - Gráfico de Ingresos Netos por Mes.
+
+Creado por: Daniel Pérez - [22/08/2025]
+
+Descripción:
+Este componente utiliza Chart.js para mostrar un gráfico de líneas que representa los ingresos netos por mes.
+Los datos se obtienen de un archivo JSON que contiene información de clientes y sus proyectos. 
+El gráfico muestra los ingresos netos agrupados por mes, con un plugin personalizado que muestra el mes actual en el centro del gráfico.
+El gráfico es responsivo y se adapta a diferentes tamaños de pantalla.  
+El eje X muestra los meses del año y el eje Y muestra los ingresos netos en pesos mexicanos (MXN).
+El gráfico también incluye opciones de interacción y hover para mejorar la experiencia del usuario.
+
+*/
+
+// Importaciones necesarias
 import React, { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
+import { Doughnut, Line } from 'react-chartjs-2';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -21,6 +37,7 @@ const RevenueChart = () => {
 		datasets: [],
 	});
 
+	// Efecto para calcular los ingresos netos por mes
 	useEffect(() => {
 		// Crear un objeto para agrupar ingresos por mes
 		const monthlyRevenue = {};
@@ -83,6 +100,7 @@ const RevenueChart = () => {
 	// Plugin para mostrar el mes actual en el centro de la gráfica
 	const currentMonth = new Date().toLocaleString('es-MX', { month: 'long' });
 
+	// Plugin personalizado para mostrar el mes actual en el centro del gráfico
 	const centerTextPlugin = {
 		id: 'centerText',
 		afterDraw: (chart) => {
@@ -106,18 +124,45 @@ const RevenueChart = () => {
 
 	// Opciones del gráfico
 	const options = {
-		responsive: true,
+		responsive: true, // Hacer el gráfico responsivo
 		backgroundColor: 'rgba(255, 255, 255, 0.8)', // Fondo blanco con opacidad
 		plugins: {
 			legend: {
-				display: true,
-				position: 'bottom',
+				display: true, // Mostrar leyenda
+				position: 'bottom', // Posición de la leyenda
 			},
-
 			title: {
-				display: true,
-				text: 'Ingresos Netos por Mes',
-				color: 'rgba(59, 130, 246, 1)', // Azul
+				display: true, // Mostrar título del gráfico
+				text: 'Ingresos Netos por Mes', // Título del gráfico
+				color: '', // Color del título
+			},
+		},
+		// Configuración de interacción y hover
+		// interaction: {
+		// 	mode: 'nearest', // Modo de interacción
+		// 	intersect: false, // No requiere intersección para mostrar tooltip
+		// },
+		hover: {
+			mode: 'nearest', // Modo de hover
+			intersect: false, // No requiere intersección para mostrar tooltip
+		},
+		scales: {
+			x: {
+				type: 'category', // Eje X como categorías
+				title: {
+					display: true, // Mostrar título del eje X
+					text: 'Meses', // texto del eje X
+					color: '', // color la etiqueta del eje X
+				},
+			},
+			y: {
+				range: [0, Math.max(...(chartData.datasets[0]?.data || [0])) * 2.1], // Ajustar el rango del eje Y
+				beginAtZero: true, // Comenzar desde cero
+				title: {
+					display: true, // Mostrar título del eje Y
+					text: 'Ingresos Netos (MXN)', // texto del eje Y
+					color: '', // color la etiqueta del eje Y
+				},
 			},
 		},
 	};
