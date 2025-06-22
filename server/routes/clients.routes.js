@@ -43,7 +43,7 @@ router.put("/:id", (req, res) => {
   const clientId = parseInt(req.params.id, 10);
   readClientsFile((err, clients) => {
     if (err) return res.status(500).json({ error: "Error al leer el archivo de clientes" });
-    const clientIndex = clients.findIndex((c) => c.id === clientId);
+    const clientIndex = clients.findIndex((client) => client.id === clientId);
     if (clientIndex === -1) return res.status(404).json({ error: "Cliente no encontrado" });
     clients[clientIndex] = { ...clients[clientIndex], ...req.body, updatedAt: new Date().toISOString() };
     writeClientsFile(clients, res, { message: "Cliente actualizado correctamente", client: clients[clientIndex] });

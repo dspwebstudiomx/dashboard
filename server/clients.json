@@ -201,7 +201,75 @@
     "phoneNumber": "+52 44 1234 56 7890",
     "company": "hogar",
     "tasks": [],
-    "projects": [],
-    "createdAt": "2025-06-21T18:46:46.898Z"
+    "projects": [
+      {
+        "title": "prueba sistemas",
+        "description": "test",
+        "services": [
+          "Consultoria SEO"
+        ],
+        "sections": [
+          "Política de Cookies"
+        ],
+        "startDate": "2025-06-21",
+        "dueDate": "2025-06-28",
+        "priority": "Media",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 2000,
+          "totalSections": 1100,
+          "netPayable": 3100,
+          "baseRate": 3251.7622222222253,
+          "ivaTax": 520.281955555556,
+          "subtotal": 3772.0441777777814,
+          "ivaRetention": 346.8654762444448,
+          "isrRetention": 325.1762222222226,
+          "isrTax": 52.028195555555605,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1750533849684
+      },
+      {
+        "title": "test",
+        "description": "prueba",
+        "services": [
+          "Consultoria SEO",
+          "Diseño Web"
+        ],
+        "sections": [
+          "Política de Cookies",
+          "Preguntas Frecuentes"
+        ],
+        "startDate": "2025-06-21",
+        "dueDate": "2025-06-28",
+        "priority": "Media",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 5000,
+          "totalSections": 1900,
+          "netPayable": 6900,
+          "baseRate": 7237.79333333334,
+          "ivaTax": 1158.0469333333344,
+          "subtotal": 8395.840266666675,
+          "ivaRetention": 772.0554148666674,
+          "isrRetention": 723.7793333333341,
+          "isrTax": 115.80469333333345,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1750533971354
+      }
+    ],
+    "createdAt": "2025-06-21T18:46:46.898Z",
+    "project": [
+      "prueba sistemas",
+      "test"
+    ],
+    "updatedAt": "2025-06-21T19:26:11.369Z"
   }
 ]
