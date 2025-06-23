@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom'; // Importa useLocation
 import logo from '../../assets/dsp-mixed.png'; // Asegúrate de que la ruta sea correcta
 import { Helmet } from 'react-helmet';
 import { IoBulbOutline } from 'react-icons/io5';
-
+// import nighnmoon from '../../assets/images/nightmoon.webp'; // Asegúrate de que la ruta sea correcta
 // Componente Header
 const Header = ({ toggleSidebar, title }) => {
 	const [time, setTime] = useState('');
@@ -108,7 +108,8 @@ const Header = ({ toggleSidebar, title }) => {
 			return (
 				<>
 					Buenas noches
-					<FaMoon className="inline-block mr-2 text-yellow-500 ml-2" />
+					<FaMoon className="inline-block mr-2 text-yellow-400 ml-2" />
+					{/* <img src={nighnmoon} alt="" width="32" /> */}
 				</>
 			);
 		}
@@ -173,15 +174,14 @@ const Header = ({ toggleSidebar, title }) => {
 								!
 							</span>
 						</div>
+
 						{/* Reloj */}
 						<div
 							id="reloj"
-							className="clock text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex 2xl:w-[200px]"
+							className="text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex 2xl:text-xl 2xl:w-[300px] gap-3"
 						>
-							<FaRegClock className="inline-block mr-2 text-blue-900 dark:text-blue-400" />
-							<span className="w-[114Opx]">
-								{time.includes('AM') ? time.replace('AM', 'a.m.') : time.replace('PM', 'p.m.')}
-							</span>
+							<FaRegClock className="text-blue-900 dark:text-blue-400" />
+							{time.includes('AM') ? time.replace('AM', 'a.m.') : time.replace('PM', 'p.m.')}
 						</div>
 
 						{/* Botón de modo oscuro */}

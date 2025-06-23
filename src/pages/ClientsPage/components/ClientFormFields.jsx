@@ -110,7 +110,7 @@ const ClientFormFields = ({ formData, handleChange }) => (
 					value={formData[name] || ''}
 					onChange={handleChange}
 					placeholder={placeholder}
-					className="flex-1 p-2 border rounded-md dark:bg-gray-800 dark:border-blue-700 dark:text-gray-200 focus:border-blue-700 focus:border-2 focus:outline-none active:border-blue-700"
+					className="flex-1 p-2 border rounded-md bg-white text-gray-800 dark:bg-gray-800 dark:border-blue-700 dark:text-gray-200 focus:border-blue-700 focus:border-2 focus:outline-none active:border-blue-700"
 					required={required}
 				/>
 			</div>
