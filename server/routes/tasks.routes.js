@@ -1,3 +1,38 @@
+/*
+  tasks.routes.js - Rutas para manejar tareas de proyectos de clientes
+  ___________________________________________________________________________
+
+  Autor: Daniel  Pérez
+  Fecha: 22/06/2025
+  Descripción:
+  Este archivo define las rutas para manejar las tareas asociadas a proyectos de clientes.
+
+  Las rutas permiten agregar, actualizar y eliminar tareas de proyectos específicos de un cliente.
+  Utiliza un archivo JSON para almacenar la información de los clientes y sus proyectos.
+  Las operaciones incluyen:
+  - Agregar tareas a un proyecto específico de un cliente.
+  - Actualizar tareas de un proyecto específico de un cliente.
+  - Eliminar tareas de un proyecto específico de un cliente.
+  - Manejo de errores para casos como cliente o proyecto no encontrado, y errores al leer el archivo de clientes.
+  - Respuestas JSON para confirmar las operaciones realizadas.
+  ___________________________________________________________________________
+  Importante:
+  - Asegúrate de que el archivo de clientes esté en el formato correcto y contenga los campos necesarios.
+  - Las tareas se identifican por un ID único dentro del proyecto.
+  - Las respuestas incluyen mensajes de éxito y los datos actualizados de las tareas.
+  ___________________________________________________________________________
+  Dependencias:
+  - express: Para manejar las rutas y solicitudes HTTP.
+  - utils/clientsFileUtils.js: Para leer y escribir el archivo de clientes.
+  ___________________________________________________________________________
+  Ejemplo de uso:
+  - POST /clients/:clientId/projects/:projectId/tasks: Agrega una o varias tareas a un proyecto específico de un cliente.
+  - PUT /clients/:clientId/projects/:projectId/tasks/:taskId: Actualiza una tarea específica de un proyecto de un cliente.  
+  - DELETE /clients/:clientId/projects/:projectId/tasks/:taskId: Elimina una tarea específica de un proyecto de un cliente.
+  ___________________________________________________________________________
+  
+*/
+
 import express from "express";
 import { readClientsFile, writeClientsFile } from "../utils/clientsFileUtils.js";
 
