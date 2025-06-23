@@ -4,7 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import clientsRoutes from "./routes/clients.routes.js";
 import projectsRoutes from "./routes/projects.routes.js";
-import tasksRoutes from "./routes/tasks.routes.js";
+import tasksProjectsRoutes from "./routes/tasksProjects.routes.js";
 import uploadsRoutes from "./routes/uploads.routes.js";
 import couponsRoutes from "./routes/coupons.routes.js";
 
@@ -32,7 +32,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Usa los routers
 app.use("/api/clients", clientsRoutes);
 app.use("/api/clients", projectsRoutes);
-app.use("/api/clients", tasksRoutes);
+app.use("/api/clients", tasksProjectsRoutes);
 app.use("/api/uploads", uploadsRoutes);
 app.use("/api/coupons", couponsRoutes);
 
