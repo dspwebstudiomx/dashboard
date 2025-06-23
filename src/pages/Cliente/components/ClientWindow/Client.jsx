@@ -1,9 +1,12 @@
+import React, { useEffect } from 'react';
 import CloseButton from '@components/Botones/CloseButton';
 import DashboardTemplate from '@templates/DashboardTemplate';
 import ClientHeader from './ClientHeader';
 import ClientInfo from './ClientInfo';
 import ClientProjects from './ClientProjects';
 import { useSelectedClient } from '@hooks/useSelectedClient';
+import { ClientsModal } from '@pages/ClientsPage/ClientsModal';
+import { useClients } from '@hooks/useClients';
 
 const Client = () => {
 	const {
@@ -15,6 +18,21 @@ const Client = () => {
 		setIsModalOpen,
 		navigate,
 	} = useSelectedClient();
+
+	const { clients, fetchClients } = useClients();
+
+	const handleClientUpdate = async () => {
+		await fetchClients();
+	};
+
+	// Este efecto actualiza el cliente seleccionado cuando cambia la lista de clientes
+	useEffect(() => {
+		if (selectedClient) {
+			const updated = clients.find((c) => String(c.id) === String(selectedClient.id));
+			if (updated) setSelectedClient(updated);
+		}
+		// eslint-disable-next-line
+	}, [clients]);
 
 	return (
 		<DashboardTemplate title="Detalles del Cliente">
@@ -33,6 +51,16 @@ const Client = () => {
 							setIsModalOpen={setIsModalOpen}
 							isModalOpen={isModalOpen}
 							setSelectedClient={setSelectedClient}
+						/>
+						{/* MODAL DE EDICIÓN */}
+						<ClientsModal
+							client={selectedClient}
+							onClientUpdate={handleClientUpdate}
+							modal={{
+								isOpen: isModalOpen,
+								openModal: () => setIsModalOpen(true),
+								closeModal: () => setIsModalOpen(false),
+							}}
 						/>
 						<ClientInfo selectedClient={selectedClient} />
 						<ClientProjects

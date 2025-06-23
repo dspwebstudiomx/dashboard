@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 // Estado inicial para un cliente
 const initialClientState = {
@@ -16,46 +17,65 @@ export const useClients = () => {
   const [editClientId, setEditClientId] = useState(null);
   const [errors, setErrors] = useState({});
 
-  // Agregar un cliente
-  const addClient = (client) => {
-    setClients([...clients, client]);
-  };
+  // Cargar clientes al iniciar
+  useEffect(() => {
+    fetchClients();
+  }, []);
 
-  // Editar un cliente existente
-  const editClient = (id, updatedClient) => {
-    setClients(
-      clients.map((client) => (client.id === id ? updatedClient : client))
-    );
-  };
-
-  // Manejar la adición de un cliente
-  const handleAddClient = () => {
-    if (validateClient(newClient)) {
-      addClient(newClient);
-      resetForm();
-      setShowModal(false);
+  const fetchClients = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/clients");
+      setClients(res.data);
+    } catch (error) {
+      console.error("Error al cargar clientes:", error);
     }
   };
 
-  // Manejar la edición de un cliente
-  const handleEditClient = () => {
+  // Agregar un cliente
+  const handleAddClient = async () => {
     if (validateClient(newClient)) {
-      editClient(editClientId, newClient);
-      resetForm();
-      setShowModal(false);
+      try {
+        await axios.post("http://localhost:5000/api/clients", newClient);
+        await fetchClients();
+        resetForm();
+        setShowModal(false);
+      } catch (error) {
+        console.error("Error al agregar cliente:", error);
+      }
+    }
+  };
+
+  // Editar un cliente existente
+  const handleEditClient = async () => {
+    if (validateClient(newClient)) {
+      try {
+        await axios.put(
+          `http://localhost:5000/api/clients/${editClientId}`,
+          newClient
+        );
+        await fetchClients();
+        resetForm();
+        setShowModal(false);
+      } catch (error) {
+        console.error("Error al editar cliente:", error);
+      }
     }
   };
 
   // Eliminar un cliente
-  const removeClient = (id) => {
-    setClients(clients.filter((client) => client.id !== id));
+  const removeClient = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/clients/${id}`);
+      await fetchClients();
+    } catch (error) {
+      console.error("Error al eliminar cliente:", error);
+    }
   };
 
   // Validar un cliente
   const validateClient = (client) => {
     const validationErrors = {};
-    if (!client.fullname)
-      validationErrors.fullname = "El nombre es obligatorio";
+    if (!client.fullname) validationErrors.fullname = "El nombre es obligatorio";
     if (!client.email) validationErrors.email = "El correo es obligatorio";
     setErrors(validationErrors);
     return Object.keys(validationErrors).length === 0;
@@ -82,10 +102,8 @@ export const useClients = () => {
     removeClient,
     setEditClientId,
     initialClientState,
-    addClient,
-    editClient,
     handleAddClient,
-    setClients
+    setClients,
   };
 };
 

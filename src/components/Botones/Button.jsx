@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 
 const VARIANT_CLASSES = {
-	blue_1: 'bg-blue-400 hover:bg-blue-500 text-blue-700',
-	blue_2: 'bg-blue-500 hover:bg-blue-600 text-blue-700',
+	blue_1: 'bg-blue-400 hover:bg-blue-500 text-gray-100',
+	blue_2: 'bg-blue-500 hover:bg-blue-600 text-gray-100',
 	blue_3: 'bg-blue-100 hover:bg-blue-200 text-blue-700 border border-blue-600',
-	blue_4: 'bg-blue-100 hover:bg-blue-200 text-blue-700',
+	blue_4: 'bg-blue-100 hover:bg-blue-200 text-blue-100',
 	primary: 'bg-blue-600 hover:bg-blue-700 text-white',
 	secondary: 'bg-blue-100 hover:bg-blue-200 text-blue-700 border border-blue-600',
 	outline: 'bg-transparent border border-blue-600 text-blue-600 hover:bg-blue-50 dark:bg-blue-50',
@@ -18,7 +18,7 @@ const SIZE_CLASSES = {
 };
 
 const Button = ({ id, type, text, onClick, icon: Icon, variant = 'primary', size = 'md' }) => {
-	const iconClass = clsx('w-5 h-5', variant === 'primary' ? 'text-white' : 'text-blue-600');
+	const iconClass = clsx('w-5 h-5', variant === 'primary' ? 'text-white' : 'text-white-100');
 	const iconSize = 24;
 
 	return (
