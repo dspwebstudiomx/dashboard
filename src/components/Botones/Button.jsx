@@ -17,12 +17,14 @@ const SIZE_CLASSES = {
 	lg: 'px-6 py-3 text-lg  md:h-15 md:w-[190px] text-base md:text-sm',
 };
 
-const Button = ({ text, onClick, icon: Icon, variant = 'primary', size = 'md' }) => {
+const Button = ({ id, type, text, onClick, icon: Icon, variant = 'primary', size = 'md' }) => {
 	const iconClass = clsx('w-5 h-5', variant === 'primary' ? 'text-white' : 'text-blue-600');
 	const iconSize = 24;
 
 	return (
 		<button
+			id={id}
+			type={type}
 			className={clsx(
 				'md:ml-4 w-full rounded-lg transition ml-0 flex items-center justify-center gap-2',
 				SIZE_CLASSES[size],
