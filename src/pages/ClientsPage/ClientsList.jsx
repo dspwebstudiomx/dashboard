@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ClientsCard from './ClientsCard';
 import { ClientsModal } from './ClientsModal';
+import { useModal } from '@hooks/useModal';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { IoPersonAddSharp } from 'react-icons/io5';
 import { handleScrollToTop, handleScrollToBottom } from '@api/GeneralApi';
@@ -12,18 +13,17 @@ const ClientsList = () => {
 	const {
 		clients,
 		setClients,
-		showModal,
-		setShowModal,
-		addClient,
+		handleAddClient,
 		editClient,
-		removeClient,
 		setNewClient,
 		setEditClientId,
 		editClientId,
 		resetForm,
+		fetchClients,
 	} = useClientsContext();
 
 	const { selectedClient, setSelectedClient } = useSelectedClient();
+	const { isOpen, openModal, closeModal } = useModal();
 
 	// Cargar clientes desde el archivo JSON solo una vez
 	useEffect(() => {
@@ -38,30 +38,28 @@ const ClientsList = () => {
 		setSelectedClient(client);
 		setNewClient(client || {});
 		setEditClientId(client ? client.id : null);
-		setShowModal(true);
+		openModal();
 	};
 
 	// Cerrar modal
 	const handleCloseModal = () => {
 		setSelectedClient(null);
 		resetForm();
-		setShowModal(false);
+		closeModal();
 	};
 
-	// Guardar cliente (agregar o editar)
-	const handleSaveClient = (client) => {
+	// Guardar cliente (agregar o editar) y actualizar la lista
+	const handleSaveClient = async (client) => {
 		if (editClientId) {
-			editClient(editClientId, client);
+			await editClient(editClientId, client);
 		} else {
-			addClient({ ...client, id: Date.now(), createdAt: new Date().toISOString() });
+			await handleAddClient({ ...client, id: Date.now(), createdAt: new Date().toISOString() });
+		}
+		// Recargar la lista desde la API
+		if (typeof fetchClients === 'function') {
+			await fetchClients();
 		}
 		handleCloseModal();
-	};
-
-	const modal = {
-		isOpen: showModal,
-		openModal: () => setShowModal(true),
-		closeModal: handleCloseModal,
 	};
 
 	return (
@@ -112,27 +110,25 @@ const ClientsList = () => {
 			{/* Lista de clientes */}
 			<ul
 				id="clients-list"
-				className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-6 col-span-12 w-full  md:ml-20 2xl:pr-0"
+				className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-6 col-span-12 w-full  md:ml-32"
 			>
 				{clients.map((client) => (
 					<ClientsCard
 						key={client.id}
 						client={client}
-						handleEditClient={() => handleOpenModal(client)}
-						handleDeleteClient={() => removeClient(client.id)}
-						onClose={handleCloseModal}
+						fetchClients={fetchClients}
+						handleOpenModal={handleOpenModal}
 					/>
 				))}
 			</ul>
 
 			{/* Modal para agregar o editar cliente */}
-			{showModal && (
-				<ClientsModal
-					client={selectedClient}
-					onClientUpdate={handleSaveClient}
-					modal={modal}
-				/>
-			)}
+			<ClientsModal
+				client={selectedClient}
+				onClientUpdate={handleSaveClient}
+				isOpen={isOpen}
+				onClose={handleCloseModal}
+			/>
 		</section>
 	);
 };

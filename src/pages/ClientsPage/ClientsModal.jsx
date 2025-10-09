@@ -7,12 +7,9 @@ import ClientFormFields from './components/ClientFormFields';
 import Button from '@components/Botones/Button';
 import { IoPerson, IoPersonAdd, IoPersonAddOutline } from 'react-icons/io5';
 import ImageClientModal from './components/ImageClientModal';
+// ...existing code...
 
-const ClientsModal = ({
-	client,
-	onClientUpdate,
-	modal, // { isOpen, openModal, closeModal }
-}) => {
+const ClientsModal = ({ client, onClientUpdate, isOpen, onClose }) => {
 	const {
 		formData,
 		setFormData,
@@ -21,13 +18,30 @@ const ClientsModal = ({
 		handleImageUpload,
 		handleRemoveImage,
 		isEditing,
-	} = useClientForm({ client, onClientUpdate, onClose: modal.closeModal });
+	} = useClientForm({ client, onClientUpdate, onClose });
 
 	useEffect(() => {
 		if (client) {
 			setFormData(client);
 		} else {
-			setFormData({ nombre: '', email: '', imagen: '', telefono: '' });
+			setFormData({
+				fullName: '',
+				lastName: '',
+				lastName2: '',
+				email: '',
+				phoneNumber: '',
+				address: '',
+				company: '',
+				rfc: '',
+				curp: '',
+				website: '',
+				facebook: '',
+				twitter: '',
+				instagram: '',
+				linkedin: '',
+				project: '',
+				image: '',
+			});
 		}
 	}, [client, setFormData]);
 
@@ -48,7 +62,7 @@ const ClientsModal = ({
 	);
 
 	return (
-		<Modal isOpen={modal.isOpen} onClose={modal.closeModal} title={renderTitle(isEditing)}>
+		<Modal isOpen={isOpen} onClose={onClose} title={renderTitle(isEditing)}>
 			<form onSubmit={handleSubmit} className="space-y-4 max-h-[70vh] text-base">
 				{/* // Formulario de cliente */}
 				<ClientFormFields formData={formData} handleChange={handleChange} />
@@ -61,7 +75,7 @@ const ClientsModal = ({
 						handleRemoveImage={handleRemoveImage}
 					/>
 					<div className="flex flex-col md:flex-row gap-2 justify-end items-center">
-						<Button variant="secondary" type="button" onClick={modal.closeModal} text="Cancelar" />
+						<Button variant="secondary" type="button" onClick={onClose} text="Cancelar" />
 						{isEditing ? (
 							<Button variant="primary" type="submit" text="Actualizar cliente" icon={FaCross} />
 						) : (
@@ -82,11 +96,8 @@ const ClientsModal = ({
 ClientsModal.propTypes = {
 	client: PropTypes.object,
 	onClientUpdate: PropTypes.func.isRequired,
-	modal: PropTypes.shape({
-		isOpen: PropTypes.bool.isRequired,
-		openModal: PropTypes.func.isRequired,
-		closeModal: PropTypes.func.isRequired,
-	}).isRequired,
+	isOpen: PropTypes.bool.isRequired,
+	onClose: PropTypes.func.isRequired,
 };
 
 export { ClientsModal };

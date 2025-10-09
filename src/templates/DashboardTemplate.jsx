@@ -28,7 +28,7 @@ const DashboardTemplate = ({ children, title }) => {
 			{/* Sidebar con transición desde la derecha */}
 			{isSidebarOpen && (
 				<div
-					className={`fixed top-0 right-0 h-full transform translate-x-0 transition-transform ease-in-out duration-300`}
+					className={`fixed top-0 right-0 h-full transform translate-x-0 transition-transform ease-in-out duration-300 2xl:mr-4`}
 				>
 					<Sidebar isOpen={isSidebarOpen} />
 				</div>
@@ -36,7 +36,7 @@ const DashboardTemplate = ({ children, title }) => {
 
 			{/* Contenido principal */}
 			<main
-				className={`grid grid-cols-12 p-0 pt-32 md:mt-8 lg:mt-6 xl:mt-20   items-start justify-center 2xl:px-0 2xl:py-10 min-h-[84vh] bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100 mx-auto ${
+				className={`grid grid-cols-12 p-0 pt-32 md:mt-8 lg:mt-6 xl:mt-20   items-start justify-center 2xl:px-0 2xl:pl-12 2xl:py-10 min-h-[84vh] bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100 mx-auto ${
 					isSidebarOpen ? '' : 'md:grid-cols-12'
 				}`}
 			>

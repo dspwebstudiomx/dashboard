@@ -9,7 +9,6 @@
 
 import React, { useState } from 'react';
 import {
-	FaEdit,
 	FaTrash,
 	FaEnvelope,
 	FaPhone,
@@ -17,26 +16,17 @@ import {
 	FaInstagram,
 	FaLinkedin,
 	FaHome,
-	FaBuilding,
-	FaTasks,
-	FaIdCard,
-	FaIdBadge,
+	FaEye,
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { ClientsModal } from './ClientsModal';
-import { useClientsModal } from '@pages/Cliente/hooks/useClientsModal';
 import { IoWarningOutline } from 'react-icons/io5';
 import ClientDetailsTable from './ClientDetailsTable';
 import { Link } from 'react-router-dom';
-const ClientsCard = ({ client, onClientUpdate }) => {
-	const modal = useClientsModal();
+import EditClientButton from '@components/Botones/EditClientButton';
 
-	const [isModalOpen, setIsModalOpen] = useState(false);
+const ClientsCard = ({ client, fetchClients, handleOpenModal }) => {
 	const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 	const [isTableModalOpen, setIsTableModalOpen] = useState(false);
-
-	// Removed unused function to fix the error
-	const closeModal = () => setIsModalOpen(false);
 
 	const openConfirmModal = () => {
 		setIsConfirmModalOpen(true);
@@ -62,20 +52,14 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 			if (!response.ok) {
 				throw new Error(`Error al eliminar cliente: ${response.statusText}`);
 			}
-
-			if (onClientUpdate) {
-				onClientUpdate((prevClients) => prevClients.filter((client) => client.id !== id));
+			if (typeof fetchClients === 'function') {
+				await fetchClients();
 			}
 		} catch (error) {
 			console.error('Error eliminando cliente:', error);
 		} finally {
 			closeConfirmModal();
 		}
-	};
-
-	const handleEdit = () => {
-		console.log('Cliente seleccionado para editar:', client);
-		setIsModalOpen(true); // Asegúrate de que el modal se abra correctamente
 	};
 
 	const SocialStyles = {
@@ -189,20 +173,13 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 						<div>
 							<button
 								onClick={openTableModal}
-								className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+								className=" rounded-lg hover:bg-blue-700 flex items-center justify-center"
 							>
-								Ver Detalles
+								<FaEye size={34} className="inline mr-2 text-blue-700" />
 							</button>
 						</div>
 						<div className="flex flex-row gap-4">
-							<button
-								id="editar-cliente"
-								onClick={handleEdit}
-								className="text-blue-500 hover:text-blue-700"
-								aria-label={`Editar cliente ${client?.fullName}`}
-							>
-								<FaEdit size={28} />
-							</button>
+							<EditClientButton client={client} handleOpenModal={handleOpenModal} />
 							<button
 								id="eliminar-cliente"
 								onClick={openConfirmModal}
@@ -216,15 +193,6 @@ const ClientsCard = ({ client, onClientUpdate }) => {
 				</div>
 			</article>
 
-			{isModalOpen && (
-				<ClientsModal
-					isOpen={isModalOpen}
-					onClose={closeModal}
-					client={client}
-					onClientUpdate={onClientUpdate}
-					modal={modal}
-				/>
-			)}
 			{isConfirmModalOpen && (
 				<div className="fixed inset-0 flex items-center justify-center bg-black/45 opacity-100 z-50">
 					<div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">

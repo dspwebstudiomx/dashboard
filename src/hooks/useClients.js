@@ -32,10 +32,10 @@ export const useClients = () => {
   };
 
   // Agregar un cliente
-  const handleAddClient = async () => {
-    if (validateClient(newClient)) {
+  const handleAddClient = async (client) => {
+    if (validateClient(client)) {
       try {
-        await axios.post("http://localhost:5000/api/clients", newClient);
+        await axios.post("http://localhost:5000/api/clients", client);
         await fetchClients();
         resetForm();
         setShowModal(false);
@@ -46,12 +46,12 @@ export const useClients = () => {
   };
 
   // Editar un cliente existente
-  const handleEditClient = async () => {
-    if (validateClient(newClient)) {
+  const handleEditClient = async (id, client) => {
+    if (validateClient(client)) {
       try {
         await axios.put(
-          `http://localhost:5000/api/clients/${editClientId}`,
-          newClient
+          `http://localhost:5000/api/clients/${id}`,
+          client
         );
         await fetchClients();
         resetForm();
