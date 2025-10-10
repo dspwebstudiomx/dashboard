@@ -69,7 +69,7 @@ const ClientsTable = () => {
 	return (
 		<div className="overflow-x-auto flex flex-col items-stretch justify-between w-full">
 			{/* Filtro de Búsqueda 🔍 */}
-			<div className="flex gap-2 mb-2 justify-end items-center">
+			<div className="flex gap-2 mb-2 justify-end items-center py-6 pr-2">
 				{/* Agregar filtro de búsqueda */}
 				<input
 					type="text"
