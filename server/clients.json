@@ -124,10 +124,10 @@
     "phoneNumber": "+52 443 520 0593",
     "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
     "company": "EasyLav",
-    "project": "Sitio web EasyLav",
+    "project": "aaaaaaaaa",
     "image": "/uploads/1749057988777-974404235.ico",
     "createdAt": "2025-05-15",
-    "updatedAt": "2025-10-09T19:36:02.956Z",
+    "updatedAt": "2025-10-10T18:12:16.725Z",
     "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
     "instagram": "https://www.instagram.com/lavanderiaseasylav/",
     "linkedin": "",
@@ -152,7 +152,8 @@
         "title": "Sitio web EasyLav",
         "description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? Est maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
         "services": [
-          "Landing Page"
+          "Landing Page",
+          "Consultoría de Diseño Web"
         ],
         "sections": [],
         "startDate": "2024-08-11",
@@ -162,15 +163,15 @@
         "status": "",
         "totalProgress": "",
         "costs": {
-          "totalServices": 6500,
+          "totalServices": 8700,
           "totalSections": 0,
-          "netPayable": 6500,
-          "baseRate": 6818.211111111118,
-          "ivaTax": 1090.913777777779,
-          "subtotal": 7909.124888888897,
-          "ivaRetention": 727.298579222223,
-          "isrRetention": 681.8211111111118,
-          "isrTax": 109.0913777777779
+          "netPayable": 8700,
+          "baseRate": 9125.913333333341,
+          "ivaTax": 1460.1461333333345,
+          "subtotal": 10586.059466666677,
+          "ivaRetention": 973.4611752666675,
+          "isrRetention": 912.5913333333342,
+          "isrTax": 146.01461333333347
         },
         "tasks": [
           {
@@ -188,30 +189,37 @@
           }
         ],
         "id": 1749663893834
+      },
+      {
+        "title": "aaaaaaaaa",
+        "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+        "services": [
+          "Consultoría de Diseño Web",
+          "Desarrollo Web",
+          "Integración de APIs",
+          "Optimización SEO"
+        ],
+        "sections": [],
+        "startDate": "2025-10-10",
+        "dueDate": "2025-10-24",
+        "priority": "Alta",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 13700,
+          "totalSections": 0,
+          "netPayable": 13700,
+          "baseRate": 14370.691111111124,
+          "ivaTax": 2299.31057777778,
+          "subtotal": 16670.001688888904,
+          "ivaRetention": 1532.9216208222235,
+          "isrRetention": 1437.0691111111125,
+          "isrTax": 229.93105777777802
+        },
+        "tasks": [],
+        "id": 1760119902400
       }
     ]
-  },
-  {
-    "id": 1760038280323,
-    "fullName": "Alexis",
-    "lastName": "Daniel",
-    "lastName2": "Pérez",
-    "email": "dsperez.tablet@gmail.com",
-    "phoneNumber": "4439188025",
-    "address": "Molibdeno 214",
-    "company": "Hogares Deesa",
-    "rfc": "",
-    "curp": "",
-    "website": "",
-    "facebook": "",
-    "twitter": "",
-    "instagram": "",
-    "linkedin": "",
-    "project": "",
-    "image": "",
-    "createdAt": "2025-10-09T19:31:20.323Z",
-    "updatedAt": "2025-10-09T19:35:22.701Z",
-    "tasks": [],
-    "projects": []
   }
 ]
