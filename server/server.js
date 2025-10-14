@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -35,6 +36,22 @@ app.use("/api/clients", projectsRoutes);
 app.use("/api/clients", tasksProjectsRoutes);
 app.use("/api/uploads", uploadsRoutes);
 app.use("/api/coupons", couponsRoutes);
+
+
+// Endpoint para obtener todos los clientes y proyectos directamente del archivo JSON
+app.get("/api/clients/all", (req, res) => {
+  fs.readFile(CLIENTS_FILE, "utf8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "No se pudo leer clients.json" });
+    }
+    try {
+      const clients = JSON.parse(data);
+      res.json(clients);
+    } catch {
+      res.status(500).json({ error: "Error al parsear clients.json" });
+    }
+  });
+});
 
 // Iniciar el servidor
 app.listen(PORT, () => {

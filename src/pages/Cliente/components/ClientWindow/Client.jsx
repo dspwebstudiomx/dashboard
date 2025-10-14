@@ -48,9 +48,7 @@ const Client = () => {
 						</div>
 						<ClientHeader
 							selectedClient={selectedClient}
-							setIsModalOpen={setIsModalOpen}
-							isModalOpen={isModalOpen}
-							setSelectedClient={setSelectedClient}
+							handleOpenModal={() => setIsModalOpen(true)}
 						/>
 						{/* MODAL DE EDICIÓN */}
 						<ClientsModal

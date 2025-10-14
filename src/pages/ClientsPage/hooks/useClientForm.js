@@ -52,6 +52,7 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
     }
     onClientUpdate(); // <-- Refresca la lista en el padre
     onClose();        // <-- Cierra el modal
+    window.location.reload(); // <-- Refresca el navegador
   };
 
   const handleRemoveImage = () => {

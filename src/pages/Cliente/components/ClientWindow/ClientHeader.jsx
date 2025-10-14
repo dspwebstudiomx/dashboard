@@ -3,7 +3,7 @@ import FullNameText from '@components/Texts/FullNameText';
 import NewClientTag from '@components/Tags/NewClientTag';
 import EditClientButton from '@components/Botones/EditClientButton';
 
-const ClientHeader = ({ selectedClient }) => {
+const ClientHeader = ({ selectedClient, handleOpenModal }) => {
 	return (
 		<h1 className="text-2xl md:text-3xl mb-12 flex flex-col md:flex-row items-center gap-6">
 			<div className="flex items-center gap-4">
@@ -12,7 +12,7 @@ const ClientHeader = ({ selectedClient }) => {
 					<FullNameText selectedClient={selectedClient} />
 					<NewClientTag selectedClient={selectedClient} />
 				</div>
-				<EditClientButton client={selectedClient} />
+				<EditClientButton client={selectedClient} handleOpenModal={handleOpenModal} />
 			</div>
 		</h1>
 	);
