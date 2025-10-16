@@ -122,7 +122,10 @@ const ProjectForm = ({
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await onSubmit(e);
-		if (onClose) onClose();
+		if (onClose) {
+			onClose();
+			window.location.reload();
+		}
 	};
 
 	return (
