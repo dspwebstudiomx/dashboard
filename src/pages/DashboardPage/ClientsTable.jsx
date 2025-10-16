@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaEye } from 'react-icons/fa6';
+import { FaCheck, FaEye } from 'react-icons/fa6';
 
 const ClientsTable = () => {
 	const [clients, setClients] = useState([]);
@@ -142,13 +142,18 @@ const ClientsTable = () => {
 											{client.fullName} {client.lastName} {client.lastName2}
 										</td>
 										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
-											{client.projects && client.projects.length > 0
-												? client.projects.map((project, index) => (
-														<div key={index} className="mb-1">
+											{client.projects && client.projects.length > 0 ? (
+												<ul className="flex flex-col gap-2">
+													{client.projects.map((project, index) => (
+														<li className="w-full " key={index}>
+															<FaCheck className="inline text-blue-800 mr-2" />
 															{project.title}
-														</div>
-												  ))
-												: 'Sin proyectos asignados'}
+														</li>
+													))}
+												</ul>
+											) : (
+												'Sin proyectos asignados'
+											)}
 										</td>
 										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
 											{client.email}
