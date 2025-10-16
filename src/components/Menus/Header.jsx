@@ -178,7 +178,7 @@ const Header = ({ toggleSidebar, title }) => {
 						{/* Reloj */}
 						<div
 							id="reloj"
-							className="text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex 2xl:text-xl 2xl:w-[300px] gap-3"
+							className="text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex 2xl:text-2xl 2xl:w-[300px] gap-3"
 						>
 							<FaRegClock className="text-blue-900 dark:text-blue-400" />
 							{time.includes('AM') ? time.replace('AM', 'a.m.') : time.replace('PM', 'p.m.')}
