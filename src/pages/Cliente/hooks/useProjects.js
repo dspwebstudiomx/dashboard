@@ -13,6 +13,7 @@ export const SERVICE_COSTS = {
   "Mantenimiento Web": 4500,
   "Optimización SEO": 1700,
   "Rediseño Web": 3500,
+  "Agregar Página": 1500,
 };
 
 export const SECTION_COSTS = {
@@ -114,10 +115,12 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const totalSectionsWithOther = totalSections + otherSectionAmount;
     setTotalSections(totalSections);
     // Calcula los costos
-    const discount = newProject.coupon ? (totalServices + totalSectionsWithOther) * (discount / 100) :
-      0;
-    setdiscount(discount);
-    const netPayable = (totalServices + totalSectionsWithOther) - discount;
+    // `discount` es el estado que contiene el porcentaje (si se aplicó un cupón).
+    // No sobrescribir ese estado aquí; calcular el monto descontado localmente.
+    // `ProjectForm` mantiene el código de cupón en el estado `coupon`, no en `newProject.coupon`.
+    // Usar `coupon` para calcular el monto descontado al crear el proyecto.
+    const discountAmount = coupon ? (totalServices + totalSectionsWithOther) * (discount / 100) : 0;
+    const netPayable = (totalServices + totalSectionsWithOther) - discountAmount;
     const baseRate = netPayable / 0.95332923754846;
     const ivaTax = baseRate * 0.16;
     const subtotal = baseRate + ivaTax;
@@ -141,7 +144,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
         ivaRetention,
         isrRetention,
         isrTax,
-        discount
+        discount: discountAmount,
       }
     };
 
@@ -171,7 +174,9 @@ export default function useProjects(selectedClient, onUpdateProjects) {
         updatedClients.find((c) => c.id === selectedClient.id)
       );
 
-      onUpdateProjects(projectWithId);
+      // Pasar la lista completa de proyectos actualizada para que la UI la reemplace
+      const updatedClient = updatedClients.find((c) => c.id === selectedClient.id);
+      onUpdateProjects(updatedClient.projects || []);
       setNewProject(initialProject());
       setShowForm(false);
       setcoupon('');
@@ -246,12 +251,14 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const editTotalServices = (editProject?.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
     const editOtherServiceAmount = Number(editProject?.otherServiceAmount) || 0;
 
-    const discount = editProject.coupon ? (editTotalServices + totalSections) * (discount / 100) : 0;
-    setdiscount(discount);
+    // Recalcula el descuento como monto (no sobrescribir el estado `discount` que mantiene el porcentaje)
     const editTotalSections = (editProject?.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
     const editOtherSectionAmount = Number(editProject?.otherSectionAmount) || 0;
     const editTotalSectionsWithOther = editTotalSections + editOtherSectionAmount;
-    const editNetPayable = editTotalServices + editOtherServiceAmount + editTotalSectionsWithOther - discount;
+    // Al editar, preferir el cupón almacenado en el proyecto, si existe; si no, usar el cupón global.
+    const editCouponApplied = editProject.coupon || coupon;
+    const editDiscountAmount = editCouponApplied ? (editTotalServices + editTotalSectionsWithOther) * (discount / 100) : 0;
+    const editNetPayable = editTotalServices + editOtherServiceAmount + editTotalSectionsWithOther - editDiscountAmount;
     const editBaseRate = editNetPayable / 0.95332923754846;
     const editIvaTax = editBaseRate * 0.16;
     const editSubtotal = editBaseRate + editIvaTax;
@@ -272,6 +279,7 @@ export default function useProjects(selectedClient, onUpdateProjects) {
         ivaRetention: editIvaRetention,
         isrRetention: editIsrRetention,
         isrTax: editIsrTax,
+        discount: editDiscountAmount,
       }
     };
 

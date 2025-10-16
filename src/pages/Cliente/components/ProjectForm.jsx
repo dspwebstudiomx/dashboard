@@ -9,6 +9,7 @@ import {
 	FaFlag,
 	FaLayerGroup,
 } from 'react-icons/fa6';
+import { FaCircle } from 'react-icons/fa';
 import CostsProjectList from '@components/CostsProjectList';
 import { useEffect } from 'react';
 
@@ -143,7 +144,7 @@ const ProjectForm = ({
 	return (
 		<form
 			id="form-proyecto"
-			className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto bg-blue-100"
+			className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto"
 			onSubmit={handleSubmit}
 		>
 			<div className="flex flex-col gap-8">
@@ -159,7 +160,7 @@ const ProjectForm = ({
 						value={project.title}
 						onChange={onChange}
 						required
-						className="p-2 rounded border-2 hover:border-blue-600  border-blue-600 active:border-blue-600 focus:border-blue-700 caret-blue-600"
+						className="p-2 rounded border"
 					/>
 				</div>
 				<div className="flex flex-col md:flex-row gap-4 justify-between">
@@ -198,16 +199,59 @@ const ProjectForm = ({
 							<FaFlag className="text-blue-700" />
 							Prioridad
 						</label>
-						<select
-							name="priority"
-							value={project.priority}
-							onChange={onChange}
-							className="p-2 rounded border w-full"
-						>
-							<option value="Alta">Alta</option>
-							<option value="Media">Media</option>
-							<option value="Baja">Baja</option>
-						</select>
+						{/* Selector de prioridad con react-icons y colores */}
+						<div className="flex gap-2 w-full">
+							<label
+								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
+									project.priority === 'Alta' ? 'bg-red-50 border-red-400' : ''
+								}`}
+							>
+								<input
+									type="radio"
+									name="priority"
+									value="Alta"
+									checked={project.priority === 'Alta'}
+									onChange={onChange}
+									className="sr-only"
+								/>
+								<FaCircle className="text-red-600" />
+								<span>Alta</span>
+							</label>
+
+							<label
+								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
+									project.priority === 'Media' ? 'bg-yellow-50 border-yellow-400' : ''
+								}`}
+							>
+								<input
+									type="radio"
+									name="priority"
+									value="Media"
+									checked={project.priority === 'Media'}
+									onChange={onChange}
+									className="sr-only"
+								/>
+								<FaCircle className="text-yellow-500" />
+								<span>Media</span>
+							</label>
+
+							<label
+								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
+									project.priority === 'Baja' ? 'bg-green-50 border-green-400' : ''
+								}`}
+							>
+								<input
+									type="radio"
+									name="priority"
+									value="Baja"
+									checked={project.priority === 'Baja'}
+									onChange={onChange}
+									className="sr-only"
+								/>
+								<FaCircle className="text-green-600" />
+								<span>Baja</span>
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -223,7 +267,7 @@ const ProjectForm = ({
 						(service) => (
 							<label key={service} className="flex items-center gap-2">
 								<input
-									className="w-6 h-6 rounded-2xl"
+									className="w-6 h-6 rounded-2xl border-2 hover:border-blue-600  border-blue-600 active:border-blue-600 focus:border-blue-700 caret-blue-600"
 									type="checkbox"
 									name="services"
 									value={service}
@@ -288,7 +332,7 @@ const ProjectForm = ({
 								type="number"
 								min="0"
 								step="0.01"
-								className="p-2 rounded border w-40"
+								className="p-2 rounded border-2 hover:border-blue-600  border-blue-600 active:border-blue-600 focus:border-blue-700 caret-blue-600 w-40"
 								value={project.otherServiceAmount || 0}
 								onChange={(e) =>
 									setProject((prev) => ({ ...prev, otherServiceAmount: Number(e.target.value) }))
@@ -383,7 +427,7 @@ const ProjectForm = ({
 								type="number"
 								min="0"
 								step="0.01"
-								className="p-2 rounded border w-40"
+								className="p-2 rounded border-2 hover:border-blue-600  border-blue-600 active:border-blue-600 focus:border-blue-700 caret-blue-600 w-40"
 								value={project.otherSectionAmount || 0}
 								onChange={(e) =>
 									setProject((prev) => ({ ...prev, otherSectionAmount: Number(e.target.value) }))
@@ -423,46 +467,51 @@ const ProjectForm = ({
 			</div>
 			{/* Cupón y totales */}
 			<div className="flex flex-col gap-2 items-right justify-center">
-				<div id="coupon-section" className="flex flex-col md:flex-row gap-4 items-end justify-end">
+				<div
+					id="coupon-section"
+					className="flex flex-col md:flex-row gap-4 items-end justify-start"
+				>
 					{/* Cupón */}
 					<div className="flex gap-4 flex-col items-start justify-start">
-						<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
+						<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold mb-6">
 							<FaTag className="text-blue-700" />
 							Código de cupón
 						</label>
-						<input
-							className="p-2 md:p-4 rounded border flex-1 h-12 md:w-[320px]"
-							type="text"
-							name="coupon"
-							value={coupon}
-							onChange={(e) => setcoupon(e.target.value)}
-							placeholder="Ingresa tu cupón"
-							onKeyDown={(e) => {
-								if (e.key === 'Enter') e.preventDefault();
-							}}
-						/>
-					</div>
+						<div className="flex items-center justify-center">
+							<input
+								className="p-2 md:p-4 rounded border flex-1 h-12 md:w-[320px]"
+								type="text"
+								name="coupon"
+								value={coupon}
+								onChange={(e) => setcoupon(e.target.value)}
+								placeholder="Ingresa tu cupón"
+								onKeyDown={(e) => {
+									if (e.key === 'Enter') e.preventDefault();
+								}}
+							/>
 
-					{/* Botones de Validar y Reiniciar Cupón */}
-					<div className="flex items-center justify-end gap-2 mt-2 md:mt-0">
-						<Button
-							variant="primary"
-							type="button"
-							onClick={validarcoupon}
-							icon={FaCheck}
-							text="Validar cupón"
-						/>
-						<Button
-							type="button"
-							onClick={() => {
-								setcoupon('');
-								setdiscount(0);
-								setcouponMsg('');
-							}}
-							variant="secondary"
-							text="Reiniciar cupón"
-							icon={FaArrowRotateLeft}
-						/>
+							{/* Botones de Validar y Reiniciar Cupón */}
+							<div className="flex items-center justify-end gap-2 mt-2 md:mt-0">
+								<Button
+									variant="primary"
+									type="button"
+									onClick={validarcoupon}
+									icon={FaCheck}
+									text="Validar cupón"
+								/>
+								<Button
+									type="button"
+									onClick={() => {
+										setcoupon('');
+										setdiscount(0);
+										setcouponMsg('');
+									}}
+									variant="secondary"
+									text="Reiniciar cupón"
+									icon={FaArrowRotateLeft}
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
 				{couponMsg && (
@@ -470,7 +519,7 @@ const ProjectForm = ({
 				)}
 			</div>
 			{/* Totales */}
-			<div className="mt-6 text-base font-semibold flex flex-col justify-center w-full items-end gap-4">
+			<div className="mt-6 text-base font-semibold flex flex-col justify-center w-full items-end">
 				<CostsProjectList costs={project.costs} />
 			</div>
 

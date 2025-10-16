@@ -78,7 +78,7 @@ const Calendar = () => {
 	};
 
 	return (
-		<div className="flex flex-col justify-center items-center rounded-lg">
+		<div className="flex flex-col place-content-center rounded-lg">
 			{/* Encabezado del calendario con botones de navegación */}
 			<div className="flex justify-between w-full px-4 items-center mb-4">
 				<button onClick={handlePrev} className="p-2">

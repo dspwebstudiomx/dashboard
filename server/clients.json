@@ -127,10 +127,10 @@
     "phoneNumber": "+52 443 520 0593",
     "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
     "company": "EasyLav",
-    "project": "Sitio web EasyLav",
+    "project": "Prueba sistemas",
     "image": "/uploads/1749057988777-974404235.ico",
     "createdAt": "2025-05-15",
-    "updatedAt": "2025-10-14T00:49:27.091Z",
+    "updatedAt": "2025-10-16T18:33:12.358Z",
     "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
     "instagram": "https://www.instagram.com/lavanderiaseasylav/",
     "linkedin": "",
@@ -197,31 +197,61 @@
         "title": "aaaaaaaaa",
         "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
         "services": [
-          "Consultoría de Diseño Web",
-          "Desarrollo Web",
-          "Integración de APIs",
-          "Optimización SEO"
+          "Landing Page"
         ],
         "sections": [],
+        "otherServiceAmount": 0,
+        "otherSectionAmount": 0,
         "startDate": "2025-10-10",
         "dueDate": "2025-10-24",
+        "priority": "Baja",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 6500,
+          "totalSections": 0,
+          "netPayable": 6500,
+          "baseRate": 6818.211111111118,
+          "ivaTax": 1090.913777777779,
+          "subtotal": 7909.124888888897,
+          "ivaRetention": 727.298579222223,
+          "isrRetention": 681.8211111111118,
+          "isrTax": 109.0913777777779,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1760119902400
+      },
+      {
+        "title": "Prueba sistemas",
+        "description": "dSDdadsadaSDsadsaDAAadasd",
+        "services": [
+          "Consultoría de Diseño Web"
+        ],
+        "sections": [],
+        "otherServiceAmount": 0,
+        "otherSectionAmount": 0,
+        "startDate": "2025-10-16",
+        "dueDate": "2025-10-16",
         "priority": "Media",
         "completed": false,
         "status": "",
         "totalProgress": "",
         "costs": {
-          "totalServices": 13700,
+          "totalServices": 2200,
           "totalSections": 0,
-          "netPayable": 13700,
-          "baseRate": 14370.691111111124,
-          "ivaTax": 2299.31057777778,
-          "subtotal": 16670.001688888904,
-          "ivaRetention": 1532.9216208222235,
-          "isrRetention": 1437.0691111111125,
-          "isrTax": 229.93105777777802
+          "netPayable": 2200,
+          "baseRate": 2307.7022222222245,
+          "ivaTax": 369.2323555555559,
+          "subtotal": 2676.9345777777803,
+          "ivaRetention": 246.16259604444468,
+          "isrRetention": 230.77022222222246,
+          "isrTax": 36.92323555555559,
+          "discount": 0
         },
         "tasks": [],
-        "id": 1760119902400
+        "id": 1760639328036
       }
     ]
   }

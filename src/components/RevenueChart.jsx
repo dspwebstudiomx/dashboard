@@ -109,8 +109,9 @@ const RevenueChart = () => {
 				chartArea: { width, height },
 			} = chart;
 			ctx.save();
-			ctx.font = 'bold 24px Arial';
-			ctx.fillStyle = 'rgba(59, 130, 246, 0.7)';
+			// Tamaño de fuente aumentado para mejor legibilidad
+			ctx.font = 'bold 28px Arial';
+			ctx.fillStyle = 'rgba(59, 130, 246, 0.85)';
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
 			ctx.fillText(
@@ -130,18 +131,31 @@ const RevenueChart = () => {
 			legend: {
 				display: true, // Mostrar leyenda
 				position: 'bottom', // Posición de la leyenda
+				labels: {
+					font: {
+						size: 14,
+					},
+				},
 			},
 			title: {
 				display: true, // Mostrar título del gráfico
 				text: 'Ingresos Netos por Mes', // Título del gráfico
 				color: '', // Color del título
+				font: {
+					size: 18,
+					weight: '500',
+				},
+			},
+			tooltip: {
+				bodyFont: { size: 14 },
+				titleFont: { size: 14 },
 			},
 		},
 		// Configuración de interacción y hover
-		// interaction: {
-		// 	mode: 'nearest', // Modo de interacción
-		// 	intersect: false, // No requiere intersección para mostrar tooltip
-		// },
+		interaction: {
+			mode: 'nearest', // Modo de interacción
+			intersect: false, // No requiere intersección para mostrar tooltip
+		},
 		hover: {
 			mode: 'nearest', // Modo de hover
 			intersect: false, // No requiere intersección para mostrar tooltip
@@ -153,6 +167,14 @@ const RevenueChart = () => {
 					display: true, // Mostrar título del eje X
 					text: 'Meses', // texto del eje X
 					color: '', // color la etiqueta del eje X
+					font: {
+						size: 14,
+						weight: '400',
+					},
+
+					ticks: {
+						font: { size: 13 },
+					},
 				},
 			},
 			y: {
@@ -161,7 +183,14 @@ const RevenueChart = () => {
 				title: {
 					display: true, // Mostrar título del eje Y
 					text: 'Ingresos Netos (MXN)', // texto del eje Y
+					font: {
+						size: 14,
+						weight: '500',
+					},
 					color: '', // color la etiqueta del eje Y
+					ticks: {
+						font: { size: 13 },
+					},
 				},
 			},
 		},
