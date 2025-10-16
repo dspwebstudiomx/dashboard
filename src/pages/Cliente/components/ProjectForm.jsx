@@ -52,6 +52,8 @@ const ProjectForm = ({
 		title: '',
 		description: '',
 		services: [],
+		otherServiceAmount: 0,
+		otherSectionAmount: 0,
 		sections: [],
 		startDate: '',
 		dueDate: '',
@@ -83,14 +85,16 @@ const ProjectForm = ({
 }) => {
 	// Actualiza los costos en tiempo real
 	useEffect(() => {
-		const totalServices = (project.services || []).reduce(
+		const totalServicesFromList = (project.services || []).reduce(
 			(acc, service) => acc + (SERVICE_COSTS[service] || 0),
 			0
 		);
-		const totalSections = (project.sections || []).reduce(
-			(acc, section) => acc + (SECTION_COSTS[section] || 0),
-			0
-		);
+		const otherAmount = Number(project.otherServiceAmount) || 0;
+		const totalServices = totalServicesFromList + otherAmount;
+		const otherSectionAmount = Number(project.otherSectionAmount) || 0;
+		const totalSections =
+			(project.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0) +
+			otherSectionAmount;
 
 		const validDiscount = typeof discount === 'number' && discount >= 0 ? discount : 0;
 		const netPayable = totalServices + totalSections - validDiscount;
@@ -107,16 +111,25 @@ const ProjectForm = ({
 				// Sobrescribe o define la propiedad `costs` en el nuevo estado.
 				totalServices, // Estas son variables (probablemente definidas previamente) que se asignan como valores de las propiedades.
 				totalSections,
-				netPayable,
 				baseRate,
 				ivaTax,
 				subtotal,
 				ivaRetention,
 				isrRetention,
 				isrTax,
+				netPayable: netPayable >= 0 ? netPayable : 0,
 			},
 		}));
-	}, [project.services, project.sections, discount, SERVICE_COSTS, SECTION_COSTS, setProject]);
+	}, [
+		project.services,
+		project.sections,
+		project.otherServiceAmount,
+		project.otherSectionAmount,
+		discount,
+		SERVICE_COSTS,
+		SECTION_COSTS,
+		setProject,
+	]);
 
 	// Cambia el submit para llamar a onClose si existe
 	const handleSubmit = async (e) => {
@@ -124,14 +137,13 @@ const ProjectForm = ({
 		await onSubmit(e);
 		if (onClose) {
 			onClose();
-			window.location.reload();
 		}
 	};
 
 	return (
 		<form
 			id="form-proyecto"
-			className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto"
+			className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto bg-blue-100"
 			onSubmit={handleSubmit}
 		>
 			<div className="flex flex-col gap-8">
@@ -199,6 +211,7 @@ const ProjectForm = ({
 					</div>
 				</div>
 			</div>
+
 			{/* Servicios */}
 			<div className="flex flex-col gap-8 text-lg">
 				<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
@@ -241,6 +254,48 @@ const ProjectForm = ({
 							</label>
 						)
 					)}
+					{/* Opción 'Otro' con cantidad */}
+					<div className="flex items-center gap-2 col-span-full md:col-span-3">
+						<label className="flex items-center gap-2">
+							<input
+								type="checkbox"
+								className="w-6 h-6 rounded-2xl"
+								name="services"
+								value="Otro"
+								checked={
+									Array.isArray(project.services) ? project.services.includes('Otro') : false
+								}
+								onChange={(e) => {
+									const checked = e.target.checked;
+									setProject((prev) => {
+										const prevServices = Array.isArray(prev.services) ? prev.services : [];
+										if (checked) {
+											return { ...prev, services: [...prevServices, 'Otro'] };
+										} else {
+											return {
+												...prev,
+												services: prevServices.filter((s) => s !== 'Otro'),
+												otherServiceAmount: 0,
+											};
+										}
+									});
+								}}
+							/>
+							<span>Otro</span>
+						</label>
+						{Array.isArray(project.services) && project.services.includes('Otro') && (
+							<input
+								type="number"
+								min="0"
+								step="0.01"
+								className="p-2 rounded border w-40"
+								value={project.otherServiceAmount || 0}
+								onChange={(e) =>
+									setProject((prev) => ({ ...prev, otherServiceAmount: Number(e.target.value) }))
+								}
+							/>
+						)}
+					</div>
 					{/* Botón para limpiar todos los servicios */}
 					{project.services.length > 0 && (
 						<Button
@@ -293,11 +348,56 @@ const ProjectForm = ({
 							</div>
 						)
 					)}
+
+					{/* Opción 'Otro' para secciones con cantidad */}
+					<div className="flex items-center gap-2 col-span-full md:col-span-3">
+						<label className="flex items-center gap-2">
+							<input
+								type="checkbox"
+								className="w-6 h-6 rounded-2xl"
+								name="sections"
+								value="Otro"
+								checked={
+									Array.isArray(project.sections) ? project.sections.includes('Otro') : false
+								}
+								onChange={(e) => {
+									const checked = e.target.checked;
+									setProject((prev) => {
+										const prevSections = Array.isArray(prev.sections) ? prev.sections : [];
+										if (checked) {
+											return { ...prev, sections: [...prevSections, 'Otro'] };
+										} else {
+											return {
+												...prev,
+												sections: prevSections.filter((s) => s !== 'Otro'),
+												otherSectionAmount: 0,
+											};
+										}
+									});
+								}}
+							/>
+							<span>Otro</span>
+						</label>
+						{Array.isArray(project.sections) && project.sections.includes('Otro') && (
+							<input
+								type="number"
+								min="0"
+								step="0.01"
+								className="p-2 rounded border w-40"
+								value={project.otherSectionAmount || 0}
+								onChange={(e) =>
+									setProject((prev) => ({ ...prev, otherSectionAmount: Number(e.target.value) }))
+								}
+							/>
+						)}
+					</div>
 					{/* Botón para limpiar todas las secciones */}
 					{project.sections.length > 0 && (
 						<Button
 							variant="primary"
-							onClick={() => setProject((prev) => ({ ...prev, sections: [] }))}
+							onClick={() =>
+								setProject((prev) => ({ ...prev, sections: [], otherSectionAmount: 0 }))
+							}
 							type="button"
 							text="Limpiar"
 							icon={FaArrowRotateLeft}
@@ -376,18 +476,12 @@ const ProjectForm = ({
 
 			{/* Botones de Acción */}
 			<div className="flex items-center justify-center md:justify-end gap-4">
-				{isEdit ? (
-					<Button
-						type="button"
-						variant="primary"
-						text="Actualizar Proyecto"
-						icon={FaArrowsRotate}
-						onClick={onSubmit}
-						onClose={onClose}
-					/>
-				) : (
-					<Button type="submit" variant="primary" text="Crear Proyecto" icon={IoMdAdd} />
-				)}
+				<Button
+					type="submit"
+					variant="primary"
+					text={isEdit ? 'Actualizar Proyecto' : 'Crear Proyecto'}
+					icon={isEdit ? FaArrowsRotate : IoMdAdd}
+				/>
 			</div>
 		</form>
 	);

@@ -9,7 +9,14 @@ const TotalCostProyectCard = ({ netPayable }) => {
 			<p className=" text-gray-700 dark:text-gray-100 font-semibold mt-2">
 				Total del proyecto:{' '}
 				<span className="text-blue-900 dark:text-blue-400 text-xl">
-					{isValidNetPayable ? `$${netPayable.toLocaleString('es-MX')}` : 'No disponible'}
+					{isValidNetPayable
+						? Number(netPayable).toLocaleString('es-MX', {
+								style: 'currency',
+								currency: 'MXN',
+								minimumFractionDigits: 2,
+								maximumFractionDigits: 2,
+						  })
+						: 'No disponible'}
 				</span>
 			</p>
 		</>

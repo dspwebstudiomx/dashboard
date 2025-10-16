@@ -212,10 +212,11 @@ const ClientsCard = ({ client, fetchClients, handleOpenModal }) => {
 								Cancelar
 							</button>
 							<button
+								id="eliminar-cliente"
 								onClick={() => handleDeleteClient(client?.id)}
 								className="px-4 py-2 bg-blue-900 hover:bg-blue-500 text-white rounded shadow-md"
 							>
-								Eliminar
+								Eliminar cliente
 							</button>
 						</div>
 					</div>

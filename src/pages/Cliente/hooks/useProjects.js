@@ -40,6 +40,8 @@ const initialProject = () => ({
   description: "",
   services: [],
   sections: [],
+  otherServiceAmount: 0,
+  otherSectionAmount: 0,
   startDate: "",
   dueDate: "",
   priority: "Media",
@@ -104,15 +106,18 @@ export default function useProjects(selectedClient, onUpdateProjects) {
   const handleCreateProject = async (e) => {
     e.preventDefault();
     const totalServices = (newProject.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0);
+    const otherServiceAmount = Number(newProject.otherServiceAmount) || 0;
     setTotalServices(totalServices);
 
     const totalSections = (newProject.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
+    const otherSectionAmount = Number(newProject.otherSectionAmount) || 0;
+    const totalSectionsWithOther = totalSections + otherSectionAmount;
     setTotalSections(totalSections);
     // Calcula los costos
-    const discount = newProject.coupon ? (totalServices + totalSections) * (discount / 100) :
+    const discount = newProject.coupon ? (totalServices + totalSectionsWithOther) * (discount / 100) :
       0;
     setdiscount(discount);
-    const netPayable = (totalServices + totalSections) - discount;
+    const netPayable = (totalServices + totalSectionsWithOther) - discount;
     const baseRate = netPayable / 0.95332923754846;
     const ivaTax = baseRate * 0.16;
     const subtotal = baseRate + ivaTax;
@@ -124,9 +129,11 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const projectWithId = {
       ...newProject,
       id: Date.now(),
+      otherServiceAmount: otherServiceAmount,
+      otherSectionAmount: otherSectionAmount,
       costs: {
-        totalServices,
-        totalSections,
+        totalServices: totalServices + otherServiceAmount,
+        totalSections: totalSectionsWithOther,
         netPayable,
         baseRate,
         ivaTax,
@@ -237,11 +244,14 @@ export default function useProjects(selectedClient, onUpdateProjects) {
 
     // Recalcula los costos por si se editaron servicios o secciones
     const editTotalServices = (editProject?.services || []).reduce((acc, service) => acc + (SERVICE_COSTS[service] || 0), 0)
+    const editOtherServiceAmount = Number(editProject?.otherServiceAmount) || 0;
 
     const discount = editProject.coupon ? (editTotalServices + totalSections) * (discount / 100) : 0;
     setdiscount(discount);
     const editTotalSections = (editProject?.sections || []).reduce((acc, section) => acc + (SECTION_COSTS[section] || 0), 0);
-    const editNetPayable = editTotalServices + editTotalSections - discount;
+    const editOtherSectionAmount = Number(editProject?.otherSectionAmount) || 0;
+    const editTotalSectionsWithOther = editTotalSections + editOtherSectionAmount;
+    const editNetPayable = editTotalServices + editOtherServiceAmount + editTotalSectionsWithOther - discount;
     const editBaseRate = editNetPayable / 0.95332923754846;
     const editIvaTax = editBaseRate * 0.16;
     const editSubtotal = editBaseRate + editIvaTax;
@@ -253,8 +263,8 @@ export default function useProjects(selectedClient, onUpdateProjects) {
     const updatedEditProject = {
       ...editProject,
       costs: {
-        totalServices: editTotalServices,
-        totalSections: editTotalSections,
+        totalServices: editTotalServices + editOtherServiceAmount,
+        totalSections: editTotalSectionsWithOther,
         netPayable: editNetPayable,
         baseRate: editBaseRate,
         ivaTax: editIvaTax,

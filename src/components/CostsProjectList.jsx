@@ -16,16 +16,31 @@ const CostsProjectList = ({ costs }) => {
 					.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
 			</li>
 			<li>
-				Tarifa Base: $
-				{costs.baseRate.toFixed(2).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
+				Tarifa Base:{' '}
+				{Number(costs.baseRate).toLocaleString('es-MX', {
+					style: 'currency',
+					currency: 'MXN',
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				})}
 			</li>
 			<li>
 				IVA 16%:{' '}
-				{costs.ivaTax.toFixed(2).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
+				{Number(costs.ivaTax).toLocaleString('es-MX', {
+					style: 'currency',
+					currency: 'MXN',
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				})}
 			</li>
 			<li>
 				Subtotal + IVA:{' '}
-				{costs.subtotal.toFixed(2).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
+				{Number(costs.subtotal).toLocaleString('es-MX', {
+					style: 'currency',
+					currency: 'MXN',
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				})}
 			</li>
 			<li>
 				Retención de IVA:{' '}

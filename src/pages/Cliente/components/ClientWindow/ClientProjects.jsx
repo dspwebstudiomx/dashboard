@@ -119,6 +119,11 @@ const ClientProjects = ({ selectedClient, onUpdateProjects }) => {
 						isrTax={editProjectId ? editIsrTax : isrTax}
 						netPayable={editProjectId ? editTotal : netPayable}
 						onSubmit={editProjectId ? handleEditProject : handleCreateProject}
+						onClose={() => {
+							setShowForm(false);
+							setEditProjectId(null);
+							setEditProject(null);
+						}}
 						// Puedes agregar aquí otras props necesarias
 					/>
 				</Modal>

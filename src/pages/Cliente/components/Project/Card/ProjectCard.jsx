@@ -14,11 +14,12 @@ const ProjectCard = ({
 	onEdit,
 	onDelete,
 }) => {
-	// Memorizar el cálculo de netPayable para evitar cálculos innecesarios
-	const { netPayable } = useMemo(
+	// Preferir el netPayable calculado y guardado en el proyecto (si existe). Si no, calcularlo.
+	const memoCalc = useMemo(
 		() => FinancialCalculate(project, SERVICE_COSTS, SECTION_COSTS),
 		[project, SERVICE_COSTS, SECTION_COSTS]
 	);
+	const netPayable = project?.costs?.netPayable ?? memoCalc.netPayable;
 
 	// Usar el custom hook
 	const { isCompleted, generalProjectinfo, closeModal, openModal, handleCompleteClick } =
