@@ -54,11 +54,8 @@ const Client = () => {
 						<ClientsModal
 							client={selectedClient}
 							onClientUpdate={handleClientUpdate}
-							modal={{
-								isOpen: isModalOpen,
-								openModal: () => setIsModalOpen(true),
-								closeModal: () => setIsModalOpen(false),
-							}}
+							isOpen={isModalOpen}
+							onClose={() => setIsModalOpen(false)}
 						/>
 						<ClientInfo selectedClient={selectedClient} />
 						<ClientProjects

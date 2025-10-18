@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@components/Modal';
-import { FaCross } from 'react-icons/fa6';
+import { FaSave, FaTimes } from 'react-icons/fa';
 import useClientForm from './hooks/useClientForm';
 import ClientFormFields from './components/ClientFormFields';
 import Button from '@components/Botones/Button';
@@ -75,9 +75,15 @@ const ClientsModal = ({ client, onClientUpdate, isOpen, onClose }) => {
 						handleRemoveImage={handleRemoveImage}
 					/>
 					<div className="flex flex-col md:flex-row gap-2 justify-end items-center">
-						<Button variant="secondary" type="button" onClick={onClose} text="Cancelar" />
+						<Button
+							variant="secondary"
+							type="button"
+							onClick={onClose}
+							text="Cancelar"
+							icon={FaTimes}
+						/>
 						{isEditing ? (
-							<Button variant="primary" type="submit" text="Actualizar cliente" icon={FaCross} />
+							<Button variant="primary" type="submit" text="Actualizar cliente" icon={FaSave} />
 						) : (
 							<Button
 								variant="primary"
