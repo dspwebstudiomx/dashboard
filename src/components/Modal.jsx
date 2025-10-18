@@ -14,13 +14,21 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 	useEffect(() => {
 		if (isOpen) {
 			registerModal(modalId);
+			// bloquear scroll del body y compensar ancho del scrollbar para evitar 'layout shift'
+			const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+			document.body.style.overflow = 'hidden';
+			if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
 			document.body.classList.add('modal-open');
 		} else {
 			unregisterModal(modalId);
+			document.body.style.overflow = '';
+			document.body.style.paddingRight = '';
 			document.body.classList.remove('modal-open');
 		}
 		return () => {
 			unregisterModal(modalId);
+			document.body.style.overflow = '';
+			document.body.style.paddingRight = '';
 			document.body.classList.remove('modal-open');
 		};
 		// eslint-disable-next-line
