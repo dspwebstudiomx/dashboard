@@ -51,6 +51,8 @@ const ProjectCard = ({
 				onClose={closeModal}
 				project={project}
 				clientId={clientId}
+				onEdit={() => onEdit && onEdit(project)}
+				onDelete={() => onDelete && onDelete(project.id)}
 			/>
 		</li>
 	);

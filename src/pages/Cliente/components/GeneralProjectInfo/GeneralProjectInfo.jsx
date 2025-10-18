@@ -31,7 +31,7 @@ class ErrorBoundary extends React.Component {
 	}
 }
 
-const GeneralProjectInfo = ({ isOpen, onClose, project, onDelete }) => {
+const GeneralProjectInfo = ({ isOpen, onClose, project, onEdit, onDelete }) => {
 	return (
 		<>
 			<Modal
@@ -56,7 +56,7 @@ const GeneralProjectInfo = ({ isOpen, onClose, project, onDelete }) => {
 						</div>
 						{/* Botones */}
 						<div className="flex gap-4 mt-12">
-							<EditActionButton onClick={onDelete} text="Editar" />
+							<EditActionButton onClick={onEdit} text="Editar" />
 							<DeleteActionButton onClick={onDelete} text="Eliminar" />
 						</div>
 					</div>

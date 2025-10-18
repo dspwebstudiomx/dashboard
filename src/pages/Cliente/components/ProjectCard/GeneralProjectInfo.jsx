@@ -35,6 +35,7 @@ const GeneralProjectInfo = ({
 	isOpen,
 	onClose,
 	project,
+	onEdit,
 	showTaskModal,
 	setShowTaskModal,
 	taskTitle,
@@ -72,10 +73,10 @@ const GeneralProjectInfo = ({
 							{/* Título del proyecto */}
 							<h2
 								id="titulo-proyecto"
-								className="md:text-3xl text-left ml-6 flex flex-col font-semibold text-gray-800 dark:text-white"
+								className="uppercase md:text-3xl text-left ml-6 flex flex-col font-semibold text-gray-800 dark:text-white"
 							>
 								{project.title}
-								<span className="text-base md:ml-3 text-gray-400">ID Proyecto: {project.id}</span>
+								<span className="text-base md:ml-2 text-gray-400">ID Proyecto: {project.id}</span>
 							</h2>
 							{/* Prioridad del proyecto */}
 							<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
@@ -84,7 +85,7 @@ const GeneralProjectInfo = ({
 						</div>
 						{/* Botones */}
 						<div className="flex gap-4 mt-12">
-							<EditActionButton onClick={onDelete} text="Editar" />
+							<EditActionButton onClick={onEdit} text="Editar" />
 							<DeleteActionButton onClick={onDelete} text="Eliminar" />
 						</div>
 					</div>

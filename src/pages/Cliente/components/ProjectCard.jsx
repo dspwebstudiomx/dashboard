@@ -37,7 +37,7 @@ const ProjectCard = ({
 	return (
 		<li
 			id={`Proyecto-${project.title}`}
-			className="bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 shadow-lg rounded-lg overflow-hidden h-auto"
+			className="bg-white dark:bg-gray-700 border-2 border-gray-400/60 dark:border-gray-600 shadow-2xl rounded-lg overflow-hidden h-auto"
 		>
 			{/* Línea de tarjeta */}
 			<LinePriorityCard project={project} />
@@ -45,12 +45,14 @@ const ProjectCard = ({
 			{/* Contenido de la tarjeta */}
 			<ContentProjectCard project={project} actions={actions} netPayable={netPayable} />
 
-			{/* Modal de administración */}
+			{/* Modal de administraci3n */}
 			<GeneralProjectInfo
 				isOpen={modalAdminProject}
 				onClose={closeModal}
 				project={project}
 				clientId={clientId}
+				onEdit={() => onEdit && onEdit(project)}
+				onDelete={() => onDelete && onDelete(project.id)}
 			/>
 		</li>
 	);

@@ -1,4 +1,11 @@
-const handleAddTask = async () => {
+export default async function handleAddTask({
+	project,
+	clientId,
+	projectId,
+	onTasksChanged,
+	setSelectedTask,
+	setIsTaskModalOpen,
+}) {
 	// Filtra las tareas que contienen "task" en el taskId o title
 	const taskCount = (project.tasks || []).filter(
 		(task) =>
@@ -55,4 +62,4 @@ const handleAddTask = async () => {
 		console.error('Error al crear la nueva tarea:', error);
 		alert('Error al crear la nueva tarea');
 	}
-};
+}

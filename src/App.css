@@ -28,6 +28,8 @@ html {
 	-ms-user-select: none; /* Para Internet Explorer/Edge */
 }
 
+/* Cuando un modal está abierto, evitamos scroll del body (uso principal está en inline styles) */
+
 html.dark {
 	background-color: var(--bg-color);
 }

@@ -168,18 +168,16 @@ const ClientsCard = ({ client, fetchClients, handleOpenModal }) => {
 				<div id="client-data" className="col-span-12 text-sm xl:text-base border-collapse h-full">
 					<div
 						id="redes-sociales-botones-edicion"
-						className="flex flex-row-reverse gap-4 justify-between items-center w-full"
+						className="flex gap-4 justify-between items-center w-full"
 					>
-						<div>
+						<EditClientButton client={client} handleOpenModal={handleOpenModal} />
+						<div className="flex gap-4">
 							<button
 								onClick={openTableModal}
-								className=" rounded-lg hover:bg-blue-700 flex items-center justify-center"
+								className=" rounded-lg flex items-center justify-center"
 							>
-								<FaEye size={34} className="inline mr-2 text-blue-700" />
+								<FaEye size={34} className="inline mr-2 text-blue-700  hover:text-blue-500" />
 							</button>
-						</div>
-						<div className="flex flex-row gap-4">
-							<EditClientButton client={client} handleOpenModal={handleOpenModal} />
 							<button
 								id="eliminar-cliente"
 								onClick={openConfirmModal}
