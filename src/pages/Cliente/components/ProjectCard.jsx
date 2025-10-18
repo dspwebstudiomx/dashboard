@@ -37,7 +37,7 @@ const ProjectCard = ({
 	return (
 		<li
 			id={`Proyecto-${project.title}`}
-			className="bg-white dark:bg-gray-700 border-2 border-gray-400/60 dark:border-gray-600 shadow-2xl rounded-lg overflow-hidden h-auto"
+			className="bg-white dark:bg-gray-700 border-2 border-gray-400/60 dark:border-gray-600 shadow-2xl rounded-lg overflow-hidden min-h-[690px]"
 		>
 			{/* Línea de tarjeta */}
 			<LinePriorityCard project={project} />
