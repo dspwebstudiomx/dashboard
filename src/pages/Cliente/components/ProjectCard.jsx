@@ -45,7 +45,7 @@ const ProjectCard = ({
 			{/* Contenido de la tarjeta */}
 			<ContentProjectCard project={project} actions={actions} netPayable={netPayable} />
 
-			{/* Modal de administraci3n */}
+			{/* Modal de administración */}
 			<GeneralProjectInfo
 				isOpen={modalAdminProject}
 				onClose={closeModal}
@@ -53,6 +53,7 @@ const ProjectCard = ({
 				clientId={clientId}
 				onEdit={() => onEdit && onEdit(project)}
 				onDelete={() => onDelete && onDelete(project.id)}
+				handleCompleteClick={handleCompleteClick}
 			/>
 		</li>
 	);

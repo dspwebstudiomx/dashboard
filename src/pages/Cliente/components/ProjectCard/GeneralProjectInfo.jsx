@@ -60,7 +60,18 @@ const GeneralProjectInfo = ({
 	loadClientOrProjectData,
 
 	onDelete,
+	handleCompleteClick,
 }) => {
+	const handleCloseProject = async () => {
+		try {
+			if (typeof handleCompleteClick === 'function') await handleCompleteClick();
+		} catch (err) {
+			console.error('Error al cerrar proyecto:', err);
+		} finally {
+			if (onClose) onClose();
+		}
+	};
+
 	return (
 		<>
 			<Modal
@@ -87,6 +98,11 @@ const GeneralProjectInfo = ({
 						<div className="flex gap-4 mt-12">
 							<EditActionButton onClick={onEdit} text="Editar" />
 							<DeleteActionButton onClick={onDelete} text="Eliminar" />
+							<CloseActionButton
+								handleCompleteClick={handleCompleteClick}
+								text="Cerrar Proyecto"
+								onClick={handleCloseProject}
+							/>
 						</div>
 					</div>
 				}

@@ -11,6 +11,7 @@ import ProjectForm from '../ProjectForm';
 import ProjectActionButtons from '../ProjectActionButtons';
 import { useProjectDescription } from '@hooks/useProjectDescription';
 import ServicesSectionsInfo from './ServicesSectionsInfo';
+import CloseActionButton from '../CloseActionButton';
 
 class ErrorBoundary extends React.Component {
 	state = { hasError: false };
@@ -31,7 +32,25 @@ class ErrorBoundary extends React.Component {
 	}
 }
 
-const GeneralProjectInfo = ({ isOpen, onClose, project, onEdit, onDelete }) => {
+const GeneralProjectInfo = ({
+	isOpen,
+	onClose,
+	project,
+	onEdit,
+	onDelete,
+	handleCompleteClick,
+}) => {
+	const handleCloseProject = async () => {
+		try {
+			if (handleCompleteClick) await handleCompleteClick();
+		} catch (err) {
+			// captura interna: dejamos que el cierre ocurra de todas formas
+			console.error('Error al cerrar proyecto:', err);
+		} finally {
+			if (onClose) onClose();
+		}
+	};
+
 	return (
 		<>
 			<Modal
@@ -56,8 +75,13 @@ const GeneralProjectInfo = ({ isOpen, onClose, project, onEdit, onDelete }) => {
 						</div>
 						{/* Botones */}
 						<div className="flex gap-4 mt-12">
-							<EditActionButton onClick={onEdit} text="Editar" />
-							<DeleteActionButton onClick={onDelete} text="Eliminar" />
+							<EditActionButton onClick={onEdit} text="Editar proyecto" />
+							<DeleteActionButton onClick={onDelete} text="Eliminar proyecto" />
+							<CloseActionButton
+								handleCompleteClick={handleCompleteClick}
+								text="Cerrar Proyecto"
+								onClick={handleCloseProject}
+							/>
 						</div>
 					</div>
 				}
