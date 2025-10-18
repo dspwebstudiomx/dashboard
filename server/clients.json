@@ -15,10 +15,10 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Diseño Web",
+    "project": "Diseño Web - Sitio",
     "image": "/uploads/1750187673460-658328328.jpg",
     "createdAt": "2025-05-01",
-    "updatedAt": "2025-10-18T00:39:09.743Z",
+    "updatedAt": "2025-10-18T00:47:35.858Z",
     "tasks": [
       {
         "id": "1",
@@ -117,7 +117,7 @@
         "id": 1749147630013
       },
       {
-        "title": "Diseño Web",
+        "title": "Diseño Web - Sitio",
         "description": "Hola, me gustaría solicitar un proyecto de diseño web para mi negocio. Busco un sitio moderno, profesional y adaptable a diferentes dispositivos, ya que actualmente no tengo presencia en línea y quiero empezar con una imagen sólida. Me interesa que el diseño sea visualmente atractivo, fácil de navegar y que refleje la identidad de mi marca. \n\nTambién necesito integrar secciones como inicio, servicios, portafolio, contacto y posiblemente un blog. Me gustaría recibir una propuesta que incluya tiempos de entrega, costos aproximados, opciones de mantenimiento y recomendaciones sobre hosting o dominio. Espero su respuesta para poder revisar los detalles y comenzar el proyecto cuanto antes.",
         "services": [
           "Consultoría de Diseño Web",
@@ -128,7 +128,7 @@
         "otherSectionAmount": 0,
         "startDate": "2025-10-17",
         "dueDate": "2025-10-26",
-        "priority": "Media",
+        "priority": "Alta",
         "completed": false,
         "status": "",
         "totalProgress": "",
