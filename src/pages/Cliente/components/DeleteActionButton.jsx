@@ -5,7 +5,7 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 const DeleteActionButton = ({ onClick, text }) => {
 	return (
 		<Button
-			variant="outline"
+			variant="blue_3"
 			text={text || 'Eliminar'}
 			icon={FaRegTrashAlt}
 			onClick={onClick}

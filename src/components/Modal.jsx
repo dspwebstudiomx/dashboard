@@ -70,8 +70,8 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 				<article
 					className={`bg-white rounded-xl shadow-lg ${
 						hasOverflow ? 'w-auto max-w-[80vw] md:max-h-[90vh]' : 'w-[70vw] max-h-[90vh]'
-					} max-h-[89vh] md:max-w-full p-6 md:p-12 xl:p-12 border-2 
-      border-blue-400 dark:bg-gray-800 dark:border-gray-500 flex flex-col gap-6 justify-between`}
+					} max-h-[89vh] md:max-w-full p-6 md:p-12 xl:p-12 border-4 
+      border-blue-500 dark:bg-gray-800 dark:border-gray-500 flex flex-col gap-6 justify-between`}
 				>
 					<div className="flex justify-end">
 						<CloseButton onClick={onClose} />

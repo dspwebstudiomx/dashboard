@@ -15,12 +15,10 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": [
-      "test"
-    ],
+    "project": "Diseño Web",
     "image": "/uploads/1750187673460-658328328.jpg",
     "createdAt": "2025-05-01",
-    "updatedAt": "2025-10-17T18:59:35.798Z",
+    "updatedAt": "2025-10-18T00:39:09.743Z",
     "tasks": [
       {
         "id": "1",
@@ -119,32 +117,31 @@
         "id": 1749147630013
       },
       {
-        "title": "test",
-        "description": "jjjjn,.mnm.m,njhjbñububñ",
+        "title": "Diseño Web",
+        "description": "Hola, me gustaría solicitar un proyecto de diseño web para mi negocio. Busco un sitio moderno, profesional y adaptable a diferentes dispositivos, ya que actualmente no tengo presencia en línea y quiero empezar con una imagen sólida. Me interesa que el diseño sea visualmente atractivo, fácil de navegar y que refleje la identidad de mi marca. \n\nTambién necesito integrar secciones como inicio, servicios, portafolio, contacto y posiblemente un blog. Me gustaría recibir una propuesta que incluya tiempos de entrega, costos aproximados, opciones de mantenimiento y recomendaciones sobre hosting o dominio. Espero su respuesta para poder revisar los detalles y comenzar el proyecto cuanto antes.",
         "services": [
           "Consultoría de Diseño Web",
-          "Rediseño Web",
-          "Landing Page"
+          "Diseño Web"
         ],
         "sections": [],
         "otherServiceAmount": 0,
         "otherSectionAmount": 0,
         "startDate": "2025-10-17",
         "dueDate": "2025-10-26",
-        "priority": "Alta",
+        "priority": "Media",
         "completed": false,
         "status": "",
         "totalProgress": "",
         "costs": {
-          "totalServices": 12200,
+          "totalServices": 5200,
           "totalSections": 0,
-          "netPayable": 12200,
-          "baseRate": 12797.25777777779,
-          "ivaTax": 2047.5612444444464,
-          "subtotal": 14844.819022222237,
-          "ivaRetention": 1365.083487155557,
-          "isrRetention": 1279.725777777779,
-          "isrTax": 204.75612444444465,
+          "netPayable": 5200,
+          "baseRate": 5454.568888888894,
+          "ivaTax": 872.7310222222231,
+          "subtotal": 6327.299911111118,
+          "ivaRetention": 581.8388633777784,
+          "isrRetention": 545.4568888888895,
+          "isrTax": 87.27310222222232,
           "discount": 0
         },
         "tasks": [],

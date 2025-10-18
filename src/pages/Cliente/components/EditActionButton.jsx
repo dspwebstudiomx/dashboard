@@ -5,7 +5,7 @@ import { LuPencil } from 'react-icons/lu';
 const EditActionButton = ({ onClick, text }) => {
 	return (
 		<Button
-			variant="blue_3"
+			variant="blue_2"
 			text={text || 'Editar'}
 			icon={LuPencil}
 			onClick={onClick}
