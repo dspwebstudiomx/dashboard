@@ -203,7 +203,7 @@ const ProjectForm = ({
 						<div className="flex gap-2 w-full">
 							<label
 								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
-									project.priority === 'Alta' ? 'bg-red-50 border-red-400' : ''
+									project.priority === 'Alta' ? 'bg-red-50 border-red-400 text-red-600' : ''
 								}`}
 							>
 								<input
@@ -219,8 +219,10 @@ const ProjectForm = ({
 							</label>
 
 							<label
-								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
-									project.priority === 'Media' ? 'bg-yellow-50 border-yellow-400' : ''
+								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer  ${
+									project.priority === 'Media'
+										? 'bg-yellow-50 border-yellow-400 text-yellow-600'
+										: ''
 								}`}
 							>
 								<input
@@ -237,7 +239,7 @@ const ProjectForm = ({
 
 							<label
 								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
-									project.priority === 'Baja' ? 'bg-green-50 border-green-400' : ''
+									project.priority === 'Baja' ? 'bg-green-50 border-green-400 text-green-800' : ''
 								}`}
 							>
 								<input
