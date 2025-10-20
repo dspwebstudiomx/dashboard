@@ -15,23 +15,18 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 // Estructura del componente Calendar
 const Calendar = () => {
-	// Función para ajustar la fecha manualmente a la zona horaria de México y redondearla al inicio del día
-	const adjustToMexicoTimezone = (date) => {
-		const utcOffsetMexico = -6; // UTC-6 para México (ajusta si hay horario de verano)
-		const localOffset = date.getTimezoneOffset() / 60; // Offset local en horas
-		const offsetDifference = utcOffsetMexico - localOffset;
-		const adjustedDate = new Date(date.getTime() + offsetDifference * 60 * 60 * 1000);
-		return startOfDay(adjustedDate); // Redondear al inicio del día
-	};
-	const initialDate = adjustToMexicoTimezone(new Date()); // Fecha inicial ajustada a la zona horaria de México
-	const [currentDate, setCurrentDate] = useState(initialDate); // Fecha actual ajustada a la zona horaria de México
-	const today = adjustToMexicoTimezone(new Date()); // Día actual redondeado al inicio del día
+	// Usar la fecha local y redondear al inicio del día.
+	// Evitamos ajustes manuales de zona horaria que pueden introducir errores de signo
+	// (p. ej. con getTimezoneOffset) y producir días desplazados.
+	const initialDate = startOfDay(new Date()); // Fecha inicial local al inicio del día
+	const [currentDate, setCurrentDate] = useState(initialDate);
+	const today = startOfDay(new Date()); // Día actual local redondeado al inicio del día
 	const handlePrev = () => {
-		setCurrentDate((prev) => adjustToMexicoTimezone(startOfDay(subMonths(prev, 1))));
-	}; // Ajustar la fecha al inicio del día al retroceder un mes
+		setCurrentDate((prev) => startOfDay(subMonths(prev, 1)));
+	}; // Retroceder un mes y mantener inicio del día
 	const handleNext = () => {
-		setCurrentDate((prev) => adjustToMexicoTimezone(startOfDay(addMonths(prev, 1))));
-	}; // Ajustar la fecha al inicio del día al avanzar un mes
+		setCurrentDate((prev) => startOfDay(addMonths(prev, 1)));
+	}; // Avanzar un mes y mantener inicio del día
 	const renderMonthView = () => {
 		const start = startOfMonth(currentDate); // Obtener el inicio del mes actual
 		const end = endOfMonth(currentDate); // Obtener el final del mes actual
