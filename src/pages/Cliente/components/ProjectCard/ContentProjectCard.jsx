@@ -59,7 +59,6 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 					<ProjectCardTaskSummary project={project} />
 				</div>
 			</div>
-
 			{/* Fechas y Botones de Acción */}
 			<div className="text-lg md:text-base flex flex-col gap-8 justify-between h-full">
 				{/* Fechas y total del proyecto */}
