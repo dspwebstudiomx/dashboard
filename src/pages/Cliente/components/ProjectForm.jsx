@@ -45,6 +45,7 @@ const SECTIONS = [
 	'Política de Cookies',
 	'Aviso Legal',
 	'Facturación',
+	'Otro',
 ];
 
 const ProjectForm = ({
@@ -84,6 +85,44 @@ const ProjectForm = ({
 	validarcoupon,
 	onClose,
 }) => {
+	// Campos y grupos para renderizado dinámico (similar a ClientFormFields)
+	const fields = [
+		{
+			name: 'title',
+			icon: <FaRegFileAlt className="text-blue-700" />,
+			type: 'text',
+			placeholder: 'Título del proyecto',
+			required: true,
+		},
+		{
+			name: 'startDate',
+			icon: <FaRegCalendarAlt className="text-blue-700" />,
+			type: 'date',
+			placeholder: 'Fecha de inicio',
+			required: true,
+		},
+		{
+			name: 'dueDate',
+			icon: <FaCalendarAlt className="text-blue-700" />,
+			type: 'date',
+			placeholder: 'Fecha de término',
+			required: true,
+		},
+		{
+			name: 'priority',
+			icon: <FaFlag className="text-blue-700" />,
+			type: 'radio-group',
+			options: ['Alta', 'Media', 'Baja'],
+			required: true,
+		},
+	];
+
+	const groups = [
+		{
+			title: 'Información general',
+			fields: ['title', 'startDate', 'dueDate', 'priority'],
+		},
+	];
 	// Actualiza los costos en tiempo real
 	useEffect(() => {
 		const totalServicesFromList = (project.services || []).reduce(
@@ -147,115 +186,94 @@ const ProjectForm = ({
 			className="flex flex-col gap-6 md:gap-12 p-4 md:p-0 rounded-lg mb-8 overflow-y-auto"
 			onSubmit={handleSubmit}
 		>
+			{/* Renderizar grupos y campos dinámicamente */}
 			<div className="flex flex-col gap-8">
-				<div className="flex flex-col gap-4 w-full">
-					<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
-						<FaRegFileAlt className="text-blue-700" />
-						Nombre del Proyecto
-					</label>
-					<input
-						type="text"
-						name="title"
-						placeholder="Título del proyecto"
-						value={project.title}
-						onChange={onChange}
-						required
-						className="p-2 rounded border"
-					/>
-				</div>
-				<div className="flex flex-col md:flex-row gap-4 justify-between">
-					<div className="flex flex-col md:flex-row gap-8">
-						<div className="flex flex-col gap-4">
-							<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
-								<FaRegCalendarAlt className="text-blue-700" />
-								Fecha de Inicio
-							</label>
-							<input
-								type="date"
-								name="startDate"
-								value={project.startDate}
-								onChange={onChange}
-								required
-								className="p-2 rounded border"
-							/>
-						</div>
-						<div className="flex flex-col gap-4">
-							<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
-								<FaCalendarAlt className="text-blue-700" />
-								Fecha de Término
-							</label>
-							<input
-								type="date"
-								name="dueDate"
-								value={project.dueDate}
-								onChange={onChange}
-								required
-								className="p-2 rounded border"
-							/>
-						</div>
-					</div>
-					<div className="flex flex-col gap-4 w-full md:w-1/2 ">
+				{groups.map((group) => (
+					<section key={group.title} className="flex flex-col gap-4 w-full">
 						<label className="text-xl text-gray-600 dark:text-gray-300 flex items-center gap-2 font-semibold">
-							<FaFlag className="text-blue-700" />
-							Prioridad
+							{/* mostrar icono del primer campo del grupo si existe */}
+							{fields.find((f) => f.name === group.fields[0])?.icon}
+							{group.title}
 						</label>
-						{/* Selector de prioridad con react-icons y colores */}
-						<div className="flex gap-2 w-full">
-							<label
-								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
-									project.priority === 'Alta' ? 'bg-red-50 border-red-400 text-red-600' : ''
-								}`}
-							>
-								<input
-									type="radio"
-									name="priority"
-									value="Alta"
-									checked={project.priority === 'Alta'}
-									onChange={onChange}
-									className="sr-only"
-								/>
-								<FaCircle className="text-red-600" />
-								<span>Alta</span>
-							</label>
+						<div className="grid md:grid-cols-2 gap-4">
+							{group.fields.map((fname) => {
+								const field = fields.find((f) => f.name === fname);
+								if (!field) return null;
 
-							<label
-								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer  ${
-									project.priority === 'Media'
-										? 'bg-yellow-50 border-yellow-400 text-yellow-600'
-										: ''
-								}`}
-							>
-								<input
-									type="radio"
-									name="priority"
-									value="Media"
-									checked={project.priority === 'Media'}
-									onChange={onChange}
-									className="sr-only"
-								/>
-								<FaCircle className="text-yellow-500" />
-								<span>Media</span>
-							</label>
+								if (field.type === 'textarea') {
+									return (
+										<textarea
+											key={field.name}
+											name={field.name}
+											placeholder={field.placeholder || ''}
+											value={project[field.name]}
+											onChange={onChange}
+											required={field.required}
+											rows={10}
+											className="p-4 md:p-6 rounded border w-full"
+										/>
+									);
+								}
 
-							<label
-								className={`flex items-center gap-2 p-2 rounded border w-full cursor-pointer ${
-									project.priority === 'Baja' ? 'bg-green-50 border-green-400 text-green-800' : ''
-								}`}
-							>
-								<input
-									type="radio"
-									name="priority"
-									value="Baja"
-									checked={project.priority === 'Baja'}
-									onChange={onChange}
-									className="sr-only"
-								/>
-								<FaCircle className="text-green-600" />
-								<span>Baja</span>
-							</label>
+								if (field.type === 'radio-group') {
+									return (
+										<div key={field.name} className="flex flex-col gap-2">
+											<div className="flex gap-2 w-full">
+												{field.options.map((opt) => (
+													<label
+														key={opt}
+														className={`flex items-center gap-2 border w-full cursor-pointer px-4 py-2 rounded-xl ${
+															project.priority === opt
+																? opt === 'Alta'
+																	? 'bg-red-50 border-red-400 text-red-600'
+																	: opt === 'Media'
+																	? 'bg-yellow-50 border-yellow-400 text-yellow-600'
+																	: 'bg-green-50 border-green-400 text-green-800'
+																: ''
+														}`}
+													>
+														<input
+															type="radio"
+															name={field.name}
+															value={opt}
+															checked={project[field.name] === opt}
+															onChange={onChange}
+															className="sr-only"
+														/>
+														<FaCircle
+															className={
+																opt === 'Alta'
+																	? 'text-red-600'
+																	: opt === 'Media'
+																	? 'text-yellow-500'
+																	: 'text-green-600'
+															}
+														/>
+														<span>{opt}</span>
+													</label>
+												))}
+											</div>
+										</div>
+									);
+								}
+
+								// default: input
+								return (
+									<input
+										key={field.name}
+										type={field.type}
+										name={field.name}
+										placeholder={field.placeholder || ''}
+										value={project[field.name]}
+										onChange={onChange}
+										required={field.required}
+										className="py-2 px-4 rounded-lg border dark:border-blue-800"
+									/>
+								);
+							})}
 						</div>
-					</div>
-				</div>
+					</section>
+				))}
 			</div>
 
 			{/* Servicios */}
