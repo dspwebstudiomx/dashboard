@@ -44,12 +44,12 @@ const DashboardPage = () => {
 		{
 			title: 'Clientes',
 			component: <ClientsTable />,
-			colSpan: 'col-span-12',
+			colSpan: 'col-span-7',
 		},
 		{
 			title: 'Ingresos',
 			component: <RevenueChart />,
-			colSpan: 'md:col-span-12 lg:col-span-6',
+			colSpan: 'md:col-span-12 lg:col-span-5',
 		},
 	];
 
@@ -72,7 +72,7 @@ const DashboardPage = () => {
 				{cards.map((card, index) => (
 					<article key={index} className={dashboardStyles.card + ' ' + card.colSpan}>
 						<h2 className={dashboardStyles.cardTitle}>{card.title}</h2>
-						{card.component}
+						<div className="h-full w-full place-content-center">{card.component}</div>
 					</article>
 				))}
 			</section>
