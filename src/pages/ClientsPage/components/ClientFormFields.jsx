@@ -103,16 +103,16 @@ const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, 
 		{
 			title: 'Información personal',
 			fields: ['fullName', 'lastName', 'lastName2', 'curp'],
-			columns: { base: 1, md: 2, xl: 4 },
+			columns: { base: 1, md: 3, xl: 3 },
 		},
 		{
 			title: 'Contacto',
-			fields: ['email', 'phoneNumber', 'address', 'website'],
-			columns: { base: 1, md: 2, xl: 4 },
+			fields: ['email', 'phoneNumber', 'address'],
+			columns: { base: 1, md: 2, xl: 2 },
 		},
 		{
 			title: 'Empresa y proyecto',
-			fields: ['company', 'project', 'rfc'],
+			fields: ['company', 'project', 'rfc', 'website'],
 		},
 		{
 			title: 'Redes sociales',
@@ -151,11 +151,11 @@ const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, 
 				<section
 					key={group.title}
 					aria-labelledby={`group-${group.title}`}
-					className="bg-white dark:bg-gray-800 p-4 rounded-md dark:border-2 dark:border-gray-700"
+					className="px-6 bg-white dark:bg-gray-800 py-8 rounded-md border-2 border-gray-300 dark:border-gray-700"
 				>
 					<h3
 						id={`group-${group.title}`}
-						className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-8"
+						className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-8"
 					>
 						{group.title}
 					</h3>
