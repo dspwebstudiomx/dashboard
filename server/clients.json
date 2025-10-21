@@ -163,7 +163,7 @@
     "project": "Sitio web EasyLav",
     "image": "/uploads/1749057988777-974404235.ico",
     "createdAt": "2025-05-15",
-    "updatedAt": "2025-10-21T14:25:58.752Z",
+    "updatedAt": "2025-10-21T14:57:43.823Z",
     "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
     "instagram": "https://www.instagram.com/lavanderiaseasylav/",
     "linkedin": "",
@@ -186,9 +186,10 @@
     "projects": [
       {
         "title": "Sitio web EasyLav",
-        "description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? Est maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
+        "description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? \n\nEst maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
         "services": [
-          "Landing Page"
+          "Landing Page",
+          "Consultoria SEO"
         ],
         "sections": [
           "Aviso Legal",
@@ -207,15 +208,15 @@
         "status": "",
         "totalProgress": "",
         "costs": {
-          "totalServices": 6500,
+          "totalServices": 8500,
           "totalSections": 7000,
-          "netPayable": 13500,
-          "baseRate": 14160.900000000014,
-          "ivaTax": 2265.7440000000024,
-          "subtotal": 16426.644000000015,
-          "ivaRetention": 1510.5432030000015,
-          "isrRetention": 1416.0900000000015,
-          "isrTax": 226.57440000000025,
+          "netPayable": 15500,
+          "baseRate": 16258.811111111127,
+          "ivaTax": 2601.40977777778,
+          "subtotal": 18860.220888888907,
+          "ivaRetention": 1734.327381222224,
+          "isrRetention": 1625.8811111111127,
+          "isrTax": 260.140977777778,
           "discount": 0
         },
         "tasks": [
@@ -248,7 +249,7 @@
         "otherSectionAmount": 1000,
         "startDate": "2025-10-10",
         "dueDate": "2025-10-24",
-        "priority": "Media",
+        "priority": "Alta",
         "completed": false,
         "status": "",
         "totalProgress": "",
