@@ -93,7 +93,7 @@ const ClientsTable = () => {
 					}}
 				/>
 			</div>
-			<div className="w-full overflow-x-auto mt-6 min-h-[400px] flex flex-col items-stretch justify-between">
+			<div className="w-full overflow-x-auto mt-6 flex flex-col items-stretch justify-between">
 				{/* Tabla de Clientes */}
 				<table
 					id="clients-table"
@@ -115,10 +115,7 @@ const ClientsTable = () => {
 					<tbody>
 						{currentClients.length === 0 ? (
 							<tr>
-								<td
-									colSpan={5}
-									className="px-4 py-8 text-center text-gray-500 border border-gray-300"
-								>
+								<td colSpan={5} className="px-4 py-8 text-center text-gray-500">
 									No hay clientes para mostrar.
 								</td>
 							</tr>
@@ -126,7 +123,7 @@ const ClientsTable = () => {
 							<>
 								{currentClients.map((client, index) => (
 									<tr key={client.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-										<td className="px-4 py-4 text-sm text-gray-700 border border-gray-300 flex items-center gap-4">
+										<td className="p-4 h-[120px] w-[220px] text-sm flex items-center gap-4 text-gray-800">
 											<a href={`/clientes/${client.id}`}>
 												<img
 													id="imagen-cliente"
