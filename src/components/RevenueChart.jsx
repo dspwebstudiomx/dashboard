@@ -123,10 +123,22 @@ const RevenueChart = () => {
 		},
 	};
 
+	// Plugin para rellenar el fondo del canvas con blanco antes de dibujar
+	const whiteBackgroundPlugin = {
+		id: 'whiteBackground',
+		beforeDraw: (chart) => {
+			const { ctx, width, height } = chart;
+			ctx.save();
+			ctx.fillStyle = '#fff';
+			ctx.fillRect(0, 0, width, height);
+			ctx.restore();
+		},
+	};
+
 	// Opciones del gráfico
 	const options = {
 		responsive: true, // Hacer el gráfico responsivo
-		backgroundColor: 'rgba(255, 255, 255, 0.8)', // Fondo blanco con opacidad
+
 		plugins: {
 			legend: {
 				display: true, // Mostrar leyenda
@@ -196,7 +208,15 @@ const RevenueChart = () => {
 		},
 	};
 
-	return <Line data={chartData} options={options} plugins={[centerTextPlugin]} />;
+	return (
+		<div className="w-full">
+			<Line
+				data={chartData}
+				options={options}
+				plugins={[whiteBackgroundPlugin, centerTextPlugin]}
+			/>
+		</div>
+	);
 };
 
 export default RevenueChart;
