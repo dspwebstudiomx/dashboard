@@ -21,7 +21,7 @@ const ProjectCardTaskSummary = ({ project = {} }) => {
 		currentPage * tasksPerPage
 	);
 	return (
-		<div className="flex flex-col justify-end gap-4 first-letter:uppercase text-sm h-64 overflow-y-auto">
+		<div className="flex flex-col justify-end gap-4 first-letter:uppercase text-sm h-auto mt-12 overflow-y-auto">
 			<div className="flex gap-3 items-center">
 				<h3 className="text-lg font-semibold text-gray-800 dark:text-white">Tareas generadas</h3>
 				<p
