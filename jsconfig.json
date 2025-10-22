@@ -1,8 +1,7 @@
 {
 	"compilerOptions": {
 		"baseUrl": ".", // Define la raíz del proyecto
-		// Silenciar la advertencia de deprecación de baseUrl en TypeScript 6.x
-		"ignoreDeprecations": "6.0",
+		"ignoreDeprecations": "6.0", // Silenciar la advertencia de deprecación de baseUrl en TypeScript 6.x
 		"paths": {
 			"@components/*": ["src/components/*"], // Alias para componentes
 			"@pages/*": ["src/pages/*"], // Alias para páginas
