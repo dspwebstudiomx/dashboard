@@ -44,12 +44,12 @@ const DashboardPage = () => {
 		{
 			title: 'Clientes',
 			component: <ClientsTable />,
-			colSpan: 'col-span-7',
+			colSpan: 'col-span-12',
 		},
 		{
 			title: 'Ingresos',
 			component: <RevenueChart />,
-			colSpan: 'md:col-span-12 lg:col-span-5',
+			colSpan: 'md:col-span-12 lg:col-span-4',
 		},
 	];
 
@@ -61,20 +61,24 @@ const DashboardPage = () => {
 		cardTitle: `text-2xl font-semibold`,
 	};
 
+	// Función para renderizar las tarjetas del Dashboard
+	const renderDashboardCards = () => {
+		return cards.map((card, index) => (
+			<article key={index} className={dashboardStyles.card + ' ' + card.colSpan}>
+				<h2 className={dashboardStyles.cardTitle}>{card.title}</h2>
+				<div className="h-full w-full place-content-center">{card.component}</div>
+			</article>
+		));
+	};
+
 	// Renderizar el Dashboard
 	return (
 		<DashboardTemplate>
 			{/* Título del Dashboard */}
 			<h1 className={dashboardStyles.title}>Estadísticas</h1>
-
 			{/* Sección de tarjetas del Dashboard */}
 			<section className="grid grid-cols-12 gap-8 mx-auto justify-center items-center">
-				{cards.map((card, index) => (
-					<article key={index} className={dashboardStyles.card + ' ' + card.colSpan}>
-						<h2 className={dashboardStyles.cardTitle}>{card.title}</h2>
-						<div className="h-full w-full place-content-center">{card.component}</div>
-					</article>
-				))}
+				{renderDashboardCards()}
 			</section>
 		</DashboardTemplate>
 	);
