@@ -47,19 +47,19 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 					</div>
 
 					<ProjectDescriptionInfoCard
-						project={project}
-						isLongDescription={isLong}
-						shorrDescription={short}
+						project={project} // Pasar el proyecto completo
+						isLongDescription={isLong} // Indicar si la descripción es larga
+						shortDescription={short} // Pasar la descripción corta
 						showFullDescriptionription={showFullDescriptionription}
 						setshowFullDescriptionription={setshowFullDescriptionriptionription}
 					/>
 				</div>
 
 				<ProjectCardTaskSummary
-					tasks={totalTasks}
-					totalPages={totalPages}
-					paginatedTasks={paginatedTasks}
-					setCurrentPage={setCurrentPage}
+					tasks={totalTasks} // Pasar las tareas completas
+					totalPages={totalPages} // Pasar el total de páginas
+					paginatedTasks={paginatedTasks} // Pasar las tareas paginadas
+					setCurrentPage={setCurrentPage} // Función para actualizar la página actual
 					project={project} // Pasar el proyecto completo para acceder a su prioridad
 				/>
 			</div>
