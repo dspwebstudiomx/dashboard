@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import ContentProjectCard from './ProjectCard/ContentProjectCard';
 import LinePriorityCard from './ProjectCard/LinePriority';
 import { useProjectCard } from '../hooks/useProjectCard';
 import { FinancialCalculate } from '../data/FinancialCalculate';
 import GeneralProjectInfo from './GeneralProjectInfo/GeneralProjectInfo';
+import ContentProjectCard from './Project/ContentProjectCard';
 
 const ProjectCard = ({
 	project,

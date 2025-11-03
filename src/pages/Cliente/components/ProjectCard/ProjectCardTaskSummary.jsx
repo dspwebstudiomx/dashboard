@@ -10,8 +10,8 @@ const ProjectCardTaskSummary = ({ project = {} }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const tasksPerPage = 4;
 
-	// `actions` puede contener manejadores, no se usan aquí pero se mantienen disponibles
-	// si en el futuro se necesita pasar alguno, se accederá desde `actions`.
+	// Determinar la prioridad del proyecto
+	const projectPriority = project.priority || 'Baja';
 
 	// Calcular tareas para la página actual
 	const totalTasks = project.tasks || [];
@@ -24,17 +24,18 @@ const ProjectCardTaskSummary = ({ project = {} }) => {
 		<div className="flex flex-col justify-end gap-4 first-letter:uppercase text-sm h-auto mt-12 overflow-y-auto">
 			<div className="flex gap-3 items-center">
 				<h3 className="text-lg font-semibold text-gray-800 dark:text-white">Tareas generadas</h3>
-				<p
+				<span
+					id="contador-indicador"
 					className={`text-gray-100 border rounded-full w-7 h-7 flex items-center justify-center text-sm font-semibold ${
-						project.priority === 'Alta'
-							? 'bg-red-400 border-red-500'
-							: project.priority === 'Media'
+						projectPriority === 'Alta'
+							? 'bg-red-500 border-red-600'
+							: projectPriority === 'Media'
 							? 'bg-yellow-400 border-yellow-500'
 							: 'bg-green-500 border-green-600'
 					}`}
 				>
 					{totalTasks.length}
-				</p>
+				</span>
 			</div>
 			<p className="text-gray-700 dark:text-gray-200 first-letter:uppercase text-base">
 				{paginatedTasks.length > 0 ? (

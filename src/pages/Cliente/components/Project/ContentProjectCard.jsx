@@ -60,6 +60,7 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 					totalPages={totalPages}
 					paginatedTasks={paginatedTasks}
 					setCurrentPage={setCurrentPage}
+					project={project} // Pasar el proyecto completo para acceder a su prioridad
 				/>
 			</div>
 
