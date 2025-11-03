@@ -17,7 +17,7 @@ import Button from '@components/Botones/Button';
 import ProjectCardTaskSummary from '../ProjectCard/ProjectCardTaskSummary';
 
 const ContentProjectCard = ({ project, actions, netPayable }) => {
-	const [showFullDescriptionription, setshowFullDescriptionriptionription] = useState(false);
+	const [showFullDescription, setShowFullDescription] = useState(false);
 	const { isLong, short } = useProjectDescription(project.description);
 	const [currentPage, setCurrentPage] = useState(1);
 	const tasksPerPage = 4;
@@ -50,8 +50,8 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 						project={project} // Pasar el proyecto completo
 						isLongDescription={isLong} // Indicar si la descripción es larga
 						shortDescription={short} // Pasar la descripción corta
-						showFullDescriptionription={showFullDescriptionription}
-						setshowFullDescriptionription={setshowFullDescriptionriptionription}
+						showFullDescription={showFullDescription}
+						setShowFullDescription={setShowFullDescription}
 					/>
 				</div>
 
