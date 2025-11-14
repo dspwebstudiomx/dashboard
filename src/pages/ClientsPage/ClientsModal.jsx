@@ -49,12 +49,12 @@ const ClientsModal = ({ client, onClientUpdate, isOpen, onClose }) => {
 		<div className="flex items-center justify-center gap-4">
 			{isEditing ? (
 				<>
-					<IoPerson className="text-blue-600" />
+					<IoPerson className="text-blue-700 dark:text-blue-400" />
 					<span>Editar Cliente</span>
 				</>
 			) : (
 				<>
-					<IoPersonAdd className="text-blue-600" />
+					<IoPersonAdd className="text-blue-700 dark:text-blue-400" />
 					<span>Agregar Cliente</span>
 				</>
 			)}
