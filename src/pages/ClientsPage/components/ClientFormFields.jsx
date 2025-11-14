@@ -155,7 +155,7 @@ const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, 
 				>
 					<h3
 						id={`group-${group.title}`}
-						className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-8"
+						className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-8"
 					>
 						{group.title}
 					</h3>
@@ -170,7 +170,7 @@ const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, 
 								<div key={name} className="form-group flex flex-col gap-2">
 									<label
 										htmlFor={id}
-										className="flex items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-200 my-4"
+										className="flex items-center gap-3 text-base md:text-lg font-medium text-gray-700 dark:text-gray-200 my-4"
 									>
 										{React.cloneElement(icon, {
 											className: 'text-blue-800 text-3xl dark:text-blue-500',
