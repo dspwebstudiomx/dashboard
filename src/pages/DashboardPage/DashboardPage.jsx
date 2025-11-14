@@ -24,7 +24,12 @@ const DashboardPage = () => {
 		{
 			title: 'Resumen de Proyectos',
 			component: <ProjectSummary />,
-			colSpan: 'col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-8',
+			colSpan: 'col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-4',
+		},
+		{
+			title: 'Ingresos',
+			component: <RevenueChart />,
+			colSpan: 'md:col-span-12 lg:col-span-4',
 		},
 		{
 			title: 'Calendario',
@@ -45,11 +50,6 @@ const DashboardPage = () => {
 			title: 'Clientes',
 			component: <ClientsTable />,
 			colSpan: 'col-span-12',
-		},
-		{
-			title: 'Ingresos',
-			component: <RevenueChart />,
-			colSpan: 'md:col-span-12 lg:col-span-4',
 		},
 	];
 
