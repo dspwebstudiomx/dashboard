@@ -18,7 +18,7 @@
     "project": "Dashboard dspwebstudio",
     "image": "/uploads/1762128399909-721897670.jpg",
     "createdAt": "2025-05-01",
-    "updatedAt": "2025-11-14T18:44:51.259Z",
+    "updatedAt": "2025-11-14T19:03:58.296Z",
     "tasks": [
       {
         "id": "1",
@@ -299,5 +299,28 @@
         "id": 1760119902400
       }
     ]
+  },
+  {
+    "id": 1763147116832,
+    "fullName": "Alexis Daniel",
+    "lastName": "Daniel",
+    "lastName2": "Pérez",
+    "email": "dsperez.tablet@gmail.com",
+    "phoneNumber": "4439188025",
+    "address": "Molibdeno 214",
+    "company": "",
+    "rfc": "",
+    "curp": "",
+    "website": "",
+    "facebook": "https://www.facebook.com/alexis.ferguson.587",
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "project": "",
+    "image": "",
+    "createdAt": "2025-11-14T19:05:16.832Z",
+    "updatedAt": "2025-11-14T19:06:51.454Z",
+    "tasks": [],
+    "projects": []
   }
 ]
