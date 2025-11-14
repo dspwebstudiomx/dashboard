@@ -57,7 +57,7 @@ const ClientProjects = ({ selectedClient, onUpdateProjects }) => {
 					<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} icon={IoMdAdd} />
 				</div>
 			</header>
-			<ul id="lista-proyectos" className="mt-12 grid lg:grid-cols-2 gap-12 items-start">
+			<ul id="lista-proyectos" className="mt-12 grid xl:grid-cols-2 gap-12 items-start">
 				{selectedClient.projects && selectedClient.projects.length > 0 ? (
 					selectedClient.projects.map((project) => (
 						<ProjectCard

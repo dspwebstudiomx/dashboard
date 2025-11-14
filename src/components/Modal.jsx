@@ -68,7 +68,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 		>
 			<div className="relative flex items-center">
 				<article
-					className={`bg-white rounded-xl shadow-lg w-[70vw] max-w-[80vw] max-h-[90vh] md:max-w-full p-6 md:p-12 xl:p-12 border-4
+					className={`bg-white rounded-xl shadow-lg w-[90vw] md:w-full max-h-[90vh] p-4 md:p-12 xl:p-12 border-4
 					border-blue-500 dark:bg-gray-800 dark:border-gray-500 flex flex-col gap-6 justify-between`}
 				>
 					<div className="flex justify-end">
