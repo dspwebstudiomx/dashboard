@@ -145,8 +145,13 @@ const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, 
 			.join(' ');
 	};
 
+	const handleSubmit = (event) => {
+		event.preventDefault(); // Evita el refresco de la página
+		// Aquí puedes manejar el envío del formulario si es necesario
+	};
+
 	return (
-		<div className="flex flex-col gap-8">
+		<form onSubmit={handleSubmit} className="flex flex-col gap-8">
 			{groups.map((group) => (
 				<section
 					key={group.title}
@@ -193,7 +198,7 @@ const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, 
 					</div>
 				</section>
 			))}
-		</div>
+		</form>
 	);
 };
 
