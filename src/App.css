@@ -42,7 +42,7 @@ html.dark {
 
 ::-webkit-scrollbar-thumb {
 	background-color: #3b82f6; /* Color del "pulgar" */
-	border-radius: 4px; /* Bordes redondeados */
+	border-radius: 0; /* Bordes redondeados */
 }
 
 ::-webkit-scrollbar-thumb:hover {

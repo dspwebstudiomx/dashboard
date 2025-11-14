@@ -306,7 +306,7 @@
     "lastName": "Daniel",
     "lastName2": "Pérez",
     "email": "dsperez.tablet@gmail.com",
-    "phoneNumber": "4439188025",
+    "phoneNumber": "+524439188025",
     "address": "Molibdeno 214",
     "company": "",
     "rfc": "",
@@ -317,9 +317,9 @@
     "instagram": "",
     "linkedin": "",
     "project": "",
-    "image": "",
+    "image": "/uploads/1763160012919-232883399.jpg",
     "createdAt": "2025-11-14T19:05:16.832Z",
-    "updatedAt": "2025-11-14T19:06:51.454Z",
+    "updatedAt": "2025-11-14T22:40:15.142Z",
     "tasks": [],
     "projects": []
   }
