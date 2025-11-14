@@ -74,7 +74,7 @@ const ClientsTable = () => {
 				<input
 					type="text"
 					placeholder="Buscar cliente..."
-					className="px-3 py-4 md:py-2 border rounded-xl w-full md:w-1/3 lg:w-1/4 active:border-blue-500 active:rounded-xl  focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className="px-3 py-4 md:py-2 border rounded-xl w-full md:w-1/3 lg:w-1/4 active:border-blue-500 active:rounded-xl  focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700  dark:border-gray-500"
 					onChange={(e) => {
 						const searchTerm = removeAccents(e.target.value.toLowerCase());
 						if (searchTerm === '') {
@@ -97,7 +97,7 @@ const ClientsTable = () => {
 				{/* Tabla de Clientes */}
 				<table
 					id="clients-table"
-					className="min-w-full border border-gray-300 bg-white border-collapse"
+					className="min-w-full border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 border-collapse"
 				>
 					<thead className="bg-blue-700 text-white border-blue-800">
 						<tr>
@@ -122,8 +122,15 @@ const ClientsTable = () => {
 						) : (
 							<>
 								{currentClients.map((client, index) => (
-									<tr key={client.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-										<td className="p-4 h-[120px] w-[220px] text-sm flex items-center gap-4 text-gray-800">
+									<tr
+										key={client.id}
+										className={
+											index % 2 === 0
+												? 'bg-gray-50 dark:bg-gray-600 dark:text-gray-50 border-b border-gray-300 border-l'
+												: 'bg-white dark:bg-gray-700 dark:text-gray-50 border-b border-gray-300 border-l'
+										}
+									>
+										<td className="p-4 h-[120px] w-[220px] text-sm flex items-center gap-4 text-gray-800 dark:text-gray-200">
 											<a href={`/clientes/${client.id}`}>
 												<img
 													id="imagen-cliente"
@@ -138,7 +145,7 @@ const ClientsTable = () => {
 											</a>
 											{client.fullName} {client.lastName} {client.lastName2}
 										</td>
-										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+										<td className="px-4 py-2 text-sm border border-gray-300">
 											{client.projects && client.projects.length > 0 ? (
 												<ul className="flex flex-col gap-2">
 													{client.projects.map((project, index) => (
@@ -152,13 +159,11 @@ const ClientsTable = () => {
 												'Sin proyectos asignados'
 											)}
 										</td>
-										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
-											{client.email}
-										</td>
-										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+										<td className="px-4 py-2 text-sm border border-gray-300">{client.email}</td>
+										<td className="px-4 py-2 text-sm border border-gray-300">
 											{client.phoneNumber}
 										</td>
-										<td className="px-4 py-2 text-sm text-gray-700 border border-gray-300">
+										<td className="px-4 py-2 text-sm border border-gray-300">
 											<a
 												href={`/clientes/${client.id}`}
 												className="text-blue-600 hover:text-blue-800"
