@@ -65,30 +65,29 @@ const ClientsList = () => {
 	return (
 		<section
 			id="clients-list-container"
-			className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none justify-center items-center  max-w-screen-xl"
+			className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none justify-center items-center max-w-screen-xl"
 		>
-			{/* Botones de la barra lateral */}
-			<aside
-				id="clients-aside-buttons"
-				className="fixed bottom-0 left-0 md:left-20 md:right-0  md:top-46 flex md:flex-col md:gap-6 items-start z-20 w-[100vw] md:w-[15vw]"
+			{/* Botones de la barra superior */}
+			<div
+				id="clients-top-buttons"
+				className="col-span-12 flex flex-col xl:flex-row gap-4 justify-end items-center mb-6"
 			>
-				{/* Botón editar clientes */}
 				{/* Botón agregar clientes */}
 				<button
 					id="agregar-cliente"
 					onClick={() => handleOpenModal()}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-900 hover:bg-blue-700 transition duration-300 shadow-2xl w-full md:w-[170px] lg:w-[210px]"
+					className="text-white px-6 py-4 flex items-center justify-center gap-2 rounded-full border-2 border-blue-700 bg-blue-800 hover:bg-blue-700 transition duration-300 shadow-lg w-full md:w-[170px] lg:w-[210px]"
 					aria-label="Agregar cliente"
 				>
 					<IoPersonAddSharp size={25} />
-					<span className="hidden md:block"> Agregar Cliente</span>
+					<span className="hidden md:block">Agregar Cliente</span>
 				</button>
 
 				{/* Botón ir arriba */}
 				<button
 					id="ir-a-inicio"
 					onClick={handleScrollToTop}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-300 shadow-2xl w-full md:w-[160px]  lg:w-[210px]"
+					className="text-white px-6 py-4 flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-500 transition duration-300 shadow-lg w-full md:w-[160px] lg:w-[210px]"
 					aria-label="Ir a inicio"
 				>
 					<FaArrowUp size={25} />
@@ -99,13 +98,13 @@ const ClientsList = () => {
 				<button
 					id="ir-al-final"
 					onClick={handleScrollToBottom}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 md:rounded-full lg:rounded-lg bg-blue-500 hover:bg-blue-400 transition duration-300 shadow-2xl w-full  md:w-[160px]  lg:w-[210px]"
+					className="text-white px-6 py-4 flex items-center justify-center gap-2 rounded-full bg-blue-500 hover:bg-blue-400 transition duration-300 shadow-lg w-full md:w-[160px] lg:w-[210px]"
 					aria-label="Ir al final"
 				>
 					<FaArrowDown size={25} />
 					<span className="hidden md:block">Ir al Final</span>
 				</button>
-			</aside>
+			</div>
 
 			{/* Lista de clientes */}
 			<ul
