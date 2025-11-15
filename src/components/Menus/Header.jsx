@@ -132,7 +132,7 @@ const Header = ({ toggleSidebar, title }) => {
 			{/* Encabezado principal */}
 			<header
 				id="encabezado principal"
-				className="header md:py-12 2xl:py-6 md:top-0 md:left-0 md:fixed w-full md:px-12 mx-auto z-10 dark:bg-blue-900 bg-blue-900"
+				className="header md:py-12 2xl:py-6 md:top-0 md:left-0 md:fixed w-full md:px-12 mx-auto z-10 dark:bg-gray-900 bg-blue-900"
 			>
 				{/* Contenedor interno del encabezado */}
 				<div

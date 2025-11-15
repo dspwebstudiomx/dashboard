@@ -16,16 +16,16 @@ const DashboardTemplate = ({ children, title }) => {
 			<Header title={title} />
 
 			{/* Sidebar siempre visible en el lado derecho */}
-			<div className="fixed top-0 right-20 h-full">
+			<div className="h-full">
 				<Sidebar isOpen={true} />
 			</div>
 
 			{/* Contenido principal */}
 			<main
-				className={`grid grid-cols-12 p-0 pt-32 md:mt-8 lg:mt-6 xl:mt-20 items-start justify-center 2xl:px-0 2xl:pl-0 2xl:py-10 min-h-[84.8vh] dark:bg-gray-900 text-gray-800 dark:text-gray-100 mx-auto`}
+				className={`grid grid-cols-12 p-0 pt-32 md:mt-8 lg:mt-6 xl:mt-20 items-start justify-center 2xl:px-0 2xl:py-10 min-h-[84.8vh] dark:bg-gray-900 text-gray-800 dark:text-gray-100 mx-auto`}
 			>
 				{/* Contenido principal */}
-				<Section className="p-8 md:p-12" columns="col-span-12 md:col-span-10">
+				<Section className="p-8 md:p-12 xl:pl-0" columns="col-span-12 md:col-span-10">
 					{children}
 				</Section>
 			</main>

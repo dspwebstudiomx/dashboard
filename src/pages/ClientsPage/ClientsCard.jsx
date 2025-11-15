@@ -69,7 +69,7 @@ const ClientsCard = ({ client, fetchClients, handleOpenModal }) => {
 
 	return (
 		<>
-			<article className="grid md:grid-cols-12 shadow-2xl rounded-2xl p-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold mb-0 xl:h-auto last:md:mb-0">
+			<article className="grid md:grid-cols-12 shadow-2xl rounded-2xl p-8 justify-center items-center md:items-start gap-5 bg-white dark:bg-gray-800 font-semibold mb-0 xl:h-auto last:md:mb-0 dark:border-2 dark:border-gray-700 border border-gray-200">
 				<div
 					id="client-logo"
 					className="col-span-12 md:col-span-12 items-center justify-between h-auto gap-12 my-auto"
