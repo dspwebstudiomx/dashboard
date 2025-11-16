@@ -12,19 +12,7 @@ import { FaFileInvoiceDollar } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 
 // Componente Sidebar
-const Sidebar = ({ columns, isOpen }) => {
-	// Estilos para el Sidebar
-	const SidebarStyles = {
-		sidebarAside: {
-			columns: columns,
-			general: `fixed top-40 right-30 rounded-xl p-8 py-16 bg-white text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-300 dark:border-blue-700`,
-		},
-		sidebarHeader: `mx-auto`,
-		sidebarMenu: `flex flex-col items-center justify-center gap-8   md:gap-8 ml-0 md:ml-4  p-4 font-semibold text-xl md:text-lg`,
-		sidebarMenuItem: `flex flex-row gap-4 items-center p-2 text-gray-900 dark:text-gray-100 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300 ease-in-out w-[180px]`,
-		sidebarMenuItemIcon: `text-blue-900 dark:text-blue-500 text-2xl`,
-	};
-
+const Sidebar = () => {
 	// Definición de las rutas y sus íconos
 	const menuItems = [
 		{ path: '/', label: 'Dashboard', icon: <FaTachometerAlt /> },
@@ -70,12 +58,12 @@ const Sidebar = ({ columns, isOpen }) => {
 		}, []);
 
 		return (
-			<div className="relative w-full h-full flex items-center justify-center bg-transparent">
+			<div className="w-full h-[160px] bg-gray-100 flex items-center justify-center rounded-xl border-4 border-blue-300">
 				{/* Video de fondo para el día */}
 				{isDaytime && (
 					<video
-						className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
-						src="src/assets/clouds.mp4"
+						className="fixed top-0 left-0 w-full h-full object-cover rounded-xl"
+						src="/assets/clouds.mp4"
 						autoPlay
 						loop
 						muted
@@ -84,15 +72,15 @@ const Sidebar = ({ columns, isOpen }) => {
 				{/* Video de fondo para la noche */}
 				{!isDaytime && (
 					<video
-						className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
-						src="src/assets/night.mp4"
+						className="fixed top-0 left-0 w-full h-full object-cover rounded-xl"
+						src="/assets/night.mp4"
 						autoPlay
 						loop
 						muted
 					/>
 				)}
 				{/* Contenido del reloj y clima */}
-				<div className="relative z-10 text-center text-gray-100 dark:text-gray-100">
+				<div className="relative z-10 text-center text-gray-900 dark:text-gray-100">
 					{/* Hora actual */}
 					<div className="text-4xl font-bold">{time.toLocaleTimeString()}</div>
 					{/* Clima actual */}
@@ -112,38 +100,32 @@ const Sidebar = ({ columns, isOpen }) => {
 
 	// Renderiza el Sidebar
 	return (
-		<aside className="flex flex-col justify-between h-full">
+		<aside className="fixed top-40 right-30 w-auto h-auto flex flex-col gap-8 justify-between">
+			{/* Contenedor del menú */}
 			<div
-				id="sidebar"
-				className={`${SidebarStyles.sidebarAside.general} ${
-					columns ? SidebarStyles.sidebarAside.columns : ''
-				} ${
-					isOpen ? SidebarStyles.sidebarAside.visible : SidebarStyles.sidebarAside.hidden
-				} transition-transform duration-300 ease-in-out z-20
-      ${SidebarStyles.sidebarAside.tablet} ${SidebarStyles.sidebarAside.desktop} ${
-					SidebarStyles.sidebarAside.mobile
-				}`}
+				id="sidebar-menu-container"
+				className="bg-gray-100 rounded-xl p-8 text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-300 dark:border-blue-700 transition-transform duration-300 ease-in-out"
 			>
-				<div id="sidebar-header" className={SidebarStyles.sidebarHeader}>
-					<h2 className="mb-10 text-center uppercase font-semibold tracking-wide text-xl text-gray-900 dark:text-gray-100">
-						Menú
-					</h2>
-					<ul id="sidebar-menu" className={SidebarStyles.sidebarMenu}>
-						{menuItems.map((item, index) => (
-							<li key={index}>
-								<NavLink to={item.path} className={SidebarStyles.sidebarMenuItem}>
-									<span className={SidebarStyles.sidebarMenuItemIcon}>{item.icon}</span>
-									<span>{item.label}</span>
-								</NavLink>
-							</li>
-						))}
-					</ul>
-				</div>
+				<h2 className="text-center font-semibold tracking-wide text-2xl text-gray-900 dark:text-gray-100">
+					Menú
+				</h2>
+				<ul className="flex flex-col items-center justify-center gap-8 md:gap-0 ml-0 md:ml-4 font-semibold text-xl md:text-lg">
+					{menuItems.map((item, index) => (
+						<li key={index}>
+							<NavLink
+								to={item.path}
+								className="flex flex-row gap-4 py-3 items-center text-gray-900 dark:text-gray-100 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out w-[180px]"
+							>
+								<span className="text-blue-900 dark:text-blue-500 text-2xl">{item.icon}</span>
+								<span>{item.label}</span>
+							</NavLink>
+						</li>
+					))}
+				</ul>
 			</div>
 
-			<div className="hidden md:fixed bottom-8 w-76 h-36 right-30  bg-gray-100 md:flex items-center justify-center rounded-xl shadow-lg dark:bg-gray-800 border-4 border-blue-300 dark:border-gray-700">
-				<Clock />
-			</div>
+			{/* Contenedor del reloj */}
+			<Clock />
 		</aside>
 	);
 };

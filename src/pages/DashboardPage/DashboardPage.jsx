@@ -24,7 +24,7 @@ const DashboardPage = () => {
 		{
 			title: 'Ingresos',
 			component: <RevenueChart />,
-			colSpan: 'md:col-span-12 lg:col-span-7',
+			colSpan: 'col-span-12 lg:col-span-7',
 		},
 		{
 			title: 'Calendario',
@@ -44,7 +44,7 @@ const DashboardPage = () => {
 		{
 			title: 'Clientes',
 			component: <ClientsTable />,
-			colSpan: 'col-span-12',
+			colSpan: 'col-span-12 sm:block hidden', // Ocultar en smartphones
 		},
 		{
 			title: 'Resumen de Proyectos',
@@ -55,10 +55,10 @@ const DashboardPage = () => {
 
 	// Estilos para el Dashboard
 	const dashboardStyles = {
-		title: `text-3xl font-bold mb-6 sm:hidden text-blue-950 text-center dark:text-blue-400 mb-20`,
-		grid: `grid md:grid-cols-12 gap-12`,
-		card: ` bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-4 border-blue-200 dark:border-gray-700 p-6 rounded-xl shadow-md h-full 2xl:p-12 flex flex-col gap-12`,
-		cardTitle: `text-2xl font-semibold`,
+		title: `text-2xl font-bold mb-6 text-blue-950 text-center dark:text-blue-400 sm:mb-10`, // Ajustar tamaño del texto para smartphones
+		grid: `grid grid-cols-1 gap-6 sm:grid-cols-12 sm:gap-12`, // Cambiar a una sola columna en smartphones
+		card: `bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-blue-200 dark:border-gray-700 p-8 rounded-lg shadow-md h-full sm:border-4 sm:p-6 sm:rounded-xl sm:gap-12`, // Aumentar padding en smartphones
+		cardTitle: `text-xl font-semibold sm:text-2xl`, // Reducir tamaño del título en smartphones
 	};
 
 	// Función para renderizar las tarjetas del Dashboard
@@ -74,10 +74,8 @@ const DashboardPage = () => {
 	// Renderizar el Dashboard
 	return (
 		<DashboardTemplate>
-			{/* Título del Dashboard */}
-			<h1 className={dashboardStyles.title}>Estadísticas</h1>
 			{/* Sección de tarjetas del Dashboard */}
-			<section className="grid grid-cols-12 gap-8 mx-auto justify-center items-center">
+			<section className="grid grid-cols-1 gap-6 sm:grid-cols-12 sm:gap-8 mx-auto justify-center items-center">
 				{renderDashboardCards()}
 			</section>
 		</DashboardTemplate>

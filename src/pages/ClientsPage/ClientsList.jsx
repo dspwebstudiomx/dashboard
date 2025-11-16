@@ -70,7 +70,7 @@ const ClientsList = () => {
 			{/* Botones de la barra superior */}
 			<div
 				id="clients-top-buttons"
-				className="flex gap-4 fixed top-20 bg-blue-900 dark:bg-gray-900  md:grid-cols-3 w-full pt-20"
+				className="flex gap-4 fixed top-20 bg-blue-900 dark:bg-gray-900  md:grid-cols-3 w-full pt-20 pb-10"
 			>
 				{/* Botón agregar clientes */}
 				<button

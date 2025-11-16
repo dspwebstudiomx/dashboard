@@ -24,8 +24,9 @@ const App = () => {
 		<ModalStackProvider>
 			<Router>
 				<Header toggleSidebar={toggleSidebar} />
-				<main className="App grid grid-cols-12 w-full bg-blue-900 dark:bg-gray-900 min-h-[91.1vh]">
-					<div className="col-span-10">
+				<main className="App grid grid-cols-12 w-full bg-blue-900 dark:bg-gray-900 min-h-[91.1vh] text-gray-100 p-0">
+					{/* Contenido principal */}
+					<div className="col-span-12 md:col-span-10">
 						<Routes>
 							<Route path="/" element={<DashboardPage />} />
 							<Route path="/proyectos" element={<ProjectsPage />} />
@@ -51,9 +52,23 @@ const App = () => {
 							/>
 						</Routes>
 					</div>
-					<div className="col-span-2">
-						<Sidebar isOpen={isSidebarOpen} />
+
+					{/* Sidebar fijo desde laptops y adaptable en smartphones */}
+					<div
+						className={`z-50 w-full transform transition-transform duration-300 ease-in-out ${
+							isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+						} md:relative md:translate-x-0 md:col-span-2 lg:fixed lg:top-0 lg:left-0 lg:h-auto h-auto w-64 fixed bg-gray-800`}
+					>
+						<Sidebar isOpen={isSidebarOpen} columns={'col-span-12'} />
 					</div>
+
+					{/* Fondo oscuro al abrir el Sidebar en móviles */}
+					{isSidebarOpen && (
+						<div
+							className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+							onClick={toggleSidebar}
+						></div>
+					)}
 				</main>
 				<footer className="bg-blue-900 dark:bg-gray-900">
 					<div className="flex justify-center items-center py-8">
