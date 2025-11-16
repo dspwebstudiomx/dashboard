@@ -17,12 +17,7 @@ const Sidebar = ({ columns, isOpen }) => {
 	const SidebarStyles = {
 		sidebarAside: {
 			columns: columns,
-			general: `bg-white text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-300 dark:border-blue-700`,
-			mobile: `fixed top-10 p-24 w-[100vw] h-[96vh] z-[99999] md:z-0`,
-			visible: `translate-x-10 md:translate-x-0`, // Clase para mostrar el Sidebar
-			hidden: `translate-x-full`, // Clase para ocultar el Sidebar
-			tablet: `md:p-5 md:rounded-xl shadow-lg md:w-[15vw] md:top-38 md:right-10 md:border-2 md:border-gray-300 md:dark:border-gray-700 md:rounded-xl md:mt-10 `,
-			desktop: `xl:w-auto xl:h-[60vh] xl:right-24 xl:top-32 border-4 border-blue-300 dark:border-blue-700`,
+			general: `fixed top-40 right-30 rounded-xl p-8 py-16 bg-white text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-300 dark:border-blue-700`,
 		},
 		sidebarHeader: `mx-auto`,
 		sidebarMenu: `flex flex-col items-center justify-center gap-8   md:gap-8 ml-0 md:ml-4  p-4 font-semibold text-xl md:text-lg`,
@@ -146,7 +141,7 @@ const Sidebar = ({ columns, isOpen }) => {
 				</div>
 			</div>
 
-			<div className="fixed bottom-8 w-68 h-36 right-24  bg-gray-100 flex items-center justify-center rounded-xl shadow-lg dark:bg-gray-800 border-4 border-blue-300 dark:border-gray-700">
+			<div className="hidden md:fixed bottom-8 w-76 h-36 right-30  bg-gray-100 md:flex items-center justify-center rounded-xl shadow-lg dark:bg-gray-800 border-4 border-blue-300 dark:border-gray-700">
 				<Clock />
 			</div>
 		</aside>

@@ -15,7 +15,6 @@ import { Helmet } from 'react-helmet';
 import { IoBulbOutline } from 'react-icons/io5';
 // Componente Header
 const Header = ({ toggleSidebar, title }) => {
-	// const [time, setTime] = useState('');
 	const [darkMode, setDarkMode] = useState(false); // Estado para el modo oscuro
 	const location = useLocation(); // Obtén la ubicación actual
 
@@ -96,6 +95,10 @@ const Header = ({ toggleSidebar, title }) => {
 	};
 
 	// Alternar el Sidebar
+	const handleSidebarToggle = () => {
+		toggleSidebar(); // Llama a la función pasada como prop
+	};
+
 	return (
 		<>
 			{/* Meta etiquetas para SEO */}
@@ -171,8 +174,8 @@ const Header = ({ toggleSidebar, title }) => {
 						{/* Botón de barras */}
 						<button
 							id="sidebar-toggle"
-							onClick={toggleSidebar}
-							className="text-2xl focus:outline-none"
+							onClick={handleSidebarToggle}
+							className="text-2xl focus:outline-none md:hidden"
 						>
 							<FaBars className="text-blue-800" />
 						</button>

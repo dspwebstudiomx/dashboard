@@ -65,12 +65,12 @@ const ClientsList = () => {
 	return (
 		<section
 			id="clients-list-container"
-			className="grid grid-cols-12 top-0 w-full relative gap-6 bg-none justify-center items-center"
+			className="grid xl:grid-cols-12 top-0 w-full relative gap-6 justify-center items-center"
 		>
 			{/* Botones de la barra superior */}
 			<div
 				id="clients-top-buttons"
-				className="col-span-12 flex flex-col xl:flex-row gap-4 justify-end items-center mb-6 fixed top-40"
+				className="flex gap-4 fixed top-20 bg-blue-900 dark:bg-gray-900  md:grid-cols-3 w-full pt-20"
 			>
 				{/* Botón agregar clientes */}
 				<button
