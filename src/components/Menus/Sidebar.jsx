@@ -45,12 +45,73 @@ const Sidebar = ({ columns, isOpen }) => {
 
 	const Clock = () => {
 		const [time, setTime] = React.useState(new Date());
+		const [weather, setWeather] = React.useState(null);
+		const isDaytime = time.getHours() >= 7 && time.getHours() < 19;
+
 		React.useEffect(() => {
+			// Actualizar la hora cada segundo
 			const timer = setInterval(() => setTime(new Date()), 1000);
 			return () => clearInterval(timer);
 		}, []);
+
+		React.useEffect(() => {
+			// Obtener el clima actual usando la API de OpenWeatherMap
+			const fetchWeather = async () => {
+				try {
+					const response = await fetch(
+						`https://api.openweathermap.org/data/2.5/weather?lat=40.7128&lon=-74.006&appid=TU_API_KEY&units=metric&lang=es`
+					);
+					const data = await response.json();
+					setWeather({
+						temp: data.main.temp,
+						description: data.weather[0].description,
+						icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+					});
+				} catch (error) {
+					console.error('Error al obtener el clima:', error);
+				}
+			};
+			fetchWeather();
+		}, []);
+
 		return (
-			<div className="text-4xl text-gray-900 dark:text-gray-100">{time.toLocaleTimeString()}</div>
+			<div className="relative w-full h-full flex items-center justify-center bg-transparent">
+				{/* Video de fondo para el día */}
+				{isDaytime && (
+					<video
+						className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+						src="src/assets/clouds.mp4"
+						autoPlay
+						loop
+						muted
+					/>
+				)}
+				{/* Video de fondo para la noche */}
+				{!isDaytime && (
+					<video
+						className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+						src="src/assets/night.mp4"
+						autoPlay
+						loop
+						muted
+					/>
+				)}
+				{/* Contenido del reloj y clima */}
+				<div className="relative z-10 text-center text-gray-100 dark:text-gray-100">
+					{/* Hora actual */}
+					<div className="text-4xl font-bold">{time.toLocaleTimeString()}</div>
+					{/* Clima actual */}
+					{weather && (
+						<div className="mt-4 flex items-center justify-center gap-2">
+							<img src={weather.icon} alt={weather.description} className="w-12 h-12" />
+							<div>
+								<p className="text-lg font-medium">{weather.temp}°C</p>
+								<p className="text-2xl capitalize">{weather.description}</p>
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
 		);
 	};
 
@@ -85,7 +146,7 @@ const Sidebar = ({ columns, isOpen }) => {
 				</div>
 			</div>
 
-			<div className="fixed bottom-8 w-72 h-36 right-24  bg-gray-100 flex items-center justify-center rounded-xl shadow-lg dark:bg-gray-800 border-4 xl:border-2 border-blue-300 dark:border-gray-700">
+			<div className="fixed bottom-8 w-72 h-36 right-24  bg-gray-100 flex items-center justify-center rounded-xl shadow-lg dark:bg-gray-800 border-4 border-blue-300 dark:border-gray-700">
 				<Clock />
 			</div>
 		</aside>

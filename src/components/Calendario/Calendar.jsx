@@ -12,6 +12,7 @@ import {
 } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import Card from '@components/Card/Card';
 
 // Estructura del componente Calendar
 const Calendar = () => {
@@ -28,54 +29,86 @@ const Calendar = () => {
 		setCurrentDate((prev) => startOfDay(addMonths(prev, 1)));
 	}; // Avanzar un mes y mantener inicio del día
 	const renderMonthView = () => {
-		const start = startOfMonth(currentDate); // Obtener el inicio del mes actual
-		const end = endOfMonth(currentDate); // Obtener el final del mes actual
-		const days = eachDayOfInterval({ start, end }); // Obtener todos los días del mes actual
+		const start = startOfMonth(currentDate); // Inicio del mes actual
+		const end = endOfMonth(currentDate); // Fin del mes actual
+		const days = eachDayOfInterval({ start, end }); // Días del mes actual
 		const weekDays = ['D', 'L', 'M', 'X', 'J', 'V', 'S']; // Iniciales de los días de la semana en español
-		const firstDayIndex = getDay(start); // Calcular el índice del primer día del mes
-		const lastDayIndex = getDay(end); // Calcular el índice del último día del mes
+		const firstDayIndex = getDay(start); // Índice del primer día del mes
+		const lastDayIndex = getDay(end); // Índice del último día del mes
+
+		// Días del mes anterior necesarios para completar la primera semana
+		const prevMonthEnd = subMonths(start, 1); // Último día del mes anterior
+		const prevMonthLastDay = endOfMonth(prevMonthEnd); // Último día del mes anterior
+		const prevMonthDays = Array.from({ length: firstDayIndex }).map((_, index) =>
+			startOfDay(
+				new Date(
+					prevMonthLastDay.getFullYear(),
+					prevMonthLastDay.getMonth(),
+					prevMonthLastDay.getDate() - (firstDayIndex - index - 1)
+				)
+			)
+		);
+
+		// Días del mes siguiente necesarios para completar la última semana
+		const nextMonthStart = addMonths(end, 1); // Primer día del mes siguiente
+		const nextMonthDays = Array.from({ length: 6 - lastDayIndex }).map((_, index) =>
+			startOfDay(new Date(nextMonthStart.getFullYear(), nextMonthStart.getMonth(), index + 1))
+		);
+
 		return (
-			<section className="h-full">
+			<div>
 				{/* Encabezado con iniciales de los días */}
 				<div className="grid grid-cols-7 gap-2 mb-6 border-b-2 border-gray-300 dark:border-gray-600">
 					{weekDays.map((day, index) => (
-						<div key={index} className="text-center font-semibold">
+						<div key={index} className="text-center font-semibold mb-3">
 							{day}
 						</div>
 					))}
 				</div>
 				{/* Días del mes */}
-				<div className="grid grid-cols-7 gap-2">
-					{/* Espacios vacíos antes del primer día del mes */}
-					{Array.from({ length: firstDayIndex }).map((_, index) => (
-						<div key={`empty-start-${index}`} className="p-3"></div>
+				<div
+					className="grid grid-cols-7 gap-2 mb-36"
+					style={{ height: 'calc(7 * 2rem)' }} // Altura fija para 6 filas (máximo número de semanas en un mes)
+				>
+					{/* Días del mes anterior */}
+					{prevMonthDays.map((day, index) => (
+						<div
+							key={`prev-${index}`}
+							className="text-center p-3 rounded-full font-semibold text-gray-400 dark:text-gray-500"
+						>
+							{format(day, 'd', { locale: es })}
+						</div>
 					))}
-					{/* Días del mes */}
+					{/* Días del mes actual */}
 					{days.map((day) => (
 						<div
 							key={day.toString()}
 							className={`text-center p-3 rounded-full font-semibold ${
 								isSameDay(day, today)
-									? 'bg-blue-500 text-white'
-									: 'dark:bg-gray-700 dark:text-gray-200 hover:bg-blue-100 hover:dark:bg-gray-600 bg-gray-100 text-gray-800 rounded-full '
+									? 'bg-blue-500 text-white border-2 border-blue-700'
+									: 'dark:bg-gray-700 dark:text-gray-200 hover:bg-blue-100 hover:dark:bg-gray-600 bg-gray-100 border-2 border-gray-200 dark:border-gray-600 text-gray-800 rounded-full '
 							}`}
 						>
 							{format(day, 'd', { locale: es })}
 						</div>
 					))}
-					{/* Espacios vacíos después del último día del mes */}
-					{Array.from({ length: 6 - lastDayIndex }).map((_, index) => (
-						<div key={`empty-end-${index}`} className="p-2"></div>
+					{/* Días del mes siguiente */}
+					{nextMonthDays.map((day, index) => (
+						<div
+							key={`next-${index}`}
+							className="text-center p-3 rounded-full font-semibold text-gray-400 dark:text-gray-500"
+						>
+							{format(day, 'd', { locale: es })}
+						</div>
 					))}
 				</div>
-			</section>
+			</div>
 		);
 	};
 
 	return (
-		<div className="flex flex-col place-content-center rounded-lg">
-			{/* Encabezado del calendario con botones de navegación */}
-			<div className="flex justify-between w-full px-4 items-center mb-4">
+		<section className="">
+			<div className="flex justify-between w-full px-4 items-center mb-6">
 				<button onClick={handlePrev} className="p-2">
 					<FaArrowLeft size={28} className="text-blue-600 hover:text-blue-700" />
 				</button>
@@ -86,9 +119,8 @@ const Calendar = () => {
 					<FaArrowRight size={28} className="text-blue-600 hover:text-blue-700" />
 				</button>
 			</div>
-			{/* Vista del mes */}
 			{renderMonthView()}
-		</div>
+		</section>
 	);
 };
 
