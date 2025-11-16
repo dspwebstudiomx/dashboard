@@ -67,7 +67,7 @@ const Calendar = () => {
 				</div>
 				{/* Días del mes */}
 				<div
-					className="grid grid-cols-7 gap-2 mb-36"
+					className="grid grid-cols-7 gap-3 mb-36"
 					style={{ height: 'calc(7 * 2rem)' }} // Altura fija para 6 filas (máximo número de semanas en un mes)
 				>
 					{/* Días del mes anterior */}

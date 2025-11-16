@@ -41,7 +41,7 @@ const Client = () => {
 			) : !selectedClient ? (
 				<p>Cliente no encontrado.</p>
 			) : (
-				<section className="flex flex-col gap-18 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sm:p-16 xl:p-20 border-2 dark:border-gray-700 border-gray-300 ">
+				<section className="flex flex-col gap-18 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sm:p-16 xl:p-20 border-2 dark:border-gray-700 border-gray-300 w-full">
 					<article>
 						<div className="flex items-center justify-end">
 							<CloseButton onClick={() => navigate(-1)} />

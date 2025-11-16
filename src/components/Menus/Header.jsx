@@ -13,10 +13,9 @@ import { useLocation } from 'react-router-dom'; // Importa useLocation
 import logo from '../../assets/dsp-mixed.png'; // Asegúrate de que la ruta sea correcta
 import { Helmet } from 'react-helmet';
 import { IoBulbOutline } from 'react-icons/io5';
-// import nighnmoon from '../../assets/images/nightmoon.webp'; // Asegúrate de que la ruta sea correcta
 // Componente Header
 const Header = ({ toggleSidebar, title }) => {
-	const [time, setTime] = useState('');
+	// const [time, setTime] = useState('');
 	const [darkMode, setDarkMode] = useState(false); // Estado para el modo oscuro
 	const location = useLocation(); // Obtén la ubicación actual
 
@@ -31,25 +30,6 @@ const Header = ({ toggleSidebar, title }) => {
 	};
 
 	const currentPage = pageNames[location.pathname] || 'Página desconocida';
-
-	// Efecto para actualizar el reloj cada segundo
-	useEffect(() => {
-		// Actualiza el reloj cada segundo
-		const updateClock = () => {
-			const now = new Date();
-			const formattedTime = now.toLocaleTimeString('es-ES', {
-				hour: '2-digit',
-				minute: '2-digit',
-				second: '2-digit',
-				hour12: true,
-			});
-			setTime(formattedTime);
-		};
-
-		const interval = setInterval(updateClock, 1000);
-		updateClock();
-		return () => clearInterval(interval);
-	}, []);
 
 	// Efecto para cargar el modo oscuro guardado en localStorage o según el sistema
 	useEffect(() => {
@@ -173,15 +153,6 @@ const Header = ({ toggleSidebar, title }) => {
 								</span>
 								!
 							</span>
-						</div>
-
-						{/* Reloj */}
-						<div
-							id="reloj"
-							className="text-lg font-medium text-gray-800 dark:text-gray-200 px-4 py-2 hidden items-center justify-center md:flex 2xl:text-2xl 2xl:w-[300px] gap-3"
-						>
-							<FaRegClock className="text-blue-900 dark:text-blue-400" />
-							{time.includes('AM') ? time.replace('AM', 'a.m.') : time.replace('PM', 'p.m.')}
 						</div>
 
 						{/* Botón de modo oscuro */}

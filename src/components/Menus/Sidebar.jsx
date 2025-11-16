@@ -22,7 +22,7 @@ const Sidebar = ({ columns, isOpen }) => {
 			visible: `translate-x-10 md:translate-x-0`, // Clase para mostrar el Sidebar
 			hidden: `translate-x-full`, // Clase para ocultar el Sidebar
 			tablet: `md:p-5 md:rounded-xl shadow-lg md:w-[15vw] md:top-38 md:right-10 md:border-2 md:border-gray-300 md:dark:border-gray-700 md:rounded-xl md:mt-10 `,
-			desktop: `xl:w-[15vw] xl:h-[60vh] xl:right-24 xl:top-32 border-4 border-blue-300 dark:border-blue-700`,
+			desktop: `xl:w-auto xl:h-[60vh] xl:right-24 xl:top-32 border-4 border-blue-300 dark:border-blue-700`,
 		},
 		sidebarHeader: `mx-auto`,
 		sidebarMenu: `flex flex-col items-center justify-center gap-8   md:gap-8 ml-0 md:ml-4  p-4 font-semibold text-xl md:text-lg`,
