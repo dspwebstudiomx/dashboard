@@ -146,7 +146,7 @@ const Sidebar = ({ columns, isOpen }) => {
 				</div>
 			</div>
 
-			<div className="fixed bottom-8 w-72 h-36 right-24  bg-gray-100 flex items-center justify-center rounded-xl shadow-lg dark:bg-gray-800 border-4 border-blue-300 dark:border-gray-700">
+			<div className="fixed bottom-8 w-68 h-36 right-24  bg-gray-100 flex items-center justify-center rounded-xl shadow-lg dark:bg-gray-800 border-4 border-blue-300 dark:border-gray-700">
 				<Clock />
 			</div>
 		</aside>
