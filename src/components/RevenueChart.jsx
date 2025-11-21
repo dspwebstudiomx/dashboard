@@ -97,16 +97,13 @@ const RevenueChart = () => {
 		});
 	}, []);
 
-	// Plugin para mostrar el mes actual en el centro de la gráfica
-	const currentMonth = new Date().toLocaleString('es-MX', { month: 'long' });
-
 	// Plugin personalizado para mostrar el mes actual en el centro del gráfico
 	const centerTextPlugin = {
 		id: 'centerText',
 		afterDraw: (chart) => {
 			const {
 				ctx,
-				chartArea: { width, height },
+				// chartArea: {},
 			} = chart;
 			ctx.save();
 			// Tamaño de fuente aumentado para mejor legibilidad
@@ -114,11 +111,6 @@ const RevenueChart = () => {
 			ctx.fillStyle = 'rgba(59, 130, 246, 0.85)';
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.fillText(
-				currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1),
-				width / 2 + chart.chartArea.left,
-				height / 2 + chart.chartArea.top
-			);
 			ctx.restore();
 		},
 	};
