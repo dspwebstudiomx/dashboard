@@ -138,14 +138,14 @@ const RevenueChart = () => {
 	// Opciones del gráfico
 	const options = {
 		responsive: true, // Hacer el gráfico responsivo
-
+		maintainAspectRatio: false, // Permitir que el gráfico se ajuste al contenedor
 		plugins: {
 			legend: {
 				display: true, // Mostrar leyenda
 				position: 'bottom', // Posición de la leyenda
 				labels: {
 					font: {
-						size: 14,
+						size: window.innerWidth < 768 ? 10 : 14, // Tamaño de fuente para smartphones
 					},
 				},
 			},
@@ -154,13 +154,13 @@ const RevenueChart = () => {
 				text: 'Ingresos Netos por Mes', // Título del gráfico
 				color: '', // Color del título
 				font: {
-					size: 18,
+					size: window.innerWidth < 768 ? 14 : 18, // Tamaño de fuente para smartphones
 					weight: '500',
 				},
 			},
 			tooltip: {
-				bodyFont: { size: 14 },
-				titleFont: { size: 14 },
+				bodyFont: { size: window.innerWidth < 768 ? 10 : 14 }, // Ajustar tamaño de fuente en tooltips
+				titleFont: { size: window.innerWidth < 768 ? 10 : 14 },
 			},
 		},
 		// Configuración de interacción y hover
@@ -180,13 +180,12 @@ const RevenueChart = () => {
 					text: 'Meses', // texto del eje X
 					color: '', // color la etiqueta del eje X
 					font: {
-						size: 14,
+						size: window.innerWidth < 768 ? 12 : 14, // Tamaño de fuente para smartphones
 						weight: '400',
 					},
-
-					ticks: {
-						font: { size: 13 },
-					},
+				},
+				ticks: {
+					font: { size: window.innerWidth < 768 ? 10 : 13 }, // Ajustar tamaño de las etiquetas
 				},
 			},
 			y: {
@@ -196,20 +195,26 @@ const RevenueChart = () => {
 					display: true, // Mostrar título del eje Y
 					text: 'Ingresos Netos (MXN)', // texto del eje Y
 					font: {
-						size: 14,
+						size: window.innerWidth < 768 ? 10 : 14, // Tamaño de fuente para smartphones
 						weight: '500',
 					},
 					color: '', // color la etiqueta del eje Y
-					ticks: {
-						font: { size: 13 },
-					},
+				},
+				ticks: {
+					font: { size: window.innerWidth < 768 ? 8 : 13 }, // Ajustar tamaño de las etiquetas
 				},
 			},
 		},
 	};
 
 	return (
-		<div className="w-full">
+		<div
+			className="w-full"
+			style={{
+				width: '100%',
+				height: window.innerWidth < 768 ? '300px' : '500px', // Altura ajustada para smartphones
+			}}
+		>
 			<Line
 				data={chartData}
 				options={options}
