@@ -11,6 +11,10 @@ import { FaTachometerAlt, FaProjectDiagram, FaUsers, FaTasks } from 'react-icons
 import { FaFileInvoiceDollar } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 
+// Importar los videos
+import cloudsVideo from '../../assets/clouds.mp4';
+import nightVideo from '../../assets/night.mp4';
+
 // Componente Sidebar
 const Sidebar = () => {
 	// Definición de las rutas y sus íconos
@@ -28,7 +32,6 @@ const Sidebar = () => {
 
 	const Clock = () => {
 		const [time, setTime] = React.useState(new Date());
-		const [weather, setWeather] = React.useState(null);
 		const isDaytime = time.getHours() >= 7 && time.getHours() < 19;
 
 		React.useEffect(() => {
@@ -37,33 +40,13 @@ const Sidebar = () => {
 			return () => clearInterval(timer);
 		}, []);
 
-		React.useEffect(() => {
-			// Obtener el clima actual usando la API de OpenWeatherMap
-			const fetchWeather = async () => {
-				try {
-					const response = await fetch(
-						`https://api.openweathermap.org/data/2.5/weather?lat=40.7128&lon=-74.006&appid=TU_API_KEY&units=metric&lang=es`
-					);
-					const data = await response.json();
-					setWeather({
-						temp: data.main.temp,
-						description: data.weather[0].description,
-						icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
-					});
-				} catch (error) {
-					console.error('Error al obtener el clima:', error);
-				}
-			};
-			fetchWeather();
-		}, []);
-
 		return (
-			<div className="hidden w-full h-[160px] bg-gray-100 sm:flex items-center justify-center rounded-xl border-4 border-blue-400">
+			<div className="hidden relative w-full h-[160px] sm:flex items-center justify-center rounded-xl border-4 border-blue-400 text-gray-100">
 				{/* Video de fondo para el día */}
 				{isDaytime && (
 					<video
-						className="fixed top-0 left-0 w-full h-full object-cover rounded-xl"
-						src="/assets/clouds.mp4"
+						className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+						src={cloudsVideo}
 						autoPlay
 						loop
 						muted
@@ -72,27 +55,18 @@ const Sidebar = () => {
 				{/* Video de fondo para la noche */}
 				{!isDaytime && (
 					<video
-						className="fixed top-0 left-0 w-full h-full object-cover rounded-xl"
-						src="/assets/night.mp4"
+						className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+						src={nightVideo}
 						autoPlay
-						loop
+						loo
 						muted
 					/>
 				)}
 				{/* Contenido del reloj y clima */}
-				<div className="relative z-10 text-center text-gray-900 dark:text-gray-100">
+				<div className="relative z-10 text-center">
 					{/* Hora actual */}
 					<div className="text-4xl font-bold">{time.toLocaleTimeString()}</div>
 					{/* Clima actual */}
-					{weather && (
-						<div className="mt-4 flex items-center justify-center gap-2">
-							<img src={weather.icon} alt={weather.description} className="w-12 h-12" />
-							<div>
-								<p className="text-lg font-medium">{weather.temp}°C</p>
-								<p className="text-2xl capitalize">{weather.description}</p>
-							</div>
-						</div>
-					)}
 				</div>
 			</div>
 		);
