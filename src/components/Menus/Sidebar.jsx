@@ -41,11 +41,11 @@ const Sidebar = () => {
 		}, []);
 
 		return (
-			<div className="hidden relative w-full h-[160px] sm:flex items-center justify-center rounded-xl border-4 border-blue-400 text-gray-100">
+			<div className="hidden relative overflow-hidden w-full h-[160px] sm:flex items-center justify-center rounded-xl border-4 border-blue-400 text-gray-100">
 				{/* Video de fondo para el día */}
 				{isDaytime && (
 					<video
-						className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+						className="absolute top-0 left-0 w-full h-full object-cover"
 						src={cloudsVideo}
 						autoPlay
 						loop
@@ -55,7 +55,7 @@ const Sidebar = () => {
 				{/* Video de fondo para la noche */}
 				{!isDaytime && (
 					<video
-						className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+						className="absolute top-0 left-0 w-full h-full object-cover"
 						src={nightVideo}
 						autoPlay
 						loo
