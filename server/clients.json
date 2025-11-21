@@ -15,10 +15,10 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Prueba Sistemas",
+    "project": "Dashboard dspwebstudio",
     "image": "/uploads/1762128399909-721897670.jpg",
     "createdAt": "2025-05-01",
-    "updatedAt": "2025-11-19T02:24:22.937Z",
+    "updatedAt": "2025-11-21T18:28:32.063Z",
     "tasks": [
       {
         "id": "1",
@@ -77,27 +77,28 @@
         "description": "Proyecto: CRM Dashboard\n\nObjetivo:\n\n Desarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario.     Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
         "services": [
           "Desarrollo Web",
-          "Diseño Web"
+          "Diseño Web",
+          "Consultoria SEO"
         ],
         "sections": [],
         "otherServiceAmount": 0,
         "otherSectionAmount": 0,
         "startDate": "2025-06-05",
         "dueDate": "2026-03-14",
-        "priority": "Alta",
+        "priority": "Baja",
         "completed": false,
         "status": "",
         "totalProgress": "",
         "costs": {
-          "totalServices": 11000,
+          "totalServices": 13000,
           "totalSections": 0,
-          "netPayable": 11000,
-          "baseRate": 11538.511111111122,
-          "ivaTax": 1846.1617777777794,
-          "subtotal": 13384.672888888901,
-          "ivaRetention": 1230.8129802222234,
-          "isrRetention": 1153.8511111111122,
-          "isrTax": 184.61617777777795,
+          "netPayable": 13000,
+          "baseRate": 13636.422222222236,
+          "ivaTax": 2181.827555555558,
+          "subtotal": 15818.249777777793,
+          "ivaRetention": 1454.597158444446,
+          "isrRetention": 1363.6422222222236,
+          "isrTax": 218.1827555555558,
           "discount": 0
         },
         "tasks": [
@@ -299,29 +300,6 @@
         "id": 1760119902400
       }
     ]
-  },
-  {
-    "id": 1763147116832,
-    "fullName": "Alexis Daniel",
-    "lastName": "Daniel",
-    "lastName2": "Pérez",
-    "email": "dsperez.tablet@gmail.com",
-    "phoneNumber": "+524439188025",
-    "address": "Molibdeno 214",
-    "company": "",
-    "rfc": "",
-    "curp": "",
-    "website": "",
-    "facebook": "https://www.facebook.com/alexis.ferguson.587",
-    "twitter": "",
-    "instagram": "",
-    "linkedin": "",
-    "project": "",
-    "image": "/uploads/1763160012919-232883399.jpg",
-    "createdAt": "2025-11-14T19:05:16.832Z",
-    "updatedAt": "2025-11-14T22:40:15.142Z",
-    "tasks": [],
-    "projects": []
   },
   {
     "id": 1763147116832,

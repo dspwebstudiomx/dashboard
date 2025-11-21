@@ -11,7 +11,7 @@ import Section from '@components/Section';
  */
 const DashboardTemplate = ({ children }) => {
 	return (
-		<div className="w-full p-8 mt-24">
+		<div className="w-full p-8 mt-24 md:mt-32 md:w-full md:px-20">
 			{/* Contenido principal */}
 			{children}
 		</div>

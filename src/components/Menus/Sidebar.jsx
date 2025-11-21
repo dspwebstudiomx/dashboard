@@ -100,7 +100,7 @@ const Sidebar = () => {
 
 	// Renderiza el Sidebar
 	return (
-		<aside className="fixed top-40 right-30 w-auto h-auto flex flex-col gap-8 justify-between">
+		<aside className="fixed top-40 right-20 w-auto h-auto flex flex-col gap-8 justify-between">
 			{/* Contenedor del menú */}
 			<div
 				id="sidebar-menu-container"

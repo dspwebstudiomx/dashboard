@@ -24,6 +24,7 @@ const initialState = {
 const useClientForm = ({ client, onClientUpdate, onClose }) => {
   const isEditing = !!client;
   const [formData, setFormData] = useState(initialState);
+  const [error, setError] = useState(null); // Nuevo estado para manejar errores
 
   useEffect(() => {
     if (isEditing && client) {
@@ -40,25 +41,31 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // No enviar imagePreview al servidor (es solo para preview local)
+    setError(null); // Reinicia el estado de error
     const payload = { ...formData };
     if (payload.imagePreview) delete payload.imagePreview;
 
-    if (isEditing) {
-      await axios.put(`http://localhost:5000/api/clients/${client.id}`, payload);
-    } else {
-      await axios.post("http://localhost:5000/api/clients", payload);
+    try {
+      console.log("Enviando datos al servidor:", payload); // Log para depuración
+      if (isEditing) {
+        const response = await axios.put(`http://localhost:5000/api/clients/${client.id}`, payload);
+        console.log("Respuesta del servidor (editar):", response.data); // Log para depuración
+      } else {
+        const response = await axios.post("http://localhost:5000/api/clients", payload);
+        console.log("Respuesta del servidor (crear):", response.data); // Log para depuración
+      }
+      onClientUpdate(); // Refresca la lista en el padre
+      onClose(); // Cierra el modal
+    } catch (err) {
+      setError("Error al guardar el cliente. Por favor, inténtalo de nuevo."); // Manejo de errores
+      console.error("Error en handleSubmit:", err.message);
     }
-    onClientUpdate(); // <-- Refresca la lista en el padre
-    onClose();        // <-- Cierra el modal
-    window.location.reload(); // <-- Refresca el navegador
   };
 
   const handleRemoveImage = () => {
     setFormData((prev) => {
-      // revocar object URL si existía
       try {
-        if (prev.imagePreview && prev.imagePreview.startsWith('blob:')) {
+        if (prev.imagePreview && prev.imagePreview.startsWith("blob:")) {
           URL.revokeObjectURL(prev.imagePreview);
         }
       } catch {
@@ -71,11 +78,10 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
-    // Crear preview local inmediato
     const previewUrl = URL.createObjectURL(file);
     setFormData((prev) => {
       try {
-        if (prev.imagePreview && prev.imagePreview.startsWith('blob:')) {
+        if (prev.imagePreview && prev.imagePreview.startsWith("blob:")) {
           URL.revokeObjectURL(prev.imagePreview);
         }
       } catch {
@@ -83,23 +89,20 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
       }
       return { ...prev, imagePreview: previewUrl };
     });
+
     const formDataImage = new FormData();
-    // Multer en el servidor está configurado con upload.single('file'),
-    // por eso debemos enviar el campo con nombre 'file'.
     formDataImage.append("file", file);
 
     try {
-      // 1) Subir el archivo al endpoint de uploads
       const uploadResp = await fetch("http://localhost:5000/api/uploads", {
         method: "POST",
         body: formDataImage,
       });
       if (!uploadResp.ok) throw new Error(`Error al subir imagen: ${uploadResp.statusText}`);
       const uploadData = await uploadResp.json();
-      const uploadedPath = uploadData.url; // Ej: /uploads/abcd.jpg
+      const uploadedPath = uploadData.url;
       const serverImageUrl = `http://localhost:5000${uploadedPath}?t=${Date.now()}`;
 
-      // 2) Si el cliente ya existe, actualizar el cliente en el servidor para persistir la ruta
       if (client && client.id) {
         try {
           const putResp = await fetch(`http://localhost:5000/api/clients/${client.id}`, {
@@ -109,18 +112,16 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
           });
           if (!putResp.ok) throw new Error(`Error al actualizar cliente: ${putResp.statusText}`);
           await putResp.json();
-          // actualizar lista en el padre si se proporcionó onClientUpdate
           if (onClientUpdate) {
             onClientUpdate((prevClients) =>
               prevClients.map((c) => (c.id === client.id ? { ...c, image: uploadedPath } : c))
             );
           }
         } catch {
-          // si falla la persistencia, igual continuamos mostrando el preview
+          // Si falla la persistencia, igual continuamos mostrando el preview
         }
       }
 
-      // 3) Actualizar el estado local con la ruta del servidor (y limpiar preview blob)
       setFormData((prev) => {
         try {
           if (prev.imagePreview && prev.imagePreview.startsWith("blob:")) {
@@ -132,6 +133,7 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
         return { ...prev, image: uploadedPath, imagePreview: serverImageUrl };
       });
     } catch (error) {
+      setError("Error al subir la imagen. Por favor, inténtalo de nuevo."); // Manejo de errores
       console.error("Error subiendo imagen:", error.message);
     }
   };
@@ -144,6 +146,7 @@ const useClientForm = ({ client, onClientUpdate, onClose }) => {
     handleImageUpload,
     handleRemoveImage,
     isEditing,
+    error, // Devuelve el estado de error
   };
 };
 

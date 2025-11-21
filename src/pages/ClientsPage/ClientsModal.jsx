@@ -7,7 +7,6 @@ import ClientFormFields from './components/ClientFormFields';
 import Button from '@components/Botones/Button';
 import { IoPerson, IoPersonAdd, IoPersonAddOutline } from 'react-icons/io5';
 import ImageClientModal from './components/ImageClientModal';
-// ...existing code...
 
 const ClientsModal = ({ client, onClientUpdate, isOpen, onClose }) => {
 	const {
