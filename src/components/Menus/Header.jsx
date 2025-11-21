@@ -120,7 +120,7 @@ const Header = ({ toggleSidebar, title }) => {
 				{/* Contenedor interno del encabezado */}
 				<div
 					id="contenedor interno"
-					className="header-container flex justify-between items-center h-full px-8 sm:rounded-full bg-white dark:bg-gray-800 border-b-blue-900 shadow-sm md:border-2 md:border-gray-100 md:dark:border-gray-700 py-4"
+					className="header-container flex justify-between items-center h-full px-8 sm:rounded-full bg-white dark:bg-gray-800 border-b-blue-400 shadow-sm md:border-4 md:border-blue-400 md:dark:border-gray-700 py-4"
 				>
 					{/* Logo y título */}
 					<div className="header-logo-container flex items-center gap-4 justify-center">

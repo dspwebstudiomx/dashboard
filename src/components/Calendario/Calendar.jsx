@@ -74,7 +74,7 @@ const Calendar = () => {
 					{prevMonthDays.map((day, index) => (
 						<div
 							key={`prev-${index}`}
-							className="text-center p-3 rounded-full font-semibold text-gray-400 dark:text-gray-500"
+							className="text-center text-sm p-1 rounded-full font-semibold text-gray-400 dark:text-gray-500"
 						>
 							{format(day, 'd', { locale: es })}
 						</div>
@@ -83,7 +83,7 @@ const Calendar = () => {
 					{days.map((day) => (
 						<div
 							key={day.toString()}
-							className={`text-center p-3 rounded-full font-semibold ${
+							className={`text-center text-sm p-1 rounded-full font-semibold ${
 								isSameDay(day, today)
 									? 'bg-blue-500 text-white border-2 border-blue-700'
 									: 'dark:bg-gray-700 dark:text-gray-200 hover:bg-blue-100 hover:dark:bg-gray-600 bg-gray-100 border-2 border-gray-200 dark:border-gray-600 text-gray-800 rounded-full '
@@ -96,7 +96,7 @@ const Calendar = () => {
 					{nextMonthDays.map((day, index) => (
 						<div
 							key={`next-${index}`}
-							className="text-center p-3 rounded-full font-semibold text-gray-400 dark:text-gray-500"
+							className="text-center text-sm p-1 rounded-full font-semibold text-gray-400 dark:text-gray-500"
 						>
 							{format(day, 'd', { locale: es })}
 						</div>

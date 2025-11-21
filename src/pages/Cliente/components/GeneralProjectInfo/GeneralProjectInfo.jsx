@@ -86,7 +86,7 @@ const GeneralProjectInfo = ({
 		return (
 			<div
 				id="modal-content"
-				className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-gray-200 text-gray-800 bg-white p-8 md:p-10 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10 max-w-screen-xl mx-auto"
+				className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-blue-200 text-gray-800 bg-white p-8 md:p-10 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10 max-w-screen-xl mx-auto"
 			>
 				<div className="flex flex-col gap-6 py-12">
 					<h2 className="text-2xl font-semibold">Descripción del Proyecto</h2>

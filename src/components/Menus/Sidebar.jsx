@@ -58,7 +58,7 @@ const Sidebar = () => {
 		}, []);
 
 		return (
-			<div className="w-full h-[160px] bg-gray-100 flex items-center justify-center rounded-xl border-4 border-blue-300">
+			<div className="hidden w-full h-[160px] bg-gray-100 sm:flex items-center justify-center rounded-xl border-4 border-blue-400">
 				{/* Video de fondo para el día */}
 				{isDaytime && (
 					<video
@@ -104,7 +104,7 @@ const Sidebar = () => {
 			{/* Contenedor del menú */}
 			<div
 				id="sidebar-menu-container"
-				className="bg-gray-100 rounded-xl p-8 text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-300 dark:border-blue-700 transition-transform duration-300 ease-in-out"
+				className="bg-gray-100 rounded-xl p-8 text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-400 dark:border-blue-700 transition-transform duration-300 ease-in-out"
 			>
 				<h2 className="text-center font-semibold tracking-wide text-2xl text-gray-900 dark:text-gray-100">
 					Menú

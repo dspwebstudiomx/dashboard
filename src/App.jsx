@@ -24,7 +24,7 @@ const App = () => {
 		<ModalStackProvider>
 			<Router>
 				<Header toggleSidebar={toggleSidebar} />
-				<main className="App grid grid-cols-12 w-full bg-blue-900 dark:bg-gray-900 min-h-[91.1vh] text-gray-100 p-0">
+				<main className="grid grid-cols-12 bg-blue-900 dark:bg-gray-900 min-h-[91.1vh] text-gray-100">
 					{/* Contenido principal */}
 					<div className="col-span-12 md:col-span-10">
 						<Routes>

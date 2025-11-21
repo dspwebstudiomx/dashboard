@@ -57,7 +57,7 @@ const DashboardPage = () => {
 	const dashboardStyles = {
 		title: `text-2xl font-bold mb-6 text-blue-950 text-center dark:text-blue-400 sm:mb-10`, // Ajustar tamaño del texto para smartphones
 		grid: `grid grid-cols-1 gap-6 sm:grid-cols-12 sm:gap-12`, // Cambiar a una sola columna en smartphones
-		card: `bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-blue-200 dark:border-gray-700 p-8 rounded-lg shadow-md h-full sm:border-4 sm:p-6 sm:rounded-xl sm:gap-12`, // Aumentar padding en smartphones
+		card: `bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-2 border-blue-400 dark:border-gray-700 p-8 rounded-lg shadow-md h-full sm:border-4 sm:p-6 md:px-12 md:py-16 sm:rounded-xl sm:gap-12 w-full`, // Aumentar padding en smartphones
 		cardTitle: `text-xl font-semibold sm:text-2xl`, // Reducir tamaño del título en smartphones
 	};
 
