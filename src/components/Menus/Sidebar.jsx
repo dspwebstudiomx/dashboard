@@ -41,7 +41,7 @@ const Sidebar = () => {
 		}, []);
 
 		return (
-			<div className="hidden relative overflow-hidden w-full h-[160px] sm:flex items-center justify-center rounded-xl border-4 border-blue-400 text-gray-100">
+			<div className="hidden relative bg-gray-900/80 overflow-hidden w-full h-[160px] sm:flex items-center justify-center rounded-xl border-4 border-blue-400 dark:border-gray-700 text-gray-100">
 				{/* Video de fondo para el día */}
 				{isDaytime && (
 					<video
@@ -58,10 +58,12 @@ const Sidebar = () => {
 						className="absolute top-0 left-0 w-full h-full object-cover"
 						src={nightVideo}
 						autoPlay
-						loo
+						loop
 						muted
 					/>
 				)}
+				{/* Overlay para mejorar la visibilidad */}
+				<div className="absolute top-0 left-0 w-full h-full bg-black/20"></div>
 				{/* Contenido del reloj y clima */}
 				<div className="relative z-10 text-center">
 					{/* Hora actual */}
@@ -78,7 +80,7 @@ const Sidebar = () => {
 			{/* Contenedor del menú */}
 			<div
 				id="sidebar-menu-container"
-				className="bg-gray-100 rounded-xl p-8 text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-400 dark:border-blue-700 transition-transform duration-300 ease-in-out"
+				className="bg-gray-100 rounded-xl p-8 text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-400 dark:border-gray-700 transition-transform duration-300 ease-in-outs"
 			>
 				<h2 className="text-center font-semibold tracking-wide text-2xl text-gray-900 dark:text-gray-100">
 					Menú
