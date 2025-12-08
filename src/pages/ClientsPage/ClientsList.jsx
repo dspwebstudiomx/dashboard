@@ -63,14 +63,11 @@ const ClientsList = () => {
 	};
 
 	return (
-		<section
-			id="clients-list-container"
-			className="grid xl:grid-cols-12 top-0 w-full relative gap-6 justify-center items-center"
-		>
+		<section id="clients-list-container" className="relative gap-6">
 			{/* Botones de la barra superior */}
 			<div
 				id="clients-top-buttons"
-				className="flex gap-4 fixed top-20 bg-blue-900 dark:bg-gray-900  md:grid-cols-3 w-full pt-20 pb-10"
+				className="flex gap-4 items-end justify-end fixed top-20 md:grid-cols-3 pt-20 pb-10"
 			>
 				{/* Botón agregar clientes */}
 				<button
