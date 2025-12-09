@@ -19,7 +19,7 @@ const ProjectDescriptionInfoCard = ({
 					onClick={() => setShowFullDescription((prev) => !prev)} // Corregido
 					type="button"
 				>
-					{showFullDescription ? 'Ver menos' : 'Ver más...'}
+					{showFullDescription ? 'Ver menos' : 'Ver más'}
 				</button>
 			)}
 		</div>
