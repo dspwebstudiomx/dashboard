@@ -4,22 +4,22 @@ const ProjectDescriptionInfoCard = ({
 	project,
 	isLongDescription,
 	shortDescription,
-	showFullDescriptionription,
-	setshowFullDescriptionription,
+	showFullDescription, // Corregido
+	setShowFullDescription, // Corregido
 }) => {
 	return (
 		<div>
 			<p style={{ whiteSpace: 'pre-line' }}>
-				{showFullDescriptionription || !isLongDescription ? project.description : shortDescription}
+				{showFullDescription || !isLongDescription ? project.description : shortDescription}
 			</p>
 
 			{isLongDescription && (
 				<button
 					className="text-blue-600 dark:text-blue-500 ml-2 mt-4 font-semibold"
-					onClick={() => setshowFullDescriptionription((prev) => !prev)}
+					onClick={() => setShowFullDescription((prev) => !prev)} // Corregido
 					type="button"
 				>
-					{showFullDescriptionription ? 'Ver menos' : 'Ver más...'}
+					{showFullDescription ? 'Ver menos' : 'Ver más...'}
 				</button>
 			)}
 		</div>

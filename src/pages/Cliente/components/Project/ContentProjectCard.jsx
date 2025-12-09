@@ -50,8 +50,9 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 						project={project} // Pasar el proyecto completo
 						isLongDescription={isLong} // Indicar si la descripción es larga
 						shortDescription={short} // Pasar la descripción corta
-						showFullDescription={showFullDescription}
-						setShowFullDescription={setShowFullDescription}
+						showFullDescription={showFullDescription} // Mostrar descripción completa si es true
+						setShowFullDescription={setShowFullDescription} // Función para alternar el estado
+						fullDescription={project.description} // Pasar la descripción completa
 					/>
 				</div>
 
