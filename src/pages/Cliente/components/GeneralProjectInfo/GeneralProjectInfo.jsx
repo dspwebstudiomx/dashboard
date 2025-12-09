@@ -40,12 +40,18 @@ const GeneralProjectInfo = ({
 	onDelete,
 	handleCompleteClick,
 }) => {
-	// Estado para controlar el modal de confirmación
+	// Estado para controlar el modal de confirmación de eliminación
 	const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-	// Manejar la apertura y cierre del modal de confirmación
+	// Estado para controlar el modal de confirmación de cierre
+	const [isCloseConfirmModalOpen, setIsCloseConfirmModalOpen] = useState(false);
+
+	// Manejar la apertura y cierre de los modales
 	const openConfirmModal = () => setIsConfirmModalOpen(true);
 	const closeConfirmModal = () => setIsConfirmModalOpen(false);
+
+	const openCloseConfirmModal = () => setIsCloseConfirmModalOpen(true);
+	const closeCloseConfirmModal = () => setIsCloseConfirmModalOpen(false);
 
 	// Manejar la confirmación de eliminación
 	const handleConfirmDelete = () => {
@@ -53,15 +59,21 @@ const GeneralProjectInfo = ({
 		closeConfirmModal();
 	};
 
-	const handleCloseProject = async () => {
+	// Manejar la confirmación de cierre
+	const handleConfirmClose = async () => {
 		try {
 			if (handleCompleteClick) await handleCompleteClick();
 		} catch (err) {
-			// captura interna: dejamos que el cierre ocurra de todas formas
 			console.error('Error al cerrar proyecto:', err);
 		} finally {
+			closeCloseConfirmModal();
 			if (onClose) onClose();
 		}
+	};
+
+	const handleCloseProject = () => {
+		// Abrir el modal de confirmación para cerrar el proyecto
+		openCloseConfirmModal();
 	};
 
 	const ProjectInfoTitle = () => {
@@ -87,8 +99,9 @@ const GeneralProjectInfo = ({
 					<EditActionButton onClick={onEdit} text="Editar proyecto" />
 					{/* Modificar el botón de eliminación para abrir el modal */}
 					<DeleteActionButton onClick={openConfirmModal} text="Eliminar proyecto" />
+					{/* Modificar el botón de "Cerrar Proyecto" para abrir el modal */}
 					<CloseActionButton
-						handleCompleteClick={handleCompleteClick}
+						handleCompleteClick={handleCloseProject}
 						text="Cerrar Proyecto"
 						onClick={handleCloseProject}
 					/>
@@ -124,12 +137,36 @@ const GeneralProjectInfo = ({
 			</Modal>
 
 			{/* Modal de confirmación de eliminación */}
-			<Modal isOpen={isConfirmModalOpen} onClose={closeConfirmModal} title="Confirmar eliminación">
+			<Modal
+				isOpen={isConfirmModalOpen}
+				onClose={closeConfirmModal}
+				title="Confirmar eliminación de Proyecto"
+			>
 				<div className="flex flex-col gap-6">
 					<p className="text-xl">¿Estás seguro de que deseas eliminar este proyecto?</p>
 					<div className="flex justify-end gap-4 py-6">
-						<Button variant="secondary" onClick={closeConfirmModal} text={'Cancelar'} />
-						<Button variant="primary" onClick={handleConfirmDelete} text={'Eliminar'} />
+						<Button variant="secondary" onClick={closeConfirmModal} text={'Cancelar'} size="lg" />
+						<Button variant="primary" onClick={handleConfirmDelete} text={'Eliminar'} size="lg" />
+					</div>
+				</div>
+			</Modal>
+
+			{/* Modal de confirmación de cierre */}
+			<Modal
+				isOpen={isCloseConfirmModalOpen}
+				onClose={closeCloseConfirmModal}
+				title="Confirmar cierre de Proyecto"
+			>
+				<div className="flex flex-col gap-6">
+					<p className="text-xl">¿Estás seguro de que deseas cerrar este proyecto?</p>
+					<div className="flex justify-end gap-4 py-6">
+						<Button
+							variant="secondary"
+							onClick={closeCloseConfirmModal}
+							text={'Cancelar'}
+							size="lg"
+						/>
+						<Button variant="primary" onClick={handleConfirmClose} text={'Cerrar'} size="lg" />
 					</div>
 				</div>
 			</Modal>

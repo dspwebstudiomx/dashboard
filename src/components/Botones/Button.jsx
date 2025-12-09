@@ -13,8 +13,8 @@ const VARIANT_CLASSES = {
 
 const SIZE_CLASSES = {
 	sm: 'px-3 py-1 text-sm md:h-9 md:w-[120px] text-base md:text-sm',
-	md: 'px-4 py-2 text-base h-18 md:h-12 md:w-[180px] text-base md:text-sm',
-	lg: 'px-6 py-3 text-lg  md:h-15 md:w-[190px] text-base md:text-sm',
+	md: 'px-4 py-2 text-base h-18 md:h-12 text-base md:text-md',
+	lg: 'px-6 py-2 text-lg  md:h-15 text-base md:text-lg',
 };
 
 const Button = ({ id, type, text, onClick, icon: Icon, variant = 'primary', size = 'md' }) => {
