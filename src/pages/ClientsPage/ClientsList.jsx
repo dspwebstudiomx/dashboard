@@ -67,7 +67,7 @@ const ClientsList = () => {
 			{/* Botones de la barra superior */}
 			<div
 				id="clients-top-buttons"
-				className="flex fixed bg-blue-900 dark:bg-gray-900 gap-4 md:w-[75%] z-10 md:-mt-34 pb-16 justify-end"
+				className="flex fixed bg-blue-900 dark:bg-gray-900 gap-4 md:w-[75%] z-10 mt-0 md:-mt-34 pb-16 justify-end"
 			>
 				{/* Botón agregar clientes */}
 				<button
@@ -106,7 +106,7 @@ const ClientsList = () => {
 			{/* Lista de clientes */}
 			<ul
 				id="clients-list"
-				className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-10 col-span-12 w-full mt-30"
+				className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-10 col-span-12 w-full mt-32"
 			>
 				{clients.map((client) => (
 					<ClientsCard
