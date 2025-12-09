@@ -24,12 +24,12 @@ const DashboardPage = () => {
 		{
 			title: 'Ingresos',
 			component: <RevenueChart />,
-			colSpan: 'col-span-12 lg:col-span-7',
+			colSpan: 'col-span-12 lg:col-span-8',
 		},
 		{
 			title: 'Calendario',
 			component: <Calendar />,
-			colSpan: 'md:col-span-6 col-span-12 xl:col-span-5',
+			colSpan: 'md:col-span-6 col-span-12 xl:col-span-4',
 		},
 		{
 			title: 'Lista de Tareas',
