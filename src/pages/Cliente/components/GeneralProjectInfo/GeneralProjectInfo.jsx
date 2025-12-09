@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '@components/Modal';
 import Priority from '../Priority';
 import ProjectDescriptionInfoCard from '../ProjectDescriptionInfoCard';
@@ -11,6 +11,7 @@ import ProjectForm from '../ProjectForm';
 import ProjectActionButtons from '../ProjectActionButtons';
 import ServicesSectionsInfo from './ServicesSectionsInfo';
 import CloseActionButton from '../CloseActionButton';
+import Button from '@components/Botones/Button';
 
 class ErrorBoundary extends React.Component {
 	state = { hasError: false };
@@ -39,6 +40,19 @@ const GeneralProjectInfo = ({
 	onDelete,
 	handleCompleteClick,
 }) => {
+	// Estado para controlar el modal de confirmación
+	const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+
+	// Manejar la apertura y cierre del modal de confirmación
+	const openConfirmModal = () => setIsConfirmModalOpen(true);
+	const closeConfirmModal = () => setIsConfirmModalOpen(false);
+
+	// Manejar la confirmación de eliminación
+	const handleConfirmDelete = () => {
+		if (onDelete) onDelete();
+		closeConfirmModal();
+	};
+
 	const handleCloseProject = async () => {
 		try {
 			if (handleCompleteClick) await handleCompleteClick();
@@ -71,7 +85,8 @@ const GeneralProjectInfo = ({
 				{/* Botones */}
 				<div className="flex gap-4 mt-12">
 					<EditActionButton onClick={onEdit} text="Editar proyecto" />
-					<DeleteActionButton onClick={onDelete} text="Eliminar proyecto" />
+					{/* Modificar el botón de eliminación para abrir el modal */}
+					<DeleteActionButton onClick={openConfirmModal} text="Eliminar proyecto" />
 					<CloseActionButton
 						handleCompleteClick={handleCompleteClick}
 						text="Cerrar Proyecto"
@@ -106,6 +121,17 @@ const GeneralProjectInfo = ({
 		<>
 			<Modal isOpen={isOpen} onClose={onClose} title={<ProjectInfoTitle />}>
 				<ProjectInfoContent />
+			</Modal>
+
+			{/* Modal de confirmación de eliminación */}
+			<Modal isOpen={isConfirmModalOpen} onClose={closeConfirmModal} title="Confirmar eliminación">
+				<div className="flex flex-col gap-6">
+					<p className="text-xl">¿Estás seguro de que deseas eliminar este proyecto?</p>
+					<div className="flex justify-end gap-4 py-6">
+						<Button variant="secondary" onClick={closeConfirmModal} text={'Cancelar'} />
+						<Button variant="primary" onClick={handleConfirmDelete} text={'Eliminar'} />
+					</div>
+				</div>
 			</Modal>
 		</>
 	);
