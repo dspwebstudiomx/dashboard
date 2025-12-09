@@ -24,7 +24,7 @@ const App = () => {
 		<ModalStackProvider>
 			<Router>
 				<Header toggleSidebar={toggleSidebar} />
-				<main className="grid grid-cols-12 bg-blue-900 dark:bg-gray-900 min-h-[91.1vh] text-gray-100">
+				<main className="grid grid-cols-12 bg-blue-900 dark:bg-gray-900 min-h-[92.2vh] text-gray-100 dark:transition duration-150 ease-in-out">
 					{/* Contenido principal */}
 					<div className="col-span-12 md:col-span-10">
 						<Routes>
@@ -57,7 +57,7 @@ const App = () => {
 					<div
 						className={`z-50 w-full transform transition-transform duration-300 ease-in-out ${
 							isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-						} md:relative md:translate-x-0 md:col-span-2 lg:fixed lg:top-0 lg:left-0 lg:h-auto h-auto w-64 fixed bg-gray-800`}
+						} md:relative md:translate-x-0 md:col-span-2 lg:fixed lg:top-0 lg:left-0 h-auto w-64 fixed bg-gray-800`}
 					>
 						<Sidebar isOpen={isSidebarOpen} columns={'col-span-12'} />
 					</div>
