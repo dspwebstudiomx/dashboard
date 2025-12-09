@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaCheck, FaEye } from 'react-icons/fa6';
+import { FaFolder, FaEye } from 'react-icons/fa6';
 
 const ClientsTable = () => {
 	const [clients, setClients] = useState([]);
@@ -150,7 +150,7 @@ const ClientsTable = () => {
 												<ul className="flex flex-col gap-2">
 													{client.projects.map((project, index) => (
 														<li className="w-full " key={index}>
-															<FaCheck className="inline text-blue-800 mr-2" />
+															<FaFolder className="inline text-blue-400 mr-2" />
 															{project.title}
 														</li>
 													))}
@@ -166,7 +166,7 @@ const ClientsTable = () => {
 										<td className="px-4 py-2 text-sm border border-gray-300">
 											<a
 												href={`/clientes/${client.id}`}
-												className="text-blue-600 hover:text-blue-800"
+												className="text-blue-400 hover:text-blue-500"
 											>
 												<FaEye className="w-6 h-6 mx-auto" />
 											</a>
