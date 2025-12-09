@@ -14,7 +14,7 @@ import logo from '../../assets/dsp-mixed.png'; // Asegúrate de que la ruta sea 
 import { Helmet } from 'react-helmet';
 import { IoBulbOutline } from 'react-icons/io5';
 // Componente Header
-const Header = ({ toggleSidebar, title }) => {
+const Header = ({ toggleSidebar, title, clientName }) => {
 	const [darkMode, setDarkMode] = useState(false); // Estado para el modo oscuro
 	const location = useLocation(); // Obtén la ubicación actual
 
@@ -25,10 +25,15 @@ const Header = ({ toggleSidebar, title }) => {
 		'/clientes': 'Clientes',
 		'/tareas': 'Tareas',
 		'/cotizaciones': 'Cotizaciones',
-		'/clientes/:id/': { title: 'Clientes', id: 'id' },
 	};
 
-	const currentPage = pageNames[location.pathname] || 'Página desconocida';
+	// Detectar rutas dinámicas como "/clientes/:id"
+	const isClientDetailsPage =
+		location.pathname.startsWith('/clientes/') && location.pathname.split('/').length === 3;
+
+	const currentPage = isClientDetailsPage
+		? clientName || 'Datos del Cliente' // Usar el nombre del cliente si está disponible
+		: pageNames[location.pathname] || 'Página desconocida';
 
 	// Efecto para cargar el modo oscuro guardado en localStorage o según el sistema
 	useEffect(() => {
@@ -115,7 +120,7 @@ const Header = ({ toggleSidebar, title }) => {
 			{/* Encabezado principal */}
 			<header
 				id="encabezado principal"
-				className="header fixed md:py-12 2xl:py-6 md:top-0 md:left-0 md:fixed w-full md:px-12 mx-auto z-50 dark:bg-gray-900 bg-blue-900"
+				className="header fixed md:py-12 2xl:py-6 md:top-0 md:left-0 md:fixed w-full md:px-12 mx-auto z-50 dark:bg-gray-900 bg-blue-900 dark:transition duration-150 ease-in-out"
 			>
 				{/* Contenedor interno del encabezado */}
 				<div
