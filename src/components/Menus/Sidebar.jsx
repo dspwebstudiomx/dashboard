@@ -67,7 +67,7 @@ const Sidebar = () => {
 				{/* Contenido del reloj y clima */}
 				<div className="relative z-10 text-center">
 					{/* Hora actual */}
-					<div className="text-4xl font-bold">{time.toLocaleTimeString()}</div>
+					<div className="text-3xl font-bold">{time.toLocaleTimeString()}</div>
 					{/* Clima actual */}
 				</div>
 			</div>
@@ -80,17 +80,17 @@ const Sidebar = () => {
 			{/* Contenedor del menú */}
 			<div
 				id="sidebar-menu-container"
-				className="bg-gray-100 rounded-xl p-8 text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-400 dark:border-gray-700 transition-transform duration-300 ease-in-outs"
+				className="bg-gray-100 rounded-xl py-8 text-blue-20 flex flex-col items-center justify-center gap-8 dark:bg-gray-800 dark:text-gray-100 border-4 border-blue-400 dark:border-gray-700 transition-transform duration-300 ease-in-outs"
 			>
 				<h2 className="text-center font-semibold tracking-wide text-2xl text-gray-900 dark:text-gray-100">
 					Menú
 				</h2>
-				<ul className="flex flex-col items-center justify-center gap-8 md:gap-0 ml-0 md:ml-4 font-semibold text-xl md:text-lg">
+				<ul className="flex flex-col items-start justify-center gap-8 md:gap-0 ml-0 font-semibold text-xl md:text-lg w-[260px]">
 					{menuItems.map((item, index) => (
 						<li key={index}>
 							<NavLink
 								to={item.path}
-								className="flex flex-row gap-4 py-3 items-center text-gray-900 dark:text-gray-100 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out w-[180px]"
+								className="flex flex-row gap-4 py-3 items-start text-gray-900 dark:text-gray-100 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out w-[260px] pl-8"
 							>
 								<span className="text-blue-900 dark:text-blue-500 text-2xl">{item.icon}</span>
 								<span>{item.label}</span>
