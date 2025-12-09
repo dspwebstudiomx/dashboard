@@ -57,7 +57,15 @@ const ClientProjects = ({ selectedClient, onUpdateProjects }) => {
 					<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} icon={IoMdAdd} />
 				</div>
 			</header>
-			<ul id="lista-proyectos" className="mt-12 grid xl:grid-cols-2 gap-12 items-start">
+
+			<ul
+				id="lista-proyectos"
+				className={`${
+					selectedClient.projects && selectedClient.projects.length > 0
+						? 'mt-12 grid xl:grid-cols-2 gap-12 justify-center items-center '
+						: 'h-[50vh] flex items-center justify-center w-full'
+				}`}
+			>
 				{selectedClient.projects && selectedClient.projects.length > 0 ? (
 					selectedClient.projects.map((project) => (
 						<ProjectCard
@@ -82,15 +90,15 @@ const ClientProjects = ({ selectedClient, onUpdateProjects }) => {
 				) : (
 					<div
 						id="ventana-no-proyecto"
-						className="w-full flex flex-col items-center justify-start rounded-xl shadow-2xl p-6 md:p-12 gap-8 mt-6 dark:bg-gray-700 bg-white border-2 border-gray-200 dark:border-gray-600"
+						className="mx-auto flex flex-col items-center justify-center rounded-xl shadow-2xl p-6 md:p-12 gap-8 mt-6 dark:bg-gray-700 bg-white border-2 border-gray-200 dark:border-gray-600  md:w-[540px]"
 					>
-						<p className="text-gray-800 dark:text-gray-100 flex items-center gap-4  font-semibold md:text-lg">
+						<p className="text-gray-800 dark:text-gray-100 flex justify-center items-center gap-4  font-semibold md:text-lg">
 							<MdErrorOutline
 								size={24}
 								className="inline-block text-2xl text-blue-800 w-22 h-22 md:w-12 md:h-12"
 							/>
-							No hay proyectos disponibles para {selectedClient.fullName} {selectedClient.lastName}{' '}
-							{selectedClient.lastName2}.
+							No hay proyectos creados para : <br /> {selectedClient.fullName}{' '}
+							{selectedClient.lastName} {selectedClient.lastName2}.
 						</p>
 						<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} icon={FaPlus} />
 					</div>
