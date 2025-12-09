@@ -166,7 +166,7 @@ const ClientsTable = () => {
 										<td className="px-4 py-2 text-sm border border-gray-300">
 											<a
 												href={`/clientes/${client.id}`}
-												className="text-blue-400 hover:text-blue-500"
+												className="text-blue-400 hover:text-blue-5esd00"
 											>
 												<FaEye className="w-6 h-6 mx-auto" />
 											</a>

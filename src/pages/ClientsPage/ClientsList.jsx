@@ -71,7 +71,7 @@ const ClientsList = () => {
 			{/* Botones de la barra superior */}
 			<div
 				id="clients-top-buttons"
-				className="flex fixed bg-blue-900 dark:bg-gray-900 gap-4 md:w-[75%] z-10 mt-0 md:-mt-34 pb-16 justify-end"
+				className="flex fixed bg-blue-900 dark:bg-gray-900 gap-4 md:w-[75%] z-10 mt-0 md:-mt-36 py-8 justify-end"
 			>
 				{/* Botón agregar clientes */}
 				<button
