@@ -63,11 +63,11 @@ const ClientsList = () => {
 	};
 
 	return (
-		<section id="clients-list-container" className="relative gap-6">
+		<section id="clients-list-container" className="relative">
 			{/* Botones de la barra superior */}
 			<div
 				id="clients-top-buttons"
-				className="flex gap-4 items-end justify-end fixed top-20 md:grid-cols-3 pt-20 pb-10"
+				className="flex fixed bg-blue-900 dark:bg-gray-900 gap-4 md:w-[75%] z-10 md:-mt-34 pb-16 justify-end"
 			>
 				{/* Botón agregar clientes */}
 				<button
