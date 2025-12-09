@@ -1,311 +1,327 @@
 [
-	{
-		"id": 1745897285167,
-		"fullName": "Daniel Salvador",
-		"lastName": "Pérez",
-		"lastName2": "Bernal",
-		"email": "danielperezber@outlook.com",
-		"phoneNumber": "+52 443 918 8025",
-		"address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
-		"company": "dspwebstudio",
-		"rfc": "PEBD81011C21",
-		"curp": "PEBD81011C21",
-		"website": "https://dspwebstudio.com",
-		"facebook": "https://www.facebook.com/dspwebstudio",
-		"twitter": "https://twitter.com/dspwebstudio",
-		"instagram": "https://instagram.com/dspwebstudio",
-		"linkedin": "https://linkedin.com/dspwebstudio",
-		"project": "Diseño Web - Sitio",
-		"image": "/uploads/1762128399909-721897670.jpg",
-		"createdAt": "2025-05-01",
-		"updatedAt": "2025-12-09T00:43:24.409Z",
-		"tasks": [
-			{
-				"id": "1",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "Prerender service",
-				"startDate": "2025-05-21",
-				"dueDate": "2025-05-22",
-				"priority": "Low"
-			},
-			{
-				"id": "2",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "aa",
-				"startDate": "2025-04-27",
-				"dueDate": "2025-05-21",
-				"priority": "Medium"
-			},
-			{
-				"id": "3",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "b",
-				"startDate": "2025-05-15",
-				"dueDate": "2025-05-16",
-				"priority": "Low"
-			},
-			{
-				"id": "4",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "a",
-				"description": "a",
-				"startDate": "2025-05-15",
-				"dueDate": "2025-05-30",
-				"priority": "Low"
-			},
-			{
-				"id": "5",
-				"clientId": "1745897285167",
-				"name": "",
-				"title": "c",
-				"description": "x",
-				"startDate": "2025-05-02",
-				"dueDate": "2025-05-23",
-				"priority": "Low"
-			}
-		],
-		"projects": [
-			{
-				"title": "Dashboard dspwebstudio",
-				"description": "Proyecto: CRM Dashboard\n\nObjetivo:\n\n Desarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario.     Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
-				"services": ["Desarrollo Web", "Diseño Web", "Consultoria SEO"],
-				"sections": [],
-				"otherServiceAmount": 0,
-				"otherSectionAmount": 0,
-				"startDate": "2025-06-05",
-				"dueDate": "2026-03-14",
-				"priority": "Alta",
-				"completed": false,
-				"status": "",
-				"totalProgress": "",
-				"costs": {
-					"totalServices": 13000,
-					"totalSections": 0,
-					"netPayable": 13000,
-					"baseRate": 13636.422222222236,
-					"ivaTax": 2181.827555555558,
-					"subtotal": 15818.249777777793,
-					"ivaRetention": 1454.597158444446,
-					"isrRetention": 1363.6422222222236,
-					"isrTax": 218.1827555555558,
-					"discount": 0
-				},
-				"tasks": [
-					{
-						"clientId": 1745897285167,
-						"projectId": 1745897285167,
-						"taskId": "1745897285167-srv-1",
-						"title": "Servicio: Diseño Web",
-						"status": "Nuevo",
-						"priority": "Alta",
-						"startDate": "2025-06-05T12:00:00.000Z",
-						"dueDate": "2025-10-11T12:00:00.000Z",
-						"totalProgress": 100,
-						"updatedAt": "2025-06-19T03:21:23.878Z",
-						"description": "Diseño y desarrollo de sitio web con diferentes secciones."
-					}
-				],
-				"id": 1749147630013
-			},
-			{
-				"title": "Diseño Web - Sitio",
-				"description": "Hola, me gustaría solicitar un proyecto de diseño web para mi negocio. Busco un sitio moderno, profesional y adaptable a diferentes dispositivos, ya que actualmente no tengo presencia en línea y quiero empezar con una imagen sólida. Me interesa que el diseño sea visualmente atractivo, fácil de navegar y que refleje la identidad de mi marca. \n\nTambién necesito integrar secciones como inicio, servicios, portafolio, contacto y posiblemente un blog. Me gustaría recibir una propuesta que incluya tiempos de entrega, costos aproximados, opciones de mantenimiento y recomendaciones sobre hosting o dominio. Espero su respuesta para poder revisar los detalles y comenzar el proyecto cuanto antes.",
-				"services": ["Consultoría de Diseño Web", "Diseño Web"],
-				"sections": ["Blog"],
-				"otherServiceAmount": 0,
-				"otherSectionAmount": 0,
-				"startDate": "2025-10-17",
-				"dueDate": "2025-10-26",
-				"priority": "Baja",
-				"completed": false,
-				"status": "",
-				"totalProgress": "",
-				"costs": {
-					"totalServices": 5200,
-					"totalSections": 1500,
-					"netPayable": 6700,
-					"baseRate": 7028.002222222229,
-					"ivaTax": 1124.4803555555566,
-					"subtotal": 8152.482577777785,
-					"ivaRetention": 749.6769970444451,
-					"isrRetention": 702.8002222222229,
-					"isrTax": 112.44803555555566,
-					"discount": 0
-				},
-				"tasks": [],
-				"id": 1760727574895
-			},
-			{
-				"title": "Prueba Sistemas",
-				"description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
-				"services": [],
-				"sections": [],
-				"otherServiceAmount": 0,
-				"otherSectionAmount": 0,
-				"startDate": "2025-11-14",
-				"dueDate": "2025-11-21",
-				"priority": "Media",
-				"completed": false,
-				"status": "",
-				"totalProgress": "",
-				"costs": {
-					"totalServices": 0,
-					"totalSections": 0,
-					"netPayable": 0,
-					"baseRate": 0,
-					"ivaTax": 0,
-					"subtotal": 0,
-					"ivaRetention": 0,
-					"isrRetention": 0,
-					"isrTax": 0,
-					"discount": 0
-				},
-				"tasks": [],
-				"id": 1763145784403
-			}
-		],
-		"imagePreview": ""
-	},
-	{
-		"id": 1745953383970,
-		"fullName": "Alfonso",
-		"lastName": "Alonzo",
-		"lastName2": "Pérez",
-		"email": "a.alonzo@easylav.mx",
-		"phoneNumber": "+52 443 520 0593",
-		"address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
-		"company": "EasyLav",
-		"project": "Agregar Sección Tarjeta Beneficios",
-		"image": "/uploads/1749057988777-974404235.ico",
-		"createdAt": "2025-05-15",
-		"updatedAt": "2025-12-09T00:45:07.996Z",
-		"facebook": "https://www.facebook.com/profile.php?id=61562871132158",
-		"instagram": "https://www.instagram.com/lavanderiaseasylav/",
-		"linkedin": "",
-		"twitter": "",
-		"website": "https://easylav.mx",
-		"rfc": "",
-		"curp": "",
-		"tasks": [
-			{
-				"id": "1",
-				"clientId": "1745953383970",
-				"name": "",
-				"title": "a",
-				"description": "Prerender service",
-				"startDate": "",
-				"dueDate": "2025-05-06",
-				"priority": "Medium"
-			}
-		],
-		"projects": [
-			{
-				"title": "Sitio web EasyLav",
-				"description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? \n\nEst maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
-				"services": ["Landing Page", "Consultoria SEO"],
-				"sections": [
-					"Aviso Legal",
-					"Términos y Condiciones",
-					"Política de Privacidad",
-					"Facturación",
-					"Política de Cookies",
-					"Preguntas Frecuentes"
-				],
-				"otherServiceAmount": 0,
-				"otherSectionAmount": 0,
-				"startDate": "2024-08-11",
-				"dueDate": "2025-05-30",
-				"priority": "Alta",
-				"completed": true,
-				"status": "",
-				"totalProgress": "",
-				"costs": {
-					"totalServices": 8500,
-					"totalSections": 7000,
-					"netPayable": 15500,
-					"baseRate": 16258.811111111127,
-					"ivaTax": 2601.40977777778,
-					"subtotal": 18860.220888888907,
-					"ivaRetention": 1734.327381222224,
-					"isrRetention": 1625.8811111111127,
-					"isrTax": 260.140977777778,
-					"discount": 0
-				},
-				"tasks": [
-					{
-						"clientId": 1745953383970,
-						"projectId": 1749663893834,
-						"taskId": "1749663893834-srv-1",
-						"title": "Servicio: Landing Page",
-						"status": "Completado",
-						"priority": "Media",
-						"startDate": "2024-08-18T12:00:00.000Z",
-						"dueDate": "2025-03-30T12:00:00.000Z",
-						"totalProgress": 100,
-						"updatedAt": "2025-06-19T03:21:23.878Z",
-						"description": "Creación de sitio web con diferentes secciones."
-					}
-				],
-				"id": 1749663893835
-			},
-			{
-				"title": "Agregar Sección Tarjeta Beneficios",
-				"description": "- Se solicita la creación de una sección en la homepage que sea para la tarjeta de Beneficios, debe de contener la imagen de la tarjeta así como un texto describiendo la tarjeta.\n\n- Generar una page interna de Usos y Beneficios de la tarjeta.",
-				"services": ["Otro"],
-				"sections": ["Otro"],
-				"otherServiceAmount": 500,
-				"otherSectionAmount": 1000,
-				"startDate": "2025-10-10",
-				"dueDate": "2025-10-24",
-				"priority": "Baja",
-				"completed": false,
-				"status": "",
-				"totalProgress": "",
-				"costs": {
-					"totalServices": 500,
-					"totalSections": 1000,
-					"netPayable": 1500,
-					"baseRate": 1573.4333333333348,
-					"ivaTax": 251.74933333333357,
-					"subtotal": 1825.1826666666684,
-					"ivaRetention": 167.8381336666668,
-					"isrRetention": 157.34333333333348,
-					"isrTax": 25.174933333333357,
-					"discount": 0
-				},
-				"tasks": [],
-				"id": 1760119902400
-			}
-		]
-	},
-	{
-		"id": 1763147116832,
-		"fullName": "Alexis Daniel",
-		"lastName": "Vallarta",
-		"lastName2": "Pérez",
-		"email": "dsperez.tablet@gmail.com",
-		"phoneNumber": "+524439188025",
-		"address": "Molibdeno 214",
-		"company": "",
-		"rfc": "",
-		"curp": "",
-		"website": "",
-		"facebook": "https://www.facebook.com/alexis.ferguson.587",
-		"twitter": "",
-		"instagram": "",
-		"linkedin": "",
-		"project": "",
-		"image": "/uploads/1763160012919-232883399.jpg",
-		"createdAt": "2025-11-14T19:05:16.832Z",
-		"updatedAt": "2025-11-14T22:40:15.142Z",
-		"tasks": [],
-		"projects": []
-	}
+  {
+    "id": 1745897285167,
+    "fullName": "Daniel Salvador",
+    "lastName": "Pérez",
+    "lastName2": "Bernal",
+    "email": "danielperezber@outlook.com",
+    "phoneNumber": "+52 443 918 8025",
+    "address": "Molibdeno 214, Villas del Pedregal, Morelia, Michoacán, 58338",
+    "company": "dspwebstudio",
+    "rfc": "PEBD81011C21",
+    "curp": "PEBD81011C21",
+    "website": "https://dspwebstudio.com",
+    "facebook": "https://www.facebook.com/dspwebstudio",
+    "twitter": "https://twitter.com/dspwebstudio",
+    "instagram": "https://instagram.com/dspwebstudio",
+    "linkedin": "https://linkedin.com/dspwebstudio",
+    "project": "Diseño Web - Sitio",
+    "image": "/uploads/1762128399909-721897670.jpg",
+    "createdAt": "2025-05-01",
+    "updatedAt": "2025-12-09T00:43:24.409Z",
+    "tasks": [
+      {
+        "id": "1",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "Prerender service",
+        "startDate": "2025-05-21",
+        "dueDate": "2025-05-22",
+        "priority": "Low"
+      },
+      {
+        "id": "2",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "aa",
+        "startDate": "2025-04-27",
+        "dueDate": "2025-05-21",
+        "priority": "Medium"
+      },
+      {
+        "id": "3",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "b",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-05-16",
+        "priority": "Low"
+      },
+      {
+        "id": "4",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "a",
+        "description": "a",
+        "startDate": "2025-05-15",
+        "dueDate": "2025-05-30",
+        "priority": "Low"
+      },
+      {
+        "id": "5",
+        "clientId": "1745897285167",
+        "name": "",
+        "title": "c",
+        "description": "x",
+        "startDate": "2025-05-02",
+        "dueDate": "2025-05-23",
+        "priority": "Low"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Dashboard dspwebstudio",
+        "description": "Proyecto: CRM Dashboard\n\nObjetivo:\n\n Desarrollar un CRM Dashboard basado en archivos JSON para gestionar clientes, proyectos, tareas, finanzas y calendario.     Este enfoque permitirá una gestión sencilla sin necesidad de un servidor de bases de datos, ideal para proyectos con requerimientos ligeros y almacenamiento estructurado.\n\nNecesidades y Requerimientos:\n\n   1. Gestión de Clientes:\n      •\tAlmacenamiento de clientes en archivos JSON organizados por ID.\n      •\tHistorial de interacciones y seguimiento mediante registros JSON.\n      •\tSegmentación por etiquetas dentro del JSON.\n\n   2. Administración de Proyectos:\n      •\tArchivo JSON por proyecto con detalles y estado.\n      •\tDefinición de etapas y hitos dentro del mismo archivo.\n      •\tEnlace con tareas y documentos referenciados en JSON.\n\n   3. Control de Tareas:\n      •\tListado de tareas en un archivo JSON estructurado.\n      •\tAsignación de responsables y fechas límite con validaciones en la interfaz.\n      •\tSistema de notificaciones basado en lectura de JSON.\n\n   4. Gestión Financiera:\n      •\tRegistro de ingresos y egresos en archivos JSON.\n      •\tGeneración de reportes dinámicos desde los datos almacenados.\n      •\tManejo de estados de cuenta sin necesidad de base de datos relacional.\n\n   5. Calendario y Planificación:\n      •\tArchivo JSON con eventos y reuniones.\n      •\tSincronización con otras herramientas mediante exportación de JSON.\n      •\tGestión de disponibilidad y horarios de forma flexible.\n\nTecnología y Desarrollo:\n   •\tFramework: React con arquitectura modular.\n   •\tManejo de Datos: Archivos JSON manipulados con JavaScript.\n   •\tBackend: Node.js para operaciones de lectura y escritura.\n   •\tAutenticación: Uso de JWT sin necesidad de almacenamiento en DB.\n   •\tHosting: Evaluación de Netlify o plataformas con soporte para archivos JSON.\n\nExperiencia del Usuario:\n  - Modo oscuro y personalización: Configurar estilos según preferencias del usuario.\n  - Dashboards interactivos: Visualizar métricas y rendimiento de tareas/proyectos.\n  - Recordatorios y notificaciones: Alertas sobre vencimientos, pagos y reuniones importantes.\n\n",
+        "services": [
+          "Desarrollo Web",
+          "Diseño Web",
+          "Consultoria SEO"
+        ],
+        "sections": [],
+        "otherServiceAmount": 0,
+        "otherSectionAmount": 0,
+        "startDate": "2025-06-05",
+        "dueDate": "2026-03-14",
+        "priority": "Alta",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 13000,
+          "totalSections": 0,
+          "netPayable": 13000,
+          "baseRate": 13636.422222222236,
+          "ivaTax": 2181.827555555558,
+          "subtotal": 15818.249777777793,
+          "ivaRetention": 1454.597158444446,
+          "isrRetention": 1363.6422222222236,
+          "isrTax": 218.1827555555558,
+          "discount": 0
+        },
+        "tasks": [
+          {
+            "clientId": 1745897285167,
+            "projectId": 1745897285167,
+            "taskId": "1745897285167-srv-1",
+            "title": "Servicio: Diseño Web",
+            "status": "Nuevo",
+            "priority": "Alta",
+            "startDate": "2025-06-05T12:00:00.000Z",
+            "dueDate": "2025-10-11T12:00:00.000Z",
+            "totalProgress": 100,
+            "updatedAt": "2025-06-19T03:21:23.878Z",
+            "description": "Diseño y desarrollo de sitio web con diferentes secciones."
+          }
+        ],
+        "id": 1749147630013
+      },
+      {
+        "title": "Diseño Web - Sitio",
+        "description": "Hola, me gustaría solicitar un proyecto de diseño web para mi negocio. Busco un sitio moderno, profesional y adaptable a diferentes dispositivos, ya que actualmente no tengo presencia en línea y quiero empezar con una imagen sólida. Me interesa que el diseño sea visualmente atractivo, fácil de navegar y que refleje la identidad de mi marca. \n\nTambién necesito integrar secciones como inicio, servicios, portafolio, contacto y posiblemente un blog. Me gustaría recibir una propuesta que incluya tiempos de entrega, costos aproximados, opciones de mantenimiento y recomendaciones sobre hosting o dominio. Espero su respuesta para poder revisar los detalles y comenzar el proyecto cuanto antes.",
+        "services": [
+          "Consultoría de Diseño Web",
+          "Diseño Web"
+        ],
+        "sections": [
+          "Blog"
+        ],
+        "otherServiceAmount": 0,
+        "otherSectionAmount": 0,
+        "startDate": "2025-10-17",
+        "dueDate": "2025-10-26",
+        "priority": "Baja",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 5200,
+          "totalSections": 1500,
+          "netPayable": 6700,
+          "baseRate": 7028.002222222229,
+          "ivaTax": 1124.4803555555566,
+          "subtotal": 8152.482577777785,
+          "ivaRetention": 749.6769970444451,
+          "isrRetention": 702.8002222222229,
+          "isrTax": 112.44803555555566,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1760727574895
+      },
+      {
+        "title": "Prueba Sistemas",
+        "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.\n\nLorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+        "services": [],
+        "sections": [],
+        "otherServiceAmount": 0,
+        "otherSectionAmount": 0,
+        "startDate": "2025-11-14",
+        "dueDate": "2025-11-21",
+        "priority": "Media",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 0,
+          "totalSections": 0,
+          "netPayable": 0,
+          "baseRate": 0,
+          "ivaTax": 0,
+          "subtotal": 0,
+          "ivaRetention": 0,
+          "isrRetention": 0,
+          "isrTax": 0,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1763145784403
+      }
+    ],
+    "imagePreview": ""
+  },
+  {
+    "id": 1745953383970,
+    "fullName": "Alfonsoa",
+    "lastName": "Alonzo",
+    "lastName2": "Pérez",
+    "email": "a.alonzo@easylav.mx",
+    "phoneNumber": "+52 443 520 0593",
+    "address": "Laguna de Parras 585-2 Col. Ventura Puente, Morelia, Mexico",
+    "company": "EasyLav",
+    "project": "Agregar Sección Tarjeta Beneficios",
+    "image": "/uploads/1749057988777-974404235.ico",
+    "createdAt": "2025-05-15",
+    "updatedAt": "2025-12-09T14:56:03.570Z",
+    "facebook": "https://www.facebook.com/profile.php?id=61562871132158",
+    "instagram": "https://www.instagram.com/lavanderiaseasylav/",
+    "linkedin": "",
+    "twitter": "",
+    "website": "https://easylav.mx",
+    "rfc": "",
+    "curp": "",
+    "tasks": [
+      {
+        "id": "1",
+        "clientId": "1745953383970",
+        "name": "",
+        "title": "a",
+        "description": "Prerender service",
+        "startDate": "",
+        "dueDate": "2025-05-06",
+        "priority": "Medium"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Sitio web EasyLav",
+        "description": "Lorem ipsum dolor sit amet. Ex repellendus autem aut voluptatem quibusdam ut quos dolores non beatae accusantium rem officia harum vel quidem error? \n\nEst maxime molestiae eos reiciendis galisum et autem eius. Et magni praesentium et doloribus veritatis aut odit molestiae sit quasi nihil et fuga totam et laudantium iure. \n\nAut consequatur illo qui quia nobis ea dicta delectus non magni doloremque. Est natus optio non porro ullam non similique ipsam est odio illum et similique magni 33 maiores omnis non enim cumque! \n\nEst repellat dignissimos eos quis atque ut quibusdam deleniti non optio fugit? Qui animi excepturi aut minus architecto sit adipisci animi est praesentium repellendus. A voluptatem dolor ex nobis doloribus qui quia dolore. \n",
+        "services": [
+          "Landing Page",
+          "Consultoria SEO"
+        ],
+        "sections": [
+          "Aviso Legal",
+          "Términos y Condiciones",
+          "Política de Privacidad",
+          "Facturación",
+          "Política de Cookies",
+          "Preguntas Frecuentes"
+        ],
+        "otherServiceAmount": 0,
+        "otherSectionAmount": 0,
+        "startDate": "2024-08-11",
+        "dueDate": "2025-05-30",
+        "priority": "Alta",
+        "completed": true,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 8500,
+          "totalSections": 7000,
+          "netPayable": 15500,
+          "baseRate": 16258.811111111127,
+          "ivaTax": 2601.40977777778,
+          "subtotal": 18860.220888888907,
+          "ivaRetention": 1734.327381222224,
+          "isrRetention": 1625.8811111111127,
+          "isrTax": 260.140977777778,
+          "discount": 0
+        },
+        "tasks": [
+          {
+            "clientId": 1745953383970,
+            "projectId": 1749663893834,
+            "taskId": "1749663893834-srv-1",
+            "title": "Servicio: Landing Page",
+            "status": "Completado",
+            "priority": "Media",
+            "startDate": "2024-08-18T12:00:00.000Z",
+            "dueDate": "2025-03-30T12:00:00.000Z",
+            "totalProgress": 100,
+            "updatedAt": "2025-06-19T03:21:23.878Z",
+            "description": "Creación de sitio web con diferentes secciones."
+          }
+        ],
+        "id": 1749663893835
+      },
+      {
+        "title": "Agregar Sección Tarjeta Beneficios",
+        "description": "- Se solicita la creación de una sección en la homepage que sea para la tarjeta de Beneficios, debe de contener la imagen de la tarjeta así como un texto describiendo la tarjeta.\n\n- Generar una page interna de Usos y Beneficios de la tarjeta.",
+        "services": [
+          "Otro"
+        ],
+        "sections": [
+          "Otro"
+        ],
+        "otherServiceAmount": 500,
+        "otherSectionAmount": 1000,
+        "startDate": "2025-10-10",
+        "dueDate": "2025-10-24",
+        "priority": "Baja",
+        "completed": false,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 500,
+          "totalSections": 1000,
+          "netPayable": 1500,
+          "baseRate": 1573.4333333333348,
+          "ivaTax": 251.74933333333357,
+          "subtotal": 1825.1826666666684,
+          "ivaRetention": 167.8381336666668,
+          "isrRetention": 157.34333333333348,
+          "isrTax": 25.174933333333357,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1760119902400
+      }
+    ]
+  },
+  {
+    "id": 1763147116832,
+    "fullName": "Alexis Daniel",
+    "lastName": "Vallarta",
+    "lastName2": "Pérez",
+    "email": "dsperez.tablet@gmail.com",
+    "phoneNumber": "+524439188025",
+    "address": "Molibdeno 214",
+    "company": "",
+    "rfc": "",
+    "curp": "",
+    "website": "",
+    "facebook": "https://www.facebook.com/alexis.ferguson.587",
+    "twitter": "",
+    "instagram": "",
+    "linkedin": "",
+    "project": "",
+    "image": "/uploads/1765292223970-553204642.jpg",
+    "createdAt": "2025-11-14T19:05:16.832Z",
+    "updatedAt": "2025-12-09T14:57:06.908Z",
+    "tasks": [],
+    "projects": []
+  }
 ]

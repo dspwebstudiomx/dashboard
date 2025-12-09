@@ -51,14 +51,18 @@ const ClientsList = () => {
 	// Guardar cliente (agregar o editar) y actualizar la lista
 	const handleSaveClient = async (client) => {
 		if (editClientId) {
+			// Editar cliente existente
 			await editClient(editClientId, client);
+			setClients((prevClients) =>
+				prevClients.map((c) => (c.id === editClientId ? { ...c, ...client } : c))
+			);
 		} else {
-			await handleAddClient({ ...client, id: Date.now(), createdAt: new Date().toISOString() });
+			// Agregar nuevo cliente
+			const newClient = { ...client, id: Date.now(), createdAt: new Date().toISOString() };
+			await handleAddClient(newClient);
+			setClients((prevClients) => [...prevClients, newClient]);
 		}
-		// Recargar la lista desde la API
-		if (typeof fetchClients === 'function') {
-			await fetchClients();
-		}
+		// Cierra el modal automáticamente
 		handleCloseModal();
 	};
 

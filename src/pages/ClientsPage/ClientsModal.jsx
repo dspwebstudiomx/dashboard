@@ -62,7 +62,7 @@ const ClientsModal = ({ client, onClientUpdate, isOpen, onClose }) => {
 
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} title={renderTitle(isEditing)}>
-			<article onSubmit={handleSubmit} className="space-y-4 max-h-[70vh] text-base">
+			<form onSubmit={handleSubmit} className="space-y-4 max-h-[70vh] text-base">
 				{/* // Formulario de cliente */}
 				<ClientFormFields formData={formData} handleChange={handleChange} />
 
@@ -93,7 +93,7 @@ const ClientsModal = ({ client, onClientUpdate, isOpen, onClose }) => {
 						)}
 					</div>
 				</div>
-			</article>
+			</form>
 		</Modal>
 	);
 };
