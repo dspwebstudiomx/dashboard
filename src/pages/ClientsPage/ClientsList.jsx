@@ -84,27 +84,29 @@ const ClientsList = () => {
 					<span className="hidden md:block">Agregar Cliente</span>
 				</button>
 
-				{/* Botón ir arriba */}
-				<button
-					id="ir-a-inicio"
-					onClick={handleScrollToTop}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 rounded-xl border-2 border-blue-400 bg-blue-600 hover:bg-blue-500 transition duration-300 shadow-lg w-full md:w-[160px] lg:w-[210px]"
-					aria-label="Ir a inicio"
-				>
-					<FaArrowUp size={25} />
-					<span className="hidden md:block">Ir a Inicio</span>
-				</button>
+				<div className="md:hidden">
+					{/* Botón ir arriba */}
+					<button
+						id="ir-a-inicio"
+						onClick={handleScrollToTop}
+						className="text-white px-6 py-4 flex items-center justify-center gap-2 rounded-xl border-2 border-blue-400 bg-blue-600 hover:bg-blue-500 transition duration-300 shadow-lg w-full md:w-[160px] lg:w-[210px]"
+						aria-label="Ir a inicio"
+					>
+						<FaArrowUp size={25} />
+						<span className="hidden md:block">Ir a Inicio</span>
+					</button>
 
-				{/* Botón ir abajo */}
-				<button
-					id="ir-al-final"
-					onClick={handleScrollToBottom}
-					className="text-white px-6 py-4 flex items-center justify-center gap-2 rounded-xl border-2 border-blue-600 bg-blue-400 hover:bg-blue-400 transition duration-300 shadow-lg w-full md:w-[160px] lg:w-[210px]"
-					aria-label="Ir al final"
-				>
-					<FaArrowDown size={25} />
-					<span className="hidden md:block">Ir al Final</span>
-				</button>
+					{/* Botón ir abajo */}
+					<button
+						id="ir-al-final"
+						onClick={handleScrollToBottom}
+						className="text-white px-6 py-4 flex items-center justify-center gap-2 rounded-xl border-2 border-blue-600 bg-blue-400 hover:bg-blue-400 transition duration-300 shadow-lg w-full md:w-[160px] lg:w-[210px]"
+						aria-label="Ir al final"
+					>
+						<FaArrowDown size={25} />
+						<span className="hidden md:block">Ir al Final</span>
+					</button>
+				</div>
 			</div>
 
 			{/* Lista de clientes */}
