@@ -12,6 +12,7 @@ import ProjectActionButtons from '../ProjectActionButtons';
 import ServicesSectionsInfo from './ServicesSectionsInfo';
 import CloseActionButton from '../CloseActionButton';
 import Button from '@components/Botones/Button';
+import { IoWarningOutline } from 'react-icons/io5';
 
 class ErrorBoundary extends React.Component {
 	state = { hasError: false };
@@ -137,13 +138,13 @@ const GeneralProjectInfo = ({
 			</Modal>
 
 			{/* Modal de confirmación de eliminación */}
-			<Modal
-				isOpen={isConfirmModalOpen}
-				onClose={closeConfirmModal}
-				title="Confirmar eliminación de Proyecto"
-			>
+			<Modal isOpen={isConfirmModalOpen} onClose={closeConfirmModal}>
+				<div className="flex items-center w-full py-8">
+					<IoWarningOutline className="text-amber-300 text-4xl mr-2" />
+					<p className="text-2xl font-semibold">Confirmar eliminación de Proyecto</p>
+				</div>
 				<div className="flex flex-col gap-6">
-					<p className="text-xl">¿Estás seguro de que deseas eliminar este proyecto?</p>
+					<p className="text-xl text-center">¿Estás seguro de que deseas eliminar este proyecto?</p>
 					<div className="flex justify-end gap-4 py-6">
 						<Button variant="secondary" onClick={closeConfirmModal} text={'Cancelar'} size="lg" />
 						<Button
@@ -157,11 +158,11 @@ const GeneralProjectInfo = ({
 			</Modal>
 
 			{/* Modal de confirmación de cierre */}
-			<Modal
-				isOpen={isCloseConfirmModalOpen}
-				onClose={closeCloseConfirmModal}
-				title="Confirmar cierre de Proyecto"
-			>
+			<Modal isOpen={isCloseConfirmModalOpen} onClose={closeCloseConfirmModal}>
+				<div className="flex items-center w-full py-8">
+					<IoWarningOutline className="text-amber-300 text-4xl mr-2" />
+					<p className="text-2xl font-semibold">Cerrar Proyecto</p>
+				</div>
 				<div className="flex flex-col gap-6">
 					<p className="text-xl">¿Estás seguro de que deseas cerrar este proyecto?</p>
 					<div className="flex justify-end gap-4 py-6">
