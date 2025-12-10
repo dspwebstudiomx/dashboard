@@ -10,6 +10,7 @@ import React from 'react';
 import { FaTachometerAlt, FaProjectDiagram, FaUsers, FaTasks } from 'react-icons/fa';
 import { FaFileInvoiceDollar } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 // Importar los videos
 import cloudsVideo from '../../assets/clouds.mp4';
@@ -74,6 +75,11 @@ const Sidebar = () => {
 		);
 	};
 
+	// Funciones para desplazarse
+	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+	const scrollToBottom = () =>
+		window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
 	// Renderiza el Sidebar
 	return (
 		<aside className="fixed top-40 right-20 w-auto h-auto flex flex-col gap-8 justify-between">
@@ -102,6 +108,24 @@ const Sidebar = () => {
 
 			{/* Contenedor del reloj */}
 			<Clock />
+
+			{/* Botones de desplazamiento */}
+			<div className="flex justify-center items-center gap-6 mt-16">
+				<button
+					onClick={scrollToTop}
+					className="w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center shadow-lg hover:bg-blue-600 transition-colors duration-300 border-2 border-white dark:border-gray-300"
+					aria-label="Subir al inicio"
+				>
+					<FaArrowUp />
+				</button>
+				<button
+					onClick={scrollToBottom}
+					className="w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center shadow-lg hover:bg-blue-600 transition-colors duration-300 border-2 border-white dark:border-gray-300"
+					aria-label="Bajar al final"
+				>
+					<FaArrowDown />
+				</button>
+			</div>
 		</aside>
 	);
 };
