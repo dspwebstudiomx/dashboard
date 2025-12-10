@@ -95,7 +95,7 @@ const GeneralProjectInfo = ({
 					</div>
 				</div>
 				{/* Botones */}
-				<div className="flex gap-4 mt-12">
+				<div className="flex gap-4">
 					<EditActionButton onClick={onEdit} text="Editar proyecto" />
 					{/* Modificar el botón de eliminación para abrir el modal */}
 					<DeleteActionButton onClick={openConfirmModal} text="Eliminar proyecto" />
@@ -146,7 +146,12 @@ const GeneralProjectInfo = ({
 					<p className="text-xl">¿Estás seguro de que deseas eliminar este proyecto?</p>
 					<div className="flex justify-end gap-4 py-6">
 						<Button variant="secondary" onClick={closeConfirmModal} text={'Cancelar'} size="lg" />
-						<Button variant="primary" onClick={handleConfirmDelete} text={'Eliminar'} size="lg" />
+						<Button
+							variant="primary"
+							onClick={handleConfirmDelete}
+							text={'Eliminar Proyecto'}
+							size="lg"
+						/>
 					</div>
 				</div>
 			</Modal>
@@ -166,7 +171,12 @@ const GeneralProjectInfo = ({
 							text={'Cancelar'}
 							size="lg"
 						/>
-						<Button variant="primary" onClick={handleConfirmClose} text={'Cerrar'} size="lg" />
+						<Button
+							variant="primary"
+							onClick={handleConfirmClose}
+							text={'Cerrar Proyecto'}
+							size="lg"
+						/>
 					</div>
 				</div>
 			</Modal>
