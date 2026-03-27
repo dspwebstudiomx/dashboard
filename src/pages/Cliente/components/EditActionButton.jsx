@@ -2,7 +2,7 @@ import Button from '@components/Botones/Button';
 import React from 'react';
 import { LuPencil } from 'react-icons/lu';
 
-const EditActionButton = ({ onClick, text }) => {
+const EditActionButton = ({ onClick, text, disabled }) => {
 	return (
 		<Button
 			variant="blue_2"
@@ -11,6 +11,7 @@ const EditActionButton = ({ onClick, text }) => {
 			onClick={onClick}
 			type="button"
 			size="md"
+			disabled={disabled}
 		/>
 	);
 };

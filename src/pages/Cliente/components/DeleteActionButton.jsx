@@ -2,7 +2,7 @@ import Button from '@components/Botones/Button';
 import React from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 
-const DeleteActionButton = ({ onClick, text }) => {
+const DeleteActionButton = ({ onClick, text, disabled }) => {
 	return (
 		<Button
 			variant="blue_3"
@@ -11,6 +11,7 @@ const DeleteActionButton = ({ onClick, text }) => {
 			onClick={onClick}
 			type="button"
 			size="md"
+			disabled={disabled}
 		/>
 	);
 };

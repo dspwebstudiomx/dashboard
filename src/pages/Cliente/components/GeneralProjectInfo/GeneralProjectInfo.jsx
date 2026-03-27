@@ -47,6 +47,9 @@ const GeneralProjectInfo = ({
 	// Estado para controlar el modal de confirmación de cierre
 	const [isCloseConfirmModalOpen, setIsCloseConfirmModalOpen] = useState(false);
 
+	// Verificar si el proyecto está cerrado
+	const isProjectClosed = project?.completed === true;
+
 	// Manejar la apertura y cierre de los modales
 	const openConfirmModal = () => setIsConfirmModalOpen(true);
 	const closeConfirmModal = () => setIsConfirmModalOpen(false);
@@ -79,7 +82,9 @@ const GeneralProjectInfo = ({
 
 	const ProjectInfoTitle = () => {
 		return (
-			<div className="flex flex-col md:flex-col-reverse lg:flex-row items-center justify-between gap-6">
+			<div
+				className={`flex flex-col md:flex-col-reverse lg:flex-row items-center justify-between gap-6 ${isProjectClosed ? 'opacity-60 grayscale' : ''}`}
+			>
 				{/* Título y Prioridad */}
 				<div className="flex flex-col md:flex-row items-left gap-8 w-full md:w-auto md:mb-12">
 					{/* Título del proyecto */}
@@ -89,6 +94,9 @@ const GeneralProjectInfo = ({
 					>
 						{project.title}
 						<span className="text-base md:ml-3 text-gray-400">ID Proyecto: {project.id}</span>
+						{isProjectClosed && (
+							<span className="text-sm md:ml-3 text-green-600 font-medium">✓ Proyecto Cerrado</span>
+						)}
 					</h2>
 					{/* Prioridad del proyecto */}
 					<div className="flex flex-col md:flex-row gap-4 items-center justify-center">
@@ -97,14 +105,19 @@ const GeneralProjectInfo = ({
 				</div>
 				{/* Botones */}
 				<div className="flex gap-4">
-					<EditActionButton onClick={onEdit} text="Editar proyecto" />
+					<EditActionButton onClick={onEdit} text="Editar proyecto" disabled={isProjectClosed} />
 					{/* Modificar el botón de eliminación para abrir el modal */}
-					<DeleteActionButton onClick={openConfirmModal} text="Eliminar proyecto" />
+					<DeleteActionButton
+						onClick={openConfirmModal}
+						text="Eliminar proyecto"
+						disabled={isProjectClosed}
+					/>
 					{/* Modificar el botón de "Cerrar Proyecto" para abrir el modal */}
 					<CloseActionButton
 						handleCompleteClick={handleCloseProject}
-						text="Cerrar Proyecto"
+						text={isProjectClosed ? 'Proyecto Cerrado' : 'Cerrar Proyecto'}
 						onClick={handleCloseProject}
+						disabled={isProjectClosed}
 					/>
 				</div>
 			</div>
@@ -115,7 +128,9 @@ const GeneralProjectInfo = ({
 		return (
 			<div
 				id="modal-content"
-				className="flex flex-col gap-8 pb-20 rounded-2xl border-2 border-blue-200 text-gray-800 bg-white p-8 md:p-10 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10 max-w-screen-xl mx-auto"
+				className={`flex flex-col gap-8 pb-20 rounded-2xl border-2 border-blue-200 text-gray-800 bg-white p-8 md:p-10 shadow-lg dark:bg-gray-800 dark:text-gray-100 md:mr-10 max-w-screen-xl mx-auto transition-all duration-300 ${
+					isProjectClosed ? 'grayscale opacity-75 bg-gray-50 dark:bg-gray-900' : ''
+				}`}
 			>
 				<div className="flex flex-col gap-6 py-12">
 					<h2 className="text-2xl font-semibold">Descripción del Proyecto</h2>
@@ -177,6 +192,7 @@ const GeneralProjectInfo = ({
 							onClick={handleConfirmClose}
 							text={'Cerrar Proyecto'}
 							size="lg"
+							disabled={isProjectClosed}
 						/>
 					</div>
 				</div>

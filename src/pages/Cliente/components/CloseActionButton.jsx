@@ -2,7 +2,7 @@ import Button from '@components/Botones/Button';
 import React from 'react';
 import { MdLockOutline } from 'react-icons/md';
 
-const CloseActionButton = ({ onClick, text }) => {
+const CloseActionButton = ({ onClick, text, disabled }) => {
 	return (
 		<Button
 			variant="outline"
@@ -11,6 +11,7 @@ const CloseActionButton = ({ onClick, text }) => {
 			text={text}
 			icon={MdLockOutline}
 			size="md"
+			disabled={disabled}
 		/>
 	);
 };
