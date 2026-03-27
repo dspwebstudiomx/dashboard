@@ -45,7 +45,7 @@ const ClientProjects = ({ selectedClient, onUpdateProjects }) => {
 		<section className="flex flex-col justify-between gap-6 mb-0 mt-20">
 			<header className="flex flex-col items-start justify-center mb-6">
 				<h2 className="text-2xl font-semibold mb-4">Mis Proyectos</h2>
-				<p className="mb-4 text-lg">
+				<p className="mb-4 mt-8 ml-6 text-lg">
 					Aquí puedes ver todos los proyectos relacionados con{' '}
 					<span className="font-semibold">
 						{selectedClient.fullName} {selectedClient.lastName} {selectedClient.lastName2}. <br />

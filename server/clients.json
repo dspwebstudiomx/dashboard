@@ -351,10 +351,12 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": "",
+    "project": [
+      "Hola"
+    ],
     "image": "/uploads/1774640345078-467220509.jpg",
     "createdAt": "2025-11-14T19:05:16.832Z",
-    "updatedAt": "2026-03-27T19:39:41.087Z",
+    "updatedAt": "2026-03-27T19:57:35.555Z",
     "tasks": [],
     "projects": []
   },
