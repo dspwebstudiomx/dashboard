@@ -97,11 +97,13 @@ const ClientsTable = () => {
 				{/* Tabla de Clientes */}
 				<table
 					id="clients-table"
-					className="min-w-full border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 border-collapse"
+					className="min-w-full  border-2 border-gray-800 bg-white dark:bg-gray-800 dark:border-gray-600 border-collapse"
 				>
 					<thead className="bg-blue-700 text-white border-blue-800">
 						<tr>
-							<th className="px-4 py-2 text-left font-medium border border-gray-300">Cliente</th>
+							<th className="xl:w-[280px] px-4 py-2 text-left font-medium border border-gray-300">
+								Cliente
+							</th>
 							<th className="px-4 py-2 text-left font-medium border border-gray-300">Proyecto</th>
 							<th className="px-4 py-2 text-left font-medium border border-gray-300">
 								Correo Electrónico
@@ -130,14 +132,14 @@ const ClientsTable = () => {
 												: 'bg-white dark:bg-gray-700 dark:text-gray-50 border-b border-gray-300 border-l'
 										}
 									>
-										<td className="p-4 h-[120px] w-[220px] text-sm flex items-center gap-4 text-gray-800 dark:text-gray-200">
+										<td className="p-4 h-[120px] w-[220px] xl:w-[320px] text-sm flex items-center gap-4 text-gray-800 dark:text-gray-200">
 											<a href={`/clientes/${client.id}`}>
 												<img
 													id="imagen-cliente"
 													src={
 														client.image
 															? `http://localhost:5000${client.image}`
-															: '../../../server/uploads/avatar_placeholder_large.png'
+															: 'http://localhost:5000/uploads/avatar_placeholder_large.png'
 													}
 													alt={client.fullName}
 													className="hidden md:w-12 md:h-12 md:block rounded-full border-2 border-gray-300 object-cover bg-white"
@@ -166,7 +168,7 @@ const ClientsTable = () => {
 										<td className="px-4 py-2 text-sm border border-gray-300">
 											<a
 												href={`/clientes/${client.id}`}
-												className="text-blue-400 hover:text-blue-5esd00"
+												className="text-blue-400 hover:text-blue-500"
 											>
 												<FaEye className="w-6 h-6 mx-auto" />
 											</a>

@@ -15,10 +15,10 @@
     "twitter": "https://twitter.com/dspwebstudio",
     "instagram": "https://instagram.com/dspwebstudio",
     "linkedin": "https://linkedin.com/dspwebstudio",
-    "project": "Diseño Web - Sitio",
+    "project": "Dashboard dspwebstudio",
     "image": "/uploads/1762128399909-721897670.jpg",
     "createdAt": "2025-05-01",
-    "updatedAt": "2025-12-09T00:43:24.409Z",
+    "updatedAt": "2026-03-27T20:11:42.994Z",
     "tasks": [
       {
         "id": "1",
@@ -85,7 +85,7 @@
         "otherSectionAmount": 0,
         "startDate": "2025-06-05",
         "dueDate": "2026-03-14",
-        "priority": "Alta",
+        "priority": "Media",
         "completed": false,
         "status": "",
         "totalProgress": "",
