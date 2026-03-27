@@ -8,7 +8,7 @@ const ProjectActionButtons = ({
 	openAdminModal,
 	// onEdit,
 	// onDelete,
-	handleCompleteClick,
+	// handleCompleteClick,
 }) => {
 	if (isCompleted) return null;
 	return (
@@ -16,11 +16,11 @@ const ProjectActionButtons = ({
 			<AdminActionButton onClick={openAdminModal} text="Ver Proyecto" />
 			{/* <EditActionButton onClick={onEdit} text="Editar Proyecto" />
 			<DeleteActionButton onClick={onDelete} text="Eliminar Proyecto" /> */}
-			<CloseActionButton
+			{/* <CloseActionButton
 				handleCompleteClick={handleCompleteClick}
 				text="Cerrar Proyecto"
 				onClick={handleCompleteClick}
-			/>
+			/> */}
 		</>
 	);
 };

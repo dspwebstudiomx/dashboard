@@ -354,14 +354,44 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": [
-      "Hola"
-    ],
+    "project": "adsAAAA",
     "image": "/uploads/1774640345078-467220509.jpg",
     "createdAt": "2025-11-14T19:05:16.832Z",
-    "updatedAt": "2026-03-27T19:57:35.555Z",
+    "updatedAt": "2026-03-27T20:36:46.749Z",
     "tasks": [],
-    "projects": []
+    "projects": [
+      {
+        "title": "adsAAAA",
+        "description": "asdASDvasdaSD",
+        "services": [
+          "Diseño Web",
+          "Landing Page"
+        ],
+        "sections": [],
+        "otherServiceAmount": 0,
+        "otherSectionAmount": 0,
+        "startDate": "2026-03-27",
+        "dueDate": "2026-03-27",
+        "priority": "Alta",
+        "completed": true,
+        "status": "",
+        "totalProgress": "",
+        "costs": {
+          "totalServices": 9500,
+          "totalSections": 0,
+          "netPayable": 9500,
+          "baseRate": 9965.077777777788,
+          "ivaTax": 1594.412444444446,
+          "subtotal": 11559.490222222234,
+          "ivaRetention": 1062.9748465555565,
+          "isrRetention": 996.5077777777788,
+          "isrTax": 159.4412444444446,
+          "discount": 0
+        },
+        "tasks": [],
+        "id": 1774643795386
+      }
+    ]
   },
   {
     "id": 1765303610814,

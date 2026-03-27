@@ -91,7 +91,7 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 								text="Ver Proyecto"
 								isCompleted={isCompleted}
 							/>
-							<CloseProjectMessaje />
+							{/* <CloseProjectMessaje /> */}
 						</div>
 					)}
 				</div>
