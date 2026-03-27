@@ -7,7 +7,6 @@ import { IoPersonAddSharp } from 'react-icons/io5';
 import { handleScrollToTop, handleScrollToBottom } from '@api/GeneralApi';
 import { useClientsContext } from '@hooks/useClientsContext';
 import { useSelectedClient } from '@hooks/useSelectedClient';
-import axios from 'axios';
 
 const ClientsList = () => {
 	const {
@@ -25,13 +24,10 @@ const ClientsList = () => {
 	const { selectedClient, setSelectedClient } = useSelectedClient();
 	const { isOpen, openModal, closeModal } = useModal();
 
-	// Cargar clientes desde el archivo JSON solo una vez
+	// Cargar clientes usando fetchClients del context
 	useEffect(() => {
-		axios
-			.get('/server/clients.json')
-			.then((response) => setClients(response.data))
-			.catch((error) => console.error('Error al cargar clientes:', error));
-	}, [setClients]);
+		fetchClients();
+	}, [fetchClients]);
 
 	// Abrir modal para agregar o editar cliente
 	const handleOpenModal = (client = null) => {

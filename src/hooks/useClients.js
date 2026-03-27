@@ -104,6 +104,7 @@ export const useClients = () => {
     initialClientState,
     handleAddClient,
     setClients,
+    fetchClients,
   };
 };
 
