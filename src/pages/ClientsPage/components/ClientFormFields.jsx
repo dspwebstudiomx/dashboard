@@ -97,11 +97,11 @@ const fields = [
 	},
 ];
 
-const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, xl: 3 } }) => {
+const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, xl: 4 } }) => {
 	// Definir grupos por especialidad
 	const groups = [
 		{
-			title: 'Información personal',
+			title: 'Información del Cliente',
 			fields: ['fullName', 'lastName', 'lastName2', 'curp'],
 			columns: { base: 1, md: 3, xl: 3 },
 		},
@@ -113,6 +113,7 @@ const ClientFormFields = ({ formData, handleChange, columns = { base: 1, md: 2, 
 		{
 			title: 'Empresa y proyecto',
 			fields: ['company', 'project', 'rfc', 'website'],
+			columns: { base: 1, md: 2, xl: 2 },
 		},
 		{
 			title: 'Redes sociales',

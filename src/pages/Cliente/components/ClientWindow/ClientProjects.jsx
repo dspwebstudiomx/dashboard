@@ -53,9 +53,11 @@ const ClientProjects = ({ selectedClient, onUpdateProjects }) => {
 					<br />
 					Puedes agregar, editar o eliminar proyectos según sea necesario.
 				</p>
-				<div className="flex items-center justify-center md:justify-end w-full">
-					<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} icon={IoMdAdd} />
-				</div>
+				{selectedClient.projects && selectedClient.projects.length > 0 && (
+					<div className="flex items-center justify-center md:justify-end w-full">
+						<Button text="Agregar Proyecto" onClick={() => setShowForm(true)} icon={IoMdAdd} />
+					</div>
+				)}
 			</header>
 
 			<ul
