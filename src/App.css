@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -20,6 +21,7 @@
 		--secondary-color: #2563eb; /* Color secundario */
 	}
 }
+
 html {
 	scroll-behavior: smooth; /* Desplazamiento suave */
 	user-select: none; /* Evita la selección de texto */
@@ -29,24 +31,88 @@ html {
 }
 
 /* Cuando un modal está abierto, evitamos scroll del body (uso principal está en inline styles) */
-
 html.dark {
 	background-color: var(--bg-color);
 }
 
 /* Scroll personalizado */
 ::-webkit-scrollbar {
-	width: 8px; /* Ancho del scroll */
-	height: 8px; /* Altura del scroll horizontal */
+	width: 16px;
+	height: 16px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f5f9;
+	/* border-radius: 10px; */
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #3b82f6; /* Color del "pulgar" */
-	border-radius: 0; /* Bordes redondeados */
+	background: linear-gradient(180deg, #3b82f6, #2563eb);
+	/* border-radius: 10px; */
+	border: 2px solid #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color: #2563eb; /* Color al pasar el mouse */
+	background: linear-gradient(180deg, #2563eb, #1d4ed8);
+}
+
+/* Scroll personalizado para modo oscuro */
+.dark ::-webkit-scrollbar-track {
+	background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #60a5fa, #3b82f6);
+	border-color: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #3b82f6, #2563eb);
+}
+
+/* Scroll personalizado para el modal */
+.custom-scrollbar::-webkit-scrollbar {
+	width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background: rgba(59, 130, 246, 0.3);
+	border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: rgba(59, 130, 246, 0.5);
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.9) translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+.animate-fadeIn {
+	animation: fadeIn 0.3s ease-out;
+}
+
+/* Efectos hover para inputs */
+@layer components {
+	.form-input {
+		@apply transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:border-blue-400;
+	}
+
+	.form-input:focus {
+		box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+	}
 }
 
 ::-webkit-scrollbar-track {

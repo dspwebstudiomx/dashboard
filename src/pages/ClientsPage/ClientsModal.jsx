@@ -67,7 +67,7 @@ const ClientsModal = ({ client, onClientUpdate, isOpen, onClose }) => {
 				<ClientFormFields formData={formData} handleChange={handleChange} />
 
 				{/* // Botones de acción y subida de imagen */}
-				<div className="flex flex-col md:flex-row justify-end items-end gap-1 md:gap-4 p-2">
+				<div className="flex flex-col md:flex-row justify-between items-center gap-1 md:gap-4 p-2 py-8">
 					<ImageClientModal
 						formData={formData}
 						handleImageUpload={handleImageUpload}
