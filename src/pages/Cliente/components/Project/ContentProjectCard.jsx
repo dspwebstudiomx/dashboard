@@ -62,6 +62,7 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 					paginatedTasks={paginatedTasks} // Pasar las tareas paginadas
 					setCurrentPage={setCurrentPage} // Función para actualizar la página actual
 					project={project} // Pasar el proyecto completo para acceder a su prioridad
+					isCompleted={isCompleted} // Pasar si el proyecto está completado
 				/>
 			</div>
 
@@ -85,7 +86,11 @@ const ContentProjectCard = ({ project, actions, netPayable }) => {
 					/>
 					{isCompleted && (
 						<div className="flex flex-col gap-4">
-							<AdminActionButton onClick={openAdminModal} text="Ver Proyecto" />
+							<AdminActionButton
+								onClick={openAdminModal}
+								text="Ver Proyecto"
+								isCompleted={isCompleted}
+							/>
 							<CloseProjectMessaje />
 						</div>
 					)}

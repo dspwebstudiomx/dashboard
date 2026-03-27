@@ -6,7 +6,7 @@ import {
 } from 'react-icons/md';
 import Button from '@components/Botones/Button';
 
-const ProjectCardTaskSummary = ({ project = {} }) => {
+const ProjectCardTaskSummary = ({ project = {}, isCompleted = false }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const tasksPerPage = 4;
 
@@ -27,11 +27,13 @@ const ProjectCardTaskSummary = ({ project = {} }) => {
 				<span
 					id="contador-indicador"
 					className={`text-gray-100 border rounded-full w-7 h-7 flex items-center justify-center text-sm font-semibold ${
-						projectPriority === 'Alta'
-							? 'bg-red-500 border-red-600'
-							: projectPriority === 'Media'
-							? 'bg-yellow-400 border-yellow-500'
-							: 'bg-green-500 border-green-600'
+						isCompleted
+							? 'bg-gray-600 border-gray-700'
+							: projectPriority === 'Alta'
+								? 'bg-red-500 border-red-600'
+								: projectPriority === 'Media'
+									? 'bg-yellow-400 border-yellow-500'
+									: 'bg-green-500 border-green-600'
 					}`}
 				>
 					{totalTasks.length}
@@ -53,8 +55,8 @@ const ProjectCardTaskSummary = ({ project = {} }) => {
 										task.priority === 'Alta'
 											? 'text-red-500'
 											: task.priority === 'Media'
-											? 'text-yellow-500'
-											: 'text-green-500'
+												? 'text-yellow-500'
+												: 'text-green-500'
 									}`}
 									size={24}
 								/>
