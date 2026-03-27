@@ -345,7 +345,7 @@
     "lastName2": "Pérez",
     "email": "dsperez.tablet@gmail.com",
     "phoneNumber": "+52 4439188025",
-    "address": "Molibdeno 214",
+    "address": "Molibdeno 214, Col. Villas del Pedregal, Morelia, Michoacán, C.P. 58336",
     "company": "",
     "rfc": "",
     "curp": "",
@@ -354,10 +354,12 @@
     "twitter": "",
     "instagram": "",
     "linkedin": "",
-    "project": "adsAAAA",
+    "project": [
+      "Hola"
+    ],
     "image": "/uploads/1774640345078-467220509.jpg",
     "createdAt": "2025-11-14T19:05:16.832Z",
-    "updatedAt": "2026-03-27T20:36:46.749Z",
+    "updatedAt": "2026-03-27T20:38:34.768Z",
     "tasks": [],
     "projects": [
       {

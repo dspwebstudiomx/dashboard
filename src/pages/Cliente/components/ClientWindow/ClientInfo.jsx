@@ -93,7 +93,12 @@ const ClientInfo = ({ selectedClient }) => {
 									))}
 								</ul>
 							) : (
-								'Sin proyectos'
+								<>
+									<br />
+									<span className="text-gray-500 dark:text-gray-400 ml-10 md:ml-0 xl:ml-10">
+										Sin proyectos
+									</span>
+								</>
 							)}
 						</span>
 					</li>
